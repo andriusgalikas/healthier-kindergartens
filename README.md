@@ -29,12 +29,12 @@ Things you may want to cover:
 ### Todo data
 
 #### Todo
-title:string 
-due_date:datetime
-iteration_type:integer(enum)(single,recurring) default (0)
-frequency:integer(enum)(day,week,month,year) default (0) 
-daycare_id:integer
-user_id:integer
+title:string  
+due_date:datetime  
+iteration_type:integer(enum)(single,recurring) default (0)  
+frequency:integer(enum)(day,week,month,year) default (0)  
+daycare_id:integer  
+user_id:integer  
 
 has_many :tasks, class_name: 'TodoTask' 
 belongs_to :daycare 
