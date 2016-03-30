@@ -15,6 +15,10 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  role                   :integer          default("0")
+#  name                   :string
+#  daycare_id             :integer
+#  stripe_customer_token  :string
 #
 # Indexes
 #
@@ -23,8 +27,17 @@
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+    include HasMailchimp
+    include HasSubscription
+    include HasDiscountCode
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+    # has_many :todos 
+    # has_many :completed_todos
+    # belongs_to :daycare
+
+    validates :name, :daycare_id, :email,                       presence: true
 end

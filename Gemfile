@@ -91,3 +91,5 @@ gem 'jquery-turbolinks'
 gem 'compass-rails'
 gem 'rollbar'
 gem 'whenever', require: false
+
+gem 'gibbon'
