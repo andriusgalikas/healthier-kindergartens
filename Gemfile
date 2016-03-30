@@ -66,6 +66,7 @@ group :development do
   gem 'capistrano-unicorn', require: false, platforms: :ruby
   gem 'thin'
   gem 'colorize'
+  gem 'annotate'
 end
 
 group :test do
