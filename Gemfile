@@ -93,3 +93,11 @@ gem 'rollbar'
 gem 'whenever', require: false
 
 gem 'gibbon'
+
+# payment processor
+gem 'stripe'
+gem 'stripe-rails'
+
+# image processing
+gem 'mini_magick'
+gem 'carrierwave'

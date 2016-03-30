@@ -92,6 +92,11 @@ GEM
     capybara-screenshot (1.0.12)
       capybara (>= 1.0, < 3)
       launchy
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     chronic (0.10.2)
     chunky_png (1.3.5)
     cliver (0.3.2)
@@ -137,6 +142,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     diffy (3.1.0)
+    domain_name (0.5.20160309)
+      unf (>= 0.0.5, < 1.0.0)
     email_spec (2.0.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -169,6 +176,8 @@ GEM
     highline (1.7.8)
     hirb (0.7.3)
     htmlentities (4.3.4)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -198,6 +207,7 @@ GEM
       railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -209,6 +219,7 @@ GEM
     net-ssh (3.1.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -284,6 +295,10 @@ GEM
       json (~> 1.4)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rollbar (2.8.3)
       multi_json
     rspec-core (3.4.4)
@@ -327,6 +342,11 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
+    stripe (1.37.0)
+      rest-client (~> 1.4)
+    stripe-rails (0.3.1)
+      rails (>= 3)
+      stripe
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -340,6 +360,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     unicode_utils (1.4.0)
     unicorn (5.0.1)
       kgio (~> 2.6)
@@ -378,6 +401,7 @@ DEPENDENCIES
   capistrano-unicorn
   capybara
   capybara-screenshot
+  carrierwave
   coffee-rails (~> 4.1.0)
   colorize
   compass-rails
@@ -394,6 +418,7 @@ DEPENDENCIES
   jquery-turbolinks
   lograge
   meta_request
+  mini_magick
   pg
   poltergeist
   pry-byebug
@@ -408,6 +433,8 @@ DEPENDENCIES
   sitemap_generator
   spring
   sqlite3
+  stripe
+  stripe-rails
   thin
   turbolinks
   uglifier (>= 1.3.0)
