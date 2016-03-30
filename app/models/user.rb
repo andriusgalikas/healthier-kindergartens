@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
 
     # has_many :todos 
     # has_many :completed_todos
-    # belongs_to :daycare
+    belongs_to :daycare
 
-    validates :name, :daycare_id, :email,                       presence: true
+    validates :name, :daycare_id, :email, :role,                      presence: true
+
+    enum role: [:parentee, :worker, :manager, :admin]
 end
