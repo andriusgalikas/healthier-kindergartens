@@ -2,7 +2,7 @@ module HasMailchimp
     extend ActiveSupport::Concern
 
     included do
-        after_create :unsubscribe_from_list
+        # after_create :unsubscribe_from_list
     end
 
     def unsubscribe_from_list
