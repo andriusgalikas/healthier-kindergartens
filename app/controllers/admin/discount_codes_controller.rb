@@ -1,15 +1,9 @@
-class DiscountCodesController < ApplicationController
-  before_action :set_discount_code, only: [:show, :edit, :update, :destroy]
+class Admin::DiscountCodesController < AdminController
 
   # GET /discount_codes
   # GET /discount_codes.json
   def index
     @discount_codes = DiscountCode.all
-  end
-
-  # GET /discount_codes/1
-  # GET /discount_codes/1.json
-  def show
   end
 
   # GET /discount_codes/new
@@ -19,6 +13,7 @@ class DiscountCodesController < ApplicationController
 
   # GET /discount_codes/1/edit
   def edit
+    set_discount_code
   end
 
   # POST /discount_codes
@@ -40,6 +35,7 @@ class DiscountCodesController < ApplicationController
   # PATCH/PUT /discount_codes/1
   # PATCH/PUT /discount_codes/1.json
   def update
+    set_discount_code
     respond_to do |format|
       if @discount_code.update(discount_code_params)
         format.html { redirect_to @discount_code, notice: 'Discount code was successfully updated.' }
@@ -54,6 +50,7 @@ class DiscountCodesController < ApplicationController
   # DELETE /discount_codes/1
   # DELETE /discount_codes/1.json
   def destroy
+    set_discount_code
     @discount_code.destroy
     respond_to do |format|
       format.html { redirect_to discount_codes_url, notice: 'Discount code was successfully destroyed.' }

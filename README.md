@@ -24,11 +24,11 @@ Things you may want to cover:
 *   ...
 
 
-## Database
+# Database
 
-### Todo data
+## Todo data
 
-#### Todo
+### Todo
 title:string  
 due_date:datetime  
 iteration_type:integer(enum)(single,recurring) default (0)  
@@ -50,6 +50,9 @@ description:text
 todo_id:integer  
 
 belongs_to :todo  
+
+### TodoCompletion
+submitter_id:integer
 
 ### TodoTaskCompletion
 submitter_id:integer  
