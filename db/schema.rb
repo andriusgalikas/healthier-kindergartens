@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330141524) do
+ActiveRecord::Schema.define(version: 20160330180515) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -70,23 +70,9 @@ ActiveRecord::Schema.define(version: 20160330141524) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "todo_subjects", force: :cascade do |t|
-    t.integer  "todo_id"
-    t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160330141524) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "department_id"
   end
 
   create_table "users", force: :cascade do |t|

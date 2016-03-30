@@ -28,32 +28,20 @@ Things you may want to cover:
 
 ### Todo data
 
-#### Subject
-title:string
-description:text
-
-has_many :todo_subjects
-has_many :todos, through: :todo_subjects
-
-#### TodoSubject
-todo_id:integer
-subject_id:integer
-
-belongs_to :todo
-belongs_to :subject
-
 #### Todo
 title:string  
 due_date:datetime  
 iteration_type:integer(enum)(single,recurring) default (0)  
 frequency:integer(enum)(day,week,month,year) default (0)  
 daycare_id:integer  
+department_id:integer
 user_id:integer  
 
 has_many :tasks, class_name: 'TodoTask'  
 has_one :todo_subject
 has_one :subject, through: :todo_subject
 belongs_to :daycare  
+belongs_to :deparment
 belongs_to :user  
 
 ### TodoTask

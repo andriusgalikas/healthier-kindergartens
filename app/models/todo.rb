@@ -9,14 +9,14 @@
 #  frequency      :integer          default("0")
 #  daycare_id     :integer
 #  user_id        :integer
+#  department_id  :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 
 class Todo < ActiveRecord::Base
     has_many :tasks,                                                           class_name: 'TodoTask'
-    has_one :todo_subject
-    has_one :subject,                                                          through: :todo_subject
+    belongs_to :department
     belongs_to :daycare
     belongs_to :user
 
