@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: plans
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  price      :decimal(, )      default("0.0")
+#  allocation :integer          default("0")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price: 9.99
+  allocation: 1
+
+two:
+  name: MyString
+  price: 9.99
+  allocation: 1
