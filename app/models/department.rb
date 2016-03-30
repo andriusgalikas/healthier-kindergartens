@@ -11,6 +11,7 @@
 
 class Department < ActiveRecord::Base
     belongs_to :daycare
+    has_many :children,                                 class_name: 'Child'
 
     validates :name, :daycare_id,                       presence: true
 end

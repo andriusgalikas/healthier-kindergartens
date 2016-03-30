@@ -14,10 +14,11 @@
 
 class Daycare < ActiveRecord::Base
     has_many :departments 
+    has_many :children,                                 through: :departments
     has_many :parents,                                  -> { (where(role: 0)) }, class_name: 'User'
     has_many :workers,                                  -> { (where(role: 1)) }, class_name: 'User'
     has_many :managers,                                 -> { (where(role: 2)) }, class_name: 'User'
 
     validates :name, :address_line1, :postcode,
-                :country, :telephone,                   presence: tru
+                :country, :telephone,                   presence: true
 end

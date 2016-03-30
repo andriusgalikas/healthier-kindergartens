@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  user_type              :integer          default("0")
+#  role                   :integer          default("0")
 #  name                   :string
 #  daycare_id             :integer
 #  stripe_customer_token  :string

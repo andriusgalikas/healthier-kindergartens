@@ -112,9 +112,9 @@ has_many :parents
 
 ### Child
 name:string  
-parent_id:string  
+parent_id:integer  
 department_id:integer   
-birth_year:datetime  
+birth_date:datetime  
 
 belongs_to :parent, class_name: 'User'   
 belongs_to :department  
