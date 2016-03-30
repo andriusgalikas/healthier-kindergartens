@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330122425) do
+ActiveRecord::Schema.define(version: 20160330123159) do
+
+  create_table "discount_code_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "discount_code_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "discount_codes", force: :cascade do |t|
+    t.string   "code"
+    t.decimal  "value",      default: 0.0
+    t.integer  "status",     default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"

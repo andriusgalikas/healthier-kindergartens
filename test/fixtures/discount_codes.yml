@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: discount_codes
+#
+#  id         :integer          not null, primary key
+#  code       :string
+#  value      :decimal(, )      default("0.0")
+#  status     :integer          default("0")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  value: 9.99
+  status: 1
+
+two:
+  code: MyString
+  value: 9.99
+  status: 1

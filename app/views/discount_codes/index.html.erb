@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Discount Codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Value</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discount_codes.each do |discount_code| %>
+      <tr>
+        <td><%= discount_code.code %></td>
+        <td><%= discount_code.value %></td>
+        <td><%= discount_code.status %></td>
+        <td><%= link_to 'Show', discount_code %></td>
+        <td><%= link_to 'Edit', edit_discount_code_path(discount_code) %></td>
+        <td><%= link_to 'Destroy', discount_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Discount code', new_discount_code_path %>
