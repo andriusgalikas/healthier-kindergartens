@@ -35,10 +35,17 @@ class User < ActiveRecord::Base
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-    
+
     belongs_to :daycare
 
-    validates :name, :daycare_id, :email, :role,                      presence: true
+    validates :name, :email, :role,                      presence: true
+    validates :daycare_id,                               :if => :not_admin?
 
     enum role: [:parentee, :worker, :manager, :admin]
+
+    private
+
+    def not_admin?
+        admin? ? false : true
+    end
 end
