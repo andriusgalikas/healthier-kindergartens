@@ -14,10 +14,12 @@
 #
 
 class Todo < ActiveRecord::Base
-    has_many :tasks, class_name: 'TodoTask'
+    has_many :tasks,                                                           class_name: 'TodoTask'
+    has_one :todo_subject
+    has_one :subject,                                                          through: :todo_subject
     belongs_to :daycare
     belongs_to :user
 
     validates :title, :due_date, :iteration_type,
-                :frequency, :daycare_id, :user_id,                              presence: true
+                :frequency, :daycare_id, :user_id,                             presence: true
 end

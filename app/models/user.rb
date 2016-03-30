@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     include HasMailchimp
     include HasSubscription
     include HasDiscountCode
-    include HasToDos
+    include HasTodos
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     belongs_to :daycare
 
     validates :name, :email, :role,                      presence: true
-    validates :daycare_id,                               :if => :not_admin?
+    validates :daycare_id,                               presence: true, :if => :not_admin?
 
     enum role: [:parentee, :worker, :manager, :admin]
 
