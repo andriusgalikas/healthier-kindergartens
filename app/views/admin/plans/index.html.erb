@@ -18,9 +18,8 @@
         <td><%= plan.name %></td>
         <td><%= plan.price %></td>
         <td><%= plan.allocation %></td>
-        <td><%= link_to 'Show', plan %></td>
-        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_plan_path(plan) %></td>
+        <td><%= link_to 'Destroy', [:admin, plan], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Plan', new_plan_path %>
+<%= link_to 'New Plan', new_admin_plan_path %>

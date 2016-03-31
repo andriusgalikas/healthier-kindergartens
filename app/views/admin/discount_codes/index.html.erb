@@ -18,9 +18,8 @@
         <td><%= discount_code.code %></td>
         <td><%= discount_code.value %></td>
         <td><%= discount_code.status %></td>
-        <td><%= link_to 'Show', discount_code %></td>
-        <td><%= link_to 'Edit', edit_discount_code_path(discount_code) %></td>
-        <td><%= link_to 'Destroy', discount_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_discount_code_path(discount_code) %></td>
+        <td><%= link_to 'Destroy', [:admin, discount_code], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Discount code', new_discount_code_path %>
+<%= link_to 'New Discount code', new_admin_discount_code_path %>

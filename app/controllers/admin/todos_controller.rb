@@ -23,7 +23,7 @@ class Admin::TodosController < AdminController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
+        format.html { redirect_to admin_todos_url, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class Admin::TodosController < AdminController
     set_todo
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to admin_todos_url, notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }
@@ -53,7 +53,7 @@ class Admin::TodosController < AdminController
     set_todo
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
+      format.html { redirect_to admin_todos_url, notice: 'Todo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

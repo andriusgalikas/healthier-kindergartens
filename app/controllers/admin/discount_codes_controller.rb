@@ -23,7 +23,7 @@ class Admin::DiscountCodesController < AdminController
 
     respond_to do |format|
       if @discount_code.save
-        format.html { redirect_to @discount_code, notice: 'Discount code was successfully created.' }
+        format.html { redirect_to admin_discount_codes_url, notice: 'Discount code was successfully created.' }
         format.json { render :show, status: :created, location: @discount_code }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class Admin::DiscountCodesController < AdminController
     set_discount_code
     respond_to do |format|
       if @discount_code.update(discount_code_params)
-        format.html { redirect_to @discount_code, notice: 'Discount code was successfully updated.' }
+        format.html { redirect_to admin_discount_codes_url, notice: 'Discount code was successfully updated.' }
         format.json { render :show, status: :ok, location: @discount_code }
       else
         format.html { render :edit }
@@ -53,7 +53,7 @@ class Admin::DiscountCodesController < AdminController
     set_discount_code
     @discount_code.destroy
     respond_to do |format|
-      format.html { redirect_to discount_codes_url, notice: 'Discount code was successfully destroyed.' }
+      format.html { redirect_to admin_discount_codes_url, notice: 'Discount code was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
