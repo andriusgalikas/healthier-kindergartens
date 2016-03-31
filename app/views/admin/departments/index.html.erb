@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Departments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Daycare</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |dp| %>
+      <tr>
+        <td><%= dp.name %></td>
+        <td><%= dp.daycare.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

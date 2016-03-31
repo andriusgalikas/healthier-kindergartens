@@ -10,6 +10,7 @@
       <th>Iteration type</th>
       <th>Frequency</th>
       <th>Daycare</th>
+      <th>Type</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -22,7 +23,8 @@
         <td><%= todo.due_date %></td>
         <td><%= todo.iteration_type %></td>
         <td><%= todo.frequency %></td>
-        <td><%= todo.daycare_id %></td>
+        <td><%= todo.daycare.try(:name) %></td>
+        <td><%= todo.global? ? "Global" : "Local" %></td>
         <td><%= todo.user_id %></td>
         <td><%= link_to 'Edit', edit_admin_todo_path(todo) %></td>
         <td><%= link_to 'Destroy', [:admin, todo], method: :delete, data: { confirm: 'Are you sure?' } %></td>

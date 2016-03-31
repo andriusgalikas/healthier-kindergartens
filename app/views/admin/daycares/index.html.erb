@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Daycares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address Line</th>
+      <th>Postcode</th>
+      <th>Country</th>
+      <th>Telephone</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daycares.each do |dc| %>
+      <tr>
+        <td><%= dc.name %></td>
+        <td><%= dc.address_line1 %></td>
+        <td><%= dc.postcode %></td>
+        <td><%= dc.country %></td>
+        <td><%= dc.telephone %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

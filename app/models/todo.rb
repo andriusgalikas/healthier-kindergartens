@@ -34,4 +34,8 @@ class Todo < ActiveRecord::Base
 
     validates :title, :due_date, :iteration_type,
                 :frequency, :user_id,                                           presence: true
+
+    def global?
+        daycare_id.nil? ? true : false
+    end
 end

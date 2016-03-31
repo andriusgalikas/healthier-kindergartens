@@ -20,8 +20,7 @@ Rails.application.routes.draw do
         resources :plans, except: :show
         resources :todos, except: :show
         resources :users, only: :index
-        resources :daycare, only: :index do
-            resources :department, only: :index 
-        end
+        resources :daycares, only: :index
+        resources :departments, only: :index 
     end
 end
