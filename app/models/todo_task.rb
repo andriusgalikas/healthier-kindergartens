@@ -11,6 +11,7 @@
 #
 
 class TodoTask < ActiveRecord::Base
+    has_many :tasks_complete,                                       class_name: 'TodoTaskComplete'
     belongs_to :todo
 
     validates :title, :description, :todo_id,                       presence: true

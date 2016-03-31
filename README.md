@@ -51,19 +51,24 @@ todo_id:integer
 
 belongs_to :todo  
 
-### TodoCompletion
+### TodoComplete
 submitter_id:integer
+todo_id:integer
+completion_date:datetime
 
-### TodoTaskCompletion
-submitter_id:integer  
-todo_task_id:integer  
-daycare_id:integer  
+has_many :tasks_complete, class_name: 'TodoTaskComplete'
+belongs_to :submitter
+belongs_to :todo
+
+### TodoTaskComplete
+submitter_id:integer
+todo_complete_id:integer  
+todo_task_id:integer
 completion_date:datetime  
 
-has_one :todo_task  
-has_one :user, through: :todo_task  
-belongs_to :submitter  
-belongs_to :daycare  
+belongs_to :submitter
+belongs_to :todo_complete
+belongs_to :todo_task
 
 ## Payment data
 
