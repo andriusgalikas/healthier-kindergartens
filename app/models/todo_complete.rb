@@ -8,6 +8,7 @@
 #  completion_date :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  status          :integer          default("0")
 #
 
 class TodoComplete < ActiveRecord::Base
@@ -16,4 +17,6 @@ class TodoComplete < ActiveRecord::Base
     belongs_to :todo
 
     validates :submitter_id, :todo_id,          presence: true
+
+    enum status: [:active, :inactive]
 end

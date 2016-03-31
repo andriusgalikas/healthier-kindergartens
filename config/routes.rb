@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
+    get 'dashboard', to: 'dashboard#index'
+
     get 'upgrade', to: 'subscriptions#index'
     resources :plans, only: [] do
       resources :subscriptions, only: [:new, :create] do

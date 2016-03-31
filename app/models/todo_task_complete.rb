@@ -9,6 +9,7 @@
 #  completion_date  :datetime
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  result           :integer          default("0")
 #
 
 class TodoTaskComplete < ActiveRecord::Base
@@ -17,4 +18,6 @@ class TodoTaskComplete < ActiveRecord::Base
     belongs_to :todo_task
 
     validates :submitter_id, :todo_complete_id, :todo_task_id,                  presence: true
+
+    enum result: [:pending, :pass, :failed]
 end

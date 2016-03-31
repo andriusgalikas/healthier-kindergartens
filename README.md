@@ -55,6 +55,7 @@ belongs_to :todo
 submitter_id:integer
 todo_id:integer
 completion_date:datetime
+status:integer(enum)(active,inactive)
 
 has_many :tasks_complete, class_name: 'TodoTaskComplete'
 belongs_to :submitter
@@ -65,6 +66,7 @@ submitter_id:integer
 todo_complete_id:integer  
 todo_task_id:integer
 completion_date:datetime  
+result:integer(enum)(pass,failed)
 
 belongs_to :submitter
 belongs_to :todo_complete

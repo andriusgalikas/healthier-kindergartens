@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331105140) do
+ActiveRecord::Schema.define(version: 20160331123424) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -88,8 +88,9 @@ ActiveRecord::Schema.define(version: 20160331105140) do
     t.integer  "submitter_id"
     t.integer  "todo_id"
     t.datetime "completion_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "status",          default: 0
   end
 
   create_table "todo_task_completes", force: :cascade do |t|
@@ -97,8 +98,9 @@ ActiveRecord::Schema.define(version: 20160331105140) do
     t.integer  "todo_complete_id"
     t.integer  "todo_task_id"
     t.datetime "completion_date"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "result",           default: 0
   end
 
   create_table "todo_tasks", force: :cascade do |t|
