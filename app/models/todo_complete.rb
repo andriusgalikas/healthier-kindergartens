@@ -14,4 +14,6 @@ class TodoComplete < ActiveRecord::Base
     has_many :task_completes,                   class_name: 'TodoTaskComplete'
     belongs_to :submitter,                      class_name: 'User'
     belongs_to :todo
+
+    validates :submitter_id, :todo_id,          presence: true
 end

@@ -12,7 +12,9 @@
 #
 
 class TodoTaskComplete < ActiveRecord::Base
-    belongs_to :submitter,                              class_name: 'User'
+    belongs_to :submitter,                                                      class_name: 'User'
     belongs_to :todo_complete
     belongs_to :todo_task
+
+    validates :submitter_id, :todo_complete_id, :todo_task_id,                  presence: true
 end

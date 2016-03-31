@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331085947) do
+ActiveRecord::Schema.define(version: 20160331105140) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -120,6 +120,13 @@ ActiveRecord::Schema.define(version: 20160331085947) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "user_daycares", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "daycare_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -135,7 +142,6 @@ ActiveRecord::Schema.define(version: 20160331085947) do
     t.datetime "updated_at",                          null: false
     t.integer  "role",                   default: 0
     t.string   "name"
-    t.integer  "daycare_id"
     t.string   "stripe_customer_token"
   end
 

@@ -17,7 +17,6 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("0")
 #  name                   :string
-#  daycare_id             :integer
 #  stripe_customer_token  :string
 #
 # Indexes

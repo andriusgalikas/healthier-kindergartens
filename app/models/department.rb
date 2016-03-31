@@ -14,10 +14,11 @@ class Department < ActiveRecord::Base
     has_many :children,                                 class_name: 'Child'
 
     has_many :department_todos
-    has_many :todos,                                    through: :department_todos
-    has_many :completed_todos,                          through: :todos
-    has_many :incomplete_todos,                         through: :todos
-    has_many :available_todos,                          through: :todos
+    has_many :todos,                                     through: :department_todos
+
+    has_many :completed_todos,                          -> { complete }, through: :department_todos, source: :todo
+    has_many :incomplete_todos,                         -> { incomplete }, through: :department_todos, source: :todo
+    has_many :available_todos,                          -> { available }, through: :department_todos, source: :todo
 
     validates :name, :daycare_id,                       presence: true
 end

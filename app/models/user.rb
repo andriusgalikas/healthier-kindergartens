@@ -17,7 +17,6 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("0")
 #  name                   :string
-#  daycare_id             :integer
 #  stripe_customer_token  :string
 #
 # Indexes
@@ -36,16 +35,23 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    belongs_to :daycare
+    has_one :user_daycare
+    has_one :daycare,                                   through: :user_daycare
+
+    has_many :todo_completes,                           foreign_key: 'submitter_id'
+    has_many :completed_todos,                          -> { where.not(completion_date: nil) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'
+    has_many :incomplete_todos,                         -> { where.not(id: nil).where(completion_date: nil) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'
+
 
     validates :name, :email, :role,                      presence: true
-    validates :daycare_id,                               presence: true, :if => :not_admin?
 
     enum role: [:parentee, :worker, :manager, :admin]
 
-    private
+    def available_todos
+        daycare.all_todos.reject{|t| active_todos.map(&:todo_id).include? t.id }
+    end
 
-    def not_admin?
-        admin? ? false : true
+    def active_todos
+        (completed_todos + incomplete_todos)
     end
 end

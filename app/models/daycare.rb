@@ -15,32 +15,45 @@
 class Daycare < ActiveRecord::Base
     has_many :departments 
     has_many :children,                                 through: :departments
-    has_many :parents,                                  -> { (where(role: 0)) }, class_name: 'User'
-    has_many :workers,                                  -> { (where(role: 1)) }, class_name: 'User'
-    has_many :managers,                                 -> { (where(role: 2)) }, class_name: 'User'
+    has_many :user_daycares
+    has_many :users,                                    through: :user_daycares
+    has_many :parents,                                  -> { (where(role: 0)) }, through: :user_daycares, source: :user
+    has_many :workers,                                  -> { (where(role: 1)) }, through: :user_daycares, source: :user
+    has_many :managers,                                 -> { (where(role: 2)) }, through: :user_daycares, source: :user
 
-    has_many :todos
-    has_many :global_completed_todos,                   through: :todos, source: :completed_todos
-    has_many :global_incomplete_todos,                  through: :todos, source: :incomplete_todos
-    has_many :global_available_todos,                   through: :todos, source: :available_todos
+    # Dashboard relations
+    has_many :local_todos,                              class_name: 'Todo'
 
-    has_many :local_completed_todos,                    through: :departments, source: :completed_todos
-    has_many :local_incomplete_todos,                   through: :departments, source: :incomplete_todos
-    has_many :local_available_todos,                    through: :departments, source: :available_todos
+    # Reporting relations
+    has_many :local_completed_todos,                    -> { complete }, class_name: 'Todo'
+    has_many :local_incomplete_todos,                   -> { incomplete }, class_name: 'Todo'
+    has_many :local_available_todos,                    -> { available }, class_name: 'Todo'
+
+    # Dashboard relations
+    has_many :global_todos,                             through: :departments, source: :todos
+
+    # Reporting relations
+    has_many :global_completed_todos,                   -> { complete }, through: :departments, source: :todos
+    has_many :global_incomplete_todos,                  -> { incomplete }, through: :departments, source: :todos
+    has_many :global_available_todos,                   -> { available }, through: :departments, source: :todos
 
     validates :name, :address_line1, :postcode,
                 :country, :telephone,                   presence: true
 
 
     def all_completed_todos
-        global_completed_todos + local_completed_todos
+        (global_completed_todos + local_completed_todos).uniq
     end
 
     def all_incomplete_todos
-        global_incomplete_todos + local_incomplete_todos
+        (global_incomplete_todos + local_incomplete_todos).uniq
     end
 
     def all_available_todos
-        global_available_todos + local_available_todos
+        (global_available_todos + local_available_todos).uniq
+    end
+
+    def all_todos
+        (global_todos + local_todos).uniq
     end
 end
