@@ -146,3 +146,23 @@ has_one :plan, through: :subscription
 belongs_to :daycare   
 has_one :discount_code_user   
 has_one :discount_code, through: :discount_code_user  
+
+
+# User stories
+
+## Todo
+
+As an admin...
+- I need to view all global todos
+- I need to view all local todos per daycare
+
+
+As a manager...
+- I need to view all global todos
+- I need to view all local todos in related to my daycare
+- I need to be able to create new local todos
+
+As a worker or parent...
+- I need to be able to view incomplete todos...
+- I need to be able to view complete todos...
+- I need to be able to view available todos for my associated daycare...
