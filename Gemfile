@@ -99,3 +99,8 @@ gem 'stripe-rails'
 # image processing
 gem 'mini_magick'
 gem 'carrierwave'
+
+# background processing
+gem 'sidekiq'
+gem 'sidekiq-failures'
+gem 'sinatra', :require => nil
