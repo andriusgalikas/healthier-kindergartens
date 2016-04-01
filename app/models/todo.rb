@@ -34,6 +34,9 @@ class Todo < ActiveRecord::Base
     validates :title, :iteration_type,
                 :frequency, :user_id,                                           presence: true
 
+    enum iteration_type: [:single, :recurring]
+    enum frequency: [:day, :week, :month, :year]
+
     def global?
         daycare_id.nil? ? true : false
     end

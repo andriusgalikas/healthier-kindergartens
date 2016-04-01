@@ -7,7 +7,7 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 p "Create users..."
-User.create(name: 'Admin User', email: "admin@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
+admin = User.create(name: 'Admin User', email: "admin@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
 User.create(name: 'Manager User', email: "manager@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
 User.create(name: 'Worker User', email: "worker@daycare.org", role: 1, password: "mypassword", password_confirmation: "mypassword")
 User.create(name: 'Parent User', email: "parent@daycare.org", role: 0, password: "mypassword", password_confirmation: "mypassword")
@@ -16,7 +16,15 @@ p "Creating daycares and departments..."
 3.times do
     daycare = Daycare.create(name: Faker::Company.name, address_line1: Faker::Address.street_address, postcode: Faker::Address.zip_code, country: Faker::Address.country, telephone: Faker::PhoneNumber.phone_number)
     2.times do
-        Department.create(name: "Department#{rand(10..30)}", daycare_id: daycare.id)
+        daycare.departments.create(name: "Department-#{Faker::Lorem.word}")
+    end
+end
+
+p "Creating example todos..."
+5.times do
+    todo = Todo.create(title: "Todo-#{Faker::Lorem.word}", iteration_type: rand(0..1), frequency: rand(0..3), user_id: admin.id)
+    3.times do
+        todo.tasks.create(title: "Task-#{Faker::Lorem.word}", description: Faker::Lorem.sentence)
     end
 end
 
@@ -24,6 +32,8 @@ p "Assigning users daycares..."
 User.all.each do |user|
     UserDaycare.create(daycare_id: Daycare.all.map(&:id).sample, user_id: user.id)
 end
+
+
 
 p "Creating plans..."
 Plan.create(name: 'DayCare 30', price: 29.99)
