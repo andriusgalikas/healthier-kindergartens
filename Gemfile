@@ -76,7 +76,6 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'faker'
   gem 'email_spec'
 end
 
@@ -105,3 +104,6 @@ gem 'carrierwave'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sinatra', :require => nil
+
+# fake data
+gem 'faker'
