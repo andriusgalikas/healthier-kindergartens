@@ -8,9 +8,9 @@ require 'faker'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 p "Create users..."
 User.create(name: 'Admin User', email: "admin@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
-User.create(name: 'Manager User', email: "manager@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
-User.create(name: 'Worker User', email: "worker@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
-User.create(name: 'Parent User', email: "parent@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
+User.create(name: 'Manager User', email: "manager@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
+User.create(name: 'Worker User', email: "worker@daycare.org", role: 1, password: "mypassword", password_confirmation: "mypassword")
+User.create(name: 'Parent User', email: "parent@daycare.org", role: 0, password: "mypassword", password_confirmation: "mypassword")
 
 p "Creating daycares and departments..."
 3.times do

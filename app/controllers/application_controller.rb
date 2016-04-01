@@ -3,27 +3,19 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
 
-    def authenticate_parent!
-        unless current_user && current_user.parentee?
-            redirect_to root_url
+    def authenticate_role! role
+        if current_user.nil?
+            redirect_to new_user_session_url
+        elsif current_user && !(current_user.role == role)
+            redirect_to dashboard_url
         end
+    end 
+
+    def after_sign_in_path_for resource
+        resource.admin? ? admin_root_path : dashboard_path
     end
 
-    def authenticate_worker!
-        unless current_user && current_user.worker?
-            redirect_to root_url
-        end
-    end
-
-    def authenticate_manager!
-        unless current_user && current_user.manager?
-            redirect_to root_url
-        end
-    end
-
-    def authenticate_admin!
-        unless current_user && current_user.admin?
-            redirect_to root_url
-        end
+    def after_sign_up_path_for resource
+        resource.admin? ? admin_root_path : dashboard_path
     end
 end

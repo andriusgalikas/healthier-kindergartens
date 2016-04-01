@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     devise_for :users
 
     root to: 'pages#home'
+    get :about, to: 'pages#about'
+    get :mission, to: 'pages#mission'
+    get :path, to: 'pages#path'
+    get :standard, to: 'pages#standard'
 
     get 'dashboard', to: 'dashboard#index'
 

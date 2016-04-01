@@ -1,0 +1,17 @@
+<ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Mission", mission_path %></li>
+    <li><%= link_to "Path", path_path %></li>
+    <li><%= link_to "Standard", standard_path %></li>
+</ul>
+<hr>
+<%= link_to 'Dashboard', dashboard_path %><br>
+<%= link_to 'Administration', admin_root_path %>
+<hr>
+<% if user_signed_in? %>
+    <b>Current user: <%= current_user.name %> / <%= current_user.email %></b><br>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>
