@@ -3,6 +3,7 @@ class TodoFrequenciesJob < ActiveJob::Base
 
     def perform *args
         Todo.all.each do |todo|
+
             
         end
     end
