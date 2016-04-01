@@ -46,7 +46,7 @@ end
 gem 'devise'
 gem 'sitemap_generator'
 gem 'unicorn', platforms: :ruby
-gem 'pg'
+
 group :production do
   gem 'unicorn-worker-killer'
   gem 'lograge'

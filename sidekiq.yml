@@ -1,10 +1,14 @@
 ---
-:concurrency: 25
+:concurrency: 5
 :pidfile: ./tmp/pids/sidekiq.pid
 :logfile: ./log/sidekiq.log
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 20
 # Create two queues, defaut and high priority
 # The 2 tells Sidekiq to check the associated queue twice as often
 :queues:
   - default
   - mailers
-  - todos
+  - [todos, 2]
