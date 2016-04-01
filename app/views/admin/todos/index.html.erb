@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Due date</th>
       <th>Iteration type</th>
       <th>Frequency</th>
       <th>Daycare</th>
@@ -20,7 +19,6 @@
     <% @todos.each do |todo| %>
       <tr>
         <td><%= todo.title %></td>
-        <td><%= todo.due_date %></td>
         <td><%= todo.iteration_type %></td>
         <td><%= todo.frequency %></td>
         <td><%= todo.daycare.try(:name) %></td>

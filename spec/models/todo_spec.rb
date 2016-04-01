@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  title          :string
-#  due_date       :datetime
 #  iteration_type :integer          default("0")
 #  frequency      :integer          default("0")
 #  daycare_id     :integer

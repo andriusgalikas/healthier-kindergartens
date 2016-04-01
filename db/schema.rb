@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331123424) do
+ActiveRecord::Schema.define(version: 20160401123738) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 20160331123424) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "title"
-    t.datetime "due_date"
     t.integer  "iteration_type", default: 0
     t.integer  "frequency",      default: 0
     t.integer  "daycare_id"

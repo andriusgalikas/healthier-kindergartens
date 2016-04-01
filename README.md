@@ -30,7 +30,6 @@ Things you may want to cover:
 
 ### Todo
 title:string  
-due_date:datetime  
 iteration_type:integer(enum)(single,recurring) default (0)  
 frequency:integer(enum)(day,week,month,year) default (0)  
 daycare_id:integer  

@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  title          :string
-#  due_date       :datetime
 #  iteration_type :integer          default("0")
 #  frequency      :integer          default("0")
 #  daycare_id     :integer
@@ -32,7 +31,7 @@ class Todo < ActiveRecord::Base
 
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
-    validates :title, :due_date, :iteration_type,
+    validates :title, :iteration_type,
                 :frequency, :user_id,                                           presence: true
 
     def global?
