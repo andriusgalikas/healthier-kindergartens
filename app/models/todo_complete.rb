@@ -12,7 +12,7 @@
 #
 
 class TodoComplete < ActiveRecord::Base
-    has_many :task_completes,                   class_name: 'TodoTaskComplete'
+    has_many :task_completes,                   class_name: 'TodoTaskComplete', dependent: :destroy
     belongs_to :submitter,                      class_name: 'User'
     belongs_to :todo
 

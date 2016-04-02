@@ -13,7 +13,7 @@
 #
 
 class Daycare < ActiveRecord::Base
-    has_many :departments 
+    has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments
     has_many :user_daycares
     has_many :users,                                    through: :user_daycares

@@ -24,6 +24,7 @@
         <td><%= todo.daycare.try(:name) %></td>
         <td><%= todo.global? ? "Global" : "Local" %></td>
         <td><%= todo.user.name %></td>
+        <td><%= link_to 'Show', admin_todo_path(todo) %></td>
         <td><%= link_to 'Edit', edit_admin_todo_path(todo) %></td>
         <td><%= link_to 'Destroy', [:admin, todo], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

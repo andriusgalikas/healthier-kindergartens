@@ -13,13 +13,13 @@
 #
 
 class Todo < ActiveRecord::Base
-    has_many :tasks,                                                            class_name: 'TodoTask'
+    has_many :tasks,                                                            class_name: 'TodoTask', dependent: :destroy
     has_many :tasks_complete,                                                   through: :tasks
 
-    has_many :todo_completes
+    has_many :todo_completes,                                                   dependent: :destroy
 
     has_many :department_todos
-    has_many :departments,                                                      through: :department_todos
+    has_many :departments,                                                      through: :department_todos, dependent: :destroy
 
     belongs_to :daycare
     belongs_to :user

@@ -4,6 +4,10 @@ class Admin::TodosController < AdminController
     @todos = Todo.all
   end
 
+  def show
+    set_todo
+  end
+
   def new
     @todo = current_user.todos.build
     @todo.tasks.build

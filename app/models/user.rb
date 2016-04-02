@@ -35,10 +35,10 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_one :user_daycare
+    has_one :user_daycare,                                       dependent: :destroy
     has_one :daycare,                                            through: :user_daycare
 
-    validates :name, :email, :role,                      presence: true
+    validates :name, :email, :role,                              presence: true
 
     enum role: [:parentee, :worker, :manager, :admin]
 end

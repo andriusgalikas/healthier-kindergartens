@@ -31,7 +31,7 @@ Rails.application.routes.draw do
         end
         resources :discount_codes, except: :show
         resources :plans, except: :show
-        resources :todos, except: :show
+        resources :todos
         resources :users, only: :index
         resources :daycares, only: :index
         resources :departments, only: :index 
