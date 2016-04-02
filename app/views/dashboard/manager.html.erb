@@ -1,2 +1,21 @@
 <h3>Manager dashboard</h3>
 <%= render 'shared/menu' %>
+<hr>
+<%= link_to 'ADD NEW TODO', new_manager_todo_path %>
+<h4>MY DAYCARE TODOS</h4>
+<ul>
+    <% current_user.local_todos.each do |todo| %>
+        <li>
+            <%= todo.title %>
+        </li>
+    <% end %>
+</ul>
+
+<h4>GLOBAL TODOS</h4>
+<ul>
+    <% current_user.global_todos.each do |todo| %>
+        <li>
+            <%= todo.title %>
+        </li>
+    <% end %>
+</ul>

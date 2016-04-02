@@ -1,2 +1,29 @@
 <h3>Parent dashboard</h3>
 <%= render 'shared/menu' %>
+
+<h4>AVAILABLE TODOS</h4>
+<ul>
+    <% current_user.available_todos.each do |todo| %>
+        <li>
+            <%= todo.title %>
+        </li>
+    <% end %>
+</ul>
+
+<h4>IN PROGRESS TODOS</h4>
+<ul>
+    <% current_user.incomplete_todo_completes.each do |todo_c| %>
+        <li>
+            <%= todo_c.todo.title %>
+        </li>
+    <% end %>
+</ul>   
+
+<h4>COMPLETE TODOS</h4>
+<ul>
+    <% current_user.completed_todo_completes.each do |todo_c| %>
+        <li>
+            <%= todo_c.todo.title %>
+        </li>
+    <% end %>
+</ul>

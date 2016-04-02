@@ -36,18 +36,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
     has_one :user_daycare
-    has_one :daycare,                                   through: :user_daycare
-
+    has_one :daycare,                                            through: :user_daycare
 
     validates :name, :email, :role,                      presence: true
 
     enum role: [:parentee, :worker, :manager, :admin]
-
-    def available_todos
-        daycare.all_todos.reject{|t| active_todos.map(&:todo_id).include? t.id }
-    end
-
-    def active_todos
-        (completed_todos + incomplete_todos)
-    end
 end

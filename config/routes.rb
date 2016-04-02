@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       end
     end
 
-    # get :action "pages##{:action}"
+    namespace :manager do
+        resources :todos, except: :index
+    end
+
+    resources :todos
 
     namespace :admin do
         root to: 'dashboard#index'
