@@ -1,25 +1,23 @@
 class Admin::TodosController < AdminController
 
-  # GET /todos
-  # GET /todos.json
   def index
     @todos = Todo.all
   end
 
-  # GET /todos/new
   def new
-    @todo = Todo.new
+    @todo = current_user.todos.build
+    @todo.tasks.build
+    set_departments
   end
 
-  # GET /todos/1/edit
   def edit
+    set_departments
     set_todo
   end
 
-  # POST /todos
-  # POST /todos.json
   def create
-    @todo = Todo.new(todo_params)
+    set_departments
+    @todo = current_user.todos.build(todo_params)
 
     respond_to do |format|
       if @todo.save
@@ -32,10 +30,9 @@ class Admin::TodosController < AdminController
     end
   end
 
-  # PATCH/PUT /todos/1
-  # PATCH/PUT /todos/1.json
   def update
     set_todo
+    set_departments
     respond_to do |format|
       if @todo.update(todo_params)
         format.html { redirect_to admin_todos_url, notice: 'Todo was successfully updated.' }
@@ -47,8 +44,6 @@ class Admin::TodosController < AdminController
     end
   end
 
-  # DELETE /todos/1
-  # DELETE /todos/1.json
   def destroy
     set_todo
     @todo.destroy
@@ -61,11 +56,15 @@ class Admin::TodosController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
-      @todo = Todo.find(params[:id])
+      @todo = Todo.global.find(params[:id])
+    end
+
+    def set_departments
+      @departments ||= Department.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, :user_id)
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, department_ids: [], tasks_attributes: [:id, :title, :description, :todo_id])
     end
 end

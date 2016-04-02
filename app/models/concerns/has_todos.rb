@@ -2,6 +2,8 @@ module HasTodos
     extend ActiveSupport::Concern
 
     included do
+        has_many :todos
+
         # Worker/parent relations
         has_many :todo_completes,                                    foreign_key: 'submitter_id'
         has_many :completed_todo_completes,                          -> { where.not(completion_date: nil) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'

@@ -1,0 +1,15 @@
+{
+  "name": "Health-childcare",
+  "version": "0.0.1",
+  "authors": [
+    "Tom Dallimore"
+  ],
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "vendor/assets/components"
+  ],
+  "dependencies": {
+    "chosen": "^1.5.1"
+  }
+}

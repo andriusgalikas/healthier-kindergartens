@@ -17,11 +17,28 @@
   </div>
   <div class="field">
     <%= f.label :iteration_type %><br>
-    <%= f.number_field :iteration_type %>
+    <%= f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]} %>
   </div>
   <div class="field">
     <%= f.label :frequency %><br>
-    <%= f.number_field :frequency %>
+    <%= f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]} %>
+  </div>
+  <h5>Tasks</h5>
+  <hr>
+  <%= f.fields_for :tasks do |ff |%>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= ff.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= ff.text_area :description %>
+    </div>
+  <% end %>
+  <hr>
+  <h5>Departments</h5>
+  <div class="field">
+    <%= f.collection_select :department_ids, @departments, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select departments..."}} %>
   </div>
   <div class="actions">
     <%= f.submit %>
