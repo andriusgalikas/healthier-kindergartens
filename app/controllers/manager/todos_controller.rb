@@ -1,6 +1,10 @@
 class Manager::TodosController < ApplicationController
   before_action -> { authenticate_role!("manager") }
 
+  def show
+    set_global_todo
+  end
+
   def new
     @todo = current_user.daycare.local_todos.build
     @todo.tasks.build
@@ -50,6 +54,10 @@ class Manager::TodosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
       @todo = current_user.daycare.local_todos.find(params[:id])
+    end
+
+    def set_global_todo
+      @todo = Todo.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,30 @@
+<h2><%= @todo.title %></h2>
+Iteration Type: <%= @todo.iteration_type %><br>
+Frequency: <%= @todo.frequency %><br>
+Type: <%= @todo.global? ? "Global" : "Local" %>
+<h3>Tasks</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo.tasks.each do |tk| %>
+      <tr>
+        <td><%= tk.title %></td>
+        <td><%= tk.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @todo.global? %>
+  <h3>Departments</h3>
+  <ul>
+      <% @todo.departments.each do |dp| %>
+          <li><%= dp.name %></li>
+      <% end %>
+  </ul>
+<% end %>
