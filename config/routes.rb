@@ -22,7 +22,8 @@ Rails.application.routes.draw do
         resources :todos, except: :index
     end
 
-    resources :todos
+    resources :todo_completes, only: :create
+    resources :todo_task_completes, only: :update
 
     namespace :admin do
         root to: 'dashboard#index'

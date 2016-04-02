@@ -16,6 +16,8 @@ class TodoComplete < ActiveRecord::Base
     belongs_to :submitter,                      class_name: 'User'
     belongs_to :todo
 
+    scope :incomplete,                          -> { where.not(id: nil).where(completion_date: nil) }
+
     validates :submitter_id, :todo_id,          presence: true
 
     enum status: [:active, :inactive]

@@ -42,4 +42,8 @@ class Todo < ActiveRecord::Base
     def global?
         daycare_id.nil? ? true : false
     end
+
+    def frequency_to_time
+        day? ? 1.day : week? ? 1.week : month? ? 1.month : 1.year 
+    end
 end
