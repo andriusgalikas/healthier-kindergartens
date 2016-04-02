@@ -44,6 +44,6 @@ class Todo < ActiveRecord::Base
     end
 
     def frequency_to_time
-        day? ? 1.day : week? ? 1.week : month? ? 1.month : 1.year 
+        day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date 
     end
 end
