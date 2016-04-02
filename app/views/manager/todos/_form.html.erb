@@ -1,4 +1,4 @@
-<%= form_for [:admin, @todo] do |f| %>
+<%= form_for [:manager, @todo] do |f| %>
   <% if @todo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
@@ -17,12 +17,25 @@
   </div>
   <div class="field">
     <%= f.label :iteration_type %><br>
-    <%= f.number_field :iteration_type %>
+    <%= f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]} %>
   </div>
   <div class="field">
     <%= f.label :frequency %><br>
-    <%= f.number_field :frequency %>
+    <%= f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]} %>
   </div>
+  <h5>Tasks</h5>
+  <hr>
+  <%= f.fields_for :tasks do |ff |%>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= ff.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= ff.text_area :description %>
+    </div>
+  <% end %>
+  <hr>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -7,6 +7,7 @@
     <% current_user.local_todos.each do |todo| %>
         <li>
             <%= todo.title %>
+            <%= link_to 'Edit todo', edit_manager_todo_path(todo) %>
         </li>
     <% end %>
 </ul>

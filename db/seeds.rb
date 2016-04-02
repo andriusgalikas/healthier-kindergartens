@@ -22,10 +22,10 @@ p "Creating daycares and departments..."
 end
 
 p "Assigning users daycares..."
-User.where.not(role: 4).first(2).zip(Daycare.all).each do |user, daycare|
+User.where.not(role: 3).first(2).zip(Daycare.all).each do |user, daycare|
     user.create_user_daycare(daycare_id: daycare.id)
 end
-User.where.not(role: 4).last(2).zip(Daycare.all).each do |user, daycare|
+User.where.not(role: 3).last(2).zip(Daycare.all).each do |user, daycare|
     user.create_user_daycare(daycare_id: daycare.id)
 end
 

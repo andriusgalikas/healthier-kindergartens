@@ -3,6 +3,7 @@ class Manager::TodosController < ApplicationController
 
   def new
     @todo = current_user.daycare.local_todos.build
+    @todo.tasks.build
   end
 
   def edit
@@ -11,7 +12,7 @@ class Manager::TodosController < ApplicationController
 
   def create
     @todo = current_user.daycare.local_todos.build(todo_params)
-
+    binding.pry
     respond_to do |format|
       if @todo.save
         format.html { redirect_to dashboard_url, notice: 'Todo was successfully created.' }
@@ -53,6 +54,6 @@ class Manager::TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, :user_id)
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:title, :description, :todo_id]).merge(user_id: current_user.id)
     end
 end
