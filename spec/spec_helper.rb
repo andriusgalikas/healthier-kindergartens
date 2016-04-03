@@ -89,4 +89,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.fuubar_progress_bar_options = { :format => ' Tests processing... <%B> %p%% %a' }
 end

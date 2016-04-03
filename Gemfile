@@ -58,7 +58,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   gem 'capistrano', '~> 2.15'
   gem 'bullet'
   gem 'capistrano-unicorn', require: false, platforms: :ruby
@@ -77,6 +77,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'email_spec'
+  gem 'fuubar'
 end
 
 group :development, :test do
