@@ -17,7 +17,7 @@ describe TodoCompletesController do
 
         it "should redirect the user to their dashboard" do
             post :create , todo_id: todo.id
-            expect(response).to redirect_to(dashboard_url)
+            expect(response).to redirect_to(todo_todo_complete_url(todo, assigns(:todo_complete)))
         end
     end
 end

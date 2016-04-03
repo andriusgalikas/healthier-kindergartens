@@ -27,7 +27,7 @@ describe TodoTaskCompletesController do
 
         it "should redirect the user to their dashboard" do
             patch :update , id: todo_task_complete.id
-            expect(response).to redirect_to(dashboard_url)
+            expect(response).to redirect_to(todo_todo_complete_url(todo, todo_complete))
         end
     end
 end

@@ -6,6 +6,7 @@
     <% current_user.available_todos.each do |todo| %>
         <li>
             <%= todo.title %>
+            <%= link_to 'Start', todo_todo_completes_path(todo), method: :post %>
         </li>
     <% end %>
 </ul>
@@ -15,6 +16,7 @@
     <% current_user.incomplete_todo_completes.active.each do |todo_c| %>
         <li>
             <%= todo_c.todo.title %>
+            <%= link_to 'Show', todo_todo_complete_path(todo_c.todo, todo_c) %>
         </li>
     <% end %>
 </ul>   
@@ -24,6 +26,7 @@
     <% current_user.completed_todo_completes.active.each do |todo_c| %>
         <li>
             <%= todo_c.todo.title %>
+            <%= link_to 'Show', todo_todo_complete_path(todo_c.todo, todo_c) %>
         </li>
     <% end %>
 </ul>

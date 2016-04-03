@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     resources :todos, only: [] do
-        resources :todo_completes, only: :create
+        resources :todo_completes, only: [:show, :create]
     end
     resources :todo_task_completes, only: :update
 
