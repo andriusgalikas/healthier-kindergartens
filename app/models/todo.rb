@@ -21,6 +21,10 @@ class Todo < ActiveRecord::Base
     has_many :department_todos
     has_many :departments,                                                      through: :department_todos, dependent: :destroy
 
+    has_many :user_occurrences,                                                 dependent: :destroy
+    has_many :active_user_occurrences,                                          -> { where(status: 0) }, class_name: 'UserOccurrence'
+    has_many :inactive_users,                                                   through: :active_user_occurrences, source: :user
+
     belongs_to :daycare
     belongs_to :user
 

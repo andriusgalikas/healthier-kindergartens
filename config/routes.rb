@@ -22,7 +22,9 @@ Rails.application.routes.draw do
         resources :todos, except: :index
     end
 
-    resources :todo_completes, only: :create
+    resources :todos, only: [] do
+        resources :todo_completes, only: :create
+    end
     resources :todo_task_completes, only: :update
 
     namespace :admin do

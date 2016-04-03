@@ -20,4 +20,13 @@ class TodoTaskComplete < ActiveRecord::Base
     validates :submitter_id, :todo_complete_id, :todo_task_id,                  presence: true
 
     enum result: [:pending, :pass, :failed]
+
+    after_update :assign_completion_date
+
+    def assign_completion_date
+        if todo_complete.task_completes.map(&:result).exclude?("pending")
+            todo_complete.update_column(:completion_date, Time.now) 
+            UserOccurrence.create(user_id: submitter_id, todo_id: todo_complete.todo_id) if todo_complete.todo.recurring?
+        end
+    end
 end

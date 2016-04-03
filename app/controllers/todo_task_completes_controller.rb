@@ -2,7 +2,8 @@ class TodoTaskCompletesController < ApplicationController
 
     def update
         set_todo_task_complete
-        set_todo
+        update_task_to_pass
+        redirect_to dashboard_url, notice: 'Successfully marked task as completed.'
     end
 
     private
@@ -11,7 +12,7 @@ class TodoTaskCompletesController < ApplicationController
         @todo_task_complete = current_user.task_completes.find(params[:id])
     end
 
-    def set_todo
-        @todo = @todo_task_complete.todo
+    def update_task_to_pass
+        @todo_task_complete.pass!
     end
 end

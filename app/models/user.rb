@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
     include HasSubscription
     include HasDiscountCode
     include HasTodos
+    include HasOccurrences
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,

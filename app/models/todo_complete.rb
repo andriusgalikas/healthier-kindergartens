@@ -20,7 +20,22 @@ class TodoComplete < ActiveRecord::Base
 
     validates :submitter_id, :todo_id,          presence: true
 
+    validates :submitter_id,                    uniqueness: { scope: [:active, :todo_id]}
+
     enum status: [:active, :inactive]
+
+    validate :occurrence_presence
+
+    def occurrence_presence
+        unless UserOccurrence.active.where(todo_id: todo_id, user_id: submitter_id).empty?
+            errors.add(:occurrence, "You can't start this task again until it has refreshed.")
+            return false
+        end
+    end
+
+    def complete?
+        !completion_date.nil? ? true : false
+    end
 
     def pass?
         task_completes.map(&:result).exclude?("pending") && task_completes.map(&:result).exclude?("failed") ? true : false
