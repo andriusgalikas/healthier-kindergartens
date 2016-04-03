@@ -11,9 +11,17 @@
 #
 
 FactoryGirl.define do
-  factory :user_occurrence do
-    user_id 1
-    todo_id 1
-    status 1
-  end
+    factory :user_occurrence do
+
+        # association :user
+        # association :todo
+
+        factory :active_user_occurrence do
+            status { 'active' }
+        end
+
+        factory :inactive_user_occurrence do
+            status { 'inactive' }
+        end
+    end
 end

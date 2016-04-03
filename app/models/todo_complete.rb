@@ -20,18 +20,12 @@ class TodoComplete < ActiveRecord::Base
 
     validates :submitter_id, :todo_id,          presence: true
 
-    validates :submitter_id,                    uniqueness: { scope: [:active, :todo_id]}
+    validates :submitter_id,                    uniqueness: { scope: [:status, :todo_id] }, :if => :todo_recurring?
 
     enum status: [:active, :inactive]
 
-    validate :occurrence_presence
-
-    def occurrence_presence
-        unless UserOccurrence.active.where(todo_id: todo_id, user_id: submitter_id).empty?
-            errors.add(:occurrence, "You can't start this task again until it has refreshed.")
-            return false
-        end
-    end
+    after_create :todo_task_completes
+    after_create :assign_user_occurrence
 
     def complete?
         !completion_date.nil? ? true : false
@@ -43,5 +37,19 @@ class TodoComplete < ActiveRecord::Base
 
     def pending?
         task_completes.map(&:result).exclude?("failed") ? true : false
+    end
+
+    def todo_recurring?
+        todo.recurring? ? true : false
+    end
+
+    def todo_task_completes
+        todo.tasks.each do |task|
+            TodoTaskComplete.create(todo_complete_id: id, todo_task_id: task.id, submitter_id: submitter_id)
+        end
+    end
+
+    def assign_user_occurrence
+        UserOccurrence.create(user_id: submitter_id, todo_id: todo_id) if todo.recurring?
     end
 end

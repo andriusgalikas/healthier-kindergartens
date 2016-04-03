@@ -11,9 +11,10 @@
 #
 
 FactoryGirl.define do
-  factory :todo_task do
-    title "MyString"
-    description "MyText"
-    todo_id 1
-  end
+    factory :todo_task do
+        title { "Task-#{Faker::Lorem.word}" }
+        description { Faker::Lorem.sentence }
+
+        association :todo
+    end
 end

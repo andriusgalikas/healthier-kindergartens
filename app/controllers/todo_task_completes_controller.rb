@@ -13,6 +13,6 @@ class TodoTaskCompletesController < ApplicationController
     end
 
     def update_task_to_pass
-        @todo_task_complete.pass!
+        @todo_task_complete.update(completion_date: Time.now, result: 1)
     end
 end

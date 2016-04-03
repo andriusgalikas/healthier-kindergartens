@@ -6,7 +6,6 @@ class TodoFrequenciesJob < ActiveJob::Base
             if todo_complete.created_at < todo_complete.todo.frequency_to_time
                 todo_complete.inactive!
                 todo_complete.task_completes.pending.update_all(result: 2)
-                UserOcurrence.active.where(todo_id: todo_complete.todo.id, user_id: current_user.id).update_all(status: 1)
             end
         end
     end

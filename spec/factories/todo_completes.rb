@@ -12,9 +12,11 @@
 #
 
 FactoryGirl.define do
-  factory :todo_complete do
-    submitter_id 1
-    todo_id 1
-    completion_date "2016-03-31 15:54:58"
-  end
+    factory :todo_complete do
+
+        association :todo
+        association :submitter, factory: :user
+
+        # completion_date { 2.days.ago.to_date }
+    end
 end
