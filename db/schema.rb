@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401123738) do
+ActiveRecord::Schema.define(version: 20160403031238) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -126,6 +126,14 @@ ActiveRecord::Schema.define(version: 20160401123738) do
     t.integer  "daycare_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_occurrences", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "todo_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

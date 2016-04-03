@@ -12,7 +12,7 @@
 
 <h4>IN PROGRESS TODOS</h4>
 <ul>
-    <% current_user.incomplete_todo_completes.each do |todo_c| %>
+    <% current_user.incomplete_todo_completes.active.each do |todo_c| %>
         <li>
             <%= todo_c.todo.title %>
         </li>
@@ -21,7 +21,7 @@
 
 <h4>COMPLETE TODOS</h4>
 <ul>
-    <% current_user.completed_todo_completes.each do |todo_c| %>
+    <% current_user.completed_todo_completes.active.each do |todo_c| %>
         <li>
             <%= todo_c.todo.title %>
         </li>

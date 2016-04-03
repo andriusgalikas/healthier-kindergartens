@@ -111,6 +111,13 @@ daycare_id:integer
 
 belongs_to :daycare  
 
+### DepartmentTodo
+todo_id:integer  
+department_id:integer  
+
+belongs_to :todo  
+belongs_to :department  
+
 ### Daycare
 name:string  
 address_line1:string  
@@ -147,6 +154,21 @@ has_one :plan, through: :subscription
 belongs_to :daycare   
 has_one :discount_code_user   
 has_one :discount_code, through: :discount_code_user  
+
+### UserOccurrence  
+user_id:integer  
+todo_id:integer  
+status:integer(enum)(active,inactive) default(0)  
+
+belongs_to :user  
+belongs_to :todo    
+
+### UserDaycare  
+user_id:integer  
+daycare_id:integer  
+
+belongs_to :user  
+belongs_to :daycare  
 
 
 # User stories

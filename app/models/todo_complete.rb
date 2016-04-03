@@ -21,4 +21,12 @@ class TodoComplete < ActiveRecord::Base
     validates :submitter_id, :todo_id,          presence: true
 
     enum status: [:active, :inactive]
+
+    def pass?
+        task_completes.map(&:result).exclude?("pending") && task_completes.map(&:result).exclude?("failed") ? true : false
+    end
+
+    def pending?
+        task_completes.map(&:result).exclude?("failed") ? true : false
+    end
 end
