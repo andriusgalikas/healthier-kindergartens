@@ -9,7 +9,7 @@ class TodoCompletesController < ApplicationController
     private
 
     def set_todo
-        @todo ||= current_user.daycare.all_todos.find(params[:todo_id])
+        @todo = Todo.where(id: current_user.daycare.all_todos.map(&:id)).where(id: params[:todo_id]).first
     end
 
     def create_todo_complete

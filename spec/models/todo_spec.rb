@@ -28,7 +28,7 @@ RSpec.describe Todo, type: :model do
         end
 
         context "if todo has no associated daycare" do
-            let(:todo) { create(:single_todo) }
+            let(:todo) { create(:single_todo, daycare: nil) }
 
             it "should return true" do
                 expect(todo.global?).to eq true

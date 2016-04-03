@@ -10,8 +10,9 @@
 #
 
 FactoryGirl.define do
-  factory :user_daycare do
-    user_id 1
-    daycare_id 1
-  end
+    factory :user_daycare do
+
+        association :user
+        association :daycare
+    end
 end

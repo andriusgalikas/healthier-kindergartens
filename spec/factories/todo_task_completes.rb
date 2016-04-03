@@ -13,10 +13,18 @@
 #
 
 FactoryGirl.define do
-  factory :todo_task_complete do
-    submitter_id 1
-    todo_complete_id 1
-    todo_task_id 1
-    completion_date "2016-03-31 15:59:47"
-  end
+    factory :todo_task_complete do
+
+        association :submitter, factory: :user
+        association :todo_complete
+        association :todo_task
+
+        factory :passed_todo_task_complete do
+            result { 'pass' }
+        end
+
+        factory :pending_todo_task_complete do
+            result { 'pending' }
+        end
+    end
 end

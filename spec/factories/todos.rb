@@ -26,5 +26,6 @@ FactoryGirl.define do
         end
 
         association :user
+        association :daycare
     end
 end
