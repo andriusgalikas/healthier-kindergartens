@@ -15,5 +15,38 @@
 require 'rails_helper'
 
 RSpec.describe Todo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+    describe "#global? method" do
+
+        context "if todo has an associated daycare" do
+            let(:daycare) { create(:daycare) }
+            let(:todo) { create(:single_todo, daycare: daycare) }
+
+            it "should return false" do
+                expect(todo.global?).to eq false
+            end
+        end
+
+        context "if todo has no associated daycare" do
+            let(:todo) { create(:single_todo) }
+
+            it "should return true" do
+                expect(todo.global?).to eq true
+            end
+        end
+    end
+
+    describe "#frequency_to_time method" do
+        let(:day_todo) { create(:todo, frequency: 'day') }
+        let(:week_todo) { create(:todo, frequency: 'week') }
+        let(:month_todo) { create(:todo, frequency: 'month') }
+        let(:year_todo) { create(:todo, frequency: 'year') }
+
+        it "should return the correct datetime for the frequency" do
+            expect(day_todo.frequency_to_time).to eq 1.days.ago.to_date
+            expect(week_todo.frequency_to_time).to eq 7.days.ago.to_date
+            expect(month_todo.frequency_to_time).to eq 1.month.ago.to_date
+            expect(year_todo.frequency_to_time).to eq 1.year.ago.to_date
+        end
+    end
 end

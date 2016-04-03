@@ -13,12 +13,18 @@
 #
 
 FactoryGirl.define do
-  factory :todo do
-    title "MyString"
-    due_date "2016-03-30 20:05:23"
-    iteration_type 1
-    frequency 1
-    daycare_id 1
-    user_id 1
-  end
+    factory :todo do
+        title { Faker::Lorem.word}
+        frequency { 'week' }
+
+        factory :single_todo do
+            iteration_type { 'single' }
+        end
+
+        factory :recurring_todo do
+            iteration_type { 'recurring' }
+        end
+
+        association :user
+    end
 end

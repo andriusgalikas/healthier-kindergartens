@@ -10,7 +10,6 @@ require 'capybara-screenshot'
 require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
 require 'bigdecimal'
-require 'rspec/collection_matchers'
 require 'sidekiq/testing'
 
 Sidekiq::Testing.fake!
@@ -29,7 +28,7 @@ Sidekiq::Testing.fake!
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

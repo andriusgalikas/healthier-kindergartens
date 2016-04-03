@@ -13,11 +13,11 @@
 #
 
 FactoryGirl.define do
-  factory :daycare do
-    name "MyString"
-    address_line1 "MyString"
-    postcode "MyString"
-    country "MyString"
-    telephone "MyString"
-  end
+    factory :daycare do
+        name Faker::Company.name
+        address_line1 Faker::Address.street_address
+        postcode Faker::Address.zip_code
+        country Faker::Address.country
+        telephone Faker::PhoneNumber.phone_number
+    end
 end
