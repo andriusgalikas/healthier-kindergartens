@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
     def index
         render "dashboard/#{current_user.role}", format: [:html]
-    # rescue
-        # redirect_to admin_root_url
+    rescue
+        redirect_to current_user.admin? ? admin_root_url : root_url
     end
 end
