@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <%= image_tag @todo.icon.file.thumb unless @todo.icon.nil? %>
+  <div class="form-group">
+    <%= f.fields_for :icon do |ff| %>
+      <%= ff.file_field :file %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

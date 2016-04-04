@@ -13,5 +13,5 @@ class DepartmentTodo < ActiveRecord::Base
     belongs_to :todo
     belongs_to :department
 
-    validates :todo_id, :department_id,                                 presence: true
+    validates :department_id,                                 presence: true
 end

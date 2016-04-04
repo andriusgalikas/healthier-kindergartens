@@ -12,9 +12,12 @@
 #
 
 class Child < ActiveRecord::Base
+    has_one :profile_image,                                 -> { where(attachable_type: 'ChildProfile') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
     belongs_to :parentee,                                   class_name: 'User', foreign_key: 'parent_id'
     belongs_to :department
 
     validates :name, :parent_id, :department_id,
                 :birth_date,                                presence: true
+
+    validates :profile_image,                               presence: true
 end

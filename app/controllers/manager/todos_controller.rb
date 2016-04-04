@@ -8,6 +8,7 @@ class Manager::TodosController < ApplicationController
 
   def new
     @todo = current_user.daycare.local_todos.build
+    new_icon_attachment
     @todo.tasks.build
   end
 
@@ -17,7 +18,7 @@ class Manager::TodosController < ApplicationController
 
   def create
     @todo = current_user.daycare.local_todos.build(todo_params)
-
+    new_icon_attachment
     respond_to do |format|
       if @todo.save
         format.html { redirect_to dashboard_url, notice: 'Todo was successfully created.' }
@@ -61,8 +62,12 @@ class Manager::TodosController < ApplicationController
       @todo = Todo.find(params[:id])
     end
 
+    def new_icon_attachment
+      @todo.build_icon
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:id, :title, :description, :todo_id]).merge(user_id: current_user.id)
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
     end
 end

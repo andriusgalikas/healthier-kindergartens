@@ -10,8 +10,9 @@ class Admin::TodosController < AdminController
 
   def new
     @todo = current_user.todos.build
-    @todo.tasks.build
+    new_icon_attachment
     set_departments
+    new_task
   end
 
   def edit
@@ -22,7 +23,7 @@ class Admin::TodosController < AdminController
   def create
     set_departments
     @todo = current_user.todos.build(todo_params)
-
+  new_icon_attachment
     respond_to do |format|
       if @todo.save
         format.html { redirect_to admin_todos_url, notice: 'Todo was successfully created.' }
@@ -67,8 +68,16 @@ class Admin::TodosController < AdminController
       @departments ||= Department.all
     end
 
+    def new_icon_attachment
+      @todo.build_icon
+    end
+
+    def new_task
+      @todo.tasks.build
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, department_ids: [], tasks_attributes: [:id, :title, :description, :todo_id])
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, department_ids: [], tasks_attributes: [:id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file])
     end
 end

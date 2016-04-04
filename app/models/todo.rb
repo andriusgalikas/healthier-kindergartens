@@ -25,6 +25,8 @@ class Todo < ActiveRecord::Base
     has_many :active_user_occurrences,                                          -> { where(status: 0) }, class_name: 'UserOccurrence'
     has_many :inactive_users,                                                   through: :active_user_occurrences, source: :user
 
+    has_one :icon,                                                              -> { where(attachable_type: 'TodoIcon') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
+
     belongs_to :daycare
     belongs_to :user
 
@@ -38,10 +40,13 @@ class Todo < ActiveRecord::Base
     validates :title, :iteration_type,
                 :frequency, :user_id,                                           presence: true
 
+    validates :icon,                                                            presence: true
+
     enum iteration_type: [:single, :recurring]
     enum frequency: [:day, :week, :month, :year]
 
     accepts_nested_attributes_for :tasks
+    accepts_nested_attributes_for :icon
 
     def global?
         daycare_id.nil? ? true : false
