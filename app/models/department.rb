@@ -11,6 +11,7 @@
 
 class Department < ActiveRecord::Base
     belongs_to :daycare
+    has_many :workers,                                  -> { where(role: 1) }, class_name: 'User'
     has_many :children,                                 class_name: 'Child'
 
     has_many :department_todos

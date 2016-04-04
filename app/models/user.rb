@@ -18,6 +18,7 @@
 #  role                   :integer          default("0")
 #  name                   :string
 #  stripe_customer_token  :string
+#  department_id          :integer
 #
 # Indexes
 #
@@ -38,8 +39,18 @@ class User < ActiveRecord::Base
 
     has_one :user_daycare,                                       dependent: :destroy
     has_one :daycare,                                            through: :user_daycare
+    has_many :children,                                          class_name: 'Child', foreign_key: 'parent_id'
 
-    validates :name, :email, :role,                              presence: true
+    belongs_to :department
+
+    validates :department_id,                                   presence: true, :if => :worker?
+
+    validates :name, :email, :role,                             presence: true
+
+    validates :children,                                        presence: true, :if => :parentee? 
+    validates :daycare,                                         presence: true
 
     enum role: [:parentee, :worker, :manager, :admin]
+
+    accepts_nested_attributes_for :children
 end

@@ -18,6 +18,7 @@
 #  role                   :integer          default("0")
 #  name                   :string
 #  stripe_customer_token  :string
+#  department_id          :integer
 #
 # Indexes
 #

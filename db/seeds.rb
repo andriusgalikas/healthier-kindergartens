@@ -31,7 +31,9 @@ end
 
 p "Creating example todos..."
 8.times do
-    todo = Todo.create(title: "Todo-#{Faker::Lorem.word}", iteration_type: rand(0..1), frequency: rand(0..3), user_id: admin.id)
+    todo = Todo.new(title: "Todo-#{Faker::Lorem.word}", iteration_type: rand(0..1), frequency: rand(0..3), user_id: admin.id)
+    todo.create_icon(file: File.open(File.join(Rails.root, '/lib/dummy_assets/ruby-icon.png')))
+    todo.save!
     3.times do
         todo.tasks.create(title: "Task-#{Faker::Lorem.word}", description: Faker::Lorem.sentence)
     end
