@@ -23,6 +23,7 @@ class Admin::PlansController < AdminController
 
     respond_to do |format|
       if @plan.save
+        Stripe::Plans.put!
         format.html { redirect_to admin_plans_url, notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else

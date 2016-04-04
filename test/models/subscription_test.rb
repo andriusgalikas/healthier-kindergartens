@@ -7,6 +7,7 @@
 #  plan_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  terms      :boolean          default("false")
 #
 
 require 'test_helper'

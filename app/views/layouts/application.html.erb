@@ -3,13 +3,16 @@
 <head>
   <title>HealthChildcare</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stripe_javascript_tag %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
 </head>
 <body>
     <h1>Health Childcare application</h1>
     <%= link_to "Go Home", root_path %> | 
     <%= link_to 'Dashboard', dashboard_path %> | 
+    <%= link_to "Upgrade", upgrade_path %> |
     <%= link_to 'Administration', admin_root_path %> |
     <% if user_signed_in? %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>

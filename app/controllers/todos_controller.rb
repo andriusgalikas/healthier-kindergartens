@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+    before_action -> { authenticate_role!(["parentee", "worker"]) }
 
     def show
         set_todo

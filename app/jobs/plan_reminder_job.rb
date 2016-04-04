@@ -1,0 +1,17 @@
+class PlanReminderJob < ActiveJob::Base
+    queue_as :default
+
+    def perform *args
+        set_valid_users
+        @users.each do |user|
+            next unless user.reminder_user?
+            PlanMailer.send_reminder(user).deliver_later
+        end
+    end
+
+    private
+
+    def set_valid_users
+        @users ||= User.unsubscribed
+    end 
+end

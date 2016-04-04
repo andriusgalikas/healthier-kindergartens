@@ -1,4 +1,5 @@
 class TodoTaskCompletesController < ApplicationController
+    before_action -> { authenticate_role!(["parentee", "worker"]) }
 
     def update
         set_todo_task_complete

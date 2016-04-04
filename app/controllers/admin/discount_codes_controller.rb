@@ -23,6 +23,7 @@ class Admin::DiscountCodesController < AdminController
 
     respond_to do |format|
       if @discount_code.save
+        Stripe::Coupons.put!
         format.html { redirect_to admin_discount_codes_url, notice: 'Discount code was successfully created.' }
         format.json { render :show, status: :created, location: @discount_code }
       else

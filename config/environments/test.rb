@@ -7,6 +7,8 @@ Rails.application.configure do
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
 
+  config.stripe.debug_js = true
+
   config.log_level = :info
 
   # Do not eager load code on boot. This avoids loading your whole application

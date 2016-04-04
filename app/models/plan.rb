@@ -15,4 +15,10 @@ class Plan < ActiveRecord::Base
     has_many :users,                                        through: :subscriptions
 
     validates :name, :price, :allocation,                   presence: true
+
+    after_create :send_to_stripe
+
+    def send_to_stripe
+        UpdateStripePlansCouponsJob.perform_later
+    end
 end

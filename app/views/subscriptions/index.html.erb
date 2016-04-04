@@ -1,0 +1,7 @@
+<h2>Upgrade</h2>
+<% @plans.each do |plan| %>
+    <div>
+        <%= link_to plan.name, new_plan_subscription_path(plan) %>
+        <b><%= number_to_currency plan.price %></b>
+    </div>
+<% end %>

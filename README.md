@@ -23,6 +23,11 @@ Things you may want to cover:
 
 *   ...
 
+# Stripe
+
+When testing card authorisation and payments, please use the details in the following link:
+
+https://stripe.com/docs/testing#cards
 
 # Database
 

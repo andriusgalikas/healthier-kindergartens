@@ -48,11 +48,12 @@ end
 
 
 p "Creating plans..."
-Plan.create(name: 'DayCare 30', price: 29.99)
-Plan.create(name: 'DayCare 50', price: 49.99)
-Plan.create(name: 'DayCare 100', price: 99.99)
+Plan.create(name: 'DayCare 30', price: 29.99, allocation: 30)
+Plan.create(name: 'DayCare 50', price: 49.99, allocation: 50)
+Plan.create(name: 'DayCare 100', price: 99.99, allocation: 100)
 
 p "Creating discount codes..."
+DiscountCode.create(code: 'FIRST100', value: 50)
 DiscountCode.create(code: 'REDUCE15', value: 15)
 DiscountCode.create(code: 'REDUCE25', value: 25)
 DiscountCode.create(code: 'REDUCE50', value: 50)

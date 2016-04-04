@@ -21,7 +21,7 @@ module HasSubscription
         end
 
         def within_first? counter
-            User.managers.count <= counter ? true : false
+            User.manager.count <= counter ? true : false
         end
     end
 end

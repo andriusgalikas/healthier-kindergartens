@@ -1,5 +1,6 @@
 class Manager::TodosController < ApplicationController
-  before_action -> { authenticate_role!("manager") }
+  before_action -> { authenticate_role!(["manager"]) }
+  before_action :subscribed_manager!
 
   def show
     set_global_todo
