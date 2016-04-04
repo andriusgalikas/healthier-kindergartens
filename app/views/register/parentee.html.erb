@@ -4,9 +4,24 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.email_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+
+  <div class="form-group">
+    <%= f.fields_for :user_daycare do |ff |%>
+      <%= ff.label :daycare %><br />
+      <%= ff.collection_select :daycare_id, @daycares, :id, :name, {}, {data: { placeholder: "Select daycare..."} } %>
+    <% end %>
+  </div>
+
+
+  <hr>
 
   <div class="field">
     <%= f.label :password %>

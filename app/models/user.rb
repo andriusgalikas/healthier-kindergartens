@@ -47,10 +47,11 @@ class User < ActiveRecord::Base
 
     validates :name, :email, :role,                             presence: true
 
-    validates :children,                                        presence: true, :if => :parentee? 
+    # validates :children,                                        presence: true, :if => :parentee? 
     validates :daycare,                                         presence: true
 
     enum role: [:parentee, :worker, :manager, :admin]
 
     accepts_nested_attributes_for :children
+    accepts_nested_attributes_for :user_daycare
 end

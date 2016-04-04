@@ -1,21 +1,42 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
   def new
     build_resource({})
+    set_daycares
+    new_child
+    new_user_daycare
     set_minimum_password_length
     yield resource if block_given?
     render "register/#{params[:role]}"
-  rescue
+  rescue ActionView::MissingTemplate
     redirect_to new_user_session_url
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+    set_daycares
+    new_user_daycare
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      render "register/#{params[:role]}"
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -41,12 +62,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.for(:sign_up) << [:name, :role, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]]]
+  end
+
+  def set_daycares
+    @daycares ||= Daycare.all
+  end
+
+  def new_child
+    resource.children.build if params[:role] == 'parentee'
+  end
+
+  def new_user_daycare
+    resource.build_user_daycare
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -63,7 +96,3 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
-
-    # def configure_permitted_parameters
-    #     devise_parameter_sanitizer.for(:sign_up).push(:role, :department_id)
-    # end

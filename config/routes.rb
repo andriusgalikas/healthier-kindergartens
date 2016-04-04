@@ -10,8 +10,8 @@ Rails.application.routes.draw do
         delete 'logout',            to: 'users/sessions#destroy',       as: 'destroy_user_session'
 
         # registrations
-        get ':role/register',            to: 'users/registrations#new',      as: 'new_user_registration'
-        post 'register',           to: 'users/registrations#create',   as: 'user_registration'
+        get ':role/register',       to: 'users/registrations#new',      as: 'new_user_registration'
+        post ':role/register',            to: 'users/registrations#create',   as: 'user_registration'
     end
 
     root to: 'pages#home'
