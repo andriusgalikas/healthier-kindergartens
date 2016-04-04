@@ -6,13 +6,6 @@ require 'faker'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-p "Create users..."
-admin = User.create(name: 'Admin User', email: "admin@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
-manager = User.create(name: 'Manager User', email: "manager@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
-manager2 = User.create(name: 'Manager 2 User', email: "manager2@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
-User.create(name: 'Worker User', email: "worker@daycare.org", role: 1, password: "mypassword", password_confirmation: "mypassword")
-User.create(name: 'Parent User', email: "parent@daycare.org", role: 0, password: "mypassword", password_confirmation: "mypassword")
-
 p "Creating daycares and departments..."
 2.times do
     daycare = Daycare.create(name: Faker::Company.name, address_line1: Faker::Address.street_address, postcode: Faker::Address.zip_code, country: Faker::Address.country, telephone: Faker::PhoneNumber.phone_number)
@@ -21,13 +14,22 @@ p "Creating daycares and departments..."
     end
 end
 
-p "Assigning users daycares..."
-User.where.not(role: 3).first(2).zip(Daycare.all).each do |user, daycare|
-    user.create_user_daycare(daycare_id: daycare.id)
-end
-User.where.not(role: 3).last(2).zip(Daycare.all).each do |user, daycare|
-    user.create_user_daycare(daycare_id: daycare.id)
-end
+p "Create users..."
+admin = User.create(name: 'Admin User', email: "admin@daycare.org", role: 3, password: "mypassword", password_confirmation: "mypassword")
+manager = User.new(name: 'Manager User', email: "manager@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
+manager.build_user_daycare(daycare_id: Daycare.first.id)
+manager.save!
+manager2 = User.new(name: 'Manager 2 User', email: "manager2@daycare.org", role: 2, password: "mypassword", password_confirmation: "mypassword")
+manager2.build_user_daycare(daycare_id: Daycare.second.id)
+manager2.save!
+worker = User.new(name: 'Worker User', email: "worker@daycare.org", role: 1, password: "mypassword", password_confirmation: "mypassword", department_id: Department.all.map(&:id).sample)
+worker.build_user_daycare(daycare_id: Daycare.first.id)
+worker.save!
+parent = User.new(name: 'Parent User', email: "parent@daycare.org", role: 0, password: "mypassword", password_confirmation: "mypassword")
+parent.build_user_daycare(daycare_id: Daycare.first.id)
+child = parent.children.build(name: Faker::Name.name, department_id: Department.all.map(&:id).sample, birth_date: Faker::Date.between(10.years.ago, 3.years.ago))
+child.build_profile_image(file: File.open(File.join(Rails.root, '/lib/dummy_assets/child-sample.jpg')))
+parent.save!
 
 p "Creating example todos..."
 8.times do

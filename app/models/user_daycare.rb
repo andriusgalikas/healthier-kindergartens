@@ -13,5 +13,5 @@ class UserDaycare < ActiveRecord::Base
     belongs_to :user
     belongs_to :daycare
 
-    validates :user_id, :daycare_id,                            presence: true
+    validates :daycare_id,                            presence: true
 end

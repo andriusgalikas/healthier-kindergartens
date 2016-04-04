@@ -12,7 +12,8 @@
     <h1>Health Childcare application</h1>
     <%= link_to "Go Home", root_path %> | 
     <%= link_to 'Dashboard', dashboard_path %> | 
-    <%= link_to "Upgrade", upgrade_path %> |
+    <%= link_to "Upgrade", upgrade_path %> | 
+    <%= link_to "Trainings", trainings_path %> |
     <%= link_to 'Administration', admin_root_path %> |
     <% if user_signed_in? %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>

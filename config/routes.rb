@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     end
     resources :todo_task_completes, only: :update
 
+    resources :trainings, only: [:index, :show]
+
     namespace :admin do
         root to: 'dashboard#index'
         authenticate :user do

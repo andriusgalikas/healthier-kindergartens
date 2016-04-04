@@ -16,7 +16,7 @@ class Child < ActiveRecord::Base
     belongs_to :parentee,                                   class_name: 'User', foreign_key: 'parent_id'
     belongs_to :department
 
-    validates :name, :parent_id, :department_id,
+    validates :name, :department_id,
                 :birth_date,                                presence: true
 
     validates :profile_image,                               presence: true

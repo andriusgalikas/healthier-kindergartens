@@ -20,7 +20,30 @@
     <% end %>
   </div>
 
+    <h5>Children</h5>
+  <%= f.fields_for :children do |ff |%>
+    <div class="field">
+      <%= ff.label :name %><br>
+      <%= ff.text_field :name %>
+    </div>
 
+    <div class="field">
+      <%= ff.label :birth_date %><br>
+      <%= ff.datetime_select :birth_date %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.fields_for :profile_image do |fff| %>
+        <%= fff.label 'Profile Image' %><br>
+        <%= fff.file_field :file %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :department %><br />
+      <%= ff.collection_select :department_id, Department.all, :id, :name, {}, {data: { placeholder: "Select department..."} } %>
+    </div>
+  <% end %>
   <hr>
 
   <div class="field">
