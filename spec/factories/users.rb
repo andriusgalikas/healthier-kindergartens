@@ -33,11 +33,19 @@ FactoryGirl.define do
         password { Faker::Lorem.characters(8) }
         password_confirmation { "#{password}" }
         remember_me false
-        role { 'parentee' }
+        role { 'manager' }
 
 
         factory :admin do
             role { 'admin' }
+        end
+
+        factory :parentee do
+            role { 'parentee' }
+        end
+
+        factory :worker do
+            role { 'worker' }
         end
     end
 end

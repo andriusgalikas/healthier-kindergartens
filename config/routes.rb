@@ -5,13 +5,14 @@ Rails.application.routes.draw do
 
     devise_scope :user do
         # session
-        get 'login',                to: 'users/sessions#new',           as: 'new_user_session'
-        post 'login',               to: 'users/sessions#create',        as: 'user_session'
-        delete 'logout',            to: 'users/sessions#destroy',       as: 'destroy_user_session'
+        get 'login',                        to: 'users/sessions#new',           as: 'new_user_session'
+        post 'login',                       to: 'users/sessions#create',        as: 'user_session'
+        delete 'logout',                    to: 'users/sessions#destroy',       as: 'destroy_user_session'
 
         # registrations
-        get ':role/register',       to: 'users/registrations#new',      as: 'new_user_registration'
-        post ':role/register',            to: 'users/registrations#create',   as: 'user_registration'
+        get ':role/register',               to: 'users/registrations#new',      as: 'new_user_registration'
+        post ':role/register',              to: 'users/registrations#create',   as: 'user_registration'
+        post ':role/register_daycare',      to: 'users/registrations#daycare',  as: 'daycare_registration'
     end
 
     root to: 'pages#home'

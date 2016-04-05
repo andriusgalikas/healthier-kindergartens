@@ -14,34 +14,34 @@
   </div>
 
   <div class="form-group">
-    <%= f.fields_for :user_daycare do |ff |%>
-      <%= ff.label :daycare %><br />
-      <%= ff.collection_select :daycare_id, @daycares, :id, :name, {}, {data: { placeholder: "Select daycare..."} } %>
+    <%= f.fields_for :user_daycare do |user_daycare|%>
+      <%= user_daycare.label :daycare %><br />
+      <%= user_daycare.collection_select :daycare_id, @daycares, :id, :name, {}, {data: { placeholder: "Select daycare..."} } %>
     <% end %>
   </div>
 
   <h5>Children</h5>
-  <%= f.fields_for :children do |ff |%>
+  <%= f.fields_for :children do |child|%>
     <div class="field">
-      <%= ff.label :name %><br>
-      <%= ff.text_field :name %>
+      <%= child.label :name %><br>
+      <%= child.text_field :name %>
     </div>
 
     <div class="field">
-      <%= ff.label :birth_date %><br>
-      <%= ff.datetime_select :birth_date %>
+      <%= child.label :birth_date %><br>
+      <%= child.datetime_select :birth_date %>
     </div>
 
     <div class="form-group">
-      <%= ff.fields_for :profile_image do |fff| %>
-        <%= fff.label 'Profile Image' %><br>
-        <%= fff.file_field :file %>
+      <%= child.fields_for :profile_image do |profile_image| %>
+        <%= profile_image.label 'Profile Image' %><br>
+        <%= profile_image.file_field :file %>
       <% end %>
     </div>
 
     <div class="form-group">
-      <%= ff.label :department %><br />
-      <%= ff.collection_select :department_id, Department.all, :id, :name, {}, {data: { placeholder: "Select department..."} } %>
+      <%= child.label :department %><br />
+      <%= child.collection_select :department_id, Department.all, :id, :name, {}, {data: { placeholder: "Select department..."} } %>
     </div>
   <% end %>
   <hr>

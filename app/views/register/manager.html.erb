@@ -1,32 +1,83 @@
 <h2>Manager Registration</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for @daycare, url: daycare_registration_path, html: { method: :post } do |daycare| %>
+<% if @daycare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daycare.errors.count, "error") %> prohibited this daycare from being saved:</h2>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.email_field :name, autofocus: true %>
+      <ul>
+      <% @daycare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h5>Daycare</h5>
+  <div class="form-group">
+    <%= daycare.label :name %><br />
+    <%= daycare.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= daycare.label :address_line1 %><br />
+    <%= daycare.text_field :address_line1, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= daycare.label :postcode %><br />
+    <%= daycare.text_field :postcode, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= daycare.label :country %><br />
+    <%= daycare.text_field :country, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= daycare.label :telephone %><br />
+    <%= daycare.text_field :telephone, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+  <h5>Departments</h5>
+  <%= daycare.fields_for :departments do |department| %>
+      <div class="form-group">
+        <%= department.label :name %><br />
+        <%= department.text_field :name, :class => 'form-control' %>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password %>
+  
+
+  <h5>Account</h5>
+  <%= daycare.fields_for :user_daycares do |user_daycare|%>
+
+    <%= user_daycare.fields_for :user do |user| %>
+    <div class="field">
+      <%= user.label :name %><br />
+      <%= user.email_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= user.label :email %><br />
+      <%= user.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+    <%= user.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= user.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= user.label :password_confirmation %><br />
+    <%= user.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  <% end %>
+  <% end %>
+
+
+  
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= daycare.submit "Sign up" %>
   </div>
 <% end %>

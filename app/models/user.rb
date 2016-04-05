@@ -47,8 +47,7 @@ class User < ActiveRecord::Base
 
     validates :name, :email, :role,                             presence: true
 
-    validates :children,                                        presence: true, :if => :parentee? 
-    validates :user_daycare,                                    presence: true, unless: :admin?
+    validates :children,                                        presence: true, :if => :parentee?
 
     enum role: [:parentee, :worker, :manager, :admin]
 

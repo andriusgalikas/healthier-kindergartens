@@ -40,6 +40,8 @@ class Daycare < ActiveRecord::Base
     validates :name, :address_line1, :postcode,
                 :country, :telephone,                   presence: true
 
+    accepts_nested_attributes_for :departments, :user_daycares               
+
 
     def all_completed_todos
         (global_completed_todos + local_completed_todos).uniq

@@ -13,5 +13,5 @@ class UserDaycare < ActiveRecord::Base
     belongs_to :user
     belongs_to :daycare
 
-    validates :daycare_id,                            presence: true
+    accepts_nested_attributes_for :user
 end

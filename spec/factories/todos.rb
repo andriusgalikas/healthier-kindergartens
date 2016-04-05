@@ -25,6 +25,10 @@ FactoryGirl.define do
             iteration_type { 'recurring' }
         end
 
+        after(:build) do |todo|
+            todo.icon = build(:icon_attachment, attachable: nil)
+        end
+
         association :user
         association :daycare
     end

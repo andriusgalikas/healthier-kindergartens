@@ -11,10 +11,11 @@
 #
 
 FactoryGirl.define do
-  factory :attachment do
-    file "MyString"
-    attachable_id 1
-    file "MyString"
-    attachable_type "MyString"
-  end
+    factory :attachment do
+        file { File.open(File.join(Rails.root, '/lib/dummy_assets/ruby-icon.png')) }
+
+        factory :icon_attachment do
+            association :attachable, factory: :todo
+        end
+    end
 end
