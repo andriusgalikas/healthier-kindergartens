@@ -32,6 +32,12 @@ Rails.application.routes.draw do
 
     namespace :manager do
         resources :todos, except: :index
+        resources :daycares, only: [] do
+            collection do
+                get :invite
+                post :send_invites
+            end
+        end
     end
 
     resources :todos, only: [] do

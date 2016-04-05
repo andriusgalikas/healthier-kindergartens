@@ -10,6 +10,7 @@
     "vendor/assets/components"
   ],
   "dependencies": {
-    "chosen": "^1.5.1"
+    "chosen": "^1.5.1",
+    "bootstrap-tagsinput": "^0.8.0"
   }
 }

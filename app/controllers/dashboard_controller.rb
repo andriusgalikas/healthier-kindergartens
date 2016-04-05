@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
     def index
         render "dashboard/#{current_user.role}", format: [:html]
-    rescue
+    rescue ActionView::MissingTemplate
         redirect_to current_user.admin? ? admin_root_url : root_url
     end
 end
