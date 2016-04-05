@@ -20,4 +20,6 @@ class Child < ActiveRecord::Base
                 :birth_date,                                presence: true
 
     validates :profile_image,                               presence: true
+
+    accepts_nested_attributes_for :profile_image
 end

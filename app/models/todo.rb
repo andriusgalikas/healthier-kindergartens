@@ -37,8 +37,8 @@ class Todo < ActiveRecord::Base
 
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
-    validates :title, :iteration_type,
-                :frequency, :user_id,                                           presence: true
+    validates :title, :frequency, :user_id,                                     presence: true
+    validates :iteration_type,                                                  presence: true, :if => :recurring?
 
     validates :icon,                                                            presence: true
 

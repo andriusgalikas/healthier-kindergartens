@@ -1,6 +1,8 @@
 <h3>Parent dashboard</h3>
 <%= render 'shared/menu' %>
 
+<b>Daycare:</b> <%= current_user.daycare.name %>
+
 <h4>AVAILABLE TODOS</h4>
 <ul>
     <% current_user.available_todos.each do |todo| %>
@@ -27,6 +29,18 @@
         <li>
             <%= todo_c.todo.title %>
             <%= link_to 'Show', todo_todo_complete_path(todo_c.todo, todo_c) %>
+        </li>
+    <% end %>
+</ul>
+
+<h4>CHILDREN</h4>
+<ul>
+    <% current_user.children.each do |child| %>
+        <li>
+            Name: <%= child.name %><br>
+            Birth date:<%= child.birth_date %><br>
+            Department: <%= child.department.name %><br>
+            <%= image_tag child.profile_image.file.thumb %>
         </li>
     <% end %>
 </ul>

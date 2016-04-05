@@ -22,3 +22,18 @@
         </li>
     <% end %>
 </ul>
+
+<h4>PARENTS</h4>
+<ul>
+    <% current_user.daycare.parents.each do |parent| %>
+        <li><%= parent.name %></li>
+    <% end %>
+</ul>
+
+
+<h4>WORKERS</h4>
+<ul>
+    <% current_user.daycare.workers.each do |worker| %>
+        <li><%= worker.name %></li>
+    <% end %>
+</ul>

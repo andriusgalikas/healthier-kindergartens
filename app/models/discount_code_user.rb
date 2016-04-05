@@ -13,5 +13,6 @@ class DiscountCodeUser < ActiveRecord::Base
     belongs_to :discount_code 
     belongs_to :user
 
-    validates :user_id, :discount_code_id,                  presence: true
+    validates :discount_code_id,                    presence: true
+    validates :user,                                presence: true
 end

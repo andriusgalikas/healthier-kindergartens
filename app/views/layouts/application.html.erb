@@ -3,7 +3,7 @@
 <head>
   <title>HealthChildcare</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stripe_javascript_tag %>
+  <!-- <%= stripe_javascript_tag %> -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,8 @@
     <% if user_signed_in? %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     <% else %>
-        <%= link_to 'Login', new_user_session_path %>
+        <%= link_to 'Login', new_user_session_path %> |
+        <%= link_to "Register", getting_started_path %>
     <% end %><br><br>
     <% if user_signed_in? %>
         <b>Current user: <%= current_user.name %> / <%= current_user.email %></b>

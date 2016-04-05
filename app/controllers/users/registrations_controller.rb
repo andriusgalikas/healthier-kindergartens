@@ -16,16 +16,16 @@ before_filter :configure_sign_up_params, only: [:create]
 
   # POST /resource
   def create
-    build_resource(sign_up_params)
+    build_resource(sign_up_params.merge(role: params[:role]))
     set_daycares
-    new_user_daycare
+    binding.pry
     resource.save
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
+        # set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+        respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -66,7 +66,7 @@ before_filter :configure_sign_up_params, only: [:create]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << [:name, :role, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]]]
+    devise_parameter_sanitizer.for(:sign_up).push(:name, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]])
   end
 
   def set_daycares
@@ -74,12 +74,20 @@ before_filter :configure_sign_up_params, only: [:create]
   end
 
   def new_child
-    resource.children.build if params[:role] == 'parentee'
+    if params[:role] == 'parentee'
+      child = resource.children.build 
+      child.build_profile_image
+    end
   end
 
   def new_user_daycare
     resource.build_user_daycare
   end
+
+  # def build_resource params
+  #   self.resource = User.new(params)
+  #   resource.build_
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
