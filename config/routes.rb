@@ -53,4 +53,10 @@ Rails.application.routes.draw do
         resources :daycares, only: :index
         resources :departments, only: :index 
     end
+
+    namespace :api, constraints: { format: 'json' } do
+        resources :daycares, only: [] do
+            resources :departments, only: :index
+        end
+    end
 end
