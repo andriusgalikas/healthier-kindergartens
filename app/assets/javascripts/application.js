@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require stripe
+//= require _healthChildcare
+//= require healthChildcare.app
+//= require application.ready

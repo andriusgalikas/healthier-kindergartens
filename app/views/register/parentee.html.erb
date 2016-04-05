@@ -16,7 +16,7 @@
   <div class="form-group">
     <%= f.fields_for :user_daycare do |user_daycare|%>
       <%= user_daycare.label :daycare %><br />
-      <%= user_daycare.collection_select :daycare_id, @daycares, :id, :name, {}, {data: { placeholder: "Select daycare..."} } %>
+      <%= user_daycare.collection_select :daycare_id, @daycares, :id, :name, { prompt: true }, {:class => 'department-populater' } %>
     <% end %>
   </div>
 
@@ -41,7 +41,7 @@
 
     <div class="form-group">
       <%= child.label :department %><br />
-      <%= child.collection_select :department_id, Department.all, :id, :name, {}, {data: { placeholder: "Select department..."} } %>
+      <%= child.collection_select :department_id, [], :id, :name, { prompt: true }, { :class => "department-select" } %>
     </div>
   <% end %>
   <hr>

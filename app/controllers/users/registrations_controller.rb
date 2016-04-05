@@ -83,16 +83,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up).push(:name, :department_id, user_daycare_attributes: [:daycare_id, :user_id, daycare_attributes: [:name, :address_line1, :postcode, :country, :telephone, departments_attributes: [:name]]], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]])
+    devise_parameter_sanitizer.for(:sign_up).push(:name, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]])
   end
 
   def daycare_sign_up_params
     params.require(:daycare).permit(:name, :address_line1, :postcode, :country, :telephone, departments_attributes: [:name], user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]])
   end
-  # .merge(users_attributes: [role: params[:role]])
 
   def set_daycares
-    @daycares ||= Daycare.all unless params[:role] = "manager"
+    @daycares ||= Daycare.all unless params[:role] == "manager"
   end
 
   def new_child
@@ -112,7 +111,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new_user_daycare
-    resource.build_user_daycare unless params[:role] = "manager"
+    resource.build_user_daycare unless params[:role] == "manager"
   end
 
   def assign_daycare_manager_role
