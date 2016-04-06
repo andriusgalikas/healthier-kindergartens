@@ -31,13 +31,13 @@
               %h2.start-heading Start Here
               .start-text
                 %p Childcare environments can be a breeding ground ground for bacterial and viral infections. Discover the top hidden health risks to children and employees in your daycare facility. Also, learn how we are committed to helping you, the childcare operator, take a few simple steps to effectively mitigate risk of infections—to keep your employees, children under your care, and parents as healthy as possible.
-                %a{:href => "/mission"}
+                = link_to mission_path do
                   %i.fa.fa-angle-right
           .standard.col-xs-12
             %img{:alt => " ", :src => "assets/standard.png"}
               %h2.standard-heading The Standard
               .standard-text
-                %a{:href => "/standard"}
+                = link_to standard_path do
                   %i.fa.fa-angle-left
                 %p
                   If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
@@ -46,7 +46,7 @@
             %img{:alt => " ", :src => "assets/standard.png"}
               %h2.Path-heading The Path to Accreditation
               .Path-text
-                %a{:href => "/path"}
+                = link_to path_path do
                   %i.fa.fa-angle-right
                 %p
                   If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
@@ -58,8 +58,8 @@
                   Assess and evaluate your staffs compitency  in  infection prevention.
                   %p
                     %h2
-                      Start your Journeya
-                      %a.journey-angel{:href => "journey_one.html"}
+                      Start your Journey
+                      = link_to getting_started_path do
                         %i.fa.fa-angle-right
                     %p and get complimentary access here
               .jan-right
