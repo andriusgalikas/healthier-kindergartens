@@ -2,7 +2,7 @@
   "name": "health-childcare",
   "version": "1.0.0",
   "dependencies": {
-    "bower": "~1.2"
+    "bower": "~1.7"
   },
   "engine": {
     "node": "0.10.x",
