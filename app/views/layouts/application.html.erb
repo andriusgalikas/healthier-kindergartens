@@ -3,29 +3,20 @@
 <head>
   <title>HealthChildcare</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
   <%= stripe_javascript_tag %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <h1>Health Childcare application</h1>
-    <%= link_to "Go Home", root_path %> | 
-    <%= link_to 'Dashboard', dashboard_path %> | 
-    <%= link_to "Upgrade", upgrade_path %> | 
-    <%= link_to "Trainings", trainings_path %> | 
-    <%= link_to "Surveys", surveys_path %> | 
-    <%= link_to 'Administration', admin_root_path %> |
-    <% if user_signed_in? %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% else %>
-        <%= link_to 'Login', new_user_session_path %> |
-        <%= link_to "Register", getting_started_path %>
-    <% end %><br><br>
-    <% if user_signed_in? %>
-        <b>Current user: <%= current_user.name %> / <%= current_user.email %></b>
-    <% end %>
-    <hr>
-    <%= yield %>
+    <%= render partial: 'shared/header' %>
+    <div class="main">
+      <%= yield %>
+    </div>
+    <%= render partial: 'shared/footer' %>
 </body>
 </html>

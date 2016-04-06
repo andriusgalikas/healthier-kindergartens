@@ -1,0 +1,97 @@
+.legacy-path
+{
+    .promo{}
+.promo-img{}
+.promo-img img{}
+.img-text{
+    position: absolute;
+    top: 35%;
+    padding: 40px;
+    width: 72%;
+    font-size: 25px;
+    
+    font-family: 'Open Sans'; font-weight: 400; 
+}
+.img-text h2{ 
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+#page-menu li:hover a{
+    background: none;
+    border-bottom:none;
+     color:#426cd5;
+}
+#page-menu {}
+#page-menu  li{}
+#page-menu  li.active a{color:#426cd5;font-weight: normal}
+#page-menu li a {background: none;color:#dfdfdf;font-size:22px;}
+ #page-menu .fa-angle-down {
+   color: #fff;
+    background: #426cd5;
+    padding: 7px;
+    border-radius: 50%;
+    margin-right: 16px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 27px;
+
+}
+#page-menu .fa-angle-right{
+     color: #fff;
+    background: #426cd5;
+    padding: 7px;
+    border-radius: 50%;
+    margin-right: 16px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 27px;
+
+}
+.page-heading{    
+    background: url(/assets/heading_bg.jpg) repeat;
+    overflow: hidden;
+    min-height: 180px;
+    color: #fff;
+    padding: 25px;
+    margin-top: 20px;
+
+}
+#path-content {
+    margin-top: 100px;
+}
+.path-content{}
+.path-left-content{padding: 40px}
+.path-left-content h2{font-size:40px;font-family: open-sans;color:#426cd5;}
+.path-left-content p{font-size: 18px;font-family: open-sans}
+.path-left-content h4{color:#426cd5;}
+.third-step-description{margin-top: 30px}
+.third-step-description p{font-size:18px;}
+.third-step-description span{color:#426cd5;}
+.third-step-description{}
+.third-step {margin-top: 150px}
+.third-step p{color:#ff4800;margin-top: 100px}
+.start-journey{}
+.journey{background: #365ebf}
+.journey h2{color:#ffd461;}
+.start-journey{background:url(/assets/bg.png) no-repeat center ;padding: 20px;}
+.journey-next {
+    background: #365ebf;
+    color: #fff;
+    padding: 20px;
+    width: 420px;
+    margin-left: 50px;
+   
+}
+.journey-next h2{margin: 0;padding: 0;color:#ffd461;}
+.journey-next p{padding: 0;margin: 0}
+.journey-next i{    color: #fff;
+    font-size: 46px;
+    margin: 0;
+    padding: 0;
+    margin-left: 59px;
+            margin-top: -14px;
+}
+}

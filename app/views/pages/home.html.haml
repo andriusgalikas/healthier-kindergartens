@@ -1,0 +1,70 @@
+#legacy-home  
+  .container.slider
+    .row
+      #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+        / Indicators
+        %ol#carousel-indicators.carousel-indicators
+          %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+          %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+          %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+        / Wrapper for slides
+        .carousel-inner{:role => "listbox"}
+          .item.active
+            %img{:alt => " ", :src => "assets/slider.jpg"}
+              .carousel-caption
+                \...
+          .item
+            %img{:alt => " ", :src => "assets/slider.jpg"}
+              .carousel-caption
+                \...
+          .item
+            %img{:alt => " ", :src => "assets/slider.jpg"}
+              .carousel-caption
+    / END SLIDER
+    / END SLIDER
+    / END SLIDER
+    .main-content
+      .container.content
+        .row
+          .start.col-xs-12
+            %img{:alt => " ", :src => "assets/start.png"}
+              %h2.start-heading Start Here
+              .start-text
+                %p Childcare environments can be a breeding ground ground for bacterial and viral infections. Discover the top hidden health risks to children and employees in your daycare facility. Also, learn how we are committed to helping you, the childcare operator, take a few simple steps to effectively mitigate risk of infections—to keep your employees, children under your care, and parents as healthy as possible.
+                %a{:href => "/mission"}
+                  %i.fa.fa-angle-right
+          .standard.col-xs-12
+            %img{:alt => " ", :src => "assets/standard.png"}
+              %h2.standard-heading The Standard
+              .standard-text
+                %a{:href => "/standard"}
+                  %i.fa.fa-angle-left
+                %p
+                  If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
+                  The Health Preserving care Standard is designed to fulfill these
+          .Path.col-xs-12
+            %img{:alt => " ", :src => "assets/standard.png"}
+              %h2.Path-heading The Path to Accreditation
+              .Path-text
+                %a{:href => "/path"}
+                  %i.fa.fa-angle-right
+                %p
+                  If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
+                  The Health Preserving care Standard is designed to fulfill these
+          .journey.col-xs-12
+            .journey-text
+              .jan-left
+                %p
+                  Assess and evaluate your staffs compitency  in  infection prevention.
+                  %p
+                    %h2
+                      Start your Journeya
+                      %a.journey-angel{:href => "journey_one.html"}
+                        %i.fa.fa-angle-right
+                    %p and get complimentary access here
+              .jan-right
+                %h2 The Journey
+                %p
+                  Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your
+                  %span Journey
+                  here.
