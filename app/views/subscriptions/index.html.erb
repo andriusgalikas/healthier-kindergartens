@@ -1,7 +1,155 @@
-<h2>Upgrade</h2>
-<% @plans.each do |plan| %>
-    <div>
-        <%= link_to plan.name, new_plan_subscription_path(plan) %>
-        <b><%= number_to_currency plan.price %></b>
+<div id="legacy-upgrade">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 toward-higher">
+            <h2>Your path toward higher level of Health Preserving Care 
+                starts here</h2>
+            <p>
+                Your decision to land on this page means you’re seriously committed to reducing the possibility of the spread of infections and diseases in your daycare facility. Congratulations on making this decision. 
+            </p>
+            <br>
+            <p>HSCA accreditation is a public affirmation of your commitment to protect the health and wellbeing of children and staff under your care. This commitment resonates not only with parents but also with daycare staff, government agencies and the general public.</p>
+            <br>
+
+                <p>Get started on the journey now by clicking the box below for our complimentary Discovery Assessment or our Accreditation Program.</p>
+                <br>
+            <div class="want-thinks">
+                <div class="list">
+                    <p class="want-p">                         
+                        <span class="accre-heading">ACCREDITATION PROGRAM</span> 
+                        <br><br>
+                        <span class="accre-desc desc1 show-hide-accre-program">
+                            Yes, I want this health preserving Care program for my childcare facility.
+                            My facility is ready for higher level of Health Preserving Care through this accreditation program. Reserve my spot NOW, as I do not want to miss out on the Early Champion discount where I’ll get permanent 50% off discount* on the regular cost of the accreditation program.<br><br>
+
+                            I am ready to sign up now to be in the first 100 childcare facilities based on size, who join the cause of health preserving care.  <br><br>
+
+                            *The permanent 50% off discount is one-time offer only available to the first 100 childcare facilities that join the program. This is less than 5% of total 6600 childcare facilities in Norway where this program is to be offered.
+                        </span>
+                        <br><br>
+                    </p> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="ongoing">
+                <div class="ongoing-heading">
+                    <h2>ONGOING ACCREDITATION MEMBERSHIP BENEFITS</h2>
+                    <p>Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:</p>
+                </div>
+                <div class="single-ongoing">
+                    <%= image_tag 'ongoing_one.png' %>
+                    <p>
+                        <span class="accredation-header">Greater employee confidence</span>
+                        Our training modules are designed to increase you and your employees’ knowledge and understanding of health and safety issues which impact children in childcare. Training reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. This helps lower employee stress, and helps employees to thrive, making you childcare facility a better place to work.
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                <%= image_tag 'ongoing_two.png' %>
+                    <p>
+                        <span class="accredation-header">Improved childcare reputation with parents</span>
+                        HSCA’s accreditation can give your facility recognition and clout like never before. Our accreditation will instill trust among parents and respect among industry peers as it signifies that you have taken the extra step to provide The Standard of comprehensive protection of children and employees. With HSCA Accreditation, your facility will also earn a dignified place in a national list of accredited childcare agencies, along with your earned credentials. It’s not uncommon for parents seeking a daycare center for their children to consult a list like this to make their decision.
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                <%= image_tag 'ongoing_three.png' %>
+                    <p>
+                        <span class="accredation-header">Shine like a beacon of safety in the marketplace</span> 
+                        Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge. Your accreditation status will give parents the reassurance that their children are out of harm’s way.
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                    <%= image_tag 'ongoing_four.png' %>
+                    <p>
+                        <span class="accredation-header">Minimize employee turnover </span> 
+                        Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge. Your accreditation status will give parents the reassurance that their children are out of harm’s way.
+                        <br>
+                        <br>
+
+                        The best “cure” for employee turnover due to unnecessary sickness of your staff is to receive accreditation through HSCA.
+
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                    <%= image_tag 'ongoing_five.png' %>
+                    <p>
+                        <span class="accredation-header">Avoid potentially costly lawsuits</span>
+                        Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care.     
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                    <%= image_tag 'ongoing_six.png' %>
+                    <p>
+                        <span class="accredation-header"> Meeting regulatory standards gets easier</span>
+                        HSCA accreditation gives you the tools to track and report key actions required to reduce risk and increase the health and safety of children and your daycare staff. Our app makes reporting faster and easier and simplifies the process of record keeping, thereby potentially avoiding costly shutdowns and problematic inspections.
+
+                    </p>
+                </div>
+                <div class="single-ongoing">
+                    <%= image_tag 'ongoing_seven.png' %>
+                    <p>
+                        <span class="accredation-header">
+                            An authentic Certificate of Accreditation and Accreditation Plaque— </span>
+                            you’ll want to proudly display these in your office to demonstrate your facility’s knowledge, dedication, and awareness of disease and illness prevention to parents and anyone else who stops by. They immediately communicate to visitors that you’re a well-regarded expert in the area of infection mitigation.
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-<% end %>
+</div>
+<div class="container">
+    <div class="row"> 
+        <div class="col-lg-12"> 
+            <div class="reserve-area"> 
+                <p class="reserve-offer">Be among the first <span>100</span> qualifying agencies to sign up, and you’ll receive a <span>50% discount</span> off your monthly membership.</p>
+                <form class="wizard-form2" method="post">
+                    <ul class="stepNav threeWide">
+                        <li class="selected0">
+                            <p class="title_range">
+                                How many children in your organization?
+                            </p>
+                            <div class="value">0</div>
+                            <span class="value_span">Children</span>
+                            <div class="range_slider">
+                                <input type="range" min="0" max="90" step="1" value="0">
+                                <label>90<p>?</p></label>
+                            </div>
+                            
+                        </li>
+
+                        <li class="selected">
+                            <p>How much will HSCA accreditation costs?</p>
+                            <div class="second_area">
+                                <h2>$99</h2>
+                            </div>
+                            <span>per month</span>
+                        </li>
+
+                        <li class="selected2">
+                            <div>
+                                <% @plans.each do |plan| %>
+                                    <div>
+                                        <%= link_to plan.name, new_plan_subscription_path(plan) %>
+                                        <b><%= number_to_currency plan.price %></b>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row"> 
+        <div class="col-lg-12"> 
+            <ul class="list-group list-inline footer_range">
+                <li><span><%= image_tag 'qua.png' %></span>Are you Municipality or Franchise?</li>
+                <li><a href="">Email Us</a> to know the special price.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
