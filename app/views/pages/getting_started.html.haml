@@ -1,0 +1,29 @@
+#legacy-welcome
+  .row.welcome
+    .col-xs-10.col-xs-offset-1.outer
+      .main-heading
+        Welcome
+      .tag-line
+        Lets get started and choose who you are!
+      .wrapper
+        .col-sm-6.col-lg-4
+          = link_to new_user_registration_path(role: 'parentee') do
+            .block
+              .circle.parent-border
+                = image_tag 'parent.png'
+            %h5 
+              Daycare Parent
+        .col-sm-6.col-lg-4
+          = link_to new_user_registration_path(role: 'worker') do
+            .block
+              .circle.worker-border
+                = image_tag 'worker.png'
+            %h5
+              Daycare Worker
+        .col-sm-6.col-lg-4
+          = link_to new_user_registration_path(role: 'manager') do
+            .block
+              .circle.manager-border
+                = image_tag 'manager.png'
+            %h5 
+              Daycare Manager
