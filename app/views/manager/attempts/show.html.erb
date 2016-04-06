@@ -1,0 +1,24 @@
+<div>
+  <h1>Attempt for <%= @survey.name %> by <%= @attempt.participant.name %> </h1>
+  <hr>
+
+  <h2>Correct answers</h2>
+  <ul>
+    <% @attempt.correct_answers.each do |answer| %>
+      <li>
+        Question: <%= answer.question.text %><br />
+        Answer: <%= answer.option.text %>
+      </li>
+    <% end -%>
+  </ul>
+
+  <h2>Incorrect answers</h2>
+  <ul>
+    <% @attempt.incorrect_answers.each do |answer| %>
+      <li>
+        Question: <%= answer.question.text %><br />
+        Answer: <%= answer.option.text %>
+      </li>
+    <% end -%>
+  </ul>
+</div>

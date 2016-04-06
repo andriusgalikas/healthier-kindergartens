@@ -32,12 +32,19 @@ Rails.application.routes.draw do
 
     namespace :manager do
         resources :todos, except: :index
+        resources :surveys do
+            resources :attempts, only: [:show, :index]
+        end
         resources :daycares, only: [] do
             collection do
                 get :invite
                 post :send_invites
             end
         end
+    end
+
+    resources :surveys, only: [:index] do
+        resources :attempts, only: [:new, :create], controller: 'surveys/attempts'
     end
 
     resources :todos, only: [] do

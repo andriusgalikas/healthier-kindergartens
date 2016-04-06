@@ -1,4 +1,5 @@
 class Manager::DaycaresController < ApplicationController
+    before_action -> { authenticate_role!(["manager"]) }
 
     def send_invites
         DaycareInviteEmailJob.perform_later(params[:emails])

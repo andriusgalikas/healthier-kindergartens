@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  code       :string
-#  value      :decimal(, )      default("0.0")
+#  value      :integer          default("0")
 #  status     :integer          default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

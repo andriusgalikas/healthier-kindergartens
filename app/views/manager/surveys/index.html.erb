@@ -1,0 +1,18 @@
+<div class="questionnaires_<%= action_name %>">
+  <h1>
+      Manager Surveys Index
+  </h1>
+  <hr>
+  <%= link_to "New Survey", new_survey %>
+
+  <ul>
+    <% @surveys.each do |survey| %>
+      <li>
+        <%= survey.name %><br />
+        <%= link_to 'Edit', edit_manager_survey_path(survey) %><br />
+        <%= link_to 'Attempts', manager_survey_attempts_path(survey) %>
+      </li>
+    <% end -%>
+  </ul>
+
+</div>

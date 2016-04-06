@@ -1,0 +1,15 @@
+<div class="questionnaires_<%= action_name %>">
+  <h1>
+      Surveys Index
+  </h1>
+  <hr>
+
+  <ul>
+    <% @surveys.each do |survey| %>
+      <li>
+        <%= link_to survey.name, new_survey_attempt_path(survey) %>
+      </li>
+    <% end -%>
+  </ul>
+
+</div>

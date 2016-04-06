@@ -1,0 +1,14 @@
+<div>
+  <h1>Attempts for <%= @survey.name %></h1>
+  <hr>
+
+  <ul>
+    <% @survey.attempts.each do |attempt| %>
+      <li>
+        <%= attempt.participant.name %><br />
+        <%= link_to 'Answers', manager_survey_attempt_path(@survey, attempt) %><br />
+      </li>
+    <% end -%>
+  </ul>
+
+</div>

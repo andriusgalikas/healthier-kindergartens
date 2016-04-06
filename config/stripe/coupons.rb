@@ -1,8 +1,10 @@
-DiscountCode.active.each do |dc|
-    Stripe.coupon dc.code.to_sym do |coupon|
-        coupon.duration = 'forever'
-        coupon.currency = 'usd'
-        coupon.percent_off = dc.value.to_i
+if defined?(DiscountCode)
+    DiscountCode.active.each do |dc|
+        Stripe.coupon dc.code.to_sym do |coupon|
+            coupon.duration = 'forever'
+            coupon.currency = 'usd'
+            coupon.percent_off = dc.value.to_i
+        end
     end
 end
 # This file contains descriptions of all your statically defined
