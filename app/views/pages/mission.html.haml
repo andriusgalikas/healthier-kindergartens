@@ -3,12 +3,12 @@
     .row.promo
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
         .promo-img
-          %img{:alt => " ", :src => "assets/mission_promo.jpg"}
-            .img-text
-              %h2
-                You Can Mitigate Infection
-                %br and Illness In Your Daycare
-              %p Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest environment possible.
+          = image_tag "mission_promo.png"
+          .img-text
+            %h2
+              You Can Mitigate Infection
+              %br and Illness In Your Daycare
+            %p Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest environment possible.
   / End Promo Area
   .container
     .row
@@ -82,23 +82,23 @@
   .container.what-do-next
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
-        %img{:alt => " ", :src => "assets/mission_hand.png"}
-          %h2.what-do-next-heading
-            What to do next:
+        = image_tag 'mission_hand.png'
+        %h2.what-do-next-heading
+          What to do next:
+          %br
+            to mitigate risk in your facility,
             %br
-              to mitigate risk in your facility,
+              increase safety,
               %br
-                increase safety,
-                %br
-                  and show you care.
-          %p.wdnp At HSCA, our core mission is to assist you, the childcare operator, to nurture a healthy and safe environment for children and childcare workers. We seek to carry out this mission as we:
-          %ul#mission-menu
-            %li
-              %a{:href => ""} 1. Outline risks
-            %li
-              %a{:href => ""} 2. Create community
-            %li
-              %a{:href => ""} 3. Set brenchmark
+                and show you care.
+        %p.wdnp At HSCA, our core mission is to assist you, the childcare operator, to nurture a healthy and safe environment for children and childcare workers. We seek to carry out this mission as we:
+        %ul#mission-menu
+          %li
+            %a{:href => ""} 1. Outline risks
+          %li
+            %a{:href => ""} 2. Create community
+          %li
+            %a{:href => ""} 3. Set brenchmark
   #threestrep.container
     .row
       .col-lg-6.col-md-6.col-sm-12.col-xs-12.out-ben
