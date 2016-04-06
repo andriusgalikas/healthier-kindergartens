@@ -78,3 +78,6 @@ gem 'sinatra', :require => nil
 
 # fake data
 gem 'faker'
+
+# surveys
+gem "survey", "~> 0.1"
