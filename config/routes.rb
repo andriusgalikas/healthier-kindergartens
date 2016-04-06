@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
         root to: 'dashboard#index'
-        authenticate :user do
+        authenticate :user, lambda { |u| u.admin? } do
             mount Sidekiq::Web => '/sidekiq'
         end
         resources :discount_codes, except: :show
