@@ -1,7 +1,9 @@
 <h3>Parent dashboard</h3>
-<%= render 'shared/menu' %>
 
 <b>Daycare:</b> <%= current_user.daycare.name %>
+
+<%= link_to "Trainings", trainings_path %>
+<%= link_to "Surveys", surveys_path %>
 
 <h4>AVAILABLE TODOS</h4>
 <ul>
