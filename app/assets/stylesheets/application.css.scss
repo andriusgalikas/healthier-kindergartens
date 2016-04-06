@@ -13,8 +13,8 @@
  *= require_self
  *= require normalize-css
  *= require 1100
- *= require home
- *= require mission
- *= require standard
- *= require path
+ *= require legacy/home
+ *= require legacy/mission
+ *= require legacy/standard
+ *= require legacy/path
  */
