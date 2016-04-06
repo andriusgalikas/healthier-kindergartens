@@ -5,7 +5,10 @@ job_type :rbenv_rake, %Q{export PATH=/opt/rbenv/shims:/opt/rbenv/bin:/usr/bin:$P
 job_type :rbenv_runner, %Q{export PATH=/opt/rbenv/shims:/opt/rbenv/bin:/usr/bin:$PATH; eval "$(rbenv init -)"; \
                          cd :path && RAILS_ENV=production bundle exec rails runner :task --silent :output }
 
-
 every 1.hour do
     rbenv_runner "TodoFrequenciesJob.perform_later"
+end
+
+every 1.day, at: '8:30 am' do
+    rbenv_runner 'PlanReminderJob.perform_later'
 end
