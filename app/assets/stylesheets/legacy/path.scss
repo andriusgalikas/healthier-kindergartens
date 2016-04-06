@@ -51,7 +51,7 @@
 
 }
 .page-heading{    
-    background: url(/assets/heading_bg.jpg) repeat;
+    background: image-url('heading_bg.jpg') repeat;
     overflow: hidden;
     min-height: 180px;
     color: #fff;
@@ -76,7 +76,7 @@
 .start-journey{}
 .journey{background: #365ebf}
 .journey h2{color:#ffd461;}
-.start-journey{background:url(/assets/bg.png) no-repeat center ;padding: 20px;}
+.start-journey{background: image-url('bg.png') no-repeat center ;padding: 20px;}
 .journey-next {
     background: #365ebf;
     color: #fff;

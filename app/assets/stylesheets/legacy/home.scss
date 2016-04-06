@@ -336,7 +336,7 @@ float: right;
 }
 
 
-.main-content{background: url(/assets/background.png) no-repeat;}
+.main-content{background: image-url('background.png') no-repeat;}
 .content{padding:40px}
 .start{
     width:590px;
@@ -1407,7 +1407,7 @@ float: right;
       margin-top: 0;
     }
     .start-journey {
-      background: rgba(0, 0, 0, 0) url("/assets/bg.png") no-repeat scroll center center;
+      background: rgba(0, 0, 0, 0) image-url("bg.png") no-repeat scroll center center;
       padding: 10px 0;
     }
     .journey-next {
@@ -1565,7 +1565,7 @@ float: right;
     padding-left: 10px;
   }
   .what-do-next {
-    background: rgba(0, 0, 0, 0) url("/assets/bg.jpg") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) image-url("bg.jpg") repeat scroll 0 0;
     padding: 80px 10px 40px;
   }
   .what-do-next img {
@@ -1865,7 +1865,7 @@ float: right;
       margin-top: 0;
     }
     .start-journey {
-      background: rgba(0, 0, 0, 0) url("/assets/bg.png") no-repeat scroll center center;
+      background: rgba(0, 0, 0, 0) image-url("bg.png") no-repeat scroll center center;
       padding: 10px 0;
     }
     .journey-next {
@@ -2039,7 +2039,7 @@ float: right;
     padding-left: 10px;
   }
   .what-do-next {
-    background: rgba(0, 0, 0, 0) url("/assets/bg.jpg") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) image-url("bg.jpg") repeat scroll 0 0;
     padding: 80px 10px 40px;
   }
   .what-do-next img {
