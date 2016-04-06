@@ -1,3 +1,6 @@
 <h2>Invite</h2>
 
-<!-- use bootstrap tagsinput -->
+<%= form_tag send_invites_manager_daycares_path do %>
+    <%= text_field_tag :emails, params[:emails], :class => 'tagsinput' %>
+    <%= submit_tag "Send Invites" %>
+<% end %>

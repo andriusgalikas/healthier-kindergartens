@@ -20,5 +20,10 @@ healthChildcare.app =
                 }
             });
         });
+    },
+    
+    multiInput: function()
+    {
+        $('.tagsinput').tagsinput();
     }
 }
