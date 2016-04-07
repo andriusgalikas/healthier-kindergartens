@@ -1,4 +1,5 @@
 class Manager::SurveysController < ApplicationController
+  layout 'dashboard'
   before_action -> { authenticate_role!(["manager"]) }
 
   def index

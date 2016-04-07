@@ -9,7 +9,7 @@
                     <img src="http://placehold.it/100x100">
                     <span>Todos</span>
                 <% end %>
-                <%= link_to manager_surveys_path, :class => 'surveys' do %>
+                <%= link_to dashboard_manager_surveys_path, :class => 'surveys' do %>
                     <img src="http://placehold.it/100x100">
                     <span>Surveys</span>
                 <% end %>
@@ -28,45 +28,3 @@
         </div>
     </div>
 </div>
-
-<!-- <h3>Manager dashboard</h3>
-
-<%= link_to 'ADD NEW TODO', new_manager_todo_path %><br />
-<%= link_to 'MANAGE SURVEYS', manager_surveys_path %><br />
-<%= link_to 'INVITE', invite_manager_daycares_path %>
-<%= link_to "Trainings", trainings_path %>
-<h4>MY DAYCARE TODOS</h4>
-<ul>
-    <% current_user.local_todos.each do |todo| %>
-        <li>
-            <%= todo.title %>
-            <%= link_to 'Show', manager_todo_path(todo) %>
-            <%= link_to 'Edit', edit_manager_todo_path(todo) %>
-        </li>
-    <% end %>
-</ul>
-
-<h4>GLOBAL TODOS</h4>
-<ul>
-    <% current_user.global_todos.each do |todo| %>
-        <li>
-            <%= link_to 'Show', manager_todo_path(todo) %>
-            <%= todo.title %>
-        </li>
-    <% end %>
-</ul>
-
-<h4>PARENTS</h4>
-<ul>
-    <% current_user.daycare.parents.each do |parent| %>
-        <li><%= parent.name %></li>
-    <% end %>
-</ul>
-
-
-<h4>WORKERS</h4>
-<ul>
-    <% current_user.daycare.workers.each do |worker| %>
-        <li><%= worker.name %></li>
-    <% end %>
-</ul> -->
