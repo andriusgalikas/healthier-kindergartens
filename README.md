@@ -26,15 +26,19 @@ Things you may want to cover:
 # Getting started
 
 Install gems:  
+
 `bundle install`
-
-
+  
+  
 Install asset dependencies:  
+
 `bower install`
+  
+  
+Start the web server and Sidekiq:   
 
-
-Start the web server and Sidekiq:  
 `foreman start -f Procfile.dev`
+  
 
 # Stripe
 
