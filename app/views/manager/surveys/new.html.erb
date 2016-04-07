@@ -1,2 +1,8 @@
-<h2>New Survey</h2>
-<%= render 'form' %>
+<% content_for :page_title, "New Survey" %>
+<% content_for :previous_path, dashboard_manager_surveys_path %>
+
+<div class="row">
+    <div class="twelvecol">
+        <%= render 'form' %>
+    </div>
+</div>

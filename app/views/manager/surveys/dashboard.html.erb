@@ -1,0 +1,21 @@
+<% content_for :page_title, "Surveys Dashboard" %>
+<% content_for :previous_path, dashboard_path %>
+
+<div id="main-menu">
+    <div class="row">
+        <div class="eightcol">
+            <div class="menu-items">
+                <%= link_to new_manager_survey_path, :class => 'create' do %>
+                    <img src="http://placehold.it/100x100">
+                    <span>Create</span>
+                <% end %>
+                <%= link_to manager_surveys_path, :class => 'access' do %>
+                    <img src="http://placehold.it/100x100">
+                    <span>Access</span>
+                <% end %>
+            </div>
+        </div>
+        <div class="fourcol last">
+        </div>
+    </div>
+</div>

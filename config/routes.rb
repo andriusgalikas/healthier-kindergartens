@@ -35,6 +35,7 @@ Rails.application.routes.draw do
             get :dashboard, on: :collection
         end
         resources :surveys do
+            get :dashboard, on: :collection
             resources :attempts, only: [:show, :index]
         end
         resources :daycares, only: [] do
