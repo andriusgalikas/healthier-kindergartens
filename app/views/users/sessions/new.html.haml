@@ -1,0 +1,13 @@
+.legacy-daycares.legacy
+  .row.login
+    .col-xs-10.col-xs-offset-1.outer
+      .main-heading
+        Login
+      .wrapper
+        = image_tag 'Daycare-logo.gif', :class => 'logo'
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.email_field :email, :class => 'user_icon', :placeholder => 'Email', required: true
+          = f.password_field :password, :class => 'password_icon', :placeholder => 'Password', required: true
+          / = link_to 'Forgot Password', new_user_password_path, :class => 'forgot-password pull-right'
+          = f.submit "Login", :class => "btn btn-primary col-md-12"
+          = link_to 'Register', getting_started_path, :class => 'btn btn-success col-xs-12'
