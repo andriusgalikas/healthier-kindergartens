@@ -1,6 +1,14 @@
-<h2>Invite</h2>
+<% content_for :page_title, "Invite" %>
+<% content_for :previous_path, dashboard_path %>
 
-<%= form_tag send_invites_manager_daycares_path do %>
-    <%= text_field_tag :emails, params[:emails], :class => 'tagsinput' %>
-    <%= submit_tag "Send Invites" %>
-<% end %>
+<div class="row">
+    <div class="twelvecol">
+        <%= form_tag send_invites_manager_daycares_path do %>
+            <div class="form-group">
+                <%= label_tag :emails %>
+                <%= text_field_tag :emails, params[:emails], :class => 'tagsinput form-control' %>
+            </div>
+            <%= submit_tag "Send Invites", :class => 'btn btn-blue btn-normal' %>
+        <% end %>
+    </div>
+</div>

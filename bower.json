@@ -12,6 +12,7 @@
   "dependencies": {
     "chosen": "^1.5.1",
     "bootstrap-tagsinput": "^0.8.0",
-    "normalize-css": "normalize.css#^4.0.0"
+    "normalize-css": "normalize.css#^4.0.0",
+    "icomoon-bower": "icomoon#^0.1.0"
   }
 }

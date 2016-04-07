@@ -1,0 +1,52 @@
+- content_for :page_title, "Dashboard"
+- content_for :previous_path, getting_started_path
+.legacy
+  .row.common
+    %h4 Available Todos
+    .col-xs-8.actions
+      - current_user.available_todos.each do |todo|
+        .col-sm-6.tab
+          = link_to todo_todo_completes_path(todo), method: :post do
+            .block.tab-todo
+              = image_tag todo.icon.file.square, :width=>156, :height=>121
+              .tab-title= todo.title
+    %h4 In Progress Todos
+    .col-xs-8.actions
+      - current_user.incomplete_todo_completes.active.each do |todo_c|
+        .col-sm-6.tab
+          = link_to todo_todo_complete_path(todo_c.todo, todo_c) do
+            .block.tab-todo
+              = image_tag todo_c.todo.icon.file.square, :width=>156, :height=>121
+              .tab-title= todo_c.todo.title
+    %h4 Complete Todos
+    .col-xs-8.actions
+      - current_user.completed_todo_completes.active.each do |todo_c|
+        .col-sm-6.tab
+          = link_to todo_todo_complete_path(todo_c.todo, todo_c) do
+            .block.tab-todo
+              = image_tag todo_c.todo.icon.file.square, :width=>156, :height=>121
+              .tab-title= todo_c.todo.title
+    %h4 Children
+    %ul
+      - current_user.children.each do |child|
+        %li
+          Name: #{child.name}
+          %br
+          Birth date:#{child.birth_date}
+          %br
+          Department: #{child.department.name}
+          %br
+          = image_tag child.profile_image.file.thumb
+  .notif_left_col
+    %ul
+      %li.mrht58
+        = image_tag 'todo_list_icon.jpg', width: '126', height: '114'
+        %span.ser_heading Todo List
+      %li.mrht58
+        = link_to surveys_path do
+          = image_tag 'message_icon.jpg', width: '126', height: '114'
+          %span.ser_heading Surveys
+      %li
+        = link_to trainings_path do
+          = image_tag 'intolerance_icon.jpg', width: '126', height: '114'
+          %span.ser_heading Trainings

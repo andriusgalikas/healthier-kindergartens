@@ -1,4 +1,5 @@
 class TodoCompletesController < ApplicationController
+    layout 'dashboard'
     before_action -> { authenticate_role!(["parentee", "worker"]) }
 
     def show

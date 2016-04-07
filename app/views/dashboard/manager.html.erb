@@ -1,4 +1,35 @@
-<h3>Manager dashboard</h3>
+<% content_for :page_title, "Manager Dashboard" %>
+<% content_for :previous_path, root_path %>
+
+<div id="main-menu">
+    <div class="row">
+        <div class="eightcol">
+            <div class="menu-items">
+                <a href="#" class="todos">
+                    <img src="http://placehold.it/100x100">
+                    <span>Todo List</span>
+                </a>
+                <%= link_to manager_surveys_path, :class => 'surveys' do %>
+                    <img src="http://placehold.it/100x100">
+                    <span>Surveys</span>
+                <% end %>
+                <%= link_to trainings_path, :class => 'trainings' do %>
+                    <img src="http://placehold.it/100x100">
+                    <span>Trainings</span>
+                <% end %>
+                <%= link_to invite_manager_daycares_path, :class => 'invite' do %>
+                    <img src="http://placehold.it/100x100">
+                    <span>Invite</span>
+                <% end %>
+            </div>
+        </div>
+        <div class="fourcol last">
+
+        </div>
+    </div>
+</div>
+
+<!-- <h3>Manager dashboard</h3>
 
 <%= link_to 'ADD NEW TODO', new_manager_todo_path %><br />
 <%= link_to 'MANAGE SURVEYS', manager_surveys_path %><br />
@@ -38,4 +69,4 @@
     <% current_user.daycare.workers.each do |worker| %>
         <li><%= worker.name %></li>
     <% end %>
-</ul>
+</ul> -->

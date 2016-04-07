@@ -1,0 +1,15 @@
+<header>
+    <div class="row">
+        <div class="onecol">
+            <%= link_to (yield :previous_path), :class => 'previous' do %>
+                <i class="icon-arrow-left"></i>
+            <% end %>
+        </div>
+        <div class="tencol">
+            <h2><%= yield :page_title %></h2>
+        </div>
+        <div class="onecol last">
+            <i class="icon-menu"></i>
+        <div>
+    </div>
+</header>

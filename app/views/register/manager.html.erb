@@ -33,7 +33,7 @@
       <h4>Account</h4>
       <%= daycare.fields_for :user_daycares do |user_daycare|%>
         <%= user_daycare.fields_for :user do |user| %>
-          <%= user.email_field :name, placeholder: 'Name' %>
+          <%= user.text_field :name, placeholder: 'Name' %>
           <%= user.email_field :email, autofocus: true, placeholder: 'Email' %>
           <%= user.password_field :password, autocomplete: "off", placeholder: 'Password' %>
           <% if @minimum_password_length %>

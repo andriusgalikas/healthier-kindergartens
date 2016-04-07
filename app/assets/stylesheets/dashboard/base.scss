@@ -1,0 +1,22 @@
+* 
+{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+*, *:before, *:after 
+{
+    @include box-sizing(border-box);
+}
+body 
+{
+    font-family: 'OpenSans', sans-serif;
+    font-size:1em;
+    background-color:#f0f0f0;
+    color:$dark-grey;
+    line-height:1.3em;
+    margin:0;
+}
+h1,h2,h2
+{
+    font-weight:100;
+}

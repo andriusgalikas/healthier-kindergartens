@@ -32,7 +32,7 @@ class SubscriptionsController < ApplicationController
     private
 
     def subscription_params
-        params.require(:subscription).permit(:plan_id, :terms, :stripe_card_token, :discount_code).merge(user_id: current_user.id)
+        params.require(:subscription).permit(:user_id, :plan_id, :terms, :stripe_card_token, :discount_code).merge(user_id: current_user.id)
     end
 
     def set_plan

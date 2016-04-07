@@ -1,0 +1,22 @@
+/*
+ *= require icomoon-bower
+*/
+@import "compass/css3";
+
+$blue: #00aff1;
+$purple: #ab8bff;
+$green: #8DC73F;
+$orange: #F7941D;
+$yellow: #ffd700;
+$cyan: #9bebff;
+$grey: #d5d5de;
+$dark-grey: #2f363d;
+$light-grey: #d0d0d0;
+$red: #CD2626;
+
+@import "dashboard/base";
+@import "dashboard/1100";
+@import "dashboard/form";
+@import "dashboard/buttons";
+@import "dashboard/header";
+@import "dashboard/home";

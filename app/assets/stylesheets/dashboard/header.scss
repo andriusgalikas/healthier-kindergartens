@@ -1,0 +1,43 @@
+header
+{
+    height:80px;
+    background-color: $blue;
+    color:#fff;
+    line-height: 80px;
+    margin-bottom:30px;
+
+    .tencol, .onecol
+    {
+        text-align: center;
+    }
+    .onecol
+    {
+        overflow: hidden;
+    }
+
+    i
+    {
+        font-size: 1.5em;
+    }
+
+    h2
+    {
+        margin: 0;
+    }
+
+    a
+    {
+        color: #fff;
+
+        &:hover
+        {
+            color: #fff;
+        }
+
+        &.previous
+        {
+            
+            text-decoration: none;
+        }
+    }
+}
