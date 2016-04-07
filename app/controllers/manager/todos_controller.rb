@@ -1,4 +1,5 @@
 class Manager::TodosController < ApplicationController
+  layout 'dashboard'
   before_action -> { authenticate_role!(["manager"]) }
   before_action :subscribed_manager!
 

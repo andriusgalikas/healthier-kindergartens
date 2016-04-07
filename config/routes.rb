@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     end
 
     namespace :manager do
-        resources :todos, except: :index
+        resources :todos do
+            get :dashboard, on: :collection
+        end
         resources :surveys do
             resources :attempts, only: [:show, :index]
         end

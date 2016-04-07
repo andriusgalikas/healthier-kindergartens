@@ -46,6 +46,11 @@
         &:hover {
             color:#fff;
         }
+        &.btn-block
+        {
+            display: block;
+            width: 100%;
+        }
     &.hide
     {
         display: none;

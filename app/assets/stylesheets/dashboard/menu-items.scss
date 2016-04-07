@@ -51,6 +51,19 @@
                 {
                     background-color: $yellow;
                 }
+
+                &.create
+                {
+                    background-color: $green;
+                }
+                &.access
+                {
+                    background-color: $cyan;
+                }
+                &.report
+                {
+                    background-color: $purple;
+                }
             }
     }
 }

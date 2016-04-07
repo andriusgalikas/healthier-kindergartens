@@ -1,0 +1,93 @@
+#todos
+{
+    p, ul
+    {
+        margin-bottom: 50px;
+    }
+
+    ul
+    {
+        padding:0;
+        margin-top:20px;
+        li
+        {
+            height:155px;
+            width:120px;
+            display: inline-block;
+            text-align: center;
+            margin:0 20px 20px 0;
+
+            div
+            {
+                height:120px;
+                width:120px;
+                border: 1px solid $grey;
+                // @include border-top-right-radius(5px);
+                // @include border-top-left-radius(5px);
+                @include border-radius(5px);
+                overflow: hidden;
+
+                img
+                {
+                    height:120px;
+                    width:120px;
+                }
+            }
+            span
+            {
+                line-height: 35px;
+                display: block;
+                // @include border-bottom-right-radius(5px);
+                // @include border-bottom-left-radius(5px);
+                // border-bottom:1px solid $grey;
+                // border-left:1px solid $grey;
+                // border-right:1px solid $grey;
+            }
+        }
+    }
+}
+#todo
+{
+    #edit-todo
+    {
+        float:right;
+    }
+    
+    .icon
+    {
+        height:120px;
+        width:120px;
+        border: 1px solid $grey;
+        @include border-top-right-radius(5px);
+        @include border-top-left-radius(5px);
+        overflow: hidden;
+        margin-bottom:30px;
+
+        img
+        {
+            height:120px;
+            width:120px;
+        }
+    }
+
+    ol
+    {
+        li
+        {
+            padding-left:40px;
+            margin-bottom:40px;
+            margin-top:30px;
+
+            b
+            {
+                margin-bottom:5px;
+                display: block;
+            }
+
+            p
+            {
+                margin-bottom:12px;
+            }
+        }
+    }
+}

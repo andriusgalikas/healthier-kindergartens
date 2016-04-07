@@ -5,10 +5,10 @@
     <div class="row">
         <div class="eightcol">
             <div class="menu-items">
-                <a href="#" class="todos">
+                <%= link_to dashboard_manager_todos_path, :class => 'todos' do %>
                     <img src="http://placehold.it/100x100">
-                    <span>Todo List</span>
-                </a>
+                    <span>Todos</span>
+                <% end %>
                 <%= link_to manager_surveys_path, :class => 'surveys' do %>
                     <img src="http://placehold.it/100x100">
                     <span>Surveys</span>

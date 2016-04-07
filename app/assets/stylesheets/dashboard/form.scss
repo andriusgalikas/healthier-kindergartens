@@ -1,5 +1,19 @@
 form 
 {
+    margin-bottom:40px;
+
+    .page-header
+    {
+        h2
+        {
+            margin-top:40px;
+        }
+    }
+
+    h2
+    {
+        margin-top: 40px;
+    }
     fieldset 
     {
         border:0;
@@ -23,25 +37,6 @@ form
     select 
     {
         border:1px solid $light-grey !important;
-    }
-    .form-group 
-    {
-        margin-bottom:15px;
-            label 
-            {
-                display: inline-block;
-                margin-bottom:7px;
-                font-weight: bold;
-            }
-            textarea.form-control 
-            {
-                height:auto;
-                resize:none;
-            }
-            &.form-last 
-            {
-                margin:0;
-            }
     }
     .form-field-range
     {
@@ -159,6 +154,25 @@ form
             }
     }
 }
+.form-group 
+{
+    margin-bottom:15px;
+        label 
+        {
+            display: inline-block;
+            margin-bottom:7px;
+            font-weight: bold;
+        }
+        textarea.form-control 
+        {
+            height:auto;
+            resize:none;
+        }
+        &.form-last 
+        {
+            margin:0;
+        }
+}
 .form-control 
 {
     display:block;
@@ -170,6 +184,7 @@ form
     background-color:rgba(208,208,208,0.5);
     border:0px;
     outline:0;
+    font-size:1em;
 
     + .gross
     {

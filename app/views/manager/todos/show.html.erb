@@ -1,30 +1,40 @@
-<h2><%= @todo.title %></h2>
-Iteration Type: <%= @todo.iteration_type %><br>
-Frequency: <%= @todo.frequency %><br>
-Type: <%= @todo.global? ? "Global" : "Local" %>
-<h3>Tasks</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-    </tr>
-  </thead>
+<% content_for :page_title, @todo.title %>
+<% content_for :previous_path, manager_todos_path %>
 
-  <tbody>
-    <% @todo.tasks.each do |tk| %>
-      <tr>
-        <td><%= tk.title %></td>
-        <td><%= tk.description %></td>
-      </tr>
+<div class="row" id="todo">
+  <div class="twelvecol">
+    <% unless @todo.global? %>
+      <%= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo' %>
     <% end %>
-  </tbody>
-</table>
-<% if @todo.global? %>
-  <h3>Departments</h3>
-  <ul>
-      <% @todo.departments.each do |dp| %>
-          <li><%= dp.name %></li>
-      <% end %>
-  </ul>
-<% end %>
+    <div class="icon">
+      <%= image_tag @todo.icon.file.thumb %>
+    </div>
+    <form>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" readonly="true" value="<%= @todo.title %>" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Iteration Type</label>
+        <input type="text" readonly="true" value="<%= @todo.iteration_type %>" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Frequency</label>
+        <input type="text" readonly="true" value="<%= @todo.frequency %>" class="form-control">
+      </div>
+      <div class="page-header">
+        <h2>Tasks</h2>
+      </div>
+      <ol>
+        <% @todo.tasks.each do |tk| %>
+          <li>
+            <b>Title</b>
+            <p><%= tk.title %></p>
+            <b>Description</b>
+            <p><%= tk.description %></p>
+          </li>
+        <% end %>
+      </ol>
+    </form>
+  </div>
+</div>

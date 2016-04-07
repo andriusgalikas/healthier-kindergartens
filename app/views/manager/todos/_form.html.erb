@@ -14,32 +14,32 @@
   <%= image_tag @todo.icon.file.thumb unless @todo.icon.nil? %>
   <div class="form-group">
     <%= f.fields_for :icon do |ff| %>
-      <%= ff.file_field :file %>
+      <%= ff.label 'Icon' %>
+      <%= ff.file_field :file, :class => 'form-control' %>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :iteration_type %><br>
-    <%= f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]} %>
+    <%= f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :frequency %><br>
-    <%= f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]} %>
+    <%= f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control' %>
   </div>
-  <h5>Tasks</h5>
-  <hr>
-  <div class="fields">
+  
+  <div class="page-header">
+    <h2>Tasks</h2>
+  </div>
+  <div id="tasks">
     <%= f.fields_for :tasks do |ff |%>
       <%= render partial: 'task_fields', locals: { f: ff } %>
     <% end %>
     <%= custom_link_to_add_fields "Add Task", f, :tasks %>
   </div>
-  <hr>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit 'Save', :class => 'btn btn-blue btn-block btn-large' %>
 <% end %>
