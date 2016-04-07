@@ -13,6 +13,8 @@
  *= require_self
  *= require normalize-css
  *= require 1100
+ += require header
+ += require footer
  *= require legacy/home
  *= require legacy/mission
  *= require legacy/standard
