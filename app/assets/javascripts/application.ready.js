@@ -9,12 +9,10 @@ $(document).ready(function()
         theme:'default',
         timepicker: false
     });
-    function getFormattedDate(date) {
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear().toString().slice(2);
-        return day + '-' + month + '-' + year;
-    }
+
+  $(".menu_icons").click(function(){
+    $(".submenu_toggle").toggleClass("dis_block") 
+  });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
@@ -26,5 +24,11 @@ function add_fields(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g")
     $(link).parent().before(content.replace(regexp, new_id));
+    $('.datepicker').datetimepicker({
+        formatDate: 'd-m-Y',
+        formatTime: '',
+        theme:'default',
+        timepicker: false
+    });
     return false;
 }

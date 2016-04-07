@@ -1,6 +1,6 @@
 <div class="fields">
   <%= f.text_field :name, placeholder: 'Child Name' %>
-  <%= f.text_field :birth_date, :class => 'datepicker' %>
+  <%= f.text_field :birth_date, :class => 'datepicker', placeholder: 'Date of Birth' %>
   <%= f.fields_for :profile_image do |profile_image| %>
     <%= profile_image.file_field :file %>
   <% end %>
