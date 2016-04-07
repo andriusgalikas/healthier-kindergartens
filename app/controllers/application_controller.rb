@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
     def subscribed_manager!
       unless current_user && current_user.manager? && current_user.subscribed?
-        redirect_to dashboard_url, alert: "You need to upgrade in order to access this feature."
+        redirect_to dashboard_url, alert: "You need to upgrade in order to access this feature"
       end
     end
 

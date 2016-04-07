@@ -1,6 +1,7 @@
 class Manager::SurveysController < ApplicationController
   layout 'dashboard'
   before_action -> { authenticate_role!(["manager"]) }
+  before_action :subscribed_manager!
 
   def index
     set_surveys

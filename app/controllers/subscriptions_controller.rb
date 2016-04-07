@@ -59,7 +59,7 @@ class SubscriptionsController < ApplicationController
 
     def validate_user_subscription
         unless current_user.subscription == @subscription
-            redirect_to dashboard_url, notice: 'You do not have access to this resource'
+            redirect_to dashboard_url, alert: 'You do not have access to this resource'
         end
     end
 
