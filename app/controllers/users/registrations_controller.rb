@@ -83,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up).push(:name, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]])
+    devise_parameter_sanitizer.for(:sign_up).push(:name, :department_id, user_daycare_attributes: [:daycare_id, :user_id], children_attributes: [:_destroy, :id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]])
   end
 
   def daycare_sign_up_params

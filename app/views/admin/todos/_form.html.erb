@@ -32,11 +32,11 @@
   </div>
   <h5>Tasks</h5>
   <hr>
-  <div id="tasks">
+  <div class="fields">
     <%= f.fields_for :tasks do |ff |%>
       <%= render partial: 'task_fields', locals: { f: ff } %>
     <% end %>
-    <%= link_to_add_fields "Add Task", f, :tasks %>
+    <%= custom_link_to_add_fields "Add Task", f, :tasks %>
   </div>
   <hr>
   <h5>Departments</h5>

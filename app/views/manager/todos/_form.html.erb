@@ -32,16 +32,12 @@
   </div>
   <h5>Tasks</h5>
   <hr>
-  <%= f.fields_for :tasks do |ff |%>
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= ff.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= ff.text_area :description %>
-    </div>
-  <% end %>
+  <div class="fields">
+    <%= f.fields_for :tasks do |ff |%>
+      <%= render partial: 'task_fields', locals: { f: ff } %>
+    <% end %>
+    <%= custom_link_to_add_fields "Add Task", f, :tasks %>
+  </div>
   <hr>
   <div class="actions">
     <%= f.submit %>

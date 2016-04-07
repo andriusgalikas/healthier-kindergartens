@@ -21,29 +21,12 @@
   </div>
 
   <h5>Children</h5>
-  <%= f.fields_for :children do |child|%>
-    <div class="field">
-      <%= child.label :name %><br>
-      <%= child.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= child.label :birth_date %><br>
-      <%= child.datetime_select :birth_date %>
-    </div>
-
-    <div class="form-group">
-      <%= child.fields_for :profile_image do |profile_image| %>
-        <%= profile_image.label 'Profile Image' %><br>
-        <%= profile_image.file_field :file %>
-      <% end %>
-    </div>
-
-    <div class="form-group">
-      <%= child.label :department %><br />
-      <%= child.collection_select :department_id, [], :id, :name, { prompt: true }, { :class => "department-select" } %>
-    </div>
-  <% end %>
+  <div class="fields">
+    <%= f.fields_for :children do |child|%>
+      <%= render partial: 'child_fields', locals: { f: child } %>
+    <% end %>
+    <%= custom_link_to_add_fields "Add Child", f, :children %>
+  </div>
   <hr>
 
   <div class="field">

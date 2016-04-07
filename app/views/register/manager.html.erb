@@ -40,7 +40,7 @@
     <%= daycare.fields_for :departments do |department| %>
       <%= render partial: 'department_fields', locals: { f: department } %>
     <% end %>
-    <%= link_to_add_fields "Add Department", daycare, :departments %>
+    <%= custom_link_to_add_fields "Add Department", daycare, :departments %>
   </div>
 
   

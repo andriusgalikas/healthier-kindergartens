@@ -23,12 +23,12 @@ class Admin::TodosController < AdminController
   def create
     set_departments
     @todo = current_user.todos.build(todo_params)
-    new_icon_attachment
     respond_to do |format|
       if @todo.save
         format.html { redirect_to admin_todos_url, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
+        new_icon_attachment
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end

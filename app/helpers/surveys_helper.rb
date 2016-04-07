@@ -45,6 +45,6 @@ module SurveysHelper
   private
 
   def __link_to_function(name, on_click_event, opts={})
-    link_to(name, '#', opts.merge(onclick: on_click_event))
+    link_to(name, 'javascript:void(0);', opts.merge(onclick: on_click_event))
   end
 end

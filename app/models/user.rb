@@ -51,5 +51,5 @@ class User < ActiveRecord::Base
 
     enum role: [:parentee, :worker, :manager, :admin]
 
-    accepts_nested_attributes_for :children, :user_daycare
+    accepts_nested_attributes_for :children, :user_daycare, allow_destroy: true
 end

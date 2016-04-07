@@ -18,12 +18,12 @@ class Manager::TodosController < ApplicationController
 
   def create
     @todo = current_user.daycare.local_todos.build(todo_params)
-    new_icon_attachment
     respond_to do |format|
       if @todo.save
         format.html { redirect_to dashboard_url, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
+        new_icon_attachment
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
@@ -68,6 +68,6 @@ class Manager::TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
     end
 end
