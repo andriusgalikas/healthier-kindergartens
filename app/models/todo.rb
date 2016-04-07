@@ -45,8 +45,7 @@ class Todo < ActiveRecord::Base
     enum iteration_type: [:single, :recurring]
     enum frequency: [:day, :week, :month, :year]
 
-    accepts_nested_attributes_for :tasks
-    accepts_nested_attributes_for :icon
+    accepts_nested_attributes_for :tasks, :icon
 
     def global?
         daycare_id.nil? ? true : false

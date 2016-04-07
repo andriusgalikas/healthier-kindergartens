@@ -36,12 +36,12 @@
   </div>
 
   <h5>Departments</h5>
-  <%= daycare.fields_for :departments do |department| %>
-      <div class="form-group">
-        <%= department.label :name %><br />
-        <%= department.text_field :name, :class => 'form-control' %>
-      </div>
+  <div id="departments">
+    <%= daycare.fields_for :departments do |department| %>
+      <%= render partial: 'department_fields', locals: { f: department } %>
     <% end %>
+    <%= link_to_add_fields "Add Department", daycare, :departments %>
+  </div>
 
   
 

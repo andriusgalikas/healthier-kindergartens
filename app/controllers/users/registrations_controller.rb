@@ -87,7 +87,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def daycare_sign_up_params
-    params.require(:daycare).permit(:name, :address_line1, :postcode, :country, :telephone, departments_attributes: [:name], user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]])
+    params.require(:daycare).permit(:name, :address_line1, :postcode, :country, :telephone, departments_attributes: [:_destroy, :name], user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]])
   end
 
   def set_daycares
