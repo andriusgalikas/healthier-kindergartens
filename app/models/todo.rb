@@ -35,6 +35,8 @@ class Todo < ActiveRecord::Base
     scope :available,                                                           -> { includes(:todo_completes).where(todo_completes: { id: nil } ) }
     scope :global,                                                              -> { where(daycare_id: nil) }
 
+    scope :search,                                              ->(query, ids, page, per_page_count, limit_count) { where(id: ids).where("title LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
     validates :title, :frequency, :user_id,                                     presence: true

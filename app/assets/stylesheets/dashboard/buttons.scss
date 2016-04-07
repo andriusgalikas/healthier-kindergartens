@@ -12,6 +12,7 @@
     border:0;
     text-align:center;
     cursor: pointer;
+    @include border-radius(5px);
 
         &.btn-green {
             background-color:$green;
@@ -33,11 +34,11 @@
                 }
         }
         &.btn-large {
-            padding:12px;
+            padding:12px 24px;
             font-size:1.1em;
         }
         &.btn-normal {
-            padding:10px;
+            padding:10px 20px;
             font-size:1em;
         }
         i {

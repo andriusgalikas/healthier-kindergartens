@@ -32,7 +32,10 @@ Rails.application.routes.draw do
 
     namespace :manager do
         resources :todos do
-            get :dashboard, on: :collection
+            collection do
+                get :dashboard
+                get :search
+            end
         end
         resources :surveys do
             get :dashboard, on: :collection

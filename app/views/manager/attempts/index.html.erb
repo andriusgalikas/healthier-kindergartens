@@ -1,14 +1,15 @@
-<div>
-  <h1>Attempts for <%= @survey.name %></h1>
-  <hr>
+<% content_for :page_title, "#{@survey.name} Attemps" %>
+<% content_for :previous_path, dashboard_manager_surveys_path %>
 
-  <ul>
-    <% @survey.attempts.each do |attempt| %>
-      <li>
-        <%= attempt.participant.name %><br />
-        <%= link_to 'Answers', manager_survey_attempt_path(@survey, attempt) %><br />
-      </li>
-    <% end -%>
-  </ul>
-
+<div class="row">
+    <div class="twelvecol">
+        <ol>
+            <% @survey.attempts.each do |attempt| %>
+                <li>
+                    <h3><%= attempt.participant.name %></h3>
+                    <%= link_to 'Answers', manager_survey_attempt_path(@survey, attempt), :class => 'btn btn-normal btn-green' %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </div>

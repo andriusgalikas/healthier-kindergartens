@@ -3,6 +3,12 @@
 
 <div class="row" id="todos">
     <div class="twelvecol">
+        <%= form_tag search_manager_todos_path, method: :get do %>
+            <div class="form-prefix">
+                <span><i class="icon-search"></i></span>
+                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control') %>
+            </div>
+        <% end %>
         <div class="page-header">
             <h2>Daycare Todos</h2>
         </div>

@@ -265,6 +265,7 @@ form
       width: auto !important;
       max-width: inherit;
       @include box-sizing(border-box);
+      font-size:1.2em;
         &:focus 
         {
           border: none;

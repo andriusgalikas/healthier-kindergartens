@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_up_path_for resource
-        resource.admin? ? admin_root_path : dashboard_path
+        if resource.admin? 
+            admin_root_path
+        elsif resource.manager?
+            invite_manager_daycares_path
+        else
+            dashboard_path
+        end
     end
 end
