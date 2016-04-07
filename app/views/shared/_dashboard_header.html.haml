@@ -1,0 +1,16 @@
+- if content_for? :page_title
+  .legacy-header.legacy
+    .hgt_auto
+      .header_top_row
+        = link_to (yield :previous_path) , :class => "btn-back" do
+          = image_tag "ar_left.png"
+        %span.page-title
+          = yield :page_title
+        %span.menu_icons
+          .submenu_toggle
+            %ul
+              %li
+                = link_to 'Dashboard', dashboard_path
+              - if user_signed_in?
+                %li
+                  = link_to 'Logout', destroy_user_session_path, method: :delete

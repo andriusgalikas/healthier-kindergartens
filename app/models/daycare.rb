@@ -40,6 +40,8 @@ class Daycare < ActiveRecord::Base
     validates :name, :address_line1, :postcode,
                 :country, :telephone,                   presence: true
 
+    validates :departments,                             presence: true
+
     accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true               
 
 

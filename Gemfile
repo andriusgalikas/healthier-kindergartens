@@ -82,3 +82,6 @@ gem 'faker'
 
 # surveys
 gem "survey", "~> 0.1"
+
+# date
+gem 'jquery-datetimepicker-rails'

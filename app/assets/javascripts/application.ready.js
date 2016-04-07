@@ -2,6 +2,19 @@ $(document).ready(function()
 {
     healthChildcare.app.departmentSelector();
     healthChildcare.app.multiInput();
+
+    $('.datepicker').datetimepicker({
+        formatDate: 'd-m-Y',
+        formatTime: '',
+        theme:'default',
+        timepicker: false
+    });
+    function getFormattedDate(date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear().toString().slice(2);
+        return day + '-' + month + '-' + year;
+    }
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

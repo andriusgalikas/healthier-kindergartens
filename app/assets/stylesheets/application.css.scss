@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require jquery.datetimepicker
  *= require normalize-css
  *= require 1100
  += require header
@@ -23,4 +24,6 @@
   *= require legacy/welcome
   *= require legacy/css
   *= require legacy/daycares
+  *= require legacy/common
+  *= require legacy/header
  */

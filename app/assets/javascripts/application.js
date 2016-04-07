@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require stripe
 //= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require jquery.datetimepicker
 //= require _healthChildcare
 //= require healthChildcare.app
 //= require application.ready

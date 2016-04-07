@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout 'dashboard'
   before_filter :configure_sign_up_params, only: [:create]
 
   def new

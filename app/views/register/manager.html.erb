@@ -1,83 +1,48 @@
-<h2>Manager Registration</h2>
+<% content_for :page_title, "Manager Registration" %>
+<% content_for :previous_path, getting_started_path %>
+<div class="css legacy-common">
+  <div class="row common">
+    <%= form_for @daycare, url: daycare_registration_path, html: { method: :post } do |daycare| %>
+      <% if @daycare.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@daycare.errors.count, "error") %> prohibited this daycare from being saved:</h2>
 
-<%= form_for @daycare, url: daycare_registration_path, html: { method: :post } do |daycare| %>
-<% if @daycare.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@daycare.errors.count, "error") %> prohibited this daycare from being saved:</h2>
-
-      <ul>
-      <% @daycare.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @daycare.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <h5>Daycare</h5>
-  <div class="form-group">
-    <%= daycare.label :name %><br />
-    <%= daycare.text_field :name, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= daycare.label :address_line1 %><br />
-    <%= daycare.text_field :address_line1, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= daycare.label :postcode %><br />
-    <%= daycare.text_field :postcode, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= daycare.label :country %><br />
-    <%= daycare.text_field :country, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= daycare.label :telephone %><br />
-    <%= daycare.text_field :telephone, :class => 'form-control' %>
-  </div>
+      <h4>Daycare</h4>
+      <%= daycare.text_field :name, placeholder: 'Daycare Name' %>
+      <%= daycare.text_field :address_line1, placeholder: 'Address'%>
+      <%= daycare.text_field :postcode, placeholder: 'Postcode' %>
+      <%= daycare.text_field :country, placeholder: 'Country' %>
+      <%= daycare.text_field :telephone, placeholder: 'Telephone'%>
 
-  <h5>Departments</h5>
-  <div id="departments">
-    <%= daycare.fields_for :departments do |department| %>
-      <%= render partial: 'department_fields', locals: { f: department } %>
+      <h4>Departments</h4>
+      <div id="departments">
+        <%= daycare.fields_for :departments do |department| %>
+          <%= render partial: 'department_fields', locals: { f: department } %>
+        <% end %>
+        <%= custom_link_to_add_fields "Add Department", daycare, :departments %>
+      </div>
+
+      <h4>Account</h4>
+      <%= daycare.fields_for :user_daycares do |user_daycare|%>
+        <%= user_daycare.fields_for :user do |user| %>
+          <%= user.email_field :name, placeholder: 'Name' %>
+          <%= user.email_field :email, autofocus: true, placeholder: 'Email' %>
+          <%= user.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= user.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password Confirmation' %>
+        <% end %>
+      <% end %>
+      <%= daycare.submit "Register", :class => "btn btn-primary col-md-12" %>
     <% end %>
-    <%= custom_link_to_add_fields "Add Department", daycare, :departments %>
   </div>
-
-  
-
-  <h5>Account</h5>
-  <%= daycare.fields_for :user_daycares do |user_daycare|%>
-
-    <%= user_daycare.fields_for :user do |user| %>
-    <div class="field">
-      <%= user.label :name %><br />
-      <%= user.email_field :name, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= user.label :email %><br />
-      <%= user.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
-    <%= user.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= user.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= user.label :password_confirmation %><br />
-    <%= user.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-  <% end %>
-  <% end %>
-
-
-  
-
-  <div class="actions">
-    <%= daycare.submit "Sign up" %>
-  </div>
-<% end %>
+</div>
