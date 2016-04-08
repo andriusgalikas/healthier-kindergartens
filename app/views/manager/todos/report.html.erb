@@ -1,0 +1,40 @@
+
+<% content_for :page_title, "Report #{@todo.title} Todo" %>
+<% content_for :previous_path, set_date_range_manager_todo_path(@todo) %>
+
+<div class="row todo-report-info" id="todo">
+    <div class="twelvecol">
+        <div class="icon">
+            <%= image_tag @todo.icon.file.thumb %>
+        </div>
+        <div class="info">
+            <h2><%= @todo.title.titleize %></h2>
+            <p><b>Start Date/Time:</b> <%= params[:start_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p') %></p>
+            <p><b>End Date/Time:</b> <%= params[:end_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p') %></p>
+        </div>
+    </div>
+</div>
+<% if @todo_completes.empty? %>
+    <div class="row">
+        <div class="alert alert-warning">
+            <i class="icon-warning"></i>
+            None of your parents or workers have started or completed this todo yet within the set of date parameters provided
+        </div>
+    </div>
+<% end %>
+<% @todo.tasks.each_with_index do |task, index| %>
+    <div class="row" class="todo-report">
+        <div class="sixcol">
+            <h3><%= task.title %></h3>
+            <p><%= task.description %></p>
+        </div>
+        <div class="sixcol last">
+            <%= TodoReporter.new(todo_completes: @todo_completes, task_id: task.id).percentages %>
+        </div>
+    </div>
+    <% unless index == (@todo.tasks.size - 1) %>
+        <div class="row">
+            <hr>
+        </div>
+    <% end %>
+<% end %>

@@ -23,6 +23,8 @@
                                 <%= image_tag todo.icon.file.thumb %>
                             </div>
                             <span><%= todo.title %></span>
+                            <%= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo' %>
+                            <%= link_to 'Report', set_date_range_manager_todo_path(@todo), :class => 'btn btn-normal btn-orange', id: 'report-todo' %>
                         <% end %>
                     </li>
                 <% end %>

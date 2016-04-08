@@ -10,6 +10,11 @@ $(document).ready(function()
         timepicker: false
     });
 
+    $('.datetimepicker').datetimepicker({
+        formatDate: 'd-m-Y',
+        theme:'default'
+      });
+
   $(".menu_icons").click(function(){
     $(".submenu_toggle").toggleClass("dis_block") 
   });

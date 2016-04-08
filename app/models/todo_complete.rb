@@ -13,10 +13,13 @@
 
 class TodoComplete < ActiveRecord::Base
     has_many :task_completes,                   class_name: 'TodoTaskComplete', dependent: :destroy
+    has_many :tasks,                            through: :task_completes, source: :todo_task
     belongs_to :submitter,                      class_name: 'User'
     belongs_to :todo
 
     scope :incomplete,                          -> { where.not(id: nil).where(completion_date: nil) }
+
+    scope :generate_report,                     -> (ids, start_date, end_date) { where(todo_id: ids).where('created_at > ?', start_date).where('created_at < ?', end_date) }
 
     validates :submitter_id, :todo_id,          presence: true
 

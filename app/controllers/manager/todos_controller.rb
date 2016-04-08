@@ -1,7 +1,7 @@
 class Manager::TodosController < ApplicationController
   layout 'dashboard'
   before_action -> { authenticate_role!(["manager"]) }
-  before_action :subscribed_manager!
+  # before_action :subscribed_manager!
 
   def search
     set_query
@@ -59,6 +59,16 @@ class Manager::TodosController < ApplicationController
     end
   end
 
+  def set_date_range
+    set_global_todo
+  end
+
+  def report
+    set_global_todo
+    set_accessible_todos
+    set_report_todo_completes
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
@@ -84,5 +94,9 @@ class Manager::TodosController < ApplicationController
 
     def set_accessible_todos
       @ids = (current_user.global_todos + current_user.local_todos).map(&:id)
+    end
+
+    def set_report_todo_completes
+      @todo_completes = TodoComplete.generate_report(@ids, params[:start_date], params[:end_date])
     end
 end

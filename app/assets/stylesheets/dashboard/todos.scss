@@ -48,7 +48,7 @@
 }
 #todo
 {
-    #edit-todo
+    #edit-todo, #report-todo
     {
         float:right;
     }
@@ -88,6 +88,19 @@
             {
                 margin-bottom:12px;
             }
+        }
+    }
+    &.todo-report-info
+    {  
+        overflow: hidden;
+
+        .icon, .info
+        {
+            float:left;
+        }
+        .icon
+        {
+            margin-right: 20px;
         }
     }
 }

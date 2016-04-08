@@ -44,6 +44,10 @@ Rails.application.routes.draw do
                 get :dashboard
                 get :search
             end
+            member do
+                get :set_date_range
+                get :report
+            end
         end
         resources :surveys do
             get :dashboard, on: :collection

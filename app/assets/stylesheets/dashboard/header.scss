@@ -13,6 +13,16 @@ header
     .onecol
     {
         overflow: hidden;
+
+        &.last
+        {
+            img
+            {
+                height:22px;
+                width:31px;
+                margin: 29px 0;
+            }
+        }
     }
 
     i
@@ -36,7 +46,9 @@ header
 
         &.previous
         {
-            
+            display: block;
+            height: 62px;
+            margin: 9px 0;
             text-decoration: none;
         }
     }

@@ -2,14 +2,14 @@
     <div class="row">
         <div class="onecol">
             <%= link_to (yield :previous_path), :class => 'previous' do %>
-                <i class="icon-arrow-left"></i>
+                <%= image_tag "ar_left.png" %>
             <% end %>
         </div>
         <div class="tencol">
             <h2><%= yield :page_title %></h2>
         </div>
         <div class="onecol last">
-            <i class="icon-menu"></i>
+            <%= image_tag 'menu_icons.png' %>
         <div>
     </div>
 </header>

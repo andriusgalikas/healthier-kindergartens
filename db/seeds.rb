@@ -8,10 +8,11 @@ require 'faker'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 p "Creating daycares and departments..."
 2.times do
-    daycare = Daycare.create(name: Faker::Company.name, address_line1: Faker::Address.street_address, postcode: Faker::Address.zip_code, country: Faker::Address.country, telephone: Faker::PhoneNumber.phone_number)
+    daycare = Daycare.new(name: Faker::Company.name, address_line1: Faker::Address.street_address, postcode: Faker::Address.zip_code, country: Faker::Address.country, telephone: Faker::PhoneNumber.phone_number)
     2.times do
-        daycare.departments.create(name: "Department-#{Faker::Lorem.word}")
+        daycare.departments.build(name: "Department-#{Faker::Lorem.word}")
     end
+    daycare.save!
 end
 
 p "Create users..."
@@ -39,6 +40,21 @@ p "Creating example todos..."
     3.times do
         todo.tasks.create(title: "Task-#{Faker::Lorem.word}", description: Faker::Lorem.sentence)
     end
+end
+
+p "Creating example todo completes..."
+Todo.all.each do |todo|
+    15.times do
+        todo_complete = todo.todo_completes.build(submitter_id: worker.id)
+        todo_complete.save(validate: false)
+        todo_complete.task_completes.each do |task|
+            task.update_column(:result, rand(0..2))
+            task.update_column(:completion_date, Faker::Date.between(3.month.ago, Date.today)) if task.pass?
+        end
+    end
+end
+TodoComplete.all.each do |todo_complete|
+    todo_complete.update_column(:created_at, Faker::Date.between(3.month.ago, Date.today))
 end
 
 p "Assigning todos to departments..."

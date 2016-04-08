@@ -1,0 +1,25 @@
+<% content_for :page_title, "Report #{@todo.title} Todo" %>
+<% content_for :previous_path, manager_todo_path(@todo) %>
+
+<div class="row">
+    <div class="twelvecol">
+        <h3>Select a date range for your <b><%= @todo.title.titleize %></b> Todo report:</h3>
+        <%= form_tag report_manager_todo_path, method: :get do %>
+            <div class="form-group">
+                <%= label_tag :start_date %>
+                <div class="form-prefix">
+                    <span><i class="icon-calendar"></i></span>
+                    <%= text_field_tag :start_date, params[:start_date], :class => 'datetimepicker form-control' %>
+                </div>
+            </div>
+            <div class="form-group">
+                <%= label_tag :end_date %>
+                <div class="form-prefix">
+                    <span><i class="icon-calendar"></i></span>
+                    <%= text_field_tag :end_date, params[:end_date], :class => 'datetimepicker form-control' %>
+                </div>
+            </div>
+            <%= submit_tag "Generate Report", :class => 'btn btn-green btn-large btn-block' %>
+        <% end %>
+    </div>
+</div>
