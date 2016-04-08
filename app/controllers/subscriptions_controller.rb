@@ -24,7 +24,6 @@ class SubscriptionsController < ApplicationController
     end
 
     def complete
-        set_plan
         set_subscription
         validate_user_subscription
     end

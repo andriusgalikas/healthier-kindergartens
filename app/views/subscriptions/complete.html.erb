@@ -1,1 +1,19 @@
-<h1>Subscription complete for <%= @plan.name %></h1>
+<div class="container">
+</div>
+<div id="legacy-upgrade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>Thank your for subscribing to our <%= @subscription.plan.name %> plan</h2>
+                <p>We have sent an email confirmation to <%= @subscription.user.email %></p>
+                <p>You can now access some great new features which you can share with your parents and workers in your Daycare, such as:</p>
+                <ul>
+                    <li>Todo Management</li>
+                    <li>Online Training</li>
+                    <li>Survey Management</li>
+                </ul>
+                <p>You can get started now by going to your <%= link_to 'dashboard', welcome_path %></p>
+            </div>  
+        </div>
+    </div>
+</div>

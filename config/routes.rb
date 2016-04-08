@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
     
     
-    devise_for :users, skip: [:registrations, :sessions]
+    devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do
         # session
         get 'login',                        to: 'users/sessions#new',           as: 'new_user_session'
         post 'login',                       to: 'users/sessions#create',        as: 'user_session'
         delete 'logout',                    to: 'users/sessions#destroy',       as: 'destroy_user_session'
+
+        # passwords
+        get 'password/new',                 to: 'users/passwords#new',          as: 'new_user_password'
+        get 'password/edit',                to: 'users/password#edit',          as: 'edit_user_password'
+        patch 'password',                   to: 'users/passwords#update',       as: 'user_password'
+        post 'password',                    to: 'users/passwords#create'
 
         # registrations
         get ':role/register',               to: 'users/registrations#new',      as: 'new_user_registration'
@@ -29,6 +35,8 @@ Rails.application.routes.draw do
         get :complete, on: :member
       end
     end
+
+    get 'complete', to: 'subscriptions#complete'
 
     namespace :manager do
         resources :todos do
