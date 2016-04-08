@@ -36,12 +36,15 @@ function removeField(link) {
     $(link).prev("input[type=hidden]").val("true");
     tag = $(link).closest("li")
     tag.hide("fade in").addClass("deleted");
-  }
+}
 
-  // add attachment field
-  function addField(link, association, content) {
+function addField(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g");
     var html = $(content.replace(regexp, new_id)).hide();
     html.appendTo($(link).closest("div.field").find("ol").first()).slideDown("slow");
-  }
+}
+function resizeIframe(obj) {
+    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+}

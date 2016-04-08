@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard getting_started ).each do |page|
+    %w( about mission path standard getting_started welcome infection instruction ).each do |page|
         get page, to: "pages##{page}"
     end
 
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
     end
     resources :todo_task_completes, only: :update
 
-    resources :trainings, only: [:index, :show]
+    resources :trainings, only: :show
 
     namespace :admin do
         root to: 'dashboard#index'

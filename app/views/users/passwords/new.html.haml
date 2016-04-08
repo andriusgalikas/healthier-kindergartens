@@ -1,0 +1,11 @@
+.row.login
+  .col-xs-10.col-xs-offset-1.outer
+    .main-heading Forgot your password?
+    .wrapper
+      = image_tag 'Daycare-logo.gif', :class => 'logo'
+      = form_for(resource, as: resource_name, url: password_url(resource_name, :subdomain => @subdomain), html: { method: :post }) do |f|
+        = devise_error_messages!
+        = f.email_field :email, autofocus: true, :class => 'user_icon', placeholder: t('email'), required: true
+        = f.submit "Send me reset password instructions", :class => "btn btn-primary #{@subdomain}-bg #{@subdomain}-border col-md-12"
+
+
