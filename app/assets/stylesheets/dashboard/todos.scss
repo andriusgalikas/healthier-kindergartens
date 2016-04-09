@@ -48,6 +48,27 @@
 }
 #todo
 {
+    ol#complete-task
+    {
+        margin-bottom:40px;
+
+        li
+        {
+            position: relative;
+
+            .icon-checkmark
+            {
+                color: $green;
+                font-size:2em;
+            }
+            .icon-checkmark, a
+            {
+                position: absolute;
+                top:0px;
+                right:0px;
+            }
+        }
+    }
     #edit-todo, #report-todo
     {
         float:right;

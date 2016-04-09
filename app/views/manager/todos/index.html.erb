@@ -18,14 +18,11 @@
             <ul>
                 <% current_user.local_todos.each do |todo| %>
                     <li>
-                        <%= link_to manager_todo_path(todo) do %>
-                            <div>
-                                <%= image_tag todo.icon.file.thumb %>
-                            </div>
-                            <span><%= todo.title %></span>
-                            <%= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo' %>
-                            <%= link_to 'Report', set_date_range_manager_todo_path(@todo), :class => 'btn btn-normal btn-orange', id: 'report-todo' %>
-                        <% end %>
+                        <div>
+                            <%= image_tag todo.icon.file.thumb %>
+                        </div>
+                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
                     </li>
                 <% end %>
             </ul>
@@ -39,12 +36,11 @@
             <ul>
                 <% current_user.global_todos.each do |todo| %>
                     <li>
-                        <%= link_to manager_todo_path(todo) do %>
-                            <div>
-                                <%= image_tag todo.icon.file.thumb %>
-                            </div>
-                            <span><%= todo.title %></span>
-                        <% end %>
+                        <div>
+                            <%= image_tag todo.icon.file.thumb %>
+                        </div>
+                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
                     </li>
                 <% end %>
             </ul>

@@ -10,6 +10,8 @@ module HasTodos
         has_many :completed_todo_completes,                          -> { where.not(completion_date: nil) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'
         has_many :completed_recurring_todo_completes,                -> { where.not(completion_date: nil).includes(:todo).where(todos: { iteration_type: 1} ) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'
         has_many :incomplete_todo_completes,                         -> { where.not(id: nil).where(completion_date: nil) }, class_name: 'TodoComplete', foreign_key: 'submitter_id'
+        has_many :completed_todos,                                  -> { includes(:todo_completes).where.not(todo_completes: { completion_date: nil } ) }, class_name: 'Todo'
+        has_many :incomplete_todos,                                 -> { includes(:todo_completes).where.not(todo_completes: { id: nil } ).where(todo_completes: { completion_date: nil } ) }, class_name: 'Todo'
 
         # Manager/admin relations
         has_many :local_todos,                                      through: :daycare

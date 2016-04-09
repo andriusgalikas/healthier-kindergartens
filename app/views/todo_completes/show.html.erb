@@ -1,82 +1,43 @@
 <% content_for :page_title, @todo.title.titleize %>
-<% content_for :previous_page, @todo.title.titleize %>
-    <div class="mid_wrapp padd34">
-      <div class="row todo-panel">
-        <div class="col-sm-12 field">
-          <div class="col-sm-12">
-            <%= image_tag @todo.icon.file.square, :class => "image_center" %>
-          </div>
-        </div>
-        <div class="col-sm-12" id="tasks">
-          <% @todo_complete.task_completes.each_with_index do |tkc, index| %>
-              <div class="col-sm-12 field">
-                <div class="col-sm-12">
-                  <div class="col-sm-12">
-                    <label>
-                      <%= t('todo.create_todo.key-task') %>
-                    </label>
-                  </div>
-                </div>
-                <div class="col-sm-10">
-                  <div class="col-sm-11 no-padding">
-                    <div class="col-sm-12 field key-task-control">
-                      <div class="input-group">
-                        <label class="input-group-addon addon-left">
-                          <%= index+1 %>
-                        </label>
-                        <p class="show-txt">
-                          <%= tkc.todo_task.title %><br>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-sm-10">
-                      <p class="show-txt">
-                        <%= tkc.todo_task.description %>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2">
-                  <% unless tkc.pass? %>
-                    <%= link_to 'Complete', todo_task_complete_path(tkc), method: :patch %>
-                  <% end %>
-                </div>
-              </div>
-          <% end %>
-</div>
-</div>
-</div>
+<% content_for :previous_path, todos_path %>
 
-<!-- <h2><%= @todo.title %></h2>
-Iteration Type: <%= @todo.iteration_type %><br>
-Frequency: <%= @todo.frequency %><br>
-Started todo: <%= @todo_complete.created_at %><br>
-Todo status: <%= @todo_complete.complete? ? "Complete" : "In Progress" %>
-<h3>Tasks</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Result</th>
-      <th>Completion date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todo_complete.task_completes.each do |tkc| %>
-      <tr>
-        <td><%= tkc.todo_task.title %></td>
-        <td><%= tkc.todo_task.description %></td>
-        <td><%= tkc.result %></td>
-        <td><%= tkc.completion_date %></td>
-        <td>
-          <% unless tkc.pass? %>
-            <%= link_to 'Complete', todo_task_complete_path(tkc), method: :patch %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> -->
+<div class="row" id="todo">
+  <div class="twelvecol">
+    <div class="icon">
+      <%= image_tag @todo.icon.file.thumb %>
+    </div>
+    <form>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" readonly="true" value="<%= @todo.title %>" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Iteration Type</label>
+        <input type="text" readonly="true" value="<%= @todo.iteration_type %>" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Frequency</label>
+        <input type="text" readonly="true" value="<%= @todo.frequency %>" class="form-control">
+      </div>
+      <div class="page-header">
+        <h2>Tasks</h2>
+      </div>
+      <ol id="complete-task">
+        <% @todo_complete.task_completes.each do |tk| %>
+          <li>
+            <b>Title</b>
+            <p><%= tk.todo_task.title %></p>
+            <b>Description</b>
+            <p><%= tk.todo_task.description %></p>
+            <% unless tk.pass? %>
+              <%= link_to 'Complete', todo_task_complete_path(tk), method: :patch, :class => 'btn btn-blue btn-normal' %>
+            <% else %>
+              <i class="icon-checkmark"></i>
+            <% end %>
+          </li>
+          
+        <% end %>
+      </ol>
+    </form>
+  </div>
+</div>

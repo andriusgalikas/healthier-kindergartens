@@ -1,9 +1,9 @@
 header
 {
-    height:80px;
+    height:70px;
     background-color: $blue;
     color:#fff;
-    line-height: 80px;
+    line-height: 70px;
     margin-bottom:30px;
 
     .tencol, .onecol
@@ -20,7 +20,7 @@ header
             {
                 height:22px;
                 width:31px;
-                margin: 29px 0;
+                margin: 24px 0;
             }
         }
     }
@@ -50,6 +50,12 @@ header
             height: 62px;
             margin: 9px 0;
             text-decoration: none;
+
+            img 
+            {
+                width:19px;
+                height:31px;
+            }
         }
     }
 }

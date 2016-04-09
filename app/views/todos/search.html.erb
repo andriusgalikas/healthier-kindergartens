@@ -1,5 +1,5 @@
 <% content_for :page_title, "Search Todo" %>
-<% content_for :previous_path, manager_todos_path %>
+<% content_for :previous_path, todos_path %>
 
 <div class="row" id="todos">
     <div class="twelvecol">
@@ -16,7 +16,6 @@
                             <%= image_tag todo.icon.file.thumb %>
                         </div>
                         <span><%= truncate(todo.title, length: 15) %></span>
-                        <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
                     </li>
                 <% end %>
             </ul>

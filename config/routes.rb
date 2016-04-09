@@ -65,7 +65,8 @@ Rails.application.routes.draw do
         resources :attempts, only: [:new, :create], controller: 'surveys/attempts'
     end
 
-    resources :todos, only: [] do
+    resources :todos, only: [:index] do
+        get :search, on: :collection
         resources :todo_completes, only: [:show, :create]
     end
     resources :todo_task_completes, only: :update

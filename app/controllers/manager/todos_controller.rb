@@ -93,7 +93,7 @@ class Manager::TodosController < ApplicationController
     end
 
     def set_accessible_todos
-      @ids = (current_user.global_todos + current_user.local_todos).map(&:id)
+      @ids = (current_user.completed_todos + current_user.incomplete_todos + current_user.available_todos).map(&:id)
     end
 
     def set_report_todo_completes
