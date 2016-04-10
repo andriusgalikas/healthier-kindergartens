@@ -6,6 +6,11 @@ header
     line-height: 70px;
     margin-bottom:30px;
 
+    .row
+    {
+        overflow: inherit;
+    }
+
     .tencol, .onecol
     {
         text-align: center;

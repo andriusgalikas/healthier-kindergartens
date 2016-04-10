@@ -1,4 +1,7 @@
 <div class="fields">
-    <%= f.text_field :name, placeholder: 'Department Name' %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => 'form-control' %>
+    </div>
     <%= custom_link_to_remove_fields "Remove", f %>
 </div>

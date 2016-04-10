@@ -58,3 +58,71 @@ p
 {
     color: $red;
 }
+
+body
+{
+    &.worker
+    {
+        header
+        {
+            background-color: $orange;
+
+            .dropdown
+            {
+                ul
+                {
+                    li
+                    {
+                        &:hover
+                        {
+                            background-color: $orange !important;
+                        }
+                        a
+                        {
+                            color: $orange;
+                        }
+                    }
+                }
+            }
+        }
+        form
+        {
+            input[type=submit]
+            {
+                background-color: $orange;
+            }
+        }
+    }
+    &.parentee
+    {
+        header
+        {
+            background-color: $purple;
+
+            .dropdown
+            {
+                ul
+                {
+                    li
+                    {
+                        &:hover
+                        {
+                            background-color: $purple !important;
+                        }
+                        a
+                        {
+                            color: $purple;
+                        }
+                    }
+                }
+            }
+        }
+        form
+        {
+            input[type=submit]
+            {
+                background-color: $purple;
+            }
+        }
+    }
+}

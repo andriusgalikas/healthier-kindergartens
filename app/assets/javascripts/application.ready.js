@@ -15,7 +15,9 @@ $(document).ready(function()
         formatDate: 'd-m-Y',
         theme:'default'
       });
-
+    // $(".previewer").on('change', function(){
+    //     readURL(this);
+    // });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
@@ -51,3 +53,13 @@ function resizeIframe(obj) {
     obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 }
+// function readURL(input) {
+//     if (input.files && input.files[0]) 
+//     {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//           $('.img-preview-container img').attr('src', e.target.result);
+//         }
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }

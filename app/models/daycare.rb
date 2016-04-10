@@ -45,6 +45,8 @@ class Daycare < ActiveRecord::Base
 
     validates :departments,                             presence: true
 
+    scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+
     accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true               
 
 

@@ -21,6 +21,12 @@ Rails.application.routes.draw do
         post ':role/register_daycare',      to: 'users/registrations#daycare',  as: 'daycare_registration'
     end
 
+    # custom registration routes
+    scope 'worker', controller: 'users/workers' do
+        get :select_daycare, as: 'worker_select_daycare'
+        get :select_department, as: 'worker_select_department'
+    end
+
     root to: 'pages#home'
 
     %w( about mission path standard getting_started welcome infection instruction ).each do |page|
@@ -87,7 +93,7 @@ Rails.application.routes.draw do
     end
 
     namespace :api, constraints: { format: 'json' } do
-        resources :daycares, only: [] do
+        resources :daycares, only: [:index] do
             resources :departments, only: :index
         end
     end

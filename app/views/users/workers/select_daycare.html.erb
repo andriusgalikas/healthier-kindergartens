@@ -1,0 +1,27 @@
+<% content_for :page_title, "Worker Registration" %>
+<% content_for :previous_path, getting_started_path %>
+<%= content_for :color_code, 'worker' %>
+<div class="row select-daycare">
+    <div class="twelvecol">
+        <h3>Search and select the Daycare which you currently work for:</h3>
+        <%= form_tag worker_select_daycare_path, method: :get do %>
+            <div class="form-prefix">
+                <span><i class="icon-search"></i></span>
+                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control') %>
+            </div>
+        <% end %>
+        <% @daycares.each do |daycare| %>
+            <div class="row item">
+                <div class="tencol">
+                    <h3><%= daycare.name %></h3>
+                    <p><%= daycare.address_line1 %></p>
+                    <p><%= daycare.postcode %></p>
+                    <p><%= daycare.telephone %></p>
+                </div>
+                <div class="twocol last">
+                    <%= link_to 'Select', worker_select_department_path(daycare_id: daycare.id), :class => 'btn btn-green btn-normal btn-block' %> 
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
