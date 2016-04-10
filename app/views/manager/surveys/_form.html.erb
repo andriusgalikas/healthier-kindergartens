@@ -25,13 +25,13 @@
   <div class="page-header">
     <h2>Questions</h2>
   </div>
-  <div class="questions field">
+  <div id="questions" class="multi-field field">
     <ol>
       <%= f.fields_for :questions do |builder| %>
           <%= render "question_fields", :f => builder %>
       <% end %>
     </ol>
-    <%= link_to_add_field "Add a new Question", f, :questions %>
+    <%= link_to_add_field "Add Question", f, :questions %>
   </div>
   <%= f.submit 'Save', :class => 'btn btn-blue btn-large btn-block' %>
 <% end -%>

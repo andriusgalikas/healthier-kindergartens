@@ -1,7 +1,7 @@
 module SurveysHelper
   def link_to_remove_field(name, f)
     f.hidden_field(:_destroy) +
-    __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach")
+    __link_to_function(raw(name), "removeField(this)", 'red', :id =>"remove-attach")
   end
 
   def new_survey
@@ -37,14 +37,12 @@ module SurveysHelper
     fields = f.fields_for(association, new_object,:child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    __link_to_function(name, "addField(this, \"#{association}\", \"#{escape_javascript(fields)}\")",
-    :id=>"add-attach",
-    :class=>"btn btn-small btn-info")
+    __link_to_function(name, "addField(this, \"#{association}\", \"#{escape_javascript(fields)}\")", 'green', id: "add-attach")
   end
 
   private
 
-  def __link_to_function(name, on_click_event, opts={})
-    link_to(name, 'javascript:void(0);', opts.merge(onclick: on_click_event))
+  def __link_to_function name, on_click_event, button_color, opts={}
+    link_to(name, 'javascript:void(0);', opts.merge(onclick: on_click_event, class: "btn btn-#{button_color} btn-normal"))
   end
 end
