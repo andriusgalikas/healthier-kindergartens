@@ -1,0 +1,9 @@
+<% content_for :page_title, "Edit Survey Subject" %>
+<% content_for :previous_path, manager_subject_path(@survey) %>
+
+<div class="row">
+    <div class="twelvecol">
+        <%= render partial: 'form', locals: { url: manager_subject_path } %>
+    </div>
+</div>
+

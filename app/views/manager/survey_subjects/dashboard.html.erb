@@ -1,15 +1,15 @@
-<% content_for :page_title, "Surveys Dashboard" %>
+<% content_for :page_title, "Survey Subject Dashboard" %>
 <% content_for :previous_path, dashboard_path %>
 
 <div id="main-menu">
     <div class="row">
         <div class="eightcol">
             <div class="menu-items">
-                <%= link_to new_manager_subject_survey_path(@subject), :class => 'create' do %>
+                <%= link_to new_manager_subject_path, :class => 'create' do %>
                     <%= image_tag 'create.png' %>
                     <span>Create</span>
                 <% end %>
-                <%= link_to manager_subject_surveys_path(@subject), :class => 'access' do %>
+                <%= link_to manager_subjects_path, :class => 'access' do %>
                     <%= image_tag 'view.png' %>   
                     <span>Access</span>
                 <% end %>

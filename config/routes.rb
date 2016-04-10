@@ -55,9 +55,11 @@ Rails.application.routes.draw do
                 get :report
             end
         end
-        resources :surveys do
+        resources :survey_subjects, as: 'subjects', path: 'subjects' do
             get :dashboard, on: :collection
-            resources :attempts, only: [:show, :index]
+            resources :surveys do
+                resources :attempts, only: [:show, :index]
+            end
         end
         resources :daycares, only: [] do
             collection do

@@ -1,0 +1,28 @@
+<%= form_for @subject, url: url do |f| %>
+  <% if f.object.errors.messages.any? %>
+    <ul>
+      <% f.object.errors.messages.each_pair do |field, msg| %>
+        <li>
+          <%= "#{field} - #{msg}" %>
+        </li>
+      <% end -%>
+    </ul>
+  <% end -%>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, :class => 'form-control' %>
+  </div>
+  <%= image_tag @subject.icon.file.thumb unless @subject.icon.nil? %>
+  <div class="form-group">
+    <%= f.fields_for :icon do |ff| %>
+      <%= ff.label 'Icon' %>
+      <%= ff.file_field :file, :class => 'form-control' %>
+    <% end %>
+  </div>
+  <%= f.submit 'Save', :class => 'btn btn-blue btn-large btn-block' %>
+<% end -%>
