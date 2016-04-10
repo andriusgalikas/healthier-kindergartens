@@ -18,3 +18,4 @@
 //= require _healthChildcare
 //= require healthChildcare.app
 //= require application.ready
+//= require chart

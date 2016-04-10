@@ -125,3 +125,16 @@
         }
     }
 }
+.todo-report
+{
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    .sixcol
+    {
+        &.last
+        {
+            text-align: center;
+        }
+    }
+}

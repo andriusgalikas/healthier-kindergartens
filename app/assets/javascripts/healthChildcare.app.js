@@ -25,5 +25,13 @@ healthChildcare.app =
     multiInput: function()
     {
         $('.tagsinput').tagsinput();
+    },
+
+    toggleMenu: function()
+    {
+        $('.dropdown').click(function()
+        {
+            $(this).toggleClass('open');
+        });
     }
 }

@@ -10,17 +10,59 @@ header
     {
         text-align: center;
     }
-    .onecol
+    .dropdown
     {
-        overflow: hidden;
+        position: relative;
+        right: 0;
+        background-image: image-url('menu_icons.png');
+        height:22px;
+        width:31px;
+        margin:24px 0;
+        cursor: pointer;
 
-        &.last
+        &.open > ul.dropdown-menu
         {
-            img
+            display: block;
+        }
+
+        ul.dropdown-menu
+        {
+            position: absolute;
+            top: 46px;
+            right: 0;
+            z-index: 1000;
+            display: none;
+            float: right;
+            min-width: 160px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-size: 14px;
+            background-color: #fff;
+            background-clip: padding-box;
+
+            li
             {
-                height:22px;
-                width:31px;
-                margin: 24px 0;
+                padding:5px;
+                height:50px;
+                line-height: 40px;
+
+                a
+                {
+                    height:100%;
+                    width:100%;
+                    color: $blue;
+                }
+
+                &:hover
+                {
+                    background-color: $blue;
+
+                    a 
+                    {
+                        color:#fff;
+                    }
+                }
             }
         }
     }

@@ -21,6 +21,9 @@ class Daycare < ActiveRecord::Base
     has_many :workers,                                  -> { (where(role: 1)) }, through: :user_daycares, source: :user
     has_many :managers,                                 -> { (where(role: 2)) }, through: :user_daycares, source: :user
 
+    has_many :survey_subjects
+    has_many :surveys,                                  through: :survey_subjects
+
     # Dashboard relations
     has_many :local_todos,                              class_name: 'Todo'
 

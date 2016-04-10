@@ -2,6 +2,7 @@ $(document).ready(function()
 {
     healthChildcare.app.departmentSelector();
     healthChildcare.app.multiInput();
+    healthChildcare.app.toggleMenu();
 
     $('.datepicker').datetimepicker({
         formatDate: 'd-m-Y',
@@ -15,9 +16,6 @@ $(document).ready(function()
         theme:'default'
       });
 
-  $(".menu_icons").click(function(){
-    $(".submenu_toggle").toggleClass("dis_block") 
-  });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

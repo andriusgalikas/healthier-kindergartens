@@ -9,7 +9,12 @@
             <h2><%= yield :page_title %></h2>
         </div>
         <div class="onecol last">
-            <%= image_tag 'menu_icons.png' %>
+            <div class="dropdown">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><%= link_to 'Dashboard', welcome_path %></li>
+                    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                </ul>
+            </div>
         <div>
     </div>
 </header>
