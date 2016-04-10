@@ -56,4 +56,8 @@ class Todo < ActiveRecord::Base
     def frequency_to_time
         day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date 
     end
+
+    def in_progress? current_user_id
+        todo_completes.active.map(&:submitter_id).include?(current_user_id) ? true : false
+    end
 end

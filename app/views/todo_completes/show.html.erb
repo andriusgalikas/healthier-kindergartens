@@ -13,11 +13,11 @@
       </div>
       <div class="form-group">
         <label>Iteration Type</label>
-        <input type="text" readonly="true" value="<%= @todo.iteration_type %>" class="form-control">
+        <input type="text" readonly="true" value="<%= @todo.iteration_type.titleize %>" class="form-control">
       </div>
       <div class="form-group">
         <label>Frequency</label>
-        <input type="text" readonly="true" value="<%= @todo.frequency %>" class="form-control">
+        <input type="text" readonly="true" value="<%= @todo.frequency.titleize %>" class="form-control">
       </div>
       <div class="page-header">
         <h2>Tasks</h2>

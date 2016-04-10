@@ -309,5 +309,26 @@ form
       }
     }
 }
+.multi-field
+{
+    position: relative;
 
+    a.btn-green
+    {
+        position:absolute;
+        top:-70px;
+        right:0px;
+    }
+
+    .fields
+    {   
+        overflow: hidden;
+        margin-bottom: 40px;
+
+        a
+        {
+            float:right;
+        }
+    }
+}
 

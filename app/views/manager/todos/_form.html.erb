@@ -35,7 +35,7 @@
   <div class="page-header">
     <h2>Tasks</h2>
   </div>
-  <div id="tasks">
+  <div id="tasks" class="multi-field">
     <%= f.fields_for :tasks do |ff |%>
       <%= render partial: 'task_fields', locals: { f: ff } %>
     <% end %>

@@ -16,6 +16,11 @@
                             <%= image_tag todo.icon.file.thumb %>
                         </div>
                         <span><%= truncate(todo.title, length: 15) %></span>
+                        <% if todo.in_progress?(current_user.id) %>
+                            <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
+                        <% else %>
+                            <%= link_to 'Start', todo_todo_completes_path(todo), method: :post, :class => 'btn btn-green btn-normal btn-block' %>
+                        <% end %>
                     </li>
                 <% end %>
             </ul>

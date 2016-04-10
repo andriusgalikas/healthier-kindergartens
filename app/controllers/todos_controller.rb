@@ -8,7 +8,7 @@ class TodosController < ApplicationController
     def search
         set_query
         set_accessible_todos
-        @todos = Todo.search(@query, @ids, params[:page], 100, 300)
+        search_todos
     end
 
     private
@@ -19,5 +19,9 @@ class TodosController < ApplicationController
 
     def set_accessible_todos
       @ids = (current_user.global_todos + current_user.local_todos).map(&:id)
+    end
+
+    def search_todos
+        @todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
     end
 end

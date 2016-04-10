@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <p class="tearms-condition">
-                                <input type="checkbox" checked="checked" value="term-condition" class="checked" >I accept the Code of Ethics
+                                <%= f.check_box :terms, checked: false %> I accept the Code of Ethics
                             </p>
                             <%= f.submit "Pay Now" %>
                             <div id="stripe_error">

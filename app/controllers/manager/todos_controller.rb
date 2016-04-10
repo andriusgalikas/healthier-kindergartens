@@ -1,12 +1,12 @@
 class Manager::TodosController < ApplicationController
   layout 'dashboard'
   before_action -> { authenticate_role!(["manager"]) }
-  # before_action :subscribed_manager!
+  before_action :subscribed_manager!
 
   def search
     set_query
     set_accessible_todos
-    @todos = Todo.search(@query, @ids, params[:page], 100, 300)
+    search_todos
   end
 
   def show
@@ -98,5 +98,9 @@ class Manager::TodosController < ApplicationController
 
     def set_report_todo_completes
       @todo_completes = TodoComplete.generate_report(@ids, params[:start_date], params[:end_date])
+    end
+
+    def search_todos
+      @todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
     end
 end

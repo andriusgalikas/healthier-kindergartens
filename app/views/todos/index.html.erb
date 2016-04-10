@@ -28,13 +28,13 @@
             </ul>
         <% end %>
         <div class="page-header">
-            <h2>Complete Todos</h2>
+            <h2>In Progress Todos</h2>
         </div>
-        <% if current_user.completed_todo_completes.active.empty? %>
-            <p>You have not completed any todos yet.</p>
+        <% if current_user.incomplete_todo_completes.active.empty? %>
+            <p>You have no todos in progress currently.</p>
         <% else %>
             <ul>
-                <% current_user.completed_todo_completes.active.each do |todo_c| %>
+                <% current_user.incomplete_todo_completes.active.each do |todo_c| %>
                     <li>
                         <div>
                             <%= image_tag todo_c.todo.icon.file.thumb %>
@@ -46,13 +46,13 @@
             </ul>
         <% end %>
         <div class="page-header">
-            <h2>In Progress Todos</h2>
+            <h2>Complete Todos</h2>
         </div>
-        <% if current_user.incomplete_todo_completes.active.empty? %>
-            <p>You have no todos in progress currently.</p>
+        <% if current_user.completed_todo_completes.active.empty? %>
+            <p>You have not completed any todos yet.</p>
         <% else %>
             <ul>
-                <% current_user.incomplete_todo_completes.active.each do |todo_c| %>
+                <% current_user.completed_todo_completes.active.each do |todo_c| %>
                     <li>
                         <div>
                             <%= image_tag todo_c.todo.icon.file.thumb %>
