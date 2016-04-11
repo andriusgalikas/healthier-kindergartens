@@ -45,7 +45,7 @@ class Manager::SurveySubjectsController < ApplicationController
       @subject.build_icon
     end
 
-    def set_survey
+    def set_subject
         @subject ||= SurveySubject.find(params[:id])
     end
 
@@ -58,6 +58,6 @@ class Manager::SurveySubjectsController < ApplicationController
     end
 
     def subject_params
-        params.require(:survey_subject).permit(:title)
+        params.require(:survey_subject).permit(:daycare_id, :title, :description, icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(daycare_id: current_user.daycare.id)
     end
 end

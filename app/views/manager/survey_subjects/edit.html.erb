@@ -1,5 +1,5 @@
-<% content_for :page_title, "Edit Survey Subject" %>
-<% content_for :previous_path, manager_subject_path(@survey) %>
+<% content_for :page_title, "Edit #{@subject.title.titleize}" %>
+<% content_for :previous_path, manager_subject_path(@subject) %>
 
 <div class="row">
     <div class="twelvecol">

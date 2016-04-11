@@ -1,0 +1,25 @@
+<% content_for :page_title, "Surveys Access" %>
+<% content_for :previous_path, dashboard_manager_subjects_path %>
+
+<div class="row" id="surveys">
+    <div class="twelvecol">
+        <% if @subjects.empty? %>
+            <p>You currently have no survey subjects.</p>
+        <% else %>
+            <% @subjects.each do |subject| %>
+                <div class="row item">
+                    <div class="twocol">
+                        <%= image_tag subject.icon.file.thumb %>
+                    </div>
+                    <div class="eightcol">
+                        <h3><%= subject.title.titleize %></h3>
+                        <p><%= subject.description %></p>
+                    </div>
+                    <div class="twocol last">
+                        <%= link_to 'Show', manager_subject_path(subject), :class => 'btn btn-block btn-blue btn-normal' %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -3,35 +3,31 @@ class Manager::SurveysController < ApplicationController
   before_action -> { authenticate_role!(["manager"]) }
   before_action :subscribed_manager!
 
-  def index
-    set_surveys
-  end
-
-  def show
-    set_survey
-  end
-
   def new
+    set_subject
     new_survey
   end
 
   def edit
+    set_subject
     set_survey
   end
 
   def create
-    @survey = Survey::Survey.new(survey_params)
+    set_subject
+    @survey = @subject.surveys.new(survey_params)
     if @survey.valid? && @survey.save
-      redirect_to manager_surveys_path, notice: 'You have created a new survey!'
+      redirect_to manager_subject_path(@subject), notice: 'You have created a new survey module'
     else
       render action: :new
     end
   end
 
   def update
+    set_subject
     set_survey
     if @survey.update_attributes(survey_params)
-      redirect_to manager_surveys_path, notice: 'You have updated a survey!'
+      redirect_to manager_subject_path(@subject), notice: 'You have updated a survey module'
     else
       render action: :edit
     end
@@ -39,16 +35,16 @@ class Manager::SurveysController < ApplicationController
 
   private
 
+  def set_subject
+    @subject ||= SurveySubject.find(params[:subject_id])
+  end
+
   def set_survey
     @survey = Survey::Survey.find(params[:id])
   end
-
-  def set_surveys
-    @surveys = Survey::Survey.all
-  end
   
   def new_survey
-    @survey = Survey::Survey.new
+    @survey = @subject.surveys.new
   end
 
   def survey_params

@@ -14,9 +14,9 @@ module SurveysHelper
 
   def survey_scope(resource)
     if action_name =~ /new|create/
-      manager_surveys_path(resource)
+      manager_subject_surveys_path(resource)
     elsif action_name =~ /edit|update/
-      manager_survey_path(resource)
+      manager_subject_survey_path(resource)
     end
   end
 

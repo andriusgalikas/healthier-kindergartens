@@ -1,8 +1,8 @@
 <% content_for :page_title, "New Survey" %>
-<% content_for :previous_path, dashboard_manager_surveys_path %>
+<% content_for :previous_path, manager_subject_path(@subject) %>
 
 <div class="row">
     <div class="twelvecol">
-        <%= render 'form' %>
+        <%= render partial: 'form', locals: { url: manager_subject_surveys_path } %>
     </div>
 </div>

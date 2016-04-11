@@ -1,0 +1,45 @@
+<% content_for :page_title, @subject.title.titleize %>
+<% content_for :previous_path, manager_subjects_path %>
+
+<div class="row" id="survey">
+    <div class="tencol">
+        <p><%= @subject.description %></p>
+    </div>
+    <div class="twocol last">
+        <%= link_to 'Edit', edit_manager_subject_path(@subject), :class => 'btn btn-green btn-block btn-normal' %>
+        <%= link_to 'Add Survey', new_manager_subject_survey_path(@subject), :class => 'btn btn-orange btn-block btn-normal' %>
+    </div>
+    <div class="page-header">
+        <h2>Modules</h2>
+    </div>
+    <% if @subject.surveys.empty? %>
+        <p>You currently have no survey modules for this subject.</p>
+    <% else %>
+        <% @subject.surveys.each do |survey| %>
+            <div class="survey-module">
+                <h3><%= survey.name %></h3>
+                <p><%= survey.description %></p>
+                <%= link_to 'Edit', edit_manager_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-normal' %>
+                <ol>
+                    <% survey.questions.each_slice(2) do |slice| %>
+                        <div class="row">
+                            <% slice.each_with_index do |question, index| %>
+                                <div class="sixcol <%= index == 1 ? 'last' : '' %>">
+                                    <li>
+                                        <h3><%= question.text %></h3>
+                                        <% question.options.each do |option| %>
+                                            <p><%= option.text %></p>
+                                        <% end %>
+                                    </li>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                    <div class="row divider">
+                        <hr>
+                    </div>
+                </ol>
+            </div>
+        <% end %>
+    <% end %>
+</div>

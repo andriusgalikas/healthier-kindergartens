@@ -1,13 +1,15 @@
-<%= form_for(@survey, :url => survey_scope(@survey)) do |f| %>
-  <% if f.object.errors.messages.any? %>
-    <ul>
-      <% f.object.errors.messages.each_pair do |field, msg| %>
-        <li>
-          <%= "#{field} - #{msg}" %>
-        </li>
-      <% end -%>
-    </ul>
-  <% end -%>
+<%= form_for([@subject, @survey], url: url) do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :name %>
