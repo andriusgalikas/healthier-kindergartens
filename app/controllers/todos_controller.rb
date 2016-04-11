@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
     layout 'dashboard'
     before_action -> { authenticate_role!(["parentee", "worker"]) }
+    before_action :authenticate_subscribed!
 
     def index
     end

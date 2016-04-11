@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard getting_started welcome infection instruction ).each do |page|
+    %w( about mission path standard getting_started welcome infection instruction implementation ).each do |page|
         get page, to: "pages##{page}"
     end
 

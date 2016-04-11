@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection, :instruction]
+    before_action :authenticate_subscribed!, only: :instruction
 
     def welcome
 
@@ -17,6 +18,10 @@ class PagesController < ApplicationController
 
         render layout: 'login'
     end    
+
+    def implementation
+
+    end
 
     private
 

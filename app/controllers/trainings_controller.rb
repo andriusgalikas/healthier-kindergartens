@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
     before_action -> { authenticate_role!(["parentee", "worker", "manager"]) }
-    before_action :subscribed_manager!, :if => :current_user_manager?
+    before_action :authenticate_subscribed!
 
     def index
 
@@ -14,9 +14,5 @@ class TrainingsController < ApplicationController
 
     def set_video_url
         @course_url = "/trainings/course-#{params[:id]}/story.html"
-    end
-
-    def current_user_manager?
-        current_user.manager? ? true : false
     end
 end

@@ -1,6 +1,6 @@
 class Manager::AttemptsController < ApplicationController
     before_action -> { authenticate_role!(["manager"]) }
-    before_action :subscribed_manager!
+    before_action :authenticate_subscribed!
 
     def index
         set_survey

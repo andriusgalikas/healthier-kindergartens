@@ -1,8 +1,10 @@
 <header>
-    <%= image_tag 'logo.png' %>
+    <%= link_to (user_signed_in? ? welcome_path : root_path) do %>
+        <%= image_tag 'logo.png' %>
+    <% end %>
     <div>
         <% if user_signed_in? %>
-            <% unless current_user.subscribed? %>
+            <% unless current_user.subscribed? || !current_user.manager? %>
                 <%= link_to "Upgrade", upgrade_path %>
             <% end %>
             <%= link_to 'Dashboard', welcome_path %>

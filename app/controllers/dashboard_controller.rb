@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
     layout 'dashboard'
-    before_action :authenticate_user!
+    before_action :authenticate_subscribed!
 
     def index
         render "dashboard/#{current_user.role}", format: [:html]
