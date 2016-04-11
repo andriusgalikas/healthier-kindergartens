@@ -1,5 +1,6 @@
 class SurveySubjectsController < ApplicationController
-    # before_action :authenticate_subscribed!
+    before_action -> { authenticate_role!(["parentee", "worker"]) }
+    before_action :authenticate_subscribed!
 
     def results
         set_subject
