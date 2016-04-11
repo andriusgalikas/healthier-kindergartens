@@ -32,6 +32,15 @@ $(document).ready(function()
         });
         return false;
     });
+    $('.graph-bar').each(function() {
+        var dataWidth = $(this).data('value');
+        $(this).css("width", dataWidth + "%");
+    });
+    $('.retake-radio').change(function()
+    {
+        var subjectId = $(this).val();
+        $('#retake-form').attr('action', '/subjects/' + subjectId + '/attempts/new')
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

@@ -13,7 +13,6 @@ class AttemptsController < ApplicationController
     set_subject
     set_survey
     normalize_attempts_data
-    remove_current_user_attempts
     @attempt = @survey.attempts.new(attempt_params)
     @attempt.participant = current_user
 
