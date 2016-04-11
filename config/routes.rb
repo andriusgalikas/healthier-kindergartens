@@ -55,12 +55,12 @@ Rails.application.routes.draw do
                 get :report
             end
         end
-        resources :survey_subjects, as: 'subjects', path: 'subjects' do
-            get :dashboard, on: :collection
-            resources :surveys do
-                resources :attempts, only: [:show, :index]
-            end
-        end
+        # resources :survey_subjects, as: 'subjects', path: 'subjects' do
+        #     get :dashboard, on: :collection
+        #     resources :surveys do
+        #         resources :attempts, only: [:show, :index]
+        #     end
+        # end
         resources :daycares, only: [] do
             collection do
                 get :invite
@@ -70,8 +70,14 @@ Rails.application.routes.draw do
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
-        get :results, on: :member
-        resources :attempts, only: [:new, :create]
+        member do
+            get :results
+            get :get_results
+        end
+        resources :attempts, only: :new
+        resources :surveys, only: [] do
+            resources :attempts, only: :create
+        end
     end
 
     resources :todos, only: [:index] do

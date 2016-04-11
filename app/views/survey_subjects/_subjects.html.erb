@@ -1,0 +1,13 @@
+<div class="radio_title1">
+  <ul class="list-group list-inline">
+    <% SurveySubject.all.each do |subject | %>
+      <li>
+        <div class="radio-toolbar">
+          <input type="radio" id="radio0" <%= "checked" if subject == @subject %> name="a" onchange="get_results('<%= subject.id %>', '', '', this)" />
+          <label for="radio0"></label>
+          <p class="infection-name">   <%= image_tag subject.icon.file.thumb, :class => 'module2' %><span><%= subject.title %></span></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

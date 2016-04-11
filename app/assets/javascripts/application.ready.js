@@ -14,10 +14,24 @@ $(document).ready(function()
     $('.datetimepicker').datetimepicker({
         formatDate: 'd-m-Y',
         theme:'default'
-      });
-    // $(".previewer").on('change', function(){
-    //     readURL(this);
-    // });
+    });
+
+    $("body").on("submit", '.submit-attempt', function() 
+    {
+        var tabId = $(this).attr('data-tab');
+        $.ajax(
+        {
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function (data)
+            {
+                click_tab(tabId);
+            }
+        });
+        return false;
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
@@ -53,13 +67,10 @@ function resizeIframe(obj) {
     obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
 }
-// function readURL(input) {
-//     if (input.files && input.files[0]) 
-//     {
-//         var reader = new FileReader();
-//         reader.onload = function (e) {
-//           $('.img-preview-container img').attr('src', e.target.result);
-//         }
-//         reader.readAsDataURL(input.files[0]);
-//     }
-// }
+function click_tab(id){
+        $('.jcmc-tab').removeClass('jcmc-active-tab');
+        $('.jcmc-tabs li').removeClass('jcmc-active-link');
+        $("#li_"+id).addClass('jcmc-active-link');
+        $('.jcmc-active-link').prev().addClass("jcmc-enabled");
+        $('#tab_'+id).addClass("jcmc-active-tab");
+    }

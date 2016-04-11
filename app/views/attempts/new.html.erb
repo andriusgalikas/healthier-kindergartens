@@ -1,6 +1,25 @@
-
-<%= form_tag @subject, url: subject_attempts_path do |subject| %>
-    <% @subject.surveys.each do |survey| %>
-        <%= survey.name %>
-    <% end %>
-<% end %>
+<div id="legacy-survey">
+  <div class="container">
+  <div class="row">
+    <div id="page" class="hfeed site">
+    <div id="jcmc-wrap" class=" jcmc-tabs-top" >
+      <ul id="jcmc-tabs" class="jcmc-tabs  jcmc-arrows jcmc-blocks">
+        <% @subject.surveys.order(weight: :asc).each_with_index do |survey, index| %>
+            <li id="li_<%= index %>" class="<%= "jcmc-active-link jcmc-enabled" if index == 0 %> jcmc-odd"><a href="javascript:void(0)" onclick="click_tab('<%= index %>')" id="jcmc-trigger-<%= index %>"><span class="jcmc-tab-span"><%= index+1 %>. <%= survey.name %></span></a></li>
+        <% end %>
+        <li id="li_complete" class="jcmc-even"><a href="javascript:void(0)" onclick="click_tab('complete')" id="jcmc-trigger-3"><span class="jcmc-tab-span">4. Check Results</span></a></li>
+      </ul>
+      <div id="jcmc-tab-panels" class="jcmc-tab-wrapper">
+        <% @subject.surveys.order(weight: :asc).each_with_index do |survey, index| %>
+            <div id="tab_<%= index %>" class="jcmc-tab <%= "jcmc-active-tab" if index == 0 %>">
+              <%= render :partial => 'form', locals: { subject: @subject, tab: (index == (@subject.surveys.size - 1) ? 'complete' : index+1), attempt: survey.attempts.new, survey: survey} %>
+            </div>
+        <% end %>
+        <div id="tab_complete" class="jcmc-tab">
+          <div class="jcmc-buttons ">
+            <%= link_to 'Completed', results_subject_path(@subject), :class => 'jcmc-button jcmc-nextprev jcmc-order alt' %></div>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>

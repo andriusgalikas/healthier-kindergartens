@@ -1,0 +1,45 @@
+<div id="legacy-result">
+    <div class="container">
+      <div class="row back-page">
+            <%= link_to 'Retake Test', new_subject_attempt_path(@subject), :class => 'btn-retake' %>
+            <div class="col-lg-push-1 col-md-push-1 col-md-9 col-sm-9 col-xs-12 logo-back margin_single">
+                <%= render partial: "subjects" %>
+                <div id="bar_graph_partial" class="wrap">
+                    <%= render partial: "bar_graph", locals: { results: @course_results} %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  var group_identifier = "<%= @group %>"
+  var user_identifier = "<%= @attempt_user.id %>"
+  var subject_identifier = "<%= @subject.id %>"
+    function get_results(id, user, group, ele){
+        if (group != ''){
+            group_identifier = group
+            $(ele).css('color', 'blue');
+        }
+        if (user != ''){
+            user_identifier = user
+        }
+        if (id != ''){
+            subject_identifier = id
+        }
+        $.ajax({
+            type: "GET",
+            url: "/subjects/" + subject_identifier +"/get_results?user_id="+ user_identifier +"&group="+ group_identifier,
+            data: "",
+            dataType: "html"
+        }).success(function (data) {
+            if (data == "error"){
+                alert("No Results Found!");
+            }
+            else{
+                $("#bar_graph_partial").html(data);
+            }
+        });
+    }
+</script>

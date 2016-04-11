@@ -5,26 +5,22 @@ class AttemptsController < ApplicationController
 
   def new
     set_subject
-    @participant = current_user
-
-    unless @subject.nil?
-      @subject.surveys.each do |survey|
-        attempt = survey.attempts.new
-        attempt.answers.build
-      end
-    end
+    set_user
+    remove_current_user_attempts
   end
 
   def create
+    set_subject
     set_survey
     normalize_attempts_data
+    remove_current_user_attempts
     @attempt = @survey.attempts.new(attempt_params)
     @attempt.participant = current_user
 
     if @attempt.valid? && @attempt.save
-      redirect_to view_context.new_attempt, alert: I18n.t("attempts_controller.#{action_name}")
+      render json: { last: @survey.id == @subject.surveys.order(weight: :desc).last ? true : false }, status: 200
     else
-      render action: :new
+      render json: { }, status: 200
     end
   end
 
@@ -32,6 +28,10 @@ class AttemptsController < ApplicationController
 
   def set_subject
     @subject ||= SurveySubject.find(params[:subject_id])
+  end
+
+  def set_user
+    @participant = current_user
   end
 
   def set_survey
@@ -64,6 +64,10 @@ class AttemptsController < ApplicationController
       end
       hash[k]['option_id'] = hash[k]['option_id'].first
     end
+  end
+
+  def remove_current_user_attempts
+    @subject.surveys.map{|s| s.attempts.where(participant_id: current_user.id).destroy_all }
   end
 
   def attempt_params

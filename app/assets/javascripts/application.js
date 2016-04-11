@@ -19,3 +19,4 @@
 //= require healthChildcare.app
 //= require application.ready
 //= require chart
+//= require c3
