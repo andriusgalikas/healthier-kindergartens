@@ -10,11 +10,17 @@ class PagesController < ApplicationController
     end
 
     def infection
-
+        set_subjects
     end
 
     def getting_started
 
         render layout: 'login'
     end    
+
+    private
+
+    def set_subjects
+        @subjects ||= SurveySubject.all
+    end
 end

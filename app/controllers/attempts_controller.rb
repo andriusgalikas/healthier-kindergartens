@@ -4,12 +4,14 @@ class AttemptsController < ApplicationController
   helper :surveys
 
   def new
-    set_survey
-    @participant = current_user # you have to decide what to do here
+    set_subject
+    @participant = current_user
 
-    unless @survey.nil?
-      @attempt = @survey.attempts.new
-      @attempt.answers.build
+    unless @subject.nil?
+      @subject.surveys.each do |survey|
+        attempt = survey.attempts.new
+        attempt.answers.build
+      end
     end
   end
 
@@ -27,6 +29,10 @@ class AttemptsController < ApplicationController
   end
 
   private
+
+  def set_subject
+    @subject ||= SurveySubject.find(params[:subject_id])
+  end
 
   def set_survey
     @survey ||= Survey::Survey.find(params[:survey_id])

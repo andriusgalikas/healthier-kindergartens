@@ -1,0 +1,6 @@
+
+<%= form_tag @subject, url: subject_attempts_path do |subject| %>
+    <% @subject.surveys.each do |survey| %>
+        <%= survey.name %>
+    <% end %>
+<% end %>

@@ -69,8 +69,9 @@ Rails.application.routes.draw do
         end
     end
 
-    resources :surveys, only: [:index] do
-        resources :attempts, only: [:new, :create], controller: 'surveys/attempts'
+    resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
+        get :results, on: :member
+        resources :attempts, only: [:new, :create]
     end
 
     resources :todos, only: [:index] do
