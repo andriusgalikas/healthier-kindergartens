@@ -29,15 +29,19 @@ Install gems:
 
 `bundle install`
   
-  
 Install asset dependencies:  
 
 `bower install`
-  
+
+Seed the database
+
+`bundle exec rake db:setup`
   
 Start the web server and Sidekiq:   
 
 `foreman start -f Procfile.dev`
+
+
   
 
 # Stripe
