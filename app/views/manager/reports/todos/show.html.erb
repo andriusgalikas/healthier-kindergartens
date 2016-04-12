@@ -22,20 +22,22 @@
     </div>
 <% end %>
 <% @todo.tasks.each_with_index do |task, index| %>
-    <% @report = TodoReporter.new(todo_completes: @todo_completes, task_id: task.id).percentages %>
+    <% @report = TodoReporter.new(todo_completes: @todo_completes, task_id: task.id).percentages unless @todo_completes.empty?  %>
     <div class="row todo-report">
         <div class="sixcol">
             <h3><%= task.title %></h3>
             <p><%= task.description %></p>
-            <p><b>Complete:</b> <span class="green"><%= @report[:complete].round %></span></b></p>
-            <p><b>Incomplete:</b> <span class="red"><%= @report[:incomplete].round %></span></b></p>
+            <p><b>Complete:</b> <span class="green"><%= @report.nil? ? '0' : @report[:complete].round %></span></b></p>
+            <p><b>Incomplete:</b> <span class="red"><%= @report.nil? ? '0' : @report[:incomplete].round %></span></b></p>
         </div>
         <div class="sixcol last">
-            <canvas id="piePaymentTypeChart<%= task.id %>" width="150" height="150" class="pie-chart"></canvas>
-            <%= render partial: 'shared/chart/pie', format: [:html], locals: {
-                    datasets:  Hash(complete: { value: @report[:complete].round, color: "#8DC73F" }, incomplete: { value: @report[:incomplete].round, color: '#CD2626' }),
-                    id: "piePaymentTypeChart#{task.id}"
-                } %>
+            <% unless @report.nil? %>
+                <canvas id="piePaymentTypeChart<%= task.id %>" width="150" height="150" class="pie-chart"></canvas>
+                <%= render partial: 'shared/chart/pie', format: [:html], locals: {
+                        datasets:  Hash(complete: { value: @report[:complete].round, color: "#8DC73F" }, incomplete: { value: @report[:incomplete].round, color: '#CD2626' }),
+                        id: "piePaymentTypeChart#{task.id}"
+                    } %>
+            <% end %>
         </div>
     </div>
 <% end %>
