@@ -1,0 +1,49 @@
+<% content_for :page_title, "Todo Reports" %>
+<% content_for :previous_path, dashboard_manager_todos_path %>
+
+<div class="row" id="todos">
+    <div class="twelvecol">
+        <%= form_tag manager_reports_todos_search_path, method: :get do %>
+            <div class="form-prefix">
+                <span><i class="icon-search"></i></span>
+                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control') %>
+            </div>
+        <% end %>
+        <div class="page-header">
+            <h2>Daycare Todos</h2>
+        </div>
+        <% if current_user.local_todos.empty? %>
+            <p>You have no Daycare todos currently, you can <%= link_to 'create', new_manager_todo_path %> one now.</p>
+        <% else %>
+            <ul>
+                <% current_user.local_todos.each do |todo| %>
+                    <li>
+                        <div>
+                            <%= image_tag todo.icon.file.thumb %>
+                        </div>
+                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <%= link_to 'Report', manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-orange' %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+        <div class="page-header">
+            <h2>Global Todos</h2>
+        </div>
+        <% if current_user.global_todos.empty? %>
+            <p>You have no Global todos currently.</p>
+        <% else %>
+            <ul>
+                <% current_user.global_todos.each do |todo| %>
+                    <li>
+                        <div>
+                            <%= image_tag todo.icon.file.thumb %>
+                        </div>
+                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <%= link_to 'Report', manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-orange' %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
+</div>

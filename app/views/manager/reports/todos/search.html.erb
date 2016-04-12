@@ -1,0 +1,25 @@
+<% content_for :page_title, "Search Todo" %>
+<% content_for :previous_path, manager_reports_todos_root_path %>
+
+<div class="row" id="todos">
+    <div class="twelvecol">
+        <div class="page-header">
+            <h2>Search: <%= params[:query] %></h2>
+        </div>
+        <% if @todos.empty? %>
+            <p>You have no Daycare todos matching the search parameters.</p>
+        <% else %>
+            <ul>
+                <% @todos.each do |todo| %>
+                    <li>
+                        <div>
+                            <%= image_tag todo.icon.file.thumb %>
+                        </div>
+                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <%= link_to 'Report', manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-orange' %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
+</div>

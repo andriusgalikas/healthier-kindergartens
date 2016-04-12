@@ -1,10 +1,10 @@
 <% content_for :page_title, "Report #{@todo.title} Todo" %>
-<% content_for :previous_path, manager_todo_path(@todo) %>
+<% content_for :previous_path, manager_reports_todos_root_path %>
 
 <div class="row">
     <div class="twelvecol">
         <h3>Select a date range for your <b><%= @todo.title.titleize %></b> Todo report:</h3>
-        <%= form_tag report_manager_todo_path, method: :get do %>
+        <%= form_tag manager_reports_todo_show_path(@todo), method: :get do %>
             <div class="form-group">
                 <%= label_tag :start_date %>
                 <div class="form-prefix">

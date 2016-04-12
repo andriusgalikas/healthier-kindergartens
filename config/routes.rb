@@ -50,11 +50,20 @@ Rails.application.routes.draw do
                 get :dashboard
                 get :search
             end
-            member do
+        end
+      
+        namespace :reports do
+            namespace :todos do
+                root action: 'index'
+                get :search
+            end
+            resources :todos, only: [] do
                 get :set_date_range
-                get :report
+                get :show
             end
         end
+
+        
         # resources :survey_subjects, as: 'subjects', path: 'subjects' do
         #     get :dashboard, on: :collection
         #     resources :surveys do
