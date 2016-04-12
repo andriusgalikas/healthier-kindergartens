@@ -41,6 +41,19 @@ $(document).ready(function()
         var subjectId = $(this).val();
         $('#retake-form').attr('action', '/subjects/' + subjectId + '/attempts/new')
     });
+    $('.iteration-selector').change(function()
+    {
+        var value = $(this).val();
+        if (value === 'single')
+        {
+            $('.frequency-fields').hide();
+        }
+        else
+        {
+            $('.frequency-fields').show();
+        }
+
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

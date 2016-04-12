@@ -88,3 +88,6 @@ gem 'jquery-datetimepicker-rails'
 
 # Pagination
 gem 'kaminari'
+
+# Time
+gem 'chronic'

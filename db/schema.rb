@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411151340) do
+ActiveRecord::Schema.define(version: 20160412063919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20160411151340) do
     t.integer  "allocation", default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -170,12 +176,14 @@ ActiveRecord::Schema.define(version: 20160411151340) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "title"
-    t.integer  "iteration_type", default: 0
-    t.integer  "frequency",      default: 0
+    t.integer  "iteration_type",        default: 0
+    t.integer  "frequency",             default: 0
     t.integer  "daycare_id"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "completion_date_type",  default: 0
+    t.integer  "completion_date_value", default: 1
   end
 
   create_table "user_daycares", force: :cascade do |t|

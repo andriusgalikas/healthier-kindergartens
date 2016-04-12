@@ -9,6 +9,10 @@ every 1.hour do
     rbenv_runner "TodoFrequenciesJob.perform_later"
 end
 
+every 30.minutes do
+    rbenv_runner "TodoCompletionDateJob.perform_later"
+end
+
 every 1.day, at: '8:30 am' do
     rbenv_runner 'PlanReminderJob.perform_later'
 end

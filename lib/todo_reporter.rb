@@ -20,7 +20,8 @@ class TodoReporter
     end
 
     def failed
-        @todo_task_completes.where('result = 0 OR result = 2').size
+        # @todo_task_completes.where('result = 0 OR result = 2').size
+        @todo_task_completes.failed.size
     end
 
     private

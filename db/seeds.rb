@@ -80,8 +80,8 @@ DiscountCode.create(code: 'REDUCE50', value: 50)
 
 subjects = ['Food Handling', 'Outbreak Control Strategies', 'Exclusion Of Sick Children', 'Preventive Diapering', 'Cleaning Bodily Fluids', 'Preventive Hand Washing']
 
-p "Creating survey subjects..."
+p "Creating subjects..."
 subjects.each do |sub|
-  subject = SurveySubject.create(title: sub)
+  subject = Subject.create(title: sub)
 end
 

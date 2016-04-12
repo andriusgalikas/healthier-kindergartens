@@ -2,14 +2,16 @@
 #
 # Table name: todos
 #
-#  id             :integer          not null, primary key
-#  title          :string
-#  iteration_type :integer          default("0")
-#  frequency      :integer          default("0")
-#  daycare_id     :integer
-#  user_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                    :integer          not null, primary key
+#  title                 :string
+#  iteration_type        :integer          default("0")
+#  frequency             :integer          default("0")
+#  daycare_id            :integer
+#  user_id               :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  completion_date_type  :integer          default("0")
+#  completion_date_value :integer          default("1")
 #
 
 class Todo < ActiveRecord::Base
@@ -39,13 +41,16 @@ class Todo < ActiveRecord::Base
 
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
-    validates :title, :frequency, :user_id,                                     presence: true
-    validates :iteration_type,                                                  presence: true, :if => :recurring?
-
+    validates :title, :user_id, :completion_date_type, 
+                :completion_date_value,                                         presence: true
+    validates :frequency, :iteration_type,                                      presence: true, :if => :recurring?
     validates :icon,                                                            presence: true
 
-    enum iteration_type: [:single, :recurring]
-    enum frequency: [:day, :week, :month, :year]
+    enum iteration_type:            [:single, :recurring]
+    enum frequency:                 [:day, :week, :month, :year]
+    enum completion_date_type:      [:completion_day, :completion_week, :completion_month, :completion_year]
+
+    before_save :set_frequency_for_single
 
     accepts_nested_attributes_for :tasks, :icon, allow_destroy: true
 
@@ -57,7 +62,19 @@ class Todo < ActiveRecord::Base
         day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date 
     end
 
+    def completion_date_to_time
+        Chronic.parse("#{completion_date_value} #{completion_date} ago")
+    end
+
     def in_progress? current_user_id
         todo_completes.active.map(&:submitter_id).include?(current_user_id) ? true : false
+    end
+
+    def set_frequency_for_single
+        self.frequency = nil if single?
+    end
+
+    def completion_date
+        completion_date_type.split('_').last.titleize
     end
 end

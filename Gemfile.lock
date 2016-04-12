@@ -455,6 +455,7 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   carrierwave
+  chronic
   colorize
   compass-rails
   database_cleaner

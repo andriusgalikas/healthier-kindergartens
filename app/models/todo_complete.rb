@@ -25,6 +25,8 @@ class TodoComplete < ActiveRecord::Base
 
     validates :submitter_id,                    uniqueness: { scope: [:status, :todo_id] }, :if => :todo_recurring?
 
+    scope :recurring,                           -> { includes(:todo).where(todos: { iteration_type: 1}) }
+
     enum status: [:active, :inactive]
 
     after_create :todo_task_completes

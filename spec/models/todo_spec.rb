@@ -2,14 +2,16 @@
 #
 # Table name: todos
 #
-#  id             :integer          not null, primary key
-#  title          :string
-#  iteration_type :integer          default("0")
-#  frequency      :integer          default("0")
-#  daycare_id     :integer
-#  user_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                    :integer          not null, primary key
+#  title                 :string
+#  iteration_type        :integer          default("0")
+#  frequency             :integer          default("0")
+#  daycare_id            :integer
+#  user_id               :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  completion_date_type  :integer          default("0")
+#  completion_date_value :integer          default("1")
 #
 
 require 'rails_helper'

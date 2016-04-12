@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
     
     
+  resources :subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do

@@ -15,19 +15,22 @@ class Manager::TodosController < ApplicationController
 
   def new
     @todo = current_user.daycare.local_todos.build
+    set_subjects
     new_icon_attachment
     @todo.tasks.build
   end
 
   def edit
     set_todo
+    set_subjects
   end
 
   def create
     @todo = current_user.daycare.local_todos.build(todo_params)
+    set_subjects
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to dashboard_url, notice: 'Todo was successfully created.' }
+        format.html { redirect_to manager_todo_path(@todo), notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
         new_icon_attachment
@@ -39,9 +42,10 @@ class Manager::TodosController < ApplicationController
 
   def update
     set_todo
+    set_subjects
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to dashboard_url, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to manager_todo_path(@todo), notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }
@@ -54,7 +58,7 @@ class Manager::TodosController < ApplicationController
     set_todo
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to dashboard_url, notice: 'Todo was successfully destroyed.' }
+      format.html { redirect_to dashboard_manager_todos_path, notice: 'Todo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,6 +79,10 @@ class Manager::TodosController < ApplicationController
       @todo = current_user.daycare.local_todos.find(params[:id])
     end
 
+    def set_subjects
+      @subjects ||= Subject.all
+    end
+
     def set_global_todo
       @todo = Todo.find(params[:id])
     end
@@ -85,7 +93,7 @@ class Manager::TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :daycare_id, :completion_date_value, :completion_date_type, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
     end
 
     def set_query

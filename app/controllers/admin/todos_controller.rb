@@ -78,6 +78,6 @@ class Admin::TodosController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, department_ids: [], tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file])
+      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, :completion_date_type, :completion_date_value, department_ids: [], tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file])
     end
 end
