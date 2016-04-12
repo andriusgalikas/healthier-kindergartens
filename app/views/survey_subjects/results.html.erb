@@ -5,16 +5,7 @@
                 <%= render 'subjects' %>
                 <div id="bar_graph_partial" class="wrap">
                     <% if @results.count > 0 %>
-                        <div class="barGraph">
-                            <ul class="graph">
-                                <% @results.each_with_index do |result, index| %>
-                                    <span class="graph-barBack ">
-                                        <li class="graph-bar <%= 'graph-bar2' if index % 2 == 0 %>" data-value="<%= result[1].to_i %>"></li>
-                                        <p><%= result[0] %></p>
-                                    </span>
-                                <% end %>
-                            </ul>
-                        </div>
+                        <%= render partial: 'bar_graph', locals: { results: @results } %>
                     <% else %>
                         <p>
                             Take the <%= link_to 'test here', new_subject_attempt_path(@subject) %> to see results...

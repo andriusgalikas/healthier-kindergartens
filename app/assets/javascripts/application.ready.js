@@ -54,6 +54,39 @@ $(document).ready(function()
         }
 
     });
+    $('.get-single-user-result').on('click', function()
+    {
+        var userId = $(this).attr('data-id'),
+            subjectId = $(this).attr('data-subject-id');
+
+        $.ajax(
+        {
+            url: '/manager/subjects/' + subjectId + '/user_result?user_id=' + userId,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data)
+            {
+                $('#bar_graph_partial').html(data.partial);
+            }
+        });
+        return false;
+    });
+    $('.group-logo').on('click', function()
+    {
+        var subjectId = $(this).attr('data-subject-id');
+
+        $.ajax(
+        {
+            url: '/manager/subjects/' + subjectId + '/group_result',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data)
+            {
+                $('#bar_graph_partial').html(data.partial);
+            }
+        });
+        return false;
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

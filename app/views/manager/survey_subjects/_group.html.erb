@@ -1,0 +1,82 @@
+<div class="col-md-4 col-sm-4 col-xs-12 padd">
+    <div class="aside_left">
+      <h3>Groups:</h3>
+      <div class="btn-group vt-collapse-menu"> <img src="/assets/p_icon.png" class="group-logo" data-subject-id="<%= @subject.id %>" alt="">
+        <p id="group_text" style="display: none"><%= @group.to_s %></p>
+        <div class="header h-1"><span>Daycare workers<i class=" fa fa-angle-down"></i></span></div>
+        <div class="content vt-menu">
+          <ul>
+            <% @workers.each do |worker| %>
+                <li><a href="#" class="get-single-user-result" data-subject-id="<%= @subject.id %>"  data-id="<%= worker.id %>"><%= worker.email %></a></li>
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="aside_left aside_left2">
+      <div class="btn-group vt-collapse-menu"> <img src="/assets/p_icon2.png" class="group-logo" alt="" onclick="get_results('', '', 'true', this)">
+        <div class="header h-1"><span>Daycare Parents<i class=" fa fa-angle-down"></i></span></div>
+        <div class="content vt-menu">
+          <ul>
+            <% @parents.each do |parent| %>
+                <li><a href="#" class="get-single-user-result" data-subject-id="<%= @subject.id %>"  data-id="<%= parent.id %>"><%= parent.email %></a></li>
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    $(".header").click(function () {
+
+        $header = $(this);
+        //getting the next element
+        $content = $header.next();
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+
+        });
+
+    });
+    $('.h-1').on('click',function(){
+        $(this).addClass('h-active');
+        $('.h-2').removeClass('h-active');
+
+
+
+    });
+    $('.h-2').on('click',function(){
+
+        $(this).addClass('h-active');
+        $('.h-1').removeClass('h-active');
+
+
+    });
+
+
+    $('.content.vt-menu li a').on('click',function(){
+        $('.single-result').show(500);
+        $('.group-result').hide(500);
+        return false;
+
+
+    });
+    $('.group-result').hide();
+    $('.group-logo').on('click',function(){
+        $('.single-result').hide(500);
+        $('.group-result').show(500);
+
+    });
+    $('.parent-group').on('click',function(){
+        $('.single-result').hide(500);
+        $('.group-result').show(500);
+
+    });
+
+
+</script>

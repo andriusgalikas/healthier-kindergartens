@@ -1,0 +1,20 @@
+<div class="barGraph">
+    <ul class="graph">
+        <% if results.empty? %>
+            <p>User has not taken the survey yet...</p>
+        <% else %>
+            <% results.each_with_index do |result, index| %>
+                <span class="graph-barBack ">
+                    <li class="graph-bar <%= 'graph-bar2' if index % 2 == 0 %>" data-value="<%= result[1].to_i %>"></li>
+                    <p><%= result[0] %></p>
+                </span>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+<script>
+$('.graph-bar').each(function() {
+        var dataWidth = $(this).data('value');
+        $(this).css("width", dataWidth + "%");
+    });
+</script>

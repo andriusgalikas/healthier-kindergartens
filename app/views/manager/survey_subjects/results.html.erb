@@ -1,0 +1,17 @@
+<div id="legacy-result">
+    <div class="container">
+      <div class="row back-page">
+            <%= render 'group' %>
+            <div class="col-md-8 col-sm-8 col-xs-12 logo-back">
+                <%= render 'subjects' %>
+                <div id="bar_graph_partial" class="wrap">
+                    <% if @results.count > 0 %>
+                        <%= render partial: 'survey_subjects/bar_graph', locals: { results: @results } %>
+                    <% else %>
+                        <p>Survey not taken yet...</p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
