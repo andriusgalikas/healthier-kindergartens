@@ -7,7 +7,6 @@ class Manager::Reports::TodosController < ApplicationController
 
     def show
         set_global_todo
-        set_accessible_todos
         set_report_todo_completes
     end
 
@@ -36,7 +35,7 @@ class Manager::Reports::TodosController < ApplicationController
     end
 
     def set_report_todo_completes
-        @todo_completes = TodoComplete.generate_report(@ids, params[:start_date], params[:end_date])
+        @todo_completes = TodoComplete.generate_report(@todo.id, params[:start_date], params[:end_date])
     end
 
     def search_todos

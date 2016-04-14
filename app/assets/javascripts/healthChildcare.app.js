@@ -33,5 +33,49 @@ healthChildcare.app =
         {
             $(this).toggleClass('open');
         });
+    },
+
+    printTodo: function()
+    {
+        $('#print-todo').on('click', function()
+        {
+            window.print();
+            return false;
+        });
+    },
+
+    datepickers: function()
+    {
+        $('.datepicker').datetimepicker({
+            formatDate: 'd-m-Y',
+            formatTime: '',
+            theme:'default',
+            timepicker: false
+        });
+
+        $('.datetimepicker').datetimepicker({
+            formatDate: 'd-m-Y',
+            theme:'default'
+        });
+    },
+
+    submitSurveyModule: function()
+    {
+        $("body").on("submit", '.submit-attempt', function() 
+        {
+            var tabId = $(this).attr('data-tab');
+            $.ajax(
+            {
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    click_tab(tabId);
+                }
+            });
+            return false;
+        });
     }
 }

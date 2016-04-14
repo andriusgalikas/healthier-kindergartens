@@ -3,35 +3,12 @@ $(document).ready(function()
     healthChildcare.app.departmentSelector();
     healthChildcare.app.multiInput();
     healthChildcare.app.toggleMenu();
+    healthChildcare.app.printTodo();
+    healthChildcare.app.datepickers();
+    healthChildcare.app.submitSurveyModule();
+    
 
-    $('.datepicker').datetimepicker({
-        formatDate: 'd-m-Y',
-        formatTime: '',
-        theme:'default',
-        timepicker: false
-    });
-
-    $('.datetimepicker').datetimepicker({
-        formatDate: 'd-m-Y',
-        theme:'default'
-    });
-
-    $("body").on("submit", '.submit-attempt', function() 
-    {
-        var tabId = $(this).attr('data-tab');
-        $.ajax(
-        {
-            url: $(this).attr('action'),
-            type: 'POST',
-            data: $(this).serialize(),
-            dataType: 'json',
-            success: function (data)
-            {
-                click_tab(tabId);
-            }
-        });
-        return false;
-    });
+    
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");

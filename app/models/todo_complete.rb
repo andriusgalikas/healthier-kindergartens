@@ -19,7 +19,7 @@ class TodoComplete < ActiveRecord::Base
 
     scope :incomplete,                          -> { where.not(id: nil).where(completion_date: nil) }
 
-    scope :generate_report,                     -> (ids, start_date, end_date) { where(todo_id: ids).where('created_at > ?', start_date).where('created_at < ?', end_date) }
+    scope :generate_report,                     -> (todo_id, start_date, end_date) { where(todo_id: todo_id).where('created_at > ?', start_date).where('created_at < ?', end_date) }
 
     validates :submitter_id, :todo_id,          presence: true
 

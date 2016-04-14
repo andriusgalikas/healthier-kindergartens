@@ -10,8 +10,8 @@ class TodoReporter
         set_task_completes
         set_total_number_of_todo_task_completes
         return {
-            complete: percent_of(pass, @total_completes),
-            incomplete: percent_of(failed, @total_completes)
+            complete: @total_completes.zero? ? 0 : percent_of(pass, @total_completes),
+            incomplete: @total_completes.zero? ? 0 : percent_of(failed, @total_completes)
         }
     end
 
