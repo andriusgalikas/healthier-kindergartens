@@ -6,12 +6,43 @@ header
     overflow: hidden;
     height:150px;
 
-    img
+    &.loggedin
+    {
+        background-color: #365ebf;
+
+        a
+        {
+            background-color: #48c38c !important;
+
+            &:hover
+            {
+
+            }
+        }
+        ul
+        { 
+            display: none;
+        }
+    }
+
+    #user
+    {
+        color: #fff;
+        float: right;
+        margin-top: 5px;
+
+        img
+        {
+            margin-right: 7px;
+        }
+    }
+
+    #header-logo
     {
         height:120px;
         float:left;
     }
-    div, ul
+    #menu, ul
     {
         float:right;
     }
@@ -28,7 +59,7 @@ header
         }
     }
 
-    div
+    #menu
     {
         margin-left: 40px;
         a

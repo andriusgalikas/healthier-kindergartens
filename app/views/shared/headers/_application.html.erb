@@ -1,8 +1,8 @@
-<header>
+<header class="<%= 'loggedin' if user_signed_in? %>">
     <%= link_to (user_signed_in? ? welcome_path : root_path) do %>
-        <%= image_tag 'logo.png' %>
+        <%= image_tag 'logo.png', id: 'header-logo' %>
     <% end %>
-    <div>
+    <div id="menu">
         <% if user_signed_in? %>
             <% unless current_user.subscribed? || !current_user.manager? %>
                 <%= link_to "Upgrade", upgrade_path %>
@@ -14,6 +14,12 @@
             <%= link_to "Register", getting_started_path %>
         <% end %>
     </div>
+    <% if user_signed_in? %>
+        <div id="user">
+            <%= image_tag 'logo_menu.png' %>
+            <%= current_user.name %>
+        </div>
+    <% end %>
     <ul>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Our Mission", mission_path %></li>
