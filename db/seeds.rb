@@ -42,20 +42,20 @@ p "Creating example todos..."
     end
 end
 
-p "Creating example todo completes..."
-Todo.all.each do |todo|
-    15.times do
-        todo_complete = todo.todo_completes.build(submitter_id: worker.id)
-        todo_complete.save(validate: false)
-        todo_complete.task_completes.each do |task|
-            task.update_column(:result, rand(0..2))
-            task.update_column(:completion_date, Faker::Date.between(3.month.ago, Date.today)) if task.pass?
-        end
-    end
-end
-TodoComplete.all.each do |todo_complete|
-    todo_complete.update_column(:created_at, Faker::Date.between(3.month.ago, Date.today))
-end
+# p "Creating example todo completes..."
+# Todo.all.each do |todo|
+#     15.times do
+#         todo_complete = todo.todo_completes.build(submitter_id: worker.id)
+#         todo_complete.save(validate: false)
+#         todo_complete.task_completes.each do |task|
+#             task.update_column(:result, rand(0..2))
+#             task.update_column(:completion_date, Faker::Date.between(3.month.ago, Date.today)) if task.pass?
+#         end
+#     end
+# end
+# TodoComplete.all.each do |todo_complete|
+#     todo_complete.update_column(:created_at, Faker::Date.between(3.month.ago, Date.today))
+# end
 
 p "Assigning todos to departments..."
 Todo.first(4).zip(Department.all).each do |todo, dp|
