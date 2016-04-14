@@ -69,11 +69,11 @@
             }
         }
     }
-    #edit-todo, #report-todo
+    #edit-todo, #report-todo, #delete-todo
     {
         float:right;
     }
-    #edit-todo
+    #edit-todo, #delete-todo
     {
         margin-left: 7px;
     }

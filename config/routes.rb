@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
     
-    
-  resources :subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do
@@ -65,14 +63,10 @@ Rails.application.routes.draw do
         end
 
         
-        resources :survey_subjects, as: 'subjects', path: 'subjects'  do
+        resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
             get :results
             get :user_result
             get :group_result
-            get :dashboard, on: :collection
-            resources :surveys do
-                resources :attempts, only: [:show, :index]
-            end
         end
         resources :daycares, only: [] do
             collection do
@@ -109,6 +103,14 @@ Rails.application.routes.draw do
         resources :users, only: :index
         resources :daycares, only: :index
         resources :departments, only: :index 
+        resources :subjects, except: :show
+
+
+        resources :survey_subjects do
+            resources :surveys do
+                resources :attempts, only: [:show, :index]
+            end
+        end
     end
 
     namespace :api, constraints: { format: 'json' } do

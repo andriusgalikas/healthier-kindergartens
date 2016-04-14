@@ -1,13 +1,11 @@
-<% content_for :page_title, @subject.title.titleize %>
-<% content_for :previous_path, manager_subjects_path %>
-
 <div class="row" id="survey">
     <div class="tencol">
         <p><%= @subject.description %></p>
+        <%= image_tag @subject.icon.file.thumb %>
     </div>
     <div class="twocol last">
-        <%= link_to 'Edit', edit_manager_subject_path(@subject), :class => 'btn btn-green btn-block btn-normal' %>
-        <%= link_to 'Add Survey', new_manager_subject_survey_path(@subject), :class => 'btn btn-orange btn-block btn-normal' %>
+        <%= link_to 'Edit', edit_admin_survey_subject_path(@subject), :class => 'btn btn-green btn-block btn-normal' %>
+        <%= link_to 'Add Survey', new_admin_survey_subject_survey_path(@subject), :class => 'btn btn-orange btn-block btn-normal' %>
     </div>
     <div class="page-header">
         <h2>Modules</h2>
@@ -17,9 +15,10 @@
     <% else %>
         <% @subject.surveys.each do |survey| %>
             <div class="survey-module">
+                <%= link_to 'Edit', edit_admin_survey_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-normal' %>
                 <h3><%= survey.name %></h3>
                 <p><%= survey.description %></p>
-                <%= link_to 'Edit', edit_manager_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-normal' %>
+                
                 <ol>
                     <% survey.questions.each_slice(2) do |slice| %>
                         <div class="row">

@@ -4,6 +4,7 @@
 <div class="row" id="todo">
   <div class="twelvecol">
     <% unless @todo.global? %>
+      <%= link_to 'Delete', manager_todo_path(@todo), method: :delete, :class => 'btn btn-normal btn-red', id: 'delete-todo' %>
       <%= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo' %>
     <% end %>
     <%= link_to 'Report', manager_reports_todo_set_date_range_path(@todo), :class => 'btn btn-normal btn-orange', id: 'report-todo' %>

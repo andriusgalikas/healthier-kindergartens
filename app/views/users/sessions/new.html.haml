@@ -4,7 +4,7 @@
       .main-heading
         Login
       .wrapper
-        = image_tag 'Daycare-logo.gif', :class => 'logo'
+        = image_tag 'logo.png', :class => 'logo'
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = f.email_field :email, :class => 'user_icon', :placeholder => 'Email', required: true
           = f.password_field :password, :class => 'password_icon', :placeholder => 'Password', required: true

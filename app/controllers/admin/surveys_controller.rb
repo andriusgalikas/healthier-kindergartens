@@ -1,7 +1,4 @@
-class Manager::SurveysController < ApplicationController
-  layout 'dashboard'
-  before_action -> { authenticate_role!(["manager"]) }
-  before_action :authenticate_subscribed!
+class Admin::SurveysController < AdminController
 
   def new
     set_subject
@@ -17,7 +14,7 @@ class Manager::SurveysController < ApplicationController
     set_subject
     @survey = @subject.surveys.new(survey_params)
     if @survey.valid? && @survey.save
-      redirect_to manager_subject_path(@subject), notice: 'You have created a new survey module'
+      redirect_to admin_survey_subject_path(@subject), notice: 'You have created a new survey module'
     else
       render action: :new
     end
@@ -27,7 +24,7 @@ class Manager::SurveysController < ApplicationController
     set_subject
     set_survey
     if @survey.update_attributes(survey_params)
-      redirect_to manager_subject_path(@subject), notice: 'You have updated a survey module'
+      redirect_to admin_survey_subject_path(@subject), notice: 'You have updated a survey module'
     else
       render action: :edit
     end
@@ -36,7 +33,7 @@ class Manager::SurveysController < ApplicationController
   private
 
   def set_subject
-    @subject ||= SurveySubject.find(params[:subject_id])
+    @subject ||= SurveySubject.find(params[:survey_subject_id])
   end
 
   def set_survey

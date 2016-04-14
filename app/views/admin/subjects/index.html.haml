@@ -11,11 +11,10 @@
   %tbody
     - @subjects.each do |subject|
       %tr
-        %td= subject.name
-        %td= link_to 'Show', subject
-        %td= link_to 'Edit', edit_subject_path(subject)
-        %td= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= subject.title
+        %td= link_to 'Edit', edit_admin_subject_path(subject)
+        %td= link_to 'Destroy', [:admin, subject], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Subject', new_subject_path
+= link_to 'New Subject', new_admin_subject_path

@@ -1,4 +1,4 @@
-class Admin::SubjectsController < ApplicationController
+class Admin::SubjectsController < AdminController
 
   # GET /subjects
   def index
@@ -25,7 +25,7 @@ class Admin::SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
 
     if @subject.save
-      redirect_to @subject, notice: 'Subject was successfully created.'
+      redirect_to admin_subjects_url, notice: 'Subject was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::SubjectsController < ApplicationController
   def update
     set_subject
     if @subject.update(subject_params)
-      redirect_to @subject, notice: 'Subject was successfully updated.'
+      redirect_to admin_subjects_url, notice: 'Subject was successfully updated.'
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Admin::SubjectsController < ApplicationController
   def destroy
     set_subject
     @subject.destroy
-    redirect_to subjects_url, notice: 'Subject was successfully destroyed.'
+    redirect_to admin_subjects_url, notice: 'Subject was successfully destroyed.'
   end
 
   private
