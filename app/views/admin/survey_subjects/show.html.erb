@@ -16,6 +16,7 @@
         <% @subject.surveys.each do |survey| %>
             <div class="survey-module">
                 <%= link_to 'Edit', edit_admin_survey_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-normal' %>
+                <%= link_to 'Delete', admin_survey_subject_survey_path(@subject, survey), method: :delete, :class => 'btn btn-red btn-normal' %>
                 <h3><%= survey.name %></h3>
                 <p><%= survey.description %></p>
                 

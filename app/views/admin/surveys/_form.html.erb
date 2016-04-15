@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= label_tag :spreadsheet_file %>
+    <%= file_field_tag :spreadsheet_file, :class => 'form-control' %>
+  </div>
+  <%= f.submit "Upload Survey", :class => 'btn btn-blue btn-normal' %>
+  <hr>
 
   <div class="form-group">
     <%= f.label :name %>

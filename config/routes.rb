@@ -108,7 +108,7 @@ Rails.application.routes.draw do
 
         resources :survey_subjects do
             resources :surveys do
-                resources :attempts, only: [:show, :index]
+                post :upload, on: :member
             end
         end
     end

@@ -91,3 +91,7 @@ gem 'kaminari'
 
 # Time
 gem 'chronic'
+
+# spreadsheet
+gem 'roo'
+gem 'roo-xls'
