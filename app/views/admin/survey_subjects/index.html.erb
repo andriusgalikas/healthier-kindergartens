@@ -1,22 +1,58 @@
-<div class="row" id="surveys">
-    <div class="twelvecol">
-        <% if @subjects.empty? %>
-            <p>You currently have no survey subjects.</p>
-        <% else %>
-            <% @subjects.each do |subject| %>
-                <div class="row item">
-                    <div class="twocol">
-                        <%= image_tag subject.icon.file.thumb %>
-                    </div>
-                    <div class="eightcol">
-                        <h3><%= subject.title.titleize %></h3>
-                        <p><%= subject.description %></p>
-                    </div>
-                    <div class="twocol last">
-                        <%= link_to 'Show', admin_survey_subject_path(subject), :class => 'btn btn-block btn-blue btn-normal' %>
-                    </div>
-                </div>
-            <% end %>
-        <% end %>
+<% content_for :title, 'Surveys' %>
+<% content_for :breadcrumb, 'Surveys' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_survey_subject_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Survey" do %>
+      <i class="icon-plus"></i>
+    <% end %>
+    <h2 class="widget widget-header">Subjects</h2>
+  </div>
+  <% if @subjects.empty? %>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any surveys yet.</p>
+        <i class="icon-books"></i>
+      </div>
     </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @subjects.each do |subject| %>
+            <tr>
+                <td>
+                    <%= image_tag subject.icon.file.thumb %>
+                </td>
+                <td>
+                    <%= subject.title %>
+                </td>
+              <td>
+                <%= subject.description %>
+              </td>
+              <td>
+                <%= link_to admin_survey_subject_path(subject) do %>
+                    <i class="icon-search"></i>
+                <% end %>
+                <%= link_to edit_admin_survey_subject_path(subject) do %>
+                  <i class="icon-pencil"></i>
+                <% end %>
+                <%= link_to [:admin, subject], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-remove"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 </div>

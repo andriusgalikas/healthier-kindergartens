@@ -1,6 +1,11 @@
-<div class="row">
-    <div class="twelvecol">
-        <%= render partial: 'form', locals: { url: admin_survey_subjects_path } %>
+<% content_for :title, 'New Survey Subject' %>
+<% content_for :breadcrumb, 'New' %>
+<% breadcrumb_add 'Subjects', admin_survey_subjects_path %>
+
+<div class="twelvecol">
+    <div class="page-header">
+        <h2 class="widget widget-header">New Survey Subject</h2>
     </div>
+    <%= render partial: 'form', locals: { url: admin_survey_subjects_path } %>
 </div>
 
