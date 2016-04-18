@@ -15,4 +15,6 @@ class Plan < ActiveRecord::Base
     has_many :users,                                        through: :subscriptions
 
     validates :name, :price, :allocation,                   presence: true
+
+    default_scope { order(allocation: :asc) }
 end

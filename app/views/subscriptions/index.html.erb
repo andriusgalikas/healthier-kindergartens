@@ -113,8 +113,8 @@
                             <div class="value">0</div>
                             <span class="value_span">Children</span>
                             <div class="range_slider">
-                                <input type="range" min="0" max="90" step="30" value="0">
-                                <label>90<p>?</p></label>
+                                <%= range_field_tag :allocation, params[:allocation], min: 0, max: @range[:max], value: 0 %>
+                                <label><%= @range[:max] %><p>?</p></label>
                             </div>
                             
                         </li>
@@ -146,7 +146,7 @@
     <div class="row"> 
         <div class="col-lg-12"> 
             <ul class="list-group list-inline footer_range">
-                <li><span><%= image_tag 'qua.png' %></span>Are you Municipality or Franchise?</li>
+                <li><span><%= image_tag 'email-icon.png' %></span>Are you Municipality or Franchise?</li>
                 <li><a href="">Email Us</a> to know the special price.</li>
             </ul>
         </div>

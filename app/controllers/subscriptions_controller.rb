@@ -4,6 +4,7 @@ class SubscriptionsController < ApplicationController
 
     def index
         set_plans
+        set_range_data
     end
 
     def new
@@ -48,6 +49,14 @@ class SubscriptionsController < ApplicationController
 
     def set_plans
         @plans ||= Plan.all
+    end
+
+    def set_range_data
+       @range ||= {
+            min: @plans.first.allocation,
+            max: @plans.last.allocation,
+            step: @plans.last.allocation/@plans.count
+        }
     end
 
     def unsubscribed_user!

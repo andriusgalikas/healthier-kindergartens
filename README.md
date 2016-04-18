@@ -42,6 +42,14 @@ Start the web server and Sidekiq:
 `foreman start -f Procfile.dev`
 
 
+# Seed data
+
+## Login details
+
+Admin/Super Admin: admin@daycare.org / mypassword   
+Manager: manager@daycare.org / mypassword   
+Worker: worker@daycare.org / mypassword   
+Parent: parent@daycare.org / mypassword   
   
 
 # Stripe
