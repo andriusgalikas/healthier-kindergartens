@@ -12,6 +12,7 @@ class Admin::SurveysController < AdminController
 
   def create
     set_subject
+    # if params[:spreadsheet_file].present? 
     @survey = @subject.surveys.new(survey_params)
     if @survey.valid? && @survey.save
       redirect_to admin_survey_subject_path(@subject), notice: 'You have created a new survey module'
@@ -32,7 +33,7 @@ class Admin::SurveysController < AdminController
 
   def upload
     set_subject
-    build_surveys_from_spreadsheet if params[:spreadsheet_file].present?    
+    build_surveys_from_spreadsheet    
     redirect_to admin_survey_subject_path(@subject), notice: 'You have successfully uploaded a new survey module'
   end
 

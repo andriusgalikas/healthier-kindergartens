@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HealthChildcare</title>
-  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>HealthChildcare</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type"/>
+	<%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "modernizr/modernizr" %>
+    <link href="/stylesheets/font.css" media="screen" rel="stylesheet">
+	<%= csrf_meta_tags %>
+	<%= yield :header %>
 </head>
 <body>
-    <h1>Admin</h1>
-    <%= link_to "Go Home", root_path %>
-    <hr>
-    <%= yield %>
-    <hr>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	<div class="all-wrapper">
+		<div class="mp-pusher" id="mp-pusher">
+			<%= render partial: 'shared/admin/mobile_menu', format: [:html] %>
+			<div class="scroller">
+				<div class="scroller-inner">
+					<%= render partial: 'shared/headers/admin', format: [:html] %>
+					<div class="desktop" id="sidebar">
+						<%= render partial: 'shared/admin/desktop_menu', format: [:html] %>
+					</div>
+					<div class="main">
+						<%= render partial: 'shared/admin/loading', format: [:html] %>
+						<div class="container">
+							<div class="row">
+								<%= render partial: 'shared/flash' %>
+								<%= render_breadcrumbs 0 %>
+								<%= yield %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

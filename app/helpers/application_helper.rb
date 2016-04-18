@@ -13,6 +13,56 @@ module ApplicationHelper
         __custom_link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", 'green')
     end
 
+    # Creates a JavaScript tag, targeting the associated JavaScript file within the asset pipeline
+    # This method is used for page specific JavaScript files
+    #
+    # @overload set(value)
+    #   @param [String] javascript file name
+    # @return [String] javascript tags
+    def javascript location, *files
+        content_for(location) { javascript_include_tag(*files) }
+    end
+
+    # Create a new object to start building breadcrumbs for the administration area
+    #
+    # @return [Object] breadcrumbs for the current page in the administration area
+    def create_admin_breadcrumbs
+        @admin_breadcrumbs ||= [ { :title => 'Healthier Childcare', :url => admin_root_path}]
+    end
+
+    # Add a new breadcrumb to the administration area breadcrumb object using the parameters
+    #
+    # @param title [String]
+    # @param url [String]
+    def breadcrumb_add title, url
+        create_admin_breadcrumbs << { :title => title, :url => url }
+    end
+
+    # Renders the HTML elements for the breadcrumbs
+    #
+    # @param type [Integer]
+    # @return [String] HTML elements
+    def render_breadcrumbs type
+        if type == 0
+            render partial: 'shared/admin/breadcrumbs', locals: { breadcrumbs: create_admin_breadcrumbs }
+        else 
+            render partial: theme_presenter.page_template_path('shared/admin/breadcrumbs'), locals: { breadcrumbs: create_store_breadcrumbs }
+        end
+    end
+
+    # If the string parameter equals the current controller value in the parameters hash, return a string
+    #
+    # @param controller [String]
+    # @param action [String]
+    # @return [String] class name for a HTML element
+    def active_controller? data
+        if data[:action].nil?
+            "current" if params[:controller] == data[:controller]
+        else
+            "current" if params[:controller] == data[:controller] && params[:action] == data[:action]
+        end
+    end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}

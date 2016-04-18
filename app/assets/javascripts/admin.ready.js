@@ -1,6 +1,14 @@
 $(document).ready(function()
 {
     healthChildcare.admin.multiSelect();
+
+    soca.animation.loading();
+    soca.animation.colourCaveat();
+    soca.filter.tableRowTarget();
+    soca.misc.multiSelect();
+    soca.misc.updateTableHeight();
+    soca.mobile.disableTooltips();
+    soca.mobile.triggerMenu();
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
