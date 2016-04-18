@@ -1,0 +1,23 @@
+@media handheld, only screen and (max-width: 767px) 
+{
+    body
+    {
+        footer
+        {
+            padding:50px 0;
+            
+            .threecol
+            {
+                text-align: center;
+            }
+            ul
+            {
+                padding:0;
+            }
+            .fourcol
+            {
+                padding:50px 0;
+            }
+        }
+    }
+}
