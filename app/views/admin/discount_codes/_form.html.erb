@@ -1,29 +1,34 @@
 <%= form_for [:admin, @discount_code] do |f| %>
-  <% if @discount_code.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@discount_code.errors.count, "error") %> prohibited this discount_code from being saved:</h2>
-
-      <ul>
-      <% @discount_code.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+        <%= render partial: 'shared/admin/errors', locals: { object: @discount_code } %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status, {}, 'active', 'disabled' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="threecol">
+        <h3>Discount Code details</h3>
+        <p>Set the code, percentage value and status for your discount code.</p>
+    </div>
+    <div class="ninecol last">
+        <fieldset class="widget widget-content widget-last">
+            <div class="form-group">
+                <%= f.label :code %>
+                <%= f.text_field :code, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label 'Percentage Value' %>
+                <%= f.text_field :value, :class => 'form-control' %>
+            </div>
+            <div class="form-group form-last">
+                <div class="checkbox">
+                    <label>
+                        <%= f.check_box :status, {}, 'active', 'disabled' %>
+                        Active?
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-action">
+            <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        </div>
+    </div>
 <% end %>

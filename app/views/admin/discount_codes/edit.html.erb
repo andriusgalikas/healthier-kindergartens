@@ -1,5 +1,10 @@
-<h1>Editing Discount Code</h1>
+<% content_for :title, 'Edit Discount Code' %>
+<% content_for :breadcrumb, 'Edit' %>
+<% breadcrumb_add 'Discount Codes', admin_discount_codes_path %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_discount_codes_path %>
+<div class="twelvecol">
+    <div class="page-header">
+        <h2 class="widget widget-header">Edit Discount Code</h2>
+    </div>
+    <%= render 'form' %>
+</div>

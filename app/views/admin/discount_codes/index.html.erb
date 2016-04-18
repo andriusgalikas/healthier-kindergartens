@@ -1,30 +1,54 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, 'Discount Codes' %>
+<% content_for :breadcrumb, 'Discount Codes' %>
 
-<h1>Listing Discount Codes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Value</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @discount_codes.each do |discount_code| %>
-      <tr>
-        <td><%= discount_code.code %></td>
-        <td><%= discount_code.value %></td>
-        <td><%= discount_code.status %></td>
-        <td><%= link_to 'Edit', edit_admin_discount_code_path(discount_code) %></td>
-        <td><%= link_to 'Destroy', [:admin, discount_code], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_discount_code_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Discount Code" do %>
+      <i class="icon-plus"></i>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Discount code', new_admin_discount_code_path %>
+    <h2 class="widget widget-header">Discount Codes</h2>
+  </div>
+  <% if @discount_codes.empty? %>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any discount codes yet.</p>
+        <i class="icon-ticket"></i>
+      </div>
+    </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Value</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @discount_codes.each do |dc| %>
+            <tr>
+              <td>
+                <%= dc.code %>
+              </td>
+              <td>
+                <%= dc.value %>
+              </td>
+              <td>
+                <%= dc.status %>
+              </td>
+              <td>
+                <%= link_to edit_admin_discount_code_path(dc) do %>
+                  <i class="icon-pencil"></i>
+                <% end %>
+                <%= link_to [:admin, dc], method: :delete, data: { confirm: 'Are you sure?' } do %>  <i class="icon-remove"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

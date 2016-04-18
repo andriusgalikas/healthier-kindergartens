@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.select :title, Subject.all.map {|s| [s.title,s.title]}, {}, :class => 'form-control iteration-selector' %>
+    <%= f.select :title, Subject.all.map {|s| [s.title,s.title]}, {}, :class => 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :iteration_type %>
@@ -32,7 +32,7 @@
     <%= f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label 'Completion date' %>
+    <%= f.label 'Completion Date' %>
     <div class="form-coupling">
       <%= f.text_field :completion_date_value, :class => 'form-control' %>
       <%= f.select :completion_date_type, Todo.completion_date_types.keys.map {|type| [type.split('_').last.titleize,type]}, {}, :class => 'form-control' %>

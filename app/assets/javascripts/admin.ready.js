@@ -9,16 +9,30 @@ $(document).ready(function()
     soca.misc.updateTableHeight();
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
+
+    $('.iteration-selector').change(function()
+    {
+        var value = $(this).val();
+        if (value === 'single')
+        {
+            $('.frequency-fields').hide();
+        }
+        else
+        {
+            $('.frequency-fields').show();
+        }
+
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
-    $(link).closest(".fields").hide();
+    $(link).closest(".field").hide();
 }
 
 function add_fields(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g")
-    $(link).parent().before(content.replace(regexp, new_id));
+    $(link).parent().next().find('.widget .fields').append(content.replace(regexp, new_id));
 }
 function removeField(link) {
     $(link).prev("input[type=hidden]").val("true");

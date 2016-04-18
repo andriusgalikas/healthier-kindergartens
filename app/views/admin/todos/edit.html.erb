@@ -1,5 +1,10 @@
-<h1>Editing Todo</h1>
+<% content_for :title, 'Edit Todo' %>
+<% content_for :breadcrumb, 'Edit' %>
+<% breadcrumb_add 'Todos', admin_todos_path %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_todos_path %>
+<div class="twelvecol">
+    <div class="page-header">
+        <h2 class="widget widget-header">Edit Todo</h2>
+    </div>
+    <%= render 'form' %>
+</div>

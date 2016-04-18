@@ -2,3 +2,39 @@
  *= require_self
  *= require soca
 */
+.form-coupling
+{
+    overflow: hidden;
+
+    input[type=text]
+    {
+        float:left;
+        width:9%;
+        margin-right: 1%;
+    }
+    select
+    {
+        float:left;
+        width:90%;
+    }
+}
+.frequency-fields
+{
+    display: none;
+
+    .open
+    {
+        display: block;
+    }
+}
+.field
+{
+    overflow: hidden;
+
+    a
+    {
+        margin-top: 15px;
+        float:right;
+
+    }
+}

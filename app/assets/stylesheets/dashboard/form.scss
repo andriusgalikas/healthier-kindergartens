@@ -387,19 +387,3 @@ form
         display: block;
     }
 }
-.form-coupling
-{
-    overflow: hidden;
-
-    input[type=text]
-    {
-        float:left;
-        width:9%;
-        margin-right: 1%;
-    }
-    select
-    {
-        float:left;
-        width:90%;
-    }
-}
