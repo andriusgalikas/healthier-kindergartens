@@ -1,6 +1,7 @@
 <% content_for :title, 'Edit Survey Subject' %>
 <% content_for :breadcrumb, 'Edit' %>
 <% breadcrumb_add 'Surveys', admin_survey_subjects_path %>
+<% breadcrumb_add @subject.title, admin_survey_subject_path(@subject) %>
 
 <div class="twelvecol">
     <div class="page-header">

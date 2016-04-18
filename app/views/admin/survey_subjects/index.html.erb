@@ -6,13 +6,13 @@
     <%= link_to new_admin_survey_subject_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Survey" do %>
       <i class="icon-plus"></i>
     <% end %>
-    <h2 class="widget widget-header">Subjects</h2>
+    <h2 class="widget widget-header">Surveys</h2>
   </div>
   <% if @subjects.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
         <p>You don't have any surveys yet.</p>
-        <i class="icon-books"></i>
+        <i class="icon-copy"></i>
       </div>
     </div>
   <% else %>

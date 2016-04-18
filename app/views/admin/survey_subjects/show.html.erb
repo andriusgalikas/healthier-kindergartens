@@ -1,44 +1,79 @@
-<div class="row" id="survey">
-    <div class="tencol">
-        <p><%= @subject.description %></p>
-        <%= image_tag @subject.icon.file.thumb %>
-    </div>
-    <div class="twocol last">
-        <%= link_to 'Edit', edit_admin_survey_subject_path(@subject), :class => 'btn btn-green btn-block btn-normal' %>
-        <%= link_to 'Add Survey', new_admin_survey_subject_survey_path(@subject), :class => 'btn btn-orange btn-block btn-normal' %>
-    </div>
+<% content_for :title, @subject.title %>
+<% content_for :breadcrumb, @subject.title %>
+<% breadcrumb_add 'Surveys', admin_survey_subjects_path %>
+
+<div class="twelvecol">
     <div class="page-header">
-        <h2>Modules</h2>
+        <%= link_to edit_admin_survey_subject_path(@subject), :class => "btn btn-green btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Edit Survey" do %>
+            <i class="icon-pencil"></i>
+        <% end %>
+        <%= link_to new_admin_survey_subject_survey_path(@subject), :class => 'btn btn-blue btn-large', "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Module" do %>
+            <i class="icon-plus"></i>
+        <% end %>
+        <h2 class="widget widget-header"><%= @subject.title %></h2>
+    </div>
+    <div class="widget widget-content">
+        <%= image_tag @subject.icon.file.thumb %>
+        <p><%= @subject.description %></p>
     </div>
     <% if @subject.surveys.empty? %>
-        <p>You currently have no survey modules for this subject.</p>
+        <div class="widget widget-content">
+            <div class="helper-notification">
+                <p>You don't have any surveys yet.</p>
+                <i class="icon-copy"></i>
+            </div>
+        </div>
     <% else %>
         <% @subject.surveys.each do |survey| %>
-            <div class="survey-module">
-                <%= link_to 'Edit', edit_admin_survey_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-normal' %>
-                <%= link_to 'Delete', admin_survey_subject_survey_path(@subject, survey), method: :delete, :class => 'btn btn-red btn-normal' %>
+            <div class="widget-sub-heading">
                 <h3><%= survey.name %></h3>
-                <p><%= survey.description %></p>
-                
-                <ol>
-                    <% survey.questions.each_slice(2) do |slice| %>
-                        <div class="row">
-                            <% slice.each_with_index do |question, index| %>
-                                <div class="sixcol <%= index == 1 ? 'last' : '' %>">
-                                    <li>
-                                        <h3><%= question.text %></h3>
-                                        <% question.options.each do |option| %>
-                                            <p><%= option.text %></p>
-                                        <% end %>
-                                    </li>
-                                </div>
+            </div>
+            <div class="widget widget-content widget-last">
+                <p><b>Weight:</b> <%= survey.weight %></p>
+                <p><b>Status:</b> <%= survey.active == true ? 'Active' : 'Inactive' %></p>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-form table-striped">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th class="inner-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% survey.questions.each do |question| %>
+                                <tr>
+                                    <td><%= question.text %></td>
+                                    <td class="inner-table">
+                                        <table>
+                                            <tbody>
+                                                <% question.options.each do |option| %>
+                                                    <tr>
+                                                        <td class="align-left">
+                                                            <%= option.text %>
+                                                        </td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
                             <% end %>
-                        </div>
-                    <% end %>
-                    <div class="row divider">
-                        <hr>
-                    </div>
-                </ol>
+                        </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="form-action">
+                <%= link_to 'Delete', admin_survey_subject_survey_path(@subject, survey), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-red btn-large' %>
+                <%= link_to 'Edit', edit_admin_survey_subject_survey_path(@subject, survey), :class => 'btn btn-green btn-large' %>
             </div>
         <% end %>
     <% end %>

@@ -39,7 +39,7 @@
       <i class="icon-books" style="color:#8DC73F;"></i>
     <% end %>
   </li>
-  <li class="<%= active_controller?(controller: 'admin/surveys') %>">
+  <li class="<%= active_controller?(controller: 'admin/survey_subjects') %> <%= active_controller?(controller: 'admin/surveys') %>">
     <%= link_to admin_survey_subjects_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Surveys' do %>
       <i class="icon-copy"></i>
     <% end %>
