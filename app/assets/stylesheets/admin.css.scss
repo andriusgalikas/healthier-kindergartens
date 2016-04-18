@@ -50,3 +50,18 @@
             margin-left:7px;
         }
 }
+#questions
+{
+    ol.options
+    {
+        + input + a
+        {
+            margin-left:15px;
+        }
+
+        li
+        {
+            overflow: hidden;
+        }
+    }
+}

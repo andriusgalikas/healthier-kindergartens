@@ -1,50 +1,49 @@
 <%= form_for([@subject, @survey], url: url) do |f| %>
-  <% if @survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
-
-      <ul>
-      <% @survey.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+	<div class="threecol"></div>
+    <div class="ninecol last">
+        <%= render partial: 'shared/admin/errors', locals: { object: @todo } %>
     </div>
-  <% end %>
-  <div class="form-group">
-    <%= label_tag :spreadsheet_file %>
-    <%= file_field_tag :spreadsheet_file, :class => 'form-control' %>
-  </div>
-  <%= f.submit "Upload Survey", :class => 'btn btn-blue btn-normal' %>
-  <hr>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :weight %>
-    <%= f.text_field :weight, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :active %>
-    <%= f.select :active, ["true", "false"], {}, :class => 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, :size => "100x5", :class => 'form-control' %>
-  </div>
-  <%= f.hidden_field :attempts_number, value: 10000000 %>
-  <h3>
-  <div class="page-header">
-    <h2>Questions</h2>
-  </div>
-  <div id="questions" class="multi-field field">
-    <ol>
-      <%= f.fields_for :questions do |builder| %>
-          <%= render "question_fields", :f => builder %>
-      <% end %>
-    </ol>
-    <%= link_to_add_field "Add Question", f, :questions %>
-  </div>
-  <%= f.submit 'Save', :class => 'btn btn-blue btn-large btn-block' %>
-<% end -%>
+    <div class="threecol">
+        <h3>Survey Module details</h3>
+        <p>Set the name, weight, active and description for your survey module.</p>
+    </div>
+    <div class="ninecol last">
+        <fieldset class="widget widget-content">
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, :class => 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= f.label :weight %>
+				<%= f.text_field :weight, :class => 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= f.label :active %>
+				<%= f.select :active, ["true", "false"], {}, :class => 'form-control' %>
+			</div>
+			<div class="form-group form-last">
+				<%= f.label :description %>
+				<%= f.text_area :description, :size => "100x5", :class => 'form-control' %>
+			</div>	
+			<%= f.hidden_field :attempts_number, value: 10000000 %>
+		</fieldset>
+	</div>
+	<div class="threecol">
+        <h3>Questions</h3>
+        <p>Set the questions for your survey module.</p>
+		<%= link_to_add_field "Add Question", f, :questions, 'addField' %>
+    </div>
+    <div class="ninecol last">
+        <fieldset class="widget widget-content widget-last">
+        	<div id="questions" class="fields">
+				<%= f.fields_for :questions do |builder| %>
+					<%= render "question_fields", f: builder %>
+				<% end %>
+			</div>
+        </fieldset>
+        <div class="form-action">
+			<%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+		</div>
+    </div>
+<% end %>

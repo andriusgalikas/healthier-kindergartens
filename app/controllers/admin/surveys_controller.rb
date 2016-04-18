@@ -3,10 +3,12 @@ class Admin::SurveysController < AdminController
   def new
     set_subject
     new_survey
+    new_question
   end
 
   def edit
     set_subject
+    new_question
     set_survey
   end
 
@@ -56,6 +58,10 @@ class Admin::SurveysController < AdminController
   
   def new_survey
     @survey = @subject.surveys.new
+  end
+
+  def new_question
+    @survey.questions.build
   end
 
   def survey_params

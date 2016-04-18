@@ -36,11 +36,17 @@ function add_fields(link, association, content) {
 }
 function removeField(link) {
     $(link).prev("input[type=hidden]").val("true");
-    tag = $(link).closest("li")
+    tag = $(link).closest(".field")
     tag.hide("fade in").addClass("deleted");
 }
 
 function addField(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    var html = $(content.replace(regexp, new_id)).hide();
+    html.appendTo($(link).parent().next().find('.widget .fields')).slideDown("slow");
+}
+function addOptionField(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g");
     var html = $(content.replace(regexp, new_id)).hide();
