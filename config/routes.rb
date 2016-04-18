@@ -107,9 +107,8 @@ Rails.application.routes.draw do
 
 
         resources :survey_subjects do
-            resources :surveys do
-                post :upload, on: :member
-            end
+            match :upload, on: :member, via: [:get, :post]
+            resources :surveys
         end
     end
 

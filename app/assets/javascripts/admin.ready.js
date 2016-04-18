@@ -1,4 +1,4 @@
-$(document).ready(function()
+ready = function()
 {
     healthChildcare.admin.multiSelect();
 
@@ -23,11 +23,22 @@ $(document).ready(function()
         }
 
     });
-});
+};
+$(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
+});
+$(document).on('page:fetch', function()
+{
+    $('.main .container').addClass('animated fadeOut');
+    return $('.loading5').addClass('active');
+});
+
+$(document).on("page:receive", function(){
+    $('.loading-overlay').removeClass('active');
+    return $('.loading5').removeClass('active');
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
