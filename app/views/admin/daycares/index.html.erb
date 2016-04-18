@@ -1,27 +1,51 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, 'Daycares' %>
+<% content_for :breadcrumb, 'Daycares' %>
 
-<h1>Listing Daycares</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address Line</th>
-      <th>Postcode</th>
-      <th>Country</th>
-      <th>Telephone</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @daycares.each do |dc| %>
-      <tr>
-        <td><%= dc.name %></td>
-        <td><%= dc.address_line1 %></td>
-        <td><%= dc.postcode %></td>
-        <td><%= dc.country %></td>
-        <td><%= dc.telephone %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Daycares</h2>
+  </div>
+  <% if @daycares.empty? %>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any daycares yet.</p>
+        <i class="icon-lab"></i>
+      </div>
+    </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Postcode</th>
+            <th>Country</th>
+            <th>Telephone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @daycares.each do |dc| %>
+            <tr>
+              <td>
+                <%= dc.name %>
+              </td>
+              <td>
+                <%= dc.address_line1 %>
+              </td>
+              <td>
+                <%= dc.postcode %>
+              </td>
+              <td>
+                <%= dc.country %>
+              </td>
+              <td class="align-left">
+                <%= dc.telephone %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

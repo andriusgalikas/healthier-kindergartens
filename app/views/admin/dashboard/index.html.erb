@@ -1,11 +1,84 @@
-<h1>Dashboard</h1>
-<ul>
-    <li><%= link_to 'Users', admin_users_path %></li>
-    <li><%= link_to 'Todos', admin_todos_path %></li>
-    <li><%= link_to 'Daycares', admin_daycares_path %></li>
-    <li><%= link_to 'Discount Codes', admin_discount_codes_path %></li>
-    <li><%= link_to 'Plans', admin_plans_path %></li>
-    <li><%= link_to 'Departments', admin_departments_path %></li>
-    <li><%= link_to 'Subjects', admin_subjects_path %></li>
-    <li><%= link_to 'Surveys', admin_survey_subjects_path %></li>
-</ul>
+<% content_for :title, 'Dashboard' %>
+<% content_for :breadcrumb, 'Dashboard' %>
+
+<div class="twelvecol">
+	<div class="page-header">
+		<h2 class="widget widget-header">Dashboard</h2>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Resource</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Users</td>
+					<td>
+						<%= link_to admin_users_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Todos</td>
+					<td>
+						<%= link_to admin_todos_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Daycares</td>
+					<td>
+						<%= link_to admin_daycares_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Discount Codes</td>
+					<td>
+						<%= link_to admin_discount_codes_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Plans</td>
+					<td>
+						<%= link_to admin_plans_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Departments</td>
+					<td>
+						<%= link_to admin_departments_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Subjects</td>
+					<td>
+						<%= link_to admin_subjects_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Surveys</td>
+					<td>
+						<%= link_to admin_survey_subjects_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
