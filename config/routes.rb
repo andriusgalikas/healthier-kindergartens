@@ -116,5 +116,6 @@ Rails.application.routes.draw do
         resources :daycares, only: [:index] do
             resources :departments, only: :index
         end
+        resources :plans, only: :show
     end
 end

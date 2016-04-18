@@ -64,6 +64,22 @@ $(document).ready(function()
         });
         return false;
     });
+    $('#allocation-slider').on("input change", function()
+    {
+        var planAllocation = $(this).val();
+        $.ajax(
+        {
+            url: '/api/plans/' + planAllocation,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data)
+            {
+                $('.wizard-form2').attr('action', '/plans/' + data.id + '/subscriptions/new');
+                $('.plan-value').html(data.allocation);
+                $('.plan-price').html('$' + data.price);
+            }
+        });
+    });
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");

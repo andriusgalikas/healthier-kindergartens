@@ -104,16 +104,16 @@
         <div class="col-lg-12"> 
             <div class="reserve-area"> 
                 <p class="reserve-offer">Be among the first <span>100</span> qualifying agencies to sign up, and you’ll receive a <span>50% discount</span> off your monthly membership.</p>
-                <form class="wizard-form2" method="post">
+                <%= form_tag new_plan_subscription_path(@plans.first), class: 'wizard-form2', method: :get do %>
                     <ul class="stepNav threeWide">
                         <li class="selected0">
                             <p class="title_range">
                                 How many children in your organization?
                             </p>
-                            <div class="value">0</div>
+                            <div class="plan-value value"><%= @range[:min] %></div>
                             <span class="value_span">Children</span>
                             <div class="range_slider">
-                                <%= range_field_tag :allocation, params[:allocation], min: 0, max: @range[:max], value: 0 %>
+                                <%= range_field_tag :allocation, params[:allocation], id: 'allocation-slider', min: @range[:min], max: @range[:max], step: @range[:step], value: 0 %>
                                 <label><%= @range[:max] %><p>?</p></label>
                             </div>
                             
@@ -121,24 +121,17 @@
 
                         <li class="selected">
                             <p>How much will HSCA accreditation costs?</p>
-                            <div class="second_area">
-                                <h2>$99</h2>
-                            </div>
+                            <h2 class="plan-price"><%= number_to_currency @plans.first.price %></h2>
                             <span>per month</span>
                         </li>
 
                         <li class="selected2">
                             <div>
-                                <% @plans.each do |plan| %>
-                                    <div>
-                                        <%= link_to plan.name, new_plan_subscription_path(plan) %>
-                                        <b><%= number_to_currency plan.price %></b>
-                                    </div>
-                                <% end %>
+                                <%= submit_tag 'Continue' %>
                             </div>
                         </li>
                     </ul>
-                </form>
+                <% end %>
             </div>
         </div>
     </div>
