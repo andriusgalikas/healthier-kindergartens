@@ -36,7 +36,7 @@
                     <table class="table table-bordered table-form table-striped">
                         <thead>
                             <tr>
-                                <th>Question</th>
+                                <th width="25%">Question</th>
                                 <th class="inner-table">
                                     <table>
                                         <thead>
@@ -51,7 +51,7 @@
                         <tbody>
                             <% survey.questions.each do |question| %>
                                 <tr>
-                                    <td><%= question.text %></td>
+                                    <td width="25%"><%= question.text %></td>
                                     <td class="inner-table">
                                         <table>
                                             <tbody>
@@ -68,7 +68,7 @@
                                 </tr>
                             <% end %>
                         </tbody>
-                </table>
+                    </table>
                 </div>
             </div>
             <div class="form-action">

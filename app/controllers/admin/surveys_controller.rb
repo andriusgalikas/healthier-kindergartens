@@ -8,7 +8,6 @@ class Admin::SurveysController < AdminController
 
   def edit
     set_subject
-    new_question
     set_survey
   end
 
@@ -65,7 +64,7 @@ class Admin::SurveysController < AdminController
   end
 
   def survey_params
-    params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes).merge(:spreadsheet_file)
+    params.require(:survey_survey).permit(:weight, :name, :description, :finished, :active, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy)
   end
 
   def build_surveys_from_spreadsheet

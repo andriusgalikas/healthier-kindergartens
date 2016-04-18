@@ -24,6 +24,11 @@ $(document).ready(function()
 
     });
 });
+$(document).on('page:change page:load', function()
+{
+    $('[data-toggle=tooltip]').tooltip('hide');
+    $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
+});
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
     $(link).closest(".field").hide();
