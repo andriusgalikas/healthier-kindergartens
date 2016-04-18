@@ -1,30 +1,55 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, 'Plans' %>
+<% content_for :breadcrumb, 'Plans' %>
 
-<h1>Listing Plans</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Allocation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plans.each do |plan| %>
-      <tr>
-        <td><%= plan.name %></td>
-        <td><%= plan.price %></td>
-        <td><%= plan.allocation %></td>
-        <td><%= link_to 'Edit', edit_admin_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', [:admin, plan], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_plan_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Plan" do %>
+      <i class="icon-plus"></i>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Plan', new_admin_plan_path %>
+    <h2 class="widget widget-header">Plans</h2>
+  </div>
+  <% if @plans.empty? %>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any plans yet.</p>
+        <i class="fa fa-th-large"></i>
+      </div>
+    </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Allocation</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plans.each do |plan| %>
+            <tr>
+              <td>
+                <%= plan.name %>
+              </td>
+              <td>
+                <%= plan.price %>
+              </td>
+              <td>
+                <%= plan.allocation %>
+              </td>
+              <td>
+                <%= link_to edit_admin_plan_path(plan) do %>
+                  <i class="icon-pencil"></i>
+                <% end %>
+                <%= link_to [:admin, plan], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-remove"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

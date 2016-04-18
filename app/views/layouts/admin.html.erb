@@ -27,9 +27,9 @@
 					</div>
 					<div class="main">
 						<%= render partial: 'shared/admin/loading', format: [:html] %>
+						<%= render partial: 'shared/flash' %>
 						<div class="container">
 							<div class="row">
-								<%= render partial: 'shared/flash' %>
 								<%= render_breadcrumbs 0 %>
 								<%= yield %>
 							</div>

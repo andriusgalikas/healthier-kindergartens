@@ -1,5 +1,10 @@
-<h1>New Plan</h1>
+<% content_for :title, 'New plan' %>
+<% content_for :breadcrumb, 'New' %>
+<% breadcrumb_add 'Plans', admin_plans_path %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_plans_path %>
+<div class="twelvecol">
+    <div class="page-header">
+        <h2 class="widget widget-header">New plan</h2>
+    </div>
+    <%= render 'form' %>
+</div>

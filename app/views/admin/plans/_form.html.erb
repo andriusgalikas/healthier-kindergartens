@@ -1,29 +1,30 @@
 <%= form_for [:admin, @plan] do |f| %>
-  <% if @plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+	<div class="threecol"></div>
+	<div class="ninecol last">
+		<%= render partial: 'shared/admin/errors', locals: { object: @plan } %>
+	</div>
 
-      <ul>
-      <% @plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :allocation %><br>
-    <%= f.number_field :allocation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="threecol">
+  		<h3>Plan details</h3>
+  		<p>Set the name, price and child allocation for your plan.</p>
+	</div>
+	<div class="ninecol last">
+  		<fieldset class="widget widget-content widget-last">
+			<div class="form-group">
+				<%= f.label :name %><br>
+				<%= f.text_field :name, :class => 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= f.label :price %><br>
+				<%= f.text_field :price, :class => 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= f.label :allocation %><br>
+				<%= f.number_field :allocation, :class => 'form-control' %>
+			</div>
+		</fieldset>
+		<div class="form-action">
+    		<%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+		</div>
+	</div>
 <% end %>
