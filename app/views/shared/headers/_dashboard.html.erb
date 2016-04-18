@@ -1,20 +1,12 @@
 <header>
-    <div class="row">
-        <div class="onecol">
-            <%= link_to (yield :previous_path), :class => 'previous' do %>
-                <%= image_tag "ar_left.png" %>
-            <% end %>
-        </div>
-        <div class="tencol">
-            <h2><%= yield :page_title %></h2>
-        </div>
-        <div class="onecol last">
-            <div class="dropdown">
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li><%= link_to 'Dashboard', welcome_path %></li>
-                    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-                </ul>
-            </div>
-        <div>
+    <%= link_to (yield :previous_path), :class => 'previous' do %>
+        <%= image_tag "ar_left.png" %>
+    <% end %>
+    <h2><%= yield :page_title %></h2>
+    <div class="dropdown">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><%= link_to 'Dashboard', welcome_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        </ul>
     </div>
 </header>

@@ -5,16 +5,8 @@ header
     color:#fff;
     line-height: 70px;
     margin-bottom:30px;
+    text-align: center;
 
-    .row
-    {
-        overflow: inherit;
-    }
-
-    .tencol, .onecol
-    {
-        text-align: center;
-    }
     .dropdown
     {
         position: relative;
@@ -24,6 +16,8 @@ header
         width:31px;
         margin:24px 0;
         cursor: pointer;
+        float:right;
+        margin-right: 30px;
 
         &.open > ul.dropdown-menu
         {
@@ -80,6 +74,7 @@ header
     h2
     {
         margin: 0;
+        display: inline-block;
     }
 
     a
@@ -97,6 +92,8 @@ header
             height: 62px;
             margin: 9px 0;
             text-decoration: none;
+            float:left;
+            margin-left:30px;
 
             img 
             {
