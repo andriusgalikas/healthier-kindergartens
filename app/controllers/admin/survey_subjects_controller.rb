@@ -75,7 +75,6 @@ class Admin::SurveySubjectsController < AdminController
 		file_data = params[:spreadsheet_file]
 		xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
 		survey_name = file_data.original_filename.split('.xlsx').first.titleize
-		binding.pry
 		if xlsx.sheets.count > 0
 			if xlsx.last_row > 1
 				survey = @subject.surveys.build(name: survey_name, description: "Uploaded survey of #{survey_name}", attempts_number: 100000, active: true)

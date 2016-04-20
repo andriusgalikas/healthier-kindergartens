@@ -19,7 +19,6 @@ class Surveys::AttemptsController < ApplicationController
     @attempt = @survey.attempts.new(attempt_params)
     @attempt.participant = current_user
 
-    binding.pry
     if @attempt.valid? && @attempt.save
       redirect_to surveys_path, notice: "You have completed the survey #{@survey.name} survey!"
     else
