@@ -32,7 +32,7 @@ class Manager::SurveySubjectsController < ApplicationController
         subject.surveys.each do |survey|
             total_survey_score = survey.attempts.map(&:score).sum
             total_questions = (survey.questions.count*survey.attempts.size)
-            @results.push([survey.name, (total_survey_score.to_f/total_questions.to_f * 100.0)])
+            @results.push([survey.name, (total_survey_score.to_f/total_questions.to_f * 100.0)]) unless total_survey_score.zero? && total_questions.zero?
         end
     end
 
