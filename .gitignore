@@ -15,7 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
-/public/uploads
+/public/uploads/*
+!/uploads/.keep
 /vendor/assets/components
 
 *.DS_Store

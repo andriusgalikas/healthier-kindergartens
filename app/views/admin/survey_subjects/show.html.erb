@@ -27,7 +27,7 @@
             </div>
         </div>
     <% else %>
-        <% @subject.surveys.each do |survey| %>
+        <% @subject.surveys.order(weight: :asc).each do |survey| %>
             <div class="widget-sub-heading">
                 <h3><%= survey.name %></h3>
             </div>
