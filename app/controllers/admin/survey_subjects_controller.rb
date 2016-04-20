@@ -68,7 +68,7 @@ class Admin::SurveySubjectsController < AdminController
 	end
 
 	def subject_params
-		params.require(:survey_subject).permit(:daycare_id, :title, :description, icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(daycare_id: current_user.daycare.id)
+		params.require(:survey_subject).permit(:daycare_id, :title, :description, icon_attributes: [:id, :attachable_type, :attachable_id, :file])
 	end
 
 	def build_surveys_from_spreadsheet
