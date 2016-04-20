@@ -20,7 +20,7 @@ class Admin::SurveySubjectsController < AdminController
 	def create
 		@subject = SurveySubject.new(subject_params)
 		if @subject.save
-			redirect_to admin_subject_path(@subject), notice: 'You have created a new subject'
+			redirect_to admin_survey_subject_path(@subject), notice: 'You have created a new subject'
 		else
 			new_icon_attachment
 			render action: :new
@@ -30,7 +30,7 @@ class Admin::SurveySubjectsController < AdminController
 	def update
 		set_subject
 		if @subject.update_attributes(subject_params)
-			redirect_to admin_subject_path(@subject), notice: 'You have updated a subject'
+			redirect_to admin_survey_subject_path(@subject), notice: 'You have updated a subject'
 		else
 			render action: :edit
 		end
@@ -39,7 +39,7 @@ class Admin::SurveySubjectsController < AdminController
 	def destroy
     	set_subject
     	@subject.destroy
-    	redirect_to admin_survey_subject_path(@subject), notice: 'You have successfully deleted a survey.'
+    	redirect_to admin_survey_subjects_path(@subject), notice: 'You have successfully deleted a survey.'
   	end
 
 	def upload
