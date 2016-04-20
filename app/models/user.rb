@@ -19,6 +19,7 @@
 #  name                   :string
 #  stripe_customer_token  :string
 #  department_id          :integer
+#  trial_end_date         :datetime
 #
 # Indexes
 #
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
     include HasDiscountCode
     include HasTodos
     include HasOccurrences
+    include HasTrial
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,

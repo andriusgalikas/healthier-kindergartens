@@ -19,6 +19,7 @@
 #  name                   :string
 #  stripe_customer_token  :string
 #  department_id          :integer
+#  trial_end_date         :datetime
 #
 # Indexes
 #

@@ -9,7 +9,11 @@ module HasSubscription
         scope :unsubscribed,                    -> { includes(:subscription).where(subscription: { id: nil } ) }
 
         def subscribed?
-            subscription.nil? ? false : true
+            subscription.nil? || active_trial? ? false : true
+        end
+
+        def active_trial?
+            trial_end_date > Time.now ? true : false
         end
 
         def unsubscribed?

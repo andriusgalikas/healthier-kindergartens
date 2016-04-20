@@ -1,4 +1,5 @@
-if defined?(Plan)
+Plan
+if Object.const_defined?('Plan')
     Plan.all.each do |p|
         Stripe.plan p.name.parameterize.underscore.to_sym do |plan|
             plan.name = p.name
