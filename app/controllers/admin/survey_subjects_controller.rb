@@ -46,6 +46,7 @@ class Admin::SurveySubjectsController < AdminController
 		set_subject
 		if request.post?
 			build_surveys_from_spreadsheet
+			redirect_to admin_survey_subject_path(@subject), notice: 'You have successfully uploaded a survey module'
 		end
 	end
 
