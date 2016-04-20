@@ -50,7 +50,7 @@ class Daycare < ActiveRecord::Base
     accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true               
 
     def active_subscription?
-        managers.map(&:subscribed?).include?(true) || managers.map(:active_trial?).include?(true) ? true : false
+        managers.map(&:subscribed?).include?(true) || managers.map(&:active_trial?).include?(true) ? true : false
     end
 
     def all_completed_todos
