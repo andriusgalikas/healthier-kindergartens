@@ -20,3 +20,4 @@
 //= require application.ready
 //= require chart
 //= require c3
+//= require jquery.countdown/dist/jquery.countdown.min

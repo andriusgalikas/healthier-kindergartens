@@ -53,7 +53,6 @@ class Daycare < ActiveRecord::Base
         managers.map(&:subscribed?).include?(true) || managers.map(:active_trial?).include?(true) ? true : false
     end
 
-
     def all_completed_todos
         (global_completed_todos + local_completed_todos).uniq
     end
