@@ -62,12 +62,11 @@ https://stripe.com/docs/testing#cards
 
 ## Todo
 
-The Todo logic is broken up into two types: Local and Global. Global Todos are created by an admin, and only an admin can create, edit and destroy. Managers can view 
+The Todo logic is broken up into two types: Local and Global. Global Todos are created by an admin, and only an admin can create, edit and destroy. Managers can view global todos, but cannot modify their data. However, a Manager can create local todos, which are only assigned to their associated Daycare. Additionally, a Manager can generate reports based in start and end time/date for both global todo attempts and local todo attempts by their associated parents and managers.
 
+As a Parent or Worker, you can view the global todos created by an admin and local todos created by your manager within your associated Daycare. Furthermore, Parents and Workers can start a Todo and mark its associated tasks as complete.
 
-# User stories
-
-## Todo
+### User stories
 
 As an admin I can...  
 - view all global todos  
@@ -80,6 +79,7 @@ As a manager I can...
 - create local todos which are assigned to my daycare
 
 As a worker or parent I can...  
-- can view available todos...
-- can view incomplete todos...  
-- 
+- view available todos...
+- view incomplete todos...  
+- mark a tasks on a todo as complete
+- complete all tasks on a todo, thereby completing the todo
