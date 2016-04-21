@@ -12,6 +12,6 @@ class PlanReminderJob < ActiveJob::Base
     private
 
     def set_valid_users
-        @users ||= User.unsubscribed
+        @users ||= User.manager.unsubscribed
     end 
 end

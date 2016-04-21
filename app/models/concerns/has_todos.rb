@@ -17,10 +17,14 @@ module HasTodos
         has_many :local_todos,                                      through: :daycare
         has_many :global_todos,                                     through: :daycare
 
+        # => Sets the available todos for a user
+        #
         def available_todos
             daycare.all_todos.reject{|t| unavailable_todos.map(&:todo_id).include? t.id }
         end
 
+        # => Sets the unavailable todos for a user
+        #
         def unavailable_todos
             (completed_recurring_todo_completes.active + incomplete_todo_completes.active)
         end

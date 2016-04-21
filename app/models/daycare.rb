@@ -49,22 +49,32 @@ class Daycare < ActiveRecord::Base
 
     accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true               
 
+    # => Checks if the daycare contains a manager user with an active subscription or trial
+    #
     def active_subscription?
         managers.map(&:subscribed?).include?(true) || managers.map(&:active_trial?).include?(true) ? true : false
     end
 
+    # => Lists all complete todos
+    #
     def all_completed_todos
         (global_completed_todos + local_completed_todos).uniq
     end
 
+    # => Lists all incomplete todos
+    #
     def all_incomplete_todos
         (global_incomplete_todos + local_incomplete_todos).uniq
     end
 
+    # => Lists all available todos
+    #
     def all_available_todos
         (global_available_todos + local_available_todos).uniq
     end
 
+    # => Lists all todos within a daycare, both global and local
+    #
     def all_todos
         (global_todos + local_todos).uniq
     end

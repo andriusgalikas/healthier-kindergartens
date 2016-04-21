@@ -54,26 +54,38 @@ class Todo < ActiveRecord::Base
 
     accepts_nested_attributes_for :tasks, :icon, allow_destroy: true
 
+    # => Check if a todo is global (created by admin user)
+    #
     def global?
         daycare_id.nil? ? true : false
     end
 
+    # => Convert the enum frequency attribute to a datetime format
+    #
     def frequency_to_time
         day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date 
     end
 
+    # => Conver the completion_date_value and completion_date to a datetime format
+    #
     def completion_date_to_time
         Chronic.parse("#{completion_date_value} #{completion_date} ago")
     end
 
+    # => Check if a certain is currently in progress by the current_user_id parameter
+    #
     def in_progress? current_user_id
         todo_completes.active.map(&:submitter_id).include?(current_user_id) ? true : false
     end
 
+    # => If the iteration type of the todo is single, set the frequency to nil
+    #
     def set_frequency_for_single
         self.frequency = nil if single?
     end
 
+    # => Convert the completion_date_type to a user friendly string
+    #
     def completion_date
         completion_date_type.split('_').last.titleize
     end

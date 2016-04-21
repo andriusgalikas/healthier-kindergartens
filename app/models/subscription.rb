@@ -20,6 +20,8 @@ class Subscription < ActiveRecord::Base
 
     attr_accessor :stripe_card_token
 
+    # => Processes payment with stripe, assigns stripe customer token from return object and assigns discount code relation if one is present
+    #
     def save_with_payment discount_code
         if valid?
             customer = Stripe::Customer.create(description: user.name, email: user.email, plan: plan.name.parameterize.underscore, card: stripe_card_token, coupon: discount_code.try(:code))

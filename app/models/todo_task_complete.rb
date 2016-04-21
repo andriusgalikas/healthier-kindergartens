@@ -25,6 +25,8 @@ class TodoTaskComplete < ActiveRecord::Base
 
     after_update :assign_parent_completion_date
 
+    # => If all todo task attempts are marked as complete, set the parent todo attempt as completed too 
+    #
     def assign_parent_completion_date
         if todo_complete.task_completes.map(&:result).exclude?("pending")
             todo_complete.update_column(:completion_date, Time.now) 

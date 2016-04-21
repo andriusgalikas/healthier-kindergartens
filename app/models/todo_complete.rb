@@ -32,28 +32,40 @@ class TodoComplete < ActiveRecord::Base
     after_create :todo_task_completes
     after_create :assign_user_occurrence
 
+    # => Checks if a todo attempt is completed by the user
+    #
     def complete?
         !completion_date.nil? ? true : false
     end
 
+    # => Checks if the todo attempt has passed all tasks
+    #
     def pass?
         task_completes.map(&:result).exclude?("pending") && task_completes.map(&:result).exclude?("failed") ? true : false
     end
 
+    # => Checks if a todo attempt is still pending (has yet to be marked as pass or failed)
+    #
     def pending?
         task_completes.map(&:result).exclude?("failed") ? true : false
     end
 
+    # => Checks if a todo is a recurring iteration type
+    #
     def todo_recurring?
         todo.recurring? ? true : false
     end
 
+    # => Creates the related todo tasks attempts when starting a todo
+    #
     def todo_task_completes
         todo.tasks.each do |task|
             TodoTaskComplete.create(todo_complete_id: id, todo_task_id: task.id, submitter_id: submitter_id)
         end
     end
 
+    # => Assign user ocurrence for user and todo if the todo interation type is recurring
+    #
     def assign_user_occurrence
         UserOccurrence.create(user_id: submitter_id, todo_id: todo_id) if todo.recurring?
     end
