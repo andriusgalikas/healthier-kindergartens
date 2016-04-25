@@ -42,8 +42,8 @@ class Todo < ActiveRecord::Base
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
     validates :title, :user_id, :completion_date_type, 
-                :completion_date_value,                                         presence: true
-    validates :frequency, :iteration_type,                                      presence: true, :if => :recurring?
+                :completion_date_value, :iteration_type,                        presence: true
+    validates :frequency,                                                       presence: true, :if => :recurring?
     validates :icon,                                                            presence: true
 
     enum iteration_type:            [:single, :recurring]

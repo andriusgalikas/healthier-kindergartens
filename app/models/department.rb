@@ -21,5 +21,5 @@ class Department < ActiveRecord::Base
     has_many :incomplete_todos,                         -> { incomplete }, through: :department_todos, source: :todo
     has_many :available_todos,                          -> { available }, through: :department_todos, source: :todo
 
-    validates :name,                                    presence: true
+    validates :name,                                    presence: true, uniqueness: { scope: :daycare_id }
 end
