@@ -59,8 +59,6 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
-gem 'fast_blank'
-gem 'jquery-turbolinks'
 gem 'compass-rails'
 gem 'rollbar'
 gem 'whenever', require: false
@@ -74,6 +72,7 @@ gem 'stripe-rails'
 # image processing
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'copy_carrierwave_file'
 
 # background processing
 gem 'sidekiq'

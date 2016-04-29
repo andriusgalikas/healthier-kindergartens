@@ -10,36 +10,19 @@
             </div>
         <% end %>
         <div class="page-header">
-            <h2>Daycare Todos</h2>
+            <h2>Todos</h2>
         </div>
-        <% if current_user.local_todos.empty? %>
-            <p>You have no Daycare todos currently, you can <%= link_to 'create', new_manager_todo_path %> one now.</p>
+        <% if current_user.daycare.all_todos.empty? %>
+            <p>You have no Todos currently.</p>
         <% else %>
             <ul>
-                <% current_user.local_todos.each do |todo| %>
+                <% current_user.daycare.all_todos.each do |todo| %>
                     <li>
                         <div>
+                        <%= todo.id %>
                             <%= image_tag todo.icon.file.thumb %>
                         </div>
-                        <span><%= truncate(todo.title, length: 15) %></span>
-                        <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
-                    </li>
-                <% end %>
-            </ul>
-        <% end %>
-        <div class="page-header">
-            <h2>Global Todos</h2>
-        </div>
-        <% if current_user.global_todos.empty? %>
-            <p>You have no Global todos currently.</p>
-        <% else %>
-            <ul>
-                <% current_user.global_todos.each do |todo| %>
-                    <li>
-                        <div>
-                            <%= image_tag todo.icon.file.thumb %>
-                        </div>
-                        <span><%= truncate(todo.title, length: 15) %></span>
+                        <span><%= truncate(todo.title, length: 12) %></span>
                         <%= link_to 'Show', manager_todo_path(todo), :class => 'btn btn-blue btn-normal btn-block' %>
                     </li>
                 <% end %>

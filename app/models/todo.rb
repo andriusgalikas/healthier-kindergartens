@@ -45,6 +45,7 @@ class Todo < ActiveRecord::Base
                 :completion_date_value, :iteration_type,                        presence: true
     validates :frequency,                                                       presence: true, :if => :recurring?
     validates :icon,                                                            presence: true
+    validates :title,                                                           uniqueness: { scope: :user_id }
 
     enum iteration_type:            [:single, :recurring]
     enum frequency:                 [:day, :week, :month, :year]

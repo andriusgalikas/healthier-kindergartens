@@ -25,7 +25,7 @@ class Daycare < ActiveRecord::Base
     has_many :surveys,                                  through: :survey_subjects
 
     # Dashboard relations
-    has_many :local_todos,                              class_name: 'Todo'
+    has_many :local_todos,                              -> { includes(:icon) }, class_name: 'Todo'
 
     # Reporting relations
     has_many :local_completed_todos,                    -> { complete }, class_name: 'Todo'
@@ -33,7 +33,7 @@ class Daycare < ActiveRecord::Base
     has_many :local_available_todos,                    -> { available }, class_name: 'Todo'
 
     # Dashboard relations
-    has_many :global_todos,                             through: :departments, source: :todos
+    has_many :global_todos,                             -> { includes(:icon) }, through: :departments, source: :todos
 
     # Reporting relations
     has_many :global_completed_todos,                   -> { complete }, through: :departments, source: :todos
@@ -76,6 +76,6 @@ class Daycare < ActiveRecord::Base
     # => Lists all todos within a daycare, both global and local
     #
     def all_todos
-        (global_todos + local_todos).uniq
+        (global_todos.to_a.delete_if{ |gt| local_todos.map(&:title).include?(gt.title) } + local_todos)
     end
 end

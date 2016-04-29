@@ -41,10 +41,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'complete', to: 'subscriptions#complete'
-
     namespace :manager do
-        resources :todos do
+        resources :todos, except: [:new, :create] do
             collection do
                 get :dashboard
                 get :search
