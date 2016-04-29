@@ -19,6 +19,7 @@
                 <% current_user.available_todos.each do |todo| %>
                     <li>
                         <div>
+                            <%= todo.id %>
                             <%= image_tag todo.icon.file.thumb %>
                         </div>
                         <span><%= truncate(todo.title, length: 15) %></span>

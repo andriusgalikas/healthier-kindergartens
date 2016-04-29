@@ -17,6 +17,7 @@ class Daycare < ActiveRecord::Base
     has_many :children,                                 through: :departments
     has_many :user_daycares
     has_many :users,                                    through: :user_daycares
+    has_many :todo_destroys,                            through: :users
     has_many :parents,                                  -> { (where(role: 0)) }, through: :user_daycares, source: :user
     has_many :workers,                                  -> { (where(role: 1)) }, through: :user_daycares, source: :user
     has_many :managers,                                 -> { (where(role: 2)) }, through: :user_daycares, source: :user

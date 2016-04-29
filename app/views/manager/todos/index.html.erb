@@ -12,11 +12,11 @@
         <div class="page-header">
             <h2>Todos</h2>
         </div>
-        <% if current_user.daycare.all_todos.empty? %>
+        <% if current_user.all_todos.empty? %>
             <p>You have no Todos currently.</p>
         <% else %>
             <ul>
-                <% current_user.daycare.all_todos.each do |todo| %>
+                <% current_user.all_todos.each do |todo| %>
                     <li>
                         <div>
                         <%= todo.id %>

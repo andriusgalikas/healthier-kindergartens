@@ -13,6 +13,8 @@ module HasTodos
         has_many :completed_todos,                                  -> { includes(:todo_completes).where.not(todo_completes: { completion_date: nil } ) }, class_name: 'Todo'
         has_many :incomplete_todos,                                 -> { includes(:todo_completes).where.not(todo_completes: { id: nil } ).where(todo_completes: { completion_date: nil } ) }, class_name: 'Todo'
 
+        has_many :todo_destroys,                                    class_name: 'UserTodoDestroy'
+
         # Manager/admin relations
         has_many :local_todos,                                      through: :daycare
         has_many :global_todos,                                     through: :daycare
@@ -20,13 +22,17 @@ module HasTodos
         # => Sets the available todos for a user
         #
         def available_todos
-            daycare.all_todos.reject{|t| unavailable_todos.map(&:todo_id).include? t.id }
+            all_todos.reject{|t| unavailable_todos.map(&:todo_id).include? t.id }
         end
 
         # => Sets the unavailable todos for a user
         #
         def unavailable_todos
             (completed_recurring_todo_completes.active + incomplete_todo_completes.active)
+        end
+
+        def all_todos
+            daycare.all_todos.reject{|dt| daycare.todo_destroys.map(&:todo_id).include? (dt.id) }
         end
     end
 end

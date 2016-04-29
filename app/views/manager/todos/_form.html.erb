@@ -1,10 +1,10 @@
 <%= form_for [:manager, @todo] do |f| %>
-  <% if @todo.errors.any? %>
+  <% if @errors.present? && @errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+      <h2><%= pluralize(@errors.count, "error") %> prohibited this todo from being saved:</h2>
 
       <ul>
-      <% @todo.errors.full_messages.each do |message| %>
+      <% @errors.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -40,7 +40,19 @@
     <h2>Tasks</h2>
   </div>
   <div id="tasks" class="multi-field">
-    <%= f.fields_for :tasks do |ff |%>
+    <% @todo.global_tasks.each do |task | %>
+      <div class="fields">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" readonly="true" value="<%= task.title %>" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" readonly="true" value="<%= task.description %>" class="form-control">
+        </div>
+    </div>
+  <% end %>
+    <%= f.fields_for :tasks, @todo.local_tasks do |ff |%>
       <%= render partial: 'task_fields', locals: { f: ff } %>
     <% end %>
     <%= custom_link_to_add_fields "Add Task", f, :tasks %>

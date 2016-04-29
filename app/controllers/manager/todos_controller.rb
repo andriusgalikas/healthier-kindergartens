@@ -23,6 +23,7 @@ class Manager::TodosController < ApplicationController
 		if (@old_todo.present? ? @todo.save : @todo.update(todo_params))
 			redirect_to manager_todo_path(@todo), notice: 'Todo was successfully updated.'
 		else
+            @errors = @todo.errors.full_messages
 			@todo = @old_todo
 			@todo.attributes = todo_params
 			render :edit
@@ -31,7 +32,9 @@ class Manager::TodosController < ApplicationController
 
 	def destroy
 		set_todo
-		@todo.destroy unless @todo.global?
+        set_global_todo if @todo.local?
+        hide_todo_from_dashboard
+		@todo.destroy unless @todo.global? 
 		redirect_to dashboard_manager_todos_path, notice: 'Todo was successfully destroyed.'
 	end
 
@@ -53,7 +56,7 @@ class Manager::TodosController < ApplicationController
 
 	def set_new_todo
 		@old_todo = @todo
-		@todo = Todo.new(todo_params.except(:tasks_attributes, :icon_attributes))
+		@todo = Todo.new(todo_params)
 		@old_todo.tasks.each do |task|
 			new_task = @todo.tasks.build
 			new_task.attributes = task.dup.attributes
@@ -68,7 +71,7 @@ class Manager::TodosController < ApplicationController
 	end
 
   	def todo_params
-  		params.require(:todo).permit(:title, :iteration_type, :frequency, :completion_date_type, :completion_date_value, :daycare_id, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
+  		params.require(:todo).permit(:title, :iteration_type, :frequency, :completion_date_type, :completion_date_value, :daycare_id, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
   	end
 
   	def set_query
@@ -86,4 +89,13 @@ class Manager::TodosController < ApplicationController
   	def search_todos
   		@todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
   	end
+
+    def set_global_todo
+        @global_todo = Todo.global.find_by_title(@todo.title)
+    end
+
+    def hide_todo_from_dashboard
+        binding.pry
+        UserTodoDestroy.create(todo_id: (@global_todo ||= @todo).id, user_id: current_user.id)
+    end
 end
