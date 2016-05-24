@@ -25,19 +25,31 @@ Things you may want to cover:
 
 # Getting started
 
-Install gems:  
+Install rvm :
+
+`rvm install ruby-2.2.2`
+
+Install Redis :
+
+`brew install redis`
+
+Install PostgreSQL :
+
+`brew install postgres`
+
+Install gems:
 
 `bundle install`
-  
-Install asset dependencies:  
+
+Install asset dependencies:
 
 `bower install`
 
 Seed the database
 
 `bundle exec rake db:setup`
-  
-Start the web server and Sidekiq:   
+
+Start the web server and Sidekiq:
 
 `foreman start -f Procfile.dev`
 
@@ -46,11 +58,11 @@ Start the web server and Sidekiq:
 
 ## Login details
 
-Admin/Super Admin: admin@daycare.org / mypassword   
-Manager: manager@daycare.org / mypassword   
-Worker: worker@daycare.org / mypassword   
-Parent: parent@daycare.org / mypassword   
-  
+Admin/Super Admin: admin@daycare.org / mypassword
+Manager: manager@daycare.org / mypassword
+Worker: worker@daycare.org / mypassword
+Parent: parent@daycare.org / mypassword
+
 
 # Stripe
 
@@ -82,7 +94,7 @@ The DepartmentTodo is a HABTM relationship handler between the Department and To
 
 ## DiscountCode
 
-The DiscountCode model is designed to define available DiscountCodes based around on percentage for the subscription part of the system. When creating a new DiscountCode, it should automtically create and/or update the linked Stripe account with the required information. Stripe needs to hold the DiscountCode information in order to apply the discount to the User's subscription every month. If you cannot find the DiscountCode information in your stripe dashboard, run the following command: 
+The DiscountCode model is designed to define available DiscountCodes based around on percentage for the subscription part of the system. When creating a new DiscountCode, it should automtically create and/or update the linked Stripe account with the required information. Stripe needs to hold the DiscountCode information in order to apply the discount to the User's subscription every month. If you cannot find the DiscountCode information in your stripe dashboard, run the following command:
 
 `rake stripe:prepare`
 
@@ -92,7 +104,7 @@ The DiscountCodeUser is a HABTM relationship handler between the DiscountCode an
 
 ## Plan
 
-The Plan model is designed to define available Plans for when a User would like to upgrade their subscription in the system. When creating a new Plan, it should automtically create and/or update the linked Stripe account with the required information. Stripe needs to hold the Plan information in order to charge the User with the correct amount for each month of their subscription. If you cannot find the Plan information in your stripe dashboard, run the following command: 
+The Plan model is designed to define available Plans for when a User would like to upgrade their subscription in the system. When creating a new Plan, it should automtically create and/or update the linked Stripe account with the required information. Stripe needs to hold the Plan information in order to charge the User with the correct amount for each month of their subscription. If you cannot find the Plan information in your stripe dashboard, run the following command:
 
 `rake stripe:prepare`
 
@@ -101,7 +113,7 @@ The Plan model is designed to define available Plans for when a User would like 
 The Subject model is designed to define a predefined set of subjects for when a User with the 'manager' role creates a new Todo for their associated Daycare. Instead of a User with a 'manager' role submitting custom text for the Title of the Todo, they need to select from a list of predefined Subjects which have been created by a User with an 'admin' role. This has been designed in order support legacy functionality and is advisable to restructure later on.
 
 ## SurveySubject
-    
+
 The SurveySubject model is designed to define the master subject for a Survey. Since there are mutliple modules (Survey model) in a Survey, it made sense to create a parent record which defined the survey Title, Description and Icon. After creating a SurveySubject record, a User can then create modules containing questions and answers with the Survey model. In order to create SurveySubject or Survey records, a User needs to have an 'admin' role.
 
 ## Todo
@@ -112,19 +124,19 @@ As a Parent or Worker, you can view the global todos created by an admin and loc
 
 ### User stories
 
-As an admin I can...  
-- view all global todos  
-- create global todos   
+As an admin I can...
+- view all global todos
+- create global todos
 
-As a manager I can...  
-- view all global todos   
+As a manager I can...
+- view all global todos
 - generate report on global and local todos
-- iew all local todos in relation to my daycare  
+- iew all local todos in relation to my daycare
 - create local todos which are assigned to my daycare
 
-As a worker or parent I can...  
+As a worker or parent I can...
 - view available todos...
-- view incomplete todos...  
+- view incomplete todos...
 - mark a tasks on a todo as complete
 - complete all tasks on a todo, thereby completing the todo
 
@@ -151,3 +163,8 @@ The UserDaycare is a HABTM relationship handler between the Users and Daycares m
 ## UserOccurrence
 
 The UserOccurrence model is designed to prevent Users from repeating a Todo with a 'recurring' iteration type within the defined frequency defined for the aforementioned Todo. For example, if a Todo has a 'recurring' iteration type and a 'weekly' frequency, they cannot perform the Todo more than once a week.
+
+
+# Troubleshooting
+
+When stripe or rollbar causes error in the initial migration, temporarily comment out the codes in their respective files in the config/, and run the migration.
