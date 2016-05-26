@@ -15,6 +15,7 @@
     "normalize-css": "normalize.css#^4.0.0",
     "icomoon-bower": "icomoon#^0.1.0",
     "modernizr": "~2.7.2",
-    "jquery.countdown": "^2.1.0"
+    "jquery.countdown": "^2.1.0",
+    "icomoon": "~0.1.0"
   }
 }
