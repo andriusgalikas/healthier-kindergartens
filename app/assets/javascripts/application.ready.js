@@ -100,8 +100,9 @@ function add_fields(link, association, content) {
     return false;
 }
 function resizeIframe(obj) {
-    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+     // debugger
+    obj.style.width = '100%';
+    obj.style.height = '650px';
 }
 function click_tab(id){
         $('.jcmc-tab').removeClass('jcmc-active-tab');
