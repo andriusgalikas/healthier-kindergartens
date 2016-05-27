@@ -10,6 +10,7 @@
     </div>
     <div id="menu">
         <% if user_signed_in? %>
+            <%= yield :popup_notifications %>
             <% unless current_user.subscribed? || !current_user.manager? %>
                 <%= link_to "Upgrade", upgrade_path %>
             <% end %>

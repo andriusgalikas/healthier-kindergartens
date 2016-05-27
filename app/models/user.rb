@@ -54,4 +54,11 @@ class User < ActiveRecord::Base
     enum role: [:parentee, :worker, :manager, :admin]
 
     accepts_nested_attributes_for :children, :user_daycare, allow_destroy: true
+
+    scope :managers, -> { where(role: 2)}
+
+    def newly_signed_up?
+      sign_in_count == 1
+    end
+
 end
