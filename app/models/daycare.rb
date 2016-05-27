@@ -53,7 +53,13 @@ class Daycare < ActiveRecord::Base
     # => Checks if the daycare contains a manager user with an active subscription or trial
     #
     def active_subscription?
-        managers.map(&:subscribed?).include?(true) || managers.map(&:active_trial?).include?(true) ? true : false
+      managers.map(&:subscribed?).include?(true) || managers.map(&:active_trial?).include?(true) ? true : false
+    end
+    
+    # => Checks if the daycare contains a manager user with an active subscription
+    #
+    def subscribed?
+      managers.map(&:subscribed?).include?(true) ? true : false    
     end
 
     # => Lists all complete todos

@@ -13,7 +13,7 @@ class TrainingsController < ApplicationController
     private
 
     def set_video_url
-      @course_url = current_user.daycare.active_subscription? ? paid_trainings(params[:id].to_i) : free_trainings(params[:id].to_i)
+      @course_url = current_user.daycare.subscribed? ? paid_trainings(params[:id].to_i) : free_trainings(params[:id].to_i)
     end
 
     def free_trainings id
