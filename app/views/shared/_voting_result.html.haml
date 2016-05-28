@@ -1,0 +1,20 @@
+%p= vote_question
+
+- if current_user.manager?
+  .col-md-6
+    = image_tag role_avatar('worker'), class: 'img-circle img-thumbnail pull-left'
+    .vote-count
+      128
+    Daycare Staff
+
+  .col-md-6
+    = image_tag role_avatar('parentee'), class: 'img-circle img-thumbnail pull-left'
+    .vote-count
+      349
+    Parents
+
+- elsif current_user.parentee? || current_user.worker?
+  = image_tag role_avatar(current_user.role), class: 'img-circle img-thumbnail pull-left'
+  .vote-count
+    128
+  = 'Daycare %s' % current_user.role.humanize

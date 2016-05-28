@@ -1,0 +1,6 @@
+#user
+  = image_tag current_user_role_avatar, class: 'img img-thumbnail img-circle'
+  %span.user-name
+    = current_user.name
+  .user-role
+    = 'Daycare %s' % current_user.role.humanize
