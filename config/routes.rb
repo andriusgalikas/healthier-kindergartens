@@ -119,4 +119,6 @@ Rails.application.routes.draw do
       end
       resources :plans, only: :show
     end
+
+    get 'cast_vote', to: 'votes#cast_vote'
 end

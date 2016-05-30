@@ -21,8 +21,7 @@
         = image_tag 'logo.png', id: 'header-logo'
 
     .vote-invitations{class: current_user.manager? ? 'col-md-6' : 'col-md-5'}
-      = render partial: 'shared/voting_invitation_1'
-      = render partial: 'shared/voting_invitation_2'
+      = vote_invitation.html_safe
 
     .vote-results{class: current_user.manager? ? 'col-md-4' : 'col-md-3'}
       = render partial: 'shared/voting_result'

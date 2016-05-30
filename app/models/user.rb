@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
     include HasTodos
     include HasOccurrences
     include HasTrial
+    include HasVotes
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
@@ -42,6 +43,7 @@ class User < ActiveRecord::Base
     has_one :user_daycare,                                       dependent: :destroy
     has_one :daycare,                                            through: :user_daycare
     has_many :children,                                          class_name: 'Child', foreign_key: 'parent_id'
+    has_many :votes, as: :voter
 
     belongs_to :department
 

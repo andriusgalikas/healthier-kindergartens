@@ -8,6 +8,7 @@
 #  attachable_type :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  deactivated_at  :datetime
 #
 
 class Attachment < ActiveRecord::Base

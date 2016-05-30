@@ -4,17 +4,17 @@
   .col-md-6
     = image_tag role_avatar('worker'), class: 'img-circle img-thumbnail pull-left'
     .vote-count
-      128
+      = vote_results('worker')
     Daycare Staff
 
   .col-md-6
     = image_tag role_avatar('parentee'), class: 'img-circle img-thumbnail pull-left'
     .vote-count
-      349
+      = vote_results('parentee')
     Parents
 
 - elsif current_user.parentee? || current_user.worker?
   = image_tag role_avatar(current_user.role), class: 'img-circle img-thumbnail pull-left'
   .vote-count
-    128
+    = vote_results(current_user.role)
   = 'Daycare %s' % current_user.role.humanize

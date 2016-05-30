@@ -33,6 +33,10 @@ header
 
       .vote-invitations {
         border-right: 2px dashed #3153a7;
+
+        #vote-btn {
+          margin: 0px 10px;
+        }
       }
 
       .vote-results {
