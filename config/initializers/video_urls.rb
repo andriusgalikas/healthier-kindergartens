@@ -19,4 +19,4 @@ PAID = {1 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Hea
         4 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Smitte%20preventive%20strategier%20for%20kontroll%20av%20sykdoms%20utbrudd/story.html",
         5 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Smitte%20preventiv%20rengj%C3%B8ring%20etter%20kroppsv%C3%A6sker/story.html",
         6 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Instruksjonskurset%20om%20smitte%20preventiv%20h%C3%A5ndvask/story.html"
-   		 }      		`
+   		 }
