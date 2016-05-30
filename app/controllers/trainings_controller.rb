@@ -14,7 +14,7 @@ class TrainingsController < ApplicationController
 
     def set_video_url
       # checks user is free or paid then selects video urls
-      @course_url = current_user.daycare.subscribed? ? paid_trainings(params[:id].to_i) : free_trainings(params[:id].to_i)
+      @course_url = current_user.daycare.active_subscribed?(current_user) ? paid_trainings(params[:id].to_i) : free_trainings(params[:id].to_i)
     end
 
     def free_trainings id
