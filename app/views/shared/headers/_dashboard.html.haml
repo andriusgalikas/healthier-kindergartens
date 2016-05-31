@@ -1,0 +1,14 @@
+%header
+  = link_to (yield :previous_path), class: 'previous' do
+    = image_tag 'ar_left.png'
+
+  %h2= yield :page_title
+
+  - if user_signed_in?
+    .dropdown
+      %ul.dropdown-menu{role: 'menu', 'aria-labelledby': 'dLabel'}
+        %li= link_to 'Dashboard', welcome_path
+        %li= link_to 'Logout', destroy_user_session_path, method: :delete
+
+    .partner-profile
+      = image_tag current_user_role_avatar, class: 'img img-thumbnail img-circle'

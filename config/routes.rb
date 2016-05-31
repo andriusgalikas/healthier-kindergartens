@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get ':role/register',               to: 'users/registrations#new',      as: 'new_user_registration'
         post ':role/register',              to: 'users/registrations#create',   as: 'user_registration'
         post ':role/register_daycare',      to: 'users/registrations#daycare',  as: 'daycare_registration'
+        post ':role/register_affiliate',    to: 'users/registrations#affiliate',as: 'affiliate_registration'
     end
 
     # custom registration routes

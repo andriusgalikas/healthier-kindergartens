@@ -1,17 +1,5 @@
 module PagesHelper
 
-  def current_user_role_avatar
-    if current_user.manager?
-      'manager.png'
-    elsif current_user.parentee?
-      'parent.png'
-    elsif current_user.worker?
-      'worker.png'
-    else
-      'logo_menu.png'
-    end
-  end
-
   def vote_question
     if ['manager', 'parentee', 'worker'].include?(current_user.role)
       I18n.t("votes.#{current_user.role}.question")

@@ -11,7 +11,7 @@
             .block
               .circle.parent-border
                 = image_tag 'parent.png'
-            %h5 
+            %h5
               Daycare Parent
         .col-sm-6.col-lg-4
           = link_to worker_select_daycare_path do
@@ -25,5 +25,12 @@
             .block
               .circle.manager-border
                 = image_tag 'manager.png'
-            %h5 
+            %h5
               Daycare Manager
+        .col-sm-6.col-lg-4
+          = link_to new_user_registration_path(role: 'partner') do
+            .block
+              .circle.parner-border
+                = image_tag 'partner.png'
+            %h5
+              Daycare Partner

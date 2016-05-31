@@ -45,6 +45,9 @@ class User < ActiveRecord::Base
     has_many :children,                                          class_name: 'Child', foreign_key: 'parent_id'
     has_many :votes, as: :voter
 
+    has_one :user_affiliate,                                    dependent: :destroy
+    has_one :affiliate,                                         through: :user_affiliate
+
     belongs_to :department
 
     validates :department_id,                                   presence: true, :if => :worker?
@@ -53,14 +56,12 @@ class User < ActiveRecord::Base
 
     validates :children,                                        presence: true, :if => :parentee?
 
-    enum role: [:parentee, :worker, :manager, :admin]
 
-    accepts_nested_attributes_for :children, :user_daycare, allow_destroy: true
+    enum role: [:parentee, :worker, :manager, :admin, :partner]
 
-    scope :managers, -> { where(role: 2)}
+    accepts_nested_attributes_for :children, :user_daycare, :user_affiliate, allow_destroy: true
 
     def newly_signed_up?
       sign_in_count == 1
     end
-
 end
