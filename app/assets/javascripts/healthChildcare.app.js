@@ -99,10 +99,8 @@ healthChildcare.app =
               if ($.inArray(data.name, featuredDaycare) < 0 ) {
                 featuredDaycare.push(data.name);
                 $.notify({
-                  icon: '/assets/back_page.png',
-                  message: data.name + " Childcare has signed up to " +
-                  "detect infection risk " +
-                  "to protect children from harm in their facility.",
+                  icon: "/assets/back_page.png",
+                  message: data.name + " " + window.__trans['featured_daycare']
                 })
               }
               else if (featuredDaycare.length == data.set_size)
@@ -132,7 +130,7 @@ healthChildcare.app =
                 featuredDaycare.push(data.name);
                 $.notify({
                   icon: '/assets/back_page.png',
-                  message: data.name + " Childcare has signed up for Health Preserving Care Program to build an Infection Preventive Infrastructure and Protect Children from harm.",
+                  message: data.name + " " + window.__trans['featured_daycare_by_plan']
                 })
               }
               else if (featuredDaycare.length == data.set_size)

@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  notifications:
+    featured_daycare: Childcare has signed up to detect infection risk to protect children from harm in their facility.
+    featured_daycare_by_plan: Childcare has signed up for Health Preserving Care Program to build an Infection Preventive Infrastructure and Protect Children from harm.

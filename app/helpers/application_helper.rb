@@ -3,7 +3,7 @@ module ApplicationHelper
     def custom_link_to_remove_fields name, f
         f.hidden_field(:_destroy) + __custom_link_to_function(name, "remove_fields(this)", 'red')
     end
-  
+
     def custom_link_to_add_fields name, f, association
         new_object = f.object.class.reflect_on_association(association).klass.new
         new_object.build_profile_image if association == :children
@@ -45,7 +45,7 @@ module ApplicationHelper
     def render_breadcrumbs type
         if type == 0
             render partial: 'shared/admin/breadcrumbs', locals: { breadcrumbs: create_admin_breadcrumbs }
-        else 
+        else
             render partial: theme_presenter.page_template_path('shared/admin/breadcrumbs'), locals: { breadcrumbs: create_store_breadcrumbs }
         end
     end
@@ -61,6 +61,13 @@ module ApplicationHelper
         else
             "current" if params[:controller] == data[:controller] && params[:action] == data[:action]
         end
+    end
+
+    def yield_js_translations
+      trans = {};
+      trans['featured_daycare'] = I18n.t('notifications.featured_daycare')
+      trans['featured_daycare_by_plan'] = I18n.t('notifications.featured_daycare_by_plan')
+      trans
     end
 
     private
