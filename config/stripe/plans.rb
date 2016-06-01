@@ -1,14 +1,14 @@
-# Plan
-# if Object.const_defined?('Plan')
-#     Plan.all.each do |p|
-#         Stripe.plan p.name.parameterize.underscore.to_sym do |plan|
-#             plan.name = p.name
-#             plan.amount = (p.price * 100).round
-#             plan.currency = 'usd'
-#             plan.interval = 'month'
-#         end
-#     end
-# end
+Plan
+if Object.const_defined?('Plan')
+    Plan.all.each do |p|
+        Stripe.plan p.name.parameterize.underscore.to_sym do |plan|
+            plan.name = p.name
+            plan.amount = (p.price * 100).round
+            plan.currency = 'usd'
+            plan.interval = 'month'
+        end
+    end
+end
 # This file contains descriptions of all your stripe plans
 
 # Example
