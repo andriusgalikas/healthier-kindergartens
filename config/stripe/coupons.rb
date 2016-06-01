@@ -1,14 +1,14 @@
-DiscountCode
-if Object.const_defined?('DiscountCode')
-    DiscountCode.active.each do |dc|
-        Stripe.coupon dc.code.to_sym do |coupon|
-            coupon.duration = 'forever'
-            coupon.currency = 'usd'
-            coupon.percent_off = dc.value.to_i
-            coupon.max_redemptions = 100
-        end
-    end
-end
+# DiscountCode
+# if Object.const_defined?('DiscountCode')
+#     DiscountCode.active.each do |dc|
+#         Stripe.coupon dc.code.to_sym do |coupon|
+#             coupon.duration = 'forever'
+#             coupon.currency = 'usd'
+#             coupon.percent_off = dc.value.to_i
+#             coupon.max_redemptions = 100
+#         end
+#     end
+# end
 # This file contains descriptions of all your statically defined
 # stripe coupons. You may wish to define unique one-off coupons
 # elsewhere, but for ones you will use many times, and will be

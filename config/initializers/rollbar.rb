@@ -3,9 +3,8 @@ Rollbar.configure do |config|
   # To disable in specific environments, set config.enabled=false.
 
   # config.access_token = 'hex123'
-
-
   config.access_token = '09b46f18b7f247eb8d2d27c4e850b459'
+  
   # Here we'll disable in 'test':
   if Rails.env.test?
     config.enabled = false
