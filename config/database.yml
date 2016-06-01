@@ -9,16 +9,16 @@ development:
   encoding: unicode
   database: health_childcare_dev
   pool: 5
-  username: postgres
-  password: postgres
+  username: tomdallimore
+  password: 
 
 test:
   adapter: postgresql
   encoding: unicode
   database: health_childcare_test
   pool: 5
-  username: postgres
-  password: postgres
+  username: tomdallimore
+  password: 
 
 production:
   adapter: postgresql
