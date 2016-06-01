@@ -99,7 +99,7 @@ healthChildcare.app =
               if ($.inArray(data.name, featuredDaycare) < 0 ) {
                 featuredDaycare.push(data.name);
                 $.notify({
-                  icon: "/assets/back_page.png",
+                  icon: "<%= asset_path('back_page.png') %>",
                   message: data.name + " " + window.__trans['featured_daycare']
                 })
               }
@@ -109,7 +109,7 @@ healthChildcare.app =
           })
       }
 
-      occasionalFetch = setInterval(fetchFeaturedDaycare, 5000);
+      occasionalFetch = setInterval(fetchFeaturedDaycare, 11000);
     }
   },
 
@@ -129,7 +129,7 @@ healthChildcare.app =
               if ($.inArray(data.name, featuredDaycare) < 0 ) {
                 featuredDaycare.push(data.name);
                 $.notify({
-                  icon: '/assets/back_page.png',
+                  icon: "<%= asset_path('back_page.png')%>",
                   message: data.name + " " + window.__trans['featured_daycare_by_plan']
                 })
               }

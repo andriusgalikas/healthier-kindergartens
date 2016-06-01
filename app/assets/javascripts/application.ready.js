@@ -87,7 +87,7 @@ $(document).ready(function()
     type: 'warning',
     icon_type: 'image',
     allow_dismiss: true,
-    delay: 10000,
+    delay: 9000,
     newest_on_top: true,
     placement: {
       from: "top",
