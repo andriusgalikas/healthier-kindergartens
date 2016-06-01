@@ -10,15 +10,11 @@ header
     &.loggedin
     {
       color: white;
-        a
-        {
-            background-color: #48c38c !important;
 
-            &:hover
-            {
-
-            }
-        }
+      #logout-link {
+        color: white;
+        float: right;
+      }
     }
 
     .upgrade-header {
