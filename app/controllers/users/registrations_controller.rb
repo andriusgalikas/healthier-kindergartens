@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'dashboard'
   before_filter :configure_sign_up_params, only: [:create]
-
+  require 'resolv-replace'
+  
   def new
     build_resource({})
     set_daycares
