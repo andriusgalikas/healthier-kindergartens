@@ -2,6 +2,9 @@ module Deactivatable
   extend ActiveSupport::Concern
 
   included do
+
+    scope :active, -> { where(deactivated_at: nil) }
+
     def active?
       self.deactivated_at.nil?
     end

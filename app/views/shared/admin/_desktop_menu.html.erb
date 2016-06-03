@@ -41,7 +41,12 @@
   </li>
   <li class="<%= active_controller?(controller: 'admin/survey_subjects') %> <%= active_controller?(controller: 'admin/surveys') %>">
     <%= link_to admin_survey_subjects_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Surveys' do %>
-      <i class="icon-copy"></i>
+      <i class="icon-copy" style="color:#9bebff;"></i>
+    <% end %>
+  </li>
+  <li class="<%= active_controller?(controller: 'admin/message_templates') %>">
+    <%= link_to admin_message_templates_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Message Templates' do %>
+      <i class="icon-bubble" style="color:#F05C52;"></i>
     <% end %>
   </li>
 </ul>

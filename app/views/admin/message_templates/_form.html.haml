@@ -1,0 +1,29 @@
+= form_for [:admin, @template] do |f|
+  .threecol
+  .ninecol.last
+    = render partial: 'shared/admin/errors', locals: {object: @template}
+
+  .threecol
+    %h3 Message Template Details
+    %p Set the content of the message template.
+
+  .ninecol.last
+    %fieldset.widget.widget-content.widget-last
+      .form-group
+        = f.label :main_subject
+        = f.text_field :main_subject, class: 'form-control'
+
+      .form-group
+        = f.label :sub_subject
+        = f.text_field :sub_subject, class: 'form-control'
+
+      .form-group
+        = f.label :target_role
+        = f.select :target_role, MessageTemplate.target_roles.keys.map{|type| [type.titleize, type]}, {}, class: 'form-control iteration-selector'
+
+      .form-group.form-last
+        = f.label :content
+        = f.text_area :content, class: 'form-control', rows: 10
+
+    .form-action
+      = f.submit 'Submit', class: 'btn btn-blue btn-large'

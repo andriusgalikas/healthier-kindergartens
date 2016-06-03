@@ -104,7 +104,7 @@ Rails.application.routes.draw do
         resources :daycares, only: :index
         resources :departments, only: :index
         resources :subjects, except: :show
-
+        resources :message_templates
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]

@@ -1,0 +1,9 @@
+= content_for :title, 'New Template'
+= content_for :breadcrumb, 'New'
+- breadcrumb_add 'Templates', admin_message_templates_path
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header New Template
+
+  = render 'form'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531080027) do
+ActiveRecord::Schema.define(version: 20160602130501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,16 @@ ActiveRecord::Schema.define(version: 20160531080027) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "message_templates", force: :cascade do |t|
+    t.string   "main_subject"
+    t.string   "sub_subject"
+    t.integer  "target_role"
+    t.string   "content"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "plans", force: :cascade do |t|
