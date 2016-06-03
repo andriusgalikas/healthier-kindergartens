@@ -1,5 +1,12 @@
 /*
  *= require_self
  *= require soca
- *= require admin/custom
 */
+
+@import 'compass/css3';
+
+$grey: #d5d5de;
+$flamingo: #F05C52;
+
+@import 'admin/custom';
+@import 'admin/messages';

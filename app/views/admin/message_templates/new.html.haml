@@ -1,9 +1,62 @@
 = content_for :title, 'New Template'
-= content_for :breadcrumb, 'New'
-- breadcrumb_add 'Templates', admin_message_templates_path
 
 .twelvecol
   .page-header
-    %h2.widget.widget-header New Template
+    %h2.widget.widget-header= t('admin.message') + ' > ' + t('admin.create_template') + ' :'
 
-  = render 'form'
+  #form-wizard
+    = form_for [:admin, @template] do |f|
+
+      %ul#progressbar
+        %li.active Choose Subject
+        %li Choose Sub-subject
+        %li Choose Recipient
+        %li Write Message Content
+
+      %fieldset
+        .choose_subject
+          %h2.fs-title= t('admin.choose_subject')
+          = select_tag :parent_subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), id: 'parent_subject_id'
+          = link_to 'Or create a new subject', '#', class: 'new_subject_btn'
+        .create_subject
+          %h2.fs-title= t('admin.create_subject')
+          %input{type: 'text', name: 'parent_subject_text', placeholder: t('admin.subject'), id: 'parent_subject_text'}
+          = link_to 'Or select from existing subjects', '#', class: 'new_subject_btn'
+        .clear
+        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
+
+      %fieldset
+        .choose_sub_subject
+          %h2.fs-title= t('admin.choose_sub_subject')
+          = f.select :sub_subject_id, options_from_collection_for_select(@subjects.map(&:sub_subjects).flatten, 'id', 'title'), id: 'sub_subject_id'
+          = link_to 'Or create a new sub-subject', '#', class: 'new_sub_subject_btn'
+
+        .create_sub_subject
+          %h2.fs-title= t('admin.create_sub_subject')
+          %input{type: 'text', name: 'sub_subject_text', placeholder: t('admin.sub_subject'), id: 'sub_subject_text'}
+          = link_to 'Or choose from existing sub-subjects', '#', class: 'new_sub_subject_btn'
+
+        .clear
+        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
+        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
+
+      %fieldset
+        %h2.fs-title Please choose target Recipient
+        - MessageTemplate.target_roles.each do |target_role|
+          .checkbox
+            .target-role
+              &nbsp;
+              = f.radio_button "target_role", target_role[0]
+            .target-role-name
+              = target_role[0].humanize
+
+        .clear
+        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
+        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
+
+      %fieldset
+        %h2.fs-title Please write message content
+
+
+        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
+        %input{type: 'submit', name: 'submit', class: 'submit action-button', value: 'Submit'}

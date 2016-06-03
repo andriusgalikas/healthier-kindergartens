@@ -10,5 +10,7 @@
 #
 
 class Subject < ActiveRecord::Base
+  include Deactivatable
+
   validates :title,    presence: true
 end

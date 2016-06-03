@@ -28,7 +28,7 @@
 						<%= render partial: 'shared/flash' %>
 						<div class="container">
 							<div class="row">
-								<%= render_breadcrumbs 0 %>
+								<%= render_breadcrumbs 0 unless active_controller?(controller: 'admin/message_templates') %>
 								<%= yield %>
 							</div>
 						</div>

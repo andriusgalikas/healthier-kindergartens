@@ -44,3 +44,14 @@ en:
       thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION AGAINTS ON-GOING RISK OF INFECTION AND RISK TO YOUR HEALTH THROUGH HEALTH PRESERVING CARE PROGRAM."
       demand_1: "DEMAND BETTER PROTECTION AGAINST THE ON-GOING RISK OF INFECTION THAT CAN PUT YOUR HEALTH AT RISK. VOTE FOR HEALTH PRESERVING CARE PROGRAM TODAY."
       demand_2: "Vote for Health Preserving Care Program."
+
+  admin:
+    message: Message
+    choose_template: Choose Template
+    create_template: Create Template
+    subject: Subject
+    choose_subject: Please Choose Subject
+    create_subject: Please Write Subject
+    sub_subject: Sub-subproject
+    choose_sub_subject: Please Choose Sub-subject
+    create_sub_subject: Please Create Sub-subject

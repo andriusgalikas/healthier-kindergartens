@@ -3,17 +3,26 @@
 # Table name: message_templates
 #
 #  id             :integer          not null, primary key
-#  main_subject   :string
-#  sub_subject    :string
+#  sub_subject_id :integer
 #  target_role    :integer
 #  content        :string
 #  deactivated_at :datetime
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_message_templates_on_sub_subject_id  (sub_subject_id)
+#
 
 class MessageTemplate < ActiveRecord::Base
   include Deactivatable
 
-  enum target_role: [:parentee, :worker, :manager]
+  serialize :target_roles
+
+  belongs_to :sub_subject, class_name: 'MessageSubject', foreign_key: 'sub_subject_id'
+
+  validates :sub_subject_id, presence: true
+
+  enum target_role: [:parentee, :worker]
 end

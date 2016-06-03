@@ -10,8 +10,8 @@
   .ninecol.last
     %fieldset.widget.widget-content.widget-last
       .form-group
-        = f.label :main_subject
-        = f.text_field :main_subject, class: 'form-control'
+        = f.label :main_subject_id
+        = f.select :main_subject_id, @subjects.map{|sub| [sub.title, sub.id]}, {}, class: 'form-control iteration-selector'
 
       .form-group
         = f.label :sub_subject

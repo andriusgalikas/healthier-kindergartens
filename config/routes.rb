@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :message_subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do
@@ -104,7 +105,13 @@ Rails.application.routes.draw do
         resources :daycares, only: :index
         resources :departments, only: :index
         resources :subjects, except: :show
-        resources :message_templates
+        resources :message_templates do
+          collection do
+            get :choose_template
+            get :upload_template
+          end
+
+        end
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]

@@ -1,6 +1,7 @@
 ready = function()
 {
     healthChildcare.admin.multiSelect();
+    healthChildcare.admin.multiStepForm();
 
     soca.animation.loading();
     soca.animation.colourCaveat();

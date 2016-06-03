@@ -1,35 +1,20 @@
-= content_for :title, 'Templates'
-= content_for :breadcrumb, 'Templates'
+= content_for :title, t('admin.message')
 
 .twelvecol
   .page-header
-    = link_to new_admin_message_template_path, class: 'btn btn-blue btn-large', 'data-placement': 'bottom', 'data-toggle': 'tooltip', title: 'Add Template' do
-      %i.icon-plus
+    %h2.widget.widget-header= t('admin.message') + ' :'
 
-    %h2.widget.widget-header Templates
-
-  - if @templates.empty?
-    .widget.widget-content
-      .helper-notification
-        %p You don't have any templates yet.
-        %i.icon-bubble
-  - else
-    .table-responsive
-      %table.table.table-striped.table-bordered.table-hover
-        %thead
-          %tr
-            %th Subject
-            %th Sub-subject
-            %th Target Role
-            %th
-        %tbody
-          - @templates.each do |template|
-            %tr
-              %td.align-left= template.main_subject
-              %td.align-left= template.sub_subject
-              %td.align-left= template.target_role
-              %td
-                = link_to edit_admin_message_template_path(template) do
-                  %i.icon-pencil
-                = link_to [:admin, template], method: :delete, data: {confirm: 'Are you sure?'} do
-                  %i.icon-remove
+.twelvecol#main-menu
+  .menu-items
+    = link_to '#', class: 'messages' do
+      = image_tag 'message.png'
+      %span Create Regular Message
+    = link_to choose_template_admin_message_templates_path, class: 'messages' do
+      = image_tag 'create.png'
+      %span Create Message Template
+    = link_to '#', class: 'messages' do
+      = image_tag 'view.png'
+      %span Sent Messages
+    = link_to '#', class: 'messages' do
+      = image_tag 'edit.png'
+      %span Edit Message Template

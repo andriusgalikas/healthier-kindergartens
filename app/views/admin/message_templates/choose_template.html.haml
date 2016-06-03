@@ -1,0 +1,14 @@
+= content_for :title, 'New Template'
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header= t('admin.message') + ' > ' + t('admin.choose_template') + ' :'
+
+.twelvecol#main-menu
+  .menu-items
+    = link_to new_admin_message_template_path, class: 'messages' do
+      = image_tag 'message.png'
+      %span Create Template
+    = link_to upload_template_admin_message_templates_path, class: 'messages' do
+      = image_tag 'create.png'
+      %span Upload Template
