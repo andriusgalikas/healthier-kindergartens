@@ -25,3 +25,22 @@ en:
   notifications:
     featured_daycare: Childcare has signed up to detect infection risk to protect children from harm in their facility.
     featured_daycare_by_plan: Childcare has signed up for Health Preserving Care Program to build an Infection Preventive Infrastructure and Protect Children from harm.
+
+  votes:
+    vote: Vote
+    manager:
+      question: 'How many parents and workers want this?'
+      invitation: "Want to keep the children and staff under your care from harm's way and fullfil your ethical and professional obligation? Join us to eliminate the factors that spread ongoing infections and absenteeism which can drain your childcare facility's productivity."
+      demand: "CONTRIBUTE TO THE HEALTH AND HAPPINESS OF CHILDREN AND EMPLOYEES UNDER YOUR CARE AND SUPERVISION TODAY."
+    parentee:
+      question: 'How many of your fellow colleagues want this?'
+      invitation: "Studies had proven that children cared for in a childcare facility are 300% more vulnerable to infections than children cared for at home. Though most illnesses get resolved without disrupting the child's development, some infections can cause lasting physical damage to the child such as cognitive disabilities which affect future learning."
+      demand_1: "DEMAND PROTECTION FOR YOUR CHILDREN'S HEALTH AND LEARNING CAPABILITIES TODAY. VOTE FOR HEALTH PRESERVING CARE PROGRAM."
+      demand_2: "Vote for Health Preserving Care Program."
+      thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION FOR YOUR CHILDREN'S HEALTH AND LEARNING CAPABILITIES THROUGH HEALTH PRESERVING CARE PROGRAM."
+    worker:
+      question: 'How many of your fellow colleagues want this?'
+      invitation: "The risk of infection in a childcare facility does not spare the workers. Studies had proven that a large proportion of daycare staff is women in their childbearing age. During their gestation period, their body's immune system undergoes several changes that results to a weak immune system. This increases the chances of getting infection both to the mothers and children."
+      thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION AGAINTS ON-GOING RISK OF INFECTION AND RISK TO YOUR HEALTH THROUGH HEALTH PRESERVING CARE PROGRAM."
+      demand_1: "DEMAND BETTER PROTECTION AGAINST THE ON-GOING RISK OF INFECTION THAT CAN PUT YOUR HEALTH AT RISK. VOTE FOR HEALTH PRESERVING CARE PROGRAM TODAY."
+      demand_2: "Vote for Health Preserving Care Program."
