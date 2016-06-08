@@ -12,7 +12,10 @@
     <%= javascript_include_tag "modernizr/modernizr" %>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300" rel="stylesheet" type="text/css">
     <link href="/stylesheets/font.css" media="screen" rel="stylesheet">
-	<%= csrf_meta_tags %>
+	  <%= csrf_meta_tags %>
+    <script type='text/javascript'>
+      window.__trans = <%= yield_js_translations.to_json.html_safe %>
+    </script>
 </head>
 <body>
 	<div class="all-wrapper">

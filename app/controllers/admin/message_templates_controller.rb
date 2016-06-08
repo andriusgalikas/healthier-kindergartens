@@ -19,11 +19,15 @@ class Admin::MessageTemplatesController < AdminController
     if @template.save
       redirect_to admin_message_templates_path, notice: 'Message template was successfully created.'
     else
-      render :new
+      redirect_to new_admin_message_template_path, notice: 'There are errors creating the message templates.'
     end
   end
 
   def upload_template
+  end
+
+  def edit_filters
+    get_all_main_subjects
   end
 
   private
@@ -31,45 +35,23 @@ class Admin::MessageTemplatesController < AdminController
   def set_subject
     if params[:parent_subject_id].present?
       @subject = MessageSubject.find params[:parent_subject_id]
-    elsif params[:parent_subject_text].present?
-      @subject = MessageSubject.create(title: params[:parent_subject_text])
     else
-      render :new, notice: 'Please choose a subject.'
+      @subject = MessageSubject.create(title: params[:parent_subject_text])
     end
   end
 
   def set_sub_subject
     if params[:message_template][:sub_subject_id].present?
       @sub_subject = @subject.sub_subjects.find(params[:message_template][:sub_subject_id])
-    elsif params[:sub_subject_text].present?
-      @sub_subject = @subject.sub_subjects.create(title: params[:sub_subject_text])
     else
-      render :new, notice: 'Please choose a sub-subject.'
+      @sub_subject = @subject.sub_subjects.create(title: params[:sub_subject_text])
     end
   end
 
-=begin
-  def configure_new_template_params
-    params.permit(
-      :parent_subject_id,
-      :parent_subject_text,
-      :sub_subject_text,
-      message_template: [
-        :sub_subject_id,
-        :target_role,
-        :content
-      ]
-    )
+  def get_all_main_subjects
+    @subjects = MessageSubject.main_subjects
   end
 
-  def message_subject_params
-    params.permit(:parent_subject_text)
-  end
-
-  def message_sub_subject_params
-    params.permit(:sub_subject_text)
-  end
-=end
   def message_template_params
     params.require(:message_template).permit(
       :sub_subject_id,

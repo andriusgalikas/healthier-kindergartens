@@ -1,3 +1,27 @@
+@mixin action-button {
+  width: 100px;
+  background: black;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+
+  &:hover, &:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+  }
+}
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
 #main-menu {
     .menu-items
     {
@@ -51,6 +75,7 @@ html {
 }
 
 
+
 /*form styles*/
 #form-wizard {
 	width: 100%;
@@ -92,19 +117,7 @@ html {
   }
 
   .action-button {
-    width: 100px;
-    background: black;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 1px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px;
-
-    &:hover, &:focus {
-      box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
-    }
+    @include action-button;
   }
 
   /*headings*/
@@ -202,5 +215,87 @@ html {
 	    color: white;
       border: 1px solid black;
     }
+  }
+}
+
+.edit-filters {
+  -webkit-box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  -moz-box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  background: #F4F4F4;
+  @include border-radius(10px);
+
+  #subject-filters, #sub-subject-filters, #target-role-filters {
+    padding: 10px;
+
+    ul {
+      li {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 2px;
+        cursor: pointer;
+
+        &.active {
+          background: white;
+
+          .loader {
+            display: inline;
+          }
+        }
+
+        &:hover {
+          background: white;
+        }
+
+        .loader {
+          float: right;
+          display: none;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+.apply-filter {
+  text-align: center;
+
+  .action-button {
+    @include action-button;
+  }
+
+
+  .loader {
+    display: none;
+  }
+}
+
+.edit-stage, .show-stage {
+  margin-top: 20px;
+
+  .template-header {
+    padding: 10px 0;
+
+    .subject-label, .recipient-label {
+      color: #777474;
+    }
+
+    .subject-content {
+
+    }
+
+    .recipient-label, .recipient-content {
+      float: right;
+    }
+  }
+
+  .template-content {
+
+  }
+
+  .action-button {
+    @include action-button;
   }
 }

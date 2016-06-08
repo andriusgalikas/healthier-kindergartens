@@ -2,6 +2,8 @@ ready = function()
 {
     healthChildcare.admin.multiSelect();
     healthChildcare.admin.multiStepForm();
+    healthChildcare.admin.wysiwygEditor();
+    healthChildcare.admin.editMessageTemplates();
 
     soca.animation.loading();
     soca.animation.colourCaveat();

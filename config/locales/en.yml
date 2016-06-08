@@ -55,3 +55,5 @@ en:
     sub_subject: Sub-subproject
     choose_sub_subject: Please Choose Sub-subject
     create_sub_subject: Please Create Sub-subject
+    edit_template: Edit Template
+    no_template_for_role: No message template found.

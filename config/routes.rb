@@ -109,6 +109,7 @@ Rails.application.routes.draw do
           collection do
             get :choose_template
             get :upload_template
+            get :edit_filters
           end
 
         end
@@ -126,6 +127,10 @@ Rails.application.routes.draw do
         resources :departments, only: :index
       end
       resources :plans, only: :show
+
+      resources :message_templates do
+        get :filter_by, on: :collection
+      end
     end
 
     get 'cast_vote', to: 'votes#cast_vote'
