@@ -35,8 +35,9 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
 
     get 'upgrade', to: 'subscriptions#index'
+
     resources :plans, only: [] do
-      resources :subscriptions, only: [:new, :create] do
+      resources :subscriptions, only: [:new, :create, :index] do
         get :complete, on: :member
       end
     end
