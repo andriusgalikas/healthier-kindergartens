@@ -1,62 +1,12 @@
 = content_for :title, 'New Template'
+- page_step = 5
 
-.twelvecol
+.row
   .page-header
-    %h2.widget.widget-header= create_template_header
+    %h3= add_template_content_header
 
-  #form-wizard
-    = form_for [:admin, @template] do |f|
+.row
+  = render partial: 'progress_bar', locals: {page_step: page_step}
 
-      %ul#progressbar
-        %li.active Choose Subject
-        %li Choose Sub-subject
-        %li Choose Recipient
-        %li Write Message Content
-
-      %fieldset
-        .choose_subject
-          %h2.fs-title= t('admin.choose_subject')
-          = select_tag :parent_subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), id: 'parent_subject_id', prompt: t('admin.choose_subject')
-          = link_to 'Or create a new subject', '#', class: 'new_subject_btn'
-        .create_subject
-          %h2.fs-title= t('admin.create_subject')
-          %input{type: 'text', name: 'parent_subject_text', placeholder: t('admin.subject'), id: 'parent_subject_text'}
-          = link_to 'Or select from existing subjects', '#', class: 'new_subject_btn'
-        .clear
-        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
-
-      %fieldset
-        .choose_sub_subject
-          %h2.fs-title= t('admin.choose_sub_subject')
-          = f.select :sub_subject_id, options_for_sub_subject_select, id: 'sub_subject_id', prompt: t('admin.choose_sub_subject')
-          = link_to 'Or create a new sub-subject', '#', class: 'new_sub_subject_btn'
-
-        .create_sub_subject
-          %h2.fs-title= t('admin.create_sub_subject')
-          %input{type: 'text', name: 'sub_subject_text', placeholder: t('admin.sub_subject'), id: 'sub_subject_text'}
-          = link_to 'Or choose from existing sub-subjects', '#', class: 'new_sub_subject_btn'
-
-        .clear
-        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
-        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
-
-      %fieldset
-        %h2.fs-title Please choose target Recipient
-        - MessageTemplate.target_roles.each do |target_role|
-          .checkbox
-            .target-role
-              &nbsp;
-              = f.radio_button "target_role", target_role[0]
-            .target-role-name
-              = target_role[0].humanize
-
-        .clear
-        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
-        %input{type: 'button', name: 'next', class: 'next action-button', value: 'Next'}
-
-      %fieldset
-        %h2.fs-title Please write message content
-        = f.text_area :content, id: 'message_template_content'
-
-        %input{type: 'button', name: 'previous', class: 'previous action-button', value: 'Back'}
-        %input{type: 'submit', name: 'submit', class: 'submit action-button', value: 'Submit'}
+.row#main-content
+  = render 'form'

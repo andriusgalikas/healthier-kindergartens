@@ -1,0 +1,8 @@
+.container-fluid.header
+  .user-avatar
+    = image_tag current_user_role_avatar, class: 'img img-cirle'
+  .user-info
+    .user-name
+      = current_user.name
+    %small.user-role
+      =  'Daycare %s' % current_user.role.humanize

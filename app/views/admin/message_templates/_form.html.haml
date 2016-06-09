@@ -1,29 +1,18 @@
+%h4.step-instruction Please Edit and Save Message :
+
 = form_for [:admin, @template] do |f|
-  .threecol
-  .ninecol.last
-    = render partial: 'shared/admin/errors', locals: {object: @template}
+  = hidden_field_tag :subject_title, params[:subject_title]
+  = hidden_field_tag :sub_subject_title, params[:sub_subject_title]
+  = f.hidden_field :target_role, value: params[:target_role] || @template.target_role
 
-  .threecol
-    %h3 Message Template Details
-    %p Set the content of the message template.
+  %fieldset
+    = f.text_area :content, id: 'message_template_content'
 
-  .ninecol.last
-    %fieldset.widget.widget-content.widget-last
-      .form-group
-        = f.label :main_subject_id
-        = f.select :main_subject_id, @subjects.map{|sub| [sub.title, sub.id]}, {}, class: 'form-control iteration-selector'
-
-      .form-group
-        = f.label :sub_subject
-        = f.text_field :sub_subject, class: 'form-control'
-
-      .form-group
-        = f.label :target_role
-        = f.select :target_role, MessageTemplate.target_roles.keys.map{|type| [type.titleize, type]}, {}, class: 'form-control iteration-selector'
-
-      .form-group.form-last
-        = f.label :content
-        = f.text_area :content, class: 'form-control', rows: 10
-
-    .form-action
-      = f.submit 'Submit', class: 'btn btn-blue btn-large'
+  .form-buttons
+    .col-md-6
+      - if @template.present?
+        %a{href: :back, class: 'btn btn-raised btn-info'} Cancel
+      - else
+        %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'} Back
+    .col-md-6
+      %input{type: 'submit', name: 'submit', class: 'submit btn btn-raised btn-success', value: 'Save'}

@@ -1,20 +1,11 @@
 class Admin::MessageTemplatesController < AdminController
-=begin
-  def index
-  end
-=end
-
-#  before_filter :configure_new_template_params, only: [:create]
-
-  def new
-    @template = MessageTemplate.new
-    @subjects = MessageSubject.main_subjects
-  end
+  layout 'message_template'
 
   def create
     set_subject
     set_sub_subject
-    @template = @sub_subject.message_templates.build(message_template_params)
+    @template = @sub_subject.message_templates
+                .build(message_template_params.merge(sub_subject_id: @sub_subject.id))
 
     if @template.save
       redirect_to admin_message_templates_path, notice: 'Message template was successfully created.'
@@ -23,64 +14,28 @@ class Admin::MessageTemplatesController < AdminController
     end
   end
 
-  def upload_template
+  def content
+    @template = MessageTemplate.new
+    render :new
   end
 
   def edit_filters
     get_all_main_subjects
   end
 
-  private
-
-  def set_subject
-    if params[:parent_subject_id].present?
-      @subject = MessageSubject.find params[:parent_subject_id]
-    else
-      @subject = MessageSubject.create(title: params[:parent_subject_text])
-    end
-  end
-
-  def set_sub_subject
-    if params[:message_template][:sub_subject_id].present?
-      @sub_subject = @subject.sub_subjects.find(params[:message_template][:sub_subject_id])
-    else
-      @sub_subject = @subject.sub_subjects.create(title: params[:sub_subject_text])
-    end
-  end
-
-  def get_all_main_subjects
-    @subjects = MessageSubject.main_subjects
-  end
-
-  def message_template_params
-    params.require(:message_template).permit(
-      :sub_subject_id,
-      :target_role,
-      :content
-    )
-  end
-
-=begin
-  def create
-    @template = MessageTemplate.new(template_params)
-
-    if @template.save
-      redirect_to admin_message_templates_url, notice: 'Message template was successfully created.'
-    else
-      render :new
-    end
+  def show
+    set_message_template
   end
 
   def edit
     set_message_template
-    set_possible_subjects
   end
 
   def update
     set_message_template
 
-    if @template.update(template_params)
-      redirect_to admin_message_templates_url, notice: 'Message template was successfully updated.'
+    if @template.update(message_template_params)
+      redirect_to admin_message_template_path(@template), notice: 'Message template successfully updated.'
     else
       render :edit
     end
@@ -90,21 +45,51 @@ class Admin::MessageTemplatesController < AdminController
     set_message_template
     @template.deactivate!
 
-    redirect_to admin_message_templates_url, notice: 'Message template was successfully destroyed.'
+    redirect_to admin_message_templates_path, notice: 'Message template successfully deleted.'
+  end
+
+
+  def filter
+    find_template_by_filters
+
+    if @template.present?
+      redirect_to admin_message_template_path(@template)
+    else
+      redirect_to edit_filters_admin_message_templates_path, notice: 'No message template match.'
+    end
+
   end
 
   private
 
-  def template_params
-    params.require(:message_template).permit(:main_subject, :sub_subject, :target_role, :content)
+  def set_subject
+    @subject = MessageSubject.create(title: params[:subject_title])
+  end
+
+  def set_sub_subject
+    @sub_subject = @subject.sub_subjects.create(title: params[:sub_subject_title])
   end
 
   def set_message_template
-    @template = MessageTemplate.find(params[:id])
+    @template = MessageTemplate.find params[:id]
   end
 
-  def set_possible_subjects
-    @subjects = Subject.active
+  def message_template_params
+    params.require(:message_template).permit(
+      :target_role,
+      :content
+    )
   end
-=end
+
+  def get_all_main_subjects
+    @subjects = MessageSubject.main_subjects
+  end
+
+  def find_template_by_filters
+    @subject = MessageSubject.find(params[:subject_id]) if params[:subject_id].present?
+    @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id].present?
+
+    @template = @sub_subject.message_templates.active.for_role(params[:target_role]) if @sub_subject && params[:target_role]
+  end
+
 end

@@ -107,9 +107,14 @@ Rails.application.routes.draw do
         resources :subjects, except: :show
         resources :message_templates do
           collection do
-            get :choose_template
-            get :upload_template
-            get :edit_filters
+            get  :choose_template
+            get  :subject
+            post :sub_subject
+            post :recipient
+            post :content
+            get  :upload_template
+            get  :edit_filters
+            post :filter
           end
 
         end

@@ -1,0 +1,22 @@
+= content_for :title, 'New Message Template'
+- page_step = 3
+
+.row
+  .page-header
+    %h3= add_sub_subject_header
+
+.row
+  = render partial: 'progress_bar', locals: {page_step: page_step}
+
+.row#main-content
+  %h4.step-instruction Please Add Sub-subject :
+  = form_tag recipient_admin_message_templates_path, method: :post do
+    = hidden_field_tag :subject_title, params[:subject_title]
+    .form-group
+      = text_field_tag :sub_subject_title, params[:sub_subject_title], placeholder: t('admin.sub_subject'), class: 'form-control', id: 'sub-subject-title', required: true
+
+    .row.form-buttons
+      .col-md-6
+        %a{href: subject_admin_message_templates_path(subject_title: params[:subject_title]), class: 'btn btn-raised btn-info'} Back
+      .col-md-6
+        = submit_tag 'Next', class: 'btn btn-raised btn-success'

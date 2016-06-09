@@ -18,8 +18,6 @@
 class MessageTemplate < ActiveRecord::Base
   include Deactivatable
 
-  serialize :target_roles
-
   belongs_to :sub_subject, class_name: 'MessageSubject', foreign_key: 'sub_subject_id'
 
   validates :sub_subject_id, presence: true

@@ -1,20 +1,26 @@
 = content_for :title, t('admin.message')
 
-.twelvecol
+.row
   .page-header
-    %h2.widget.widget-header= t('admin.message') + ' :'
+    %h3= t('admin.breadcrumb.message') + ' :'
 
-.twelvecol#main-menu
+.row#main-menu
   .menu-items
-    = link_to '#', class: 'messages' do
-      = image_tag 'message.png'
-      %span Create Regular Message
-    = link_to choose_template_admin_message_templates_path, class: 'messages' do
-      = image_tag 'create.png'
-      %span Create Message Template
-    = link_to '#', class: 'messages' do
-      = image_tag 'view.png'
-      %span Sent Messages
-    = link_to edit_filters_admin_message_templates_path, class: 'messages' do
-      = image_tag 'edit.png'
-      %span Edit Message Template
+    .row
+      .col-md-6
+        = link_to '#', class: 'btn btn-raised pull-right' do
+          = image_tag 'message.png'
+          %span Create Regular Message
+      .col-md-6
+        = link_to choose_template_admin_message_templates_path, class: 'btn btn-raised' do
+          = image_tag 'create.png'
+          %span Create Message Template
+    .row
+      .col-md-6
+        = link_to '#', class: 'btn btn-raised pull-right' do
+          = image_tag 'view.png'
+          %span Sent Messages
+      .col-md-6
+        = link_to edit_filters_admin_message_templates_path, class: 'btn btn-raised' do
+          = image_tag 'edit.png'
+          %span Edit Message Template

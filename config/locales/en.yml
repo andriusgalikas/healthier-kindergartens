@@ -46,14 +46,20 @@ en:
       demand_2: "Vote for Health Preserving Care Program."
 
   admin:
-    message: Message
-    choose_template: Choose Template
-    create_template: Create Template
+    breadcrumb:
+      message: Message
+      choose_template: Choose Template
+      create_template: Create Template
+      create_subject: Create Subject
+      create_sub_subject: Create Sub-Subject
+      choose_recipient: Choose Recipient
+      add_content: Add Message Template
+      edit_template: Edit Message Template
+
     subject: Subject
     choose_subject: Please Choose Subject
     create_subject: Please Write Subject
     sub_subject: Sub-subproject
     choose_sub_subject: Please Choose Sub-subject
     create_sub_subject: Please Create Sub-subject
-    edit_template: Edit Template
     no_template_for_role: No message template found.

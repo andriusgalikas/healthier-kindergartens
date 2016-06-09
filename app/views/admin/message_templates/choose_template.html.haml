@@ -1,14 +1,22 @@
 = content_for :title, 'New Template'
+- page_step = 1
 
-.twelvecol
+.row
   .page-header
-    %h2.widget.widget-header= t('admin.message') + ' > ' + t('admin.choose_template') + ' :'
+    %h3= choose_template_header
 
-.twelvecol#main-menu
+.row
+  = render partial: 'progress_bar', locals: {page_step: page_step}
+
+.row#main-menu
+  %h4.step-instruction Please Choose your template :
+
   .menu-items
-    = link_to new_admin_message_template_path, class: 'messages' do
-      = image_tag 'message.png'
-      %span Create Template
-    = link_to upload_template_admin_message_templates_path, class: 'messages' do
-      = image_tag 'create.png'
-      %span Upload Template
+    .col-md-6
+      = link_to subject_admin_message_templates_path, class: 'btn btn-raised pull-right' do
+        = image_tag 'message.png'
+        %span Create Template
+    .col-md-6
+      = link_to upload_template_admin_message_templates_path, class: 'btn btn-raised' do
+        = image_tag 'create.png'
+        %span Upload Template

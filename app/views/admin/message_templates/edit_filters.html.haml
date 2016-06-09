@@ -1,62 +1,31 @@
 = content_for :title, 'Edit Template'
 
-.twelvecol
+.row
   .page-header
-    %h2.widget.widget-header= edit_template_header
+    %h3= edit_template_header
 
-.twelvecol.edit-filters
-  #subject-filters.fourcol
-    %h4 Filter by Subject :
-    %ul
-      - @subjects.each do |subject|
-        %li.subject-filter{'data-subject_id': subject.id}
-          = subject.title
 
-  #sub-subject-filters.fourcol
-    %h4 Filter by Sub-subject :
-    %ul
-      - @subjects.map(&:sub_subjects).flatten.each do |sub_subject|
-        %li.sub-subject-filter{'data-parent_subject_id': sub_subject.parent_subject_id, 'data-sub_subject_id': sub_subject.id}
-          = sub_subject.title
+= form_tag filter_admin_message_templates_path, method: :post do
+  .row
+    .col-md-6
+      .form-group#subject-filter
+        %label.step-instruction{for: 'subject_id'} Filter by Subject :
+        = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), class: 'select', prompt: 'Please choose subject', required: true
 
-  #target-role-filters.threecol
-    %h4 Filter by Recipient :
-    %ul
-      - MessageTemplate.target_roles.each do |target_role|
-        %li.target-role-filter{'data-target_role': target_role[0]}
-          = target_role[0].humanize
+    .col-md-6
+      .form-group#sub-subject-filter
+        %label.step-instruction{for: 'sub_subject_id'} Filter by Sub-subject :
+        = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: 'Please choose sub-subject', required: true
 
-.twelvecol.apply-filter
-  %input#apply-filter-btn{type: 'button', name: 'apply_filter', class: 'action-button', value: 'Apply filters'}
-  %span.loader
-    = image_tag 'ajax-loader.gif'
+  .row
+    .col-md-12
+      .form-group
+        %label.step-instruction{for: 'target_role'} Please choose target recipient :
+        - MessageTemplate.target_roles.each do |target_role|
+          .radio.radio-primary
+            %label
+              %input{type: 'radio', name: 'target_role', value: target_role[0], checked: true}
+              = target_role[0].humanize
 
-.twelvecol.show-stage
-
-.twelvecol.edit-stage
-
-%script#show-message-content-template{type: 'text/x-handlebars-template'}
-  .template-header
-    %span.subject-label
-      Subject :
-    %span.subject-content
-      {{ sub_subject_title }}
-    %span.recipient-content
-      {{ target_role }}
-    %span.recipient-label
-      Recipient :
-
-  .fr-view
-    {{{ message_template_content }}}
-
-  .clear
-    %input.action-button#edit-message-template-btn{type: 'button', name: 'Edit', value: 'Edit Template', 'data-template_id': "{{ message_template_id }}"}
-
-%script#edit-message-content-template{type: 'text/x-handlebars-template'}
-  .template-content
-    %textarea{id: 'message_template_content'} {{ message_template_content }}
-
-  .clear
-    %input.cancel.action-button{type: 'button', name: 'Cancel', value: 'Cancel'}
-    %input.submit.action-button{type: 'button', name: 'Save', value: 'Save'}
-    %input.delete.action-button{type: 'button', name: 'Delete', value: 'Delete'}
+  .form-buttons
+    = submit_tag 'Apply Filters', class: 'btn btn-raised btn-success'

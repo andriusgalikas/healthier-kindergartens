@@ -1,3 +1,25 @@
+/*
+ *= require_self
+ *= require bootstrap-material-design/dist/css/bootstrap-material-design.css
+ *= require bootstrap-material-design/dist/css/ripples.min.css
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require plugins/colors.min.css
+ *= require plugins/draggable.min.css
+ *= require plugins/file.min.css
+ *= require plugins/image_manager.min.css
+ *= require plugins/image.min.css
+ *= require plugins/quick_insert.min.css
+ *= require jquery.dropdown.css
+*/
+
+@import 'compass/css3';
+
+$grey: #d5d5de;
+$header-blue: #1E80E5;
+$info-blue: #03a9f4;
+$info-green: #4caf50;
+
 @mixin action-button {
   width: 100px;
   background: black;
@@ -22,49 +44,157 @@
   border-radius: $radius;
 }
 
-#main-menu {
-    .menu-items
-    {
-            a
-            {
-                width: 250px;
-                height: 250px;
-                @include border-radius(10px);
-                display: inline-block;
-                text-align: center;
-                margin:0 20px 20px 0;
-                padding:10px 15px 0 15px;
-                position: relative;
-                text-decoration: none;
-                color:#fff;
+body {
+  background: #f0f0f0;
+  color: #ABABB2;
 
-                img
-                {
-                    height:160px;
-                    width:160px;
-                }
-                span
-                {
-                    display: block;
-                    height:40px;
-                    position: absolute;
-                    bottom: 0;
-                    width:100%;
-                    left:0;
-                    padding:5px 0;
-                    font-size:1.3em;
-                    background-color: rgba(0,0,0,0.2);
-                    @include border-bottom-left-radius(10px);
-                    @include border-bottom-right-radius(10px);
-                    line-height:30px;
-
-                }
-
-                &.messages {
-                  background-color: $grey;
-                }
-            }
+  .main {
+    .step-instruction {
+      color: $info-blue;
     }
+
+    .form-buttons {
+      a, input {
+        width: 95%;
+      }
+    }
+
+    .message-content-stage {
+      background: white;
+      padding: 25px;
+    }
+  }
+
+  #main-content {
+    margin-top: 20px;
+  }
+
+  #main-menu {
+    margin-top: 20px;
+
+    .menu-items {
+      a {
+        width: 75%;
+        height: 250px;
+
+        img {
+          height: 160px;
+          width: 160px;
+        }
+
+        span {
+          height: 40px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  form {
+    .dropdownjs {
+      ul {
+        color: black;
+
+        li.disabled {
+          color: $grey;
+        }
+      }
+    }
+  }
+
+}
+
+.header {
+  padding: 15px;
+  background: $info-blue;
+  color: white;
+
+  .user-avatar {
+    float: left;
+  }
+
+  .user-info {
+    line-height: 15px;
+    float: left;
+    padding-left: 10px;
+  }
+}
+
+.multi-step-form {
+  .form-step {
+    padding: 0px;
+    position: relative;
+
+    &:first-child {
+      .progress {
+        left: 50%;
+        width: 50%;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width: 0%;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      .progress {
+        width: 50%;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .progress {
+      position: relative;
+      border-radius: 0px;
+      height: 8px;
+      box-shadow: none;
+
+      .progress-bar {
+        width:  0px;
+        box-shadow: none;
+        background: $info-green;
+      }
+    }
+
+    &.complete {
+      .progress {
+        .progress-bar {
+          width: 100%;
+        }
+      }
+    }
+
+    &.active {
+      button {
+        background: $info-blue;
+      }
+
+      .progress {
+        .progress-bar {
+          width: 50%;
+        }
+      }
+    }
+  }
+
 }
 
 /*basic reset*/
