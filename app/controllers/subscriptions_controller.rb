@@ -52,13 +52,11 @@ class SubscriptionsController < ApplicationController
     end
 
     def set_range_data
-        if @plans.present?
        @range ||= {
             min: @plans.first.allocation,
             max: @plans.last.allocation,
             step: @plans.last.allocation/@plans.count
         }
-        end
     end
 
     def unsubscribed_user!
