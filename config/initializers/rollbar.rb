@@ -2,8 +2,9 @@ Rollbar.configure do |config|
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
 
-  config.access_token = ENV['hex123']
-
+  # config.access_token = 'hex123'
+  config.access_token = '09b46f18b7f247eb8d2d27c4e850b459'
+  
   # Here we'll disable in 'test':
   if Rails.env.test?
     config.enabled = false
@@ -53,5 +54,5 @@ Rollbar.configure do |config|
   # environment variable like this: `ROLLBAR_ENV=staging`. This is a recommended
   # setup for Heroku. See:
   # https://devcenter.heroku.com/articles/deploying-to-a-custom-rails-environment
-  config.environment = ENV['ROLLBAR_ENV'] || Rails.env
+  # config.environment = ENV['ROLLBAR_ENV'] || Rails.env
 end

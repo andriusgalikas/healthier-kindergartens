@@ -1,4 +1,3 @@
-
 Plan
 if Object.const_defined?('Plan')
     Plan.all.each do |p|
