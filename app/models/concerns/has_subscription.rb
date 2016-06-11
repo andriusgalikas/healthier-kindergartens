@@ -14,6 +14,12 @@ module HasSubscription
             subscription.nil? || active_trial? ? false : true
         end
 
+        # => Checks if a user has an only active subscription 
+        #
+        def active_subscribed?
+            subscription.nil? ? false : true
+        end
+
         # => Checks if a user has an active trial
         #
         def active_trial?

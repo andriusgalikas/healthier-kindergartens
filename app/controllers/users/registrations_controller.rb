@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      # send_confirmation_email(resource)
+      send_confirmation_email(resource)
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
@@ -46,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     assign_daycare_manager_role
     if @daycare.save
       user = @daycare.users.first
-      # send_confirmation_email(user)
+      send_confirmation_email(user)
       sign_up(:user, user)
       respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
@@ -119,9 +119,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @daycare.user_daycares.first.user.role = params[:role]
   end
 
-  # def send_confirmation_email user
-  #   RegistrationMailer.send_confirmation(user).deliver_later
-  # end
+  def send_confirmation_email user
+    RegistrationMailer.send_confirmation(user).deliver_later
+  end
 
   # def build_resource params
   #   self.resource = User.new(params)
