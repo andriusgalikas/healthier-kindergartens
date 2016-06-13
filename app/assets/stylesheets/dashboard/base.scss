@@ -1,13 +1,13 @@
-* 
+*
 {
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
+    -moz-osx-font-smoothing: grayscale;
 }
-*, *:before, *:after 
+*, *:before, *:after
 {
     @include box-sizing(border-box);
 }
-body 
+body
 {
     font-family: 'OpenSans', sans-serif;
     font-size:1em;
@@ -27,33 +27,33 @@ hr
     background-color: $grey;
     height:1px;
 }
-.page-header 
+.page-header
 {
-        h2 
+        h2
         {
             margin-top:0px;
             padding:0 0 20px;
             border-bottom: 1px solid $grey;
             font-weight:100;
         }
-        .btn 
+        .btn
         {
             float:right;
             border-left:10px solid #f0f0f0;
         }
 }
-a 
+a
 {
     text-decoration: none;
     color:$blue;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout:none;
-        &:hover 
+        &:hover
         {
             color:$green;
         }
 }
-p 
+p
 {
     margin:0 0 10px;
 }
@@ -132,4 +132,11 @@ body
             }
         }
     }
+}
+
+.alert.alert-warning {
+  img {
+    height: 50px;
+    margin-right: 12px;
+  }
 }

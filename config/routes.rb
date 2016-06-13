@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    
+
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
                 get :search
             end
         end
-      
+
         namespace :reports do
             namespace :todos do
                 root action: 'index'
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
             end
         end
 
-        
+
         resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
             get :results
             get :user_result
@@ -101,7 +101,7 @@ Rails.application.routes.draw do
         resources :todos
         resources :users, only: :index
         resources :daycares, only: :index
-        resources :departments, only: :index 
+        resources :departments, only: :index
         resources :subjects, except: :show
 
 
@@ -112,9 +112,11 @@ Rails.application.routes.draw do
     end
 
     namespace :api, constraints: { format: 'json' } do
-        resources :daycares, only: [:index] do
-            resources :departments, only: :index
-        end
-        resources :plans, only: :show
+      resources :daycares, only: [:index] do
+        get :featured_daycare, on: :collection
+        get :by_plan, on: :collection
+        resources :departments, only: :index
+      end
+      resources :plans, only: :show
     end
 end

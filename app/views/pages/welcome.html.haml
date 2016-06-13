@@ -1,4 +1,7 @@
-#legacy-back-index  
+- content_for :popup_notifications do
+  = hidden_field_tag 'notif_new_user', current_user.newly_signed_up?
+
+#legacy-back-index
   .container.back-page-content
     .row.back-page
       .col-md-4

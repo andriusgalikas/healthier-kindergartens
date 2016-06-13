@@ -20,7 +20,7 @@ header
             }
         }
         ul
-        { 
+        {
             display: none;
         }
     }
@@ -94,7 +94,7 @@ header
         #clock
         {
             div
-            {   
+            {
                 display: inline-block;
                 text-align: center;
 
@@ -123,4 +123,11 @@ header
             }
         }
     }
+}
+
+.alert.alert-warning {
+  img {
+    height: 50px;
+    margin-right: 12px;
+  }
 }

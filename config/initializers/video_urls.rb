@@ -1,5 +1,5 @@
 # 1 = Food Handling
-# 2 = Exclusion of sick children 
+# 2 = Exclusion of sick children
 # 3 = Diapering
 # 4 = Outbreak control strategies
 # 5 = Cleaning of bodily fluids
@@ -11,7 +11,7 @@ FREE = {1 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Hea
         4 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Preview%20all%20courses/Outbreak%20Control%20preview%20Norwegian.mp4",
         5 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Preview%20all%20courses/Cleaning%20bodily%20fluid%20preview%20Norwegian.mp4",
         6 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Preview%20all%20courses/Handwash%20module%20preview%20Norwegian.mp4"
-    		} 
+    		}
 
 PAID = {1 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Food%20Handling%20Norwegain/story.html",
         2 => "https://dl.dropboxusercontent.com/u/550951711/Public%20%281%29/Healthier%20Childcare/Norway/Online%20training/Infection%20Control/Smitte%20preventiv%20ekskludering%20av%20syke%20barn/story.html",

@@ -6,9 +6,9 @@ $(document).ready(function()
     healthChildcare.app.printTodo();
     healthChildcare.app.datepickers();
     healthChildcare.app.submitSurveyModule();
-    
+    healthChildcare.app.showRegisteredChildcaresNotification();
+    healthChildcare.app.showUpgradedChildcaresNotification();
 
-    
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");
@@ -80,6 +80,31 @@ $(document).ready(function()
             }
         });
     });
+
+  $.notifyDefaults({
+    element: 'body',
+    position: null,
+    type: 'warning',
+    icon_type: 'image',
+    allow_dismiss: true,
+    delay: 9000,
+    newest_on_top: true,
+    placement: {
+      from: "top",
+      align: "right"
+    },
+    animate: {
+      enter: 'animated fadeInDown',
+      exit: 'animated fadeOutDown'
+    },
+    template: '<div data-notify="container" class="col-xs-12 col-sm-4 alert alert-{0}" role="alert">' +
+      '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+      '<img data-notify="icon" class="img-circle pull-left" ></span> ' +
+      '<span data-notify="title">{1}</span> ' +
+      '<span data-notify="message">{2}</span>' +
+      '</div>'
+  });
+
 });
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
