@@ -1,5 +1,5 @@
 class Admin::MessageTemplatesController < AdminController
-  layout 'message_template'
+  layout 'message'
 
   def create
     set_subject

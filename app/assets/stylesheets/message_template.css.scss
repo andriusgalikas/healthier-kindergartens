@@ -11,6 +11,7 @@
  *= require plugins/image.min.css
  *= require plugins/quick_insert.min.css
  *= require jquery.dropdown.css
+ *= require jquery.datetimepicker
 */
 
 @import 'compass/css3';
@@ -20,23 +21,6 @@ $header-blue: #1E80E5;
 $info-blue: #03a9f4;
 $info-green: #4caf50;
 
-@mixin action-button {
-  width: 100px;
-  background: black;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
-
-  &:hover, &:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
-  }
-}
-
-
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -44,11 +28,16 @@ $info-green: #4caf50;
   border-radius: $radius;
 }
 
+
 body {
   background: #f0f0f0;
   color: #ABABB2;
 
   .main {
+    .centralize {
+      text-align: center;
+    }
+
     .step-instruction {
       color: $info-blue;
     }
@@ -59,11 +48,40 @@ body {
       }
     }
 
+    .message {
+      margin-bottom: 25px;
+
+      .message-info {
+        .sent-date {
+          text-align: center;
+        }
+      }
+      hr {
+        border-color: $grey;
+      }
+    }
+
     .message-content-stage {
       background: white;
-      padding: 25px;
+      padding: 10px 25px;
+      color: black;
+    }
+
+    .message-filters {
+      border: 2px solid $grey;
+      margin-bottom: 30px;
+      @include border-radius(2px);
+    }
+
+    .message-list{
+      nav {
+        text-align: center;
+      }
     }
   }
+
+
+
 
   #main-content {
     margin-top: 20px;
@@ -74,8 +92,10 @@ body {
 
     .menu-items {
       a {
-        width: 75%;
+        width: 60%;
         height: 250px;
+        background: white;
+        padding-top: 10px;
 
         img {
           height: 160px;
@@ -197,156 +217,6 @@ body {
 
 }
 
-/*basic reset*/
-* {margin: 0; padding: 0;}
-
-html {
-	height: 100%;
-}
-
-
-
-/*form styles*/
-#form-wizard {
-	width: 100%;
-	margin: 50px auto;
-	text-align: center;
-	position: relative;
-
-  fieldset {
-    border: 0 none;
-    width: 80%;
-    margin: 0 10%;
-
-    /*stacking fieldsets above each other*/
-    position: absolute;
-  }
-
-  /*Hide all except first fieldset*/
-  fieldset:not(:first-of-type) {
-    display: none;
-  }
-
-  input, textarea, select {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    color: #2C3E50;
-    font-size: 13px;
-  }
-
-  select {
-    height: 45px;
-  }
-
-  .choose_subject, .choose_sub_subject {
-    display: none;
-  }
-
-  .action-button {
-    @include action-button;
-  }
-
-  /*headings*/
-  .fs-title {
-    font-size: 15px;
-    text-transform: uppercase;
-    color: #2C3E50;
-    margin-bottom: 10px;
-  }
-
-  .fs-subtitle {
-    font-weight: normal;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 20px;
-  }
-
-  .checkbox {
-    position: relative;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    text-align: left;
-
-    .target-role {
-      display: inline-block;
-    }
-
-    .target-role-name {
-      display: inline-block;
-      width: 95%;
-      background: #D0D0D0;
-      padding: 10px;
-    }
-
-    input[type=checkbox] {
-      line-height: normal;
-      margin-right: 10px;
-    }
-  }
-}
-
-/*progressbar*/
-#progressbar {
-  margin-bottom: 30px;
-  overflow: hidden;
-
-  /*CSS counters to number the steps*/
-  counter-reset: step;
-
-  li {
-    list-style-type: none;
-    color: black;
-    text-transform: uppercase;
-    font-size: 9px;
-    width: 25%;
-    float: left;
-    position: relative;
-
-    &:before {
-      content: counter(step);
-      counter-increment: step;
-      width: 30px;
-      line-height: 30px;
-      display: block;
-      font-size: 15px;
-      color: #333;
-      background: white;
-      border-radius: 3px;
-      margin: 0 auto 5px auto;
-      border: 1px solid black;
-    }
-
-    &:after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      background: white;
-      position: absolute;
-      left: -50%;
-      top: 15px;
-      z-index: -1; /*put it behind the numbers*/
-    }
-
-    &:first-child:after {
-      /*connector not needed before the first step*/
-      content: none;
-    }
-
-    /*marking active/completed steps green*/
-    /*The number of the step and the connector before it = green*/
-    &.active:before, &.active:after {
-      background: black;
-	    color: white;
-      border: 1px solid black;
-    }
-  }
-}
 
 .edit-filters {
   -webkit-box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
@@ -387,45 +257,4 @@ html {
 
   }
 
-}
-
-.apply-filter {
-  text-align: center;
-
-  .action-button {
-    @include action-button;
-  }
-
-
-  .loader {
-    display: none;
-  }
-}
-
-.edit-stage, .show-stage {
-  margin-top: 20px;
-
-  .template-header {
-    padding: 10px 0;
-
-    .subject-label, .recipient-label {
-      color: #777474;
-    }
-
-    .subject-content {
-
-    }
-
-    .recipient-label, .recipient-content {
-      float: right;
-    }
-  }
-
-  .template-content {
-
-  }
-
-  .action-button {
-    @include action-button;
-  }
 }

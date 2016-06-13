@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     has_one :user_affiliate,                                    dependent: :destroy
     has_one :affiliate,                                         through: :user_affiliate
 
+    has_many :messages,                                         foreign_key: 'owner_id'
+
+    has_many :notifications,                                    foreign_key: 'target_id'
+
     belongs_to :department
 
     validates :department_id,                                   presence: true, :if => :worker?

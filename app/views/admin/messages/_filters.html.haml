@@ -1,0 +1,22 @@
+.row
+  .col-md-4
+    .form-group
+      = label_tag :start_date
+      = text_field_tag :start_date, params['start_date'], class: 'datepicker form-control'
+
+  .col-md-4
+    .form-group
+      = label_tag :end_date
+      = text_field_tag :end_date, params['end_date'], class: 'form-control'
+
+  .col-md-4
+    .form-group
+      = label_tag :target_role, 'Show only messages sent to'
+      = select_tag :target_role, options_for_select(Message.target_roles.collect{|m| [m[0].humanize, m[0]]}, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Recipient'
+
+
+.row.centralize
+  = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
+
+:javascript
+  $.material.init();

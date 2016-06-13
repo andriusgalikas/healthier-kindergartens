@@ -1,0 +1,11 @@
+= content_for :title, 'Sent Messages'
+
+.row
+  .page-header
+    %h3 Filter option to see your messages :
+
+.container-fluid.message-filters
+  = render 'filters'
+
+.row.message-list
+  = render 'message_list'

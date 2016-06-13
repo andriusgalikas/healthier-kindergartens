@@ -3,5 +3,6 @@ var healthChildcare =
     app: {},
     admin: {},
     misc: {},
-    messageTemplate: {}
+    messageTemplate: {},
+    message: {}
 }

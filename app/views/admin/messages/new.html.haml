@@ -1,0 +1,29 @@
+= content_for :title, 'Create Message'
+
+.row#main-content
+  = form_for [:admin, @message] do |f|
+    .form-group
+      %label.step-instruction{for: :target_role} Recipient of this message :
+      - Message.target_roles.each do |target_role|
+        .radio
+          %label
+            = f.radio_button :target_role, target_role[0], checked: true
+            = target_role[0].humanize
+
+    .form-group
+      %label.step-instruction{for: :title} Title :
+      = f.text_field :title, placeholder: t('admin.write_title'), class: 'form-control', required: true
+
+    .form-group
+      %label.step-instruction{for: :content} Please write the content of your message :
+      = f.text_area :content, id: 'message_template_content'
+
+    .form-buttons
+      .col-md-6
+        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'} Cancel
+      .col-md-6
+        = submit_tag 'Send', class: 'btn btn-raised btn-success'
+
+:javascript
+  $('#message_template_content').froalaEditor();
+  $.material.init();

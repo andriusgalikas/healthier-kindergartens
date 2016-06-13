@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
+//= require jquery.datetimepicker
 //= require turbolinks
 //= require bootstrap-material-design/dist/js/material.min.js
 //= require bootstrap-material-design/dist/js/ripples.min.js
@@ -20,6 +20,9 @@
 //= require plugins/inline_style.min.js
 //= require plugins/quick_insert.min.js
 //= require jquery.dropdown.js
+//= require jquery.shorten.min.js
 //= require _healthChildcare
 //= require healthChildcare.messageTemplate
 //= require message_template.ready
+//= require healthChildcare.message
+//= require message.ready

@@ -11,8 +11,11 @@
   .form-buttons
     .col-md-6
       - if @template.present?
-        %a{href: :back, class: 'btn btn-raised btn-info'} Cancel
+        %a{href: admin_message_template_path(@template), class: 'btn btn-raised btn-info'} Cancel
       - else
         %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'} Back
     .col-md-6
       %input{type: 'submit', name: 'submit', class: 'submit btn btn-raised btn-success', value: 'Save'}
+
+:javascript
+  $('#message_template_content').froalaEditor();

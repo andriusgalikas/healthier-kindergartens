@@ -1,11 +1,10 @@
 ready = function() {
-  $.material.init();
-  $(".select").dropdown({ "autoinit" : ".select" });
-
-
   healthChildcare.messageTemplate.wysiwygEditor();
   healthChildcare.messageTemplate.editMessageTemplates();
+  healthChildcare.messageTemplate.datepickers();
 
+  $.material.init();
+  $(".select").dropdown({ "autoinit" : ".select" });
 };
 
 $(document).ready(ready);

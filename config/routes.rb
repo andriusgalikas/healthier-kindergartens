@@ -116,8 +116,11 @@ Rails.application.routes.draw do
             get  :edit_filters
             post :filter
           end
-
         end
+        resources :messages do
+          get :sent_messages, on: :collection
+        end
+
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]
