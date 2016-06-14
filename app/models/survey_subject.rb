@@ -2,15 +2,18 @@
 #
 # Table name: survey_subjects
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  daycare_id  :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  description :text
+#  id             :integer          not null, primary key
+#  title          :string
+#  daycare_id     :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  description    :text
+#  deactivated_at :datetime
 #
 
 class SurveySubject < ActiveRecord::Base
+  include Deactivatable
+
     has_one :icon,                                 -> { where(attachable_type: 'SurveySubject') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
     has_many :surveys,                              class_name: Survey::Survey, dependent: :destroy
     has_many :attempts,                             through: :surveys

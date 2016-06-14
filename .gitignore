@@ -18,5 +18,6 @@
 /public/uploads/*
 !/uploads/.keep
 /vendor/assets/components
+*~
 
 *.DS_Store

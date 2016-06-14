@@ -2,6 +2,10 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection, :instruction]
     before_action :authenticate_subscribed!, only: :instruction
 
+    def home
+      render layout: 'home'
+    end
+
     def welcome
 
     end
@@ -17,7 +21,7 @@ class PagesController < ApplicationController
     def getting_started
 
         render layout: 'login'
-    end    
+    end
 
     def implementation
 

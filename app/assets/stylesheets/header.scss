@@ -1,40 +1,80 @@
+$orange: #F7941D;
+
 header
 {
     padding: 15px;
     margin: 0 auto;
     overflow: hidden;
-    height:150px;
     max-width: 1170px;
 
     &.loggedin
     {
-        background-color: #365ebf;
+      color: white;
 
-        a
-        {
-            background-color: #48c38c !important;
+      #logout-link {
+        color: white;
+        float: right;
+      }
+    }
 
-            &:hover
-            {
+    .upgrade-header {
+      background: #365ebf;
+      padding: 10px;
+    }
 
-            }
+    .primary-header {
+      position: relative;
+      background: #406bd6;
+      padding: 10px;
+
+      .vote-invitations {
+        border-right: 2px dashed #3153a7;
+
+        #vote-btn {
+          margin: 0px 10px;
         }
-        ul
-        {
-            display: none;
+      }
+
+      .vote-results {
+        color: $orange;
+
+        img {
+          height: 50px;
+          margin-right: 5px;
         }
+
+        p {
+          color: black;
+        }
+
+        .vote-count {
+          font-size: x-large;
+        }
+      }
     }
 
     #user
     {
-        color: #fff;
-        float: right;
-        margin-top: 5px;
+      font-size: small;
 
-        img
-        {
-            margin-right: 7px;
-        }
+      .user-name {
+        color: $orange;
+      }
+
+      .user-role {
+        color: white;
+      }
+
+      img {
+        margin-right: 7px;
+        float: left;
+        height: 35px;
+      }
+    }
+
+    .logo-container {
+      margin-left: 10px;
+      position: absolute;
     }
 
     #header-logo
@@ -42,6 +82,7 @@ header
         height:120px;
         float:left;
     }
+
     #menu, ul
     {
         float:right;
@@ -87,10 +128,6 @@ header
 
     #countdown
     {
-        float:left;
-        margin:13px 0 0 70px;
-        color:#fff;
-
         #clock
         {
             div
