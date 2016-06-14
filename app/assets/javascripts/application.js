@@ -20,6 +20,7 @@
 //= require application.ready
 //= require chart
 //= require c3
+//= require intro
 //= require jquery.countdown/dist/jquery.countdown.min
 //= require bootstrap-notify.min
 //= require booknow
