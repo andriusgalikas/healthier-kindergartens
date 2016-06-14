@@ -1,15 +1,11 @@
 module PagesHelper
 
   def current_user_role_avatar
-    role_avatar current_user.role
-  end
-
-  def role_avatar role
-    if role == 'manager'
+    if current_user.manager?
       'manager.png'
-    elsif role == 'parentee'
+    elsif current_user.parentee?
       'parent.png'
-    elsif role == 'worker'
+    elsif current_user.worker?
       'worker.png'
     else
       'logo_menu.png'
