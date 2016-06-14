@@ -8,13 +8,78 @@
                 Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community. 
                 </p>
             </div>
-        
+            
+            <%= form_for Subscription.new, url: plan_subscriptions_path(Plan.first), method: :post do |f| %>
+                <div class="form">
+                    <div class="row credit-card-form">
+                        <!-- <div class="col-xs-12 col-md-12 col-lg-12"> -->
+              
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Discount Code</h3>
+                                </div>
+                                <%= f.hidden_field :plan_id %> 
+                                <%= f.hidden_field :user_id, value: current_user.id %>
+                                <%= f.hidden_field :stripe_card_token %>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-7 col-md-7">
+                                            <div class="form-group">
+                                                <label>
+                                                    <%= label_tag :card_number, "Credit Card Number" %>
+                                                </label>
+                                                <div class="input-group">
+                                                    <%= text_field_tag :card_number, nil, name: nil, :class => 'form-control' %>
+                                                   <span class="input-group-addon"><i class="fa fa-credit-card"></i></span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5 col-md-5">
+                                            <div class="form-group">
+                                                <%= label_tag :card_code, "CV Code" %>
+                                                <%= text_field_tag :card_code, nil, name: nil, :class => 'form-control' %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group expire-date">
+                                                <%= label_tag :card_month, "Card Expiration" %>
+                                                <div class="col-xs-4 col-lg-4 pl-ziro">
+                                                    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control'} %>
+                                                </div>
+                                                <div class="col-xs-3 col-lg-3 pl-ziro">
+                                                    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control'} %>
+                                                </div>
+                                            </div>
+                                    
+                                        <div class="col-xs-5 col-md-5 col-lg-5 prom">
+                                            <div class="form-group promo-area">
+                                                <%= label_tag :discount_code, 'Promo Code' %>
+                                                    <%= text_field_tag :discount_code, "", :class => 'form-control' %>
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <%= f.submit "Apply",:class => "apply-btn" %>
+                                </div>
+                            </div>
+                            <div id="stripe_error">
+                                <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            <% end %>           
+
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rang-block">
-                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col">
-                  <h4 class ="text-theme rang-text">Professional Member:</h4>
-                  <h3 class="text-theme rang-text">$20 / month</h3>
-                  <div class="row tick-theme">
-                    <div class="col-md-12">
+                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col pro">
+                  <h4 class ="text-theme rang-text pro">Professional Member:</h4>
+                  <h3 class="text-theme rang-text pro">$20 / month</h3>
+                  <div class="row tick-theme pro">
+                    <div class="col-md-12 pro">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -22,7 +87,7 @@
                         <p class="print1">Print edition of Risk assessment</p>
                       </div> 
                     </div>    
-                    <div class="col-md-12">
+                    <div class="col-md-12 pro">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -30,7 +95,7 @@
                         <p class="print1">Printable Pdf version of our instruction component of the program</p>
                       </div> 
                     </div> 
-                    <div class="col-md-12">
+                    <div class="col-md-12 pro">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -39,15 +104,15 @@
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn">Book Now</button>
+                      <button type="button" class="btn btn-primary book-btn pro">Book Now</button>
                     </div>
                   </div>  
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col">
-                  <h4 class ="text-theme rang-text">Comitted Member: </h4>
-                  <h3 class="text-theme rang-text">$49 / month</h3>
-                  <div class="row tick-theme">
-                    <div class="col-md-12">
+                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col commit">
+                  <h4 class ="text-theme rang-text commit">Comitted Member: </h4>
+                  <h3 class="text-theme rang-text commit">$49 / month</h3>
+                  <div class="row tick-theme commit">
+                    <div class="col-md-12 commit">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -55,7 +120,7 @@
                         <p class="print1">Online Risk assessment</p>
                       </div> 
                     </div>    
-                    <div class="col-md-12">
+                    <div class="col-md-12 commit">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -63,7 +128,7 @@
                         <p class="print1">Online Training</p>
                       </div> 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 commit">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -71,7 +136,7 @@
                         <p class="print1">The book -Infected: The Urgent Necessity for DayCare Facilities to Keep Children,Staff and Communities Safe</p>
                       </div> 
                     </div> 
-                    <div class="col-md-12">
+                    <div class="col-md-12 commit">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -80,15 +145,15 @@
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn">Book Now</button> 
+                      <button type="button" class="btn btn-primary book-btn commit">Book Now</button> 
                     </div>  
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-last">
-                 <h4 class ="text-theme rang-text">Accreditation Member:</h4>
-                 <h3 class="text-theme rang-text">$99 / month</h3>
-                 <div class="row tick-theme">
-                    <div class="col-md-12">
+                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-last acc">
+                 <h4 class ="text-theme rang-text acc">Accreditation Member:</h4>
+                 <h3 class="text-theme rang-text acc">$99 / month</h3>
+                 <div class="row tick-theme acc">
+                    <div class="col-md-12 acc">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -96,7 +161,7 @@
                         <p class="print1">Online Risk assessment</p>
                       </div> 
                     </div>    
-                    <div class="col-md-12">
+                    <div class="col-md-12 acc">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -104,7 +169,7 @@
                         <p class="print1">Online Training</p>
                       </div> 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 acc">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -112,7 +177,7 @@
                         <p class="print1">Online and offline tools for tracking and implementation</p>
                       </div> 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 acc">
                       <div class="col-md-2">
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
@@ -121,7 +186,7 @@
                       </div> 
                     </div>
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn">Book Now</button>
+                      <button type="button" class="btn btn-primary book-btn acc">Book Now</button>
                     </div>   
                   </div>
                 </div>
@@ -134,118 +199,80 @@
                     <h2>ONGOING ACCREDITATION MEMBERSHIP BENEFITS</h2>
                     <p>Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:</p>
                 </div>
-                 <div class="single-ongoing">
-                    <%= image_tag 'ongoing_one.png' %>
+                 <div class="single-ongoing pink">
+                    <%= image_tag '01.png' %>
                     <p>
-                        <span class="periodic-pink">Periodic letter—
-                        Receive the latest health and safety messages from the most cutting-edge research on infection mitigation in your facility. Rest assured you will stay up-to-date with information about mitigating risk of infections in your childcare facility.</span>
+                      <a href="">http://www.iconarchive.com/show/flat-style-icons-by-flaticonmaker/email-icon.html
+                      </a><br>
+                      <span class="periodic-pink"><b>Periodic letter—</b>
+                      Receive the latest health and safety messages from the most cutting-edge research on infection mitigation in your facility. Rest assured you will stay up-to-date with information about mitigating risk of infections in your childcare facility.</span>
                     </p>
                 </div>
-                 <div class="single-ongoing">
-                    <%= image_tag 'ongoing_one.png' %>
+                 <div class="single-ongoing pink">
+                    <%= image_tag '02.png' %>
                     <p>
-                        <span class="periodic-pink">Assess the scope of infection risk in your facility
-                        Get  insight in your employees level of competence in the six core areas for infection control. This action will enable you to assess the scope of the risk of infections that children under your supervision are exposed for</span>
+                      <span class="periodic-pink"><b>Assess the scope of infection risk in your facility</b><br>
+                      Get  insight in your employees level of competence in the six core areas for infection control. This action will enable you to assess the scope of the risk of infections that children under your supervision are exposed for</span>
                     </p>
                 </div>
-           <!--      <div class="single-ongoing">
-                    <%= image_tag 'ongoing_one.png' %>
+                <div class="single-ongoing blue ">
+                    <%= image_tag '03.png' %>
                     <p>
-                      <span class="accredation-header">Greater employee confidence</span>
-                      Our training modules are designed to increase you and your employees’ knowledge and understanding of health and safety issues which impact children in childcare. Training reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. This helps lower employee stress, and helps employees to thrive, making you childcare facility a better place to work.
-                    </p>
-                </div> -->
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_one.png' %>
-                    <p>
-                      <span class="practices-blue"> Get instruction in optimal infective practices
+                      <span class="practices-blue"><b> Get instruction in optimal infective practices</b><br>
                       Exclusive online instruction in infection control  available nowhere else—In this instruction component, your daycare staff will be trained and qualified in the six core areas of mitigating risk of infection and diseases in your facility. This  provides them a clear course of performance. The net results will be infection preventive choices that are intrinsically linked to healthier and safer childcare environment.</span>
                     </p>
                 </div>
-                <div class="single-ongoing">
-                <%= image_tag 'ongoing_two.png' %>
+                <div class="single-ongoing all">
+                <%= image_tag '04.png' %>
                     <p>
-                      <span class="potential-green">Boost employee  confidence
+                      <span class="potential-green"><b>Boost employee  confidence</b><br>
                       Our online  instruction courses  are designed to increase  your employees’ knowledge and understanding of health and safety issues which impact children in childcare. This course of action  reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. Lower employee stress, help  employees to thrive and  make  your childcare facility a better place to work.</span>
                     </p>
                 </div>
-                <!-- <div class="single-ongoing">
-                <%= image_tag 'ongoing_two.png' %>
+                <div class="single-ongoing all">
+                <%= image_tag '05.png' %>
                     <p>
-                        <span class="accredation-header">Improved childcare reputation with parents</span>
-                        HSCA’s accreditation can give your facility recognition and clout like never before. Our accreditation will instill trust among parents and respect among industry peers as it signifies that you have taken the extra step to provide The Standard of comprehensive protection of children and employees. With HSCA Accreditation, your facility will also earn a dignified place in a national list of accredited childcare agencies, along with your earned credentials. It’s not uncommon for parents seeking a daycare center for their children to consult a list like this to make their decision.
-                    </p>
-                </div> -->
-                <div class="single-ongoing">
-                <%= image_tag 'ongoing_three.png' %>
-                    <p>
-                      <span class="potential-green">Decrease in absenteeism
+                      <span class="potential-green"><b>Decrease in absenteeism</b><br>
                       Operating your childcare facility according to The Health Preserving Care Standard also helps decrease the risk of infection . You know all too well these factors can drain your childcare of productivity.The optimum  “cure” for employee turnover due to unnecessary sickness of your staff is to have infection preventive infrastructure in place through health preserving care accreditation program</span>
                     </p>
                 </div>
-               <!--  <div class="single-ongoing">
-                <%= image_tag 'ongoing_three.png' %>
-                    <p>
-                        <span class="accredation-header">Shine like a beacon of safety in the marketplace</span> 
-                        Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge. Your accreditation status will give parents the reassurance that their children are out of harm’s way.
-                    </p>
-                </div>
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_four.png' %>
-                    <p>
-                        <span class="accredation-header">Minimize employee turnover </span> 
-                        Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge. Your accreditation status will give parents the reassurance that their children are out of harm’s way.
-                        <br>
-                        <br>
-
-                        The best “cure” for employee turnover due to unnecessary sickness of your staff is to receive accreditation through HSCA.
-
-                    </p>
-                </div> -->
-             <!--    <div class="single-ongoing">
+                <div class="single-ongoing all">
                     <%= image_tag 'ongoing_five.png' %>
                     <p>
-                        <span class="accredation-header">Avoid potentially costly lawsuits</span>
-                        Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care.     
-                    </p>
-                </div> -->
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_five.png' %>
-                    <p>
-                      <span class="potential-green">Avoid potentially costly lawsuits
+                      <span class="potential-green"><b>Avoid potentially costly lawsuits</b><br>
                       Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care.</span>
                     </p>
                 </div> 
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_six.png' %>
+                <div class="single-ongoing all">
+                    <%= image_tag '08.png' %>
                     <p>
-                      <span class="potential-green">Meet regulatory standards gets easier
+                      <span class="potential-green"><b>Meet regulatory standards gets easier</b><br>
                       <span class=""><a href ="">http://www.iconarchive.com/show/e-commerce-icons-by-ebiene/checklist-icon.html</a></span>
                       HSCA accreditation gives you the tools to track and report key actions required to reduce risk and increase the health and safety of children and your daycare staff. Our app makes reporting faster and easier and simplifies the process of record keeping, thereby potentially avoiding costly shutdowns and problematic inspections.</span>
                     </p>
                 </div>
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_seven.png' %>
+                <div class="single-ongoing all">
+                    <%= image_tag '09.png' %>
                     <p>
                     <span class="potential-green">
-                      Get access to tools that enables your staff to work smarter
+                      <b>Get access to tools that enables your staff to work smarter</b><br>
                       Achieving the goal of a healthy and safe childcare facility is especially difficult without the correct tools. That is why accreditation program comes with  tools that enables daycare staff to  work smarter instead of  just harder to provide the most optimal health preserving care possible.</span>
                     </p>
                 </div>
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_seven.png' %>
+                <div class="single-ongoing all">
+                    <%= image_tag '10.png' %>
                     <p>
                     <span class="potential-green">
-                      Get the competitive edge 
+                    <b>Get the competitive edge</b><br> 
                     Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care. 
                     </span>
                     </p>
                 </div>
-                <div class="single-ongoing">
-                    <%= image_tag 'ongoing_seven.png' %>
+                <div class="single-ongoing all">
+                    <%= image_tag '11.png' %>
                     <p>
                     <span class="potential-green">
-                      Positively affect  the next generation 
+                    <b>Positively affect  the next generation</b><br> 
                     Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come. 
                     </span>
                     </p>
@@ -256,3 +283,26 @@
 </div>
 
 </div>
+
+<script type="text/javascript">
+$(function() {
+  return $(".pro").click(function() {
+    return $.ajax({
+      type: "GET",
+      url: "/upgrade",
+      data: {
+        allocation: "20",
+        plan_id: "1"
+      },
+      success: function(data) {
+        alert(data.id);
+        return false;
+      },
+      error: function(data) {
+        return false;
+      }
+    });
+  });
+});
+
+</script>

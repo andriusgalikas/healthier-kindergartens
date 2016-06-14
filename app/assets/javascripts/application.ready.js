@@ -136,3 +136,4 @@ function click_tab(id){
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
         $('#tab_'+id).addClass("jcmc-active-tab");
     }
+

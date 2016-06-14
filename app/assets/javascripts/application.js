@@ -22,3 +22,4 @@
 //= require c3
 //= require jquery.countdown/dist/jquery.countdown.min
 //= require remarkable-bootstrap-notify/dist/bootstrap-notify.min
+//= require booknow
