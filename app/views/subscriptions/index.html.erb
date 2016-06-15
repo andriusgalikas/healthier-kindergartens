@@ -8,72 +8,7 @@
                 Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community. 
                 </p>
             </div>
-            
-            <%= form_for Subscription.new, url: plan_subscriptions_path(Plan.first), method: :post do |f| %>
-                <div class="form">
-                    <div class="row credit-card-form">
-                        <!-- <div class="col-xs-12 col-md-12 col-lg-12"> -->
-              
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Discount Code</h3>
-                                </div>
-                                <%= f.hidden_field :plan_id %> 
-                                <%= f.hidden_field :user_id, value: current_user.id %>
-                                <%= f.hidden_field :stripe_card_token %>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-xs-7 col-md-7">
-                                            <div class="form-group">
-                                                <label>
-                                                    <%= label_tag :card_number, "Credit Card Number" %>
-                                                </label>
-                                                <div class="input-group">
-                                                    <%= text_field_tag :card_number, nil, name: nil, :class => 'form-control' %>
-                                                   <span class="input-group-addon"><i class="fa fa-credit-card"></i></span> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-5 col-md-5">
-                                            <div class="form-group">
-                                                <%= label_tag :card_code, "CV Code" %>
-                                                <%= text_field_tag :card_code, nil, name: nil, :class => 'form-control' %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group expire-date">
-                                                <%= label_tag :card_month, "Card Expiration" %>
-                                                <div class="col-xs-4 col-lg-4 pl-ziro">
-                                                    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control'} %>
-                                                </div>
-                                                <div class="col-xs-3 col-lg-3 pl-ziro">
-                                                    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control'} %>
-                                                </div>
-                                            </div>
-                                    
-                                        <div class="col-xs-5 col-md-5 col-lg-5 prom">
-                                            <div class="form-group promo-area">
-                                                <%= label_tag :discount_code, 'Promo Code' %>
-                                                    <%= text_field_tag :discount_code, "", :class => 'form-control' %>
-                                            
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <%= f.submit "Apply",:class => "apply-btn" %>
-                                </div>
-                            </div>
-                            <div id="stripe_error">
-                                <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-                            </div>
-                        <!-- </div> -->
-                    </div>
-                </div>
-            <% end %>           
-
-
+            <div class="payment_form"></div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rang-block">
                 <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col pro">
                   <h4 class ="text-theme rang-text pro">Professional Member:</h4>
@@ -104,7 +39,8 @@
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn pro">Book Now</button>
+                     <!--  <a href=""><button type="submit" class="btn btn-primary book-btn pro proo">Book Now</button> -->
+                     <%= link_to "Book Now", new_plan_subscription_path(@plan1) ,remote: true, class: 'btn btn-primary book-btn pro proo'%>
                     </div>
                   </div>  
                 </div>
@@ -145,7 +81,8 @@
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn commit">Book Now</button> 
+                      <!-- <button type="button" class="btn btn-primary book-btn commit">Book Now</button> --> 
+                      <%= link_to "Book Now", new_plan_subscription_path(@plan2) ,remote: true, class: 'btn btn-primary book-btn commit'%>
                     </div>  
                   </div>
                 </div>
@@ -186,7 +123,8 @@
                       </div> 
                     </div>
                     <div class="col-md-10 col-md-offset-2">
-                      <button type="button" class="btn btn-primary book-btn acc">Book Now</button>
+                      <!-- <button type="button" class="btn btn-primary book-btn acc">Book Now</button> -->
+                      <%= link_to "Book Now", new_plan_subscription_path(@plan3) ,remote: true, class: 'btn btn-primary book-btn commit'%>
                     </div>   
                   </div>
                 </div>
@@ -204,49 +142,49 @@
                     <p>
                       <a href="">http://www.iconarchive.com/show/flat-style-icons-by-flaticonmaker/email-icon.html
                       </a><br>
-                      <span class="periodic-pink"><b>Periodic letter—</b>
+                      <span class="periodic-pin"><b>Periodic letter—</b>
                       Receive the latest health and safety messages from the most cutting-edge research on infection mitigation in your facility. Rest assured you will stay up-to-date with information about mitigating risk of infections in your childcare facility.</span>
                     </p>
                 </div>
                  <div class="single-ongoing pink">
                     <%= image_tag '02.png' %>
                     <p>
-                      <span class="periodic-pink"><b>Assess the scope of infection risk in your facility</b><br>
+                      <span class="periodic-pin"><b>Assess the scope of infection risk in your facility</b><br>
                       Get  insight in your employees level of competence in the six core areas for infection control. This action will enable you to assess the scope of the risk of infections that children under your supervision are exposed for</span>
                     </p>
                 </div>
                 <div class="single-ongoing blue ">
                     <%= image_tag '03.png' %>
                     <p>
-                      <span class="practices-blue"><b> Get instruction in optimal infective practices</b><br>
+                      <span class="practices-blu"><b> Get instruction in optimal infective practices</b><br>
                       Exclusive online instruction in infection control  available nowhere else—In this instruction component, your daycare staff will be trained and qualified in the six core areas of mitigating risk of infection and diseases in your facility. This  provides them a clear course of performance. The net results will be infection preventive choices that are intrinsically linked to healthier and safer childcare environment.</span>
                     </p>
                 </div>
                 <div class="single-ongoing all">
                 <%= image_tag '04.png' %>
                     <p>
-                      <span class="potential-green"><b>Boost employee  confidence</b><br>
+                      <span class="potential-gree"><b>Boost employee  confidence</b><br>
                       Our online  instruction courses  are designed to increase  your employees’ knowledge and understanding of health and safety issues which impact children in childcare. This course of action  reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. Lower employee stress, help  employees to thrive and  make  your childcare facility a better place to work.</span>
                     </p>
                 </div>
                 <div class="single-ongoing all">
                 <%= image_tag '05.png' %>
                     <p>
-                      <span class="potential-green"><b>Decrease in absenteeism</b><br>
+                      <span class="potential-gree"><b>Decrease in absenteeism</b><br>
                       Operating your childcare facility according to The Health Preserving Care Standard also helps decrease the risk of infection . You know all too well these factors can drain your childcare of productivity.The optimum  “cure” for employee turnover due to unnecessary sickness of your staff is to have infection preventive infrastructure in place through health preserving care accreditation program</span>
                     </p>
                 </div>
                 <div class="single-ongoing all">
                     <%= image_tag 'ongoing_five.png' %>
                     <p>
-                      <span class="potential-green"><b>Avoid potentially costly lawsuits</b><br>
+                      <span class="potential-gree"><b>Avoid potentially costly lawsuits</b><br>
                       Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care.</span>
                     </p>
                 </div> 
                 <div class="single-ongoing all">
                     <%= image_tag '08.png' %>
                     <p>
-                      <span class="potential-green"><b>Meet regulatory standards gets easier</b><br>
+                      <span class="potential-gree"><b>Meet regulatory standards gets easier</b><br>
                       <span class=""><a href ="">http://www.iconarchive.com/show/e-commerce-icons-by-ebiene/checklist-icon.html</a></span>
                       HSCA accreditation gives you the tools to track and report key actions required to reduce risk and increase the health and safety of children and your daycare staff. Our app makes reporting faster and easier and simplifies the process of record keeping, thereby potentially avoiding costly shutdowns and problematic inspections.</span>
                     </p>
@@ -254,7 +192,7 @@
                 <div class="single-ongoing all">
                     <%= image_tag '09.png' %>
                     <p>
-                    <span class="potential-green">
+                    <span class="potential-gree">
                       <b>Get access to tools that enables your staff to work smarter</b><br>
                       Achieving the goal of a healthy and safe childcare facility is especially difficult without the correct tools. That is why accreditation program comes with  tools that enables daycare staff to  work smarter instead of  just harder to provide the most optimal health preserving care possible.</span>
                     </p>
@@ -262,7 +200,7 @@
                 <div class="single-ongoing all">
                     <%= image_tag '10.png' %>
                     <p>
-                    <span class="potential-green">
+                    <span class="potential-gree">
                     <b>Get the competitive edge</b><br> 
                     Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care. 
                     </span>
@@ -271,7 +209,7 @@
                 <div class="single-ongoing all">
                     <%= image_tag '11.png' %>
                     <p>
-                    <span class="potential-green">
+                    <span class="potential-gree">
                     <b>Positively affect  the next generation</b><br> 
                     Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come. 
                     </span>
@@ -285,24 +223,6 @@
 </div>
 
 <script type="text/javascript">
-$(function() {
-  return $(".pro").click(function() {
-    return $.ajax({
-      type: "GET",
-      url: "/upgrade",
-      data: {
-        allocation: "20",
-        plan_id: "1"
-      },
-      success: function(data) {
-        alert(data.id);
-        return false;
-      },
-      error: function(data) {
-        return false;
-      }
-    });
-  });
-});
+
 
 </script>

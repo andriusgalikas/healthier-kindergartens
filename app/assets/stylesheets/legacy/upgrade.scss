@@ -769,7 +769,7 @@ li.selected2 {
 input[type="submit"] {
      border: none;
     background: #1D97CE;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     font-weight: 100;
     color: #fff;
@@ -878,6 +878,13 @@ input[type="submit"] {
 }
 .prom{
   margin-top: -24px !important;
+  margin-left: 14px;
 }
-
+.gry{
+  border-radius: 0px !important;
+  background-color: #dddddd !important;
+}
+.mon{
+  margin-left: -14px !important;
+}
 }
