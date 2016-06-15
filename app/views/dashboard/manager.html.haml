@@ -1,0 +1,19 @@
+= content_for :page_title, "Manager Dashboard"
+= content_for :previous_path, welcome_path
+
+.row
+  .eightcol
+    #main-menu
+      .menu-items
+        = link_to dashboard_manager_todos_path, class: 'todos' do
+          = image_tag 'todo.png'
+          %span Todos
+        = link_to invite_manager_daycares_path, class: 'invite' do
+          = image_tag 'http://placehold.it/138x138'
+          %span Invite
+        = link_to manager_messages_path, class: 'messages' do
+          = image_tag 'template-message.png'
+          %span Messages
+
+  .fourcol.last.notifications-panel
+    = render 'notifications'

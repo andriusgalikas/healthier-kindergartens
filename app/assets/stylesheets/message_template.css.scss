@@ -17,7 +17,7 @@
 @import 'compass/css3';
 
 $grey: #d5d5de;
-$header-blue: #1E80E5;
+$header-blue: #296BD1;
 $info-blue: #03a9f4;
 $info-green: #4caf50;
 
@@ -129,11 +129,15 @@ body {
 
 .header {
   padding: 15px;
-  background: $info-blue;
+  background: $header-blue;
   color: white;
 
   .user-avatar {
     float: left;
+
+    img {
+      height: 35px;
+    }
   }
 
   .user-info {
@@ -184,7 +188,7 @@ body {
     .progress {
       position: relative;
       border-radius: 0px;
-      height: 8px;
+      height: 4px;
       box-shadow: none;
 
       .progress-bar {

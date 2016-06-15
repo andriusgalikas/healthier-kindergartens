@@ -80,6 +80,8 @@ module ApplicationHelper
       'worker.png'
     elsif current_user.partner?
       current_user.affiliate.profile_image.file.url
+    elsif role == 'admin'
+      'super-admin.png'
     else
       'logo_menu.png'
     end

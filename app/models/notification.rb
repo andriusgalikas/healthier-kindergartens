@@ -17,4 +17,8 @@ class Notification < ActiveRecord::Base
   belongs_to :source, polymorphic: true
   belongs_to :target, class_name: 'User'
 
+  scope :unread, -> {where(archived: nil)}
+  scope :by_source_type, ->(source_type) {where(source_type: source_type)}
+
+  delegate :owner, to: :source, prefix: true
 end

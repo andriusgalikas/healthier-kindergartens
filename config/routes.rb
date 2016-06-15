@@ -75,6 +75,16 @@ Rails.application.routes.draw do
                 post :send_invites
             end
         end
+
+        resources :messages do
+          collection do
+            get  :dashboard
+            get  :recipient
+            post :subject
+            post :sub_subject
+            post :content
+          end
+        end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do

@@ -45,7 +45,7 @@ en:
       demand_1: "DEMAND BETTER PROTECTION AGAINST THE ON-GOING RISK OF INFECTION THAT CAN PUT YOUR HEALTH AT RISK. VOTE FOR HEALTH PRESERVING CARE PROGRAM TODAY."
       demand_2: "Vote for Health Preserving Care Program."
 
-  admin:
+  messages:
     breadcrumb:
       message: Message
       choose_template: Choose Template
@@ -55,6 +55,10 @@ en:
       choose_recipient: Choose Recipient
       add_content: Add Message Template
       edit_template: Edit Message Template
+      message_options: Message Options
+      choose_subject: Choose Subject
+      choose_sub_subject: Choose Sub-subject
+      send: Send
 
     subject: Subject
     choose_subject: Please Choose Subject

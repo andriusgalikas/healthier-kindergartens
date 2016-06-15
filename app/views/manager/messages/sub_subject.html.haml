@@ -1,0 +1,25 @@
+= content_for :title, 'New Message'
+- step_size = 4
+- page_step = 3
+
+.row
+  .page-header
+    %h3= create_message_from_template_header
+
+.row
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
+
+.row#main-content
+  %h4.step-instruction Please Choose Sub-subject :
+
+  = form_tag content_manager_messages_path, method: :post do
+    = hidden_field_tag :target_role, params[:target_role]
+    = hidden_field_tag :subject_id, params[:subject_id]
+    .form-group
+      = select_tag :sub_subject_id, options_from_collection_for_select(@sub_subjects, 'id', 'title'), class: 'select'
+
+    .form-buttons
+      .col-md-6
+        %a{href: sub_subject_manager_messages_path(target_role: params[:target_role], subject_id: params[:subject_id]), class: 'btn btn-raised btn-info'} Back
+      .col-md-6
+        = submit_tag 'Next', class: 'btn btn-raised btn-success'

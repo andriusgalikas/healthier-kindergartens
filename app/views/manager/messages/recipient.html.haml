@@ -1,0 +1,30 @@
+= content_for :title, 'New Notification'
+- step_size = 4
+- page_step = 1
+
+.row
+  .page-header
+    %h3= choose_recipient_header
+
+.row
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
+
+.row#main-content
+  %h4.step-instuction Please choose target recipient for this template
+
+  = form_tag subject_manager_messages_path, method: :post do
+    .form-group
+      - MessageTemplate.target_roles.each do |target_role|
+        .radio
+          %label
+            %input{type: 'radio', name: 'target_role', value: target_role[0], checked: true}
+            = target_role[0].humanize
+
+    .form-buttons
+      .col-md-6
+        %a{href: manager_messages_path, class: 'btn btn-raised btn-info'} Back
+      .col-md-6
+        = submit_tag 'Next', class: 'btn btn-raised btn-success'
+
+:javascript
+  $.material.init();

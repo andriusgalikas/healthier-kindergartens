@@ -1,4 +1,5 @@
 = content_for :title, 'New Message Template'
+- step_size = 5
 - page_step = 2
 
 .row
@@ -6,13 +7,13 @@
     %h3= add_subject_header
 
 .row
-  = render partial: 'progress_bar', locals: {page_step: page_step}
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
 .row#main-content
   %h4.step-instruction Please Add Subject :
   = form_tag sub_subject_admin_message_templates_path, method: :post do
     .form-group
-      = text_field_tag :subject_title, params[:subject_title], placeholder: t('admin.subject'), class: 'form-control', id: 'subject-title', required: true
+      = text_field_tag :subject_title, params[:subject_title], placeholder: t('messages.subject'), class: 'form-control', id: 'subject-title', required: true
 
     .row.form-buttons
       .col-md-6

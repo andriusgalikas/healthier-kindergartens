@@ -30,4 +30,8 @@ class Message < ActiveRecord::Base
   default_scope    { where(deactivated_at: nil) }
   scope :by_owner,  ->(owner_id) { where(owner_id: owner_id) }
 
+  target_roles.each do |role|
+    alias_method "for_#{role[0]}?", "#{role[0]}?"
+  end
+
 end

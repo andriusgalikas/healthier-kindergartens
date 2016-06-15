@@ -15,7 +15,7 @@
       - else
         %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'} Back
     .col-md-6
-      %input{type: 'submit', name: 'submit', class: 'submit btn btn-raised btn-success', value: 'Save'}
+      = submit_tag 'Save', class: 'btn btn-raised btn-success'
 
 :javascript
   $('#message_template_content').froalaEditor();
