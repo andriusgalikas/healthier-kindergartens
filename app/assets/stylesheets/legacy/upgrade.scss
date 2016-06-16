@@ -722,12 +722,12 @@ li.selected2 {
 }
 .offer-cost {
     background: #426cd5;
-    padding: 58px 50px;
+    padding: 10px 50px;
     
     font-family: open-sans;
     color: #fff;
     position: relative;
-        margin-left: -15px;
+       /* margin-left: -15px;*/
 }
 .offer-cost h2{font-size:28px;}
 .offer-cost span{font-size:50px;}
@@ -886,5 +886,8 @@ input[type="submit"] {
 }
 .mon{
   margin-left: -14px !important;
+}
+#stripe_error{
+  color: red;
 }
 }

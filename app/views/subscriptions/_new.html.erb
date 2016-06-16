@@ -1,6 +1,10 @@
 <%= form_for [@subscription.plan, @subscription], method: :post do |f| %>
     <div class="form">
         <div class="row credit-card-form">
+          <div class="offer-cost">
+                <h2>You've selected Accreditation program
+                plan for <span><%= @subscription.plan.allocation %></span> children and it costs <span><%= number_to_currency @subscription.plan.price %></span></h2>
+            </div><br>
             <!-- <div class="col-xs-12 col-md-12 col-lg-12"> -->
              <% if @subscription.errors.any? %>
                 <div class="error_messages">
