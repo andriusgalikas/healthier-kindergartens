@@ -105,7 +105,26 @@ $(document).ready(function()
       '</div>'
   });
 
+
+    document.getElementById('guild-btn').onclick = function() {
+        startIntro(0)
+    }
+
+    if (RegExp('multipage', 'gi').test(window.location.search)) {
+        introJs().start();
+    }
 });
+
+function startIntro(step){
+    introJs().setOption('doneLabel', 'Next page').start(step).oncomplete(function() {
+                window.location.href = 'dashboard?multipage=true';
+            }).onafterchange(function(targetElement) {
+                if(targetElement.getAttribute('data-step') == '5')
+                {
+                  (window.location.href = 'instruction?multipage=true').delay( 800 );
+                }
+             });
+}
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
     $(link).closest(".fields").hide();
