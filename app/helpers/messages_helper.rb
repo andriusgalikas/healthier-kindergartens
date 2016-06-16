@@ -77,4 +77,16 @@ module MessagesHelper
     page_step > form_step ? 'complete' : page_step == form_step ? 'active' : 'disabled'
   end
 
+  def pretty_message_date(date)
+    date.strftime('%d/%m/%Y') + ' @ ' + date.strftime('%r')
+  end
+
+  def message_role_label
+    params[:list_type] == 'sent' ? 'Recipient :' : 'Sender : '
+  end
+
+  def message_role_value(message)
+    params[:list_type] == 'sent' ? message.target_role.humanize : message.owner.name
+  end
+
 end

@@ -21,8 +21,18 @@
 //= require plugins/quick_insert.min.js
 //= require jquery.dropdown.js
 //= require jquery.shorten.min.js
-//= require _healthChildcare
-//= require healthChildcare.messageTemplate
-//= require message_template.ready
-//= require healthChildcare.message
-//= require message.ready
+
+!function($) {
+  $(document).ready(function() {
+
+    $.material.init();
+    $(".select").dropdown({ "autoinit" : ".select" });
+    $('#message_template_content').froalaEditor();
+
+
+    $('.truncate').shorten({
+      showChars: 500
+    });
+
+  });
+}(jQuery);

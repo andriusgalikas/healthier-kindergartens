@@ -11,7 +11,7 @@
   .form-buttons
     .col-md-6
       - if @template.present?
-        %a{href: admin_message_template_path(@template), class: 'btn btn-raised btn-info'} Cancel
+        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'} Cancel
       - else
         %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'} Back
     .col-md-6

@@ -1,0 +1,107 @@
+= content_for :title, 'Message List'
+
+.row
+  .page-header
+    %h3 Filter option to see your messages :
+
+.container-fluid.message-filters
+  - if params['list_type'] == 'sent'
+    = render 'sent_message_filters'
+  - else
+    = render 'received_message_filters'
+
+.row.message-list
+  - if @notification
+    .row
+      = render @notification.source
+
+  = render 'message_list'
+
+:javascript
+  $(function() {
+    $('#start_date').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false
+    });
+  });
+
+  $(function() {
+    $('#end_date').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false
+    });
+  });
+
+  $('#apply-message-filters').on('click', function() {
+    var filterRole = $('#filter_role').val();
+    var subjectId = $('#subject_id').val();
+    var subSubjectId = $('#sub_subject_id').val();
+    var startDate = $('#start_date').val();
+    var endDate = $('#end_date').val();
+    var valid = true;
+
+    if (filterRole.length < 1 ) {
+      alert('Please choose filter Role');
+      valid = false;
+    }
+
+    if (subjectId != undefined && subjectId.length < 1) {
+      alert('Please choose subject');
+      valid = false;
+    }
+
+    if (subSubjectId != undefined && subSubjectId.length < 1) {
+      alert('Please choose sub-subject');
+      valid = false;
+    }
+
+    if (valid) {
+      $.ajax({
+        url: '/manager/messages/#{params[:list_type]}/list',
+        type: 'GET',
+        data: {
+        filter_role: filterRole,
+          subject_id: subjectId,
+          sub_subject_id: subSubjectId,
+          start_date: startDate,
+          end_date: endDate
+          },
+        success: function(data) {
+          $('.message-list').html(data);
+          window.location.href = '#';
+        }
+      });
+    }
+
+  });
+
+  $('#filter_role').on('change', function() {
+    var filterRole = $(this).val();
+    console.log(filterRole);
+
+    if (filterRole.length > 0) {
+      $('#subject-filter').removeClass('hidden');
+      $('#sub-subject-filter').removeClass('hidden');
+    }
+
+  });
+
+  $('select#subject_id').on('change', function() {
+    console.log('select');
+    var subjectId = $(this).val();
+    var subSubjects = $('#sub-subject-filter').find('select option[data-parent_id="' + subjectId + '"]');
+    var subSubjectsValue = $.map(subSubjects, function(a) {return parseInt($(a).val())});
+
+    var dropdownjsList = $('#sub-subject-filter').find('.dropdownjs ul li');
+
+    $.each(dropdownjsList, function(idx, subSubjectLi) {
+      li = $(subSubjectLi);
+
+      if ($.inArray(li.val(), subSubjectsValue) > -1) {
+        li.show();
+      }
+      else {
+        li.hide();
+      }
+    });
+  });

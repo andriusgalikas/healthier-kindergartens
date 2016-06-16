@@ -83,6 +83,8 @@ Rails.application.routes.draw do
             post :subject
             post :sub_subject
             post :content
+            get  ':list_type/list', to: 'messages#list',  as: 'message_list'
+#            post ':role/register_affiliate',    to: 'users/registrations#affiliate',as: 'affiliate_registration'
           end
         end
     end

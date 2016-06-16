@@ -1,16 +1,16 @@
 .row.message
   .row.message-info
     .col-md-4
-      %span Recipient :
-      %span= message.target_role.humanize
+      %span= message_role_label
+      %span= message_role_value(message)
 
-    .col-md-4.sent-date
+    .col-md-4.message-date
       = pretty_message_date(message.created_at)
 
     .col-md-4
       %span.pull-right Share or print
 
   %hr
-  .message-content-stage.truncate
+  %div.message-content-stage{class: message.id == @notification.try(:source_id) ? '' : 'truncate'}
     .fr-view
       = message.content.html_safe

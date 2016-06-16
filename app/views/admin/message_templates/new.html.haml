@@ -7,7 +7,7 @@
     %h3= add_template_content_header
 
 .row
-  = render partial: 'progress_bar', locals: {step_size: step_size, page_step: page_step}
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
 .row#main-content
   = render 'form'

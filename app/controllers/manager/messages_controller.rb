@@ -36,6 +36,17 @@ class Manager::MessagesController < ApplicationController
     redirect_to manager_messages_path, notice: notice
   end
 
+  def list
+    params[:page] ||= 1
+    get_all_main_subjects
+    set_notification_message
+    set_messages
+
+    if request.xhr?
+      render partial: 'message_list'
+    end
+  end
+
   private
 
   def set_subjects
@@ -51,15 +62,15 @@ class Manager::MessagesController < ApplicationController
   end
 
   def set_sub_subject
-    @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id]
+    @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id].present?
   end
 
   def find_message_template
     set_subject
     set_sub_subject
 
-    if @subject && @sub_subject && params[:target_role].present?
-      @message_template = @sub_subject.message_templates.for_role params[:target_role]
+    if @subject && @sub_subject && params['filter_role'].present?
+      @message_template = @sub_subject.message_templates.for_role params['filter_role']
     end
   end
 
@@ -70,6 +81,74 @@ class Manager::MessagesController < ApplicationController
       :title,
       :content
     )
+  end
+
+  def get_all_main_subjects
+    @subjects = MessageSubject.main_subjects
+  end
+
+  def set_messages
+    find_message_template
+
+    cond_str, cond_arr = set_query_conditions
+
+    @messages ||= Message.where(cond_str, *cond_arr)
+                .order(created_at: :desc)
+                .page(params[:page])
+  end
+
+  def set_query_conditions
+    cond_str = []
+    cond_arr = []
+
+    if params['list_type'] == 'sent'
+      cond_str << 'owner_id = ?'
+      cond_arr << current_user.id
+
+      if params['target_role']
+        cond_str << 'target_role = ?'
+        cond_arr << Message.target_roles[params['filter_role']]
+      end
+    else
+      notifs = current_user.notifications.by_source_type('Message')
+      msg_ids = if params['filter_role'].present?
+                  notifs.map(&:source)
+                    .select{|msg_source| msg_source.owner.role == params['filter_role']}
+                    .map(&:id)
+                else
+                  notifs.map(&:source)
+                    .map(&:id)
+                end
+
+      msg_ids = msg_ids.reject{|msg_id| msg_id == @notification.source_id} if @notification.present?
+
+      cond_str << 'id IN (?)'
+      cond_arr << msg_ids
+    end
+
+    if @message_template.present?
+      cond_str << 'message_template_id = ?'
+      cond_arr << @message_template.id
+    end
+
+    if params['start_date'].present?
+      cond_str << 'created_at > ?'
+      cond_arr << Date.parse(params['start_date'])
+    end
+
+    if params['end_date'].present?
+      cond_str << 'created_at < ?'
+      cond_arr << Date.parse(params['end_date'])
+    end
+
+    [cond_str.join(' AND '), cond_arr]
+  end
+
+  def set_notification_message
+    if params[:notification_id].present?
+      @notification = Notification.find(params[:notification_id])
+      @notification.archived!
+    end
   end
 
 end

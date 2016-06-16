@@ -19,6 +19,7 @@
 
 class Message < ActiveRecord::Base
   include Deactivatable
+  include Permissions
   paginates_per 2
 
   belongs_to :message_template

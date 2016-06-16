@@ -17,8 +17,15 @@ class Notification < ActiveRecord::Base
   belongs_to :source, polymorphic: true
   belongs_to :target, class_name: 'User'
 
-  scope :unread, -> {where(archived: nil)}
+  default_scope {order('created_at DESC')}
+  scope :unread, -> {where(archived: false)}
   scope :by_source_type, ->(source_type) {where(source_type: source_type)}
 
   delegate :owner, to: :source, prefix: true
+
+  def archived!
+    self.archived = true
+    self.save!
+  end
+
 end
