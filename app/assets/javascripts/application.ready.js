@@ -111,13 +111,13 @@ $(document).ready(function()
     }
 
     if (RegExp('multipage', 'gi').test(window.location.search)) {
-        introJs().start();
+        startIntro(0)
     }
 });
 
 function startIntro(step){
     introJs().setOption('doneLabel', 'Next page').start(step).oncomplete(function() {
-                window.location.href = 'dashboard?multipage=true';
+                window.location.href = 'dashboard';
             }).onafterchange(function(targetElement) {
                 if(targetElement.getAttribute('data-step') == '5')
                 {
