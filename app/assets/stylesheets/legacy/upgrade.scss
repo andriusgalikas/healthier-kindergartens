@@ -16,7 +16,7 @@
     padding-left: 40px;
 }
 .toward-higher {
-    margin-top: 97px;
+    margin-top: 30px;
     padding: 20px;
     margin-bottom:100px;
 }
@@ -37,7 +37,7 @@
 .ongoing {
     background: #fefaf8;
     padding: 20px;
-    border: 1px solid #dfdfdf;
+    /*border: 1px solid #dfdfdf;*/
 }
 .ongoing p {
     margin-left: 66px;
@@ -197,10 +197,12 @@ ul#wizardStatus {
 .credit-card-form {
   float: left;
   margin-top: 30px;
+  margin-left: -25px !important;
+  margin-right: -25px !important;
 }
 .credit-card-form .panel-default {
   border: 1px solid #ccc;
-  border-radius: 0 !important;
+  border-radius: 10px !important;
 }
 .expire-date > label {
   display: block;
@@ -324,7 +326,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20c4f0', end
     height: 0;
     border-top: 117px solid transparent;
     border-bottom: 117px solid transparent;
-    border-left: 99px solid #7aeaf7;
+    ; border-left: 99px solid #7aeaf7;
     position: absolute;
     top: 21%;
     margin-top: -50px;
@@ -720,12 +722,12 @@ li.selected2 {
 }
 .offer-cost {
     background: #426cd5;
-    padding: 58px 50px;
+    padding: 10px 50px;
     
     font-family: open-sans;
     color: #fff;
     position: relative;
-        margin-left: -15px;
+       /* margin-left: -15px;*/
 }
 .offer-cost h2{font-size:28px;}
 .offer-cost span{font-size:50px;}
@@ -740,7 +742,7 @@ li.selected2 {
 .ongoing {
     background: #fefaf8;
     padding: 20px;
-    border: 1px solid #dfdfdf;
+    /*border: 1px solid #dfdfdf;*/
 }
 .ongoing p {
     margin-left: 66px;
@@ -766,12 +768,14 @@ li.selected2 {
 .tearms-condition{margin-top: 20px}
 input[type="submit"] {
      border: none;
-    background: #426cd5;
-    font-size: 30px;
+    background: #1D97CE;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 100;
     color: #fff;
-    padding: 10px 26px;
-    margin-left: 20%;
-    margin-top: 42px;
+    padding: 6px 26px;
+    /*margin-left: 20%;
+    margin-top: 42px;*/
 }
 .money-back{background: #426cd5;padding: 40px 40px;margin-top: 80px}
 .money-back p{    font-size: 16px;
@@ -781,8 +785,8 @@ input[type="submit"] {
 .money-logo img{text-align: center}
 .promo-area > label {
   float: left;
-  padding-top: 6px;
-  width: 25%;
+  /*padding-top: 6px;
+  width: 100%;*/
 }
 .promo-field {
     float: left;
@@ -795,5 +799,95 @@ input[type="submit"] {
     margin: 0 !important;
     padding: 5px !important;
     width: 20%;
+}
+.main-theme{
+  background-color: #fefaf8;
+}
+.back-theme{
+  background-color: #1D95CE !important;
+  border-radius:10px;
+}
+.text-theme{
+  color:white !important;
+}
+.rang-col{
+  margin-right: 3px;
+  width: 32.9% !important;
+}
+.rang-text{
+  text-align: center;
+}
+.rang-block{
+  margin-top: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.rang-last{
+  width: 32.9% !important;
+}
+.tick-theme{
+  background-color: white;
+}
+.print1{
+ margin-top: 15px;
+ font-size: 13px;
+}
+.tick-blu{
+  margin-top: 15px;
+}
+.book-btn{
+  width: 115px !important;
+  margin-bottom: 20px; 
+  border-radius: 0px !important;
+  height: 40px;
+  margin-left: 10px;
+  background-color: #1D97CE !important;
+}
+.periodic-pink{
+  color: pink;
+}
+.practices-blue{
+  color: blue;
+}
+.potential-green{
+  color: green;
+}
+.pro{
+  z-index: 999;
+}
+.commit{
+  z-index: 999;
+}
+.acc{
+  z-index: 999;
+}
+.panel-heading{
+  background-image: none !important;
+  background-color: #1D97CE !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 60px;
+}
+#card_code{
+  margin-top: 5px !important;
+}
+.panel-title{
+  color: white !important;
+  font-size: 24px !important; 
+  margin-top: 10px;
+}
+.prom{
+  margin-top: -24px !important;
+  margin-left: 14px;
+}
+.gry{
+  border-radius: 0px !important;
+  background-color: #dddddd !important;
+}
+.mon{
+  margin-left: -14px !important;
+}
+#stripe_error{
+  color: red;
 }
 }

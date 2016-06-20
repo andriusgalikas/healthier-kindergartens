@@ -17,7 +17,7 @@ class Subscription < ActiveRecord::Base
     validates :user_id, :plan_id,                       presence: true
     validates :user_id,                                 uniqueness: true
     validates :terms,                                   inclusion: { :in => [true], message: 'Please confirm your acceptance of our terms and conditions to complete your subscription upgrade.' }
-
+    
     attr_accessor :stripe_card_token
 
     # => Processes payment with stripe, assigns stripe customer token from return object and assigns discount code relation if one is present

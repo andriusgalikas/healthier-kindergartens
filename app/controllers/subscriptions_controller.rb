@@ -5,6 +5,9 @@ class SubscriptionsController < ApplicationController
     def index
         set_plans
         set_range_data
+        @plan1=Plan.find_by_allocation(30)
+        @plan2=Plan.find_by_allocation(60)
+        @plan3=Plan.find_by_allocation(90)
     end
 
     def new
