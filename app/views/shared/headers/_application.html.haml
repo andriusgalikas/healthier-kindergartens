@@ -1,18 +1,18 @@
 %header.container-fluid{class: 'loggedin'}
   - if current_user.manager?
     .row.upgrade-header
-      .col-md-1
+      .col-md-1.col-sm-6
         &nbsp;
 
-      .col-md-7
+      .col-md-7.col-sm-6
         - unless current_user.subscribed?
           = render partial: 'shared/countdown'
 
-      .col-md-2
+      .col-md-2.col-sm-6
         - unless current_user.subscribed? || !current_user.manager?
           = link_to 'Upgrade', upgrade_path, class: 'btn btn-success btn-lg'
 
-      .col-md-2
+      .col-md-2.col-sm-6
         = render partial: 'shared/user_header_menu'
 
   .row.primary-header

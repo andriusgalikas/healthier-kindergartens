@@ -1,0 +1,67 @@
+= content_for :page_title, 'Partner Registration'
+= content_for :previous_path, getting_started_path
+= content_for :color_code, 'partner'
+
+= form_for @affiliate, url: affiliate_registration_path, html: {method: :post} do |affiliate|
+  - if @affiliate.errors.any?
+    #error_explanation
+      %h2= pluralize(@affiliate.errors.count, 'error') + " prohibited this affiliate from being saved."
+
+      %ul
+        - @affiliate.errors.full_messages.each do |message|
+          %li= message
+
+  = affiliate.fields_for :user_affiliates do |user_affiliate|
+    = user_affiliate.fields_for :user do |user|
+      .form-group
+        = user.label :name
+        = user.text_field :name, class: 'form-control'
+
+      .form-group
+        = user.label :email
+        = user.email_field :email, autofocus: 'true', class: 'form-control'
+
+      .form-group
+        = user.label :password
+        = user.password_field :password, autocomplete: 'off', class: 'form-control'
+
+      .form-group
+        = user.label :password_confirmation
+        = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length}) characters minimum
+
+  .page-header
+    %h2 Affiliate
+
+    .img-preview-container
+      = image_tag 'add_child_img.png'
+
+    .form-group
+      = affiliate.label :name
+      = affiliate.text_field :name, class: 'form-control'
+
+    .form-group
+      = affiliate.label :address
+      = affiliate.text_field :address, class: 'form-control'
+
+    .form-group
+      = affiliate.label :postcode
+      = affiliate.text_field :postcode, class: 'form-control'
+
+    .form-group
+      = affiliate.label :country
+      = affiliate.text_field :country, class: 'form-control'
+
+    .form-group
+      = affiliate.label :telephone
+      = affiliate.text_field :telephone, class: 'form-control'
+
+    = affiliate.fields_for :profile_image do |profile_image|
+      .form-group
+        = profile_image.label :profile_image
+        = profile_image.file_field :file, class: 'form-control previewer'
+
+  = affiliate.submit 'Register', class: 'btn btn-block btn-large btn-blue'

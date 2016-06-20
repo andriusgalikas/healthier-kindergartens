@@ -70,6 +70,20 @@ module ApplicationHelper
       trans
     end
 
+  def current_user_role_avatar
+    if current_user.manager?
+      'manager.png'
+    elsif current_user.parentee?
+      'parent.png'
+    elsif current_user.worker?
+      'worker.png'
+    elsif current_user.partner?
+      current_user.affiliate.profile_image.file.url
+    else
+      'logo_menu.png'
+    end
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}
