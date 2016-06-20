@@ -78,13 +78,11 @@ Rails.application.routes.draw do
 
         resources :messages do
           collection do
-            get  :dashboard
             get  :recipient
             post :subject
             post :sub_subject
             post :content
             get  ':list_type/list', to: 'messages#list',  as: 'message_list'
-#            post ':role/register_affiliate',    to: 'users/registrations#affiliate',as: 'affiliate_registration'
           end
         end
     end
@@ -129,15 +127,18 @@ Rails.application.routes.draw do
             post :filter
           end
         end
-        resources :messages do
-          get :sent_messages, on: :collection
-        end
-
+        resources :messages
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]
             resources :surveys
         end
+    end
+
+    namespace :partner do
+      resources :messages do
+        get :list, on: :collection
+      end
     end
 
     namespace :api, constraints: { format: 'json' } do

@@ -12,13 +12,17 @@
  *= require plugins/quick_insert.min.css
  *= require jquery.dropdown.css
  *= require jquery.datetimepicker
+ *= require slick-carousel/slick/slick.css
+ *= require slick-carousel/slick/slick-theme.css
 */
 
 @import 'compass/css3';
 
 $grey: #d5d5de;
+$darker-grey: #ccc;
 $header-blue: #296BD1;
 $info-blue: #03a9f4;
+$sky-blue: #6fd1fd;
 $info-green: #4caf50;
 
 @mixin border-radius($radius) {
@@ -123,8 +127,56 @@ body {
         }
       }
     }
+
+    .checkbox {
+      background: $grey;
+      border: 1px solid $darker-grey;
+      color: black;
+
+      label {
+        color: black !important;
+        width: 25%;
+        padding: 5px;
+        background: $sky-blue;
+      }
+      .recipient-count {
+        margin-left: 20px;
+        display: none;
+      }
+    }
+    .partners-list {
+      margin-top: 30px;
+
+      .list {
+        max-height: 300px;
+        overflow: auto;
+      }
+    }
+    .partner-message-content {
+      padding-left: 0px;
+    }
   }
 
+  #partners-carousel {
+    margin-top: 200px;
+
+    h2 {
+      color: black;
+    }
+
+    hr {
+      background-color: $info-blue;
+      border: 2px solid $info-blue;
+    }
+
+    .slick-carousel {
+      margin-top: 50px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
 }
 
 .header {

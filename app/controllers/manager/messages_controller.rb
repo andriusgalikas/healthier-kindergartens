@@ -69,8 +69,8 @@ class Manager::MessagesController < ApplicationController
     set_subject
     set_sub_subject
 
-    if @subject && @sub_subject && params['filter_role'].present?
-      @message_template = @sub_subject.message_templates.for_role params['filter_role']
+    if @subject && @sub_subject && params['target_role'].present?
+      @message_template = @sub_subject.message_templates.for_role params['target_role']
     end
   end
 
@@ -107,13 +107,13 @@ class Manager::MessagesController < ApplicationController
 
       if params['target_role']
         cond_str << 'target_role = ?'
-        cond_arr << Message.target_roles[params['filter_role']]
+        cond_arr << Message.target_roles[params['target_role']]
       end
     else
       notifs = current_user.notifications.by_source_type('Message')
-      msg_ids = if params['filter_role'].present?
+      msg_ids = if params['target_role'].present?
                   notifs.map(&:source)
-                    .select{|msg_source| msg_source.owner.role == params['filter_role']}
+                    .select{|msg_source| msg_source.owner.role == params['target_role']}
                     .map(&:id)
                 else
                   notifs.map(&:source)

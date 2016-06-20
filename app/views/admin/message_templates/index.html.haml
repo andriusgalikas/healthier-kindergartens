@@ -10,14 +10,14 @@
       .col-md-6.centralize
         = link_to new_admin_message_path, class: 'btn btn-raised' do
           = image_tag 'template-message.png'
-          %span Create Regular Message
+          %span= t('messages.create_regular_message')
       .col-md-6.centralize
         = link_to choose_template_admin_message_templates_path, class: 'btn btn-raised' do
           = image_tag 'template-create.png'
           %span Create Message Template
     .row
       .col-md-6.centralize
-        = link_to sent_messages_admin_messages_path, class: 'btn btn-raised' do
+        = link_to admin_messages_path, class: 'btn btn-raised' do
           = image_tag 'template-send.png'
           %span Sent Messages
       .col-md-6.centralize

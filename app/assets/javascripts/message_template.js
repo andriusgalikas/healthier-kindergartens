@@ -21,14 +21,24 @@
 //= require plugins/quick_insert.min.js
 //= require jquery.dropdown.js
 //= require jquery.shorten.min.js
+//= require slick-carousel/slick/slick.min.js
 
 !function($) {
   $(document).ready(function() {
 
     $.material.init();
     $(".select").dropdown({ "autoinit" : ".select" });
-    $('#message_template_content').froalaEditor();
+    $('#message_template_content').froalaEditor({
+      heightMin: 200
+    });
 
+    $('.slick-carousel').slick({
+      infinite: true,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000
+    });
 
     $('.truncate').shorten({
       showChars: 500

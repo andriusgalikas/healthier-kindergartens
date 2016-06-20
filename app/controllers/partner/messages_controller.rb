@@ -1,7 +1,12 @@
-class Admin::MessagesController < AdminController
+class Partner::MessagesController < ApplicationController
   layout 'message'
+  before_action -> { authenticate_role!(['partner'])}
 
-  def index
+  def new
+    @message = Message.new
+  end
+
+  def list
     @messages = set_messages
 
     if request.xhr?
@@ -9,30 +14,7 @@ class Admin::MessagesController < AdminController
     end
   end
 
-  def new
-    @message = Message.new(owner_id: current_user.id)
-  end
-
-  def create
-    @message = Message.new(message_params.merge(owner_id: current_user.id))
-
-    if @message.save
-      MessageNotificationJob.perform_now(@message)
-      redirect_to admin_message_templates_path, notice: 'Message successfully sent.'
-    else
-      redirect_to new_admin_message_template_path, notice: 'There was an error creating the message.'
-    end
-  end
-
   private
-
-  def message_params
-    params.require(:message).permit(
-      :target_role,
-      :title,
-      :content
-    )
-  end
 
   def set_messages
     cond_str, cond_arr = set_query_conditions
@@ -71,5 +53,6 @@ class Admin::MessagesController < AdminController
 
     [cond_str.join(' AND '), cond_arr]
   end
+
 
 end

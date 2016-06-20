@@ -5,6 +5,10 @@ module MessagesHelper
       .map{|sub| [sub.title, sub.id, {'data-parent_id': sub.parent_subject_id}]}
   end
 
+  def options_for_message_recipients_select
+    Message.allowed_recipients_for_role(current_user.role).collect{|m| [m.humanize.pluralize, m]}
+  end
+
   def edit_template_header
     t('messags.breadcrumb.edit_template') + ' :'
   end

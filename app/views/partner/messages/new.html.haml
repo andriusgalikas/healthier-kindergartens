@@ -1,0 +1,59 @@
+= content_for :title, 'Create Message'
+
+.row#main-content
+  = form_for [:partner, @message] do |f|
+    .form-group
+      %label.step-instruction{for: :target_role} Recipient for this message :
+      - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
+        .checkbox
+          %label
+            = check_box_tag 'target_role[]', target_role
+            = 'Daycare ' + target_role.humanize.pluralize
+          %span.recipient-count
+            - recipient_count = 20
+            %b #{recipient_count}
+            Daycare #{target_role.humanize.pluralize} will receive this message.
+
+    .form-group
+      %label.step-instruction{for: :title} Title :
+      = f.text_field :title, placeholder: t('messages.write_title'), class: 'form-control', required: true
+
+    .form-group
+      .col-md-8.partner-message-content
+        %label.step-instruction{for: :content} Please write the content of your message :
+        = f.text_area :content, id: 'message-content'
+      .col-md-4.partners-list
+        .panel.panel-default
+          .panel-heading Healthier Childcare Alliance Members
+          .panel-body
+            .list
+              %table.table.table-striped
+                - Affiliate.all.each do |partner|
+                  %tr
+                    %td= partner.name
+            %span
+              = image_tag 'active-tick-white.png'
+              Total #{Affiliate.all.size} Daycare organizations are listed.
+    .form-buttons
+      .col-md-6
+        %a{href: partner_messages_path, class: 'btn btn-raised btn-info'} Cancel
+      .col-md-6
+        = submit_tag 'Send', class: 'btn btn-raised btn-success'
+
+:javascript
+  $('#message-content').froalaEditor({
+    heightMin: 250
+  });
+
+  $.material.init();
+
+  $('input[type="checkbox"]').on('click', function() {
+
+    if ($(this).is(':checked')) {
+      $(this).parents('.checkbox').children('.recipient-count').show();
+    }
+    else {
+      $(this).parents('.checkbox').children('.recipient-count').hide();
+    }
+
+  })

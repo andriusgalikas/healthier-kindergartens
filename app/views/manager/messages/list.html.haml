@@ -33,14 +33,14 @@
   });
 
   $('#apply-message-filters').on('click', function() {
-    var filterRole = $('#filter_role').val();
+    var targetRole = $('#target_role').val();
     var subjectId = $('#subject_id').val();
     var subSubjectId = $('#sub_subject_id').val();
     var startDate = $('#start_date').val();
     var endDate = $('#end_date').val();
     var valid = true;
 
-    if (filterRole.length < 1 ) {
+    if (targetRole.length < 1 ) {
       alert('Please choose filter Role');
       valid = false;
     }
@@ -60,7 +60,7 @@
         url: '/manager/messages/#{params[:list_type]}/list',
         type: 'GET',
         data: {
-        filter_role: filterRole,
+          target_role: targetRole,
           subject_id: subjectId,
           sub_subject_id: subSubjectId,
           start_date: startDate,
@@ -75,11 +75,11 @@
 
   });
 
-  $('#filter_role').on('change', function() {
-    var filterRole = $(this).val();
-    console.log(filterRole);
+  $('#target_role').on('change', function() {
+    var targetRole = $(this).val();
+    console.log(targetRole);
 
-    if (filterRole.length > 0) {
+    if (targetRole.length > 0) {
       $('#subject-filter').removeClass('hidden');
       $('#sub-subject-filter').removeClass('hidden');
     }
@@ -87,7 +87,6 @@
   });
 
   $('select#subject_id').on('change', function() {
-    console.log('select');
     var subjectId = $(this).val();
     var subSubjects = $('#sub-subject-filter').find('select option[data-parent_id="' + subjectId + '"]');
     var subSubjectsValue = $.map(subSubjects, function(a) {return parseInt($(a).val())});

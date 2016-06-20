@@ -26,4 +26,6 @@
         = submit_tag 'Send', class: 'btn btn-raised btn-success'
 
 :javascript
-  $('#message_content').froalaEditor();
+  $('#message_content').froalaEditor({
+    heightMin: 250
+  });

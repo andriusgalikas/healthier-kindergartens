@@ -16,7 +16,7 @@
 
     .form-group
       %label.step-instruction{for: :content} Please write the content of your message :
-      = f.text_area :content, id: 'message_template_content'
+      = f.text_area :content, id: 'message_content'
 
     .form-buttons
       .col-md-6
@@ -25,5 +25,7 @@
         = submit_tag 'Send', class: 'btn btn-raised btn-success'
 
 :javascript
-  $('#message_template_content').froalaEditor();
+  $('#message_content').froalaEditor({
+    heightMin: 250
+  });
   $.material.init();

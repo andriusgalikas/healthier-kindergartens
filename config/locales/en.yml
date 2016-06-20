@@ -68,3 +68,5 @@ en:
     create_sub_subject: Please Create Sub-subject
     no_template_for_role: No message template found.
     write_title: Please write the title of the message
+    create_regular_message: Create Regular Message
+    basic_filter: Filter option to see your messages

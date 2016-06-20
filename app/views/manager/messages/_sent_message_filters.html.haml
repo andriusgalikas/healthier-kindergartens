@@ -1,20 +1,16 @@
 .row
   .col-md-4
     .form-group
-      - if params[:list_type] == 'sent'
-        = label_tag :filter_role, 'Show only messages sent to'
-        = select_tag :filter_role, options_for_select(Message.allowed_recipients_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['filter_role']), class: 'select', required: true, prompt: 'Choose Recipient'
-      - else
-        = label_tag :filter_role, 'Show only messages received from'
-        = select_tag :filter_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['filter_role']), class: 'select', required: true, prompt: 'Choose Sender'
+      = label_tag :target_role, 'Show only messages sent to'
+      = select_tag :target_role, options_for_select(Message.allowed_recipients_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Recipient'
 
   .col-md-4
-    .form-group#subject-filter{class: params['filter_role'].present? ? '' : 'hidden'}
+    .form-group#subject-filter{class: params['target_role'].present? ? '' : 'hidden'}
       = label_tag :subject, 'Subject'
       = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id].to_i), class: 'select', prompt: 'Please choose subject'
 
   .col-md-4
-    .form-group#sub-subject-filter{class: params['filter_role'].present? ? '' : 'hidden'}
+    .form-group#sub-subject-filter{class: params['target_role'].present? ? '' : 'hidden'}
       = label_tag :sub_subject, 'Sub-subject'
       = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: 'Please choose sub-subject', required: true
 

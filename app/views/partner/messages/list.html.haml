@@ -2,13 +2,14 @@
 
 .row
   .page-header
-    %h3 Filter option to see your messages :
+    %h3= t('messages.basic_filter')
 
 .container-fluid.message-filters
   = render 'filters'
 
 .row.message-list
   = render 'message_list'
+
 
 :javascript
   $(function() {
@@ -31,7 +32,7 @@
     var targetRole = $('#target_role').val();
 
     $.ajax({
-      url: '/admin/messages/sent_messages',
+      url: '/partner/messages/list',
       type: 'GET',
       data: {start_date: startDate, end_date: endDate, target_role: targetRole},
       success: function(data) {
