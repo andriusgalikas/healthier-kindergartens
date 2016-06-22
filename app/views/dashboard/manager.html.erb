@@ -5,11 +5,11 @@
     <div class="row">
         <div class="eightcol">
             <div class="menu-items">
-                <%= link_to dashboard_manager_todos_path, :class => 'todos' do %>
+                <%= link_to dashboard_manager_todos_path, :class => 'todos' , 'data-step'=>"14", 'data-intro'=>"As daycare manager you can manage todo list" do %>
                     <%= image_tag 'todo.png' %>
                     <span>Todos</span>
                 <% end %>
-                <%= link_to invite_manager_daycares_path, :class => 'invite' do %>
+                <%= link_to invite_manager_daycares_path, :class => 'invite' , 'data-step'=>"15", 'data-intro'=>"As daycare manager you can invite other" do %>
                     <img src="http://placehold.it/138x138">
                     <span>Invite</span>
                 <% end %>

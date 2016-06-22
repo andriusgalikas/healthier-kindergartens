@@ -106,25 +106,73 @@ $(document).ready(function()
   });
 
 
-    document.getElementById('guild-btn').onclick = function() {
-        startIntro(0)
-    }
+    $('#guild-btn').click(function(){
+      startIntro()
+    });
 
     if (RegExp('multipage', 'gi').test(window.location.search)) {
-        startIntro(0)
+        if(getLocation(window.location.href).pathname == '/welcome')
+        {
+           startIntro(extractStep()) 
+           intro.goToStep(extractStep())
+        }   
+        else
+        {
+         debugger
+          startIntro()    
+        } 
+        
     }
 });
 
-function startIntro(step){
-    introJs().setOption('doneLabel', 'Next page').start(step).oncomplete(function() {
-                window.location.href = 'dashboard';
-            }).onafterchange(function(targetElement) {
-                if(targetElement.getAttribute('data-step') == '5')
-                {
-                  (window.location.href = 'instruction?multipage=true').delay( 800 );
-                }
-             });
+function startIntro(){
+    intro = introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
+        if(getLocation(window.location.href).pathname == '/instruction')
+        {
+            window.location.href = 'welcome?multipage=true&step=6';    
+        }
+        else if(getLocation(window.location.href).pathname == '/dashboard')
+        {
+            window.location.href = 'welcome';    
+        }
+        else if(getLocation(window.location.href).pathname == '/welcome')
+        {
+            window.location.href = 'dashboard?multipage=true';
+        }
+                
+    }).onafterchange(function(targetElement) {
+        if(targetElement.getAttribute('data-step') == '5')
+        {
+          (window.location.href = 'instruction?multipage=true').delay( 800 );
+        }
+    });
+   
 }
+
+function extractStep()
+{
+    current_step = 0;
+    steps = getLocation(window.location.href).search.match(/step=([0-9]+)/)
+    if(steps != null)
+    {
+      current_step =  parseInt(steps[1])
+    }
+    return current_step
+}
+
+function getLocation(href) {
+    var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
+    return match && {
+        protocol: match[1],
+        host: match[2],
+        hostname: match[3],
+        port: match[4],
+        pathname: match[5],
+        search: match[6],
+        hash: match[7]
+    }
+}
+
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
     $(link).closest(".fields").hide();
