@@ -118,7 +118,6 @@ $(document).ready(function()
         }   
         else
         {
-         debugger
           startIntro()    
         } 
         
