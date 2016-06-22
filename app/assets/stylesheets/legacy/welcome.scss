@@ -104,5 +104,49 @@ a:hover, a:focus
     text-align: center;
 }
 
+}
 
+#socialside {
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+}
+.mainul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.scli {
+    position: relative;
+    width: 182px;
+    list-style: none;
+    border-radius: 8px 0 0 8px;
+    margin-right: -139px;
+    right:0;
+    cursor: pointer;
+    
+}
+
+.scli img {
+    background-color: white;
+    border-radius: 5px 0 0 5px;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 0;
+    top:0;
+    padding: 3px;
+    border: 1px solid silver;
+}
+
+.scli li {
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 0;
+    padding-left: 50px;
+    font-family: "Archivo Black";
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
 }

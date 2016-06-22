@@ -17,6 +17,7 @@
 //= require jquery.datetimepicker
 //= require _healthChildcare
 //= require healthChildcare.app
+//= require intro
 //= require application.ready
 //= require chart
 //= require c3
