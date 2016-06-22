@@ -6,6 +6,17 @@ class Partner::MessagesController < ApplicationController
     @message = Message.new
   end
 
+  def create
+    @message = Message.new(message_params.merge(owner_id: current_user.id))
+
+    if @message.save
+      MessageNotificationJob.perform_now(@message)
+      redirect_to partner_messages_path, notice: 'Message successfully sent.'
+    else
+      redirect_to new_partner_message_path, notice: 'There was an error creating the message.'
+    end
+  end
+
   def list
     @messages = set_messages
 
@@ -15,6 +26,14 @@ class Partner::MessagesController < ApplicationController
   end
 
   private
+
+  def message_params
+    params.require(:message).permit(
+      :title,
+      :content,
+      target_roles: []
+    )
+  end
 
   def set_messages
     cond_str, cond_arr = set_query_conditions
@@ -47,8 +66,8 @@ class Partner::MessagesController < ApplicationController
     end
 
     if params['target_role'].present?
-      cond_str << 'target_role = ?'
-      cond_arr << Message.target_roles[params['target_role']]
+      cond_str << '? = ANY (target_roles)'
+      cond_arr << params['target_role']
     end
 
     [cond_str.join(' AND '), cond_arr]

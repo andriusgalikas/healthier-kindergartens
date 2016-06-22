@@ -2,7 +2,7 @@
   .row.message-info
     .col-md-4
       %span Recipient :
-      %span= message.target_role.humanize
+      %span= message.target_roles.map(&:humanize).join(', ')
 
     .col-md-4.sent-date
       = pretty_message_date(message.created_at)

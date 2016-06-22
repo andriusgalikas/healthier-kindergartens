@@ -12,8 +12,7 @@
 
 .row.message-list
   - if @notification
-    .row
-      = render @notification.source
+    = render @notification.source
 
   = render 'message_list'
 

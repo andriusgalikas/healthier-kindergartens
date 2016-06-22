@@ -106,8 +106,8 @@ class Manager::MessagesController < ApplicationController
       cond_arr << current_user.id
 
       if params['target_role']
-        cond_str << 'target_role = ?'
-        cond_arr << Message.target_roles[params['target_role']]
+        cond_str << '? = ANY (target_roles)'
+        cond_arr << params['target_role']
       end
     else
       notifs = current_user.notifications.by_source_type('Message')

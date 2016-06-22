@@ -4,13 +4,13 @@
 #
 #  id                  :integer          not null, primary key
 #  message_template_id :integer
-#  target_role         :integer
 #  owner_id            :integer
 #  title               :string
 #  content             :string
 #  deactivated_at      :datetime
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  target_roles        :string           default("{}"), is an Array
 #
 # Indexes
 #
@@ -26,13 +26,14 @@ class Message < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :notifications, :as => :source
 
-  enum target_role: [:parentee, :worker, :manager]
-
   default_scope    { where(deactivated_at: nil) }
   scope :by_owner,  ->(owner_id) { where(owner_id: owner_id) }
 
-  target_roles.each do |role|
-    alias_method "for_#{role[0]}?", "#{role[0]}?"
+  allowed_recipients.each do |target_role|
+    define_method "for_#{target_role}?" do
+      target_roles.include?(target_role)
+    end
   end
+
 
 end

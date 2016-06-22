@@ -90,7 +90,7 @@ module MessagesHelper
   end
 
   def message_role_value(message)
-    params[:list_type] == 'sent' ? message.target_role.humanize : message.owner.name
+    params[:list_type] == 'sent' ? message.target_roles.map(&:humanize).join(', ') : message.owner.name
   end
 
 end

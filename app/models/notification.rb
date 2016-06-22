@@ -6,7 +6,7 @@
 #  source_id   :integer
 #  source_type :string
 #  target_id   :integer
-#  archived    :boolean
+#  archived    :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

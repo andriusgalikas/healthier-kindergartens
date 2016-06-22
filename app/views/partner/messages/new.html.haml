@@ -3,15 +3,15 @@
 .row#main-content
   = form_for [:partner, @message] do |f|
     .form-group
-      %label.step-instruction{for: :target_role} Recipient for this message :
+      %label.step-instruction{for: :target_roles} Recipient for this message :
       - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
         .checkbox
           %label
-            = check_box_tag 'target_role[]', target_role
+            = check_box_tag 'message[target_roles][]', target_role
             = 'Daycare ' + target_role.humanize.pluralize
           %span.recipient-count
             - recipient_count = 20
-            %b #{recipient_count}
+            %b #{User.send(target_role).size}
             Daycare #{target_role.humanize.pluralize} will receive this message.
 
     .form-group

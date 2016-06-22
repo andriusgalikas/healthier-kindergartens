@@ -9,6 +9,9 @@ module Permissions
 
   included do
 
+    def self.allowed_recipients
+      MESSAGE_PERMISSION_HASH.values.flatten.uniq
+    end
 
     def self.allowed_recipients_for_role(role)
       MESSAGE_PERMISSION_HASH[role]

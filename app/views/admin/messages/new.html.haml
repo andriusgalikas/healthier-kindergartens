@@ -3,11 +3,11 @@
 .row#main-content
   = form_for [:admin, @message] do |f|
     .form-group
-      %label.step-instruction{for: :target_role} Recipient of this message :
+      %label.step-instruction{for: :target_roles} Recipient of this message :
       - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
         .radio
           %label
-            = f.radio_button :target_role, target_role, checked: true
+            = radio_button_tag 'message[target_roles][]', target_role, checked: true
             = target_role.humanize.pluralize
 
     .form-group

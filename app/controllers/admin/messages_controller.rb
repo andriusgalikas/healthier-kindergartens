@@ -2,6 +2,7 @@ class Admin::MessagesController < AdminController
   layout 'message'
 
   def index
+    params[:page] ||= 1
     @messages = set_messages
 
     if request.xhr?
@@ -28,26 +29,19 @@ class Admin::MessagesController < AdminController
 
   def message_params
     params.require(:message).permit(
-      :target_role,
       :title,
-      :content
+      :content,
+      target_role: []
     )
   end
 
   def set_messages
     cond_str, cond_arr = set_query_conditions
 
-    @messsages ||= if params[:page].present?
-                     Message.by_owner(current_user.id)
-                       .where(cond_str, *cond_arr)
-                       .order(created_at: :asc)
-                       .page(params[:page])
-                   else
-                     Message.by_owner(current_user.id)
-                       .where(cond_str, *cond_arr)
-                       .order(created_at: :asc)
-                       .page(1)
-                   end
+    @messsages ||= Message.by_owner(current_user.id)
+                 .where(cond_str, *cond_arr)
+                 .order(created_at: :asc)
+                 .page(params[:page])
   end
 
   def set_query_conditions
@@ -65,8 +59,8 @@ class Admin::MessagesController < AdminController
     end
 
     if params['target_role'].present?
-      cond_str << 'target_role = ?'
-      cond_arr << Message.target_roles[params['target_role']]
+      cond_str << '? = ANY (target_roles)'
+      cond_arr << params['target_role']
     end
 
     [cond_str.join(' AND '), cond_arr]

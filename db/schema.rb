@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621124041) do
+ActiveRecord::Schema.define(version: 20160622175102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,13 +109,13 @@ ActiveRecord::Schema.define(version: 20160621124041) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "message_template_id"
-    t.integer  "target_role"
     t.integer  "owner_id"
     t.string   "title"
     t.string   "content"
     t.datetime "deactivated_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "target_roles",        default: [],              array: true
   end
 
   add_index "messages", ["message_template_id"], name: "index_messages_on_message_template_id", using: :btree
@@ -124,9 +124,9 @@ ActiveRecord::Schema.define(version: 20160621124041) do
     t.integer  "source_id"
     t.string   "source_type"
     t.integer  "target_id"
-    t.boolean  "archived"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "archived",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "plans", force: :cascade do |t|
