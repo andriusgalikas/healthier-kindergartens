@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530161349) do
+ActiveRecord::Schema.define(version: 20160531080027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affiliates", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "postcode"
+    t.string   "country"
+    t.string   "telephone"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "affiliates", ["name"], name: "index_affiliates_on_name", using: :btree
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -192,6 +205,17 @@ ActiveRecord::Schema.define(version: 20160530161349) do
     t.integer  "completion_date_type",  default: 0
     t.integer  "completion_date_value", default: 1
   end
+
+  create_table "user_affiliates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "affiliate_id"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "user_affiliates", ["affiliate_id"], name: "index_user_affiliates_on_affiliate_id", using: :btree
+  add_index "user_affiliates", ["user_id"], name: "index_user_affiliates_on_user_id", using: :btree
 
   create_table "user_daycares", force: :cascade do |t|
     t.integer  "user_id"
