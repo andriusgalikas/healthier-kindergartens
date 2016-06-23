@@ -1,6 +1,6 @@
 = content_for :title, 'New Message Template'
-- step_size = 5
-- page_step = 2
+- step_size = 4
+- page_step = 1
 
 .row
   .page-header
@@ -17,6 +17,6 @@
 
     .row.form-buttons
       .col-md-6
-        %a{href: choose_template_admin_message_templates_path, class: 'btn btn-raised btn-info'} Back
+        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'} Back
       .col-md-6
         = submit_tag 'Next', class: 'btn btn-raised btn-success'

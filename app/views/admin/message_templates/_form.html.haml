@@ -8,6 +8,16 @@
   %fieldset
     = f.text_area :content, id: 'message_template_content'
 
+    - if action_name != 'edit'
+      .form-group
+        %h4.step-instruction Or Upload Message Template File
+        %input{type: 'file', name: 'upload_template', id: 'upload-template'}
+        .input-group
+          %input{type: 'text', readonly: '', class: 'form-control', placeholder: 'Upload file'}
+          %span.input-group-btn.input-group-sm
+            %button{type: 'button', class: 'btn btn-fab btn-fab-mini'}
+              %i.material-icons attach_file
+
   .form-buttons
     .col-md-6
       - if @template.present?
@@ -20,4 +30,23 @@
 :javascript
   $('#message_template_content').froalaEditor({
     heightMin: 250
+  });
+
+  // readable files : [*.html, *.txt]
+  $('#upload-template').on('change', function() {
+    var file = this.files[0]
+    var reader = new FileReader();
+    console.log(file.type);
+
+    if (file.type.match('text.*')) {
+      reader.onload = function(progressEvent){
+        $('#message_template_content').val(this.result)
+        $('#message_template_content').froalaEditor('html.set', this.result);
+      };
+      reader.readAsText(file);
+    }
+    else {
+      alert('Invalid file! Please upload text file only.');
+    }
+
   });
