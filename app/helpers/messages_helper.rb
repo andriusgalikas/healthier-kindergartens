@@ -86,11 +86,11 @@ module MessagesHelper
   end
 
   def message_role_label
-    params[:list_type] == 'sent' ? 'Recipient :' : 'Sender : '
+    params[:list_type] == 'received' ? 'Sender : ' : 'Recipient :'
   end
 
   def message_role_value(message)
-    params[:list_type] == 'sent' ? message.target_roles.map(&:humanize).join(', ') : message.owner.name
+    params[:list_type] == 'received' ? message.owner.name : message.target_roles.map(&:humanize).join(', ')
   end
 
 end

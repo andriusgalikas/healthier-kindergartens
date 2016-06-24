@@ -1,0 +1,17 @@
+.row.message
+  .row.message-info
+    .col-md-4
+      %span= message_role_label
+      %span= message_role_value(message)
+
+    .col-md-4.sent-date
+      = pretty_message_date(message.created_at)
+
+    .col-md-4
+      %a.print-btn{href: '#', 'data-target_message': "#message-#{message.id}", 'data-sub_subject': message.message_template ? message.message_template.sub_subject.title : '', 'data-subject': message.message_template ? message.message_template.sub_subject.parent_subject.title : ''}
+        %span.pull-right Print
+
+  %hr
+  %div.message-content-stage{class: message.id == @notification.try(:source_id) ? '' : 'truncate', id: "message-#{message.id}"}
+    .fr-view
+      = message.content.html_safe

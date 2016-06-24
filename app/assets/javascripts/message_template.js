@@ -22,6 +22,7 @@
 //= require jquery.dropdown.js
 //= require jquery.shorten.min.js
 //= require slick-carousel/slick/slick.min.js
+//= require printThis.js
 
 !function($) {
   $(document).ready(function() {

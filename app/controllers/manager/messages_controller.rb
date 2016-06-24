@@ -43,7 +43,7 @@ class Manager::MessagesController < ApplicationController
     set_messages
 
     if request.xhr?
-      render partial: 'message_list'
+      render partial: '/messages/message_list'
     end
   end
 

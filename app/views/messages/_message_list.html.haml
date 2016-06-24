@@ -1,0 +1,29 @@
+= render partial: '/messages/message', collection: @messages
+= paginate @messages
+
+:javascript
+  $('.truncate').shorten({
+    showChars: 500
+  });
+
+  $('.print-btn').on('click', function() {
+    var data = $(this).data();
+    var target = data.target_message;
+    var subject = data.subject;
+    var subSubject = data.sub_subject;
+    var header = '';
+
+    if (subject.length > 0) {
+      header = 'Subject : ' + subject + '</br>';
+      header += 'Sub-subject : ' + subSubject;
+    }
+
+    $(target).printThis({
+      header: header,
+      pageTitle: 'Healthier Childcare Alliance',
+      importCSS: false,
+      importStyle: false,
+      formValues: false,
+      printContainer: false
+    });
+  });

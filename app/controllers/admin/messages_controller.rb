@@ -6,7 +6,7 @@ class Admin::MessagesController < AdminController
     @messages = set_messages
 
     if request.xhr?
-      render partial: 'message_list'
+      render partial: '/messages/message_list'
     end
   end
 
