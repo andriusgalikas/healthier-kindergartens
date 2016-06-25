@@ -10,11 +10,24 @@ header
     &.loggedin
     {
       color: white;
-
+      background-color: #365ebf;
       #logout-link {
         color: white;
         float: right;
       }
+       a
+        {
+            background-color: #48c38c !important;
+
+            &:hover
+            {
+
+            }
+        }
+        ul
+        { 
+            display: none;
+        }
     }
 
     .upgrade-header {
@@ -56,6 +69,9 @@ header
     #user
     {
       font-size: small;
+      color: #fff;
+        float: right;
+        margin-top: 5px;
 
       .user-name {
         color: $orange;
