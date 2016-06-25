@@ -14,11 +14,11 @@
 
   = form_tag subject_manager_messages_path, method: :post do
     .form-group
-      - MessageTemplate.target_roles.each do |target_role|
+      - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
         .radio
           %label
-            %input{type: 'radio', name: 'target_role', value: target_role[0], checked: true}
-            = target_role[0].humanize
+            %input{type: 'radio', name: 'target_role', value: target_role, checked: true}
+            = target_role.humanize.pluralize
 
     .form-buttons
       .col-md-6

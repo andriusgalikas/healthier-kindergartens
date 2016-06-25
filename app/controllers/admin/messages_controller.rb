@@ -1,12 +1,14 @@
 class Admin::MessagesController < AdminController
   layout 'message'
 
-  def index
+  def list
     params[:page] ||= 1
     @messages = set_messages
 
     if request.xhr?
       render partial: '/messages/message_list'
+    else
+      render '/messages/list'
     end
   end
 

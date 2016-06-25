@@ -19,15 +19,13 @@ class MessageNotificationJob < ActiveJob::Base
     recipients = []
     sender = message.owner
 
-    if sender.admin?
-      recipients += User.send(message.target_role)
-    elsif sender.manager?
-      recipients += sender.daycare.parents if message.for_parentee?
-      recipients += sender.daycare.workers if message.for_worker?
-    elsif sender.partner?
+    if sender.admin? || sender.partner?
       recipients += User.parentee if message.for_parentee?
       recipients += User.worker if message.for_worker?
       recipients += User.manager if message.for_manager?
+    elsif sender.manager?
+      recipients += sender.daycare.parents if message.for_parentee?
+      recipients += sender.daycare.workers if message.for_worker?
     end
 
     recipients

@@ -37,13 +37,12 @@ class Manager::MessagesController < ApplicationController
   end
 
   def list
-    params[:page] ||= 1
-    get_all_main_subjects
-    set_notification_message
     set_messages
 
     if request.xhr?
       render partial: '/messages/message_list'
+    else
+      render '/messages/list'
     end
   end
 
@@ -77,15 +76,12 @@ class Manager::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(
       :message_template_id,
-      :target_role,
       :title,
-      :content
+      :content,
+      target_roles: []
     )
   end
 
-  def get_all_main_subjects
-    @subjects = MessageSubject.main_subjects
-  end
 
   def set_messages
     find_message_template
@@ -142,13 +138,6 @@ class Manager::MessagesController < ApplicationController
     end
 
     [cond_str.join(' AND '), cond_arr]
-  end
-
-  def set_notification_message
-    if params[:notification_id].present?
-      @notification = Notification.find(params[:notification_id])
-      @notification.archived!
-    end
   end
 
 end

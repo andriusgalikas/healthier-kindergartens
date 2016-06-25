@@ -12,7 +12,7 @@
       .panel-subcontent
         - notif_per_source_type(@notifications, 'Message').each do |notif|
           .notification
-            = link_to message_list_manager_messages_path(list_type: 'received', notification_id: notif.id) do
+            = link_to list_messages_path(role: current_user.role, list_type: 'received', notification_id: notif.id)  do
               %div.notif-sender-avatar
                 = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
               %div.notif-sender-name

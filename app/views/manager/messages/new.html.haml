@@ -12,7 +12,7 @@
 .row#main-content
   = form_for [:manager, @message] do |f|
     = f.hidden_field :message_template_id, value: @message_template.id
-    = f.hidden_field :target_role, value: @message_template.target_role
+    = hidden_field_tag 'message[target_roles][]', @message_template.target_role
     = f.hidden_field :title, value: @sub_subject.title
 
     .form-group

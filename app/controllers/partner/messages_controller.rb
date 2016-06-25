@@ -18,6 +18,7 @@ class Partner::MessagesController < ApplicationController
   end
 
   def list
+    params[:page] ||= 1
     @messages = set_messages
 
     if request.xhr?
@@ -38,17 +39,10 @@ class Partner::MessagesController < ApplicationController
   def set_messages
     cond_str, cond_arr = set_query_conditions
 
-    @messsages ||= if params[:page].present?
-                     Message.by_owner(current_user.id)
-                       .where(cond_str, *cond_arr)
-                       .order(created_at: :asc)
-                       .page(params[:page])
-                   else
-                     Message.by_owner(current_user.id)
-                       .where(cond_str, *cond_arr)
-                       .order(created_at: :asc)
-                       .page(1)
-                   end
+    @messsages ||= Message.by_owner(current_user.id)
+                 .where(cond_str, *cond_arr)
+                 .order(created_at: :asc)
+                 .page(params[:page])
   end
 
   def set_query_conditions

@@ -9,6 +9,10 @@ module MessagesHelper
     Message.allowed_recipients_for_role(current_user.role).collect{|m| [m.humanize.pluralize, m]}
   end
 
+  def options_for_message_senders_select
+    Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}
+  end
+
   def edit_template_header
     t('messags.breadcrumb.edit_template') + ' :'
   end

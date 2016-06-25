@@ -2,7 +2,7 @@
   .col-md-4
     .form-group
       = label_tag :target_role, 'Show only messages sent to'
-      = select_tag :target_role, options_for_select(Message.allowed_recipients_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Recipient'
+      = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Recipient'
 
   .col-md-4
     .form-group#subject-filter{class: params['target_role'].present? ? '' : 'hidden'}
@@ -27,5 +27,3 @@
 
   .col-md-4.form-buttons.centralize
     = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
-
-:javascript

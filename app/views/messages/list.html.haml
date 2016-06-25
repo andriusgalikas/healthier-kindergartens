@@ -2,13 +2,16 @@
 
 .row
   .page-header
-    %h3 Filter option to see your messages :
+    %h3= t('messages.basic_filter') + ' :'
 
 .container-fluid.message-filters
-  - if params['list_type'] == 'sent'
-    = render 'sent_message_filters'
+  - if params[:list_type] == 'sent'
+    - if current_user.manager?
+      = render '/messages/sent_message_filters_advanced'
+    - else
+      = render '/messages/sent_message_filters_basic'
   - else
-    = render 'received_message_filters'
+    = render '/messages/received_message_filters'
 
 .row.message-list
   - if @notification
@@ -56,7 +59,7 @@
 
     if (valid) {
       $.ajax({
-        url: '/manager/messages/#{params[:list_type]}/list',
+        url: '#{list_messages_path(role: current_user.role, list_type: params['list_type'])}',
         type: 'GET',
         data: {
           target_role: targetRole,

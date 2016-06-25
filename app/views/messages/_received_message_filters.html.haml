@@ -2,7 +2,7 @@
   .col-md-4
     .form-group
       = label_tag :target_role, 'Show only messages received from'
-      = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Sender'
+      = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', prompt: 'Choose Sender'
 
   .col-md-4
     .form-group

@@ -82,7 +82,7 @@ Rails.application.routes.draw do
             post :subject
             post :sub_subject
             post :content
-            get  ':list_type/list', to: 'messages#list',  as: 'message_list'
+#            get  ':list_type/list', to: 'messages#list',  as: 'list'
           end
         end
     end
@@ -125,7 +125,9 @@ Rails.application.routes.draw do
             post :filter
           end
         end
-        resources :messages
+        resources :messages, only: [:new, :create] do
+#          get ':list_type/list', to: 'messages#list',  as: 'list', on: :collection
+        end
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]
@@ -134,8 +136,7 @@ Rails.application.routes.draw do
     end
 
     namespace :partner do
-      resources :messages do
-        get :list, on: :collection
+      resources :messages, only: [:index, :new, :create] do
       end
     end
 
@@ -153,4 +154,5 @@ Rails.application.routes.draw do
     end
 
     get 'cast_vote', to: 'votes#cast_vote'
+    get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
 end
