@@ -1,8 +1,8 @@
 class MessageNotificationJob < ActiveJob::Base
   queue_as :notification
 
-  def perform message
-    target_users = get_target_users(message)
+  def perform(message, opts={})
+    target_users = get_target_users(message, opts)
 
     target_users.each do |user|
       notif = message.notifications.build(target_id: user.id)
@@ -12,10 +12,9 @@ class MessageNotificationJob < ActiveJob::Base
     end
   end
 
-
   private
 
-  def get_target_users(message)
+  def get_target_users(message, opts)
     recipients = []
     sender = message.owner
 
@@ -26,6 +25,11 @@ class MessageNotificationJob < ActiveJob::Base
     elsif sender.manager?
       recipients += sender.daycare.parents if message.for_parentee?
       recipients += sender.daycare.workers if message.for_worker?
+
+      if opts[:target_department]
+        dept_id = opts[:target_department].to_i
+        recipients = recipients.select{|rec| rec.department_id == dept_id}
+      end
     end
 
     recipients

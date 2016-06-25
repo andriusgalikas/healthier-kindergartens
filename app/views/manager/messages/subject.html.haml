@@ -1,6 +1,6 @@
 = content_for :title, 'New Message'
-- step_size = 4
-- page_step = 2
+- step_size = 5
+- page_step = 3
 
 .row
   .page-header
@@ -13,12 +13,14 @@
   %h4.step-instruction Please Choose Subject :
 
   = form_tag sub_subject_manager_messages_path, method: :post do
-    = hidden_field_tag 'target_role', params[:target_role]
+    = hidden_field_tag :target_department, params[:target_department]
+    = hidden_field_tag :target_role, params[:target_role]
+
     .form-group
       = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), class: 'select'
 
     .form-buttons
       .col-md-6
-        %a{href: recipient_manager_messages_path(target_role: params[:target_role]), class: 'btn btn-raised btn-info'} Back
+        %a{href: recipient_manager_messages_path(target_department: params[:target_department], target_role: params[:target_role]), class: 'btn btn-raised btn-info'} Back
       .col-md-6
         = submit_tag 'Next', class: 'btn btn-raised btn-success'

@@ -49,29 +49,29 @@ module MessagesHelper
       "#{t('messages.breadcrumb.add_content')} :"
   end
 
-  def choose_recipient_header
+  def choose_department_header
     "#{t('messages.breadcrumb.message_options')} > " +
-      "#{t('messages.breadcrumb.choose_recipient')} : "
+      "#{t('messages.breadcrumb.choose_department')}"
+  end
+
+  def choose_recipient_header
+    choose_department_header +
+      "#{t('messages.breadcrumb.choose_recipient')}"
   end
 
   def choose_subject_header
-    "#{t('messages.breadcrumb.message_options')} > " +
-      "#{t('messages.breadcrumb.choose_recipient')} > " +
-      "#{t('messages.breadcrumb.choose_subject')} : "
+    choose_recipient_header +
+      "#{t('messages.breadcrumb.choose_subject')}"
   end
 
   def choose_sub_subject_header
-    "#{t('messages.breadcrumb.message_options')} > " +
-      "#{t('messages.breadcrumb.choose_recipient')} > " +
-      "#{t('messages.breadcrumb.choose_subject')} > " +
-      "#{t('messages.breadcrumb.choose_sub_subject')} : "
+    choose_subject_header +
+      "#{t('messages.breadcrumb.choose_sub_subject')}"
   end
 
   def create_message_from_template_header
-    "#{t('messages.breadcrumb.choose_recipient')} > " +
-      "#{t('messages.breadcrumb.choose_subject')} > " +
-      "#{t('messages.breadcrumb.choose_sub_subject')} > " +
-      "#{t('messages.breadcrumb.send')} :"
+    choose_department_header +
+      "#{t('messages.breadcrumb.send')}"
   end
 
   def yield_js_translations

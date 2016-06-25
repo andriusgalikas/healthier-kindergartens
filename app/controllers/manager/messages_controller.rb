@@ -2,6 +2,10 @@ class Manager::MessagesController < ApplicationController
   layout 'message'
   before_action -> { authenticate_role!(['manager'])}
 
+  def select_department
+    set_departments
+  end
+
   def subject
     set_subjects
   end
@@ -27,7 +31,7 @@ class Manager::MessagesController < ApplicationController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_now(@message)
+      MessageNotificationJob.perform_now(@message, target_department: params[:target_department])
       notice = 'Message successfully sent.'
     else
       notice = 'There was an error creating the message.'
@@ -47,6 +51,10 @@ class Manager::MessagesController < ApplicationController
   end
 
   private
+
+  def set_departments
+    @departments ||= current_user.daycare.departments
+  end
 
   def set_subjects
     @subjects ||= MessageSubject.main_subjects

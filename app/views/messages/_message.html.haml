@@ -12,6 +12,6 @@
         %span.pull-right Print
 
   %hr
-  %div.message-content-stage{class: message.id == @notification.try(:source_id) ? '' : 'truncate', id: "message-#{message.id}"}
+  %div.message-content-stage{class: message.id == @notification.try(:source_id) ? 'well well-sm' : 'truncate', id: "message-#{message.id}"}
     .fr-view
       = message.content.html_safe

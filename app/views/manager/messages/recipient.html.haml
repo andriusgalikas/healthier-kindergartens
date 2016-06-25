@@ -1,6 +1,6 @@
 = content_for :title, 'New Notification'
-- step_size = 4
-- page_step = 1
+- step_size = 5
+- page_step = 2
 
 .row
   .page-header
@@ -13,6 +13,8 @@
   %h4.step-instuction Please choose target recipient for this template
 
   = form_tag subject_manager_messages_path, method: :post do
+    = hidden_field_tag :target_department, params[:target_department]
+
     .form-group
       - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
         .radio
@@ -22,7 +24,7 @@
 
     .form-buttons
       .col-md-6
-        %a{href: manager_messages_path, class: 'btn btn-raised btn-info'} Back
+        %a{href: select_department_manager_messages_path(target_department: params[:target_department]), class: 'btn btn-raised btn-info'} Back
       .col-md-6
         = submit_tag 'Next', class: 'btn btn-raised btn-success'
 

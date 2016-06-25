@@ -78,11 +78,11 @@ Rails.application.routes.draw do
 
         resources :messages do
           collection do
-            get  :recipient
+            get  :select_department
+            post :recipient
             post :subject
             post :sub_subject
             post :content
-#            get  ':list_type/list', to: 'messages#list',  as: 'list'
           end
         end
     end
@@ -125,9 +125,7 @@ Rails.application.routes.draw do
             post :filter
           end
         end
-        resources :messages, only: [:new, :create] do
-#          get ':list_type/list', to: 'messages#list',  as: 'list', on: :collection
-        end
+        resources :messages, only: [:new, :create]
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]
@@ -136,8 +134,7 @@ Rails.application.routes.draw do
     end
 
     namespace :partner do
-      resources :messages, only: [:index, :new, :create] do
-      end
+      resources :messages, only: [:index, :new, :create]
     end
 
     namespace :api, constraints: { format: 'json' } do

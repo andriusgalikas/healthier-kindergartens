@@ -52,6 +52,7 @@ en:
       create_template: Create Template
       create_subject: Create Subject
       create_sub_subject: Create Sub-Subject
+      choose_department: Choose Department
       choose_recipient: Choose Recipient
       add_content: Add Message Template
       edit_template: Edit Message Template
