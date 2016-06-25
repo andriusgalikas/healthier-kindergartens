@@ -1,4 +1,4 @@
-/* line 1, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 1, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-overlay {
   position: absolute;
   z-index: 999999;
@@ -20,7 +20,7 @@
   transition: all 0.3s ease-out;
 }
 
-/* line 22, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 22, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-fixParent {
   z-index: auto !important;
   opacity: 1.0 !important;
@@ -32,27 +32,27 @@
   transform: none !important;
 }
 
-/* line 33, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 33, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-showElement,
 tr.introjs-showElement > td,
 tr.introjs-showElement > th {
   z-index: 9999999 !important;
 }
 
-/* line 39, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 39, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-disableInteraction {
   z-index: 99999999 !important;
   position: absolute;
 }
 
-/* line 44, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 44, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-relativePosition,
 tr.introjs-showElement > td,
 tr.introjs-showElement > th {
   position: relative;
 }
 
-/* line 50, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 50, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-helperLayer {
   position: absolute;
   z-index: 9999998;
@@ -69,7 +69,7 @@ tr.introjs-showElement > th {
   transition: all 0.3s ease-out;
 }
 
-/* line 66, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 66, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-tooltipReferenceLayer {
   position: absolute;
   visibility: hidden;
@@ -82,7 +82,7 @@ tr.introjs-showElement > th {
   transition: all 0.3s ease-out;
 }
 
-/* line 78, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 78, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-helperLayer *,
 .introjs-helperLayer *:before,
 .introjs-helperLayer *:after {
@@ -93,7 +93,7 @@ tr.introjs-showElement > th {
   box-sizing: content-box;
 }
 
-/* line 88, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 88, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-helperNumberLayer {
   position: absolute;
   visibility: visible;
@@ -133,14 +133,14 @@ tr.introjs-showElement > th {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* line 118, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 118, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow {
   border: 5px solid white;
   content: '';
   position: absolute;
 }
 
-/* line 123, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 123, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.top {
   top: -10px;
   border-top-color: transparent;
@@ -149,7 +149,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 130, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 130, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.top-right {
   top: -10px;
   right: 10px;
@@ -159,7 +159,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 138, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 138, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.top-middle {
   top: -10px;
   left: 50%;
@@ -170,7 +170,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 147, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 147, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.right {
   right: -10px;
   top: 10px;
@@ -180,7 +180,7 @@ tr.introjs-showElement > th {
   border-left-color: white;
 }
 
-/* line 155, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 155, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.right-bottom {
   bottom: 10px;
   right: -10px;
@@ -190,7 +190,7 @@ tr.introjs-showElement > th {
   border-left-color: white;
 }
 
-/* line 163, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 163, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.bottom {
   bottom: -10px;
   border-top-color: white;
@@ -199,7 +199,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 170, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 170, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.left {
   left: -10px;
   top: 10px;
@@ -209,7 +209,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 178, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 178, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-arrow.left-bottom {
   left: -10px;
   bottom: 10px;
@@ -219,7 +219,7 @@ tr.introjs-showElement > th {
   border-left-color: transparent;
 }
 
-/* line 187, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 187, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-tooltip {
   position: absolute;
   visibility: visible;
@@ -236,7 +236,7 @@ tr.introjs-showElement > th {
   transition: opacity 0.1s ease-out;
 }
 
-/* line 203, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 203, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-tooltipbuttons {
   text-align: right;
   white-space: nowrap;
@@ -246,7 +246,7 @@ tr.introjs-showElement > th {
  Buttons style by http://nicolasgallagher.com/lab/css3-github-buttons/
  Changed by Afshin Mehrabani
 */
-/* line 212, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 212, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-button {
   position: relative;
   overflow: visible;
@@ -280,14 +280,14 @@ tr.introjs-showElement > th {
   margin-top: 10px;
 }
 
-/* line 244, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 244, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-button:hover {
   border-color: #bcbcbc;
   text-decoration: none;
   box-shadow: 0px 1px 1px #e3e3e3;
 }
 
-/* line 250, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 250, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-button:focus,
 .introjs-button:active {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ececec), to(#f4f4f4));
@@ -297,19 +297,19 @@ tr.introjs-showElement > th {
 }
 
 /* overrides extra padding on button elements in Firefox */
-/* line 259, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 259, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-/* line 264, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 264, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-skipbutton {
   margin-right: 5px;
   color: #7a7a7a;
 }
 
-/* line 269, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 269, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-prevbutton {
   -webkit-border-radius: 0.2em 0 0 0.2em;
   -moz-border-radius: 0.2em 0 0 0.2em;
@@ -317,14 +317,14 @@ tr.introjs-showElement > th {
   border-right: none;
 }
 
-/* line 276, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 276, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-nextbutton {
   -webkit-border-radius: 0 0.2em 0.2em 0;
   -moz-border-radius: 0 0.2em 0.2em 0;
   border-radius: 0 0.2em 0.2em 0;
 }
 
-/* line 282, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 282, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
   color: #9a9a9a;
   border-color: #d4d4d4;
@@ -335,12 +335,12 @@ tr.introjs-showElement > th {
   text-decoration: none;
 }
 
-/* line 292, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 292, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets {
   text-align: center;
 }
 
-/* line 295, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 295, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets ul {
   clear: both;
   margin: 15px auto 0;
@@ -348,14 +348,14 @@ tr.introjs-showElement > th {
   display: inline-block;
 }
 
-/* line 301, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 301, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets ul li {
   list-style: none;
   float: left;
   margin: 0 2px;
 }
 
-/* line 306, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 306, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets ul li a {
   display: block;
   width: 6px;
@@ -367,17 +367,17 @@ tr.introjs-showElement > th {
   text-decoration: none;
 }
 
-/* line 316, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 316, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets ul li a:hover {
   background: #999;
 }
 
-/* line 319, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 319, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-bullets ul li a.active {
   background: #999;
 }
 
-/* line 323, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 323, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-progress {
   overflow: hidden;
   height: 10px;
@@ -386,7 +386,7 @@ tr.introjs-showElement > th {
   background-color: #ecf0f1;
 }
 
-/* line 330, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 330, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-progressbar {
   float: left;
   width: 0%;
@@ -397,7 +397,7 @@ tr.introjs-showElement > th {
   background-color: #08c;
 }
 
-/* line 340, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 340, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjsFloatingElement {
   position: absolute;
   height: 0;
@@ -406,12 +406,12 @@ tr.introjs-showElement > th {
   top: 50%;
 }
 
-/* line 348, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 348, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-fixedTooltip {
   position: fixed;
 }
 
-/* line 352, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 352, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-hint {
   position: absolute;
   background: transparent;
@@ -419,22 +419,22 @@ tr.introjs-showElement > th {
   height: 15px;
 }
 
-/* line 359, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 359, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-hidehint {
   display: none;
 }
 
-/* line 363, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 363, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-fixedhint {
   position: fixed;
 }
 
-/* line 367, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 367, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-hint:hover > .introjs-hint-pulse {
   border: 5px solid rgba(60, 60, 60, 0.57);
 }
 
-/* line 371, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 371, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-hint-pulse {
   width: 10px;
   height: 10px;
@@ -452,7 +452,7 @@ tr.introjs-showElement > th {
   transition: all 0.2s ease-out;
 }
 
-/* line 388, /Users/macbook/Projects/HealtherChildCare/app/assets/stylesheets/introjs.css.scss */
+/* line 388, /home/awais/projects/Membership-app/app/assets/stylesheets/introjs.css.scss */
 .introjs-hint-dot {
   border: 10px solid rgba(146, 146, 146, 0.36);
   background: transparent;
