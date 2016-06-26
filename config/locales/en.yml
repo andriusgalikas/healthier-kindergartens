@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  about:
+    sub_heading1: "Committed to healthier"
+    sub_heading2: "and safer childcare facilities"
+
   hello: "Hello world"
 
   notifications:

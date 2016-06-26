@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
     helper_method :current_daycare
+    before_action :set_locale
+ 
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
 
     def authenticate_role! roles
         if current_user.nil?
