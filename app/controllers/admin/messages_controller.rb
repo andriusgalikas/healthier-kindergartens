@@ -33,7 +33,7 @@ class Admin::MessagesController < AdminController
     params.require(:message).permit(
       :title,
       :content,
-      target_role: []
+      target_roles: []
     )
   end
 
