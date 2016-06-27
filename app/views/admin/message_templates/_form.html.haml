@@ -1,16 +1,20 @@
-%h4.step-instruction Please Edit and Save Message :
-
 = form_for [:admin, @template] do |f|
   = hidden_field_tag :subject_title, params[:subject_title]
   = hidden_field_tag :sub_subject_title, params[:sub_subject_title]
   = f.hidden_field :target_role, value: params[:target_role] || @template.target_role
 
   %fieldset
-    = f.text_area :content, id: 'message_template_content'
+    .form-group
+      %label.step-instruction{for: 'language'} Please Select the language :
+      = f.select :language, options_for_select(options_for_template_localizations, I18n.default_locale), {}, class: 'select'
+
+    .form-group
+      %label.step-instruction{for: 'content'} Please Edit and Save Message :
+      = f.text_area :content, id: 'message_template_content'
 
     - if action_name != 'edit'
       .form-group
-        %h4.step-instruction Or Upload Message Template File
+        %label.step-instruction Or Upload Message Template File
         %input{type: 'file', name: 'upload_template', id: 'upload-template'}
         .input-group
           %input{type: 'text', readonly: '', class: 'form-control', placeholder: 'Upload file'}
@@ -28,6 +32,8 @@
       = submit_tag 'Save', class: 'btn btn-raised btn-success'
 
 :javascript
+  $.material.init();
+
   $('#message_template_content').froalaEditor({
     heightMin: 250
   });
@@ -36,7 +42,6 @@
   $('#upload-template').on('change', function() {
     var file = this.files[0]
     var reader = new FileReader();
-    console.log(file.type);
 
     if (file.type.match('text.*')) {
       reader.onload = function(progressEvent){

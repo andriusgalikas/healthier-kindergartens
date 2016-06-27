@@ -13,40 +13,35 @@ module MessagesHelper
     Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}
   end
 
+  def options_for_template_localizations
+    SUPPORTED_LOCALES.map{|k, v| [v, k]}
+  end
+
   def edit_template_header
     t('messags.breadcrumb.edit_template') + ' :'
   end
 
-  def choose_template_header
-    "#{t('messages.breadcrumb.message')} > " +
-      "#{t('messages.breadcrumb.choose_template')} :"
-  end
-
   def add_subject_header
     "#{t('messages.breadcrumb.message')} > " +
-      "#{t('messages.breadcrumb.create_template')} > " +
-      "#{t('messages.breadcrumb.create_subject')} :"
+      "#{t('messages.breadcrumb.create_subject')}"
   end
 
   def add_sub_subject_header
-    "#{t('messages.breadcrumb.message')} > " +
-      "#{t('messages.breadcrumb.create_template')} > " +
-      "#{t('messages.breadcrumb.create_subject')} > " +
-      "#{t('messages.breadcrumb.create_sub_subject')} :"
+    add_subject_header +
+      " > " +
+      "#{t('messages.breadcrumb.create_sub_subject')}"
   end
 
   def add_recipient_header
-    "#{t('messages.breadcrumb.message')} > " +
-      "#{t('messages.breadcrumb.create_template')} > " +
-      "#{t('messages.breadcrumb.create_subject')} > " +
-      "#{t('messages.breadcrumb.create_sub_subject')} > " +
-      "#{t('messages.breadcrumb.choose_recipient')} :"
+    add_sub_subject_header +
+      " > " +
+      "#{t('messages.breadcrumb.choose_recipient')}"
   end
 
   def add_template_content_header
-    "#{t('messages.breadcrumb.message')} > ... > " +
-      "#{t('messages.breadcrumb.choose_recipient')} > " +
-      "#{t('messages.breadcrumb.add_content')} :"
+    add_recipient_header +
+      " > " +
+      "#{t('messages.breadcrumb.add_content')}"
   end
 
   def choose_department_header
@@ -56,21 +51,25 @@ module MessagesHelper
 
   def choose_recipient_header
     choose_department_header +
+      " > " +
       "#{t('messages.breadcrumb.choose_recipient')}"
   end
 
   def choose_subject_header
     choose_recipient_header +
+      " > " +
       "#{t('messages.breadcrumb.choose_subject')}"
   end
 
   def choose_sub_subject_header
     choose_subject_header +
+      " > " +
       "#{t('messages.breadcrumb.choose_sub_subject')}"
   end
 
   def create_message_from_template_header
     choose_department_header +
+      " > .. > " +
       "#{t('messages.breadcrumb.send')}"
   end
 

@@ -20,7 +20,7 @@
 class Message < ActiveRecord::Base
   include Deactivatable
   include Permissions
-  paginates_per 2
+  paginates_per 5
 
   belongs_to :message_template
   belongs_to :owner, class_name: 'User'

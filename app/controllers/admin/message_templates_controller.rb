@@ -77,6 +77,7 @@ class Admin::MessageTemplatesController < AdminController
   def message_template_params
     params.require(:message_template).permit(
       :target_role,
+      :language,
       :content
     )
   end
