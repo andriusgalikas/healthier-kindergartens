@@ -5,10 +5,8 @@
         .promo-img
           = image_tag "mission_promo.jpg"
           .img-text
-            %h2
-              You Can Mitigate Infection
-              %br and Illness In Your Daycare
-            %p Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest environment possible.
+            %h2= t('pages.mission.main_heading').html_safe
+            %p= t('pages.mission.main_heading2').html_safe
   / End Promo Area
   .container
     .row
@@ -34,51 +32,32 @@
   .container.page-heading
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12.mission-page-heading
-        %h2
-          Is your daycare a breeding ground for childhood
-          infections—with potential long-term damage?
+        %h2= t('pages.mission.sub_heading').html_safe
   .container
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
         .page-discription
-          %p
-            In your childcare facility, the safety of children is of primary importance. We make facilitating that safety easier for you. We’re the Healthier and Safer Childcare Alliance: a unifying and supporting force in the world of childcare. We’re committed to assisting you, the childcare operator, in keeping children and workers out of harm’s way—so you can fulfill your ethical and professional duties—and meaningfully contribute to the health and happiness of the children and Employees under your care and supervision.
-            Daycare settings are a breeding ground for infections and diseases. There are many scientific reasons for this, but it is due in part to the susceptibility of children to illnesses, the close proximity of children to each other, the way children share germs as they play, and the interactions of children with daycare workers and parents. But those aren’t the only reasons…
-            There’s one more widely-overlooked cause of infection and disease spreading—a cause that heavily intensifies this breeding ground for diseases in your daycare. And that’s the lack of adequate knowledge and training for effective infection mitigation procedures on the part of the daycare worker. Studies have shown you can greatly mitigate the most dangerous risks of infection with a few simple procedures—keep reading to find out what they are.
+          %p= t('pages.mission.para1').html_safe
   .container.risks-area
     .row.risks-care
       .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare
-        %h2 Top risks to children in your daycare
+        %h2= t('pages.mission.sub_heading2')
         %p
           Studies show that children in daycare are
           %span{:style => "font-size:50px"} 300%
-          %span more vulnerable to illnesses1
-          than children cared for at home. Although most infectious illnesses get resolved without disrupting the development of children, some infections cause
-          %span lasting physical damage to children2 ,
-          in terms of overuse of antibiotics or future learning, cognitive disabilities or even death.
-          For example, middle ear infections, even when treated correctly in children under 3 years old, can have adverse consequences3 including reduced performance at reading comprehension and/or compromised cognitive ability in the future.
-          Also, respiratory infections like pneumonia are the principal cause of death4 among children under 5 years old worldwide.
-          In addition, children who attend daycare have
-          an increased risk of being hospitalized5, especially from the rotavirus infection, which is responsible for 20 to 60% of hospital admissions of children. Varicella6, which causes chickenpox and shingles, can develop complications that result in hospitalization and death.
-          Children are meant to be kept in safe environments that are conducive to health and learning. In today's terminology, this defines daycare environments: places where children can be open to learning without also being open to illness.
-          We owe it to our children — and ourselves — to give children the safest and healthiest environment possible.
+          %span= t('pages.mission.para2').html_safe
+          %span= t('pages.mission.para3').html_safe 
       .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare-parent-worder
         .worder-daycare
-          %h2 Top risks to workers in your daycare
+          %h2= t('pages.mission.sub_heading3')
           %p
             Studies indicate that in a flu season,
             %span{:style => "font-size:50px"} 50%
-            %span of the surface areas7
-            in daycare facilities may be contaminated with the flu virus. The degree of contamination in your facility may vary. But the risk of infection remains a major concern, since the majority of childcare staff are women in childbearing age.
-            Changes to the immune system and the respiratory and circulatory systems during pregnancy mean that pregnant women are at greater risk of being severely ill if they catch flu.In addition, the newborn babies of women with severe flu are at risk of complications, in particular premature birth and low birthweight8.
-            The sad irony for childcare workers who become ill due to a lack of infection preventive practices at work is that, while caring for the children of others, they put their own unborn children at risk if they fall pregnant. Most childcare workers are women of childbearing age.
-            Given these risks, no preventive measures — however small — should be overlooked.
+            %span= t('pages.mission.para4').html_safe
         .parent-daycare
-          %h2 Top risks to parents of kids in your daycare
-          %p
-            As parents drop off or pick up children from your childcare facility and interact with their children at home, they, too, risk getting infections passed on from the daycare facility.
-            Amplified infection rates associated with daycare centers have economic implications for both the family and the nation. A rise in disease results in an increase in the use of health care services and increased family spending on medical care and medications. Repeated illness can cause parents to earn less and even lose their jobs due to frequent absences.
-            The primary reason parents put their children in daycare is so that they are in a safe environment while Mom or Dad are away at work. It is critical that daycares meet this basic need well. When children contract illnesses, the daycare not only puts them at risk, but also the parents, who can become infected because of the child. This defeats the entire purpose of daycare, as not only were the children not kept safe, but the parents are also not able to work if the child is at home sick.
+          %h2= t('pages.mission.sub_heading4')
+          %p= t('pages.mission.para5')
+            
   .container.what-do-next
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
