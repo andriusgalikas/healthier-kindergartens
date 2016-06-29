@@ -10,21 +10,21 @@
   = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
 .row#main-content
-  %h4.step-instuction Please choose target daycare for this message
+  %h4.step-instuction= t('messages.labels.choose_department')
 
   = form_tag recipient_manager_messages_path, method: :post do
     .form-group
       - @departments.each do |department|
         .radio
           %label
-            %input{type: 'radio', name: 'target_department', value: department.id, checked: params[:target_department].to_i == department.id}
+            %input{type: 'radio', name: 'target_department', value: department.id, checked: params[:target_department].to_i == department.id, required: true}
             = department.name
 
     .form-buttons
       .col-md-6
-        %a{href: manager_messages_path, class: 'btn btn-raised btn-info'} Back
+        %a{href: manager_messages_path, class: 'btn btn-raised btn-info'}= t('form_labels.back')
       .col-md-6
-        = submit_tag 'Next', class: 'btn btn-raised btn-success'
+        = submit_tag t('form_labels.next'), class: 'btn btn-raised btn-success'
 
 :javascript
   $.material.init();

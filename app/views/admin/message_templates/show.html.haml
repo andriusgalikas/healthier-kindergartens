@@ -2,17 +2,17 @@
 
 .row
   .page-header
-    %h3 Message Template content
+    %h3= t('messages.labels.message_template_content')
 
 .row
   %dl.dl-horizontal
-    %dt Subject
+    %dt= t('messages.labels.subject')
     %dd= @template.sub_subject.parent_subject.title
   %dl.dl-horizontal
-    %dt Sub-subject
+    %dt= t('messages.labels.sub_subject')
     %dd= @template.sub_subject.title
   %dl.dl-horizontal
-    %dt Recipient
+    %dt= t('messages.labels.recipient')
     %dd= @template.target_role.humanize
 
 .row.message-content-stage
@@ -22,6 +22,6 @@
 .row
   .form-buttons
     .col-md-6
-      = link_to "Delete", admin_message_template_path(@template), method: :delete, data: {confirm: 'Are you sure you want to delete this template?'}, class: 'btn btn-raised btn-info'
+      = link_to t('form_labels.delete'), admin_message_template_path(@template), method: :delete, data: {confirm: t('messages.notifications.delete_template_confirm')}, class: 'btn btn-raised btn-info'
     .col-md-6
-      = link_to "Edit", edit_admin_message_template_path(@template), class: 'btn btn-raised btn-success'
+      = link_to t('form_labels.edit'), edit_admin_message_template_path(@template), class: 'btn btn-raised btn-success'

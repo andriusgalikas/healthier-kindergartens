@@ -1,8 +1,8 @@
-= content_for :title, 'Message List'
+= content_for :title, t('messages.labels.message_list')
 
 .row
   .page-header
-    %h3= t('messages.basic_filter') + ' :'
+    %h3= t('messages.labels.basic_filter') + ' :'
 
 .container-fluid.message-filters
   - if params[:list_type] == 'sent'

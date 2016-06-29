@@ -26,6 +26,12 @@ module Permissions
       senders
     end
 
+    allowed_recipients.each do |target_role|
+      define_method "for_#{target_role}?" do
+        target_roles.include?(target_role)
+      end
+    end
+
   end
 
 end

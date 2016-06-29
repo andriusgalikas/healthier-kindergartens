@@ -47,6 +47,8 @@ body {
     }
 
     .form-buttons {
+      text-align: center;
+
       a, input {
         width: 95%;
       }
@@ -204,6 +206,10 @@ body {
     padding: 0px;
     position: relative;
 
+    button {
+      z-index: 100;
+    }
+
     &:first-child {
       .progress {
         left: 50%;
@@ -242,6 +248,7 @@ body {
       border-radius: 0px;
       height: 4px;
       box-shadow: none;
+      margin-top: -5px;
 
       .progress-bar {
         width:  0px;

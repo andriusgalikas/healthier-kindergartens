@@ -23,7 +23,7 @@ class Manager::MessagesController < ApplicationController
 
       render :new
     else
-      redirect_to manager_messages_path, notice: 'No corresponding template found.'
+      redirect_to manager_messages_path, notice: t('messages.notifications.find_template_empty')
     end
   end
 
@@ -32,9 +32,9 @@ class Manager::MessagesController < ApplicationController
 
     if @message.save
       MessageNotificationJob.perform_now(@message, target_department: params[:target_department])
-      notice = 'Message successfully sent.'
+      notice = t('messages.notifications.send_message_success')
     else
-      notice = 'There was an error creating the message.'
+      notice = t('messages.notifications.send_message_error')
     end
 
     redirect_to manager_messages_path, notice: notice

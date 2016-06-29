@@ -18,7 +18,7 @@ module MessagesHelper
   end
 
   def edit_template_header
-    t('messags.breadcrumb.edit_template') + ' :'
+    t('messages.breadcrumb.edit_template') + ' :'
   end
 
   def add_subject_header
@@ -75,7 +75,7 @@ module MessagesHelper
 
   def yield_js_translations
     trans = {}
-    trans['no_template_for_role'] = I18n.t('messages.no_template_for_role')
+    trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
 
     trans
   end

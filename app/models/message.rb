@@ -29,11 +29,4 @@ class Message < ActiveRecord::Base
   default_scope    { where(deactivated_at: nil) }
   scope :by_owner,  ->(owner_id) { where(owner_id: owner_id) }
 
-  allowed_recipients.each do |target_role|
-    define_method "for_#{target_role}?" do
-      target_roles.include?(target_role)
-    end
-  end
-
-
 end

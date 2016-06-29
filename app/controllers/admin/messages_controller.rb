@@ -21,9 +21,9 @@ class Admin::MessagesController < AdminController
 
     if @message.save
       MessageNotificationJob.perform_now(@message)
-      redirect_to admin_message_templates_path, notice: 'Message successfully sent.'
+      redirect_to admin_message_templates_path, notice: t('messages.notifications.send_message_success')
     else
-      redirect_to new_admin_message_template_path, notice: 'There was an error creating the message.'
+      redirect_to new_admin_message_template_path, notice: t('messages.notifications.send_message_error')
     end
   end
 

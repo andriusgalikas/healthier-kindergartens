@@ -23,6 +23,7 @@ class MessageTemplate < ActiveRecord::Base
   has_many :messages
 
   validates :sub_subject_id, presence: true
+  validates :target_role, presence: true
 
   enum target_role: [:parentee, :worker]
 end

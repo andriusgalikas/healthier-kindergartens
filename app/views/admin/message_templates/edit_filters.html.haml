@@ -1,4 +1,4 @@
-= content_for :title, 'Edit Template'
+= content_for :title, t('messages.breadcrumb.edit_template')
 
 .row
   .page-header
@@ -9,18 +9,18 @@
   .row
     .col-md-6
       .form-group#subject-filter
-        %label.step-instruction{for: 'subject_id'} Filter by Subject :
-        = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), class: 'select', prompt: 'Please choose subject'
+        %label.step-instruction{for: 'subject_id'}= t('messages.labels.filter_by_subject')
+        = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), class: 'select', prompt: t('messages.labels.choose_subject')
 
     .col-md-6
       .form-group#sub-subject-filter
-        %label.step-instruction{for: 'sub_subject_id'} Filter by Sub-subject :
-        = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: 'Please choose sub-subject', required: true
+        %label.step-instruction{for: 'sub_subject_id'}= t('messages.labels.filter_by_sub_subject')
+        = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: t('messages.labels.choose_sub_subject'), required: true
 
   .row
     .col-md-12
       .form-group
-        %label.step-instruction{for: 'target_role'} Please choose target recipient :
+        %label.step-instruction{for: 'target_role'}= t('messages.labels.choose_recipient')
         - MessageTemplate.target_roles.each do |target_role|
           .radio.radio-primary
             %label
@@ -28,7 +28,7 @@
               = target_role[0].humanize
 
   .form-buttons
-    = submit_tag 'Apply Filters', class: 'btn btn-raised btn-success'
+    = submit_tag t('messages.labels.apply_filters'), class: 'btn btn-raised btn-success'
 
 :javascript
   $.material.init();

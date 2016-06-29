@@ -1,4 +1,4 @@
-= content_for :title, 'New Notification'
+= content_for :title, t('messages.labels.new_notification')
 - step_size = 5
 - page_step = 5
 
@@ -17,7 +17,7 @@
     = hidden_field_tag 'target_department', params[:target_department]
 
     .form-group
-      %label.step-instruction(for: :content) Please Edit and Send Message :
+      %label.step-instruction(for: :content)= t('messages.labels.edit_and_send')
       = f.text_area :content, id: 'message_content', value: @message_template.content
 
     .form-buttons

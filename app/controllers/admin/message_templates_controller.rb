@@ -8,9 +8,9 @@ class Admin::MessageTemplatesController < AdminController
                 .build(message_template_params.merge(sub_subject_id: @sub_subject.id))
 
     if @template.save
-      redirect_to admin_message_templates_path, notice: 'Message template was successfully created.'
+      redirect_to admin_message_templates_path, notice: t('messages.notifications.create_template_success')
     else
-      redirect_to new_admin_message_template_path, notice: 'There are errors creating the message templates.'
+      redirect_to new_admin_message_template_path, notice: t('messages.notifications.create_templat_error')
     end
   end
 
@@ -35,7 +35,7 @@ class Admin::MessageTemplatesController < AdminController
     set_message_template
 
     if @template.update(message_template_params)
-      redirect_to admin_message_template_path(@template), notice: 'Message template successfully updated.'
+      redirect_to admin_message_template_path(@template), notice: t('messages.notifications.update_template_success')
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Admin::MessageTemplatesController < AdminController
     set_message_template
     @template.deactivate!
 
-    redirect_to admin_message_templates_path, notice: 'Message template successfully deleted.'
+    redirect_to admin_message_templates_path, notice: t('messages.notifications.delete_template_success')
   end
 
 
@@ -55,7 +55,7 @@ class Admin::MessageTemplatesController < AdminController
     if @template.present?
       redirect_to admin_message_template_path(@template)
     else
-      redirect_to edit_filters_admin_message_templates_path, notice: 'No message template match.'
+      redirect_to edit_filters_admin_message_templates_path, notice: t('messages.notifications.find_template_empty')
     end
 
   end

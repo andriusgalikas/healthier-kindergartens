@@ -5,16 +5,16 @@
 
   %fieldset
     .form-group
-      %label.step-instruction{for: 'language'} Please Select the language :
+      %label.step-instruction{for: 'language'}= t('messages.labels.choose_language')
       = f.select :language, options_for_select(options_for_template_localizations, I18n.default_locale), {}, class: 'select'
 
     .form-group
-      %label.step-instruction{for: 'content'} Please Edit and Save Message :
+      %label.step-instruction{for: 'content'}= t('messages.labels.edit_and_save')
       = f.text_area :content, id: 'message_template_content'
 
     - if action_name != 'edit'
       .form-group
-        %label.step-instruction Or Upload Message Template File
+        %label.step-instruction= t('messages.labels.upload_template')
         %input{type: 'file', name: 'upload_template', id: 'upload-template'}
         .input-group
           %input{type: 'text', readonly: '', class: 'form-control', placeholder: 'Upload file'}
@@ -25,11 +25,11 @@
   .form-buttons
     .col-md-6
       - if @template.present?
-        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'} Cancel
+        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'}= t('form_labels.cancel')
       - else
-        %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'} Back
+        %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'}= t('form_labels.back')
     .col-md-6
-      = submit_tag 'Save', class: 'btn btn-raised btn-success'
+      = submit_tag t('form_labels.save'), class: 'btn btn-raised btn-success'
 
 :javascript
   $.material.init();

@@ -10,7 +10,7 @@
   = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
 .row#main-content
-  %h4.step-instuction Please choose target recipient for this template
+  %h4.step-instuction= t('messages.labels.choose_recipient')
 
   = form_tag subject_manager_messages_path, method: :post do
     = hidden_field_tag :target_department, params[:target_department]

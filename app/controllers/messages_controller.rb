@@ -27,12 +27,14 @@ class MessagesController < ApplicationController
     end
   end
 
-  def set_subject
-    @subject = MessageSubject.find params[:subject_id] if (params[:subject_id].present?)
-  end
+  def set_messages
+    find_message_template
 
-  def set_sub_subject
-    @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id].present?
+    cond_str, cond_arr = set_query_conditions
+
+    @messages ||= Message.where(cond_str, *cond_arr)
+                 .order(created_at: :desc)
+                 .page(params[:page])
   end
 
   def find_message_template
@@ -44,14 +46,12 @@ class MessagesController < ApplicationController
     end
   end
 
-  def set_messages
-    find_message_template
+  def set_subject
+    @subject = MessageSubject.find params[:subject_id] if (params[:subject_id].present?)
+  end
 
-    cond_str, cond_arr = set_query_conditions
-
-    @messages ||= Message.where(cond_str, *cond_arr)
-                 .order(created_at: :desc)
-                 .page(params[:page])
+  def set_sub_subject
+    @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id].present?
   end
 
   def set_query_conditions
@@ -70,7 +70,7 @@ class MessagesController < ApplicationController
       cond_arr << Date.parse(params['end_date'])
     end
 
-    if params['list_type'] == 'sent'  # set sender filter
+    if params['list_type'] == 'sent'  # 'show messages sent to' filter
       cond_str << 'owner_id = ?'
       cond_arr << current_user.id
 
@@ -78,13 +78,13 @@ class MessagesController < ApplicationController
         cond_str << '? = ANY (target_roles)'
         cond_arr << params['target_role']
       end
-    else   # set receiver filter
+    else                              # 'show messages received from' filter
       notifs = current_user.notifications.by_source_type('Message')
-      msg_ids = if params['target_role'].present?
+      msg_ids = if params['target_role'].present?             # received from particular role
                   notifs.map(&:source)
                     .select{|msg_source| msg_source.owner.role == params['target_role']}
                     .map(&:id)
-                else
+                else                                          # received from all roles
                   notifs.map(&:source)
                     .map(&:id)
                 end
