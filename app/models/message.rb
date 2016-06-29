@@ -26,7 +26,6 @@ class Message < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :notifications, :as => :source
 
-  default_scope    { where(deactivated_at: nil) }
   scope :by_owner,  ->(owner_id) { where(owner_id: owner_id) }
 
 end

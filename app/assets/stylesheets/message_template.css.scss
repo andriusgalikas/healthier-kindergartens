@@ -34,7 +34,7 @@ $info-green: #4caf50;
 
 
 body {
-  background: #f0f0f0;
+  background-color: white !important;
   color: #ABABB2;
 
   .main {
@@ -102,6 +102,7 @@ body {
         height: 250px;
         background: white;
         padding-top: 25px;
+        box-shadow:0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         img {
           height: 160px;
@@ -159,26 +160,6 @@ body {
     }
   }
 
-  #partners-carousel {
-    margin-top: 200px;
-
-    h2 {
-      color: black;
-    }
-
-    hr {
-      background-color: $info-blue;
-      border: 2px solid $info-blue;
-    }
-
-    .slick-carousel {
-      margin-top: 50px;
-
-      img {
-        width: 100px;
-      }
-    }
-  }
 }
 
 .header {

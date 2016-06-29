@@ -20,7 +20,7 @@
 
     .form-group
       .col-md-8.partner-message-content
-        %label.step-instruction{for: :content} Please write the content of your message :
+        %label.step-instruction{for: :content}= t('messages.labels.write_message_content')
         = f.text_area :content, id: 'message-content'
       .col-md-4.partners-list
         .panel.panel-default

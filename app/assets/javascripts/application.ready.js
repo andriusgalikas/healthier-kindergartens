@@ -105,6 +105,13 @@ $(document).ready(function()
       '</div>'
   });
 
+  $('.slick-carousel').slick({
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+  });
 
     $('#guild-btn').click(function(){
       startIntro()
@@ -113,14 +120,14 @@ $(document).ready(function()
     if (RegExp('multipage', 'gi').test(window.location.search)) {
         if(getLocation(window.location.href).pathname == '/welcome')
         {
-           startIntro(extractStep()) 
+           startIntro(extractStep())
            intro.goToStep(extractStep())
-        }   
+        }
         else
         {
-          startIntro()    
-        } 
-        
+          startIntro()
+        }
+
     }
     guideBar();
 });
@@ -129,24 +136,24 @@ function startIntro(){
     intro = introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
         if(getLocation(window.location.href).pathname == '/instruction')
         {
-            window.location.href = 'welcome?multipage=true&step=6';    
+            window.location.href = 'welcome?multipage=true&step=6';
         }
         else if(getLocation(window.location.href).pathname == '/dashboard')
         {
-            window.location.href = 'welcome';    
+            window.location.href = 'welcome';
         }
         else if(getLocation(window.location.href).pathname == '/welcome')
         {
             window.location.href = 'dashboard?multipage=true';
         }
-                
+
     }).onafterchange(function(targetElement) {
         if(targetElement.getAttribute('data-step') == '5')
         {
           (window.location.href = 'instruction?multipage=true').delay( 800 );
         }
     });
-   
+
 }
 
 function extractStep()
@@ -165,39 +172,39 @@ function guideBar()
     // ["Label" , "website link" , link_id, "bar color" , "bar image"]
     var social = [
      ["User Guide", 'javascript:void()',"guild-btn", "#365ebf", "/assets/success-icon.png"],
-     
+
      ];
 
-////////////////////////////////////////////////    
+////////////////////////////////////////////////
 //// DO NOT EDIT ANYTHING BELOW THIS LINE! /////
 ////////////////////////////////////////////////
-        
+
     $("#socialside").append('<ul class="mainul"></ul>');
-    
+
     /// generating bars
     for(var i=0;i<social.length;i++){
     $(".mainul").append("<li>" + '<ul class="scli" style="background-color:' + social[i][3] + '">' +
                         '<li id='+social[i][2] +'>' + social[i][0] + '<img src="' + social[i][4] + '"/></li></ul></li>');
                     }
-    
+
     /// bar click event
     $(".scli").click(function(){
-        var link = $(this).text();      
+        var link = $(this).text();
         for(var i=0;i<social.length;i++){
             if(social[i][0] == link){
                 startIntro();
             }
-        }       
+        }
     });
-    
+
     /// mouse hover event
-    $(".scli").mouseenter(function() {  
-        $(this).stop(true); 
+    $(".scli").mouseenter(function() {
+        $(this).stop(true);
         $(this).clearQueue();
             $(this).animate({
                 right : "139px"
             }, 300);
-                
+
     });
 
     /// mouse out event
@@ -251,4 +258,3 @@ function click_tab(id){
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
         $('#tab_'+id).addClass("jcmc-active-tab");
     }
-

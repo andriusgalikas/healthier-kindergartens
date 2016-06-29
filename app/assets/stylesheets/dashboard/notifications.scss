@@ -1,5 +1,6 @@
 $green: #4caf50;
 $grey: #ccc;
+$info-blue: #03a9f4;
 
 .notifications-panel {
   margin-top: -30px;
@@ -76,4 +77,26 @@ $grey: #ccc;
     }
   }
 
+}
+
+#partners-carousel {
+  margin-top: 150px;
+
+  h2 {
+    color: black;
+    text-align: center;
+  }
+
+  hr {
+    background-color: $info-blue;
+    border: 2px solid $info-blue;
+  }
+
+  .slick-carousel {
+    margin-top: 50px;
+
+    img {
+      width: 100px;
+    }
+  }
 }

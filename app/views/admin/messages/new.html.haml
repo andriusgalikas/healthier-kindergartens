@@ -15,7 +15,7 @@
       = f.text_field :title, placeholder: t('messages.labels.write_title'), class: 'form-control', required: true
 
     .form-group
-      %label.step-instruction{for: :content}= t('messages.labels.edit')
+      %label.step-instruction{for: :content}= t('messages.labels.write_message_content')
       = f.text_area :content, id: 'message_content'
 
     .form-buttons

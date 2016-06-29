@@ -82,6 +82,7 @@ en:
       create_sub_subject: Please Create Sub-subject
       write_title: Please write the title of the message
       create_regular_message: Create Regular Message
+      write_message_content: Please write the content of your message
       basic_filter: Filter option to see your messages
       new_notification: New Notification
       new_template: New Template
@@ -96,7 +97,6 @@ en:
       upload_template: Or Upload Message Template File
       filter_by_subject: Filter by Subject
       filter_by_sub_subject: Filter by Sub-subject
-      message_content: Message Template Content
       recipient: Recipient
       apply_filters: Apply Filters
       message_list: Message List
