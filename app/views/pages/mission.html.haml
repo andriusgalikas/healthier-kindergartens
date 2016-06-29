@@ -63,53 +63,45 @@
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
         = image_tag 'mission_hand.png'
         %h2.what-do-next-heading
-          What to do next:
-          %br
-            to mitigate risk in your facility,
-            %br
-              increase safety,
-              %br
-                and show you care.
-        %p.wdnp At HSCA, our core mission is to assist you, the childcare operator, to nurture a healthy and safe environment for children and childcare workers. We seek to carry out this mission as we:
+          = t('pages.mission.sub_heading5').html_safe
+        %p.wdnp= t('pages.mission.para6').html_safe
         %ul#mission-menu
           %li
-            %a{:href => ""} 1. Outline risks
+            %a{:href => ""}= t('pages.mission.label1').html_safe
           %li
-            %a{:href => ""} 2. Create community
+            %a{:href => ""}= t('pages.mission.label2').html_safe
           %li
-            %a{:href => ""} 3. Set brenchmark
+            %a{:href => ""}= t('pages.mission.label3').html_safe
   #threestrep.container
     .row
       .col-lg-6.col-md-6.col-sm-12.col-xs-12.out-ben
         .outline-risk
           %h2
             %span 1
-            Outline risks
-          %p Enlighten you about the serious and lesser-known health risks group care presents for children and their surrounding communities, and facilitate actionable, practical, easy-to-follow methods, procedures and tools…so you can practice the highest standard of infection prevention in your childcare environments—leading to healthier, happier children, staff, and parents.
+            = t('pages.mission.sub_heading6').html_safe
+          %p= t('pages.mission.para7').html_safe
         .benchmark
           %h2
             %span 3
-            Benchmark
-          %p Help accredited childcare facilities become a benchmark—and establish a new standard—by which healthier and safer childcare is measured and recognized.
+            = t('pages.mission.sub_heading7').html_safe
+          %p= t('pages.mission.para8').html_safe
       .col-lg-6.col-lg-6.col-md-6.col-sm-12.col-xs-12.community-area
         .community
           %h2
             %span 2
-            Community
-          %p Create a community of like-minded childcare operators who will help grow, promote and sustain a superior network of safe and health-preserving places for children to grow and be nurtured.
+            = t('pages.mission.sub_heading8').html_safe
+          %p= t('pages.mission.para9').html_safe
   #get-start-free.container
     .row
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        %p With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents.
+        %p= t('pages.mission.para10').html_safe
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         %h2.start-free
-          %span.get-start Get Started For Free
+          %span.get-start= t('pages.mission.head').html_safe
           = link_to getting_started_path do
             %i.fa.fa-angle-right
             %i.fa.fa-angle-right
             %i.fa.fa-angle-right
         %p
-          If you want to learn more about the highest standard
-          in the world for disease mitigation in childcare settings
-          — The Health prevering care Standard
+          = t('pages.mission.para11').html_safe
           %a.child-care-link{:href => "/standard"} click here

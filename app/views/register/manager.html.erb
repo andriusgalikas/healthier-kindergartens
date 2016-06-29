@@ -40,7 +40,7 @@
   <% end %>
 
   <div class="page-header">
-    <h2>Daycare</h2>
+    <h2><%= t('register.manager.main_heading')%></h2>
   </div>
   <div class="form-group">
     <%= daycare.label :name %>
@@ -64,7 +64,7 @@
   </div>
 
   <div class="page-header">
-    <h2>Departments</h2>
+    <h2><%= t('register.manager.main_heading2')%></h2>
   </div>
   <div id="departments" class="multi-field">
     <%= daycare.fields_for :departments do |department| %>

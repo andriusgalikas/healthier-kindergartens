@@ -3,15 +3,14 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 toward-higher">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 back-theme">
-               <h3 class="text-theme">Healthier Childcare membership</h3> 
-                <p class="text-theme">Enjoy the benefits of being part of our Healthier Childcare network.<br>
-                Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community. 
+               <h3 class="text-theme"><%= t('subscriptions.index.main_heading')%></h3> 
+                <p class="text-theme"><%= t('subscriptions.index.main_paragraph').html_safe %>
                 </p>
             </div>
             <div class="payment_form"></div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rang-block">
                 <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col pro">
-                  <h4 class ="text-theme rang-text pro">Professional Member:</h4>
+                  <h4 class ="text-theme rang-text pro"><%= t('subscriptions.index.sub_heading')%></h4>
                   <h3 class="text-theme rang-text pro">$20 / month</h3>
                   <div class="row tick-theme pro">
                     <div class="col-md-12 pro">
@@ -19,7 +18,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Print edition of Risk assessment</p>
+                        <p class="print1"><%= t('subscriptions.index.label')%></p>
                       </div> 
                     </div>    
                     <div class="col-md-12 pro">
@@ -27,7 +26,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Printable Pdf version of our instruction component of the program</p>
+                        <p class="print1"><%= t('subscriptions.index.label1')%></p>
                       </div> 
                     </div> 
                     <div class="col-md-12 pro">
@@ -35,7 +34,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Periodic newsletter</p>
+                        <p class="print1"><%= t('subscriptions.index.label2')%></p>
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
@@ -45,7 +44,7 @@
                   </div>  
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-col commit">
-                  <h4 class ="text-theme rang-text commit">Comitted Member: </h4>
+                  <h4 class ="text-theme rang-text commit"><%= t('subscriptions.index.sub_heading1')%> </h4>
                   <h3 class="text-theme rang-text commit">$49 / month</h3>
                   <div class="row tick-theme commit">
                     <div class="col-md-12 commit">
@@ -53,7 +52,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Online Risk assessment</p>
+                        <p class="print1"><%= t('subscriptions.index.label3')%></p>
                       </div> 
                     </div>    
                     <div class="col-md-12 commit">
@@ -61,7 +60,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Online Training</p>
+                        <p class="print1"><%= t('subscriptions.index.label4')%></p>
                       </div> 
                     </div>
                     <div class="col-md-12 commit">
@@ -69,7 +68,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">The book -Infected: The Urgent Necessity for DayCare Facilities to Keep Children,Staff and Communities Safe</p>
+                        <p class="print1"><%= t('subscriptions.index.label5')%></p>
                       </div> 
                     </div> 
                     <div class="col-md-12 commit">
@@ -77,7 +76,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Periodic newsletter</p>
+                        <p class="print1"><%= t('subscriptions.index.label6')%></p>
                       </div> 
                     </div> 
                     <div class="col-md-10 col-md-offset-2">
@@ -87,7 +86,7 @@
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 back-theme rang-last acc">
-                 <h4 class ="text-theme rang-text acc">Accreditation Member:</h4>
+                 <h4 class ="text-theme rang-text acc"><%= t('subscriptions.index.sub_heading2')%></h4>
                  <h3 class="text-theme rang-text acc">$99 / month</h3>
                  <div class="row tick-theme acc">
                     <div class="col-md-12 acc">
@@ -95,7 +94,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Online Risk assessment</p>
+                        <p class="print1"><%= t('subscriptions.index.label7')%></p>
                       </div> 
                     </div>    
                     <div class="col-md-12 acc">
@@ -103,7 +102,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Online Training</p>
+                        <p class="print1"><%= t('subscriptions.index.label8')%></p>
                       </div> 
                     </div>
                     <div class="col-md-12 acc">
@@ -111,7 +110,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Online and offline tools for tracking and implementation</p>
+                        <p class="print1"><%= t('subscriptions.index.label9')%></p>
                       </div> 
                     </div>
                     <div class="col-md-12 acc">
@@ -119,7 +118,7 @@
                         <img src="assets/imgpsh_fullsize.png" alt="tick" class="tick-blu">
                       </div>
                       <div class="col-md-10">
-                        <p class="print1">Periodic newsletter</p>
+                        <p class="print1"><%= t('subscriptions.index.label10')%></p>
                       </div> 
                     </div>
                     <div class="col-md-10 col-md-offset-2">
