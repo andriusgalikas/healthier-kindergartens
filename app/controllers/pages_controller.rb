@@ -30,6 +30,6 @@ class PagesController < ApplicationController
     private
 
     def set_subjects
-        @subjects ||= SurveySubject.all
+        @subjects ||= SurveySubject.where(language: I18n.locale.upcase)
     end
 end
