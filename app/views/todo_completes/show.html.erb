@@ -8,19 +8,19 @@
     </div>
     <form>
       <div class="form-group">
-        <label>Title</label>
+        <label><%= t('todo_completes.show.label1')%></label>
         <input type="text" readonly="true" value="<%= @todo.title %>" class="form-control">
       </div>
       <div class="form-group">
-        <label>Iteration Type</label>
+        <label><%= t('todo_completes.show.label2')%></label>
         <input type="text" readonly="true" value="<%= @todo.iteration_type.titleize %>" class="form-control">
       </div>
       <div class="form-group">
-        <label>Frequency</label>
+        <label><%= t('todo_completes.show.label3')%></label>
         <input type="text" readonly="true" value="<%= @todo.frequency.titleize %>" class="form-control">
       </div>
       <div class="page-header">
-        <h2>Tasks</h2>
+        <h2><%= t('todo_completes.show.heading')%></h2>
       </div>
       <ol id="complete-task">
         <% @todo_complete.task_completes.each do |tk| %>
