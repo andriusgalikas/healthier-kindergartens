@@ -246,6 +246,25 @@ en:
       right_para8: "Get access to tools that enables your staff to work smarter</b><br> Achieving the goal of a healthy and safe childcare facility is especially difficult without the correct tools. That is why accreditation program comes with  tools that enables daycare staff to  work smarter instead of  just harder to provide the most optimal health preserving care possible."
       right_para9: "Get the competitive edge</b><br> Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care."
       right_para10: "Positively affect  the next generation</b><br> Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come."
+  
+  mailers:
+    daycare:
+      invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
+      invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
+    registration:
+      send_confirmation: "Thank you for signing up!"  
+      send_confirmation: "Thank you for signing up!" 
+ 
+  dashboard:
+    manager:
+      heading1: "Todos"
+      heading2: "Invite"
+    parentee:
+      heading1: "Todos" 
+    worker:
+      heading1: "Todos"   
+ 
+
 
   notifications:
     featured_daycare: Childcare has signed up to detect infection risk to protect children from harm in their facility.
