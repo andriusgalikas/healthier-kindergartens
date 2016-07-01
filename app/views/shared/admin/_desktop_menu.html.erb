@@ -44,6 +44,12 @@
       <i class="icon-copy"></i>
     <% end %>
   </li>
+  <li class="<%= active_controller?(controller: 'admin/videos') %>">
+    <%= link_to admin_videos_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Videos' do %>
+      <i class="fa-video-camera" style="color:#8DC73F;"></i>
+    <% end %>
+  </li>
+  
 </ul>
 <ul id="secondary-menu">
   <li>
