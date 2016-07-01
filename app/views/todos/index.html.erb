@@ -10,10 +10,10 @@
             </div>
         <% end %>
         <div class="page-header">
-            <h2>Available Todos</h2>
+            <h2><%= t('todos.index.heading1')%></h2>
         </div>
         <% if current_user.available_todos.empty? %>
-            <p>You have no avaiable todos at the moment.</p>
+            <p><%= t('todos.index.line1')%></p>
         <% else %>
             <ul>
                 <% current_user.available_todos.each do |todo| %>
@@ -29,10 +29,10 @@
             </ul>
         <% end %>
         <div class="page-header">
-            <h2>In Progress Todos</h2>
+            <h2><%= t('todos.index.heading2')%></h2>
         </div>
         <% if current_user.incomplete_todo_completes.active.empty? %>
-            <p>You have no todos in progress currently.</p>
+            <p><%= t('todos.index.line2')%></p>
         <% else %>
             <ul>
                 <% current_user.incomplete_todo_completes.active.each do |todo_c| %>
