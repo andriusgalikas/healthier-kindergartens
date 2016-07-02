@@ -289,7 +289,93 @@ en:
       label3: "Frequency"
       heading: "Tasks"
 
- 
+  admin:
+    dashboard:
+      index:
+        heading: "Dashboard"   
+        sub_head: "Resource" 
+        label1: "Users"
+        label2: "Todos"
+        label3: "Daycares"
+        label4: "Discount Codes"
+        label5: "Plans"
+        label6: "Departments"
+        label7: "Subjects"
+        label8: "Surveys"
+    
+    daycare:
+      index:
+        heading: "Daycares"  
+        label1: "Name"  
+        label2: "Address"
+        label3: "Postcode"
+        label4: "Country"
+        label5: "Telephone"
+
+    departments:
+      index:
+        heading: "Departments" 
+        label1: "Name"
+        label2: "Daycare" 
+        line: You don't have any daycares yet.  
+
+    discount_codes: 
+      _form: 
+        heading: "Discount Code details" 
+        para: "Set the code, percentage value and status for your discount code."  
+      
+      new: 
+        heading: "New Discount Code" 
+
+      edit: 
+        heading: "Edit Discount Code"  
+
+      index: 
+        heading: "Discount Codes"
+        label1: "Code"
+        label2: "Value"
+        label3: "Status"  
+
+    plans:
+      _form: 
+        heading: "Plan details"  
+        para: "Set the name, price and child allocation for your plan."
+
+      edit: 
+        heading: "Edit Plan"  
+
+    subjects:
+      index:    
+        heading: "Subjects" 
+        heading1: "Name"   
+
+      _form: 
+        heading: "Subject details"  
+        para: "Set the title for your subject."  
+
+      new:
+        heading: "New Subject"  
+
+      edit: 
+        heading: "Edit Subject"  
+
+    survey_subjects:
+      _form: 
+        heading: "Survey details"    
+        para: "Set the title and description for your survey."
+        heading1: "Icon"
+        para2: "Set the icon imagery for your survey."
+
+      new: 
+        heading: "New Survey"  
+
+      edit: 
+        heading: "Edit Survey"  
+
+      index:
+        heading: "Surveys"  
+        para: "You don't have any surveys yet."
+
 
 
   notifications:
