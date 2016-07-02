@@ -110,7 +110,7 @@ Rails.application.routes.draw do
             match :upload, on: :member, via: [:get, :post]
             resources :surveys
         end
-        resources :videos, only: :index
+        resources :videos, except: :show
     end
 
     namespace :api, constraints: { format: 'json' } do
