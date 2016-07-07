@@ -13,5 +13,9 @@
           = image_tag 'template-message.png'
           %span Messages
 
+        = link_to illnesses_path, class: 'illnesses', 'data-step': '16', 'data-intro': 'As daycare worker, you can record and view Illness records' do
+          = image_tag 'alleragy_icon.jpg'
+          %span Illness
+
   .fourcol.last.notifications-panel
     = render 'notifications'

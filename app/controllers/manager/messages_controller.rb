@@ -1,5 +1,5 @@
 class Manager::MessagesController < ApplicationController
-  layout 'message'
+  layout 'dashboard_v2'
   before_action -> { authenticate_role!(['manager'])}
 
   def select_department

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  layout 'message'
+  layout 'dashboard_v2'
 
   def list
     params[:page] ||= 1

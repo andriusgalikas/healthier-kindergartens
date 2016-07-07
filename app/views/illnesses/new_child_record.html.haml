@@ -1,0 +1,26 @@
+= content_for :title, t('illnesses.illness')
+
+.row
+  .page-header
+    %h3= t('illnesses.breadcrumb.illness')
+
+.row.illnesses
+  %form#new-child-record
+    %label.step-instruction Choose the Department
+    %section
+      .form-group
+        - current_user.daycare.departments.each do |dept|
+          .radio
+            %label
+              %input{type: 'radio', name: 'child_department_id', value: dept.id}
+              = dept.name
+
+    %label.step-instruction Choose the Child
+    %section.choose-child
+      .form-group
+        = text_field_tag 'search-child-name', '', placeholder: t('illnesses.labels.search_child_name'), class: 'form-control', id: 'search-child-name'
+        .children-list
+
+
+:javascript
+  $.material.init();

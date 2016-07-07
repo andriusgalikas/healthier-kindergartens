@@ -5,7 +5,7 @@
     .form-step{class: "col-md-#{width} " + progress_bar_step(page_step, form_step)}
       .progress-bar-step.text-center
         - if page_step > form_step
-          %button.btn.btn-fab.btn-fab-mini.btn-success
+          .btn.btn-fab.btn-fab-mini.btn-success
             %i.material-icons grade
         - else
           %button.btn.btn-fab.btn-fab-mini

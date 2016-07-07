@@ -108,6 +108,15 @@ Rails.application.routes.draw do
 
     resources :trainings, only: :show
 
+    resources :illnesses, only: [:index] do
+      collection do
+        get  :add_record
+        get  :new_child_record
+        get  :new_department_record
+        get  :department_children
+      end
+    end
+
     namespace :admin do
         root to: 'dashboard#index'
         authenticate :user, lambda { |u| u.admin? } do

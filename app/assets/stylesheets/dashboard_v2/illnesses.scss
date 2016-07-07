@@ -1,0 +1,7 @@
+.illnesses {
+  .menu-items {
+    img {
+      @include border-radius(10px);
+    }
+  }
+}

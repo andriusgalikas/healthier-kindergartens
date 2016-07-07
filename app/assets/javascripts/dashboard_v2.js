@@ -23,3 +23,23 @@
 //= require jquery.shorten.min.js
 //= require printThis.js
 //= require message_template.ready
+//= require jquery.steps/build/jquery.steps.min.js
+//= require dashboard_v2/illnesses.js
+
+!function($) {
+  $(document).ready(function() {
+
+    $.material.init();
+
+    $(".select").dropdown({ "autoinit" : ".select" });
+
+    $('.truncate').shorten({
+      showChars: 500
+    });
+
+    $('#message_template_content').froalaEditor({
+      heightMin: 200
+    });
+
+  });
+}(jQuery);

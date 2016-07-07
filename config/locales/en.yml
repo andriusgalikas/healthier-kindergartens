@@ -121,6 +121,17 @@ en:
       registration: Parent Registration
       select_daycare: Search and select the daycare which your child is part of
 
+  illnesses:
+    illness: Illness
+
+    labels:
+      add_record: Add Record
+      view_old_records: View Old Records
+      choose_record_for: Add record related to a
+      child: Child
+      department: Department
+      search_child_name: Search Child by Name
+
   form_labels:
     next: Next
     back: Back

@@ -1,0 +1,39 @@
+/*
+ *= require_self
+ *= require bootstrap-material-design/dist/css/bootstrap-material-design.css
+ *= require bootstrap-material-design/dist/css/ripples.min.css
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require plugins/colors.min.css
+ *= require plugins/draggable.min.css
+ *= require plugins/file.min.css
+ *= require plugins/image_manager.min.css
+ *= require plugins/image.min.css
+ *= require plugins/quick_insert.min.css
+ *= require jquery.dropdown.css
+ *= require jquery.datetimepicker
+ *= require slick-carousel/slick/slick.css
+ *= require slick-carousel/slick/slick-theme.css
+ *= require jquery.steps/jquery.steps.css
+*/
+
+@import 'compass/css3';
+
+$grey: #d5d5de;
+$darker-grey: #ccc;
+$header-blue: #296BD1;
+$info-blue: #03a9f4;
+$sky-blue: #6fd1fd;
+$info-green: #4caf50;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+@import "dashboard_v2/base";
+@import "dashboard_v2/messages";
+@import "dashboard_v2/illnesses";
