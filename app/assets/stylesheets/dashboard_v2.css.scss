@@ -10,11 +10,12 @@
  *= require plugins/image_manager.min.css
  *= require plugins/image.min.css
  *= require plugins/quick_insert.min.css
- *= require jquery.dropdown.css
+ *= require jquery.steps/jquery.steps.css
+  *= require jquery.dropdown.css
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
  *= require slick-carousel/slick/slick-theme.css
- *= require jquery.steps/jquery.steps.css
+
 */
 
 @import 'compass/css3';

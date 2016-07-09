@@ -114,6 +114,13 @@ Rails.application.routes.draw do
         get  :new_child_record
         get  :new_department_record
         get  :department_children
+        get  :child_profile
+        get  :symptoms
+        get  :department_workers
+        get  :worker_profile
+
+        post :create_child_record
+        post :create_department_record
       end
     end
 

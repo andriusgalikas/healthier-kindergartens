@@ -92,6 +92,14 @@ module ApplicationHelper
     end
   end
 
+  def pretty_long_date(date)
+    date.strftime('%d/%m/%Y') + ' @ ' + date.strftime('%r')
+  end
+
+  def pretty_short_date(date)
+    date.strftime('%d/%m/%Y')
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}

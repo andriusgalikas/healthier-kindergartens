@@ -1,0 +1,12 @@
+.form-group
+  %label.step-instruction= t('illnesses.labels.worker_details')
+
+  %dl.dl-horizontal
+    %dt= t('illnesses.labels.name')
+    %dd= @worker.name
+
+    %dt= t('illnesses.labels.email')
+    %dd= @worker.email
+
+    %dt= t('illness.labels.department')
+    %dd= @worker.department.name

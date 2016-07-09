@@ -24,7 +24,9 @@
 //= require printThis.js
 //= require message_template.ready
 //= require jquery.steps/build/jquery.steps.min.js
+//= require typeahead.js/dist/typeahead.bundle.min.js
 //= require dashboard_v2/illnesses.js
+//= require handlebars/handlebars.min.js
 
 !function($) {
   $(document).ready(function() {

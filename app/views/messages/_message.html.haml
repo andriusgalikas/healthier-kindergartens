@@ -5,7 +5,7 @@
       %span= message_role_value(message)
 
     .col-md-4.sent-date.centralize
-      = pretty_message_date(message.created_at)
+      = pretty_long_date(message.created_at)
 
     .col-md-4
       %a.print-btn{href: '#', 'data-target_message': "#message-#{message.id}", 'data-sub_subject': message.message_template ? message.message_template.sub_subject.title : '', 'data-subject': message.message_template ? message.message_template.sub_subject.parent_subject.title : ''}

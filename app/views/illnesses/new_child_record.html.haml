@@ -5,22 +5,55 @@
     %h3= t('illnesses.breadcrumb.illness')
 
 .row.illnesses
-  %form#new-child-record
-    %label.step-instruction Choose the Department
-    %section
-      .form-group
-        - current_user.daycare.departments.each do |dept|
-          .radio
-            %label
-              %input{type: 'radio', name: 'child_department_id', value: dept.id}
-              = dept.name
+  = form_tag create_child_record_illnesses_path, id: 'new-child-record' do
+    %label Choose the Department
+    %section.choose-department
+      = render 'choose_department'
 
-    %label.step-instruction Choose the Child
+    %label Choose the Child
     %section.choose-child
-      .form-group
-        = text_field_tag 'search-child-name', '', placeholder: t('illnesses.labels.search_child_name'), class: 'form-control', id: 'search-child-name'
-        .children-list
+      = render 'choose_child'
 
+    %label= t('illnesses.labels.child_details')
+    %section.child-profile
+
+    %label= t('illnesses.labels.illness_details')
+    %section.illness-details
+      = render 'illness_details'
+
+    %label= t('illnesses.labels.contact_parents')
+    %section.contact-parents
+      = render 'contact_parents'
+
+    %label= t('illnesses.labels.contact_doctors')
+    %section.contact-doctors
+      = render 'contact_doctors'
+
+    %label= t('illnesses.labels.additional_actions')
+    %section.additional-actions
+      = render 'additional_actions'
+
+    %label= t('illnesses.labels.worker_department')
+    %section.worker-department
+      = render 'worker_department'
+
+    %label= t('illnesses.labels.worker_name')
+    %section.worker-names
+
+    %label= t('illnesses.labels.worker_details')
+    %section.worker-profile
+
+    %label= t('illnesses.labels.worker_confirmation')
+    %section.worker-confirmation
+      = render 'worker_confirmation'
+
+%script#search-child-name-options-tmp{type: 'text/x-handlebars-template'}
+  {{#each children}}
+  .radio
+    %label
+      %input{type: 'radio', name: 'child-id', value: '{{ id }}', 'data-child_name': '{{ name }}'}
+      {{ name }}
+  {{/each}}
 
 :javascript
   $.material.init();

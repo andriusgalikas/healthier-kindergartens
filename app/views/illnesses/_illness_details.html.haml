@@ -1,0 +1,9 @@
+.form-group
+  .illness-detail#illness-known-yes
+    = select_tag 'illness-list', options_for_select(illness_list), class: 'select', prompt: t('illnesses.labels.select_illness')
+
+    #symptoms
+
+  .illness-detail#illness-known-no
+    %label.step-instruction= t('illnesses.labels.write_symptoms')
+    = text_area 'illness', 'desc', class: 'form-control', rows: '5'

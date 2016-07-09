@@ -130,7 +130,41 @@ en:
       choose_record_for: Add record related to a
       child: Child
       department: Department
-      search_child_name: Search Child by Name
+      search: Search
+      child_details: Child Details
+      name: Name
+      age: Age
+      birthday: Birthday
+      reporting_date: Reporting Date
+      worker_knows_illness_question: Do you what sickness the child is suffering?
+      illness_details: Illness Details
+      illness_yes: 'Yes'
+      illness_no: 'No'
+      select_illness: Select illness
+      search_illness_name: Search Illness by Name
+      select_symptoms: Please check symptoms
+      write_symptoms: Please write a description of symptoms and circumstance
+      contact_parents: Contact Parents
+      contact_parents_question: Do you want to contact the parents of this child?
+      contact_parent_message: Write a message to the parent
+      contact_parent_reason: Please write appropriate reason for not contacting the parents of this child.
+      contact_doctors: Contact Doctors
+      contact_doctors_question: Do you want to contact the doctor of this child?
+      contact_doctor_message: Write a message to the doctor
+      contact_doctor_reason: Please write appropriate reason for not contacting the doctors of this child.
+      additional_actions: Additional Actions
+      additional_actions_question: Please write if you have taken any action including first aid administration of medication in your facility
+      worker_details_fill_up: Write your personal details to complete this record
+      select_department: Select department
+      select_worker: Select Worker
+      worker_details: Worker Details
+      department: Department
+      confirmation_pw: Please enter your login password to validate
+      department_record_question: Please indicate the number of people having the same illness all at once
+      department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
+      workers_count: Number of Workers
+      children_count: Number of Children
+
 
   form_labels:
     next: Next

@@ -57,6 +57,7 @@ body {
     .dropdownjs {
       ul {
         color: black;
+        width: 100%;
 
         li.disabled {
           color: $grey;
@@ -64,7 +65,7 @@ body {
       }
     }
 
-    .checkbox {
+    .checkbox.partners {
       background: $grey;
       border: 1px solid $darker-grey;
       color: black;
@@ -119,4 +120,13 @@ body {
     float: left;
     padding-left: 10px;
   }
+}
+
+.wizard {
+  .content {
+    input {
+      border: none !important;
+    }
+  }
+
 }

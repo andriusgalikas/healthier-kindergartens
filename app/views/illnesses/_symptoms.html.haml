@@ -1,0 +1,9 @@
+%label.step-instruction= t('illnesses.labels.select_symptoms')
+- @symptoms.each_pair do |code, name|
+  .checkbox
+    %label
+      = check_box_tag 'symptoms[]', code
+      = name
+
+:javascript
+  $.material.init();

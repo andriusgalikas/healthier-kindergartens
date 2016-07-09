@@ -1,0 +1,4 @@
+.form-group
+  %label.step-instruction= t('illnesses.labels.worker_details_fill_up')
+
+  = select_tag 'worker-department', options_for_select(user_departments.collect{|dept| [dept[:name], dept[:id]]}), class: 'select', prompt: t('illnesses.labels.select_department')

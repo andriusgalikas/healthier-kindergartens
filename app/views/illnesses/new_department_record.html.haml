@@ -1,0 +1,22 @@
+= content_for :title, t('illnesses.illness')
+
+.row
+  .page-header
+    %h3= t('illnesses.breadcrumb.illness')
+
+.row.illnesses
+  %label.step-instruction
+    = t('illnesses.labels.department_record_question')
+  .text-info= t('illnesses.labels.department_record_help_text')
+
+  = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
+    .form-group
+      %label{for: 'workers-count'}= t('illnesses.labels.workers_count')
+      = text_field_tag 'workers-count', '', class: 'form-control'
+
+    .form-group
+      %label{for: 'children-count'}= t('illnesses.labels.children_count')
+      = text_field_tag 'children-count', '', class: 'form-control'
+
+    .form-buttons
+      = submit_tag 'Submit', class: 'btn btn-raised btn-success'

@@ -4,4 +4,36 @@
       @include border-radius(10px);
     }
   }
+
+  #search-child-name .tt-dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  #new-child-record {
+    .child-profile {
+      margin-bottom: 100px;
+
+      img {
+        height: 125px;
+      }
+    }
+  }
+
+  .illness-details {
+    .illness-detail{
+      display: none;
+    }
+
+    #symptoms {
+      margin-top: 30px;
+    }
+  }
+
+  .contact-parents, .contact-doctors {
+    .contact-parent, .contact-doctor {
+      display: none;
+      margin-top: 50px;
+    }
+  }
 }
