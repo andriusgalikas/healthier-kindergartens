@@ -51,6 +51,6 @@ class Admin::VideosController < AdminController
 	end
 
 	def video_params
-		params.require(:video).permit(:url, :type, :category, :language)
+		params.require(:video).permit(:url, :video_type, :category, :language)
 	end
 end
