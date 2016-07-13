@@ -5,7 +5,7 @@ module IllnessesHelper
   end
 
   def illness_list
-    ILLNESSES.values.collect{|illness| [illness[:name], illness[:code]]}.sort
+    ILLNESSES.values.inject([]){|list, illness| list << {code: illness[:code], name: illness[:name]}; list }
   end
 
 end

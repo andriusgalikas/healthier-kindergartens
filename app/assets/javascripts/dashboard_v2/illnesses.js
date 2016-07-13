@@ -1,75 +1,106 @@
-var Illnesses;
+var Illnesses = {
 
-!function($) {
-  'use strict';
+  initChildRecord: function() {
+    $.material.init();
 
-  var Illnesses = Object.create({
-    initSearchDepartment: function() {
-      $('#search-department-name .typeahead')
-        .typeahead(
-          {
-            highlight: true
+    this.initChildIllnessForm();
+    this.initSearchDepartment();
+    this.childListUpdater();
+    this.childProfileFetcher();
+    this.determineIllness();
+    this.initSearchIllness();
+    this.determineSymptoms();
+    this.showContactParentDetails();
+    this.showContactDoctorDetails();
+    this.initSearchWorkerDepartment();
+    this.departmentWorkersFetcher();
+    this.workerProfileFetcher();
+
+    $('.datepicker').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false
+    });
+  },
+
+  initChildIllnessForm: function() {
+    $('#new-child-record').steps({
+      headerTag: "label",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      stepsOrientation: "vertical",
+      labels: {
+        finish: 'Submit'
+      },
+      onFinished: function() {
+        $('form').trigger('submit');
+      }
+    });
+  },
+
+  initSearchDepartment: function() {
+    var data = $('form').find('#search-department-name').data('department_names');
+
+    $(document).find('#search-department-name .typeahead')
+      .typeahead(
+        {
+          highlight: true
+        },
+        {
+          limit: 10,
+          source: function(query, process) {
+            var names = [];
+            var map = {};
+
+            $.each(data, function(i, dept) {
+              map[dept.name] = dept;
+              names.push(dept.name);
+            });
+
+            process(names);
           },
-          {
-            limit: 10,
-            source: function(query, process) {
-              var names = [];
-              var map = {};
-              var data = $('form').find('#search-department-name').data('department_names');
-
-              $.each(data, function(i, dept) {
-                map[dept.name] = dept;
-                names.push(dept.name);
-              });
-
-              process(names);
-            },
-            matcher: function (target) {
-              if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
-                return true;
-              }
-            },
-            sorter: function (departments) {
-              return departments.sort();
-            },
-            highlighter: function (target) {
-              var regex = new RegExp( '(' + this.query + ')', 'gi' );
-              return target.replace( regex, "<strong>$1</strong>" );
-            },
-            updater: function (target) {
-              selectedDept = map[target].id;
-              return target;
-            },
-            templates: {
-              suggestion: function(target) {
-                return "<div>" + target + "</div>"
-              }
+          matcher: function (target) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+              return true;
             }
-          })
-        .bind('typeahead:select', function(ev, suggestion) {
-          $('form').find('input[data-department_name="' + suggestion + '"]').prop('checked', true);
-          $('form').find('input[name="child-department-id"]').trigger('change');
+          },
+          sorter: function (departments) {
+            return departments.sort();
+          },
+          highlighter: function (target) {
+            var regex = new RegExp( '(' + this.query + ')', 'gi' );
+            return target.replace( regex, "<strong>$1</strong>" );
+          },
+          updater: function (target) {
+            selectedDept = map[target].id;
+            return target;
+          },
+          templates: {
+            suggestion: function(target) {
+              return "<div>" + target + "</div>"
+            }
+          }
+        })
+      .bind('typeahead:select', function(ev, suggestion) {
+        $('form').find('input[data-department_name="' + suggestion + '"]').prop('checked', true);
+        $('form').find('input[name="child[department-id]"]').trigger('change');
+      });
+  },
 
-          $('#search-child-name').typeahead('destroy');
-        });
-    },
-
-    updateChildList: function() {
-      var list = $('form#new-child-record').find('.choose-child .children-list');
-      var deptId = $('input[name="child-department-id"]:checked').val();
-      var _this = this;
+  childListUpdater: function() {
+    $('input[name="child[department-id]"]').on('change', function() {
+      $('#search-child-name').typeahead('destroy');
+      var deptId = $('input[name="child[department-id]"]:checked').val();
 
       $.ajax({
         url: '/illnesses/department_children',
         data: {department_id: deptId},
         type: 'GET',
-        success: function(data) {
-          var htmlSrc = $('#search-child-name-options-tmp').html();
-          var template = Handlebars.compile(htmlSrc);
-          var childrenOptionsHtml = template({children: data});
-
-          list.html(childrenOptionsHtml);
+        success: function(html) {
+          $('form').find('.choose-child').html(html);
           $.material.init();
+
+          var data = $('form').find('#search-child-name').data('children_names');
+
           $('#search-child-name .typeahead')
             .typeahead(
               {
@@ -112,18 +143,19 @@ var Illnesses;
               })
             .bind('typeahead:select', function(ev, suggestion) {
               $('form').find('input[data-child_name="' + suggestion + '"]').prop('checked', true);
-              $('form').find('input[name="child-id"]').trigger('change');
+              $('form').find('input[name="child[id]"]').trigger('change');
             });
         },
         error: function() {
           console.log('error');
         }
-
       })
-    },
+    });
+  },
 
-    fetchChildData: function() {
-      var childId = $(this).val();
+  childProfileFetcher: function() {
+    $('body').on('change', 'input[name="child[id]"]', function() {
+      var childId = $('form').find('input[name="child[id]"]:checked').val();
 
       $.ajax({
         url: '/illnesses/child_profile',
@@ -134,17 +166,72 @@ var Illnesses;
           $.material.init();
         }
       });
-    },
+    });
+  },
 
-    determineIllness: function() {
+  determineIllness: function() {
+    $('body').on('change', 'input[name="illness[known][answer]"]', function() {
       var illnessKnown = $(this).val();
 
       $('form').find('.illness-detail').hide();
       $('form').find('#illness-known-' + illnessKnown).show();
-    },
+    });
+  },
 
-    determineSymptoms: function() {
+  initSearchIllness: function() {
+    var data = $('form').find('#search-illness-name').data('illness_names');
+
+    $(document).find('#search-illness-name .typeahead')
+      .typeahead(
+        {
+          highlight: true
+        },
+        {
+          limit: 10,
+          source: function(query, process) {
+            var names = [];
+            var map = {};
+
+            $.each(data, function(i, illness) {
+              map[illness.name] = illness;
+              names.push(illness.name);
+            });
+
+            process(names);
+          },
+          matcher: function (target) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+              return true;
+            }
+          },
+          sorter: function (illnesses) {
+            return illnesses.sort();
+          },
+          highlighter: function (target) {
+            var regex = new RegExp( '(' + this.query + ')', 'gi' );
+            return target.replace( regex, "<strong>$1</strong>" );
+          },
+          updater: function (target) {
+            selectedIllness = map[target].id;
+            return target;
+          },
+          templates: {
+            suggestion: function(target) {
+              return "<div>" + target + "</div>"
+            }
+          }
+        })
+      .bind('typeahead:select', function(ev, suggestion) {
+        $('form').find('input[data-illness_name="' + suggestion + '"]').prop('checked', true);
+        $('form').find('input[name="illness[id]"]').trigger('change');
+      });
+  },
+
+  determineSymptoms: function() {
+    $('body').on('change', 'input[name="illness[id]"]:checked', function() {
       var illnessCode = $(this).val();
+      var illnessName = $(this).data('illness_name');
+      $('input#search-illness-name').val(illnessName);
 
       if (illnessCode.length > 0) {
         $.ajax({
@@ -153,26 +240,83 @@ var Illnesses;
           type: 'GET',
           success: function(html) {
             $('form').find('#symptoms').html(html);
+            $.material.init();
           }
         })
       }
-    },
+    });
+  },
 
-    showContactParentsDetails: function() {
-      var contactParents = $(this).val();
+  showContactParentDetails: function() {
+    $('input[name="contact[parent][answer]"]').on('change', function() {
+      var contactParent = $(this).val();
 
-      $('form').find('.contact-parent').hide();
-      $('form').find('#contact-parent-' + contactParents).show();
-    },
+      $('form').find('.contact-parent-ans').hide();
+      $('form').find('#contact-parent-' + contactParent).show();
+    });
 
-    showContactDoctorsDetails: function() {
-      var contactDoctors = $(this).val();
+  },
 
-      $('form').find('.contact-doctor').hide();
-      $('form').find('#contact-doctor-' + contactDoctors).show();
-    },
+  showContactDoctorDetails: function() {
+    $('input[name="contact[doctor][answer]"]').on('change', function() {
+      var contactDoctor = $(this).val();
 
-    fetchDepartmentWorkers: function() {
+      $('form').find('.contact-doctor-ans').hide();
+      $('form').find('#contact-doctor-' + contactDoctor).show();
+    });
+  },
+
+  initSearchWorkerDepartment: function() {
+    var data = $('form').find('#search-worker-department-name').data('worker_department_names');
+
+    $(document).find('#search-worker-department-name .typeahead')
+      .typeahead(
+        {
+          highlight: true
+        },
+        {
+          limit: 10,
+          source: function(query, process) {
+            var names = [];
+            var map = {};
+
+            $.each(data, function(i, dept) {
+              map[dept.name] = dept;
+              names.push(dept.name);
+            });
+
+            process(names);
+          },
+          matcher: function (target) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+              return true;
+            }
+          },
+          sorter: function (departments) {
+            return departments.sort();
+          },
+          highlighter: function (target) {
+            var regex = new RegExp( '(' + this.query + ')', 'gi' );
+            return target.replace( regex, "<strong>$1</strong>" );
+          },
+          updater: function (target) {
+            selectedDept = map[target].id;
+            return target;
+          },
+          templates: {
+            suggestion: function(target) {
+              return "<div>" + target + "</div>"
+            }
+          }
+        })
+      .bind('typeahead:select', function(ev, suggestion) {
+        $('form').find('input[data-worker_department_name="' + suggestion + '"]').prop('checked', true);
+        $('form').find('input[name="worker[department-id]"]').trigger('change');
+      });
+  },
+
+  departmentWorkersFetcher: function() {
+    $('input[name="worker[department-id]"]').on('change', function() {
       var deptId = $(this).val();
 
       $.ajax({
@@ -183,9 +327,11 @@ var Illnesses;
           $('form').find('.worker-names').html(html);
         }
       });
-    },
+    });
+  },
 
-    fetchWorkerData: function() {
+  workerProfileFetcher: function() {
+    $('body').on('change', 'select[name="worker[id]"]', function() {
       var workerId = $(this).val();
 
       if (workerId.length > 0) {
@@ -198,36 +344,7 @@ var Illnesses;
           }
         });
       }
-    }
-
-  });
-
-  $(document).ready(function() {
-
-    Illnesses.initSearchDepartment();
-
-    $('#new-child-record').steps({
-      headerTag: "label",
-      bodyTag: "section",
-      transitionEffect: "slideLeft",
-      stepsOrientation: "vertical",
-      labels: {
-        finish: 'Submit'
-      },
-      onFinished: function() {
-        $('form').trigger('submit');
-      }
     });
+  }
 
-    $('form#new-child-record')
-      .on('change', 'input[name="child-department-id"]', Illnesses.updateChildList)
-      .on('change', 'input[name="child-id"]', Illnesses.fetchChildData)
-      .on('change', 'input[name="illness-known"]', Illnesses.determineIllness)
-      .on('change', 'select[name="illness-list"]', Illnesses.determineSymptoms)
-      .on('change', 'input[name="contact-parents"]', Illnesses.showContactParentsDetails)
-      .on('change', 'input[name="contact-doctors"]', Illnesses.showContactDoctorsDetails)
-      .on('change', 'select[name="worker-department"]', Illnesses.fetchDepartmentWorkers)
-      .on('change', 'select[name="worker-id"]', Illnesses.fetchWorkerData);
-
-  })
-}(jQuery);
+}

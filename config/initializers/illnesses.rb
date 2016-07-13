@@ -78,12 +78,12 @@ ILLNESSES = {
     :symptoms => []
   },
   'shigellosis' => {
-    :name     => 'shigellosis',
+    :code     => 'shigellosis',
     :name     => 'Shigellosis',
     :symptoms => []
   },
   'scabies' => {
-    :name     => 'scabies',
+    :code     => 'scabies',
     :name     => 'Scabies',
     :symptoms => []
   },

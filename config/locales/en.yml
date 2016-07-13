@@ -125,8 +125,9 @@ en:
     illness: Illness
 
     labels:
-      add_record: Add Record
-      view_old_records: View Old Records
+      add_record: Add Illness Record
+      view_old_records: View Old Illness Records
+      illness_guidance: Illness Guidance
       choose_record_for: Add record related to a
       child: Child
       department: Department
@@ -144,12 +145,12 @@ en:
       search_illness_name: Search Illness by Name
       select_symptoms: Please check symptoms
       write_symptoms: Please write a description of symptoms and circumstance
-      contact_parents: Contact Parents
-      contact_parents_question: Do you want to contact the parents of this child?
+      contact_parent: Contact Parent
+      contact_parent_question: Do you want to contact the parents of this child?
       contact_parent_message: Write a message to the parent
       contact_parent_reason: Please write appropriate reason for not contacting the parents of this child.
-      contact_doctors: Contact Doctors
-      contact_doctors_question: Do you want to contact the doctor of this child?
+      contact_doctor: Contact Doctor
+      contact_doctor_question: Do you want to contact the doctor of this child?
       contact_doctor_message: Write a message to the doctor
       contact_doctor_reason: Please write appropriate reason for not contacting the doctors of this child.
       additional_actions: Additional Actions
@@ -164,7 +165,10 @@ en:
       department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
       workers_count: Number of Workers
       children_count: Number of Children
-
+      illness_start_date: Please enter the date when the symptoms started showing
+      illness_end_date: Please enter the date when the symptoms stopped showing
+      possible_trigger: Please enter any events which could be possible causes of the outbreak, including field trips, contact with animals etc.
+      other_details: Any other relevant details
 
   form_labels:
     next: Next

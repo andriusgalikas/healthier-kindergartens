@@ -1,9 +1,40 @@
-.form-group
-  .illness-detail#illness-known-yes
-    = select_tag 'illness-list', options_for_select(illness_list), class: 'select', prompt: t('illnesses.labels.select_illness')
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.illness_details')
 
-    #symptoms
+.illness-detail#illness-known-yes
+  .form-group
+    %label.step-instruction= t('illnesses.labels.select_illness')
+    .row
+      .col-md-6
+        #search-illness-name{'data-illness_names': illness_list.to_json}
+          = text_field_tag 'search-illness-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
 
-  .illness-detail#illness-known-no
+      .col-md-6.illness-list
+        - illness_list.each do |illness|
+          .radio
+            %label
+              %input{type: 'radio', name: 'illness[id]', value: illness[:code], 'data-illness_name': illness[:name]}
+              = illness[:name]
+  #symptoms
+
+.illness-detail#illness-known-no
+  .form-group
     %label.step-instruction= t('illnesses.labels.write_symptoms')
     = text_area 'illness', 'desc', class: 'form-control', rows: '5'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.illness_start_date')
+  = text_field_tag 'illness[start_date]', '', class: 'datepicker form-control'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.illness_end_date')
+  = text_field_tag 'illness[end_date]', '', class: 'datepicker form-control'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.possible_trigger')
+  = text_area 'illness', 'possible_trigger', class: 'form-control'
+
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.other_details')
+  = text_area 'illness', 'other_details', class: 'form-control'

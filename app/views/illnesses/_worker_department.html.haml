@@ -1,4 +1,16 @@
-.form-group
+.row.centralize
   %label.step-instruction= t('illnesses.labels.worker_details_fill_up')
 
-  = select_tag 'worker-department', options_for_select(user_departments.collect{|dept| [dept[:name], dept[:id]]}), class: 'select', prompt: t('illnesses.labels.select_department')
+.form-group
+  %label.step-instruction= t('illnesses.labels.select_department')
+  .row
+    .col-md-6
+      #search-worker-department-name{'data-worker_department_names': user_departments.to_json}
+        = text_field_tag 'search-worker-department-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
+
+    .col-md-6
+      - user_departments.each do |dept|
+        .radio
+          %label
+            %input{type: 'radio', name: 'worker[department-id]', value: dept[:id], 'data-worker_department_name': dept[:name]}
+            = dept[:name]

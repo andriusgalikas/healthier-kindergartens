@@ -124,6 +124,10 @@ body {
 
 .wizard {
   .content {
+    section {
+      overflow: auto;
+    }
+
     input {
       border: none !important;
     }

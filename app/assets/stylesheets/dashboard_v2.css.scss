@@ -10,8 +10,8 @@
  *= require plugins/image_manager.min.css
  *= require plugins/image.min.css
  *= require plugins/quick_insert.min.css
+ *= require jquery.dropdown.css
  *= require jquery.steps/jquery.steps.css
-  *= require jquery.dropdown.css
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
  *= require slick-carousel/slick/slick-theme.css
@@ -22,6 +22,7 @@
 
 $grey: #d5d5de;
 $darker-grey: #ccc;
+$lighter-grey: #eaeaea;
 $header-blue: #296BD1;
 $info-blue: #03a9f4;
 $sky-blue: #6fd1fd;

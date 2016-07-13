@@ -1,18 +1,19 @@
 .row.centralize
   %label.step-instruction= t('illnesses.labels.contact_parents_question')
+
 .row.centralize
   - ['yes', 'no'].each do |ans|
     .radio
       %label
-        %input{type: 'radio', name: 'contact-parents', value: ans}
+        %input{type: 'radio', name: 'contact[parent][answer]', value: ans}
         = t("illnesses.labels.illness_#{ans}")
 
-.contact-parent#contact-parent-yes
+.contact-parent-ans#contact-parent-yes
   .form-group
     %label.step-instruction= t('illnesses.labels.contact_parent_message')
-    = text_area 'contact-parent', 'message', class: 'form-control', rows: '5'
+    = text_area 'contact[parent]', 'message', class: 'form-control', rows: '5'
 
-.contact-parent#contact-parent-no
+.contact-parent-ans#contact-parent-no
   .form-group
     %label.step-instruction= t('illnesses.labels.contact_parent_reason')
-    = text_area 'contact-parent', 'reason', class: 'form-control', rows: '5'
+    = text_area 'contact[parent]', 'reason', class: 'form-control', rows: '5'

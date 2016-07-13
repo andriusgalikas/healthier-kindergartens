@@ -1,3 +1,6 @@
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.child_details')
+
 .form-group
   .row
     .col-md-6
@@ -25,5 +28,5 @@
     - ['yes', 'no'].each do |ans|
       .radio
         %label
-          %input{type: 'radio', name: 'illness-known', value: ans}
+          %input{type: 'radio', name: 'illness[known][answer]', value: ans}
           = t("illnesses.labels.illness_#{ans}")

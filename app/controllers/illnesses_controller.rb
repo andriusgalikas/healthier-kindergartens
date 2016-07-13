@@ -4,8 +4,7 @@ class IllnessesController < ApplicationController
   def department_children
     set_children
 
-    #    render partial: 'child', collection: @children
-    render json: @children.inject([]){|list, child| list << {id: child.id, name: child.name}; list}
+    render partial: 'choose_child'
   end
 
   def child_profile

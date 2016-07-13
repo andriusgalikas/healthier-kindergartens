@@ -12,11 +12,11 @@
   = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
     .form-group
       %label{for: 'workers-count'}= t('illnesses.labels.workers_count')
-      = text_field_tag 'workers-count', '', class: 'form-control'
+      %input{type: 'number', class: 'form-control', name: 'workers-count'}
 
     .form-group
       %label{for: 'children-count'}= t('illnesses.labels.children_count')
-      = text_field_tag 'children-count', '', class: 'form-control'
+      %input{type:'number', class: 'form-control', name: 'children-count'}
 
     .form-buttons
       = submit_tag 'Submit', class: 'btn btn-raised btn-success'

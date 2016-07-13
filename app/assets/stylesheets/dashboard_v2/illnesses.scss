@@ -5,10 +5,28 @@
     }
   }
 
-  #search-child-name .tt-dropdown-menu {
-    max-height: 150px;
-    overflow-y: auto;
-  }
+  #search-child-name {
+    &.tt-dropdown-menu {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .tt-menu {
+      background: white;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+      padding: 10px;
+      transition: transform 0.2s ease-out;
+      color: black;
+      min-widt: 200px;
+
+      .tt-suggestion {
+        &:hover {
+          background: $lighter-grey;
+        }
+      }
+    }
+ }
+
 
   #new-child-record {
     .child-profile {
@@ -21,19 +39,25 @@
   }
 
   .illness-details {
-    .illness-detail{
-      display: none;
+    .illness-list {
+      max-height: 300px;
+      overflow: auto;
     }
 
     #symptoms {
-      margin-top: 30px;
+      .symptoms-list {
+        padding-left: 20px;
+
+        .checkbox {
+          border-bottom: 1px solid $grey;
+        }
+
+      }
     }
   }
 
-  .contact-parents, .contact-doctors {
-    .contact-parent, .contact-doctor {
-      display: none;
-      margin-top: 50px;
-    }
+  .contact-parent-ans, .contact-doctor-ans {
+    display: none;
+    margin-top: 50px;
   }
 }
