@@ -9,6 +9,7 @@
 #  updated_at     :datetime         not null
 #  description    :text
 #  deactivated_at :datetime
+#  language       :string
 #
 
 FactoryGirl.define do
