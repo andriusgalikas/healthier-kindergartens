@@ -137,6 +137,10 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :new, :create]
     end
 
+    resources :messages, only: [] do
+      get  :sub_subjects, on: :collection
+    end
+
     namespace :api, constraints: { format: 'json' } do
       resources :daycares, only: [:index] do
         get :featured_daycare, on: :collection

@@ -1,6 +1,6 @@
 module MessagesHelper
   def options_for_sub_subject_select
-    @subjects.map(&:sub_subjects)
+    @subject.sub_subjects
       .flatten
       .map{|sub| [sub.title, sub.id, {'data-parent_id': sub.parent_subject_id}]}
   end

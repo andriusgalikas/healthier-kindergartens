@@ -14,8 +14,6 @@
 
     .col-md-6
       .form-group#sub-subject-filter
-        %label.step-instruction{for: 'sub_subject_id'}= t('messages.labels.filter_by_sub_subject')
-        = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: t('messages.labels.choose_sub_subject'), required: true
 
   .row
     .col-md-12
@@ -35,19 +33,12 @@
 
   $('select#subject_id').on('change', function() {
     var subjectId = $(this).val();
-    var subSubjects = $('#sub-subject-filter').find('select option[data-parent_id="' + subjectId + '"]');
-    var subSubjectsValue = $.map(subSubjects, function(a) {return parseInt($(a).val())});
 
-    var dropdownjsList = $('#sub-subject-filter').find('.dropdownjs ul li');
-
-    $.each(dropdownjsList, function(idx, subSubjectLi) {
-      li = $(subSubjectLi);
-
-      if ($.inArray(li.val(), subSubjectsValue) > -1) {
-        li.show();
+    $.ajax({
+      url: '/messages/sub_subjects',
+      data: {subject_id: subjectId},
+      success: function(html) {
+        $('#sub-subject-filter').html(html);
       }
-      else {
-        li.hide();
-      }
-    });
+    })
   });

@@ -11,8 +11,6 @@
 
   .col-md-4
     .form-group#sub-subject-filter{class: params['target_role'].present? ? '' : 'hidden'}
-      = label_tag :sub_subject, 'Sub-subject'
-      = select_tag :sub_subject_id, options_for_select(options_for_sub_subject_select), class: 'select', prompt: 'Please choose sub-subject', required: true
 
 .row
   .col-md-4

@@ -14,6 +14,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def sub_subjects
+    find_subject
+
+    render partial: 'sub_subject_filter'
+  end
+
   private
 
   def get_all_main_subjects
@@ -102,6 +108,10 @@ class MessagesController < ApplicationController
     end
 
     [cond_str.join(' AND '), cond_arr]
+  end
+
+  def find_subject
+    @subject ||= MessageSubject.find params[:subject_id]
   end
 
 end
