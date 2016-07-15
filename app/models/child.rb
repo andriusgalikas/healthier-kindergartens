@@ -16,6 +16,8 @@ class Child < ActiveRecord::Base
     belongs_to :parentee,                                   class_name: 'User', foreign_key: 'parent_id'
     belongs_to :department
 
+    has_many :health_records,                               :as => :owner
+
     validates :name, :department_id,
                 :birth_date,                                presence: true
 

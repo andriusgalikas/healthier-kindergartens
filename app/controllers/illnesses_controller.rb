@@ -34,11 +34,26 @@ class IllnessesController < ApplicationController
   end
 
   def create_child_record
-    redirect_to illnesses_path
+    filtered_params = child_illness_record_params
+
+    status = IllnessRecorder.new(child_illness_record_params).save_child_illness!
+    if status[:code] == 'ok'
+      redirect_to illnesses_path, notice: status[:message]
+    else
+      render 'new_child_record', danger: status[:message]
+    end
   end
 
   def create_department_record
-    redirect_to illnesses_path
+    filtered_params = department_illness_record_params
+    puts filtered_params.inspect
+
+    status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
+    if status[:code] == 'ok'
+      redirect_to illnesses_path, notice: status[:message]
+    else
+      render 'new_department_record', danger: status[:message]
+    end
   end
 
   private
@@ -70,6 +85,51 @@ class IllnessesController < ApplicationController
 
   def set_worker
     @worker ||= User.find params[:worker_id]
+  end
+
+  def child_illness_record_params
+    params.permit(
+      child: [
+        :id
+      ],
+      record: [
+        :illness_code,
+        :symptoms_description,
+        :start_date,
+        :end_date,
+        :possible_trigger,
+        :extra_details,
+        :contact_parent_message,
+        :contact_parent_reason,
+        :contact_doctor_message,
+        :contact_doctor_reason,
+        :additional_actions,
+        symptom_codes: []
+      ],
+      worker: [
+        :id,
+        :password
+      ]
+    )
+  end
+
+  def department_illness_record_params
+    params.permit(
+      department: [:id],
+      record: [
+        :sick_workers_count,
+        :sick_children_count,
+        :start_date,
+        :end_date,
+        :possible_trigger,
+        :extra_details,
+        :additional_actions
+      ],
+      worker: [
+        :id,
+        :password
+      ]
+    )
   end
 
 end

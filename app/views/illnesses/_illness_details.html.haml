@@ -3,7 +3,7 @@
 
 .illness-detail#illness-known-yes
   .form-group
-    %label.step-instruction= t('illnesses.labels.select_illness')
+    %label.step-instruction= t('protocols.child_illness_record.illness')
     .row
       .col-md-6
         #search-illness-name{'data-illness_names': illness_list.to_json}
@@ -13,27 +13,27 @@
         - illness_list.each do |illness|
           .radio
             %label
-              %input{type: 'radio', name: 'illness[id]', value: illness[:code], 'data-illness_name': illness[:name]}
+              %input{type: 'radio', name: 'record[illness_code]', value: illness[:code], 'data-illness_name': illness[:name]}
               = illness[:name]
   #symptoms
 
 .illness-detail#illness-known-no
   .form-group
-    %label.step-instruction= t('illnesses.labels.write_symptoms')
-    = text_area 'illness', 'desc', class: 'form-control', rows: '5'
+    %label.step-instruction= t('protocols.child_illness_record.symptoms_description')
+    = text_area 'record', 'symptoms_description', class: 'form-control', rows: '5'
 
 .form-group
-  %label.step-instruction= t('illnesses.labels.illness_start_date')
-  = text_field_tag 'illness[start_date]', '', class: 'datepicker form-control'
+  %label.step-instruction= t('protocols.child_illness_record.start_date')
+  = text_field_tag 'record[start_date]', '', class: 'datepicker form-control'
 
 .form-group
-  %label.step-instruction= t('illnesses.labels.illness_end_date')
-  = text_field_tag 'illness[end_date]', '', class: 'datepicker form-control'
+  %label.step-instruction= t('protocols.child_illness_record.end_date')
+  = text_field_tag 'record[end_date]', '', class: 'datepicker form-control'
 
 .form-group
-  %label.step-instruction= t('illnesses.labels.possible_trigger')
-  = text_area 'illness', 'possible_trigger', class: 'form-control'
+  %label.step-instruction= t('protocols.child_illness_record.possible_trigger')
+  = text_area 'record', 'possible_trigger', class: 'form-control'
 
 .form-group
-  %label.step-instruction= t('illnesses.labels.other_details')
-  = text_area 'illness', 'other_details', class: 'form-control'
+  %label.step-instruction= t('protocols.child_illness_record.extra_details')
+  = text_area 'record', 'extra_details', class: 'form-control'

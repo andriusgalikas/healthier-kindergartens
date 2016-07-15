@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
 
     belongs_to :department
 
+    has_many :health_records,                                   :as => :recorder
+
     validates :department_id,                                   presence: true, :if => :worker?
 
     validates :name, :email, :role,                             presence: true

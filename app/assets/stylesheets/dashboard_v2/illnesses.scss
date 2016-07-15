@@ -5,28 +5,25 @@
     }
   }
 
-  #search-child-name {
-    &.tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
+  .tt-dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+  }
 
-    .tt-menu {
-      background: white;
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
-      padding: 10px;
-      transition: transform 0.2s ease-out;
-      color: black;
-      min-widt: 200px;
+  .tt-menu {
+    background: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+    color: black;
+    min-widt: 200px;
 
-      .tt-suggestion {
-        &:hover {
-          background: $lighter-grey;
-        }
+    .tt-suggestion {
+      &:hover {
+        background: $lighter-grey;
       }
     }
- }
-
+  }
 
   #new-child-record {
     .child-profile {
@@ -61,4 +58,9 @@
     margin-top: 50px;
   }
 
+  .dropdownjs {
+    ul {
+      padding: 10px;
+    }
+  }
 }

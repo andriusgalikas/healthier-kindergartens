@@ -1,8 +1,8 @@
 .form-group
-  %label.step-instruction= t('illnesses.labels.select_symptoms')
+  %label.step-instruction= t('protocols.child_illness_record.symptom_codes')
   .symptoms-list
     - @symptoms.each_pair do |code, name|
       .checkbox
         %label
-          = check_box_tag 'illness[symptoms][]', code
+          = check_box_tag 'record[symptom_codes][]', code
           = name

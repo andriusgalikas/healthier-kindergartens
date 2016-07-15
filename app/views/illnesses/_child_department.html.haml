@@ -11,5 +11,5 @@
       - user_departments.each do |dept|
         .radio
           %label
-            %input{type: 'radio', name: 'child[department-id]', value: dept[:id], 'data-department_name': dept[:name]}
+            %input{type: 'radio', name: 'child[department_id]', value: dept[:id], 'data-department_name': dept[:name]}
             = dept[:name]

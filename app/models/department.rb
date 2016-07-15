@@ -21,5 +21,7 @@ class Department < ActiveRecord::Base
     has_many :incomplete_todos,                         -> { incomplete }, through: :department_todos, source: :todo
     has_many :available_todos,                          -> { available }, through: :department_todos, source: :todo
 
+    has_many :health_records,                           :as => :owner
+
     validates :name,                                    presence: true, uniqueness: { scope: :daycare_id }
 end

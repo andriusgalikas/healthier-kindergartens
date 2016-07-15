@@ -97,14 +97,14 @@ var Illnesses = {
         })
       .bind('typeahead:select', function(ev, suggestion) {
         $('form').find('input[data-department_name="' + suggestion + '"]').prop('checked', true);
-        $('form').find('input[name="child[department-id]"]').trigger('change');
+        $('form').find('input[name="child[department_id]"]').trigger('change');
       });
   },
 
   childListUpdater: function() {
-    $('input[name="child[department-id]"]').on('change', function() {
+    $('input[name="child[department_id]"]').on('change', function() {
       $('#search-child-name').typeahead('destroy');
-      var deptId = $('input[name="child[department-id]"]:checked').val();
+      var deptId = $('input[name="child[department_id]"]:checked').val();
 
       $.ajax({
         url: '/illnesses/department_children',
@@ -238,12 +238,12 @@ var Illnesses = {
         })
       .bind('typeahead:select', function(ev, suggestion) {
         $('form').find('input[data-illness_name="' + suggestion + '"]').prop('checked', true);
-        $('form').find('input[name="illness[id]"]').trigger('change');
+        $('form').find('input[name="record[illness_code]"]').trigger('change');
       });
   },
 
   determineSymptoms: function() {
-    $('body').on('change', 'input[name="illness[id]"]:checked', function() {
+    $('body').on('change', 'input[name="record[illness_code]"]:checked', function() {
       var illnessCode = $(this).val();
       var illnessName = $(this).data('illness_name');
       $('input#search-illness-name').val(illnessName);
@@ -326,12 +326,12 @@ var Illnesses = {
         })
       .bind('typeahead:select', function(ev, suggestion) {
         $('form').find('input[data-worker_department_name="' + suggestion + '"]').prop('checked', true);
-        $('form').find('input[name="worker[department-id]"]').trigger('change');
+        $('form').find('input[name="worker[department_id]"]').trigger('change');
       });
   },
 
   departmentWorkersFetcher: function() {
-    $('input[name="worker[department-id]"]').on('change', function() {
+    $('input[name="worker[department_id]"]').on('change', function() {
       var deptId = $(this).val();
 
       $.ajax({
