@@ -22,6 +22,21 @@ var Illnesses = {
     });
   },
 
+  initDepartmentRecord: function() {
+    $.material.init();
+
+    this.initDepartmentIllnessForm();
+    this.initSearchDepartment();
+    this.initSearchWorkerDepartment();
+    this.departmentWorkersFetcher();
+    this.workerProfileFetcher();
+
+    $('.datepicker').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false
+    });
+  },
+
   initChildIllnessForm: function() {
     $('#new-child-record').steps({
       headerTag: "label",
@@ -343,6 +358,21 @@ var Illnesses = {
             $('form').find('.worker-profile').html(html);
           }
         });
+      }
+    });
+  },
+
+  initDepartmentIllnessForm: function() {
+    $('#new-department-record').steps({
+      headerTag: "label",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      stepsOrientation: "vertical",
+      labels: {
+        finish: 'Submit'
+      },
+      onFinished: function() {
+        $('form').trigger('submit');
       }
     });
   }

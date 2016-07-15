@@ -130,9 +130,12 @@ en:
       illness_guidance: Illness Guidance
       choose_record_for: Add record related to a
       child: Child
+      choose_child: Choose the Child
+      choose_department: Choose the Department
       department: Department
       search: Search
       child_details: Child Details
+      department_details: Department Details
       name: Name
       age: Age
       birthday: Birthday
@@ -163,8 +166,8 @@ en:
       confirmation_pw: Please enter your login password to validate
       department_record_question: Please indicate the number of people having the same illness all at once
       department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
-      workers_count: Number of Workers
-      children_count: Number of Children
+      workers_count: Number of Workers sick
+      children_count: Number of Children sick
       illness_start_date: Please enter the date when the symptoms started showing
       illness_end_date: Please enter the date when the symptoms stopped showing
       possible_trigger: Please enter any events which could be possible causes of the outbreak, including field trips, contact with animals etc.

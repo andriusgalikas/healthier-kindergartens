@@ -2,11 +2,11 @@
 
 .row
   .page-header
-    %h3= t('illnesses.breadcrumb.illness')
+    %h3= t('illnesses.illness')
 
 .row.illnesses
   = form_tag create_child_record_illnesses_path, id: 'new-child-record' do
-    %label Choose the Child
+    %label= t('illnesses.labels.choose_child')
     %section.child-department
       = render 'child_department'
       .choose-child

@@ -2,21 +2,29 @@
 
 .row
   .page-header
-    %h3= t('illnesses.breadcrumb.illness')
+    %h3= t('illnesses.illness')
+    .text-info= t('illnesses.labels.department_record_help_text')
 
 .row.illnesses
-  %label.step-instruction
-    = t('illnesses.labels.department_record_question')
-  .text-info= t('illnesses.labels.department_record_help_text')
-
   = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
-    .form-group
-      %label{for: 'workers-count'}= t('illnesses.labels.workers_count')
-      %input{type: 'number', class: 'form-control', name: 'workers-count'}
+    %label= t('illnesses.labels.department_details')
+    %section.choose-department
+      = render 'department_record_department'
 
-    .form-group
-      %label{for: 'children-count'}= t('illnesses.labels.children_count')
-      %input{type:'number', class: 'form-control', name: 'children-count'}
+    %label= t('illnesses.labels.illness_details')
+    %section.illness-details
+      = render 'department_illness_details'
 
-    .form-buttons
-      = submit_tag 'Submit', class: 'btn btn-raised btn-success'
+    %label= t('illnesses.labels.additional_actions')
+    %section.additional-actions
+      = render 'additional_actions'
+
+    %label= t('illnesses.labels.worker_confirmation')
+    %section.worker-department
+      = render 'worker_department'
+      .worker-names
+      .worker-profile
+      .worker-confirmation
+
+:javascript
+  Illnesses.initDepartmentRecord();

@@ -1,0 +1,26 @@
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.illness_details')
+
+.form-group.patient-count
+  %label.step-instruction{for: 'workers-count'}= t('illnesses.labels.workers_count')
+  %input{type: 'number', class: 'form-control', name: 'workers-count'}
+
+.form-group.patient-count
+  %label.step-instruction{for: 'children-count'}= t('illnesses.labels.children_count')
+  %input{type:'number', class: 'form-control', name: 'children-count'}
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.illness_start_date')
+  = text_field_tag 'illness[start_date]', '', class: 'datepicker form-control'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.illness_end_date')
+  = text_field_tag 'illness[end_date]', '', class: 'datepicker form-control'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.possible_trigger')
+  = text_area 'illness', 'possible_trigger', class: 'form-control'
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.other_details')
+  = text_area 'illness', 'other_details', class: 'form-control'
