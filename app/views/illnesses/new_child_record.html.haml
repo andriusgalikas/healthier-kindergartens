@@ -8,7 +8,7 @@
   = form_tag create_child_record_illnesses_path, id: 'new-child-record' do
     %label= t('illnesses.labels.choose_child')
     %section.child-department
-      = render 'child_department'
+      = render 'department_options_selector'
       .choose-child
 
     %label= t('illnesses.labels.child_details')
@@ -16,15 +16,15 @@
 
     %label= t('illnesses.labels.illness_details')
     %section.illness-details
-      = render 'illness_details'
+      = render 'illnesses/child/illness_details'
 
     %label= t('illnesses.labels.contact_parent')
     %section.contact-parent
-      = render 'contact_parent'
+      = render 'illnesses/child/contact_parent'
 
     %label= t('illnesses.labels.contact_doctor')
     %section.contact-doctor
-      = render 'contact_doctor'
+      = render 'illnesses/child/contact_doctor'
 
     %label= t('illnesses.labels.additional_actions')
     %section.additional-actions

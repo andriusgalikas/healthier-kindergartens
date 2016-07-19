@@ -97,14 +97,14 @@ var Illnesses = {
         })
       .bind('typeahead:select', function(ev, suggestion) {
         $('form').find('input[data-department_name="' + suggestion + '"]').prop('checked', true);
-        $('form').find('input[name="child[department_id]"]').trigger('change');
+        $('form').find('input[name="department[id]"]').trigger('change');
       });
   },
 
   childListUpdater: function() {
-    $('input[name="child[department_id]"]').on('change', function() {
+    $('input[name="department[id]"]').on('change', function() {
       $('#search-child-name').typeahead('destroy');
-      var deptId = $('input[name="child[department_id]"]:checked').val();
+      var deptId = $('input[name="department[id]"]:checked').val();
 
       $.ajax({
         url: '/illnesses/department_children',
@@ -374,6 +374,110 @@ var Illnesses = {
       onFinished: function() {
         $('form').trigger('submit');
       }
+    });
+  },
+
+  initList: function() {
+    this.initChildDepartmentSelector();
+    this.showDateFilters();
+    this.initChildRecordFilters();
+    this.initFilteredItemContentToggler();
+    this.initPrinter();
+
+    $('.datepicker').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false
+    });
+  },
+
+  initChildDepartmentSelector: function() {
+    $('select#department_id').on('change', function() {
+      var deptId = $(this).val();
+      var recordType = $('#record_type').val();
+
+      if (recordType == 'child') {
+        $.ajax({
+          url: '/illnesses/filter_children',
+          data: {department_id: deptId},
+          success: function(html) {
+            $('.choose-child').html(html);
+          }
+        });
+      }
+    })
+  },
+
+  showDateFilters: function() {
+    $('body').on('change', 'select#child_id', function() {
+      $('.date-filters').show();
+    });
+  },
+
+  initChildRecordFilters: function() {
+    $('#apply-health-record-filters').on('click', function() {
+      var recordType = $('#record_type').val();
+      var deptId = $('#department_id').val();
+      var childId = $('#child_id').val();
+      var startDate = $('#start_date').val();
+      var endDate = $('#end_date').val();
+      var valid = true;
+
+      if (deptId.length > 0 && childId != undefined && childId.length < 1) {
+        alert(window._trans['required_child_filter'])
+        valid = false;
+      }
+
+      if (valid) {
+        $.ajax({
+          url: '/illnesses/' + recordType + '/list',
+          data: {
+            department_id: deptId,
+            child_id: childId,
+            start_date: startDate,
+            end_date: endDate
+          },
+        success: function(html) {
+          $('.filtered-contents').html(html);
+          window.location.href = '#';
+        }
+        });
+      }
+    })
+  },
+
+  initFilteredItemContentToggler: function() {
+    $('body').on('click', '.expandable', function() {
+      var targetId = $(this).data('health_record_id');
+      var targetEl = $("#health-record-" + targetId);
+
+      if ($(targetEl).html().length == 0) {
+        $.ajax({
+          url: '/health_records/' + targetId,
+          type: 'GET',
+          success: function(html) {
+            $(targetEl).html(html);
+          }
+        });
+      }
+
+      $(targetEl).slideToggle();
+    })
+  },
+
+  initPrinter: function() {
+    $('body').on('click', '.print-btn', function() {
+      var data = $(this).data();
+      var target = data.target_record;
+
+      $(this).parents('.filtered-item').find('.expandable').trigger('click');
+
+      $(target).printThis({
+        pageTitle: 'Healthier Childcare Alliance',
+        importCSS: false,
+        importStyle: false,
+        formValues: false,
+        printContainer: false
+      });
     });
   }
 

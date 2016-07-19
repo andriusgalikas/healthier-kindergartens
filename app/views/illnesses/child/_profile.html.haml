@@ -14,9 +14,6 @@
         %dt= t('illnesses.labels.birthday')
         %dd= pretty_short_date(@child.birth_date)
 
-        %dt= t('illnesses.labels.reporting_date')
-        %dd= pretty_short_date(1.day.ago)
-
     .col-md-6
       = image_tag @child.profile_image.file.url
 

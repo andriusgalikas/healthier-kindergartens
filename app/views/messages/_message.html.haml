@@ -1,10 +1,10 @@
-.message
-  .row.message-info
+.filtered-item
+  .row.filtered-item-info
     .col-md-4
       %span= message_role_label + ' : '
       %span= message_role_value(message)
 
-    .col-md-4.sent-date.centralize
+    .col-md-4.filtered-item-date.centralize
       = pretty_long_date(message.created_at)
 
     .col-md-4
@@ -12,6 +12,7 @@
         %span.pull-right= t('messages.labels.print')
 
   %hr
-  %div.message-content-stage{class: message.id == @notification.try(:source_id) ? 'well well-sm' : 'truncate', id: "message-#{message.id}"}
-    .fr-view
-      = message.content.html_safe
+  %div.filtered-item-content
+    .filtered-item-preview.message-content-stage{class: message.id == @notification.try(:source_id) ? 'well well-sm' : 'truncate', id: "message-#{message.id}"}
+      .fr-view
+        = message.content.html_safe

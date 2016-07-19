@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718070611) do
+ActiveRecord::Schema.define(version: 20160719063443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160718070611) do
     t.datetime "deactivated_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "daycare_id"
   end
 
   create_table "message_subjects", force: :cascade do |t|

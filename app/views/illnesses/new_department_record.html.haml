@@ -9,11 +9,11 @@
   = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
     %label= t('illnesses.labels.department_details')
     %section.choose-department
-      = render 'department_record_department'
+      = render 'department_options_selector'
 
     %label= t('illnesses.labels.illness_details')
     %section.illness-details
-      = render 'department_illness_details'
+      = render 'illnesses/department/illness_details'
 
     %label= t('illnesses.labels.additional_actions')
     %section.additional-actions

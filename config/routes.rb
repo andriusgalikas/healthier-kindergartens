@@ -118,11 +118,16 @@ Rails.application.routes.draw do
         get  :symptoms
         get  :department_workers
         get  :worker_profile
+        get  :filter
+        get  :filter_children
+        get  ':record_type/list', to: 'illnesses#list', as: 'list'
 
         post :create_child_record
         post :create_department_record
       end
     end
+
+    resources :health_records, only: [:show]
 
     namespace :admin do
         root to: 'dashboard#index'

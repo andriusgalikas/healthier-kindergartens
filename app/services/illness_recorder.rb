@@ -47,7 +47,8 @@ class IllnessRecorder
     @record ||= HealthRecord.create(
       protocol_code: @protocol_code,
       owner: @owner,
-      recorder: @recorder
+      recorder: @recorder,
+      daycare_id: @opts[:daycare_id]
     )
   end
 

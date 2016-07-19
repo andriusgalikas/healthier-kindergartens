@@ -1,26 +1,7 @@
-.message {
-  margin-bottom: 25px;
-
-  .message-info {
-    .message-date {
-      text-align: center;
-    }
-  }
-  hr {
-    border-color: $grey;
-  }
-}
-
 .message-content-stage {
   background: white;
   padding: 10px 25px;
   color: black;
-}
-
-.message-filters {
-  border: 2px solid $grey;
-  margin-bottom: 30px;
-  @include border-radius(2px);
 }
 
 .message-list{

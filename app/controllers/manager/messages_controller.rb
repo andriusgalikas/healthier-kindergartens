@@ -136,13 +136,13 @@ class Manager::MessagesController < ApplicationController
     end
 
     if params['start_date'].present?
-      cond_str << 'created_at > ?'
-      cond_arr << Date.parse(params['start_date'])
+      cond_str << 'created_at >= ?'
+      cond_arr << Date.parse(params['start_date']) - 1
     end
 
     if params['end_date'].present?
-      cond_str << 'created_at < ?'
-      cond_arr << Date.parse(params['end_date'])
+      cond_str << 'created_at <= ?'
+      cond_arr << Date.parse(params['end_date']) + 1
     end
 
     [cond_str.join(' AND '), cond_arr]

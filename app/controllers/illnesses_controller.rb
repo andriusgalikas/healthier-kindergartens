@@ -4,20 +4,20 @@ class IllnessesController < ApplicationController
   def department_children
     set_children
 
-    render partial: 'choose_child'
+    render partial: 'illnesses/child/child_selector'
   end
 
   def child_profile
     set_child
 
-    render partial: 'child_profile'
+    render partial: 'illnesses/child/profile'
   end
 
   def symptoms
     set_illness
     set_symptoms
 
-    render partial: 'symptoms'
+    render partial: 'illnesses/child/symptoms'
   end
 
   def department_workers
@@ -34,9 +34,8 @@ class IllnessesController < ApplicationController
   end
 
   def create_child_record
-    filtered_params = child_illness_record_params
-
     status = IllnessRecorder.new(child_illness_record_params).save_child_illness!
+
     if status[:code] == 'ok'
       redirect_to illnesses_path, notice: status[:message]
     else
@@ -45,10 +44,8 @@ class IllnessesController < ApplicationController
   end
 
   def create_department_record
-    filtered_params = department_illness_record_params
-    puts filtered_params.inspect
-
     status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
+
     if status[:code] == 'ok'
       redirect_to illnesses_path, notice: status[:message]
     else
@@ -56,11 +53,28 @@ class IllnessesController < ApplicationController
     end
   end
 
+  def list
+    params[:page] ||= 1
+    set_records
+
+    if request.xhr?
+      render partial: 'health_records_list'
+    else
+      render 'list'
+    end
+  end
+
+  def filter_children
+    set_children
+
+    render partial: 'filter_children'
+  end
+
   private
 
   def set_children
     department_id = params[:department_id].to_i
-    @children ||= current_user.daycare.departments.select{|dpt| dpt.id == department_id}.map(&:children).flatten
+    @children ||= current_user.daycare.departments.select{|dpt| dpt.id == department_id}.map(&:children).flatten.sort
   end
 
   def set_child
@@ -87,11 +101,57 @@ class IllnessesController < ApplicationController
     @worker ||= User.find params[:worker_id]
   end
 
+  def set_records
+    cond_str, cond_arr = set_query_conditions
+
+    @records ||= HealthRecord.where(cond_str, *cond_arr)
+               .order(created_at: :desc)
+               .page(params[:page])
+  end
+
+  def set_query_conditions
+    cond_str = ['daycare_id = ?']
+    cond_arr = [current_user.daycare.id]
+
+    # set record type, either department or child
+    if params['record_type'] == 'child'
+      cond_str << 'owner_type = ?'
+      cond_arr << 'Child'
+
+      # set child filter
+      if params['child_id'].present?
+        cond_str << 'owner_id = ?'
+        cond_arr << params['child_id']
+      end
+    elsif params['record_type'] == 'department'
+      cond_str << 'owner_type = ?'
+      cond_arr << 'Department'
+
+      # set department filter
+      if params['department_id'].present?
+        cond_str << 'owner_id = ?'
+        cond_arr << params['department_id']
+      end
+    end
+
+    # set start_date filter
+    if params['start_date'].present?
+      cond_str << 'created_at >= ?'
+      cond_arr << Date.parse(params['start_date']) - 1
+    end
+
+    # set end_date filter
+    if params['end_date'].present?
+      cond_str << 'created_at <= ?'
+      cond_arr << Date.parse(params['end_date']) + 1
+    end
+
+    [cond_str.join(' AND '), cond_arr]
+  end
+
   def child_illness_record_params
     params.permit(
-      child: [
-        :id
-      ],
+      child: [ :id ],
       record: [
         :illness_code,
         :symptoms_description,
@@ -110,12 +170,12 @@ class IllnessesController < ApplicationController
         :id,
         :password
       ]
-    )
+    ).merge(daycare_id: current_user.daycare.id)
   end
 
   def department_illness_record_params
     params.permit(
-      department: [:id],
+      department: [ :id ],
       record: [
         :sick_workers_count,
         :sick_children_count,
@@ -129,7 +189,7 @@ class IllnessesController < ApplicationController
         :id,
         :password
       ]
-    )
+    ).merge(daycare_id: current_user.daycare.id)
   end
 
 end

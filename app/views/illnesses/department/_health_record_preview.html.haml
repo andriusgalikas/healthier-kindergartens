@@ -1,0 +1,20 @@
+.row.filtered-item
+  .row.filtered-item-info
+    .col-md-6
+      = pretty_long_date(health_record.created_at)
+
+    .col-md-6
+      %a.print-btn{href: '#', 'data-target_record': "#health-record-#{health_record.id}"}
+        %span.pull-right= t('illnesses.labels.print')
+
+  %hr
+  .filtered-item-content
+    .row.filtered-item-preview.expandable{'data-health_record_id': health_record.id}
+      %dl.dl-horizontal
+        %dt= t('illnesses.labels.department')
+        %dd= health_record.owner.name
+
+        %dt= t('illnesses.labels.reporting_date')
+        %dd= t(pretty_short_date(health_record.created_at))
+
+    .row.filtered-item-complete-view{'id' => "health-record-#{health_record.id}"}

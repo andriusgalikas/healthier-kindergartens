@@ -46,6 +46,8 @@ en:
       demand_2: "Vote for Health Preserving Care Program."
 
   messages:
+    message: Messages
+
     breadcrumb:
       message: Message
       choose_template: Choose Template
@@ -90,7 +92,7 @@ en:
       create_message_template: Create Message Template
       edit_message_template: Edit Message Template
       sent_messages: Sent Messages
-      basic_filter: Filter option to see your messages
+      basic_filter: Filter options to see your messages
       new_notification: New Notification
       new_template: New Template
       send_notifications: Send Notifications
@@ -133,6 +135,7 @@ en:
       choose_child: Choose the Child
       choose_department: Choose the Department
       department: Department
+      daycare: Daycare
       search: Search
       child_details: Child Details
       department_details: Department Details
@@ -150,17 +153,19 @@ en:
       contact_doctor: Contact Doctor
       contact_doctor_question: Do you want to contact the doctor of this child?
       worker_details_fill_up: Write your personal details to complete this record
-      select_department: Select department
+      select_department: Select Department
       select_worker: Select Worker
+      select_child: Select Child
       worker_details: Worker Details
       department: Department
       confirmation_pw: Please enter your login password to validate
       department_record_question: Please indicate the number of people having the same illness all at once
       department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
-      workers_count: Number of Workers sick
-      children_count: Number of Children sick
-      illness_start_date: Please enter the date when the symptoms started showing
-      illness_end_date: Please enter the date when the symptoms stopped showing
+      filter_records_for: Select records to filter
+      basic_filter: Filter options to see your list
+      print: Print
+      required_dept_filter: Please choose a department
+      required_child_filter: Please choose a child
 
   health_records:
     flashes:
@@ -192,4 +197,13 @@ en:
       contact_parent_reason: Appropriate reason for not contacting the parents of this child.
       contact_doctor_message: Message to the doctor
       contact_doctor_reason: Appropriate reason for not contacting the doctors of this child.
+      additional_actions: Additional actions taken including first aid administration of medication in your facility
+
+    department_illness_record:
+      sick_workers_count: Number of workers sick
+      sick_children_count: Number of children sick
+      start_date: Date when the symptoms started showing
+      end_date: Date when the symptoms stopped showing
+      possible_trigger: Any events which could be possible causes of the outbreak, including field trips, contact with animals etc.
+      extra_details: Other relevant details
       additional_actions: Additional actions taken including first aid administration of medication in your facility
