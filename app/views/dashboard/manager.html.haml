@@ -14,6 +14,9 @@
         = link_to manager_messages_path, class: 'messages' do
           = image_tag 'template-message.png'
           %span Messages
+        = link_to set_filters_manager_illnesses_path, class: 'illnesses' do
+          = image_tag 'alleragy_icon.jpg'
+          %span= t('illnesses.trends')
 
   .fourcol.last.notifications-panel
     = render 'notifications'

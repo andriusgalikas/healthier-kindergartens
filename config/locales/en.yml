@@ -125,6 +125,7 @@ en:
 
   illnesses:
     illness: Illness
+    trends: Illness Trends
 
     labels:
       add_record: Add Illness Record
@@ -166,6 +167,9 @@ en:
       print: Print
       required_dept_filter: Please choose a department
       required_child_filter: Please choose a child
+      trend_filters: Filter options for the Illness Trend
+      select_multiple_departments: Select one or more Departments
+      select_multiple_illnesses: Select one or more Illnesses
 
   health_records:
     flashes:

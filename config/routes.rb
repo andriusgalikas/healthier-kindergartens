@@ -90,6 +90,13 @@ Rails.application.routes.draw do
             get  :content
           end
         end
+
+        resources :illnesses, only: [] do
+          collection do
+            get  :set_filters
+            post :trends
+          end
+        end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do

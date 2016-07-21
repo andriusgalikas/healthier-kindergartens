@@ -12,6 +12,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  daycare_id     :integer
+#  department_id  :integer
 #
 
 class HealthRecord < ActiveRecord::Base
@@ -21,6 +22,7 @@ class HealthRecord < ActiveRecord::Base
   belongs_to :owner,                                       polymorphic: true
   belongs_to :recorder,                                    polymorphic: true
   belongs_to :daycare
+  belongs_to :department
   has_many   :health_record_components
 
   validates :protocol_code, :owner_id, :recorder_id,       presence: true

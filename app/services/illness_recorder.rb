@@ -48,7 +48,8 @@ class IllnessRecorder
       protocol_code: @protocol_code,
       owner: @owner,
       recorder: @recorder,
-      daycare_id: @opts[:daycare_id]
+      daycare_id: @opts[:daycare_id],
+      department_id: @opts[:department][:id]
     )
   end
 

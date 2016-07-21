@@ -14,6 +14,8 @@
     :javascript
       window._trans = #{ yield_js_translations.to_json.html_safe }
 
+    %script{src: "https://www.gstatic.com/charts/loader.js"}
+
   %body
     .main
       = render partial: 'shared/headers/dashboard_v2'

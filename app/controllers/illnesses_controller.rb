@@ -82,11 +82,11 @@ class IllnessesController < ApplicationController
   end
 
   def set_illness
-    @illness ||= ILLNESSES[params[:illness_code]]
+    @illness ||= Illness.where(code: params[:illness_code]).first
   end
 
   def set_symptoms
-    @symptoms ||= @illness[:symptoms].inject({}) {|list, symp| list[symp] = SYMPTOMS[symp]; list}
+    @symptoms ||= @illness.symptoms.inject({}){|list, symptom| list[symptom.code] = symptom.name; list}
   end
 
   def set_department
@@ -152,6 +152,7 @@ class IllnessesController < ApplicationController
   def child_illness_record_params
     params.permit(
       child: [ :id ],
+      department: [:id],
       record: [
         :illness_code,
         :symptoms_description,

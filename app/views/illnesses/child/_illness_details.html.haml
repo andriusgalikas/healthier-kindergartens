@@ -10,11 +10,11 @@
           = text_field_tag 'search-illness-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
 
       .col-md-6.illness-list
-        - illness_list.each do |illness|
+        - Illness.all.each do |illness|
           .radio
             %label
-              %input{type: 'radio', name: 'record[illness_code]', value: illness[:code], 'data-illness_name': illness[:name]}
-              = illness[:name]
+              %input{type: 'radio', name: 'record[illness_code]', value: illness.code, 'data-illness_name': illness.name}
+              = illness.name
   #symptoms
 
 .illness-detail#illness-known-no

@@ -26,5 +26,6 @@
 //= require typeahead.js/dist/typeahead.bundle.min.js
 //= require jquery.dropdown.js
 //= require handlebars/handlebars.min.js
+//= require select2.min.js
 //= require dashboard_v2/illnesses.js
 //= require dashboard_v2.ready

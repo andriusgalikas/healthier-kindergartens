@@ -12,4 +12,10 @@ $(document).ready(function() {
     heightMin: 200
   });
 
+  $(".multiple-select").select2();
+
+  $('.datepicker').datetimepicker({
+    format: 'd/m/Y',
+    timepicker: false
+  });
 });

@@ -17,16 +17,16 @@
 
 class HealthRecordComponent < ActiveRecord::Base
 
-  belongs_to :health_records
+  belongs_to :health_record
 
   validates :health_record_id, :code,              presence: true
 
   def pretty_value
     if code == 'illness_code'
-      ILLNESSES[value][:name]
+      Illness.find_by(code: value).name
     elsif code == 'symptom_codes'
       codes = JSON.parse(value)
-      codes.collect{|code| SYMPTOMS[code]}.join(', ')
+      Symptom.where(code: codes).map(&:name).join(', ')
     else
       value
     end
