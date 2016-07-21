@@ -2,12 +2,11 @@
 - step_size = 4
 - page_step = 4
 
-.row
-  .page-header
-    %h3= add_template_content_header
+.page-header
+  %h3= add_template_content_header
 
 .row
   = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
-.row#main-content
+#main-content
   = render 'form'

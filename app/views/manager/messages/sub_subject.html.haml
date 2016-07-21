@@ -2,14 +2,13 @@
 - step_size = 5
 - page_step = 4
 
-.row
-  .page-header
-    %h3= choose_sub_subject_header
+.page-header
+  %h3= choose_sub_subject_header
 
 .row
   = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
-.row#main-content
+#main-content
   %h4.step-instruction= t('messages.labels.choose_sub_subject')
 
   = form_tag content_manager_messages_path, method: :post do

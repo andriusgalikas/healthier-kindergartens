@@ -2,14 +2,13 @@
 - step_size = 4
 - page_step = 2
 
-.row
-  .page-header
-    %h3= add_sub_subject_header
+.page-header
+  %h3= add_sub_subject_header
 
 .row
   = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
 
-.row#main-content
+#main-content
   %h4.step-instruction= t('messages.labels.create_sub_subject')
   = form_tag recipient_admin_message_templates_path, method: :post do
     = hidden_field_tag :subject_title, params[:subject_title]

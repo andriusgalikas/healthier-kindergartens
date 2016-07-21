@@ -1,10 +1,10 @@
-.row.message
+.message
   .row.message-info
     .col-md-4
       %span= message_role_label
       %span= message_role_value(message)
 
-    .col-md-4.sent-date
+    .col-md-4.sent-date.centralize
       = pretty_message_date(message.created_at)
 
     .col-md-4

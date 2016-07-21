@@ -1,6 +1,6 @@
 = content_for :title, 'Create Message'
 
-.row#main-content
+#main-content
   = form_for [:admin, @message] do |f|
     .form-group
       %label.step-instruction{for: :target_roles}= t('messages.labels.choose_recipient')

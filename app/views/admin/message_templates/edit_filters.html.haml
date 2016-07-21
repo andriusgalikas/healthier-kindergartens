@@ -1,8 +1,7 @@
 = content_for :title, t('messages.breadcrumb.edit_template')
 
-.row
-  .page-header
-    %h3= edit_template_header
+.page-header
+  %h3= edit_template_header
 
 
 = form_tag filter_admin_message_templates_path, method: :post do

@@ -1,10 +1,9 @@
 = content_for :title, 'Message Template'
 
-.row
-  .page-header
-    %h3= t('messages.labels.message_template_content')
+.page-header
+  %h3= t('messages.labels.message_template_content')
 
-.row
+%div
   %dl.dl-horizontal
     %dt= t('messages.labels.subject')
     %dd= @template.sub_subject.parent_subject.title
@@ -15,7 +14,7 @@
     %dt= t('messages.labels.recipient')
     %dd= @template.target_role.humanize
 
-.row.message-content-stage
+.message-content-stage
   .fr-view
     = @template.content.html_safe
 
