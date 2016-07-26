@@ -382,7 +382,7 @@ var Illnesses = {
     this.showDateFilters();
     this.initChildRecordFilters();
     this.initFilteredItemContentToggler();
-    this.initPrinter();
+    this.initHealthRecordPrinter();
 
     $('.datepicker').datetimepicker({
       format: 'd/m/Y',
@@ -464,7 +464,7 @@ var Illnesses = {
     })
   },
 
-  initPrinter: function() {
+  initHealthRecordPrinter: function() {
     $('body').on('click', '.print-btn', function() {
       var data = $(this).data();
       var target = data.target_record;
@@ -488,6 +488,7 @@ var Illnesses = {
     this.initTrendLine();
     this.initTrendPie();
     this.initTrendBar();
+    this.initTrendPrinter();
   },
 
   initTrendLine: function() {
@@ -567,6 +568,18 @@ var Illnesses = {
       var chart = new google.visualization.BarChart(document.getElementById('bar-chart-div'));
       chart.draw(data, options);
     }
+  },
+
+  initTrendPrinter: function() {
+    $('.print-btn').on('click', function() {
+      $('#trends').printThis({
+        pageTitle: 'Healthier Childcare Alliance',
+        importCSS: false,
+        importStyle: false,
+        formValues: false,
+        printContainer: false
+      });
+    });
   }
 
 }

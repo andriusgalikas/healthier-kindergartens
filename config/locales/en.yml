@@ -187,6 +187,7 @@ en:
     delete: Delete
     edit: Edit
     select: Select
+    print: Print
 
   protocols:
     child_illness_record:
