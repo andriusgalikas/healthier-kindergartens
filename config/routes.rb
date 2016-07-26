@@ -187,5 +187,8 @@ Rails.application.routes.draw do
     end
 
     get 'cast_vote', to: 'votes#cast_vote'
+
     get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
+
+    get 'home_2', to: 'pages#home_2'
 end

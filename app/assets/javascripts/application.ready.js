@@ -8,6 +8,7 @@ $(document).ready(function()
     healthChildcare.app.showRegisteredChildcaresNotification();
     healthChildcare.app.showUpgradedChildcaresNotification();
     healthChildcare.app.showSurveyResult();
+    healthChildcare.app.homeStepNavigator();
 
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');

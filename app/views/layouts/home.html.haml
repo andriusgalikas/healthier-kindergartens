@@ -10,7 +10,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = stripe_javascript_tag
     = csrf_meta_tags
-    = tag :meta, name: 'stripe-key', content: Rails.application.secrets.stripe_public_key
+    = tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key
 
   %body
     = render partial: 'shared/headers/home'

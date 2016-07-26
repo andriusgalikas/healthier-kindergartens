@@ -1,0 +1,22 @@
+!!!5
+%html
+  %head
+    %title HealthChildcare
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+    %link{href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', rel: 'stylesheet'}
+    %link{href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel: 'stylesheet'}
+    %link{href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet'}
+    %link{href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet', type: 'text/css'}
+    %link{href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet', type: 'text/css'}
+    = csrf_meta_tag
+    = tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key
+
+  %body
+    .container.main
+      = render partial: 'shared/headers/home_v2'
+      = yield
+    = render partial: 'shared/footer_v2'
+
+    = stylesheet_link_tag 'home_v2', media: 'all', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = stripe_javascript_tag

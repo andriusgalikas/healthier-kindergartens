@@ -1,0 +1,37 @@
+.row.promo
+  .promo-img
+    = image_tag 'home_slider.jpg'
+    .promo-text
+      %h2= t('pages.promo.title')
+
+      .divider
+
+      %p= t('pages.promo.description')
+
+
+.row.step-navs-horizontal
+  .col-md-3
+    = link_to '#mission-step', 'data-target': '#mission-step', 'data-url': mission_path, 'data-role': 'step' do
+      %i.fa.fa-angle-right
+      = t('pages.nav_bar.mission')
+  .col-md-3
+    = link_to '#standard-step', 'data-target': '#standard-step', 'data-url': standard_path, 'data-role': 'step' do
+      %i.fa.fa-angle-right
+      = t('pages.nav_bar.standard')
+  .col-md-3
+    = link_to '#path-step', 'data-target': '#path-step','data_url': path_path, 'data-role': 'step' do
+      %i.fa.fa-angle-right
+      = t('pages.nav_bar.path')
+  .col-md-3
+    = link_to '#your-journey-step', 'data-target': '#your-journey-step', 'data-url': '', 'data-role': 'step' do
+      %i.fa.fa-angle-right
+      = t('pages.nav_bar.your_journey')
+
+.row.step-contents
+  #mission-step.step-content
+
+  #standard-step.step-content
+
+  #path-step.step-content
+
+  #your-journey-step.step-content

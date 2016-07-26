@@ -138,6 +138,30 @@ healthChildcare.app =
         }
       });
     });
+  },
+
+  homeStepNavigator: function() {
+    $('a[data-role="step"]').on('click', function() {
+      var target = $(this).data('target');
+      var url = $(this).data('url');
+      var _this = this;
+
+      $('.step-contents .step-content.active').removeClass('active').hide();
+      $('.step-navs-horizontal').find('i').removeClass('fa-angle-down').addClass('fa-angle-right');
+
+      if ($(target).html().length == 0) {
+        $.ajax({url,
+          type: 'GET',
+          success: function(html) {
+            $(target).html(html);
+          }
+        });
+      }
+
+      $(target).slideToggle('fast').addClass('active');
+      $(this).find('i').addClass('fa-angle-down');
+
+     });
   }
 
 }
