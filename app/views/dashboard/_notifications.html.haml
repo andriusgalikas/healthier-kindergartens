@@ -1,12 +1,13 @@
 .panel.panel-default
   .panel-heading
-    Notifications
+    = t('dashboard.notifications')
+
     %span.badge#notif-count= @notifications.size
   .panel-body
     .content-group
       .panel-subheading
         = image_tag 'message_menu_icon.png', class: 'img img-thumbnail subheading-icon'
-        %span.subheading-title Messages
+        %span.subheading-title= t('dashboard.messages')
         %span.badge= notif_per_source_type(@notifications, 'Message').size
 
       .panel-subcontent

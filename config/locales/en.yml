@@ -112,6 +112,10 @@ en:
       show_only_message_from_filter: Show only messages received from
       print: Print
 
+  dashboard:
+    notifications: Notifications
+    messages: Messages
+
   form_labels:
     next: Next
     back: Back
