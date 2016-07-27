@@ -4,7 +4,7 @@
   %h3= edit_template_header
 
 
-= form_tag filter_admin_message_templates_path, method: :post do
+= form_tag filter_admin_message_templates_path, method: :get do
   .row
     .col-md-6
       .form-group#subject-filter
@@ -28,16 +28,4 @@
     = submit_tag t('messages.labels.apply_filters'), class: 'btn btn-raised btn-success'
 
 :javascript
-  $.material.init();
-
-  $('select#subject_id').on('change', function() {
-    var subjectId = $(this).val();
-
-    $.ajax({
-      url: '/messages/sub_subjects',
-      data: {subject_id: subjectId},
-      success: function(html) {
-        $('#sub-subject-filter').html(html);
-      }
-    })
-  });
+  Messages.initEditFilters();

@@ -25,7 +25,4 @@
         = submit_tag t('form_labels.send'), class: 'btn btn-raised btn-success'
 
 :javascript
-  $('#message_content').froalaEditor({
-    heightMin: 250
-  });
-  $.material.init();
+  Messages.initNewMessage();

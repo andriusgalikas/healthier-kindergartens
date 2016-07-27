@@ -67,7 +67,6 @@ module ApplicationHelper
       trans = {};
       trans['featured_daycare'] = I18n.t('notifications.featured_daycare')
       trans['featured_daycare_by_plan'] = I18n.t('notifications.featured_daycare_by_plan')
-      trans['no_template_for_role'] = I18b.t('admin.no_template_for_role')
       trans
     end
 

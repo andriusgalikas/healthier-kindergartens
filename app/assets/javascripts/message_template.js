@@ -22,19 +22,4 @@
 //= require jquery.dropdown.js
 //= require jquery.shorten.min.js
 //= require printThis.js
-
-!function($) {
-  $(document).ready(function() {
-
-    $.material.init();
-    $(".select").dropdown({ "autoinit" : ".select" });
-    $('#message_template_content').froalaEditor({
-      heightMin: 200
-    });
-
-    $('.truncate').shorten({
-      showChars: 500
-    });
-
-  });
-}(jQuery);
+//= require message_template.ready

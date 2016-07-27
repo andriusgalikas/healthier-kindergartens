@@ -14,9 +14,8 @@ class Admin::MessageTemplatesController < AdminController
     end
   end
 
-  def content
+  def new
     @template = MessageTemplate.new
-    render :new
   end
 
   def edit_filters
@@ -47,7 +46,6 @@ class Admin::MessageTemplatesController < AdminController
 
     redirect_to admin_message_templates_path, notice: t('messages.notifications.delete_template_success')
   end
-
 
   def filter
     find_template_by_filters

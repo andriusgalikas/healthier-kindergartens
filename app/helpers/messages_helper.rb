@@ -76,6 +76,7 @@ module MessagesHelper
   def yield_js_translations
     trans = {}
     trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
+    trans['invalid_template_file'] = I18n.t('messages.notifications.invalid_template_file')
 
     trans
   end

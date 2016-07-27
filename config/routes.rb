@@ -117,12 +117,11 @@ Rails.application.routes.draw do
         resources :subjects, except: :show
         resources :message_templates do
           collection do
-            get  :subject
-            post :sub_subject
-            post :recipient
-            post :content
-            get  :edit_filters
-            post :filter
+            get :subject
+            get :sub_subject
+            get :recipient
+            get :edit_filters
+            get :filter
           end
         end
         resources :messages, only: [:new, :create]

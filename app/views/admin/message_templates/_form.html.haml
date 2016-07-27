@@ -6,7 +6,7 @@
   %fieldset
     .form-group
       %label.step-instruction{for: 'language'}= t('messages.labels.choose_language')
-      = f.select :language, options_for_select(options_for_template_localizations, I18n.default_locale), {}, class: 'select'
+      = f.select :language, options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), {}, class: 'select'
 
     .form-group
       %label.step-instruction{for: 'content'}= t('messages.labels.edit_and_save')
@@ -30,28 +30,3 @@
         %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'}= t('form_labels.back')
     .col-md-6
       = submit_tag t('form_labels.save'), class: 'btn btn-raised btn-success'
-
-:javascript
-  $.material.init();
-
-  $('#message_template_content').froalaEditor({
-    heightMin: 250
-  });
-
-  // readable files : [*.html, *.txt]
-  $('#upload-template').on('change', function() {
-    var file = this.files[0]
-    var reader = new FileReader();
-
-    if (file.type.match('text.*')) {
-      reader.onload = function(progressEvent){
-        $('#message_template_content').val(this.result)
-        $('#message_template_content').froalaEditor('html.set', this.result);
-      };
-      reader.readAsText(file);
-    }
-    else {
-      alert('Invalid file! Please upload text file only.');
-    }
-
-  });

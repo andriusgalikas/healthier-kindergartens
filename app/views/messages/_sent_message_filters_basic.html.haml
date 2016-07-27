@@ -12,7 +12,7 @@
   .col-md-4
     .form-group
       = label_tag :end_date
-      = text_field_tag :end_date, params['end_date'], class: 'form-control'
+      = text_field_tag :end_date, params['end_date'], class: 'datepicker form-control'
 
 .row.centralize
   = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
