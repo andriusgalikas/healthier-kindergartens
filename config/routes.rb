@@ -79,10 +79,10 @@ Rails.application.routes.draw do
         resources :messages do
           collection do
             get  :select_department
-            post :recipient
-            post :subject
-            post :sub_subject
-            post :content
+            get  :recipient
+            get  :subject
+            get  :sub_subject
+            get  :content
           end
         end
     end

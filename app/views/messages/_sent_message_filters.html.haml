@@ -1,7 +1,7 @@
 .row
   .col-md-4
     .form-group
-      = label_tag :target_role, 'Show only messages sent to'
+      = label_tag :target_role, t('messages.labels.show_only_message_to_filter')
       = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'select', required: true, prompt: 'Choose Recipient'
 
   .col-md-4

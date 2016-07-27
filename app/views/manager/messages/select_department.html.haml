@@ -11,7 +11,7 @@
 #main-content
   %h4.step-instuction= t('messages.labels.choose_department')
 
-  = form_tag recipient_manager_messages_path, method: :post do
+  = form_tag recipient_manager_messages_path, method: :get do
     .form-group
       - @departments.each do |department|
         .radio

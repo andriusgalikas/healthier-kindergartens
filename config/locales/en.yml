@@ -73,6 +73,9 @@ en:
       delete_template_confirm: Are you sure you want to delete this template?
       no_template_for_role: No message template found.
       invalid_template_file: Invalid file! Please upload text file only.
+      required_filter_role: Please choose filter Role.
+      required_filter_subject: Please choose filter Subject.
+      required_filter_sub_subject: Please choose filter Sub-subject.
 
     labels:
       subject: Subject
@@ -102,8 +105,12 @@ en:
       filter_by_subject: Filter by Subject
       filter_by_sub_subject: Filter by Sub-subject
       recipient: Recipient
+      sender: Sender
       apply_filters: Apply Filters
       message_list: Message List
+      show_only_message_to_filter: Show only messages sent to
+      show_only_message_from_filter: Show only messages received from
+      print: Print
 
   form_labels:
     next: Next

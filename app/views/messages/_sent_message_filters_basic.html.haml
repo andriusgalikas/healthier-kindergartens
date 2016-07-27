@@ -1,8 +1,8 @@
 .row
   .col-md-4
     .form-group
-      = label_tag :target_role, 'Show only messages sent to'
-      = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'select', prompt: 'Choose Recipient'
+      = label_tag :target_role, t('messages.labels.show_only_messages_to_filter')
+      = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'select', prompt: t('messages.labels.recipient')
 
   .col-md-4
     .form-group
@@ -15,4 +15,4 @@
       = text_field_tag :end_date, params['end_date'], class: 'datepicker form-control'
 
 .row.centralize
-  = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
+  = link_to t('messages.labels.apply_filters'), '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'

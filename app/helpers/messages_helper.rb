@@ -77,6 +77,9 @@ module MessagesHelper
     trans = {}
     trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
     trans['invalid_template_file'] = I18n.t('messages.notifications.invalid_template_file')
+    trans['required_filter_role'] = I18n.t('messages.notifications.required_filter_role')
+    trans['required_filter_subject'] = I18n.t('messages.notifications.required_filter_subject')
+    trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
 
     trans
   end
@@ -90,7 +93,7 @@ module MessagesHelper
   end
 
   def message_role_label
-    params[:list_type] == 'received' ? 'Sender : ' : 'Recipient :'
+    params[:list_type] == 'received' ? I18n.t('messages.labels.sender') : I18n.t('messages.labels.receiver')
   end
 
   def message_role_value(message)

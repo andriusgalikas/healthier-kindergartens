@@ -1,8 +1,8 @@
 .row
   .col-md-4
     .form-group
-      = label_tag :target_role, 'Show only messages received from'
-      = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', prompt: 'Choose Sender'
+      = label_tag :target_role, t('messages.labels.show_only_message_from_filter')
+      = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'select', prompt: t('messages.labels.sender')
 
   .col-md-4
     .form-group
@@ -17,5 +17,5 @@
 .row
   .col-md-4
   .col-md-4.form-buttons.centralize
-    = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
+    = link_to t('messages.labels.apply_filters'), '#', class: 'btn btn-raised btn-info', id: 'apply-message-filters'
   .col-md-4

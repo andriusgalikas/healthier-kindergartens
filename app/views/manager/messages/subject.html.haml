@@ -11,12 +11,12 @@
 #main-content
   %h4.step-instruction= t('messages.labels.choose_subject')
 
-  = form_tag sub_subject_manager_messages_path, method: :post do
+  = form_tag sub_subject_manager_messages_path, method: :get do
     = hidden_field_tag :target_department, params[:target_department]
     = hidden_field_tag :target_role, params[:target_role]
 
     .form-group
-      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title'), class: 'select'
+      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id]), class: 'select'
 
     .form-buttons
       .col-md-6
