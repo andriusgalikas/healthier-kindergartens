@@ -93,7 +93,7 @@ module MessagesHelper
   end
 
   def message_role_label
-    params[:list_type] == 'received' ? I18n.t('messages.labels.sender') : I18n.t('messages.labels.receiver')
+    params[:list_type] == 'received' ? I18n.t('messages.labels.sender') : I18n.t('messages.labels.recipient')
   end
 
   def message_role_value(message)
