@@ -72,7 +72,6 @@ module ApplicationHelper
       trans['required_filter_role'] = I18n.t('messages.notifications.required_filter_role')
       trans['required_filter_subject'] = I18n.t('messages.notifications.required_filter_subject')
       trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
-      trans['no_template_for_role'] = I18n.t('admin.no_template_for_role')
       trans['required_dept_filter'] = I18n.t('illnesses.labels.required_dept_filter')
       trans['required_child_filter'] = I18n.t('illnesses.labels.required_child_filter')
 

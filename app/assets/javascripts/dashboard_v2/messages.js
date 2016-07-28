@@ -14,11 +14,12 @@ var Messages = {
     $('.truncate').shorten({
       showChars: 500
     });
-
   },
 
   initListFilters: function() {
     $('#apply-message-filters').on('click', function() {
+      var userRole = $('#user_role').val();
+      var listType = $('#list_type').val();
       var targetRole = $('#target_role').val();
       var subjectId = $('#subject_id').val();
       var subSubjectId = $('#sub_subject_id').val();
@@ -43,7 +44,7 @@ var Messages = {
 
       if (valid) {
         $.ajax({
-          url: "#{list_messages_path(role: current_user.role, list_type: params['list_type'])}",
+          url: "/" + userRole + "/messages/" + listType + "/list",
           type: 'GET',
           data: {
           target_role: targetRole,
@@ -53,7 +54,7 @@ var Messages = {
             end_date: endDate
           },
           success: function(data) {
-            $('.message-list').html(data);
+            $('.filtered-contents').html(data);
             window.location.href = '#';
           }
         });
@@ -111,8 +112,6 @@ var Messages = {
   },
 
   initNewMessage: function() {
-    $.material.init();
-
     $('#message_content').froalaEditor({
       heightMin: 250
     });
@@ -154,20 +153,6 @@ var Messages = {
     $('#message_template_content').froalaEditor({
       heightMin: 200
     });
-  },
-
-  initNewMessage: function() {
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
   }
 
 }
-
-$(document).ready(function() {
-
-  $.material.init();
-
-  $(".select").dropdown({ "autoinit" : ".select" });
-
-});

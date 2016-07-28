@@ -110,9 +110,8 @@ en:
       sender: Sender
       apply_filters: Apply Filters
       message_list: Message List
-      show_only_message_to_filter: Show only messages sent to
-      show_only_message_from_filter: Show only messages received from
-      print: Print
+      show_only_messages_to_filter: Show only messages sent to
+      show_only_messages_from_filter: Show only messages received from
 
   dashboard:
     notifications: Notifications
@@ -164,7 +163,6 @@ en:
       department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
       filter_records_for: Select records to filter
       basic_filter: Filter options to see your list
-      print: Print
       required_dept_filter: Please choose a department
       required_child_filter: Please choose a child
       trend_filters: Filter options for the Illness Trend
