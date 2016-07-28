@@ -1,0 +1,17 @@
+= content_for :page_title, 'Worker Dashboard'
+= content_for :previous_path, welcome_path
+
+.row
+  .eightcol
+    #main-menu
+      .menu-items
+        = link_to todos_path, class: 'todos', 'data-step': '14', 'data-intro': 'As daycare worker, you can manage todo list' do
+          = image_tag 'todo.png'
+          %span Todos
+
+        = link_to list_messages_path(role: current_user.role, list_type: 'received'), class: 'messages', 'data-step': '15', 'data-intro': 'As daycare worker, you can view messages' do
+          = image_tag 'template-message.png'
+          %span Messages
+
+  .fourcol.last.notifications-panel
+    = render 'notifications'

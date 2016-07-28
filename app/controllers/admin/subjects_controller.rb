@@ -2,7 +2,7 @@ class Admin::SubjectsController < AdminController
 
   # GET /subjects
   def index
-    @subjects = Subject.all
+    @subjects = Subject.active
   end
 
   # GET /subjects/1
@@ -44,7 +44,7 @@ class Admin::SubjectsController < AdminController
   # DELETE /subjects/1
   def destroy
     set_subject
-    @subject.destroy
+    @subject.deactivate!
     redirect_to admin_subjects_url, notice: 'Subject was successfully destroyed.'
   end
 

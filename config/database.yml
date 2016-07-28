@@ -9,8 +9,8 @@ development:
   encoding: unicode
   database: health_childcare_dev
   pool: 5
-  username: postgres
-  password: postgres
+  username: postgresql
+  password: postgresql
 
 test:
   adapter: postgresql

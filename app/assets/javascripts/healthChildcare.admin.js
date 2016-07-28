@@ -1,4 +1,4 @@
-healthChildcare.admin = 
+healthChildcare.admin =
 {
     multiSelect: function()
     {

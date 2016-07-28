@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :message_subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
     devise_scope :user do
@@ -74,6 +75,16 @@ Rails.application.routes.draw do
                 post :send_invites
             end
         end
+
+        resources :messages do
+          collection do
+            get  :select_department
+            get  :recipient
+            get  :subject
+            get  :sub_subject
+            get  :content
+          end
+        end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
@@ -104,12 +115,29 @@ Rails.application.routes.draw do
         resources :daycares, only: :index
         resources :departments, only: :index
         resources :subjects, except: :show
-
+        resources :message_templates do
+          collection do
+            get :subject
+            get :sub_subject
+            get :recipient
+            get :edit_filters
+            get :filter
+          end
+        end
+        resources :messages, only: [:new, :create]
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]
             resources :surveys
         end
+    end
+
+    namespace :partner do
+      resources :messages, only: [:index, :new, :create]
+    end
+
+    resources :messages, only: [] do
+      get  :sub_subjects, on: :collection
     end
 
     namespace :api, constraints: { format: 'json' } do
@@ -119,7 +147,12 @@ Rails.application.routes.draw do
         resources :departments, only: :index
       end
       resources :plans, only: :show
+
+      resources :message_templates do
+        get :filter_by, on: :collection
+      end
     end
 
     get 'cast_vote', to: 'votes#cast_vote'
+    get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
 end

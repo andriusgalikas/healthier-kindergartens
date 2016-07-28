@@ -1,10 +1,13 @@
 - content_for :page_title, 'Partner Dashboard'
 - content_for :previous_path, welcome_path
 
-#main-menu
-  .row
-    .eightcol
+.row
+  .eightcol
+    #main-menu
       .menu-items
-        = link_to '#', class: 'messages' do
-          = image_tag 'message_icon.jpg'
+        = link_to partner_messages_path, class: 'messages' do
+          = image_tag 'template-message.png'
           %span Messages
+
+.row#partners-carousel
+  = render 'partners_carousel'

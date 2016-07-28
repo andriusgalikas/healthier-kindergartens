@@ -1,0 +1,9 @@
+.row
+  %h2 So Many Associations Are Sending Critical Messages
+  %h2 To Childcare Community Through Healthier Childcare Portal
+  %hr
+
+.slick-carousel
+  - Affiliate.all.reverse_order[0..10].each do |partner|
+    = link_to partner.url || '#', target: '_blank' do
+      = image_tag partner.profile_image ? partner.profile_image.file.url : 'partner.png'

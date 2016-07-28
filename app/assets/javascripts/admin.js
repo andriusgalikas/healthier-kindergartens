@@ -5,4 +5,3 @@
 //= require _healthChildcare
 //= require healthChildcare.admin
 //= require admin.ready
-//= require turbolinks

@@ -44,3 +44,84 @@ en:
       thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION AGAINTS ON-GOING RISK OF INFECTION AND RISK TO YOUR HEALTH THROUGH HEALTH PRESERVING CARE PROGRAM."
       demand_1: "DEMAND BETTER PROTECTION AGAINST THE ON-GOING RISK OF INFECTION THAT CAN PUT YOUR HEALTH AT RISK. VOTE FOR HEALTH PRESERVING CARE PROGRAM TODAY."
       demand_2: "Vote for Health Preserving Care Program."
+
+  messages:
+    breadcrumb:
+      message: Message
+      choose_template: Choose Template
+      create_template: Create Template
+      create_subject: Create Subject
+      create_sub_subject: Create Sub-Subject
+      choose_department: Choose Department
+      choose_recipient: Choose Recipient
+      add_content: Add Content
+      edit_template: Edit Message Template
+      message_options: Message Options
+      choose_subject: Choose Subject
+      choose_sub_subject: Choose Sub-subject
+      send: Send
+      edit: Edit
+
+    notifications:
+      create_template_success: Message template was successfully created.
+      create_template_error: There are errors creating the message templates.
+      update_template_success: Message template successfully updated.
+      delete_template_success: Message template successfully deleted.
+      find_template_empty: No message template match.
+      send_message_success: Message successfully sent.
+      send_message_error: There was an error creating the message.
+      delete_template_confirm: Are you sure you want to delete this template?
+      no_template_for_role: No message template found.
+      invalid_template_file: Invalid file! Please upload text file only.
+      required_filter_role: Please choose filter Role.
+      required_filter_subject: Please choose filter Subject.
+      required_filter_sub_subject: Please choose filter Sub-subject.
+
+    labels:
+      subject: Subject
+      choose_subject: Please Choose Subject
+      create_subject: Please Write Subject
+      sub_subject: Sub-subproject
+      choose_sub_subject: Please Choose Sub-subject
+      create_sub_subject: Please Create Sub-subject
+      write_title: Please write the title of the message
+      create_regular_message: Create Regular Message
+      write_message_content: Please write the content of your message
+      create_message_template: Create Message Template
+      edit_message_template: Edit Message Template
+      sent_messages: Sent Messages
+      basic_filter: Filter option to see your messages
+      new_notification: New Notification
+      new_template: New Template
+      send_notifications: Send Notifications
+      sent_notifications: Sent Notifications
+      received_notifications: Received Notifications
+      edit_and_send: Please Edit and Send Message
+      edit_and_save: Please Edit and Save Message
+      choose_recipient: Please Choose Target Recipient
+      choose_department: Please choose target daycare for this message
+      choose_language: Please Select the Language
+      upload_template: Or Upload Message Template File
+      filter_by_subject: Filter by Subject
+      filter_by_sub_subject: Filter by Sub-subject
+      recipient: Recipient
+      sender: Sender
+      apply_filters: Apply Filters
+      message_list: Message List
+      show_only_message_to_filter: Show only messages sent to
+      show_only_message_from_filter: Show only messages received from
+      print: Print
+
+  dashboard:
+    notifications: Notifications
+    messages: Messages
+
+  form_labels:
+    next: Next
+    back: Back
+    title: Title
+    cancel: Cancel
+    send: Send
+    save: Save
+    delete: Delete
+    edit: Edit

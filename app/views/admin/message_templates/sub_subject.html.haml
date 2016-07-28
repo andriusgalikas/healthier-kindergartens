@@ -1,0 +1,22 @@
+= content_for :title, 'New Message Template'
+- step_size = 4
+- page_step = 2
+
+.page-header
+  %h3= add_sub_subject_header
+
+.row
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
+
+#main-content
+  %h4.step-instruction= t('messages.labels.create_sub_subject')
+  = form_tag recipient_admin_message_templates_path, method: :get do
+    = hidden_field_tag :subject_title, params[:subject_title]
+    .form-group
+      = text_field_tag :sub_subject_title, params[:sub_subject_title], placeholder: t('messages.labels.sub_subject'), class: 'form-control', id: 'sub-subject-title', required: true
+
+    .row.form-buttons
+      .col-md-6
+        %a{href: subject_admin_message_templates_path(subject_title: params[:subject_title]), class: 'btn btn-raised btn-info'}= t('form_labels.back')
+      .col-md-6
+        = submit_tag t('form_labels.next'), class: 'btn btn-raised btn-success'

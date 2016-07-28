@@ -1,0 +1,18 @@
+= content_for :title, t('messages.message')
+
+.row
+  .page-header
+    %h3= t('messages.breadcrumb.message') + ' :'
+
+.row#main-menu
+  .menu-items
+    .row
+      .col-md-6.centralize
+        = link_to new_partner_message_path, class: 'btn btn-raised' do
+          = image_tag 'template-message.png'
+          %span= t('messages.labels.create_regular_message')
+
+      .col-md-6.centralize
+        = link_to list_messages_path(role: current_user.role, list_type: 'sent'), class: 'btn btn-raised' do
+          = image_tag 'template-send.png'
+          %span Sent Messages

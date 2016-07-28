@@ -1,0 +1,30 @@
+= content_for :title, t('messages.labels.new_notification')
+- step_size = 5
+- page_step = 5
+
+.row
+  .page-header
+    %h3= create_message_from_template_header
+
+.row
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
+
+.row#main-content
+  = form_for [:manager, @message] do |f|
+    = f.hidden_field :message_template_id, value: @message_template.id
+    = f.hidden_field :title, value: @sub_subject.title
+    = hidden_field_tag 'message[target_roles][]', @message_template.target_role
+    = hidden_field_tag 'target_department', params[:target_department]
+
+    .form-group
+      %label.step-instruction(for: :content)= t('messages.labels.edit_and_send')
+      = f.text_area :content, id: 'message_content', value: @message_template.content
+
+    .form-buttons
+      .col-md-6
+        %a{href: sub_subject_manager_messages_path(target_department: params[:target_department], target_role: params[:target_role], subject_id: params[:subject_id], sub_subject_id: params[:sub_subject_id]), class: 'btn btn-raised btn-info'} Back
+      .col-md-6
+        = submit_tag 'Send', class: 'btn btn-raised btn-success'
+
+:javascript
+  Messages.initNewMessage();

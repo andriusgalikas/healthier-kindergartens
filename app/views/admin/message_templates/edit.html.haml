@@ -1,0 +1,11 @@
+= content_for :title, t('messages.breadcrumb.edit_message_template')
+= content_for :breadcrumb, t('messages.breadcrumb.edit')
+
+.page-header
+  %h3= t('messages.breadcrumb.edit_message_template')
+
+#main-content
+  = render 'form'
+
+:javascript
+  Messages.initEditTemplate();

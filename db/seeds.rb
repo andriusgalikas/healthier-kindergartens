@@ -87,3 +87,17 @@ subjects.each do |sub|
   subject = Subject.create(title: sub)
 end
 
+p "Creating Message Subject"
+msg_subject = MessageSubject.create(title: 'Illness')
+
+p "Creating Message Sub-subject"
+msg_sub_subject = msg_subject.sub_subjects.create(title: 'Flu')
+
+p "Creating Message Template"
+msg_template = MessageTemplate.create(sub_subject_id: msg_sub_subject.id, target_role: 'worker', content: "The common cold, including chest cold and head cold, and seasonal flu are caused by viruses. Use over-the-counter cold medications to relieve symptoms including sore throat, runny nose, congestion, and cough. Flu symptoms are similar, but include fever, headache and muscle soreness. See a doctor who may prescribe antiviral medications Relenza or Tamiflu.")
+
+p "Creating Message"
+msg = Message.create(message_template_id: msg_template.id, owner_id: manager.id, title: msg_sub_subject.title, content: msg_template.content, target_role: ['worker'].to_json)
+
+p "Creating Notification"
+notif = msg.notifications.create(target_id: worker.id)

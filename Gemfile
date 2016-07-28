@@ -97,3 +97,6 @@ gem 'chronic'
 # spreadsheet
 gem 'roo'
 gem 'roo-xls'
+
+# wysiwyg
+gem 'wysiwyg-rails'

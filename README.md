@@ -102,6 +102,42 @@ The DiscountCode model is designed to define available DiscountCodes based aroun
 
 The DiscountCodeUser is a HABTM relationship handler between the DiscountCode and User models. A DiscountCode can have mutiple Users, whereas a User can only have one DiscountCode.
 
+## Message
+
+The Message model is designed to define the message content sent between users of the app. It can be user created, or based on a Message Template. It can have multiple target roles. When a message is created, a corresponding notification is created for all the recipients of the message.
+
+### User Stories
+
+As an Admin, I can
+- create regular messages
+
+As a Manager, I can
+- create messages based on the message templates
+
+As a Partner, I can
+- create regular messages
+
+## Message Subject
+
+The Message Subject model is designed to define a predefined set of subjects for Messages. It is a main subject when the parent_subject_id is null, or sub-subject when it has a parent_subject_id.
+
+## Message Template
+
+The Message Template model is designed to define a predefined message that the users can send to the other users of the app. It belongs to a main subject and sub-subject. It also has one target role.
+
+### User Story
+
+As an Admin, I can
+- create message templates
+- edit message templates
+- delete message templates
+
+As a Manager, I can
+- can use the message templates created by the Admin to be sent to the parents and workers under my daycare
+
+## Notification
+The Notification model is designed to define any form of notifications out of any actions. It has a polymorphic field, which can be used to record the source of the notification. One possible source of notification is a Message.
+
 ## Plan
 
 The Plan model is designed to define available Plans for when a User would like to upgrade their subscription in the system. When creating a new Plan, it should automtically create and/or update the linked Stripe account with the required information. Stripe needs to hold the Plan information in order to charge the User with the correct amount for each month of their subscription. If you cannot find the Plan information in your stripe dashboard, run the following command:

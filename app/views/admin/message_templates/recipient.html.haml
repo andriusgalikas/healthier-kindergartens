@@ -1,0 +1,27 @@
+= content_for :title, 'New Message Template'
+- step_size = 4
+- page_step = 3
+
+.page-header
+  %h3= add_recipient_header
+
+.row
+  = render partial: '/shared/progress_bar', locals: {step_size: step_size, page_step: page_step}
+
+#main-content
+  %h4.step-instruction= t('messages.labels.choose_recipient')
+  = form_tag new_admin_message_template_path, method: :get do
+    = hidden_field_tag :subject_title, params[:subject_title]
+    = hidden_field_tag :sub_subject_title, params[:sub_subject_title]
+    .form-group
+      - MessageTemplate.target_roles.each do |target_role|
+        .radio
+          %label
+            %input{type: 'radio', name: 'target_role', value: target_role[0], checked: true}
+            = target_role[0].humanize
+
+    .form-buttons
+      .col-md-6
+        %a{href: sub_subject_admin_message_templates_path(subject_title: params[:subject_title], sub_subject_title: params[:sub_subject_title]), class: 'btn btn-raised btn-info'}= t('form_labels.back')
+      .col-md-6
+        = submit_tag t('form_labels.next'), class: 'btn btn-raised btn-success'

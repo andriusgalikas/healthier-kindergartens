@@ -1,6 +1,8 @@
 /*
-*= require icomoon-bower
-*= require jquery.datetimepicker
+ *= require icomoon-bower
+ *= require jquery.datetimepicker
+ *= require slick-carousel/slick/slick.css
+ *= require slick-carousel/slick/slick-theme.css
 */
 @import "compass/css3";
 
@@ -15,6 +17,7 @@ $dark-grey: #2f363d;
 $light-grey: #d0d0d0;
 $red: #CD2626;
 $flamingo: #F05C52;
+$header-blue: #296BD1;
 
 @import "dashboard/base";
 @import "dashboard/1100";
@@ -26,3 +29,4 @@ $flamingo: #F05C52;
 @import "dashboard/todos";
 @import "dashboard/registration";
 @import "dashboard/surveys";
+@import "dashboard/notifications";

@@ -1,0 +1,102 @@
+$green: #4caf50;
+$grey: #ccc;
+$info-blue: #03a9f4;
+
+.notifications-panel {
+  top: 70px;
+  position: absolute;
+  right: 0px;
+  background: white;
+  height: 100%;
+  border-left: 2px solid #ddd;
+
+  .badge {
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: $green;
+    border-radius: 10px;
+  }
+
+  .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+
+    .panel-heading {
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 10px 15px;
+
+      #notif-count {
+        float: right;
+      }
+    }
+
+    .panel-body {
+      padding: 15px;
+
+      .panel-subheading {
+        .subheading-icon {
+          height: 25px;
+          float: left;
+        }
+
+        .subheading-title {
+          padding-left: 10px;
+        }
+      }
+
+      .panel-subcontent {
+        padding: 5px;
+        margin-left: 30px;
+
+        .notification {
+          border-bottom: 1px solid $grey;
+          padding: 2px;
+        }
+
+        .notif-sender-avatar {
+          display: inline;
+
+          img {
+            height: 25px;
+            width: 25px;
+          }
+        }
+        .notif-sender-name {
+          display: inline;
+        }
+      }
+
+    }
+  }
+
+}
+
+#partners-carousel {
+  margin-top: 150px;
+
+  h2 {
+    color: black;
+    text-align: center;
+  }
+
+  hr {
+    background-color: $info-blue;
+    border: 2px solid $info-blue;
+  }
+
+  .slick-carousel {
+    margin-top: 50px;
+
+    img {
+      width: 100px;
+    }
+  }
+}

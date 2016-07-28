@@ -59,6 +59,10 @@
       = affiliate.label :telephone
       = affiliate.text_field :telephone, class: 'form-control'
 
+    .form-group
+      = affiliate.label :url
+      = affiliate.text_field :url, class: 'form-control'
+
     = affiliate.fields_for :profile_image do |profile_image|
       .form-group
         = profile_image.label :profile_image
