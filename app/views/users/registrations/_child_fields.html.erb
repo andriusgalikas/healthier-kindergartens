@@ -18,7 +18,7 @@
     <% end %>
     <div class="form-group">
         <%= f.label 'Department' %>
-        <%= f.collection_select :department_id, [], :id, :name, { prompt: true }, { :class => "department-select form-control" } %>
+        <%= f.collection_select :department_id, @departments, :id, :name, { prompt: true }, { :class => "department-select form-control" } %>
     </div>
     <%= custom_link_to_remove_fields "Remove", f %>
 </div>

@@ -2,7 +2,7 @@
 <% content_for :previous_path, getting_started_path %>
 <%= content_for :color_code, 'manager' %>
 
-<%= form_for @daycare, url: daycare_registration_path, html: { method: :post } do |daycare| %>
+<%= form_for @daycare, url: daycare_registration_path, html: { method: :post, class: 'row' } do |daycare| %>
   <% if @daycare.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@daycare.errors.count, "error") %> prohibited this daycare from being saved:</h2>

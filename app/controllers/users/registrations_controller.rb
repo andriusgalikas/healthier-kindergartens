@@ -105,7 +105,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     when 'partner'
       new_affiliate
     when 'parentee'
-      set_daycares
+      set_daycare
+      set_departments
       new_child
       new_user_daycare
     when 'worker'
@@ -188,6 +189,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def send_confirmation_email user
     RegistrationMailer.send_confirmation(user).deliver_later
   end
+
+  def set_daycare
+    @daycare ||= Daycare.find params[:daycare_id]
+  end
+
+  def set_departments
+    @departments ||= @daycare.departments
+  end
+
 
   # def build_resource params
   #   self.resource = User.new(params)

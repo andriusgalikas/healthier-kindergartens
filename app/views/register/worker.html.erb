@@ -2,7 +2,7 @@
 <% content_for :previous_path, getting_started_path %>
 <%= content_for :color_code, 'worker' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :name %>

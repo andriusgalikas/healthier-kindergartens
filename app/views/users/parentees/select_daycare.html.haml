@@ -1,0 +1,22 @@
+= content_for :page_title, t('registrations.parentee.registration')
+= content_for :previous_path, getting_started_path
+= content_for :color_code, 'parentee'
+
+.row.select-daycare
+  .twelvecol
+    %h3= t('registrations.parentee.select_daycare')
+    = form_tag parentee_select_daycare_path, method: :get do
+      .form-prefix
+        %span
+          %i.icon-search
+        = text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: '1', class: 'form-control')
+
+    - @daycares.each do |daycare|
+      .row.item
+        .tencol
+          %h3= daycare.name
+          %p= daycare.address_line1
+          %p= daycare.postcode
+          %p= daycare.telephone
+        .twocol.last
+          = link_to t('form_labels.select'), new_user_registration_path(role: 'parentee', daycare_id: daycare.id), class: 'btn btn-green btn-normal btn-block'

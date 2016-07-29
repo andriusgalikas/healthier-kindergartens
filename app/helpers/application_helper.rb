@@ -64,9 +64,15 @@ module ApplicationHelper
     end
 
     def yield_js_translations
-      trans = {};
+      trans = {}
       trans['featured_daycare'] = I18n.t('notifications.featured_daycare')
       trans['featured_daycare_by_plan'] = I18n.t('notifications.featured_daycare_by_plan')
+      trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
+      trans['invalid_template_file'] = I18n.t('messages.notifications.invalid_template_file')
+      trans['required_filter_role'] = I18n.t('messages.notifications.required_filter_role')
+      trans['required_filter_subject'] = I18n.t('messages.notifications.required_filter_subject')
+      trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
+
       trans
     end
 
