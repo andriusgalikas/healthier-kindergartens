@@ -37,7 +37,7 @@ class Todo < ActiveRecord::Base
     belongs_to :user
 
     scope :complete,                                                            -> { includes(:todo_completes).where.not(todo_completes: { completion_date: nil } ) }
-    scope :incomplete,                                                          -> { includes(:todo_completes).where.not(todo_completes: { id: nil } ).where(todo_completes: { completion_date: nil } )  }                                        
+    scope :incomplete,                                                          -> { includes(:todo_completes).where.not(todo_completes: { id: nil } ).where(todo_completes: { completion_date: nil } )  }
     scope :available,                                                           -> { includes(:todo_completes).where(todo_completes: { id: nil } ) }
     scope :global,                                                              -> { where(daycare_id: nil) }
 
@@ -45,7 +45,7 @@ class Todo < ActiveRecord::Base
 
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
-    validates :title, :user_id, :completion_date_type, 
+    validates :title, :user_id, :completion_date_type,
                 :completion_date_value, :iteration_type,                        presence: true
     validates :frequency,                                                       presence: true, :if => :recurring?
     validates :icon,                                                            presence: true
@@ -53,7 +53,7 @@ class Todo < ActiveRecord::Base
 
     enum iteration_type:            [:single, :recurring]
     enum frequency:                 [:day, :week, :month, :year]
-    enum completion_date_type:      [:completion_day, :completion_week, :completion_month, :completion_year]
+    enum completion_date_type:      [:completion_day, :completion_week, :completion_month, :completion_year, :completion_hour]
 
     before_save :set_frequency_for_single, :is_admin_global?
     before_destroy :is_admin_global?
@@ -76,7 +76,7 @@ class Todo < ActiveRecord::Base
     # => Convert the enum frequency attribute to a datetime format
     #
     def frequency_to_time
-        day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date 
+        day? ? 1.days.ago.to_date : week? ? 7.days.ago.to_date : month? ? 1.month.ago.to_date : 1.year.ago.to_date
     end
 
     # => Conver the completion_date_value and completion_date to a datetime format

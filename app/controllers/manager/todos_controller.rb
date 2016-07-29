@@ -34,7 +34,7 @@ class Manager::TodosController < ApplicationController
 		set_todo
         set_global_todo if @todo.local?
         hide_todo_from_dashboard
-		@todo.destroy unless @todo.global? 
+		@todo.destroy unless @todo.global?
 		redirect_to dashboard_manager_todos_path, notice: 'Todo was successfully destroyed.'
 	end
 
@@ -60,10 +60,16 @@ class Manager::TodosController < ApplicationController
 		@old_todo.tasks.each do |task|
 			new_task = @todo.tasks.build
 			new_task.attributes = task.dup.attributes
-        end
-        new_icon = @todo.build_icon
-        new_icon.duplicate_file(@old_todo.icon)
-		@todo.daycare = current_user.daycare 
+
+      task.sub_tasks.each do |sub_task|
+        new_sub_task = task.sub_tasks.build
+        new_sub_task.attributes  = sub_task.dup.attributes
+      end
+    end
+
+    new_icon = @todo.build_icon
+    new_icon.duplicate_file(@old_todo.icon)
+		@todo.daycare = current_user.daycare
 	end
 
 	def new_icon_attachment
@@ -71,7 +77,17 @@ class Manager::TodosController < ApplicationController
 	end
 
   	def todo_params
-  		params.require(:todo).permit(:title, :iteration_type, :frequency, :completion_date_type, :completion_date_value, :daycare_id, tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type], icon_attributes: [:id, :attachable_type, :attachable_id, :file]).merge(user_id: current_user.id)
+  		params.require(:todo).permit(
+        :title,
+        :iteration_type,
+        :frequency,
+        :completion_date_type,
+        :completion_date_value,
+        :daycare_id,
+        tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type,
+                           sub_tasks_attributes: [:id, :_destroy, :title, :sub_task_type]],
+        icon_attributes: [:id, :attachable_type, :attachable_id, :file]
+      ).merge(user_id: current_user.id)
   	end
 
   	def set_query

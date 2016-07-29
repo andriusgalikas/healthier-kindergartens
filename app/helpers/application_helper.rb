@@ -1,16 +1,20 @@
 module ApplicationHelper
 
-    def custom_link_to_remove_fields name, f
-        f.hidden_field(:_destroy) + __custom_link_to_function(name, "remove_fields(this)", 'red')
+    def custom_link_to_remove_fields name, f, opts={}
+        f.hidden_field(:_destroy) + __custom_link_to_function(name, "remove_fields(this)", 'red', class: opts[:class])
     end
 
-    def custom_link_to_add_fields name, f, association
+    def custom_link_to_remove_subtask_fields f, opts={}
+      f.hidden_field(:_destroy) + link_to(content_tag(:i, '', class: 'icon-cross icon-close'), 'javascript:void(0)', {onclick: "remove_fields(this)", class: 'subtask-link'})
+    end
+
+    def custom_link_to_add_fields name, f, association, opts={}
         new_object = f.object.class.reflect_on_association(association).klass.new
         new_object.build_profile_image if association == :children
         fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
             render(association.to_s.singularize + "_fields", :f => builder)
         end
-        __custom_link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", 'green')
+        __custom_link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", 'green', class: opts[:class])
     end
 
     # Creates a JavaScript tag, targeting the associated JavaScript file within the asset pipeline
@@ -105,6 +109,6 @@ module ApplicationHelper
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}
-        link_to(name, 'javascript:void(0);', opts.merge(onclick: on_click_event, class: "btn btn-#{button_color} btn-normal"))
+        link_to(name, 'javascript:void(0);', {onclick: on_click_event, class: "btn btn-#{button_color} btn-normal #{opts[:class]}"})
     end
 end

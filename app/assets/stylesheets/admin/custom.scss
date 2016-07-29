@@ -26,12 +26,30 @@
 .field
 {
     overflow: hidden;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
 
     a
     {
         margin-top: 15px;
         float:right;
 
+        &.subtask-link {
+          float: none;
+        }
+
+    }
+
+    .subtask {
+      input {
+        width: 90%;
+        display: inline
+      }
+
+      a {
+        float: none;
+        color: red;
+      }
     }
 }
 .form-action

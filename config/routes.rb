@@ -112,6 +112,7 @@ Rails.application.routes.draw do
         resources :todo_completes, only: [:show, :create]
     end
     resources :todo_task_completes, only: :update
+    resources :sub_task_completes, only: :update
 
     resources :trainings, only: :show
 

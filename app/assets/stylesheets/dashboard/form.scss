@@ -1,4 +1,4 @@
-form 
+form
 {
     margin-bottom:40px;
 
@@ -14,7 +14,7 @@ form
     {
         margin-top: 40px;
     }
-    fieldset 
+    fieldset
     {
         border:0;
         margin:0;
@@ -34,7 +34,7 @@ form
             color:$blue;
         }
     }
-    select 
+    select
     {
         border:1px solid $light-grey !important;
     }
@@ -65,28 +65,28 @@ form
             border-bottom: 1px solid #2f363d;
         }
     }
-    table 
+    table
     {
         margin-bottom: 15px;
     }
-    .checkbox 
+    .checkbox
     {
         display: inline-block;
         margin-right: 25px;
         padding:3px 0;
 
-        label 
+        label
         {
             display: inline;
             margin-bottom: 0;
             cursor: pointer;
             font-weight: bold;
         }
-        input 
+        input
         {
             margin-right:5px;
         }
-        &.blocked 
+        &.blocked
         {
             display: block;
         }
@@ -100,33 +100,33 @@ form
         display: block;
         padding:5px 0;
 
-        label 
+        label
         {
             display: inline;
             margin-bottom: 0;
             cursor: pointer;
             font-weight: bold;
         }
-        input 
+        input
         {
             margin-right:5px;
             position: relative;
             top: -1px;
         }
     }
-    .form-action 
+    .form-action
     {
         padding:15px;
         background-color:rgba(208,208,208,0.5);
         overflow: hidden;
         margin-bottom: 20px;
-            input 
+            input
             {
                 float:right;
                 margin-left:7px;
             }
     }
-    .attachments 
+    .attachments
     {
         position: relative;
         display: inline-block;
@@ -138,42 +138,42 @@ form
         @include transition-duration(1s);
         @include transition-timing-function(linear);
         overflow: hidden;
-            a 
+            a
             {
                 float:left;
                 color:white;
                 width:50px;
             }
-            img 
+            img
             {
                 display: block;
             }
-            &.default img 
+            &.default img
             {
                 border:3px solid $blue;
             }
     }
 }
-.form-group 
+.form-group
 {
     margin-bottom:15px;
-        label 
+        label
         {
             display: inline-block;
             margin-bottom:7px;
             font-weight: bold;
         }
-        textarea.form-control 
+        textarea.form-control
         {
             height:auto;
             resize:none;
         }
-        &.form-last 
+        &.form-last
         {
             margin:0;
         }
 }
-.form-control 
+.form-control
 {
     display:block;
     width:100%;
@@ -242,7 +242,7 @@ form
     padding:10px 10px;
     width:170px;
 }
-.bootstrap-tagsinput 
+.bootstrap-tagsinput
 {
   background-color: rgba(208,208,208,0.5);
   display: block;
@@ -251,8 +251,8 @@ form
   line-height: 22px;
   overflow: hidden;
   padding:10px 15px;
-  
-    input 
+
+    input
     {
       border: none;
       box-shadow: none;
@@ -266,14 +266,14 @@ form
       max-width: inherit;
       @include box-sizing(border-box);
       font-size:1.2em;
-        &:focus 
+        &:focus
         {
           border: none;
           box-shadow: none;
         }
     }
 
-    .tag 
+    .tag
     {
       margin: 5px 10px 5px 0;
       background-color:$blue;
@@ -287,7 +287,7 @@ form
       font-weight: bold;
       @include box-sizing(border-box);
 
-      [data-role="remove"] 
+      [data-role="remove"]
       {
         margin-left: 8px;
         cursor: pointer;
@@ -301,7 +301,7 @@ form
         -webkit-font-smoothing: antialiased;
         font-size: 11px;
 
-        &:after 
+        &:after
         {
           content: "\e0fd";
           padding: 0px 2px;
@@ -321,13 +321,31 @@ form
     }
 
     .fields
-    {   
+    {
         overflow: hidden;
         margin-bottom: 30px;
 
         a
         {
             float:right;
+
+            &.subtask-link {
+              position: inherit;
+              float: none;
+            }
+        }
+
+        .subtask {
+          input {
+            width: 90%;
+            display: inline
+          }
+
+          a {
+
+            float: none;
+            color: red;
+          }
         }
     }
 }

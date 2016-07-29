@@ -34,6 +34,20 @@
             <% else %>
               <i class="icon-checkmark"></i>
             <% end %>
+
+            <% if tk.sub_task_completes.present? %>
+              <b>Sub-tasks</b>
+              <% tk.sub_task_completes.each do |sub_task_complete| %>
+                <div class='subtask'>
+                  <% unless sub_task_complete.pass? %>
+                    <%= link_to content_tag(:i, '', class:"icon-checkmark #{sub_task_complete.result}"), sub_task_complete_path(sub_task_complete), method: :patch %>
+                  <% else %>
+                    <i class="icon-checkmark pass"></i>
+                  <% end %>
+                  <p><%= sub_task_complete.sub_task.title %></p>
+                </div>
+              <% end %>
+            <% end %>
           </li>
 
         <% end %>

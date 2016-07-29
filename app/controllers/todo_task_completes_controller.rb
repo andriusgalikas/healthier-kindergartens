@@ -14,7 +14,7 @@ class TodoTaskCompletesController < ApplicationController
     def set_todo_task_complete
         @todo_task_complete = current_user.task_completes.find(params[:id])
     end
-    
+
     def set_todo_complete
         @todo_complete = @todo_task_complete.todo_complete
     end
