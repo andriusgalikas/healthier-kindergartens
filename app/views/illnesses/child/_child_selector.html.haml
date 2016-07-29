@@ -1,0 +1,13 @@
+.form-group
+  %label.step-instruction= t('illnesses.labels.choose_child')
+  .row
+    .col-md-6
+      #search-child-name{'data-children_names': @children.inject([]){|list, child| list << {id: child.id, name: child.name}; list }.to_json}
+        = text_field_tag 'search-child-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
+    .col-md-6
+      .children-list
+        - @children.each do |child|
+          .radio
+            %label
+              %input{type: 'radio', name: 'child[id]', value: child.id, 'data-child_name': child.name}
+              = child.name

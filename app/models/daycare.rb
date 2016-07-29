@@ -25,6 +25,8 @@ class Daycare < ActiveRecord::Base
     has_many :survey_subjects
     has_many :surveys,                                  through: :survey_subjects
 
+    has_many :health_records
+
     # Dashboard relations
     has_many :local_todos,                              -> { includes(:icon) }, class_name: 'Todo'
 
@@ -48,19 +50,19 @@ class Daycare < ActiveRecord::Base
 
     scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
-    accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true               
+    accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true
 
     # => Checks if the daycare contains a manager user with an active subscription or trial
     #
     def active_subscription?
       managers.map(&:subscribed?).include?(true) || managers.map(&:active_trial?).include?(true) ? true : false
     end
-    
+
     # => Checks if the daycare contains a manager user with an active subscription
     #
     def subscribed?
       managers.map(&:subscribed?).include?(true) ? true : false
-    end  
+    end
     # => Lists all complete todos
     #
     def all_completed_todos

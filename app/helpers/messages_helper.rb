@@ -77,10 +77,6 @@ module MessagesHelper
     page_step > form_step ? 'complete' : page_step == form_step ? 'active' : 'disabled'
   end
 
-  def pretty_message_date(date)
-    date.strftime('%d/%m/%Y') + ' @ ' + date.strftime('%r')
-  end
-
   def message_role_label
     params[:list_type] == 'received' ? I18n.t('messages.labels.sender') : I18n.t('messages.labels.recipient')
   end

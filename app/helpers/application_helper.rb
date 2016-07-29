@@ -72,6 +72,8 @@ module ApplicationHelper
       trans['required_filter_role'] = I18n.t('messages.notifications.required_filter_role')
       trans['required_filter_subject'] = I18n.t('messages.notifications.required_filter_subject')
       trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
+      trans['required_dept_filter'] = I18n.t('illnesses.labels.required_dept_filter')
+      trans['required_child_filter'] = I18n.t('illnesses.labels.required_child_filter')
 
       trans
     end
@@ -90,6 +92,14 @@ module ApplicationHelper
     else
       'logo_menu.png'
     end
+  end
+
+  def pretty_long_date(date)
+    date.strftime('%d/%m/%Y') + ' @ ' + date.strftime('%r')
+  end
+
+  def pretty_short_date(date)
+    date.strftime('%d/%m/%Y')
   end
 
     private

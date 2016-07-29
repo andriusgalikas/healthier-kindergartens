@@ -1,0 +1,2 @@
+= label_tag :child, t('illnesses.labels.select_children')
+= select_tag :child_id, options_from_collection_for_select(@children, 'id', 'name'), class: 'select', required: true, prompt: t('illnesses.labels.children')

@@ -1,0 +1,15 @@
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.child_details')
+
+.form-group
+  %label.step-instruction= t('illnesses.labels.choose_department')
+  .row
+    .col-md-6
+      #search-department-name{'data-department_names': user_departments.to_json}
+        = text_field_tag 'search-department-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
+    .col-md-6
+      - user_departments.each do |dept|
+        .radio
+          %label
+            %input{type: 'radio', name: 'department[id]', value: dept[:id], 'data-department_name': dept[:name]}
+            = dept[:name]

@@ -19,7 +19,13 @@
 //= require plugins/paragraph_style.min.js
 //= require plugins/inline_style.min.js
 //= require plugins/quick_insert.min.js
-//= require jquery.dropdown.js
 //= require jquery.shorten.min.js
 //= require printThis.js
-//= require message_template.ready
+//= require jquery.steps/build/jquery.steps.min.js
+//= require typeahead.js/dist/typeahead.bundle.min.js
+//= require jquery.dropdown.js
+//= require handlebars/handlebars.min.js
+//= require select2.min.js
+//= require dashboard_v2/illnesses.js
+//= require dashboard_v2/messages.js
+//= require dashboard_v2.ready

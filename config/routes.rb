@@ -90,6 +90,13 @@ Rails.application.routes.draw do
             get  :content
           end
         end
+
+        resources :illnesses, only: [] do
+          collection do
+            get  :set_filters
+            post :trends
+          end
+        end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
@@ -107,6 +114,27 @@ Rails.application.routes.draw do
     resources :todo_task_completes, only: :update
 
     resources :trainings, only: :show
+
+    resources :illnesses, only: [:index] do
+      collection do
+        get  :add_record
+        get  :new_child_record
+        get  :new_department_record
+        get  :department_children
+        get  :child_profile
+        get  :symptoms
+        get  :department_workers
+        get  :worker_profile
+        get  :filter
+        get  :filter_children
+        get  ':record_type/list', to: 'illnesses#list', as: 'list'
+
+        post :create_child_record
+        post :create_department_record
+      end
+    end
+
+    resources :health_records, only: [:show]
 
     namespace :admin do
         root to: 'dashboard#index'

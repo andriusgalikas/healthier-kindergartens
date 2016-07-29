@@ -1,0 +1,34 @@
+= content_for :title, t('illnesses.illness')
+
+.page-header
+  %h3= t('illnesses.labels.trend_filters')
+
+.container-fluid.filters
+  = form_tag trends_manager_illnesses_path, method: :post do
+    .row
+      .col-md-6
+        .form-group
+          = label_tag :department, t('illnesses.labels.select_multiple_departments')
+          %br
+          = select_tag 'department_ids[]', options_from_collection_for_select(current_user.daycare.departments, 'id', 'name'), class: 'multiple-select', required: true, multiple: true
+
+      .col-md-6
+        .form-group
+          = label_tag :illness, t('illnesses.labels.select_multiple_illnesses')
+          %br
+          = select_tag 'illness_codes[]', options_from_collection_for_select(Illness.all, 'code', 'name'), class: 'multiple-select', required: true, multiple: true
+
+    .row
+      .col-md-6
+        .form-group
+          = label_tag :start_date
+          = text_field_tag :start_date, params['start_date'], class: 'datepicker form-control'
+
+      .col-md-6
+        .form-group
+          = label_tag :end_date
+          = text_field_tag :end_date, params['end_date'], class: 'datepicker form-control'
+
+    .row.centralize
+      .form-buttons
+        = submit_tag 'Apply filters', class: 'btn btn-raised btn-info'

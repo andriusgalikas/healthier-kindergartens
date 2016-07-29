@@ -1,0 +1,73 @@
+.illnesses {
+  .menu-items {
+    img {
+      @include border-radius(10px);
+    }
+  }
+
+  .tt-dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .tt-menu {
+    background: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+    color: black;
+    min-widt: 200px;
+
+    .tt-suggestion {
+      &:hover {
+        background: $lighter-grey;
+      }
+    }
+  }
+
+  #new-child-record {
+    .child-profile {
+      margin-bottom: 100px;
+
+      img {
+        height: 125px;
+      }
+    }
+  }
+
+  .illness-details {
+    .illness-list {
+      max-height: 300px;
+      overflow: auto;
+    }
+
+    #symptoms {
+      .symptoms-list {
+        padding-left: 20px;
+
+        .checkbox {
+          border-bottom: 1px solid $grey;
+        }
+
+      }
+    }
+  }
+
+  .contact-parent-ans, .contact-doctor-ans {
+    display: none;
+    margin-top: 50px;
+  }
+
+  .dropdownjs {
+    ul {
+      padding: 10px;
+    }
+  }
+
+}
+
+.filters {
+  .date-filters {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+= content_for :title, t('illnesses.illness')
+
+.row
+  .page-header
+    %h3= t('illnesses.breadcrumb.illness')
+
+.row#main-menu.illnesses
+  .menu-items
+    .row
+      .col-md-6.centralize
+        = link_to add_record_illnesses_path, class: 'btn btn-raised' do
+          = image_tag 'todo_list_icon.jpg'
+          %span= t('illnesses.labels.add_record')
+
+      .col-md-6.centralize
+        = link_to filter_illnesses_path, class: 'btn btn-raised' do
+          = image_tag 'calendar_icon.jpg'
+          %span= t('illnesses.labels.view_old_records')

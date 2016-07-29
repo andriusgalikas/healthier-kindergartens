@@ -1,0 +1,30 @@
+= content_for :title, t('illnesses.illness')
+
+.row
+  .page-header
+    %h3= t('illnesses.illness')
+    .text-info= t('illnesses.labels.department_record_help_text')
+
+.row.illnesses
+  = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
+    %label= t('illnesses.labels.department_details')
+    %section.choose-department
+      = render 'department_options_selector'
+
+    %label= t('illnesses.labels.illness_details')
+    %section.illness-details
+      = render 'illnesses/department/illness_details'
+
+    %label= t('illnesses.labels.additional_actions')
+    %section.additional-actions
+      = render 'additional_actions'
+
+    %label= t('illnesses.labels.worker_confirmation')
+    %section.worker-department
+      = render 'worker_department'
+      .worker-names
+      .worker-profile
+      .worker-confirmation
+
+:javascript
+  Illnesses.initDepartmentRecord();

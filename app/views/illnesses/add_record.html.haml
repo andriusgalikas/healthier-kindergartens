@@ -1,0 +1,20 @@
+= content_for :title, t('illnesses.illness')
+
+.row
+  .page-header
+    %h3= t('illnesses.breadcrumb.illness')
+
+.row#main-menu.illnesses
+  .menu-items
+    .row
+      %label.step-instruction= t('illnesses.labels.choose_record_for') + ' :'
+    .row
+      .col-md-6.centralize
+        = link_to new_child_record_illnesses_path, class: 'btn btn-raised' do
+          = image_tag 'back_four.png'
+          %span= t('illnesses.labels.child')
+
+      .col-md-6.centralize
+        = link_to new_department_record_illnesses_path, class: 'btn btn-raised' do
+          = image_tag 'back2_two.png'
+          %span= t('illnesses.labels.department')

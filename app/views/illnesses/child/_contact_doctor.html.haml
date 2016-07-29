@@ -1,0 +1,19 @@
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.contact_doctor_question')
+
+.row.centralize
+  - ['yes', 'no'].each do |ans|
+    .radio
+      %label
+        %input{type: 'radio', name: 'contact[doctor][answer]', value: ans}
+        = t("illnesses.labels.illness_#{ans}")
+
+.contact-doctor-ans#contact-doctor-yes
+  .form-group
+    %label.step-instruction= t('protocols.child_illness_record.contact_doctor_message')
+    = text_area 'record', 'contact_doctor_message', class: 'form-control', rows: '5'
+
+.contact-doctor-ans#contact-doctor-no
+  .form-group
+    %label.step-instruction= t('protocols.child_illness_record.contact_doctor_reason')
+    = text_area 'record', 'contact_doctor_reason', class: 'form-control', rows: '5'

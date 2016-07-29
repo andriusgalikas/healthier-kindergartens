@@ -16,10 +16,18 @@ class Child < ActiveRecord::Base
     belongs_to :parentee,                                   class_name: 'User', foreign_key: 'parent_id'
     belongs_to :department
 
+    has_many :health_records,                               :as => :owner
+
     validates :name, :department_id,
                 :birth_date,                                presence: true
 
     validates :profile_image,                               presence: true
 
     accepts_nested_attributes_for :profile_image
+
+    def age
+      now = Time.now.utc.to_date
+      now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
+    end
+
 end

@@ -1,0 +1,132 @@
+.message-content-stage {
+  background: white;
+  padding: 10px 25px;
+  color: black;
+}
+
+.message-list{
+  nav {
+    text-align: center;
+  }
+}
+
+.multi-step-form {
+  .form-step {
+    padding: 0px;
+    position: relative;
+
+    button {
+      z-index: 100;
+    }
+
+    &:first-child {
+      .progress {
+        left: 50%;
+        width: 50%;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width: 0%;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      .progress {
+        width: 50%;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .progress {
+      position: relative;
+      border-radius: 0px;
+      height: 4px;
+      box-shadow: none;
+      margin-top: -5px;
+
+      .progress-bar {
+        width:  0px;
+        box-shadow: none;
+        background: $info-green;
+      }
+    }
+
+    &.complete {
+      .progress {
+        .progress-bar {
+          width: 100%;
+        }
+      }
+    }
+
+    &.active {
+      button {
+        background: $info-blue;
+      }
+
+      .progress {
+        .progress-bar {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+}
+
+
+.edit-filters {
+  -webkit-box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  -moz-box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  box-shadow: 2px 2px 7px 0px rgba(219,216,219,0.58);
+  background: #F4F4F4;
+  @include border-radius(10px);
+
+  #subject-filters, #sub-subject-filters, #target-role-filters {
+    padding: 10px;
+
+    ul {
+      li {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 2px;
+        cursor: pointer;
+
+        &.active {
+          background: white;
+
+          .loader {
+            display: inline;
+          }
+        }
+
+        &:hover {
+          background: white;
+        }
+
+        .loader {
+          float: right;
+          display: none;
+        }
+      }
+
+    }
+
+  }
+
+}

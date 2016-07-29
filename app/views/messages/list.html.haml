@@ -3,7 +3,7 @@
 .page-header
   %h3= t('messages.labels.basic_filter') + ' :'
 
-.container-fluid.message-filters
+.container-fluid.filters
   - if params[:list_type] == 'sent'
     - if current_user.manager?
       = render '/messages/sent_message_filters_advanced'
@@ -12,7 +12,7 @@
   - else
     = render '/messages/received_message_filters'
 
-.message-list
+.filtered-contents
   - if @notification
     = render @notification.source
 

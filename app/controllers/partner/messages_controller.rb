@@ -1,5 +1,5 @@
 class Partner::MessagesController < ApplicationController
-  layout 'message'
+  layout 'dashboard_v2'
   before_action -> { authenticate_role!(['partner'])}
 
   def new
@@ -50,13 +50,13 @@ class Partner::MessagesController < ApplicationController
     cond_arr = []
 
     if params['start_date'].present?
-      cond_str << 'created_at > ?'
-      cond_arr << Date.parse(params['start_date'])
+      cond_str << 'created_at >= ?'
+      cond_arr << Date.parse(params['start_date']) - 1
     end
 
     if params['end_date'].present?
-      cond_str << 'created_at < ? '
-      cond_arr << Date.parse(params['end_date'])
+      cond_str << 'created_at <= ? '
+      cond_arr << Date.parse(params['end_date']) + 1
     end
 
     if params['target_role'].present?

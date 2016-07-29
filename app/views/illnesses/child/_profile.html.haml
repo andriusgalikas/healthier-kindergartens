@@ -1,0 +1,29 @@
+.row.centralize
+  %label.step-instruction= t('illnesses.labels.child_details')
+
+.form-group
+  .row
+    .col-md-6
+      %dl.dl-horizontal
+        %dt= t('illnesses.labels.name')
+        %dd= @child.name
+
+        %dt= t('illnesses.labels.age')
+        %dd= @child.age
+
+        %dt= t('illnesses.labels.birthday')
+        %dd= pretty_short_date(@child.birth_date)
+
+    .col-md-6
+      = image_tag @child.profile_image.file.url
+
+  %hr
+  .row.centralize
+    = t('illnesses.labels.worker_knows_illness_question')
+
+  .row.centralize
+    - ['yes', 'no'].each do |ans|
+      .radio
+        %label
+          %input{type: 'radio', name: 'illness[known][answer]', value: ans}
+          = t("illnesses.labels.illness_#{ans}")

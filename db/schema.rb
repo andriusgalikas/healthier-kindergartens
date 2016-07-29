@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624093113) do
+ActiveRecord::Schema.define(version: 20160725064212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,37 @@ ActiveRecord::Schema.define(version: 20160624093113) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "health_record_components", force: :cascade do |t|
+    t.integer  "health_record_id"
+    t.string   "code"
+    t.string   "value"
+    t.datetime "deactivate_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "health_record_components", ["health_record_id"], name: "index_health_record_components_on_health_record_id", using: :btree
+
+  create_table "health_records", force: :cascade do |t|
+    t.string   "protocol_code"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "recorder_id"
+    t.string   "recorder_type"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "daycare_id"
+    t.integer  "department_id"
+  end
+
+  create_table "illnesses", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "message_subjects", force: :cascade do |t|
@@ -208,6 +239,14 @@ ActiveRecord::Schema.define(version: 20160624093113) do
     t.integer  "survey_subject_id"
     t.integer  "weight",            default: 0
     t.datetime "deactivated_at"
+  end
+
+  create_table "symptoms", force: :cascade do |t|
+    t.integer  "illness_id"
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "todo_completes", force: :cascade do |t|
