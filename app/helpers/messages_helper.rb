@@ -73,17 +73,6 @@ module MessagesHelper
       "#{t('messages.breadcrumb.send')}"
   end
 
-  def yield_js_translations
-    trans = {}
-    trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
-    trans['invalid_template_file'] = I18n.t('messages.notifications.invalid_template_file')
-    trans['required_filter_role'] = I18n.t('messages.notifications.required_filter_role')
-    trans['required_filter_subject'] = I18n.t('messages.notifications.required_filter_subject')
-    trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
-
-    trans
-  end
-
   def progress_bar_step(page_step, form_step)
     page_step > form_step ? 'complete' : page_step == form_step ? 'active' : 'disabled'
   end

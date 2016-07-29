@@ -2,7 +2,7 @@
 = content_for :previous_path, getting_started_path
 = content_for :color_code, 'partner'
 
-= form_for @affiliate, url: affiliate_registration_path, html: {method: :post} do |affiliate|
+= form_for @affiliate, url: affiliate_registration_path, html: {method: :post, class: 'row'} do |affiliate|
   - if @affiliate.errors.any?
     #error_explanation
       %h2= pluralize(@affiliate.errors.count, 'error') + " prohibited this affiliate from being saved."

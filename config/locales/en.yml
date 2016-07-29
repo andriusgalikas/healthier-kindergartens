@@ -116,6 +116,11 @@ en:
     notifications: Notifications
     messages: Messages
 
+  registrations:
+    parentee:
+      registration: Parent Registration
+      select_daycare: Search and select the daycare which your child is part of
+
   form_labels:
     next: Next
     back: Back
@@ -125,3 +130,4 @@ en:
     save: Save
     delete: Delete
     edit: Edit
+    select: Select

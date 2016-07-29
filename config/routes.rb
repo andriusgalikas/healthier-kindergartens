@@ -28,6 +28,11 @@ Rails.application.routes.draw do
         get :select_department, as: 'worker_select_department'
     end
 
+    # custom registration routes
+    scope 'parentee', controller: 'users/parentees' do
+        get :select_daycare, as: 'parentee_select_daycare'
+    end
+
     root to: 'pages#home'
 
     %w( about mission path standard getting_started welcome infection instruction implementation ).each do |page|
@@ -144,7 +149,6 @@ Rails.application.routes.draw do
       resources :daycares, only: [:index] do
         get :featured_daycare, on: :collection
         get :by_plan, on: :collection
-        resources :departments, only: :index
       end
       resources :plans, only: :show
 
