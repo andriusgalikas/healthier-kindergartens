@@ -39,7 +39,7 @@ class IllnessesController < ApplicationController
     if status[:code] == 'ok'
       redirect_to illnesses_path, notice: status[:message]
     else
-      render 'new_child_record', danger: status[:message]
+      redirect_to new_child_record_illnesses_path, alert: status[:message]
     end
   end
 
@@ -49,7 +49,7 @@ class IllnessesController < ApplicationController
     if status[:code] == 'ok'
       redirect_to illnesses_path, notice: status[:message]
     else
-      render 'new_department_record', danger: status[:message]
+      redirect_to new_department_record_illnesses_path, alert: status[:message]
     end
   end
 

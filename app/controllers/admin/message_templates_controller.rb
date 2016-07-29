@@ -10,7 +10,7 @@ class Admin::MessageTemplatesController < AdminController
     if @template.save
       redirect_to admin_message_templates_path, notice: t('messages.notifications.create_template_success')
     else
-      redirect_to new_admin_message_template_path, notice: t('messages.notifications.create_templat_error')
+      redirect_to new_admin_message_template_path, notice: t('messages.notifications.create_template_error')
     end
   end
 
