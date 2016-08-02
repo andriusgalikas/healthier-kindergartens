@@ -16,4 +16,4 @@
               - if current_user.manager?
                 = link_to 'Click here to access infection risk assessment for this module', manager_subject_results_path(subject)
               - else
-                = link_to 'Click here to access infection risk assessment for this module', new_subject_attempt_path(subject)
+                = link_to 'Click here to access infection risk assessment for this module', subject.user_has_previous_attempts?(current_user) ?  results_subject_path(subject) : new_subject_attempt_path(subject)

@@ -6,7 +6,7 @@
           <div class="radio-toolbar">
             <input type="radio" name="subject_id" id="radio<%= subject.id %>" value="<%= subject.id %>" <%= "checked" if subject == @subject %>  class="retake-radio">
             <label for="radio<%= subject.id %>"></label>
-            <p class="infection-name">   
+            <p class="infection-name">
               <%= image_tag subject.icon.file.thumb, :class => 'module2' %>
               <span><%= subject.title %></span>
             </p>

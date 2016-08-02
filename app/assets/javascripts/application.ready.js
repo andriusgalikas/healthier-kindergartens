@@ -7,6 +7,7 @@ $(document).ready(function()
     healthChildcare.app.submitSurveyModule();
     healthChildcare.app.showRegisteredChildcaresNotification();
     healthChildcare.app.showUpgradedChildcaresNotification();
+    healthChildcare.app.showSurveyResult();
 
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
@@ -269,3 +270,18 @@ function click_tab(id){
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
         $('#tab_'+id).addClass("jcmc-active-tab");
     }
+
+function drawSurveyProgress() {
+  var srcData = $('#progress_trend').data('trend_data');
+  var trendData = google.visualization.arrayToDataTable(srcData);
+
+  var options = {
+    title: window.__trans['worker_progress_chart_title'],
+    curveType: 'function',
+    legend: { position: 'bottom' }
+    };
+
+  var chart = new google.visualization.LineChart(document.getElementById('progress_trend'));
+
+  chart.draw(trendData, options);
+}

@@ -20,4 +20,5 @@ class SurveySurvey < ActiveRecord::Base
 
   belongs_to :survey_subjects
   has_many :questions, class_name: SurveyQuestion, dependent: :destroy
+  has_many :attempts, class_name: SurveyAttempts, dependent: :destroy
 end

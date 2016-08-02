@@ -1,10 +1,14 @@
 class SurveySubjectsController < ApplicationController
-    before_action -> { authenticate_role!(["parentee", "worker"]) }   
+    before_action -> { authenticate_role!(["parentee", "worker"]) }
     before_action :authenticate_subscribed!
 
     def results
         set_subject
-        compile_results
+        @trend = SurveyTrendsGenerator.new(@subject, [current_user.id])
+
+        if request.xhr?
+          render partial: 'progress_chart', locals: {trend: @trend}
+        end
     end
 
     private
@@ -13,15 +17,4 @@ class SurveySubjectsController < ApplicationController
         @subject ||= SurveySubject.find(params[:id])
     end
 
-    def compile_results
-        @results = []
-        @subject.surveys.each do |survey|
-            attempt = survey.attempts.where(participant_id: current_user.id).first
-            unless attempt.nil?
-                score = attempt.score
-                questions = survey.questions.count
-                @results.push([survey.name, (score.to_f/questions.to_f * 100.0)])
-            end
-        end
-    end
 end

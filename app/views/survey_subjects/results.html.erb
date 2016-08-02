@@ -3,16 +3,15 @@
       <div class="row back-page">
             <div class="col-lg-push-1 col-md-push-1 col-md-9 col-sm-9 col-xs-12 logo-back margin_single">
                 <%= render 'subjects' %>
-                <div id="bar_graph_partial" class="wrap">
-                    <% if @results.count > 0 %>
-                        <%= render partial: 'bar_graph', locals: { results: @results } %>
-                    <% else %>
-                        <p>
-                            Take the <%= link_to 'test here', new_subject_attempt_path(@subject) %> to see results...
-                        </p>
-                    <% end %>
+                <div id="progress_chart_partial" class="wrap">
+                  <%= render partial: 'progress_chart', locals: { trend: @trend } %>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+</script>
