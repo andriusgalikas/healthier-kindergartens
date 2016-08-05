@@ -214,3 +214,6 @@ en:
   survey:
     labels:
       worker_progress_chard_title: Risk Assessment Performance
+
+    notifications:
+      not_enough_data: Not enough data to show a trend.

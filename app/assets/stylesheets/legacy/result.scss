@@ -1832,7 +1832,6 @@ select.selectpicker{
 .vt-collapse-menu > img {
     float: left;
     width: auto;
-    cursor: pointer;
 }
 .container .header {
     color: #222;
@@ -1892,6 +1891,9 @@ select.selectpicker{
     display: inline-block;
     font-family: open sans;
     padding: 5px 10px;
+}
+.content.vt-menu li.active {
+    background: #d3d3d3;
 }
 .header i {
     float: right;

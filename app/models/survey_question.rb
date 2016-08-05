@@ -14,5 +14,5 @@ class SurveyQuestion < ActiveRecord::Base
   include Deactivatable
 
   belongs_to :survey_survey, class_name: SurveySurvey, foreign_key: :survey_id
-  has_many :options, class_name: SurveyOption, dependent: :destroy
+  has_many :options, class_name: Survey::Option, dependent: :destroy
 end

@@ -9,16 +9,58 @@ class SurveyTrendsGenerator
     @subject = subject
     @user_population = user_population
   end
+  # check for results availability
 
-  def survey_result_over_time
+  def individual_survey_result_over_time
     trend_data = []
-
     trend_data << header_columns
-    date_labels.each do |date|
-      trend_data << generate_trend_row(date)
+
+    date_labels(survey_attempt_dates).each do |date|
+      trend_data << generate_trend_row(date, trend_data[0], survey_attempt_dates)
     end
 
     trend_data
+  end
+=begin
+  output :
+  => [[0] [[0] "Date", [1] "Infection Preventive Outbreak Control"],
+      [1] [[0] "Jul 2016", [1] 96],
+      [2] [[0] "Aug 2016",[1] 86]
+=end
+  def group_survey_result_over_time
+    trend_data = [['Date', @subject.title]]
+
+    date_labels(subject_attempt_dates).each do |date|
+      trend_data << generate_trend_row(date, trend_data[0], subject_attempt_dates)
+    end
+
+    trend_data
+  end
+
+  def group_survey_result_right_over_wrong
+    trend_data = []
+    correct_percentages = []
+
+    group_survey_result_over_time.each_with_index do |data, index|
+      next if index == 0 # header
+      correct_percentages << data.last
+    end
+
+    if correct_percentages.present?
+       average_correct = correct_percentages.sum / correct_percentages.size
+      trend_data << ['Correct Answers', average_correct]
+      trend_data << ['Wrong Answers', 100 - average_correct]
+    end
+
+    trend_data
+  end
+
+  def has_available_individual_results?
+    survey_attempt_dates.present?
+  end
+
+  def has_available_group_results?
+    subject_attempt_dates.present?
   end
 
   private
@@ -45,11 +87,14 @@ class SurveyTrendsGenerator
   }
 =end
   def survey_attempt_dates
-    @attempt_dates ||= (
+    @survey_attempt_dates ||= (
       @subject.surveys.inject({}) do |list, survey|
-        attempts = attempts_per_survey(survey)
+        attempts = attempts_per_survey([survey.id])
+
         if attempts.present?
-          attempts.each_pair{|date, average| attempts[date] = average.to_i}
+          # get score percentage for every attempt groupings
+          # formula : average of correct scores / average # of questions * 100
+          attempts.each_pair{|date, score| attempts[date] = (score / survey.questions.size * 100).to_i}
 
           list[survey.name] = attempts
         end
@@ -58,22 +103,42 @@ class SurveyTrendsGenerator
     )
   end
 
+  def subject_attempt_dates
+    @subject_attempt_dates ||= (
+      scores_per_date = Hash.new{|h, k| h[k] = []}
+
+      survey_attempt_dates.values.each do |date_hash|
+        date_hash.each_pair do |date, score_percentage|
+          scores_per_date[date] << score_percentage
+        end
+      end
+
+      # get the average score per date
+      scores_per_date.each_pair{|date, score| scores_per_date[date] = score.sum / score.size}
+      if scores_per_date.present?
+        {@subject.title => scores_per_date}
+      else
+        {}
+      end
+    )
+  end
+
   def attempts_per_survey(survey_id)
     SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population).group("DATE_TRUNC('month', created_at)").average('score')
   end
 
-  def date_labels
-    survey_attempt_dates.values.map(&:keys).flatten.uniq.sort
+  def date_labels(attempt_dates)
+    attempt_dates.values.map(&:keys).flatten.uniq.sort
   end
 
-  def generate_trend_row(date)
-    row = Array.new(header_columns.size, 0)
+  def generate_trend_row(date, headers, attempt_dates)
+    row = Array.new(headers.size, 0)
     row[0] = date.strftime('%b %Y')
 
-    header_columns.each_with_index do |survey, index|
+    headers.each_with_index do |survey, index|
       next if index == 0
 
-      row[index] = survey_attempt_dates[survey][date] || 0
+      row[index] = attempt_dates[survey][date] || 0
     end
 
     row

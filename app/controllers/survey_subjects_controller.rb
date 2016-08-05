@@ -7,7 +7,7 @@ class SurveySubjectsController < ApplicationController
         @trend = SurveyTrendsGenerator.new(@subject, [current_user.id])
 
         if request.xhr?
-          render partial: 'progress_chart', locals: {trend: @trend}
+          render partial: 'progress_charts', locals: {trend: @trend}
         end
     end
 

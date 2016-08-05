@@ -19,6 +19,6 @@ class SurveySurvey < ActiveRecord::Base
   include Deactivatable
 
   belongs_to :survey_subjects
-  has_many :questions, class_name: SurveyQuestion, dependent: :destroy
+  has_many :questions, class_name: Survey::Question, dependent: :destroy
   has_many :attempts, class_name: SurveyAttempts, dependent: :destroy
 end
