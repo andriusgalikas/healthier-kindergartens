@@ -12,4 +12,8 @@
 class Illness < ActiveRecord::Base
 
   has_many :symptoms
+
+  validates :code, :name,          presence: true
+  validates :code,                 uniqueness: true
+
 end
