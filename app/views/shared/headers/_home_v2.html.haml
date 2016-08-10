@@ -10,6 +10,7 @@
     %li= link_to t('pages.nav_bar.path'), path_path, class: 'hcc-simple'
     %li= link_to t('pages.nav_bar.about_us'), about_path, class: 'hcc-simple'
     %li
-      %button.btn.hcc-btn{'href': '#'}
-        = t('pages.nav_bar.get_started')
-        %i.fa.fa-angle-right
+      %button.btn.hcc-btn{}
+        %a{'href': getting_started_path}
+          = t('pages.nav_bar.get_started')
+          %i.fa.fa-angle-right

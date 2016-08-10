@@ -214,6 +214,10 @@ en:
   survey:
     labels:
       worker_progress_chard_title: Risk Assessment Performance
+      groups: Groups
+      workers: Daycare Workers
+      parents: Daycare Parents
+      all: All
 
     notifications:
       not_enough_data: Not enough data to show a trend.

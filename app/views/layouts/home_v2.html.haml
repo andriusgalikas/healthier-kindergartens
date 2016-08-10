@@ -15,8 +15,8 @@
     .container.main
       = render partial: 'shared/headers/home_v2'
       = yield
-    = render partial: 'shared/footer_v2'
+    = render partial: 'shared/footer'
 
-    = stylesheet_link_tag 'home_v2', media: 'all', 'data-turbolinks-track': true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = stripe_javascript_tag

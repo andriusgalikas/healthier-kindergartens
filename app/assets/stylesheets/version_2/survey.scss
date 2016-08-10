@@ -1,0 +1,104 @@
+.survey-result {
+  margin-top: 30px;
+
+  .survey-subjects {
+    .survey-subject {
+      display: inline-block;
+      margin: 0 20px;
+    }
+  }
+
+  .survey-charts {
+    margin-top: 30px;
+  }
+
+  .survey-groups {
+    .panel {
+      border: 1px solid #ccc;
+      @include border-radius(20px);
+    }
+
+    .group-header {
+      margin: 10px 0;
+      cursor: pointer;
+      border: 2px solid white;
+      @include border-radius(10px);
+
+      img {
+        @include border-radius(50%);
+        width: 50px;
+      }
+
+      &.parents {
+        img {
+          border: 2px solid $hcc-red;
+
+        }
+      }
+
+      &.workers {
+        img {
+          border: 2px solid $hcc-light-blue;
+
+        }
+      }
+
+      &:hover {
+        @include hcc-hover;
+
+        img {
+          border-color: white;
+        }
+
+        &.parents {
+          border-color: $hcc-red;
+          @include hcc-transition(border-color);
+        }
+        &.workers {
+          border-color: $hcc-light-blue;
+          @include hcc-transition(border-color);
+        }
+
+      }
+    }
+
+    .group-members {
+      display: none;
+
+      a {
+        display: block;
+        padding: 0 5px;
+        @include border-radius(5px);
+
+        &:hover {
+          color: white;
+          text-decoration: none;
+        }
+      }
+
+      &.parents {
+        a {
+          color: $hcc-red;
+
+          &:hover, &.active {
+            color: white;
+            background: $hcc-red;
+            @include hcc-transition(background);
+          }
+        }
+      }
+
+      &.workers {
+        a {
+          color: $hcc-blue;
+
+          &:hover, &.active {
+            color: white;
+            background: $hcc-blue;
+            @include hcc-transition(background);
+          }
+        }
+      }
+    }
+  }
+}
