@@ -38,6 +38,12 @@
             <p><%= tk.title %></p>
             <b>Description</b>
             <p><%= tk.description %></p>
+            <% if tk.sub_tasks.present? %>
+              <b>Sub-tasks</b>
+              <% tk.sub_tasks.each do |sub_task| %>
+                <p><%= sub_task.title %></p>
+              <% end %>
+            <% end %>
           </li>
         <% end %>
       </ol>

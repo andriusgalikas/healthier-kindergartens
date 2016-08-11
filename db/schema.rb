@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725064212) do
+ActiveRecord::Schema.define(version: 20160802064439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,26 @@ ActiveRecord::Schema.define(version: 20160725064212) do
     t.integer  "allocation", default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "sub_task_completes", force: :cascade do |t|
+    t.integer  "submitter_id"
+    t.integer  "todo_task_complete_id"
+    t.integer  "sub_task_id"
+    t.datetime "completion_date"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "result",                default: 0
+  end
+
+  create_table "sub_tasks", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "todo_task_id"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "sub_task_type",  default: 0
   end
 
   create_table "subjects", force: :cascade do |t|

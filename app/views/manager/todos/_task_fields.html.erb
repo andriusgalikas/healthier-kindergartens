@@ -7,6 +7,12 @@
         <%= f.label :description %>
         <%= f.text_area :description, :class => 'form-control' %>
     </div>
+
+    <%= f.fields_for :sub_tasks do |sub_task| %>
+      <%= render partial: 'sub_task_fields', locals: {f: sub_task} %>
+    <% end %>
+
+    <%= custom_link_to_add_fields "Add Sub-task", f, :sub_tasks, {class:"subtask-link add"} %>
     <%= f.hidden_field :task_type, value: 'local' %>
     <%= custom_link_to_remove_fields "Remove", f %>
 </div>

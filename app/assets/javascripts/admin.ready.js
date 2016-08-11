@@ -40,15 +40,27 @@ $(document).on("page:receive", function(){
     $('.loading-overlay').removeClass('active');
     return $('.loading5').removeClass('active');
 });
+
 function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("1");
+  $(link).prev("input[type=hidden]").val("1");
+
+  if ($(link).hasClass('subtask-link')) {
+    $(link).parent('.subtask').hide();
+  } else {
     $(link).closest(".field").hide();
+  }
 }
 
 function add_fields(link, association, content) {
     var new_id = new Date().getTime();
-    var regexp = new RegExp("new_" + association, "g")
-    $(link).parent().next().find('.widget .fields').append(content.replace(regexp, new_id));
+    var regexp = new RegExp("new_" + association, "g");
+
+    if ($(link).hasClass('subtask-link')) {
+      $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
+    } else {
+      $(link).parent().next().find('.widget .fields').append(content.replace(regexp, new_id));
+    }
+
 }
 function removeField(link) {
     $(link).prev("input[type=hidden]").val("true");

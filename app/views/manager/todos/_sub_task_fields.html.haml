@@ -1,0 +1,4 @@
+.form-group.subtask
+  = f.text_field :title, class: "form-control", placeholder: 'Sub-task title'
+  = f.hidden_field :sub_task_type, value: 'local'
+  = custom_link_to_remove_subtask_fields f

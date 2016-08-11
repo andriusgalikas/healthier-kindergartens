@@ -35,7 +35,7 @@
     <%= f.hidden_field :completion_date_value, value: @todo.completion_date_value %>
     <%= f.hidden_field :completion_date_type, value: @todo.completion_date_type %>
   </div>
-  
+
   <div class="page-header">
     <h2>Tasks</h2>
   </div>
@@ -50,8 +50,18 @@
             <label>Description</label>
             <input type="text" readonly="true" value="<%= task.description %>" class="form-control">
         </div>
-    </div>
-  <% end %>
+        <% if task.global_sub_tasks.present? %>
+          <div class="form-group">
+            <label>Sub-Tasks</label>
+          </div>
+          <% task.global_sub_tasks.each do |sub_task| %>
+            <div class="form-group">
+              <input type="text" readonly="true" value="<%= sub_task.title %>" class="form-control">
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
     <%= f.fields_for :tasks, @todo.local_tasks do |ff |%>
       <%= render partial: 'task_fields', locals: { f: ff } %>
     <% end %>

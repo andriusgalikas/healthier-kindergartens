@@ -228,15 +228,27 @@ function getLocation(href) {
 }
 
 function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("1");
+  $(link).prev("input[type=hidden]").val("1");
+
+  if ($(link).hasClass('subtask-link')) {
+    $(link).parent('.subtask').hide();
+  } else {
     $(link).closest(".fields").hide();
-    return false;
+
+  }
+  return false;
 }
 
 function add_fields(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g")
-    $(link).parent().append(content.replace(regexp, new_id));
+
+    if($(link).hasClass('subtask-link')) {
+      $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
+    } else {
+      $(link).parent().append(content.replace(regexp, new_id));
+    }
+
     $('.datepicker').datetimepicker({
         formatDate: 'd-m-Y',
         formatTime: '',
