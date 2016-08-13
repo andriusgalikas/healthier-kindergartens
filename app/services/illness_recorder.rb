@@ -28,7 +28,9 @@ class IllnessRecorder
 
     init_record
     init_record_components
+
     if @record.save!
+      trigger_component_extra_actions
       return {code: 'ok', message: I18n.t('health_records.flashes.create_success')}
     else
       return{code: 'error', message: I18n.t('health_records.flashes.create_error')}
@@ -58,4 +60,20 @@ class IllnessRecorder
       @record.health_record_components.build(code: code, value: value) if value.present?
     end
   end
+
+  def trigger_component_extra_actions
+    contact_parent = @record.health_record_components.where(code: 'contact_parent_message').try(:first)
+
+    if contact_parent.present?
+      illness = @record.health_record_components.where(code: 'illness_code').first
+
+      IllnessNotifier.new(
+        subject: @owner,
+        illness: illness.pretty_value,
+        message: contact_parent.value,
+        recorder: @recorder
+      ).notify_parents!
+    end
+  end
+
 end

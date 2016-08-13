@@ -17,6 +17,7 @@ class Child < ActiveRecord::Base
     belongs_to :department
 
     has_many :health_records,                               :as => :owner
+    has_many :discussions,                                  :as => :subject
 
     validates :name, :department_id,
                 :birth_date,                                presence: true

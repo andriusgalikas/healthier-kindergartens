@@ -52,6 +52,14 @@ class User < ActiveRecord::Base
 
     has_many :notifications,                                    foreign_key: 'target_id'
 
+    # <--- health conversations-related assocs
+    has_many :discussions,                                      through: :discussion_participants
+
+    has_many :discussion_participants,                          as: :participant
+
+    has_many :comments
+    # health conversations-related assocs --->
+
     belongs_to :department
 
     has_many :health_records,                                   :as => :recorder

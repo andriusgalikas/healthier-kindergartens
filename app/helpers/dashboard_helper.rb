@@ -10,15 +10,23 @@ module DashboardHelper
     if sender.admin?
       'super-admin.png'
     elsif sender.partner?
-      notif.source_owner.affiliate.profile_image.file.url
+      sender.affiliate.profile_image.file.url
     elsif sender.manager?
       'manager.png'
     elsif sender.parentee?
       'parent.png'
     elsif sender.worker?
-      'worker.png'
+      notif.source.kind_of?(Message) ? 'worker.png' : 'childcare-logo-04.png'
     else
       'logo_menu.png'
+    end
+  end
+
+  def notif_sender_name(notif)
+    if ['Discussion', 'Comment'].include?(notif.source_type) && notif.source_owner.worker?
+      notif.source_owner.department.name
+    else
+      notif.source_owner.name
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803081825) do
+ActiveRecord::Schema.define(version: 20160814062023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "discussion_id"
+    t.integer  "owner_id"
+    t.string   "content"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
+  add_index "comments", ["owner_id"], name: "index_comments_on_owner_id", using: :btree
 
   create_table "daycares", force: :cascade do |t|
     t.string   "name"
@@ -86,6 +98,30 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "discussion_participants", force: :cascade do |t|
+    t.integer  "discussion_id"
+    t.integer  "participant_id"
+    t.string   "participant_type"
+    t.boolean  "initiator"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "discussion_participants", ["discussion_id"], name: "index_discussion_participants_on_discussion_id", using: :btree
+
+  create_table "discussions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "owner_id"
+  end
+
+  add_index "discussions", ["subject_type", "subject_id"], name: "index_discussions_on_subject_type_and_subject_id", using: :btree
 
   create_table "health_record_components", force: :cascade do |t|
     t.integer  "health_record_id"

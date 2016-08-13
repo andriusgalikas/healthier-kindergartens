@@ -43,6 +43,10 @@ class Daycare < ActiveRecord::Base
     has_many :global_incomplete_todos,                  -> { incomplete }, through: :departments, source: :todos
     has_many :global_available_todos,                   -> { available }, through: :departments, source: :todos
 
+    has_many :discussion_participants,                  as: :participant
+
+    has_many :discussions,                              through: :discussion_participants
+
     validates :name, :address_line1, :postcode,
                 :country, :telephone,                   presence: true
 

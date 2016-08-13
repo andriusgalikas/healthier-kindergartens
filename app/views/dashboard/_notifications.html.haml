@@ -17,4 +17,18 @@
               %div.notif-sender-avatar
                 = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
               %div.notif-sender-name
-                = notif.source_owner.name
+                = notif_sender_name(notif)
+    .content-group
+      .panel-subheading
+        = image_tag 'messages_small.png', class: 'img img-thumbnail subheading-icon'
+        %span.subheading-title= t('dashboard.health_conversations')
+        %span.badge= notif_per_source_type(@notifications, 'Discussion').size + notif_per_source_type(@notifications, 'Comment').size
+
+      .panel-subcontent
+        - notif_per_source_type(@notifications, 'Discussion').each do |notif|
+          .notification
+            = link_to '#' do
+              %div.notif-sender-avatar
+                = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
+              %div.notif-sender-name
+                = notif_sender_name(notif)
