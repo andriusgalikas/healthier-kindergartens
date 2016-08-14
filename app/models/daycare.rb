@@ -43,9 +43,13 @@ class Daycare < ActiveRecord::Base
     has_many :global_incomplete_todos,                  -> { incomplete }, through: :departments, source: :todos
     has_many :global_available_todos,                   -> { available }, through: :departments, source: :todos
 
+    # <------- Health conversations
     has_many :discussion_participants,                  as: :participant
 
     has_many :discussions,                              through: :discussion_participants
+    # Health conversations ------->
+
+    has_one :profile_image,                             -> { where(attachable_type: 'DaycareProfile') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
 
     validates :name, :address_line1, :postcode,
                 :country, :telephone,                   presence: true
@@ -54,7 +58,7 @@ class Daycare < ActiveRecord::Base
 
     scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
-    accepts_nested_attributes_for :departments, :user_daycares, allow_destroy: true
+    accepts_nested_attributes_for :departments, :user_daycares, :profile_image, allow_destroy: true
 
     # => Checks if the daycare contains a manager user with an active subscription or trial
     #

@@ -16,7 +16,11 @@ module DashboardHelper
     elsif sender.parentee?
       'parent.png'
     elsif sender.worker?
-      notif.source.kind_of?(Message) ? 'worker.png' : 'childcare-logo-04.png'
+      if notif.source.kind_of?(Message) # for Message, show the worker's default avatart
+        'worker.png'
+      else # for Discussion, Comment, show the daycare logo
+        sender.daycare.profile_image.present? ? sender.daycare.profile_image.file.url : 'childcare-logo-04.png'
+      end
     else
       'logo_menu.png'
     end
@@ -24,7 +28,7 @@ module DashboardHelper
 
   def notif_sender_name(notif)
     if ['Discussion', 'Comment'].include?(notif.source_type) && notif.source_owner.worker?
-      notif.source_owner.department.name
+      notif.source_owner.daycare.name
     else
       notif.source_owner.name
     end

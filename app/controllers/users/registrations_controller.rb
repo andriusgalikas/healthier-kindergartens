@@ -135,7 +135,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :country,
       :telephone,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]]
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
+      profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
 
@@ -162,6 +163,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new_daycare_department
     @daycare = Daycare.new
+    @daycare.build_profile_image
     @daycare.departments.build
     @user_daycare = @daycare.user_daycares.build
     @user_daycare.build_user
