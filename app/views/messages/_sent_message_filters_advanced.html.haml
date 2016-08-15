@@ -4,12 +4,12 @@
       = hidden_field_tag :list_type, params['list_type']
       = hidden_field_tag :user_role, current_user.role
       = label_tag :target_role, t('messages.labels.show_only_message_to_filter')
-      = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'select', required: true, prompt: t('messages.labels.recipient')
+      = select_tag :target_role, options_for_select(options_for_message_recipients_select, selected: params['target_role']), class: 'form-control', required: true, prompt: t('messages.labels.recipient')
 
   .col-md-4
     .form-group#subject-filter{class: params['target_role'].present? ? '' : 'hidden'}
       = label_tag :subject, t('messages.labels.subject')
-      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id].to_i), class: 'select', prompt: t('messages.labels.choose_subject')
+      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id].to_i), class: 'form-control', prompt: t('messages.labels.choose_subject')
 
   .col-md-4
     .form-group#sub-subject-filter{class: params['target_role'].present? ? '' : 'hidden'}

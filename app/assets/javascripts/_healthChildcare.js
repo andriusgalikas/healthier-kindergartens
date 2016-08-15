@@ -1,7 +1,8 @@
 var healthChildcare =
 {
-    app: {},
-    admin: {},
-    misc: {},
-    survey: {}
+  app: {},
+  admin: {},
+  misc: {},
+  survey: {},
+  message: {}
 }

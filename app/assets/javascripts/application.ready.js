@@ -1,19 +1,19 @@
 $(document).ready(function()
 {
-    healthChildcare.app.multiInput();
-    healthChildcare.app.toggleMenu();
-    healthChildcare.app.printTodo();
-    healthChildcare.app.datepickers();
-    healthChildcare.app.showRegisteredChildcaresNotification();
-    healthChildcare.app.showUpgradedChildcaresNotification();
-    healthChildcare.app.homeStepNavigator();
+  healthChildcare.app.multiInput();
+  healthChildcare.app.toggleMenu();
+  healthChildcare.app.printTodo();
+  healthChildcare.app.datepickers();
+  healthChildcare.app.showRegisteredChildcaresNotification();
+  healthChildcare.app.showUpgradedChildcaresNotification();
+  healthChildcare.app.homeStepNavigator();
 
-    healthChildcare.survey.submitSurveyModule();
-    healthChildcare.survey.updateSurveyAttemptSubject();
-    healthChildcare.survey.showSurveySubjectResult();
-    healthChildcare.survey.showSingleSurveyResult();
-    healthChildcare.survey.showGroupSurveyResult();
-    healthChildcare.survey.showGroupSurveyMembers();
+  healthChildcare.survey.submitSurveyModule();
+  healthChildcare.survey.updateSurveyAttemptSubject();
+  healthChildcare.survey.showSurveySubjectResult();
+  healthChildcare.survey.showSingleSurveyResult();
+  healthChildcare.survey.showGroupSurveyResult();
+  healthChildcare.survey.showGroupSurveyMembers();
 
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');

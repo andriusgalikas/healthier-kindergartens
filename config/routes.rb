@@ -137,6 +137,8 @@ Rails.application.routes.draw do
 
     resources :health_records, only: [:show]
 
+    resources :discussions, only: [:index]
+
     namespace :admin do
         root to: 'dashboard#index'
         authenticate :user, lambda { |u| u.admin? } do

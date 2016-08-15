@@ -346,7 +346,7 @@ var Illnesses = {
   },
 
   workerProfileFetcher: function() {
-    $('body').on('change', 'select[name="worker[id]"]', function() {
+    $('body').on('select', 'select[name="worker[id]"]', function() {
       var workerId = $(this).val();
 
       if (workerId.length > 0) {

@@ -1,22 +1,55 @@
-var Messages = {
+healthChildcare.message = {
+  initTemplateParser: function() {
+    // readable files : [*.html, *.txt]
+    $('#upload-template').on('change', function() {
+      var file = this.files[0]
+      var reader = new FileReader();
 
-  initList: function() {
-    this.initListFilters();
-    this.initRoleSelector();
-    this.initSubjectSelector();
-    this.initPrinter();
-
-    $('.datepicker').datetimepicker({
-      format: 'd/m/Y',
-      timepicker: false
-    });
-
-    $('.truncate').shorten({
-      showChars: 500
+      if (file.type.match('text.*')) {
+        reader.onload = function(progressEvent){
+          $('#message_template_content').val(this.result)
+          $('#message_template_content').froalaEditor('html.set', this.result);
+        };
+        reader.readAsText(file);
+      }
+      else {
+        alert(window._trans['invalid_template_file']);
+      }
     });
   },
 
-  initListFilters: function() {
+  initMessageTemplateEditor: function() {
+    $('#message_template_content').froalaEditor({
+      heightMin: 200
+    });
+  },
+
+  setSubSubjectFilter: function() {
+    $('select#subject_id').on('change', function() {
+      var subjectId = $(this).val();
+
+      $.ajax({
+        url: '/messages/sub_subjects',
+        data: {subject_id: subjectId},
+        success: function(html) {
+          $('#sub-subject-filter').html(html);
+        }
+      })
+    });
+  },
+
+  setRoleFilter: function() {
+    $('#target_role').on('change', function() {
+      var targetRole = $(this).val();
+
+      if (targetRole.length > 0) {
+        $('#subject-filter').removeClass('hidden');
+        $('#sub-subject-filter').removeClass('hidden');
+      }
+    });
+  },
+
+  initMessageListFilters: function() {
     $('#apply-message-filters').on('click', function() {
       var userRole = $('#user_role').val();
       var listType = $('#list_type').val();
@@ -62,32 +95,7 @@ var Messages = {
     });
   },
 
-  initRoleSelector: function() {
-    $('#target_role').on('change', function() {
-      var targetRole = $(this).val();
-
-      if (targetRole.length > 0) {
-        $('#subject-filter').removeClass('hidden');
-        $('#sub-subject-filter').removeClass('hidden');
-      }
-    });
-  },
-
-  initSubjectSelector: function() {
-    $('select#subject_id').on('change', function() {
-      var subjectId = $(this).val();
-
-      $.ajax({
-        url: '/messages/sub_subjects',
-        data: {subject_id: subjectId},
-        success: function(html) {
-          $('#sub-subject-filter').html(html);
-        }
-      })
-    });
-  },
-
-  initPrinter: function() {
+  initMessagePrinter: function() {
     $('body').on('click', '.print-btn', function() {
       var data = $(this).data();
       var target = data.target_message;
@@ -111,48 +119,17 @@ var Messages = {
     });
   },
 
-  initNewMessage: function() {
+  initTruncator: function() {
+    $('.truncate').shorten({
+      showChars: 500
+    });
+  },
+
+  initMessageEditor: function() {
     $('#message_content').froalaEditor({
       heightMin: 250
     });
-  },
-
-  initNewMessageTemplate: function() {
-    this.initTemplateParser();
-
-    $('#message_template_content').froalaEditor({
-      heightMin: 200
-    });
-  },
-
-  initTemplateParser: function() {
-    // readable files : [*.html, *.txt]
-    $('#upload-template').on('change', function() {
-      var file = this.files[0]
-      var reader = new FileReader();
-
-      if (file.type.match('text.*')) {
-        reader.onload = function(progressEvent){
-          $('#message_template_content').val(this.result)
-          $('#message_template_content').froalaEditor('html.set', this.result);
-        };
-        reader.readAsText(file);
-      }
-      else {
-        alert(window._trans['invalid_template_file']);
-      }
-    });
-  },
-
-  initEditFilters: function() {
-    $.material.init();
-    this.initSubjectSelector();
-  },
-
-  initEditTemplate: function() {
-    $('#message_template_content').froalaEditor({
-      heightMin: 200
-    });
   }
+
 
 }

@@ -16,7 +16,7 @@
     = hidden_field_tag :target_role, params[:target_role]
 
     .form-group
-      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id]), class: 'select'
+      = select_tag :subject_id, options_from_collection_for_select(@subjects, 'id', 'title', params[:subject_id]), class: 'form-control'
 
     .form-buttons
       .col-md-6

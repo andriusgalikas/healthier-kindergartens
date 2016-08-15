@@ -3,17 +3,13 @@
   %head
     %title= yield :title
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
-    %link{href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', rel: 'stylesheet'}
-    %link{href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel: 'stylesheet'}
-    %link{href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet'}
     %link{href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet', type: 'text/css'}
     %link{href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet', type: 'text/css'}
+    %link{href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet'}
     = stylesheet_link_tag 'dashboard_v2', media: 'all', 'data-turbolinks-track': true
-    = javascript_include_tag 'dashboard_v2', 'data-turbolinks-track': true
     = csrf_meta_tag
     :javascript
       window._trans = #{ yield_js_translations.to_json.html_safe }
-
     %script{src: "https://www.gstatic.com/charts/loader.js"}
 
   %body
@@ -22,3 +18,5 @@
       = render partial: 'shared/dashboard_v2_flash'
       .container
         = yield
+
+    = javascript_include_tag 'dashboard_v2', 'data-turbolinks-track': true

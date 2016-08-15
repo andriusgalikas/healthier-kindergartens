@@ -6,7 +6,7 @@
   %fieldset
     .form-group
       %label.step-instruction{for: 'language'}= t('messages.labels.choose_language')
-      = f.select :language, options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), {}, class: 'select'
+      = f.select :language, options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), {}, class: 'form-control'
 
     .form-group
       %label.step-instruction{for: 'content'}= t('messages.labels.edit_and_save')

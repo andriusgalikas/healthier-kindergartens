@@ -175,6 +175,12 @@ en:
       create_success: Successfully created the record.
       create_error: Something went wrong. Unable to save the data.
 
+  todos:
+    todo: Todos
+
+  discussions:
+    discussion: Health Conversations
+
   form_labels:
     next: Next
     back: Back
@@ -259,6 +265,12 @@ en:
       content_3_a: Conforming to The Standard is likely to motivate discerning parents to seek out and select your childcare for their children, which would result in the growth or your facility.
       heading_4: Raising the national standard and creating healthier, happier childcare
       content_4_a: Each time a childcare facility becomes HSCA accredited, it raises the global benchmark of health-preserving care. We’re proud to be leading this transformation, and we’d like you to join us in our journey. With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents. To find out how you can be one of the first daycare facilities to raise your standards against infection, click on the button below. When you become accredited, you will show parents you’re the only childcare center in your area qualified to practice higher safety standards for the health and well-being of their children.
+
+  user_guide:
+    menu:
+      parent_todo: As a parent, you can manage todo list
+      parent_message: As a parent, you can view messages
+      parent_health_conversation: As a parent, you can initiate/view health conversations
 
   footer:
     contact_us: Contact Us

@@ -5,13 +5,17 @@
   .eightcol
     #main-menu
       .menu-items
-        = link_to todos_path, class: 'todos', 'data-step': '14', 'data-intro': 'As parent you can manage todo list' do
+        = link_to todos_path, class: 'todos', 'data-step': '14', 'data-intro': t('user_guide.menu.parent_todo') do
           = image_tag 'todo.png'
-          %span Todos
+          %span= t('todos.todo')
 
-        = link_to list_messages_path(role: current_user.role, list_type: 'received'), class: 'messages', 'data-step': '15', 'data-intro': 'As daycare worker, you can view messages' do
+        = link_to list_messages_path(role: current_user.role, list_type: 'received'), class: 'messages', 'data-step': '15', 'data-intro': t('user_guide.menu.parent_message') do
           = image_tag 'template-message.png'
-          %span Messages
+          %span= t('messages.message')
+
+        = link_to discussions_path, class: 'discussions', 'data-step': '16', 'data-intro': t('user_guide.menu.parent_health_conversation') do
+          = image_tag 'template-message.png'
+          %span= t('discussions.discussion')
 
   .fourcol.last.notifications-panel
     = render 'notifications'

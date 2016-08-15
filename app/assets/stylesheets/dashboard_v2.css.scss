@@ -1,5 +1,7 @@
 /*
  *= require_self
+ *= require bootstrap/dist/css/bootstrap.min.css
+ *= require bootstrap/dist/css/bootstrap-theme.min.css
  *= require bootstrap-material-design/dist/css/bootstrap-material-design.css
  *= require bootstrap-material-design/dist/css/ripples.min.css
  *= require froala_editor.min.css
@@ -10,7 +12,6 @@
  *= require plugins/image_manager.min.css
  *= require plugins/image.min.css
  *= require plugins/quick_insert.min.css
- *= require jquery.dropdown.css
  *= require jquery.steps/jquery.steps.css
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
@@ -40,3 +41,4 @@ $info-green: #4caf50;
 @import "dashboard_v2/base";
 @import "dashboard_v2/messages";
 @import "dashboard_v2/illnesses";
+@import "dashboard_v2/discussions";
