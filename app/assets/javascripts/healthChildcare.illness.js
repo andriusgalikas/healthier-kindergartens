@@ -446,99 +446,82 @@ healthChildcare.illness = {
   initTrendLine: function() {
     var trendData = $('#line-chart-div').data('trend_data');
 
-    google.charts.setOnLoadCallback(drawLineChart);
+    if (trendData != undefined) {
+      google.charts.setOnLoadCallback(drawLineChart);
 
-    function drawLineChart() {
-      var data = google.visualization.arrayToDataTable(trendData);
+      function drawLineChart() {
+        var data = google.visualization.arrayToDataTable(trendData);
 
-      var options = {
-        title: 'Illness Over Time Period',
-        curveType: 'function',
-        legend: { position: 'right' }
-      };
+        var options = {
+          title: 'Illness Over Time Period',
+          curveType: 'function',
+          legend: { position: 'right' }
+        };
 
-      var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
-
-      chart.draw(data, options);
-    }
-  },
-
-
-  initTrendLine: function() {
-    var trendData = $('#line-chart-div').data('trend_data');
-
-    google.charts.setOnLoadCallback(drawLineChart);
-
-    function drawLineChart() {
-      var data = google.visualization.arrayToDataTable(trendData);
-
-      var options = {
-        title: 'Illness Over Time Period',
-        curveType: 'function',
-        legend: { position: 'right' }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
-
-      chart.draw(data, options);
+        var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
+        chart.draw(data, options);
+      }
     }
   },
 
   initTrendPie: function() {
     var trendData = $('#pie-chart-div').data('trend_data');
 
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawPieChart);
+    if (trendData) {
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawPieChart);
 
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function drawPieChart() {
-      // Create the data table.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Illness');
-      data.addColumn('number', 'Affected Children');
-      data.addRows(trendData);
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawPieChart() {
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Illness');
+        data.addColumn('number', 'Affected Children');
+        data.addRows(trendData);
 
-      // Set chart options
-      var options = {'title': 'Sickness Among The Daycare Children',
-                     'width':  1000,
-                     'height': 500,
-                     'is3D':   true
-                    };
+        // Set chart options
+        var options = {'title': 'Sickness Among The Daycare Children',
+                       'width':  1000,
+                       'height': 500,
+                       'is3D':   true
+                      };
 
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.PieChart(document.getElementById('pie-chart-div'));
-      chart.draw(data, options);
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('pie-chart-div'));
+        chart.draw(data, options);
+      }
     }
   },
 
   initTrendBar: function(){
     var trendData = $('#bar-chart-div').data('trend_data');
 
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawBarChart);
+    if (trendData) {
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawBarChart);
 
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function drawBarChart() {
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and draws it.
+      function drawBarChart() {
 
-      // Create the data table.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Illness');
-      data.addColumn('number', 'Affected Children');
-      data.addRows(trendData);
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Illness');
+        data.addColumn('number', 'Affected Children');
+        data.addRows(trendData);
 
-      // Set chart options
-      var options = {'title' : 'Sickness Among The Daycare Children',
-                     'width' :  1000,
-                     'height': 500
-                    };
+        // Set chart options
+        var options = {'title' : 'Sickness Among The Daycare Children',
+                       'width' :  1000,
+                       'height': 500
+                      };
 
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.BarChart(document.getElementById('bar-chart-div'));
-      chart.draw(data, options);
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('bar-chart-div'));
+        chart.draw(data, options);
+      }
     }
   },
 

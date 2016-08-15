@@ -6,4 +6,39 @@
       height: 75px;
     }
   }
+
+  .discussion-box {
+    background: white;
+    max-height: 500px;
+    overflow: auto;
+
+    .comment {
+      img {
+        height: 100px;
+      }
+
+      .comment-time {
+        text-align: center;
+      }
+    }
+  }
+
+  .discussions {
+    .discussion {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  .collaborators {
+    .collaborator {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
 }

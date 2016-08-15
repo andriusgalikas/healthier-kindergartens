@@ -2,27 +2,15 @@
 
 #discussions
   .navbar.navbar-default
-    .container-fluid.top-menu
-      .navbar-header
-        %button.navbar-toggle.collapsed{'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': false, 'aria-controls': 'navbar'}
-          %span.sr-only Toggle Navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{'href': '#'} Health Conversation
+    .top-menu
+      = render 'menu'
 
-      #navbar.navbar-collapse.collapse
-        %ul.nav.navbar-nav
-          %li= link_to 'Invite Doctor', '#'
-          %li
-            = link_to '#' do
-              %i.glyphicon.glyphicon-plus
-              Add Child
-          - if current_user.parentee?
-            - current_user.children.each do |child|
-              %li
-                = link_to '#' do
-                  = child.name
+  .row
+    .col-md-2
+      = render 'discussion_list'
 
-:javascript
-  $.material.init();
+    .col-md-8.well.discussion-box
+      = render 'discussion_box'
+
+    .col-md-2
+      = render 'collaborators'
