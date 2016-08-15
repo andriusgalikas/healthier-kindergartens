@@ -116,6 +116,7 @@ en:
   dashboard:
     notifications: Notifications
     messages: Messages
+    health_conversations: Health Conversations
 
   registrations:
     parentee:
@@ -180,6 +181,8 @@ en:
 
   discussions:
     discussion: Health Conversations
+    labels:
+      edit_department: Edit Department
 
   form_labels:
     next: Next
@@ -192,6 +195,7 @@ en:
     edit: Edit
     select: Select
     print: Print
+    post: Post
 
   protocols:
     child_illness_record:

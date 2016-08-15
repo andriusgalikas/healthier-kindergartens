@@ -31,4 +31,5 @@
 //= require healthChildcare.survey
 //= require healthChildcare.message
 //= require healthChildcare.illness
+//= require healthChildcare.discussion
 //= require dashboard_v2.ready

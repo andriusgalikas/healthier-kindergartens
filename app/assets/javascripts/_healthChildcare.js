@@ -5,5 +5,6 @@ var healthChildcare =
   misc: {},
   survey: {},
   message: {},
-  illness: {}
+  illness: {},
+  discussion: {}
 }

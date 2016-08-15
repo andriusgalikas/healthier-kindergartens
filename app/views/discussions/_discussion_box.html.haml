@@ -1,64 +1,7 @@
-.row.comment
-  .col-md-2.pull-left
-    = image_tag 'parent.png', class: 'img'
-    %p Parent Jasmin
-  .col-md-8
-    %p.comment-content
-      Hi, I just received a notification about the sickness of Jamal.
-    %p.comment-time
-      1:45pm
-  .col-md-2
+.discussions
+  - @discussions.each do |discussion|
+    - discussion.comments.each do |comment|
+      = render partial: 'comment', locals: {comment: comment}
 
-.row.comment
-  .col-md-2
-  .col-md-8
-    %p.comment-content
-      Hi. We observe that your child is facing some problems which we mentioned in the report. We already notified our Daycare Doctor about this. Feel free to invite any doctor of your preference.
-    %p.comment-time
-      2:30pm
-  .col-md-2
-    = image_tag 'childcare-logo-04.png', class: 'img'
-    %p ABC Childcare
-
-.row.comment
-  .col-md-2.pull-left
-    = image_tag 'parent.png', class: 'img'
-    %p Parent Jasmin
-  .col-md-8
-    %p.comment-content
-      Hi, I just received a notification about the sickness of Jamal.
-    %p.comment-time
-      1:45pm
-  .col-md-2
-
-.row.comment
-  .col-md-2
-  .col-md-8
-    %p.comment-content
-      Hi. We observe that your child is facing some problems which we mentioned in the report. We already notified our Daycare Doctor about this. Feel free to invite any doctor of your preference.
-    %p.comment-time
-      2:30pm
-  .col-md-2
-    = image_tag 'childcare-logo-04.png', class: 'img'
-    %p ABC Childcare
-.row.comment
-  .col-md-2.pull-left
-    = image_tag 'parent.png', class: 'img'
-    %p Parent Jasmin
-  .col-md-8
-    %p.comment-content
-      Hi, I just received a notification about the sickness of Jamal.
-    %p.comment-time
-      1:45pm
-  .col-md-2
-
-.row.comment
-  .col-md-2
-  .col-md-8
-    %p.comment-content
-      Hi. We observe that your child is facing some problems which we mentioned in the report. We already notified our Daycare Doctor about this. Feel free to invite any doctor of your preference.
-    %p.comment-time
-      2:30pm
-  .col-md-2
-    = image_tag 'childcare-logo-04.png', class: 'img'
-    %p ABC Childcare
+.row.comment.comment-form
+  = render partial: 'new_comment'

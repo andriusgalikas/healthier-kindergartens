@@ -1,0 +1,19 @@
+.col-md-2
+.col-md-8
+  = form_for [@discussion, Comment.new], remote: true do |comment|
+    = hidden_field_tag :discussion_id, @discussion.id, class: 'form-control'
+    .form-group
+      = comment.text_area :content
+      .pull-right
+        = submit_tag t('form_labels.post'), class: 'btn btn-raised btn-success'
+
+.col-md-2.comment-owner
+  - if current_user.parentee?
+    = image_tag 'parent.png'
+    %p You
+  - elsif current_user.worker?
+    - if current_user.daycare.profile_image.present?
+      = image_tag current_user.daycare.profile_image.file.url
+    - else
+      = image_tag 'childcare-logo-04.png', class: 'img'
+    %p= current_user.daycare.name

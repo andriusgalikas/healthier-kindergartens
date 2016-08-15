@@ -137,7 +137,9 @@ Rails.application.routes.draw do
 
     resources :health_records, only: [:show]
 
-    resources :discussions, only: [:index]
+    resources :discussions, only: [:index, :show] do
+      resources :comments
+    end
 
     namespace :admin do
         root to: 'dashboard#index'

@@ -45,4 +45,6 @@ $(document).ready(function() {
   healthChildcare.illness.initTrendBar();
   healthChildcare.illness.initTrendPrinter();
 
+  // Discussions, Parent's view
+  healthChildcare.discussion.newCommentSubmit();
 });

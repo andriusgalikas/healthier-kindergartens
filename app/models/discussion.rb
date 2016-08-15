@@ -17,7 +17,7 @@
 #
 
 class Discussion < ActiveRecord::Base
-  has_many   :comments, dependent: :destroy
+  has_many   :comments, -> { order "created_at ASC"}, dependent: :destroy
   has_many   :discussion_participants
   has_many   :notifications, :as => :source
   belongs_to :subject, polymorphic: true

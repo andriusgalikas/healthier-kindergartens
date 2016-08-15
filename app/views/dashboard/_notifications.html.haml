@@ -27,7 +27,15 @@
       .panel-subcontent
         - notif_per_source_type(@notifications, 'Discussion').each do |notif|
           .notification
-            = link_to '#' do
+            = link_to discussions_path(notif.source.subject_id, notification_id: notif.id, ) do
+              %div.notif-sender-avatar
+                = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
+              %div.notif-sender-name
+                = notif_sender_name(notif)
+
+        - notif_per_source_type(@notifications, 'Comment').each do |notif|
+          .notification
+            = link_to discussions_path(notif.source.discussion.subject_id, notification_id: notif.id) do
               %div.notif-sender-avatar
                 = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
               %div.notif-sender-name

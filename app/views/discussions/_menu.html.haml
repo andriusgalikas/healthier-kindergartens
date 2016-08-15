@@ -5,16 +5,15 @@
     %span.icon-bar
     %span.icon-bar
     %span.icon-bar
-  %a.navbar-brand{'href': '#'} Health Conversation
+  - if current_user.worker?
+    %a.navbar-brand{href: '#'}
+      = image_tag daycare_logo(current_user.daycare), class: 'img pull-left'
+      %span= current_user.daycare.name
+
 
 #navbar.navbar-collapse.collapse
-  %ul.nav.navbar-nav
-    %li
-      = link_to '#' do
-        %i.glyphicon.glyphicon-plus
-        Add Child
-    - if current_user.parentee?
-      - current_user.children.each_with_index do |child, index|
-        %li{class: index == 0 ? 'active' : ''}
-          = link_to '#' do
-            = child.name
+  - if current_user.parentee?
+    = render 'parents_menu'
+
+  - elsif current_user.worker?
+    = render 'workers_menu'

@@ -6,11 +6,11 @@
       = render 'menu'
 
   .row
-    .col-md-2
-      = render 'discussion_list'
-
-    .col-md-8.well.discussion-box
+    .col-md-10.well.discussion-box
       = render 'discussion_box'
 
-    .col-md-2
-      = render 'collaborators'
+    .col-md-2.side-menu
+      - if current_user.parentee?
+        = render 'collaborators'
+      - else
+        = render 'department_children'

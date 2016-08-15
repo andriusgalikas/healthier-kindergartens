@@ -36,4 +36,12 @@ class ApplicationController < ActionController::Base
     def current_daycare
         @current_daycare ||= user_signed_in? ? current_user.daycare : nil
     end
+
+  def archive_notification
+    if params[:notification_id].present?
+      @notification = Notification.find(params[:notification_id])
+      @notification.archived!
+    end
+  end
+
 end
