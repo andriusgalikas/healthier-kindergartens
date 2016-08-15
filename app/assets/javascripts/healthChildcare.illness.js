@@ -1,36 +1,6 @@
-var Illnesses = {
+healthChildcare.illness = {
 
-  initChildRecord: function() {
-    $.material.init();
-
-    this.initChildIllnessForm();
-    this.initSearchDepartment();
-    this.childListUpdater();
-    this.childProfileFetcher();
-    this.determineIllness();
-    this.initSearchIllness();
-    this.determineSymptoms();
-    this.showContactParentDetails();
-    this.showContactDoctorDetails();
-    this.initSearchWorkerDepartment();
-    this.departmentWorkersFetcher();
-    this.workerProfileFetcher();
-
-    $('.datepicker').datetimepicker({
-      format: 'd/m/Y',
-      timepicker: false
-    });
-  },
-
-  initDepartmentRecord: function() {
-    $.material.init();
-
-    this.initDepartmentIllnessForm();
-    this.initSearchDepartment();
-    this.initSearchWorkerDepartment();
-    this.departmentWorkersFetcher();
-    this.workerProfileFetcher();
-
+  initDatePickers: function() {
     $('.datepicker').datetimepicker({
       format: 'd/m/Y',
       timepicker: false
@@ -43,6 +13,7 @@ var Illnesses = {
       bodyTag: "section",
       transitionEffect: "slideLeft",
       stepsOrientation: "vertical",
+      onInit: function() {$('#new-child-record').show()},
       labels: {
         finish: 'Submit'
       },
@@ -269,7 +240,6 @@ var Illnesses = {
       $('form').find('.contact-parent-ans').hide();
       $('form').find('#contact-parent-' + contactParent).show();
     });
-
   },
 
   showContactDoctorDetails: function() {
@@ -331,7 +301,7 @@ var Illnesses = {
   },
 
   departmentWorkersFetcher: function() {
-    $('input[name="worker[department_id]"]').on('change', function() {
+    $('body').on('change', 'input[name="worker[department_id]"]', function() {
       var deptId = $(this).val();
 
       $.ajax({
@@ -346,7 +316,7 @@ var Illnesses = {
   },
 
   workerProfileFetcher: function() {
-    $('body').on('select', 'select[name="worker[id]"]', function() {
+    $('body').on('change', 'select#worker_id', function() {
       var workerId = $(this).val();
 
       if (workerId.length > 0) {
@@ -368,25 +338,13 @@ var Illnesses = {
       bodyTag: "section",
       transitionEffect: "slideLeft",
       stepsOrientation: "vertical",
+      onInit: function() {$('#new-department-record').show()},
       labels: {
         finish: 'Submit'
       },
       onFinished: function() {
         $('form').trigger('submit');
       }
-    });
-  },
-
-  initList: function() {
-    this.initChildDepartmentSelector();
-    this.showDateFilters();
-    this.initChildRecordFilters();
-    this.initFilteredItemContentToggler();
-    this.initHealthRecordPrinter();
-
-    $('.datepicker').datetimepicker({
-      format: 'd/m/Y',
-      timepicker: false
     });
   },
 
@@ -465,7 +423,7 @@ var Illnesses = {
   },
 
   initHealthRecordPrinter: function() {
-    $('body').on('click', '.print-btn', function() {
+    $('body').on('click', '.print-record-btn', function() {
       var data = $(this).data();
       var target = data.target_record;
 
@@ -482,14 +440,29 @@ var Illnesses = {
   },
 
   initTrends: function() {
-    // Load the Visualization API and the corechart package.
     google.charts.load('current', {'packages':['corechart']});
-
-    this.initTrendLine();
-    this.initTrendPie();
-    this.initTrendBar();
-    this.initTrendPrinter();
   },
+
+  initTrendLine: function() {
+    var trendData = $('#line-chart-div').data('trend_data');
+
+    google.charts.setOnLoadCallback(drawLineChart);
+
+    function drawLineChart() {
+      var data = google.visualization.arrayToDataTable(trendData);
+
+      var options = {
+        title: 'Illness Over Time Period',
+        curveType: 'function',
+        legend: { position: 'right' }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
+
+      chart.draw(data, options);
+    }
+  },
+
 
   initTrendLine: function() {
     var trendData = $('#line-chart-div').data('trend_data');
@@ -570,7 +543,7 @@ var Illnesses = {
   },
 
   initTrendPrinter: function() {
-    $('.print-btn').on('click', function() {
+    $('.print-trend-btn').on('click', function() {
       $('#trends').printThis({
         pageTitle: 'Healthier Childcare Alliance',
         importCSS: false,

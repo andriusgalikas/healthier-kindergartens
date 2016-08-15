@@ -30,5 +30,5 @@
 //= require healthChildcare.app
 //= require healthChildcare.survey
 //= require healthChildcare.message
-//= require dashboard_v2/illnesses.js
+//= require healthChildcare.illness
 //= require dashboard_v2.ready

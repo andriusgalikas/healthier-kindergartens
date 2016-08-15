@@ -19,6 +19,7 @@
 //= require healthChildcare.app
 //= require healthChildcare.survey
 //= require healthChildcare.message
+//= require healthChildcare.illness
 //= require intro
 //= require application.ready
 //= require chart

@@ -1,4 +1,5 @@
 healthChildcare.message = {
+
   initTemplateParser: function() {
     // readable files : [*.html, *.txt]
     $('#upload-template').on('change', function() {
@@ -96,7 +97,7 @@ healthChildcare.message = {
   },
 
   initMessagePrinter: function() {
-    $('body').on('click', '.print-btn', function() {
+    $('body').on('click', '.print-msg-btn', function() {
       var data = $(this).data();
       var target = data.target_message;
       var subject = data.subject;

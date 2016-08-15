@@ -4,11 +4,6 @@ $(document).ready(function() {
 
   $(".multiple-select").select2();
 
-  $('.datepicker').datetimepicker({
-    format: 'd/m/Y',
-    timepicker: false
-  });
-
   healthChildcare.message.initTemplateParser();
   healthChildcare.message.initMessageTemplateEditor();
   healthChildcare.message.initMessageEditor();
@@ -17,4 +12,37 @@ $(document).ready(function() {
   healthChildcare.message.setRoleFilter();
   healthChildcare.message.initMessagePrinter();
   healthChildcare.message.initTruncator();
+
+  // Worker's view, new child record
+  healthChildcare.illness.initDatePickers();
+  healthChildcare.illness.initChildIllnessForm();
+  healthChildcare.illness.initSearchDepartment();
+  healthChildcare.illness.childListUpdater();
+  healthChildcare.illness.childProfileFetcher();
+  healthChildcare.illness.determineIllness();
+  healthChildcare.illness.initSearchIllness();
+  healthChildcare.illness.determineSymptoms();
+  healthChildcare.illness.showContactParentDetails();
+  healthChildcare.illness.showContactDoctorDetails();
+  healthChildcare.illness.initSearchWorkerDepartment();
+  healthChildcare.illness.departmentWorkersFetcher();
+  healthChildcare.illness.workerProfileFetcher();
+
+  // Worker's view, new department record
+  healthChildcare.illness.initDepartmentIllnessForm();
+
+  // Worker's view, old illness records
+  healthChildcare.illness.initChildDepartmentSelector();
+  healthChildcare.illness.showDateFilters();
+  healthChildcare.illness.initChildRecordFilters();
+  healthChildcare.illness.initFilteredItemContentToggler();
+  healthChildcare.illness.initHealthRecordPrinter();
+
+  // Manager's view
+  healthChildcare.illness.initTrends();
+  healthChildcare.illness.initTrendLine();
+  healthChildcare.illness.initTrendPie();
+  healthChildcare.illness.initTrendBar();
+  healthChildcare.illness.initTrendPrinter();
+
 });

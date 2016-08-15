@@ -4,7 +4,7 @@
       = pretty_long_date(health_record.created_at)
 
     .col-md-6
-      %a.print-btn{href: '#', 'data-target_record': "#health-record-#{health_record.id}"}
+      %a.print-record-btn{href: '#', 'data-target_record': "#health-record-#{health_record.id}"}
         %span.pull-right= t('form_labels.print')
 
   %hr

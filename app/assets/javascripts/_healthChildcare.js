@@ -4,5 +4,6 @@ var healthChildcare =
   admin: {},
   misc: {},
   survey: {},
-  message: {}
+  message: {},
+  illness: {}
 }
