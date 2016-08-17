@@ -47,4 +47,6 @@ $(document).ready(function() {
 
   // Discussions, Parent's view
   healthChildcare.discussion.newCommentSubmit();
+  healthChildcare.discussion.inviteCollaborator();
+  healthChildcare.discussion.newCollaborationInviteSubmit();
 });

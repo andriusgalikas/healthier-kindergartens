@@ -11,7 +11,12 @@
             = image_tag 'admin_prof_img.jpg', class: 'img'
           %p= child_collaborator.collaborator.name
 
+      - @active_child.pending_collaborations.each do |pending_collaborator|
+        = render partial: 'pending_invite', locals: {email: pending_collaborator.invitee_email}
+
       %li.list-group-item
-        %button.btn.btn-success.btn-raised
+        %button.btn.btn-success.btn-raised{'data-toggle': 'modal', 'data-target': '#invite-collaborator-modal'}
           %i.glyphicon.glyphicon-plus
           Invite
+
+= render 'collaboration_invite_form'

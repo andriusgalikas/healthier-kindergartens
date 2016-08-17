@@ -25,6 +25,18 @@ class Parentee::DiscussionsController < ApplicationController
     end
   end
 
+  def invite_doctor
+    invite = CollaborationInvite.new(invite_params.merge(inviter_id: current_user.id))
+
+    if invite.save
+      CollaboratorInviteEmailJob.perform_later(params[:email], current_user.name)
+
+      render partial: 'pending_invite', locals: {email: params[:collaboration_invite][:invitee_email]}
+    else
+      redirect_to parentee_discussions_path
+    end
+  end
+
   private
 
   def set_child
@@ -45,6 +57,13 @@ class Parentee::DiscussionsController < ApplicationController
       :content,
       :subject_id,
       :subject_type
+    )
+  end
+
+  def invite_params
+    params.require(:collaboration_invite).permit(
+      :child_id,
+      :invitee_email
     )
   end
 

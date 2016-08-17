@@ -106,7 +106,9 @@ Rails.application.routes.draw do
     end
 
     namespace :parentee do
-      resources :discussions, only: [:index, :create]
+      resources :discussions, only: [:index, :create] do
+        post :invite_doctor, on: :collection
+      end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do

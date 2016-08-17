@@ -20,6 +20,8 @@ class Child < ActiveRecord::Base
     has_many :health_records,                               :as => :owner
     has_many :discussions,                                  -> { order "created_at ASC"}, :as => :subject
     has_many :collaborators,                                class_name: 'ChildCollaborator', dependent: :destroy
+    has_many :collaboration_invites
+    has_many :pending_collaborations,                       -> {where(status: 0)}, class_name: 'CollaborationInvite'
     # health conversations-related --->
 
     validates :name, :department_id,
