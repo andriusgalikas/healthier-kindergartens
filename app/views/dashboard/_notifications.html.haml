@@ -22,20 +22,12 @@
       .panel-subheading
         = image_tag 'messages_small.png', class: 'img img-thumbnail subheading-icon'
         %span.subheading-title= t('dashboard.health_conversations')
-        %span.badge= notif_per_source_type(@notifications, 'Discussion').size + notif_per_source_type(@notifications, 'Comment').size
+        %span.badge= notif_per_source_type(@notifications, 'Discussion').size
 
       .panel-subcontent
         - notif_per_source_type(@notifications, 'Discussion').each do |notif|
           .notification
-            = link_to discussions_path(notif.source.subject_id, notification_id: notif.id, ) do
-              %div.notif-sender-avatar
-                = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
-              %div.notif-sender-name
-                = notif_sender_name(notif)
-
-        - notif_per_source_type(@notifications, 'Comment').each do |notif|
-          .notification
-            = link_to discussions_path(notif.source.discussion.subject_id, notification_id: notif.id) do
+            = link_to discussion_notif_link(notif) do
               %div.notif-sender-avatar
                 = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
               %div.notif-sender-name

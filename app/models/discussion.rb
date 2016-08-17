@@ -10,6 +10,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  owner_id       :integer
+#  content        :string
 #
 # Indexes
 #
@@ -17,8 +18,12 @@
 #
 
 class Discussion < ActiveRecord::Base
-  has_many   :comments, -> { order "created_at ASC"}, dependent: :destroy
-  has_many   :discussion_participants
+  has_many   :discussion_participants, dependent: :destroy do
+    def object_is_participant?(obj)
+      detect{|disc_participant| disc_participant.participant == obj}
+    end
+  end
+
   has_many   :notifications, :as => :source
   belongs_to :subject, polymorphic: true
 

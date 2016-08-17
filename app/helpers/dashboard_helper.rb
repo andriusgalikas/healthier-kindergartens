@@ -34,4 +34,14 @@ module DashboardHelper
     end
   end
 
+  def discussion_notif_link(notif)
+    if current_user.parentee?
+      parentee_discussions_path(child_id: notif.source.subject_id, notification_id: notif.id)
+    elsif current_user.worker?
+      worker_discussions_path(child_id: notif.source.subject_id, notification_id: notif.id)
+    else
+      '#'
+    end
+  end
+
 end

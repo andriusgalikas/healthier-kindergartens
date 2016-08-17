@@ -10,7 +10,4 @@
       = render 'discussion_box'
 
     .col-md-2.side-menu
-      - if current_user.parentee?
-        = render 'collaborators'
-      - else
-        = render 'department_children'
+      = render 'department_children'

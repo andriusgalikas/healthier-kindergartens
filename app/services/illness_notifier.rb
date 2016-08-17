@@ -24,10 +24,15 @@ class IllnessNotifier
   private
 
   def start_health_conversation
-    @discussion = Discussion.create(subject: @subject, title: "#{@subject.name} : #{@illness}", owner: @recorder)
-    @discussion.comments.create(content: @message, owner: @recorder)
-    @discussion.discussion_participants.create(participant: @subject.department, initiator: true)
-    @discussion.discussion_participants.create(participant: @subject.parentee)
+    @discussion = Discussion.find_or_create_by(subject: @subject) do |disc|
+      disc.title = "#{@subject.name} : #{@illness}"
+      disc.content = @message
+      disc.owner = @recorder
+    end
+
+    @discussion.discussion_participants.find_or_create_by(participant: @subject.department)
+    @discussion.discussion_participants.find_or_create_by(participant: @subject.parentee)
+    @subject.child_collaborators.find_or_create_by(collaborator: @subject.department)
   end
 
   def send_email_notif

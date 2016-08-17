@@ -16,8 +16,11 @@ class Child < ActiveRecord::Base
     belongs_to :parentee,                                   class_name: 'User', foreign_key: 'parent_id'
     belongs_to :department
 
+    # <--- health conversations-related
     has_many :health_records,                               :as => :owner
     has_many :discussions,                                  -> { order "created_at ASC"}, :as => :subject
+    has_many :collaborators,                                class_name: 'ChildCollaborator', dependent: :destroy
+    # health conversations-related --->
 
     validates :name, :department_id,
                 :birth_date,                                presence: true

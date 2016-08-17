@@ -97,6 +97,16 @@ Rails.application.routes.draw do
             post :trends
           end
         end
+
+        resources :discussions, only: [:index]
+    end
+
+    namespace :worker do
+      resources :discussions, only: [:index, :create]
+    end
+
+    namespace :parentee do
+      resources :discussions, only: [:index, :create]
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
@@ -136,10 +146,6 @@ Rails.application.routes.draw do
     end
 
     resources :health_records, only: [:show]
-
-    resources :discussions, only: [:index, :show] do
-      resources :comments
-    end
 
     namespace :admin do
         root to: 'dashboard#index'

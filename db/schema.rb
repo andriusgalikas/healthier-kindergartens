@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814062023) do
+ActiveRecord::Schema.define(version: 20160817070853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160814062023) do
     t.datetime "updated_at",      null: false
     t.datetime "deactivated_at"
   end
+
+  create_table "child_collaborators", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "collaborator_id"
+    t.string   "collaborator_type"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "child_collaborators", ["child_id"], name: "index_child_collaborators_on_child_id", using: :btree
 
   create_table "children", force: :cascade do |t|
     t.string   "name"
@@ -119,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160814062023) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "owner_id"
+    t.string   "content"
   end
 
   add_index "discussions", ["subject_type", "subject_id"], name: "index_discussions_on_subject_type_and_subject_id", using: :btree

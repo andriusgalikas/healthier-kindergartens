@@ -1,7 +1,0 @@
-.discussions
-  - @discussions.each do |discussion|
-    - discussion.comments.each do |comment|
-      = render partial: 'comment', locals: {comment: comment}
-
-.row.comment.comment-form
-  = render partial: 'new_comment'

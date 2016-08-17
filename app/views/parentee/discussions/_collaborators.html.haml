@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    Collaborators
+  .panel-body
+    %ul.list-group.collaborators
+      - @active_child.collaborators.each do |child_collaborator|
+        %li.list-group-item.collaborator
+          - if child_collaborator.collaborator.kind_of?(Department)
+            = image_tag daycare_logo(child_collaborator.collaborator.daycare), class: 'img'
+          - else
+            = image_tag 'admin_prof_img.jpg', class: 'img'
+          %p= child_collaborator.collaborator.name
+
+      %li.list-group-item
+        %button.btn.btn-success.btn-raised
+          %i.glyphicon.glyphicon-plus
+          Invite

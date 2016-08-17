@@ -1,5 +1,0 @@
-%ul.nav.navbar-nav
-  - current_user.daycare.departments.each do |dept|
-    %li{class: dept.id == @active_department.id ? 'active' : ''}
-      = link_to discussions_path(department_id: dept.id) do
-        = dept.name
