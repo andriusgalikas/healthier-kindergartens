@@ -13,6 +13,18 @@
     = f.label :email
     = f.text_field :email, type: :email, class: 'form-control'
 
+  .form-group
+    = f.label :password
+    = f.password_field :password, autocomplete: 'off', class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length}) characters minimum
+
   = f.fields_for :user_profile do |ff|
     .form-group
       = ff.label :phone_number
@@ -35,11 +47,19 @@
       = ff.text_field :education, class: 'form-control'
 
     .form-group
+      = ff.label :certifications
+      = ff.text_field :certifications, class: 'form-control'
+
+    .form-group
+      = ff.label :medical_specialization
+      = ff.select :medical_specialization, options_for_select([['Dentist', '1'], ['Optometrist', '2']]), {}, class: 'form-control'
+
+    .form-group
       = ff.label :online_presence
       - ['yes', 'no'].each do |status|
         .radio
           %label
-            %input{type: 'radio', name: 'online_presence', value: status, required: true}
+            %input{type: 'radio', name: 'user[user_profile_attributes][online_presence]', value: status, required: true}
             = status.humanize
 
     = ff.fields_for :profile_image do |profile_image|

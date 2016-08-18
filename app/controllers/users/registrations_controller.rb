@@ -113,7 +113,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_daycares
       new_user_daycare
     when 'medical_professional'
-      puts '---------- medical professional ---------'
       set_daycares
       new_user_profile
     end
@@ -127,6 +126,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_daycare_attributes: [:daycare_id, :user_id],
       user_affiliate_attributes: [:affiliate_id, :user_id],
       children_attributes: [:_destroy, :id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
+      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end

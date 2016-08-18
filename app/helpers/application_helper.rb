@@ -93,6 +93,8 @@ module ApplicationHelper
       current_user.affiliate.profile_image.file.url
     elsif current_user.admin?
       'super-admin.png'
+    elsif current_user.medical_professional?
+      current_user.user_profile.profile_image.present? ? current_user.user_profile.profile_image.file.url : 'doctor.png'
     else
       'logo_menu.png'
     end

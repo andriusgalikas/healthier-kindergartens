@@ -20,7 +20,10 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for resource
-        resource.admin? ? admin_root_path : resource.partner? ? dashboard_path : welcome_path
+      resource.admin? ? admin_root_path :
+        resource.partner? ? dashboard_path :
+          resource.medical_professional? ? choose_child_medical_professional_discussions_path :
+            welcome_path
     end
 
     def after_sign_up_path_for resource
@@ -28,6 +31,8 @@ class ApplicationController < ActionController::Base
         admin_root_path
       elsif resource.manager?
         invite_manager_daycares_path
+      elsif resource.medical_professional?
+        choose_child_medical_professional_discussions_path
       else
         dashboard_path
       end

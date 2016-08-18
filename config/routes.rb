@@ -111,6 +111,12 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :medical_professional do
+      resources :discussions, only: [] do
+        get :choose_child, on: :collection
+      end
+    end
+
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
         get :results, on: :member
         resources :attempts, only: :new
