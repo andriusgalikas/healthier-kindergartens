@@ -32,6 +32,10 @@ class PagesController < ApplicationController
      render layout: 'home_v2'
     end
 
+    def invite_registration
+      render layout: 'login'
+    end
+
     private
 
     def set_subjects

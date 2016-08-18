@@ -131,6 +131,39 @@ body
             }
         }
     }
+    &.medical-professional
+    {
+        header
+        {
+            background-color: $twitter-blue;
+
+            .dropdown
+            {
+                ul
+                {
+                    li
+                    {
+                        &:hover
+                        {
+                            background-color: $twitter-blue !important;
+                        }
+                        a
+                        {
+                            color: $twitter-blue;
+                        }
+                    }
+                }
+            }
+        }
+        form
+        {
+            input[type=submit]
+            {
+                background-color: $twitter-blue;
+            }
+        }
+    }
+
 }
 
 .alert.alert-warning {

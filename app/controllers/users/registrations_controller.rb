@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
     init_resource_per_role
-
+    puts resource.inspect
     set_minimum_password_length
     yield resource if block_given?
     render "register/#{params[:role]}"
@@ -112,6 +112,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     when 'worker'
       set_daycares
       new_user_daycare
+    when 'medical_professional'
+      puts '---------- medical professional ---------'
+      set_daycares
+      new_user_profile
     end
   end
 
@@ -200,6 +204,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @departments ||= @daycare.departments
   end
 
+=begin
+  name - User
+  email - User
+  phone number - User Profile
+  physical address - User Profile
+  web address - User Profile
+  about yourself - User Profile
+  education - User Profile
+  certification User Profile
+  category - User Profile
+  online presence? - User Profile
+  profile image - User Profile
+=end
+  def new_user_profile
+    profile = resource.build_user_profile
+    profile.build_profile_image
+  end
 
   # def build_resource params
   #   self.resource = User.new(params)
