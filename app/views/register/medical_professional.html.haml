@@ -48,7 +48,9 @@
 
     .form-group
       = ff.label :certifications
-      = ff.text_field :certifications, class: 'form-control'
+      = text_field_tag 'user[user_profile_attributes][certifications][]', '', class: 'form-control'
+      = link_to 'Add Another', '#', class: 'add-certification'
+
 
     = ff.fields_for :doctor_specialization do |dr_specialization|
       .form-group
@@ -69,3 +71,6 @@
         = profile_image.file_field :file, class: 'form-control'
 
   = f.submit 'Sign Up', class: 'btn btn-block btn-large btn-blue'
+
+%script{type: 'text/template', id: 'user-profile-certifications'}
+  = text_field_tag 'user[user_profile_attributes][certifications][]', '', class: 'form-control'

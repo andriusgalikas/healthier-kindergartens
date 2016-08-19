@@ -23,4 +23,5 @@ class UserProfile < ActiveRecord::Base
   has_one    :medical_specialization, through: :doctor_specialization
 
   accepts_nested_attributes_for :profile_image, :doctor_specialization
+
 end

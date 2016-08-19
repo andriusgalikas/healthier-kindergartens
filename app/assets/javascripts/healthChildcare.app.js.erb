@@ -121,6 +121,14 @@ healthChildcare.app =
       $(this).find('i').addClass('fa-angle-down');
 
      });
+  },
+
+  addAnotherCertification: function() {
+    $('.add-certification').on('click', function() {
+      var html = $('#user-profile-certifications').html();
+      $(this).before(html);
+    });
+
   }
 
 }

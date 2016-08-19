@@ -125,7 +125,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_daycare_attributes: [:daycare_id, :user_id],
       user_affiliate_attributes: [:affiliate_id, :user_id],
       children_attributes: [:_destroy, :id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
-      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, :certifications, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file], doctor_specialization_attributes: :medical_specialization_id],
+      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, certifications: [], profile_image_attributes: [:id, :attachable_type, :attachable_id, :file], doctor_specialization_attributes: :medical_specialization_id],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end

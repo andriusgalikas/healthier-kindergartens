@@ -7,6 +7,7 @@ $(document).ready(function()
   healthChildcare.app.showRegisteredChildcaresNotification();
   healthChildcare.app.showUpgradedChildcaresNotification();
   healthChildcare.app.homeStepNavigator();
+  healthChildcare.app.addAnotherCertification();
 
   healthChildcare.survey.submitSurveyModule();
   healthChildcare.survey.updateSurveyAttemptSubject();
