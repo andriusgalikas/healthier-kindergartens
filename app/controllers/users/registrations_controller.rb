@@ -113,7 +113,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_daycares
       new_user_daycare
     when 'medical_professional'
-      set_daycares
       new_user_profile
     end
   end
@@ -126,7 +125,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_daycare_attributes: [:daycare_id, :user_id],
       user_affiliate_attributes: [:affiliate_id, :user_id],
       children_attributes: [:_destroy, :id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
-      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
+      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, :certifications, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file], doctor_specialization_attributes: :medical_specialization_id],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -204,22 +203,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @departments ||= @daycare.departments
   end
 
-=begin
-  name - User
-  email - User
-  phone number - User Profile
-  physical address - User Profile
-  web address - User Profile
-  about yourself - User Profile
-  education - User Profile
-  certification User Profile
-  category - User Profile
-  online presence? - User Profile
-  profile image - User Profile
-=end
   def new_user_profile
     profile = resource.build_user_profile
     profile.build_profile_image
+    profile.build_doctor_specialization
   end
 
   # def build_resource params

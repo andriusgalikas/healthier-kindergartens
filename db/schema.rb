@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818140635) do
+ActiveRecord::Schema.define(version: 20160819025239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,14 @@ ActiveRecord::Schema.define(version: 20160818140635) do
   end
 
   add_index "discussions", ["subject_type", "subject_id"], name: "index_discussions_on_subject_type_and_subject_id", using: :btree
+
+  create_table "doctor_specializations", force: :cascade do |t|
+    t.integer  "user_profile_id"
+    t.integer  "medical_specialization_id"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "health_record_components", force: :cascade do |t|
     t.integer  "health_record_id"
@@ -408,11 +416,10 @@ ActiveRecord::Schema.define(version: 20160818140635) do
     t.string   "web_address"
     t.string   "about_yourself"
     t.string   "education"
-    t.boolean  "online_presence",           default: true
+    t.boolean  "online_presence",  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "medical_specialization_id"
-    t.text     "certifications",            default: [],   array: true
+    t.text     "certifications",   default: [],   array: true
   end
 
   create_table "user_todo_destroys", force: :cascade do |t|

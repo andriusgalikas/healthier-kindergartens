@@ -50,9 +50,10 @@
       = ff.label :certifications
       = ff.text_field :certifications, class: 'form-control'
 
-    .form-group
-      = ff.label :medical_specialization
-      = ff.select :medical_specialization, options_for_select([['Dentist', '1'], ['Optometrist', '2']]), {}, class: 'form-control'
+    = ff.fields_for :doctor_specialization do |dr_specialization|
+      .form-group
+        = dr_specialization.label :medical_specialization
+        = dr_specialization.select :medical_specialization_id, options_from_collection_for_select(MedicalSpecialization.all, 'id', 'name'), {}, class: 'form-control'
 
     .form-group
       = ff.label :online_presence
