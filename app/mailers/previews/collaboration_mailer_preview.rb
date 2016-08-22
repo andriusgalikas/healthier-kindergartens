@@ -1,14 +1,11 @@
 class CollaborationMailerPreview < ActionMailer::Preview
 
   def invite
-    set_email
-    CollaborationMailer.invite(@email)
-  end
+    invitee_email = Faker::Internet.email
+    invite_code = 'ABCDEFGHIJ'
+    inviter = Faker::Internet.email
 
-  private
-
-  def set_email
-    @email = Faker::Internet.email
+    CollaborationMailer.invite(invitee_email, invite_code, inviter)
   end
 
 end

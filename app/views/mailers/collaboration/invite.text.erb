@@ -1,4 +1,6 @@
-Hi! #{@email}
+Hi <%= @invitee_email %>,
 
-You have been invited by #{@inviter} to collaborate on his/her child using Health Childcare application. Please click on the link below to register.
-#{ link_to 'Register now', root_url }
+Invite Code : <%= @invite_code %>
+
+You have been invited by <%= @inviter %> to collaborate on his/her child using Health Childcare application. Please click on the link below to register.
+<%= link_to 'Register now', root_url  %>

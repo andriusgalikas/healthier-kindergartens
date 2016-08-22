@@ -32,7 +32,7 @@ class IllnessNotifier
 
     @discussion.discussion_participants.find_or_create_by(participant: @subject.department)
     @discussion.discussion_participants.find_or_create_by(participant: @subject.parentee)
-    @subject.child_collaborators.find_or_create_by(collaborator: @subject.department)
+    @subject.collaborators.find_or_create_by(collaborator: @subject.department)
   end
 
   def send_email_notif
