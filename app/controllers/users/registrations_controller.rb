@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
     init_resource_per_role
-    puts resource.inspect
+
     set_minimum_password_length
     yield resource if block_given?
     render "register/#{params[:role]}"

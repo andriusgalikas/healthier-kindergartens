@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
     has_many :discussion_participants,                          as: :participant
 
     has_many :comments
+
+    has_many :collaborations,                                   class_name: 'ChildCollaborator', as: :collaborator
     # health conversations-related assocs --->
 
     has_one :user_profile

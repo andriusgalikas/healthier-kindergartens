@@ -27,4 +27,8 @@ class CollaborationInvite < ActiveRecord::Base
     self.invite_code = generate_invite_code
   end
 
+  def accept!
+    self.update_attributes(status: 'accepted')
+  end
+
 end

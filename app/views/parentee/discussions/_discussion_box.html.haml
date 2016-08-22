@@ -1,6 +1,7 @@
-.discussions
+.discussions.container-fluid
   - @discussions.each do |discussion|
     = render discussion
 
 .row.discussion.discussion-form
+  %hr
   = render partial: 'form'

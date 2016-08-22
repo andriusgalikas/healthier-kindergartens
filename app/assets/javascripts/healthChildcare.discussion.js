@@ -24,6 +24,53 @@ healthChildcare.discussion = {
 
       $('form.new_collaboration_invite')[0].reset();
     });
+  },
+
+  toggleSearchChildInvitation: function() {
+    $('.toggle-child-invitation-link').on('click', function() {
+      $('.find-child-invitation-option').toggle();
+      $('.find-child-invitation-link').toggle();
+    });
+  },
+
+  searchChildInvitation: function() {
+    var dataDOM = $('#search-child-invitation');
+    var dataSrc = dataDOM.data('child_names');
+    var _this = this;
+    $(dataDOM).data('child_names', null);
+
+    $(document).find('#invitee_child').typeahead(
+      {
+        highlight: true,
+        minLength: 1
+      },
+      {
+        limit: 0,
+        source: _this.substringMatcher(dataSrc)
+      }
+    );
+  },
+
+  substringMatcher: function(strs) {
+    return function findMatches(q, cb) {
+      var matches, substringRegex;
+
+      // an array that will be populated with substring matches
+      matches = [];
+
+      // regex used to determine if a string contains the substring `q`
+      substrRegex = new RegExp(q, 'i');
+
+      // iterate through the pool of strings and for any string that
+      // contains the substring `q`, add it to the `matches` array
+      $.each(strs, function(i, str) {
+        if (substrRegex.test(str)) {
+          matches.push(str);
+        }
+      });
+
+      cb(matches);
+    }
   }
 
 }

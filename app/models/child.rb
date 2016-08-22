@@ -29,7 +29,12 @@ class Child < ActiveRecord::Base
 
     validates :profile_image,                               presence: true
 
+    scope :search_by_name,                                  -> (query) { where("name LIKE :search", search: "#{query}")}
+    scope :search_by_birth_date,                            -> (birthdate) { where("birth_date <= :birthdate_1 AND birth_date >= :birthdate_2", birthdate_1: (Date.parse(birthdate) + 1), birthdate_2: (Date.parse(birthdate) - 1))}
+
     accepts_nested_attributes_for :profile_image
+
+    delegate :daycare, to: :department
 
     def age
       now = Time.now.utc.to_date

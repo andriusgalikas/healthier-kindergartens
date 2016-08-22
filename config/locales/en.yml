@@ -184,6 +184,7 @@ en:
     labels:
       edit_department: Edit Department
 
+
   form_labels:
     next: Next
     back: Back
@@ -196,6 +197,15 @@ en:
     select: Select
     print: Print
     post: Post
+    submit: Submit
+    search: Search
+
+  person_labels:
+    name: Name
+    age: Age
+    birthday: Birthday
+    department: Deparment
+    daycare: Daycare
 
   protocols:
     child_illness_record:

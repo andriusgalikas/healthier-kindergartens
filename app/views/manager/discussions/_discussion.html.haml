@@ -3,11 +3,8 @@
   .col-md-2.discussion-owner
     - unless user_is_owner
       - if discussion.owner.parentee?
-        = image_tag 'parent.png'
-        %p= discussion.owner.name
-      - elsif discussion.owner.worker?
-        = image_tag daycare_logo(discussion.owner.daycare), class: 'img'
-        %p= discussion.owner.daycare.name
+      = image_tag discussion_owner_avatar(discussion), class: 'img'
+      %p= discussion_owner_name(discussion)
 
   .col-md-8.discussion-content
     %p= discussion.content
@@ -18,9 +15,5 @@
 
   .col-md-2.discussion-owner
     - if user_is_owner
-      - if discussion.owner.parentee?
-        = image_tag 'parent.png'
-        %p You
-      - elsif discussion.owner.worker?
-        = image_tag daycare_logo(discussion.owner.daycare), class: 'img'
-        %p= discussion.owner.daycare.name
+      = image_tag discussion_owner_avatar(discussion), class: 'img'
+      %p= discussion_owner_name(discussion)

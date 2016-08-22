@@ -3,10 +3,10 @@
     %span.sr-only Toggle Navigation
     %span.icon-bar
   %a.navbar-brand{href: '#'}
-    = image_tag daycare_logo(current_user.daycare), class: 'img pull-left'
-    %span= current_user.daycare.name
+    = image_tag current_user_role_avatar, class: 'img pull-left'
+    %span= current_user.name
 
 #navbar.navbar-collapse.collapse
   %ul.nav.navbar-nav.pull-right
     %li
-      %a{href: '#'}= current_user.department.name
+      = link_to 'Edit Personal Info', '#'

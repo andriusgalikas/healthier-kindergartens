@@ -49,4 +49,8 @@ $(document).ready(function() {
   healthChildcare.discussion.newCommentSubmit();
   healthChildcare.discussion.inviteCollaborator();
   healthChildcare.discussion.newCollaborationInviteSubmit();
+
+  // Discussions, Medical Professional's view
+  healthChildcare.discussion.toggleSearchChildInvitation();
+  healthChildcare.discussion.searchChildInvitation();
 });
