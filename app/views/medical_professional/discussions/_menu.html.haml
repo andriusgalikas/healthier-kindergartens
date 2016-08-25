@@ -9,4 +9,6 @@
 #navbar.navbar-collapse.collapse
   %ul.nav.navbar-nav.pull-right
     %li
-      = link_to 'Edit Personal Info', '#'
+      = link_to 'Edit Personal Info', '#', 'data-toggle': 'modal', 'data-target': '#edit-medical-professional-modal'
+
+= render 'edit_medical_professional_form'

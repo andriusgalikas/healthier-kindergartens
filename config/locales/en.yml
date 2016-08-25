@@ -183,7 +183,10 @@ en:
     discussion: Health Conversations
     labels:
       edit_department: Edit Department
-
+      edit_medical_professional_info: Edit Personal Info
+      invite_is_limited: You are only allowed to invite one doctor.
+      upgrade_to_invite: Upgrade now to invite more!
+      collaborators: Collaborators
 
   form_labels:
     next: Next

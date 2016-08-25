@@ -23,3 +23,6 @@
   .container-fluid.centralize
     %a.print-trend-btn{href: '#', 'data-target': '#trends', class: 'btn btn-success btn-raised'}
       = t('form_labels.print')
+
+:javascript
+  google.charts.load('current', {'packages':['corechart']});

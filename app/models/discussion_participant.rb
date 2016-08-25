@@ -19,4 +19,6 @@
 class DiscussionParticipant < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :participant, polymorphic: true
+
+  scope :by_type, ->(type) {where(participant_type: type)}
 end

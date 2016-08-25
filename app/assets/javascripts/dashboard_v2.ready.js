@@ -39,18 +39,20 @@ $(document).ready(function() {
   healthChildcare.illness.initHealthRecordPrinter();
 
   // Manager's view
-  healthChildcare.illness.initTrends();
   healthChildcare.illness.initTrendLine();
   healthChildcare.illness.initTrendPie();
   healthChildcare.illness.initTrendBar();
   healthChildcare.illness.initTrendPrinter();
 
   // Discussions, Parent's view
-  healthChildcare.discussion.newCommentSubmit();
+  healthChildcare.discussion.newDiscussionSubmit();
   healthChildcare.discussion.inviteCollaborator();
   healthChildcare.discussion.newCollaborationInviteSubmit();
 
   // Discussions, Medical Professional's view
   healthChildcare.discussion.toggleSearchChildInvitation();
   healthChildcare.discussion.searchChildInvitation();
+  healthChildcare.discussion.filterDiscussions();
+  healthChildcare.discussion.editMedicalProfessionalInfo();
+
 });

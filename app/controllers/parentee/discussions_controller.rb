@@ -11,15 +11,12 @@ class Parentee::DiscussionsController < ApplicationController
 
   def create
     discussion = Discussion.new(discussion_params.merge(owner_id: current_user.id))
-    child = discussion.subject
 
     if discussion.save!
-      discussion.discussion_participants.create(participant: child.parentee)
-      discussion.discussion_participants.create(participant: child.department)
-      child.collaborators.find_or_create_by(collaborator: child.department)
+      save_discussion_participants(discussion)
 
       HealthConversationNotificationJob.perform_now(discussion, sender: current_user)
-      render discussion
+      render partial: '/discussions/discussion', locals: {discussion: discussion}
     else
       redirect_to parentee_discussions_path
     end
@@ -65,6 +62,12 @@ class Parentee::DiscussionsController < ApplicationController
       :child_id,
       :invitee_email
     )
+  end
+
+  def save_discussion_participants(discussion)
+    params[:discussion_participants].values.each do |part|
+      discussion.discussion_participants.create(participant_id: part[0], participant_type: part[1])
+    end
   end
 
 end

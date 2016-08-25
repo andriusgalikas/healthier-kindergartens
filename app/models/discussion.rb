@@ -24,7 +24,7 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  has_many   :notifications, :as => :source
+  has_many   :notifications, :as => :source, dependent: :destroy
   belongs_to :subject, polymorphic: true
 
   belongs_to :owner, class_name: 'User'

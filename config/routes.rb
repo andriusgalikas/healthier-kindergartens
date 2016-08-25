@@ -107,7 +107,7 @@ Rails.application.routes.draw do
           end
         end
 
-        resources :discussions, only: [:index]
+        resources :discussions, only: [:index, :create]
     end
 
     namespace :worker do

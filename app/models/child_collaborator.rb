@@ -19,4 +19,6 @@
 class ChildCollaborator < ActiveRecord::Base
   belongs_to :child
   belongs_to :collaborator, polymorphic: true
+
+  scope :by_type, ->(type) {where(collaborator_type: type)}
 end

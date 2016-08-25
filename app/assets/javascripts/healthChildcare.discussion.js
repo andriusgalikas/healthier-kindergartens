@@ -1,12 +1,45 @@
 healthChildcare.discussion = {
 
-  newCommentSubmit: function() {
-    $('form.new_discussion').on('ajax:success', function(e, data, status, xhr) {
-      $('.discussions').append(data);
-      $('.discussions').animate({scrollTop: $('.discussions').prop("scrollHeight")}, 500);
+  getDiscussionTargets: function() {
+    var allCollaboratorList = $('.collaborator:not(".pending")');
+    var selectedCollaborators = [];
+    var allCollaborators = [];
 
-      $(this).find('textarea').val('');
+    allCollaboratorList.each(function() {
+      collabId = $(this).data('collaborator_id');
+      collabType = $(this).data('collaborator_type');
+      collab = [collabId, collabType];
+      allCollaborators.push(collab);
+
+      if ($(this).hasClass('active')) {
+        selectedCollaborators.push(collab);
+      }
     });
+
+    // if no particular discussion is selected, show/target all
+    if (selectedCollaborators.length == 0) {
+      selectedCollaborators = allCollaborators;
+    }
+
+    return selectedCollaborators;
+  },
+
+  newDiscussionSubmit: function() {
+    var _this = this;
+
+    $('form.new_discussion')
+      .on('ajax:beforeSend', function(e, xhr, settings) {
+        var collabs = _this.getDiscussionTargets();
+        console.log(collabs);
+        settings.data += '&' + $.param({discussion_participants: collabs});
+        return true;
+      })
+      .on('ajax:success', function(e, data, status, xhr) {
+        $('.discussions').append(data);
+        $('.discussions').animate({scrollTop: $('.discussions').prop("scrollHeight")}, 500);
+
+        $(this).find('textarea').val('');
+      });
   },
 
   inviteCollaborator: function() {
@@ -22,7 +55,8 @@ healthChildcare.discussion = {
       $('li.collaborator').after(data);
       $('#invite-collaborator-modal').modal('hide');
 
-      $('form.new_collaboration_invite')[0].reset();
+      $('.invite-limited').removeClass('hide');
+      $('.invite-unlimited').html('')
     });
   },
 
@@ -71,6 +105,55 @@ healthChildcare.discussion = {
 
       cb(matches);
     }
+  },
+
+  filterDiscussions: function() {
+    var _this = this;
+
+    $('.collaborator').on('click', function() {
+      $(this).toggleClass('active');
+
+      _this.showDiscussions();
+    });
+  },
+
+  showDiscussions: function(selectedOwnerIds) {
+    var selectedCollaborators = this.getDiscussionTargets();
+
+    if (selectedCollaborators.length == 0) {
+      $('.discussion').show();
+    }
+    else {
+      $('.discussion').each(function() {
+        var discussionOwnerId = parseInt($(this).data('owner_id'));
+        var discussionOwnerType = $(this).data('owner_type');
+        var _this = this;
+        var show = false;
+
+        $.each(selectedCollaborators, function(idx, activeCollaborator) {
+          collaboratorId = activeCollaborator[0];
+          collaboratorType = activeCollaborator[1];
+
+          if (collaboratorId == discussionOwnerId && collaboratorType == discussionOwnerType)
+            show = true;
+        });
+
+        if (show) {
+          $(_this).show();
+        }
+        else {
+          $(_this).hide();
+        }
+      })
+    }
+  },
+
+  editMedicalProfessionalInfo: function() {
+    $('#submit-edit-medical-professional-form').on('click', function() {
+      $('#edit_medical_professional').trigger('submit');
+    });
+
+    $('#edit-medical-professional-modal').modal('hide');
   }
 
 }

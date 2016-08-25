@@ -9,6 +9,19 @@ class Manager::DiscussionsController < ApplicationController
     set_discussions
   end
 
+  def create
+    discussion = Discussion.new(discussion_params.merge(owner_id: current_user.id))
+
+    if discussion.save!
+      save_discussion_participants(discussion)
+
+      HealthConversationNotificationJob.perform_now(discussion, sender: current_user)
+      render partial: '/discussions/discussion', locals: {discussion: discussion}
+    else
+      redirect_to parentee_discussions_path
+    end
+  end
+
   private
 
   def set_department
@@ -32,10 +45,20 @@ class Manager::DiscussionsController < ApplicationController
   end
 
   def set_discussions
+    dept_ids = current_user.daycare.department_ids
+
     @discussions = @active_child.discussions
                    .includes(:discussion_participants, :owner)
                    .select{|disc| disc.owner == current_user ||
-                           disc.discussion_participants.any?{|disc_part| current_user.daycare.department_ids.include?(disc_part.participant_id) && disc_part.participant_type == 'Department'}}
+                           disc.discussion_participants
+                             .by_type('Department')
+                             .any?{|disc_part| dept_ids.include?(disc_part.participant_id)}}
+  end
+
+  def save_discussion_participants(discussion)
+    params[:discussion_participants].values.each do |part|
+      discussion.discussion_participants.create(participant_id: part[0], participant_type: part[1])
+    end
   end
 
 end

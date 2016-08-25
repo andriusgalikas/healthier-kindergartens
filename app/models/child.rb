@@ -36,9 +36,14 @@ class Child < ActiveRecord::Base
 
     delegate :daycare, to: :department
 
+    after_create :initialize_collaborators
     def age
       now = Time.now.utc.to_date
       now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
     end
 
+    def initialize_collaborators
+      child.collaborators.find_or_create_by(collaborator: child.department)
+      child.collaborators.find_or_create_by(collaborator: child.parentee)
+    end
 end

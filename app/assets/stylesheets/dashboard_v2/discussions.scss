@@ -49,11 +49,11 @@
       .discussion-owner, .discussion-time {
         text-align: center;
       }
+    }
 
-      textarea {
-        height: 100px;
-        width: 100%;
-      }
+    textarea {
+      height: 100px;
+      width: 100%;
     }
 
   }
@@ -109,7 +109,11 @@
         }
       }
     }
+  }
 
-
+  .collaborators {
+    .collaborator:not(.pending) {
+      cursor: pointer;
+    }
   }
 }

@@ -439,10 +439,6 @@ healthChildcare.illness = {
     });
   },
 
-  initTrends: function() {
-    google.charts.load('current', {'packages':['corechart']});
-  },
-
   initTrendLine: function() {
     var trendData = $('#line-chart-div').data('trend_data');
 

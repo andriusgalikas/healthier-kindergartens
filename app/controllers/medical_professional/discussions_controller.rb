@@ -14,11 +14,10 @@ class MedicalProfessional::DiscussionsController < ApplicationController
     child = discussion.subject
 
     if discussion.save!
-      discussion.discussion_participants.find_or_create_by(participant: child.parentee)
-      discussion.discussion_participants.find_or_create_by(participant: current_user)
+      save_discussion_participants(discussion)
 
       HealthConversationNotificationJob.perform_now(discussion, sender: current_user)
-      render discussion
+      render partial: '/discussions/discussion', locals: {discussion: discussion}
     else
       redirect_to medical_professional_discussions_path, alert: 'There was an error saving the message.'
     end
@@ -38,11 +37,12 @@ class MedicalProfessional::DiscussionsController < ApplicationController
     end
   end
 
+  # list of discussions should be similar to the parent's view
   def set_discussions
-    @discussions = @active_child.discussions
-                   .includes(:discussion_participants, :owner)
-                   .select{|disc| disc.owner == current_user ||
-                           disc.discussion_participants.object_is_participant?(current_user.department)}
+    @discussions = @active_child.discussions.includes(:owner)
+#                   .includes(:discussion_participants, :owner)
+#                   .select{|disc| disc.owner == current_user ||
+#                           disc.discussion_participants.object_is_participant?(current_user.department)}
   end
 
   def discussion_params
@@ -52,6 +52,12 @@ class MedicalProfessional::DiscussionsController < ApplicationController
       :subject_id,
       :subject_type
     )
+  end
+
+  def save_discussion_participants(discussion)
+    params[:discussion_participants].values.each do |part|
+      discussion.discussion_participants.create(participant_id: part[0], participant_type: part[1])
+    end
   end
 
 end

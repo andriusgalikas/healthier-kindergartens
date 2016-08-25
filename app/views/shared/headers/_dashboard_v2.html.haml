@@ -9,8 +9,9 @@
         =  'Daycare %s' % current_user.role.humanize
 
   .col-md-4
-    .user-home.centralize
-      = link_to dashboard_path, class: 'img' do
-        = image_tag 'home.png', class: 'img'
+    - unless current_user.medical_professional?
+      .user-home.centralize
+        = link_to dashboard_path, class: 'img' do
+          = image_tag 'home-2.png', class: 'img'
 
   .col-md-4
