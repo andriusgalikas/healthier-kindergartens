@@ -8,8 +8,11 @@
 #  survey_id        :integer
 #  winner           :boolean
 #  score            :integer
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 class SurveyAttempts < ActiveRecord::Base
-  belongs_to :surveys
+  belongs_to :survey, class_name: SurveySurvey
+  has_many   :survey_answers, foreign_key: :attempt_id, dependent: :destroy
 end

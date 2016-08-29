@@ -1,6 +1,6 @@
 #legacy-result
 {
-    .infection-name img 
+    .infection-name img
     {
         height:50px;
         width:50px;
@@ -209,7 +209,6 @@ div#chart {
 .wrap {
     width:100%;
     float:left;
-    margin-top:100px;
 }
 /* The Skills BarChart */
 .barGraph {
@@ -682,7 +681,7 @@ path.c3-shape.c3-shape.c3-arc.c3-arc-Personal {
 .wrap {
     width:100%;
     float:left;
-    margin-top:100px;
+    margin-top:200px;
 }
 /* The Skills BarChart */
 .barGraph {
@@ -1833,7 +1832,6 @@ select.selectpicker{
 .vt-collapse-menu > img {
     float: left;
     width: auto;
-    cursor: pointer;
 }
 .container .header {
     color: #222;
@@ -1893,6 +1891,9 @@ select.selectpicker{
     display: inline-block;
     font-family: open sans;
     padding: 5px 10px;
+}
+.content.vt-menu li.active {
+    background: #d3d3d3;
 }
 .header i {
     float: right;

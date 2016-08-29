@@ -7,6 +7,7 @@ $(document).ready(function()
     healthChildcare.app.submitSurveyModule();
     healthChildcare.app.showRegisteredChildcaresNotification();
     healthChildcare.app.showUpgradedChildcaresNotification();
+    healthChildcare.app.showSurveyResult();
 
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
@@ -33,32 +34,37 @@ $(document).ready(function()
     $('.get-single-user-result').on('click', function()
     {
         var userId = $(this).attr('data-id'),
-            subjectId = $(this).attr('data-subject-id');
+            subjectId = $('input[name="subject_id"]:checked').val(),
+            _this = this;
 
         $.ajax(
         {
             url: '/manager/subjects/' + subjectId + '/user_result?user_id=' + userId,
             type: 'GET',
-            dataType: 'json',
-            success: function (data)
+            success: function (html)
             {
-                $('#bar_graph_partial').html(data.partial);
+              $('#progress_charts_partial').html(html);
+              $(_this).parents('ul').find('li').removeClass('active');
+              $(_this).parents('li').addClass('active');
             }
         });
         return false;
     });
-    $('.group-logo').on('click', function()
+    $('.get-group-result').on('click', function()
     {
-        var subjectId = $(this).attr('data-subject-id');
+        var subjectId = $('input[name="subject_id"]:checked').val(),
+            subjectGroup = $(this).data('subject_group'),
+            _this = this;
 
         $.ajax(
         {
-            url: '/manager/subjects/' + subjectId + '/group_result',
+            url: '/manager/subjects/' + subjectId + '/group_result?role=' + subjectGroup,
             type: 'GET',
-            dataType: 'json',
-            success: function (data)
+            success: function (html)
             {
-                $('#bar_graph_partial').html(data.partial);
+              $('#progress_charts_partial').html(html);
+              $(_this).parents('ul').find('li').removeClass('active');
+              $(_this).parents('li').addClass('active');
             }
         });
         return false;
@@ -269,3 +275,41 @@ function click_tab(id){
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
         $('#tab_'+id).addClass("jcmc-active-tab");
     }
+
+function drawSurveyProgressTrend() {
+  var srcData = $('#progress-trend').data('trend_data');
+  var trendData = google.visualization.arrayToDataTable(srcData);
+
+  var options = {
+    title: window.__trans['worker_progress_chart_title'],
+    curveType: 'function',
+    legend: { position: 'bottom' },
+    vAxis: {title: 'Score Percentage',
+            maxValue: 100}
+    };
+
+  var chart = new google.visualization.LineChart(document.getElementById('progress-trend'));
+
+  chart.draw(trendData, options);
+}
+
+function drawSurveyProgressPie() {
+  var pieData = $('#progress-pie').data();
+  var trendData = pieData.trend_data;
+  var role = pieData.daycare_role;
+  var data = new google.visualization.DataTable();
+
+  data.addColumn('string', 'Answers');
+  data.addColumn('number', 'Answers');
+  data.addRows(trendData);
+
+  // set chart options
+  var options = {'title': 'Correct Answers Among the Daycare ' + role,
+                 'width': 1000,
+                 'height': 500,
+                 'is3D': true
+                };
+
+  var chart = new google.visualization.PieChart(document.getElementById('progress-pie'));
+  chart.draw(data, options);
+}

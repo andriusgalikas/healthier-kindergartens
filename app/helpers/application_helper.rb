@@ -78,7 +78,7 @@ module ApplicationHelper
       trans['required_filter_sub_subject'] = I18n.t('messages.notifications.required_filter_sub_subject')
       trans['required_dept_filter'] = I18n.t('illnesses.labels.required_dept_filter')
       trans['required_child_filter'] = I18n.t('illnesses.labels.required_child_filter')
-
+      trans['worker_progress_chart_title'] = I18n.t('survey.labels.worker_progress_chard_title')
       trans
     end
 

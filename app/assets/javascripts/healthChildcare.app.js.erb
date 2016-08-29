@@ -117,6 +117,27 @@ healthChildcare.app =
 
       occasionalFetch = setInterval(fetchSimilarPlans, 5000);
     }
+  },
+
+  showSurveyResult: function() {
+    $('input.retake-radio').on('click', function() {
+      var subjectId = $(this).val();
+      var progressDiv = $('#progress_charts_partial');
+      var currentRole = $(this).data('current_role');
+      var url = '/subjects/' + subjectId + '/results';
+
+      if (currentRole && currentRole.length > 0) {
+        url = '/' + currentRole + url;
+      }
+
+      $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(resultHtml) {
+          progressDiv.html(resultHtml);
+        }
+      });
+    });
   }
 
 }

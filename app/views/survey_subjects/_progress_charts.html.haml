@@ -1,0 +1,18 @@
+- if params[:role].present?
+  - if trend.has_available_group_results?
+    #progress-trend{'data-trend_data': trend.group_survey_result_over_time.to_json}
+    #progress-pie{'data-trend_data': trend.group_survey_result_right_over_wrong.to_json, 'data-daycare_role': params[:role]}
+  - else
+    = t('survey.notifications.not_enough_data')
+- else
+  - if trend.has_available_individual_results?
+    #progress-trend{'data-trend_data': trend.individual_survey_result_over_time.to_json}
+  - else
+    = t('survey.notifications.not_enough_data')
+
+:javascript
+  if ($('#progress-trend').size() > 0)
+    google.charts.setOnLoadCallback(drawSurveyProgressTrend);
+
+  if ($('#progress-pie').size() > 0)
+    google.charts.setOnLoadCallback(drawSurveyProgressPie);

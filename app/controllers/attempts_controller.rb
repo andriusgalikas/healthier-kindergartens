@@ -6,7 +6,6 @@ class AttemptsController < ApplicationController
   def new
     set_subject
     set_user
-    remove_current_user_attempts
   end
 
   def create
@@ -63,10 +62,6 @@ class AttemptsController < ApplicationController
       end
       hash[k]['option_id'] = hash[k]['option_id'].first
     end
-  end
-
-  def remove_current_user_attempts
-    @subject.surveys.map{|s| s.attempts.where(participant_id: current_user.id).destroy_all }
   end
 
   def attempt_params

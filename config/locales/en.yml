@@ -210,3 +210,10 @@ en:
       possible_trigger: Any events which could be possible causes of the outbreak, including field trips, contact with animals etc.
       extra_details: Other relevant details
       additional_actions: Additional actions taken including first aid administration of medication in your facility
+
+  survey:
+    labels:
+      worker_progress_chard_title: Risk Assessment Performance
+
+    notifications:
+      not_enough_data: Not enough data to show a trend.

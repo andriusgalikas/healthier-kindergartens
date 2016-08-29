@@ -23,4 +23,9 @@ class SurveySubject < ActiveRecord::Base
     validates :icon,                                presence: true
 
     accepts_nested_attributes_for :icon, :attempts
+
+    def user_has_previous_attempts?(user)
+      surveys.map(&:attempts).flatten.map(&:participant_id).include?(user.id)
+    end
+
 end

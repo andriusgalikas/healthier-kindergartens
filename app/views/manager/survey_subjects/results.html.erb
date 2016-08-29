@@ -4,14 +4,15 @@
             <%= render 'group' %>
             <div class="col-md-8 col-sm-8 col-xs-12 logo-back">
                 <%= render 'subjects' %>
-                <div id="bar_graph_partial" class="wrap">
-                    <% if @results.count > 0 %>
-                        <%= render partial: 'survey_subjects/bar_graph', locals: { results: @results } %>
-                    <% else %>
-                        <p>Survey not taken yet...</p>
-                    <% end %>
+                <div id="progress_charts_partial" class="wrap">
+                  <%= render partial: 'survey_subjects/progress_charts', locals: { trend: @trend } %>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+</script>

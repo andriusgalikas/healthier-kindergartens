@@ -503,7 +503,6 @@ var Illnesses = {
         title: 'Illness Over Time Period',
         curveType: 'function',
         legend: { position: 'right' }
-
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
