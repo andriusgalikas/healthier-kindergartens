@@ -17,9 +17,5 @@
           = image_tag 'alleragy_icon.jpg'
           %span Illness
 
-        = link_to worker_discussions_path, class: 'discussions', 'data-step': '16', 'data-intro': t('user_guide.menu.parent_health_conversation') do
-          = image_tag 'template-message.png'
-          %span= t('discussions.discussion')
-
   .fourcol.last.notifications-panel
     = render 'notifications'

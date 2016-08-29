@@ -33,18 +33,9 @@ Rails.application.routes.draw do
         get :select_daycare, as: 'parentee_select_daycare'
     end
 
-    # custom registration routes
-    scope 'medical_professional', controller: 'users/medical_professionals' do
-      get  :choose_child, as: 'choose_child_invitation'
-      get  :submit_invite_code, as: 'submit_invite_code'
-      post :search_child_collaboration, as: 'search_child_collaboration'
-      get  :initiate_child_collaboration, as: 'initiate_child_collaboration'
-    end
-
-
     root to: 'pages#home'
 
-    %w( about mission path standard getting_started welcome infection instruction implementation invite_registration).each do |page|
+    %w( about mission path standard getting_started welcome infection instruction implementation).each do |page|
         get page, to: "pages##{page}"
     end
 
@@ -107,22 +98,6 @@ Rails.application.routes.draw do
           end
         end
 
-        resources :discussions, only: [:index, :create]
-    end
-
-    namespace :worker do
-      resources :discussions, only: [:index, :create]
-    end
-
-    namespace :parentee do
-      resources :discussions, only: [:index, :create] do
-        post :invite_doctor, on: :collection
-      end
-    end
-
-    namespace :medical_professional do
-      resources :discussions, only: [:index, :create] do
-      end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
