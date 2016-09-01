@@ -13,13 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require stripe
+//= require bootstrap/dist/js/bootstrap.min.js
 //= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
 //= require jquery.datetimepicker
 //= require _healthChildcare
 //= require healthChildcare.app
-//= require healthChildcare.survey
-//= require healthChildcare.message
-//= require healthChildcare.illness
 //= require intro
 //= require application.ready
 //= require chart

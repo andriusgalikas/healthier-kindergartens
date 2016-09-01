@@ -1,0 +1,17 @@
+.row.step-navs-horizontal
+  .col-md-3
+    = link_to mission_path do
+      %i.fa{class: action_name == 'mission' ? 'fa-angle-down' : 'fa-angle-right'}
+      = t('pages.nav_bar.mission')
+  .col-md-3
+    = link_to standard_path do
+      %i.fa{class: action_name == 'standard' ? 'fa-angle-down' : 'fa-angle-right'}
+      = t('pages.nav_bar.standard')
+  .col-md-3
+    = link_to path_path do
+      %i.fa{class: action_name == 'path' ? 'fa-angle-down' : 'fa-angle-right'}
+      = t('pages.nav_bar.path')
+  .col-md-3
+    = link_to '#' do
+      %i.fa{class: action_name == 'journey' ? 'fa-angle-down' : 'fa-angle-right'}
+      = t('pages.nav_bar.your_journey')

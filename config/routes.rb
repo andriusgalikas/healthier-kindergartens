@@ -191,5 +191,5 @@ Rails.application.routes.draw do
 
     get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
 
-    get 'home_2', to: 'pages#home_2'
+    get 'path_2', to: 'pages#path_2'
 end

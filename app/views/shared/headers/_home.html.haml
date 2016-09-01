@@ -1,13 +1,17 @@
-%header
-  = link_to root_path do
-    = image_tag 'logo.png', id: 'header-logo'
-  #menu
-    = link_to 'Login', new_user_session_path
-    = link_to 'Register', getting_started_path
+%header.header.clearfix
+  .container
+    .logo-container
+      = link_to root_path do
+        = image_tag 'logo-new.png', id: 'header-logo'
 
-  %ul
-    %li= link_to 'Home' , root_path
-    %li= link_to 'Our Mission', mission_path
-    %li= link_to 'Our Standard', standard_path
-    %li= link_to 'Path to Accreditation', path_path
-    %li= link_to 'About Us', about_path
+    %ul.main-nav
+      %li= link_to t('pages.nav_bar.home'), root_path, class: "hcc-simple #{get_active_link('home')}"
+      %li= link_to t('pages.nav_bar.start_here'), mission_path, class: "hcc-simple #{get_active_link('')}"
+      %li= link_to t('pages.nav_bar.standard'), standard_path, class: "hcc-simple #{get_active_link('standard')}"
+      %li= link_to t('pages.nav_bar.path'), path_path, class: "hcc-simple #{get_active_link('path')}"
+      %li= link_to t('pages.nav_bar.about_us'), about_path, class: "hcc-simple #{get_active_link('about_us')}"
+      %li
+        %button.btn.hcc-btn{}
+          %a{'href': getting_started_path}
+            = t('pages.nav_bar.get_started')
+            %i.fa.fa-angle-right

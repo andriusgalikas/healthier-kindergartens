@@ -1,34 +1,6 @@
-@import 'compass/css3';
-
-$hcc-red: #fc636b;
-$hcc-pink: #ff6d92;
-$hcc-orange: #ffb900;
-$hcc-blue: #4186e0;
-$hcc-light-blue: #7fe6e2;
-
-// linear-gradient(to top right, #fc636b, #ff6d92 35%, #ffb900 100%)
-
-@mixin hcc-red-gradient {
-  background: $hcc-red; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, $hcc-red , $hcc-orange); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, $hcc-red, $hcc-orange); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, $hcc-red, $hcc-orange); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, $hcc-red , $hcc-orange); /* Standard syntax */
-  color: white;
-}
-
-@mixin hcc-hover {
-  border: 2px solid #ffce4c;
-}
-
-@mixin hcc-transition($prop) {
-  -webkit-transition:$prop 1s ease;
-  -moz-transition:$prop 1s ease;
-  -o-transition:$prop 1s ease;
-  transition:$prop 1s ease;
-}
 @import 'version_2/common';
 @import 'version_2/header';
-@import 'version_2/footer';
 @import 'version_2/home';
+@import 'version_2/footer';
+@import 'version_2/mission';
 @import 'version_2/survey';

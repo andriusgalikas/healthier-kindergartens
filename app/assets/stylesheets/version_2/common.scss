@@ -1,4 +1,55 @@
+@import 'compass/css3';
+
+$hcc-red: #fc636b;
+$hcc-pink: #ff6d92;
+$hcc-bright-pink: #ff48be;
+$hcc-orange: #ffb900;
+$hcc-dark-orange: #ff8a00;
+$hcc-yellow: #ffe606;
+$hcc-blue: #4186e0;
+$hcc-light-blue: #7fe6e2;
+
+// linear-gradient(to top right, #fc636b, #ff6d92 35%, #ffb900 100%)
+
+@mixin hcc-red-gradient {
+  background: $hcc-red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $hcc-red , $hcc-orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $hcc-red, $hcc-orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $hcc-red, $hcc-orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $hcc-red , $hcc-orange); /* Standard syntax */
+  color: white;
+}
+
+@mixin hcc-pink-gradient {
+  background: $hcc-pink; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $hcc-bright-pink , $hcc-orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $hcc-bright-pink, $hcc-orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $hcc-bright-pink, $hcc-orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $hcc-bright-pink , $hcc-orange); /* Standard syntax */
+  color: white;
+}
+
+@mixin hcc-red-border-gradient {
+	border: 5px solid transparent;
+	-moz-border-image: -moz-linear-gradient(left, $hcc-red 0%, $hcc-orange 100%);
+	-webkit-border-image: -webkit-linear-gradient(left, $hcc-red 0%, $hcc-orange 100%);
+	border-image: linear-gradient(to right, $hcc-red 0%, $hcc-orange 100%);
+	border-image-slice: 1;
+}
+
+@mixin hcc-hover {
+  border: 2px solid #ffce4c;
+}
+
+@mixin hcc-transition($prop) {
+  -webkit-transition:$prop 1s ease;
+  -moz-transition:$prop 1s ease;
+  -o-transition:$prop 1s ease;
+  transition:$prop 1s ease;
+}
+
 a:link {
+  color: black;
   text-decoration: none;
 
   &.hcc-simple {
@@ -7,6 +58,9 @@ a:link {
     }
   }
 
+  &.active {
+    border-bottom: 2px solid $hcc-red;
+  }
 
 }
 
@@ -28,4 +82,86 @@ button {
 
 .centralize {
   text-align: center;
+}
+
+.promo {
+  margin-top: -15px;
+
+  .promo-img {
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    .promo-text {
+      position: absolute;
+      top: 10%;
+      padding: 40px;
+      width: 50%;
+      font-size: 20px;
+      font-weight: 400;
+
+      .divider {
+        height: 2px;
+        margin: 20px 0;
+        @include hcc-red-gradient;
+      }
+
+      .promo-subhead {
+        color: $hcc-pink;
+      }
+    }
+  }
+}
+
+.step-navs-horizontal {
+  padding: 10px;
+  text-align: center;
+  @include border-radius(30px);
+  @include hcc-red-gradient;
+  margin: 20px;
+
+
+  a {
+    color: white;
+
+    &:hover {
+      color: $hcc-light-blue;
+
+      i {
+        background: $hcc-light-blue;
+      }
+    }
+
+    i {
+      color: $hcc-pink;
+      background: white;
+      padding: 1px;
+      border-radius: 50%;
+      margin-right: 16px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      font-size: 26px;
+    }
+  }
+
+}
+
+.step-contents {
+  font-size: 16px;
+  padding: 20px 50px;
+
+  .heading {
+    color: $hcc-pink;
+  }
+
+  .heading-letter {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
 }
