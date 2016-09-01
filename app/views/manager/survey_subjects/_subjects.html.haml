@@ -1,0 +1,9 @@
+- SurveySubject.all.each_with_index do |subject, idx|
+  .survey-subject
+    .row.centralize
+      = image_tag subject.icon.file.thumb, class: 'img'
+    .row
+      .radio
+        %label
+          %input{type: 'radio', name: 'subject_id', id: "radio#{subject.id}", value: subject.id, checked: subject == @subject, class: 'retake-radio', 'data-current_role': @current_user.role}
+          = subject.title

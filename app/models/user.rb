@@ -52,6 +52,18 @@ class User < ActiveRecord::Base
 
     has_many :notifications,                                    foreign_key: 'target_id'
 
+    # <--- health conversations-related assocs
+    has_many :discussions,                                      through: :discussion_participants
+
+    has_many :discussion_participants,                          as: :participant
+
+    has_many :comments
+
+    has_many :collaborations,                                   class_name: 'ChildCollaborator', as: :collaborator
+    # health conversations-related assocs --->
+
+    has_one :user_profile
+
     belongs_to :department
 
     has_many :health_records,                                   :as => :recorder
@@ -63,9 +75,9 @@ class User < ActiveRecord::Base
     validates :children,                                        presence: true, :if => :parentee?
 
 
-    enum role: [:parentee, :worker, :manager, :admin, :partner]
+    enum role: [:parentee, :worker, :manager, :admin, :partner, :medical_professional]
 
-    accepts_nested_attributes_for :children, :user_daycare, :user_affiliate, allow_destroy: true
+    accepts_nested_attributes_for :children, :user_daycare, :user_affiliate, :user_profile, allow_destroy: true
 
     def newly_signed_up?
       sign_in_count == 1

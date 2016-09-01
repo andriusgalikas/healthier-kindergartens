@@ -8,7 +8,7 @@
       = pretty_long_date(message.created_at)
 
     .col-md-4
-      %a.print-btn{href: '#', 'data-target_message': "#message-#{message.id}", 'data-sub_subject': message.message_template ? message.message_template.sub_subject.title : '', 'data-subject': message.message_template ? message.message_template.sub_subject.parent_subject.title : ''}
+      %a.print-msg-btn{href: '#', 'data-target_message': "#message-#{message.id}", 'data-sub_subject': message.message_template ? message.message_template.sub_subject.title : '', 'data-subject': message.message_template ? message.message_template.sub_subject.parent_subject.title : ''}
         %span.pull-right= t('form_labels.print')
 
   %hr

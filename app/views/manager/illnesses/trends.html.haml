@@ -21,9 +21,8 @@
     #bar-chart-div{'data-trend_data': @trend.illness_data_over_children_count.to_json}
 
   .container-fluid.centralize
-    %a.print-btn{href: '#', 'data-target': '#trends', class: 'btn btn-success btn-raised'}
+    %a.print-trend-btn{href: '#', 'data-target': '#trends', class: 'btn btn-success btn-raised'}
       = t('form_labels.print')
 
-
 :javascript
-  Illnesses.initTrends();
+  google.charts.load('current', {'packages':['corechart']});

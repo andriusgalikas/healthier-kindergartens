@@ -17,4 +17,4 @@
               %div.notif-sender-avatar
                 = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
               %div.notif-sender-name
-                = notif.source_owner.name
+                = notif_sender_name(notif)

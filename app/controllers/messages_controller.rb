@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def list
     params[:page] ||= 1
     get_all_main_subjects if current_user.manager?
-    set_notification_message
+    archive_notification
     set_messages
 
     if request.xhr?
@@ -24,13 +24,6 @@ class MessagesController < ApplicationController
 
   def get_all_main_subjects
     @subjects = MessageSubject.main_subjects
-  end
-
-  def set_notification_message
-    if params[:notification_id].present?
-      @notification = Notification.find(params[:notification_id])
-      @notification.archived!
-    end
   end
 
   def set_messages

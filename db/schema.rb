@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803081825) do
+ActiveRecord::Schema.define(version: 20160819074504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.datetime "deactivated_at"
   end
 
+  create_table "child_collaborators", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "collaborator_id"
+    t.string   "collaborator_type"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "child_collaborators", ["child_id"], name: "index_child_collaborators_on_child_id", using: :btree
+
   create_table "children", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
@@ -47,6 +58,26 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "collaboration_invites", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "inviter_id"
+    t.string  "invitee_email"
+    t.integer "status",        default: 0
+    t.string  "invite_code"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "discussion_id"
+    t.integer  "owner_id"
+    t.string   "content"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
+  add_index "comments", ["owner_id"], name: "index_comments_on_owner_id", using: :btree
 
   create_table "daycares", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +118,39 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "discussion_participants", force: :cascade do |t|
+    t.integer  "discussion_id"
+    t.integer  "participant_id"
+    t.string   "participant_type"
+    t.boolean  "initiator"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "discussion_participants", ["discussion_id"], name: "index_discussion_participants_on_discussion_id", using: :btree
+
+  create_table "discussions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "owner_id"
+    t.string   "content"
+  end
+
+  add_index "discussions", ["subject_type", "subject_id"], name: "index_discussions_on_subject_type_and_subject_id", using: :btree
+
+  create_table "doctor_specializations", force: :cascade do |t|
+    t.integer  "user_profile_id"
+    t.integer  "medical_specialization_id"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "health_record_components", force: :cascade do |t|
     t.integer  "health_record_id"
     t.string   "code"
@@ -116,6 +180,15 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "medical_specializations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "added_by"
+    t.datetime "deactivated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "message_subjects", force: :cascade do |t|
@@ -335,6 +408,19 @@ ActiveRecord::Schema.define(version: 20160803081825) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "phone_number"
+    t.string   "physical_address"
+    t.string   "web_address"
+    t.string   "about_yourself"
+    t.string   "education"
+    t.boolean  "online_presence",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "certifications",   default: [],   array: true
   end
 
   create_table "user_todo_destroys", force: :cascade do |t|

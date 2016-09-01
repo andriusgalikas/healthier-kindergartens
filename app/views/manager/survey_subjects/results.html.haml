@@ -1,0 +1,14 @@
+.survey-result.container-fluid
+  .row
+    .col-md-3.survey-groups
+      = render 'group'
+    .col-md-9
+      .row.survey-subjects
+        = render 'subjects'
+      .row.survey-charts
+        #progress_charts_partial
+          = render partial: 'survey_subjects/progress_charts', locals: {trend: @trend}
+
+:javascript
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});

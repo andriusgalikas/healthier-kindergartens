@@ -35,26 +35,6 @@ healthChildcare.app =
         });
     },
 
-    submitSurveyModule: function()
-    {
-        $("body").on("submit", '.submit-attempt', function()
-        {
-            var tabId = $(this).attr('data-tab');
-            $.ajax(
-            {
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function (data)
-                {
-                    click_tab(tabId);
-                }
-            });
-            return false;
-        });
-    },
-
   showRegisteredChildcaresNotification: function() {
     var beforeSignUpPath = /getting_started/g;
     var afterSignUpPath = /welcome/g;
@@ -119,25 +99,36 @@ healthChildcare.app =
     }
   },
 
-  showSurveyResult: function() {
-    $('input.retake-radio').on('click', function() {
-      var subjectId = $(this).val();
-      var progressDiv = $('#progress_charts_partial');
-      var currentRole = $(this).data('current_role');
-      var url = '/subjects/' + subjectId + '/results';
+  homeStepNavigator: function() {
+    $('a[data-role="step"]').on('click', function() {
+      var target = $(this).data('target');
+      var url = $(this).data('url');
+      var _this = this;
 
-      if (currentRole && currentRole.length > 0) {
-        url = '/' + currentRole + url;
+      $('.step-contents .step-content.active').removeClass('active').hide();
+      $('.step-navs-horizontal').find('i').removeClass('fa-angle-down').addClass('fa-angle-right');
+
+      if ($(target).html().length == 0) {
+        $.ajax({url,
+          type: 'GET',
+          success: function(html) {
+            $(target).html(html);
+          }
+        });
       }
 
-      $.ajax({
-        url: url,
-        type: 'GET',
-        success: function(resultHtml) {
-          progressDiv.html(resultHtml);
-        }
-      });
+      $(target).slideToggle('fast').addClass('active');
+      $(this).find('i').addClass('fa-angle-down');
+
+     });
+  },
+
+  addAnotherCertification: function() {
+    $('.add-certification').on('click', function() {
+      var html = $('#user-profile-certifications').html();
+      $(this).before(html);
     });
+
   }
 
 }

@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-# can be used for Message and Todo notifications
+# can be used for Message, Todo, Discussion, Comment notifications
 class Notification < ActiveRecord::Base
   include Deactivatable
 

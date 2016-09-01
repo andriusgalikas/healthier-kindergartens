@@ -3,7 +3,7 @@
     .form-group
       = hidden_field_tag :record_type, params[:record_type]
       = label_tag :department, t('illnesses.labels.select_department')
-      = select_tag :department_id, options_from_collection_for_select(current_user.daycare.departments, 'id', 'name'), class: 'select', required: true, prompt: t('illnesses.labels.department')
+      = select_tag :department_id, options_from_collection_for_select(current_user.daycare.departments, 'id', 'name'), class: 'form-control', required: true, prompt: t('illnesses.labels.department')
 
   .col-md-6
     .form-group.choose-child

@@ -19,4 +19,15 @@ namespace 'setup' do
       end
     end
   end
+
+  desc 'Load data for medical specializations'
+  task 'load_medical_specializations' => 'environment' do
+    YAML::load_file(Rails.root.join('config/initializers/medical_specializations.yml')).values.each do |data|
+      specialization = MedicalSpecialization.find_or_initialize_by(code: data['code'])
+      specialization.name = data['name']
+      specialization.save
+      puts "specialization : #{specialization.name}"
+    end
+  end
+
 end

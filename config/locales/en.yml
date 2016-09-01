@@ -116,6 +116,7 @@ en:
   dashboard:
     notifications: Notifications
     messages: Messages
+    health_conversations: Health Conversations
 
   registrations:
     parentee:
@@ -175,6 +176,18 @@ en:
       create_success: Successfully created the record.
       create_error: Something went wrong. Unable to save the data.
 
+  todos:
+    todo: Todos
+
+  discussions:
+    discussion: Health Conversations
+    labels:
+      edit_department: Edit Department
+      edit_medical_professional_info: Edit Personal Info
+      invite_is_limited: You are only allowed to invite one doctor.
+      upgrade_to_invite: Upgrade now to invite more!
+      collaborators: Collaborators
+
   form_labels:
     next: Next
     back: Back
@@ -186,6 +199,16 @@ en:
     edit: Edit
     select: Select
     print: Print
+    post: Post
+    submit: Submit
+    search: Search
+
+  person_labels:
+    name: Name
+    age: Age
+    birthday: Birthday
+    department: Deparment
+    daycare: Daycare
 
   protocols:
     child_illness_record:
@@ -214,6 +237,58 @@ en:
   survey:
     labels:
       worker_progress_chard_title: Risk Assessment Performance
+      groups: Groups
+      workers: Daycare Workers
+      parents: Daycare Parents
+      all: All
 
     notifications:
       not_enough_data: Not enough data to show a trend.
+
+  pages:
+    nav_bar:
+      home: Home
+      start_here: Start Here
+      standard: The HCC Standard
+      path: The Paths to Accreditation
+      about_us: About Us
+      get_started: Get Started For Free
+      mission: The Mission
+      your_journey: Your Journey
+
+    promo:
+      title: You’re just 3 steps away from being part of The Health Preserving Accreditation
+      description: Our health-preserving accreditation program includes six interconnected areas of infection risk exposure children and staff face, plus a clear, effective infection prevention protocol to help your facility mitigate theses risks.
+
+    mission_step:
+      heading_1: "Is your daycare a breeding ground for childhood infections—with potential long-term damage?"
+      content_1_a: "In your childcare facility, the safety of children is of primary importance. We make facilitating that safety easier for you. We’re the Healthier and Safer Childcare Alliance: a unifying and supporting force in the world of childcare. We’re committed to assisting you, the childcare operator, in keeping children and workers out of harm’s way—so you can fulfill your ethical and professional duties—and meaningfully contribute to the health and happiness of the children and Employees under your care and supervision."
+      content_2_b: "Daycare settings are a breeding ground for infections and diseases. There are many scientific reasons for this, but it is due in part to the susceptibility of children to illnesses, the close proximity of children to each other, the way children share germs as they play, and the interactions of children with daycare workers and parents. But those aren’t the only reasons…"
+      content_3_c: "There’s one more widely-overlooked cause of infection and disease spreading—a cause that heavily intensifies this breeding ground for diseases in your daycare. And that’s the lack of adequate knowledge and training for effective infection mitigation procedures on the part of the daycare worker. Studies have shown you can greatly mitigate the most dangerous risks of infection with a few simple procedures—keep reading to find out what they are."
+      heading_2: Top risks to children in your daycare
+      content_2_a: "Studies show that children in daycare are 300% more vulnerable to illnesses than children cared for at home. Although most infectious illnesses get resolved without disrupting the development of children, some infections cause lasting physical damage to children2 , in terms of overuse of antibiotics or future learning, cognitive disabilities or even death. For example, middle ear infections, even when treated correctly in children under 3 years old, can have adverse consequences3 including reduced performance at reading comprehension and/or compromised cognitive ability in the future. Also, respiratory infections like pneumonia are the principal cause of death4 among children under 5 years old worldwide. In addition, children who attend daycare have an increased risk of being hospitalized5, especially from the rotavirus infection, which is responsible for 20 to 60% of hospital admissions of children. Varicella6, which causes chickenpox and shingles, can develop complications that result in hospitalization and death. Children are meant to be kept in safe environments that are conducive to health and learning. In today's terminology, this defines daycare environments: places where children can be open to learning without also being open to illness. We owe it to our children — and ourselves — to give children the safest and healthiest environment possible."
+      heading_3: Top risks to workers in your daycare
+      content_3_a: "Studies indicate that in a flu season, 50% of the surface areas7 in daycare facilities may be contaminated with the flu virus. The degree of contamination in your facility may vary. But the risk of infection remains a major concern, since the majority of childcare staff are women in childbearing age. Changes to the immune system and the respiratory and circulatory systems during pregnancy mean that pregnant women are at greater risk of being severely ill if they catch flu.In addition, the newborn babies of women with severe flu are at risk of complications, in particular premature birth and low birthweight8. The sad irony for childcare workers who become ill due to a lack of infection preventive practices at work is that, while caring for the children of others, they put their own unborn children at risk if they fall pregnant. Most childcare workers are women of childbearing age. Given these risks, no preventive measures — however small — should be overlooked."
+
+      heading_4: Top risks to parents of kids in your daycare
+      content_4_a: "As parents drop off or pick up children from your childcare facility and interact with their children at home, they, too, risk getting infections passed on from the daycare facility. Amplified infection rates associated with daycare centers have economic implications for both the family and the nation. A rise in disease results in an increase in the use of health care services and increased family spending on medical care and medications. Repeated illness can cause parents to earn less and even lose their jobs due to frequent absences. The primary reason parents put their children in daycare is so that they are in a safe environment while Mom or Dad are away at work. It is critical that daycares meet this basic need well. When children contract illnesses, the daycare not only puts them at risk, but also the parents, who can become infected because of the child. This defeats the entire purpose of daycare, as not only were the children not kept safe, but the parents are also not able to work if the child is at home sick."
+
+    standard_step:
+      heading_1: Create the healthiest environment for your children and staff
+      content_1_a: Given the preponderance of risk factors in childcare settings, we have developed The Standard of health-preserving care. When you use it in your facility, your entire daycare community will cultivate a deep understanding of the risks of infectious diseases in childcare environments. They’ll also be professionally trained to utilize effective and trackable measures to control and prevent disease transmission.  By receiving HSCA accreditation, you’ll be operating your facility according to the health-preserving practices set forth in The Standard—the highest possible standard of illness and disease prevention there is in the daycare setting.
+      heading_2: Decrease in Absenteeism
+      content_2_a: Operating your childcare facility according to The Standard also helps decrease or eliminate the risk of ongoing infection and absenteeism. You know all too well that these factors can drain your childcare of productivity.
+      heading_3: Potential growth of your facility
+      content_3_a: Conforming to The Standard is likely to motivate discerning parents to seek out and select your childcare for their children, which would result in the growth or your facility.
+      heading_4: Raising the national standard and creating healthier, happier childcare
+      content_4_a: Each time a childcare facility becomes HSCA accredited, it raises the global benchmark of health-preserving care. We’re proud to be leading this transformation, and we’d like you to join us in our journey. With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents. To find out how you can be one of the first daycare facilities to raise your standards against infection, click on the button below. When you become accredited, you will show parents you’re the only childcare center in your area qualified to practice higher safety standards for the health and well-being of their children.
+
+  user_guide:
+    menu:
+      parent_todo: As a parent, you can manage todo list
+      parent_message: As a parent, you can view messages
+      parent_health_conversation: As a parent, you can initiate/view health conversations
+
+  footer:
+    contact_us: Contact Us
+    hcc: Healthier and Safer Childcare Alliance

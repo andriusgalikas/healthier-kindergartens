@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: symptoms
+#
+#  id         :integer          not null, primary key
+#  illness_id :integer
+#  code       :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Symptom, type: :model do

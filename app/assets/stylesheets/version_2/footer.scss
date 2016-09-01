@@ -1,0 +1,36 @@
+footer {
+  padding: 40px 0;
+  background: black;
+  color: white;
+  max-width: none;
+
+  a {
+    color: white;
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+      padding: 5px 0;
+      font-size: small;
+    }
+  }
+
+  .left-footer {
+
+  }
+
+  .central-footer {
+    text-align: center;
+
+    img {
+      margin: 10px;
+      height: 120px;
+    }
+  }
+
+  .right-footer {
+    padding-left: 10px;
+    text-transform: uppercase;
+  }
+}

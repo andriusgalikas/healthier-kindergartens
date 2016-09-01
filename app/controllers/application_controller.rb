@@ -20,7 +20,19 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for resource
-        resource.admin? ? admin_root_path : resource.partner? ? dashboard_path : welcome_path
+      if resource.admin?
+        admin_root_path
+      elsif resource.partner?
+        dashboard_path
+      elsif resource.medical_professional?
+        if resource.collaborations.present?
+          medical_professional_discussions_path
+        else
+          choose_child_invitation_path
+        end
+      else
+        welcome_path
+      end
     end
 
     def after_sign_up_path_for resource
@@ -28,6 +40,8 @@ class ApplicationController < ActionController::Base
         admin_root_path
       elsif resource.manager?
         invite_manager_daycares_path
+      elsif resource.medical_professional?
+        choose_child_invitation_path
       else
         dashboard_path
       end
@@ -36,4 +50,12 @@ class ApplicationController < ActionController::Base
     def current_daycare
         @current_daycare ||= user_signed_in? ? current_user.daycare : nil
     end
+
+  def archive_notification
+    if params[:notification_id].present?
+      @notification = Notification.find(params[:notification_id])
+      @notification.archived!
+    end
+  end
+
 end

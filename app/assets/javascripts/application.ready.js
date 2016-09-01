@@ -1,23 +1,26 @@
 $(document).ready(function()
 {
-    healthChildcare.app.multiInput();
-    healthChildcare.app.toggleMenu();
-    healthChildcare.app.printTodo();
-    healthChildcare.app.datepickers();
-    healthChildcare.app.submitSurveyModule();
-    healthChildcare.app.showRegisteredChildcaresNotification();
-    healthChildcare.app.showUpgradedChildcaresNotification();
-    healthChildcare.app.showSurveyResult();
+  healthChildcare.app.multiInput();
+  healthChildcare.app.toggleMenu();
+  healthChildcare.app.printTodo();
+  healthChildcare.app.datepickers();
+  healthChildcare.app.showRegisteredChildcaresNotification();
+  healthChildcare.app.showUpgradedChildcaresNotification();
+  healthChildcare.app.homeStepNavigator();
+  healthChildcare.app.addAnotherCertification();
+
+  healthChildcare.survey.submitSurveyModule();
+  healthChildcare.survey.updateSurveyAttemptSubject();
+  healthChildcare.survey.showSurveySubjectResult();
+  healthChildcare.survey.showSingleSurveyResult();
+  healthChildcare.survey.showGroupSurveyResult();
+  healthChildcare.survey.showGroupSurveyMembers();
 
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");
     });
-    $('.retake-radio').change(function()
-    {
-        var subjectId = $(this).val();
-        $('#retake-form').attr('action', '/subjects/' + subjectId + '/attempts/new')
-    });
+
     $('.iteration-selector').change(function()
     {
         var value = $(this).val();
@@ -31,44 +34,7 @@ $(document).ready(function()
         }
 
     });
-    $('.get-single-user-result').on('click', function()
-    {
-        var userId = $(this).attr('data-id'),
-            subjectId = $('input[name="subject_id"]:checked').val(),
-            _this = this;
 
-        $.ajax(
-        {
-            url: '/manager/subjects/' + subjectId + '/user_result?user_id=' + userId,
-            type: 'GET',
-            success: function (html)
-            {
-              $('#progress_charts_partial').html(html);
-              $(_this).parents('ul').find('li').removeClass('active');
-              $(_this).parents('li').addClass('active');
-            }
-        });
-        return false;
-    });
-    $('.get-group-result').on('click', function()
-    {
-        var subjectId = $('input[name="subject_id"]:checked').val(),
-            subjectGroup = $(this).data('subject_group'),
-            _this = this;
-
-        $.ajax(
-        {
-            url: '/manager/subjects/' + subjectId + '/group_result?role=' + subjectGroup,
-            type: 'GET',
-            success: function (html)
-            {
-              $('#progress_charts_partial').html(html);
-              $(_this).parents('ul').find('li').removeClass('active');
-              $(_this).parents('li').addClass('active');
-            }
-        });
-        return false;
-    });
     $('#allocation-slider').on("input change", function()
     {
         var planAllocation = $(this).val();

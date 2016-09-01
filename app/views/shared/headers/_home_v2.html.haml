@@ -1,0 +1,16 @@
+%header.header
+  .pull-left
+    = link_to root_path do
+      = image_tag 'logo.png', id: 'header-logo'
+
+  %ul
+    %li= link_to t('pages.nav_bar.home'), root_path, class: 'hcc-simple'
+    %li= link_to t('pages.nav_bar.start_here'), '#', class: 'hcc-simple'
+    %li= link_to t('pages.nav_bar.standard'), standard_path, class: 'hcc-simple'
+    %li= link_to t('pages.nav_bar.path'), path_path, class: 'hcc-simple'
+    %li= link_to t('pages.nav_bar.about_us'), about_path, class: 'hcc-simple'
+    %li
+      %button.btn.hcc-btn{}
+        %a{'href': getting_started_path}
+          = t('pages.nav_bar.get_started')
+          %i.fa.fa-angle-right

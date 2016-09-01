@@ -26,6 +26,8 @@
   }
 
   #new-child-record {
+    display: none;
+
     .child-profile {
       margin-bottom: 100px;
 
@@ -33,6 +35,10 @@
         height: 125px;
       }
     }
+  }
+
+  #new-department-record {
+    display: none;
   }
 
   .illness-details {

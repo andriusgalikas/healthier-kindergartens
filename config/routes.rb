@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard getting_started welcome infection instruction implementation ).each do |page|
+    %w( about mission path standard getting_started welcome infection instruction implementation).each do |page|
         get page, to: "pages##{page}"
     end
 
@@ -97,6 +97,7 @@ Rails.application.routes.draw do
             post :trends
           end
         end
+
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
@@ -187,5 +188,8 @@ Rails.application.routes.draw do
     end
 
     get 'cast_vote', to: 'votes#cast_vote'
+
     get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
+
+    get 'home_2', to: 'pages#home_2'
 end

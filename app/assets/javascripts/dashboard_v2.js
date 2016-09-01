@@ -1,9 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.datetimepicker
-//= require turbolinks
+//= require bootstrap/dist/js/bootstrap.min.js
 //= require bootstrap-material-design/dist/js/material.min.js
 //= require bootstrap-material-design/dist/js/ripples.min.js
+//= require turbolinks
 //= require froala_editor.min.js
 //= require plugins/colors.min.js
 //= require plugins/draggable.min.js
@@ -23,9 +24,12 @@
 //= require printThis.js
 //= require jquery.steps/build/jquery.steps.min.js
 //= require typeahead.js/dist/typeahead.bundle.min.js
-//= require jquery.dropdown.js
 //= require handlebars/handlebars.min.js
 //= require select2.min.js
-//= require dashboard_v2/illnesses.js
-//= require dashboard_v2/messages.js
+//= require _healthChildcare
+//= require healthChildcare.app
+//= require healthChildcare.survey
+//= require healthChildcare.message
+//= require healthChildcare.illness
+//= require healthChildcare.discussion
 //= require dashboard_v2.ready

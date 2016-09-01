@@ -1,0 +1,26 @@
+%footer
+  .container
+    .row
+      .col-md-4.left-footer
+        %h3= t('footer.contact_us')
+        %p Stasjonsveien 23B
+        %p 2010 STROMMEN Norway
+        %p
+          = link_to 'infectionpreventivecare@healthierandsaferchildcare.org', 'mailto:infectionpreventivecare@healthierandsaferchildcare.org', class: 'hcc-simple'
+        %p +47 467 47 016
+
+      .col-md-4.central-footer
+        = image_tag 'logo.png'
+        %p= t('footer.hcc')
+        %p &copy; 2016
+
+      .col-md-4.right-footer
+        %ul
+          %li= link_to "Home", root_path, class: 'hcc-simple'
+          %li= link_to "Our Mission", mission_path, class: 'hcc-simple'
+          %li= link_to "Our Standard", standard_path, class: 'hcc-simple'
+          %li= link_to "Path to Accreditation", path_path, class: 'hcc-simple'
+          %li= link_to "About Us", about_path, class: 'hcc-simple'
+          - unless user_signed_in?
+            %li= link_to "Login", new_user_session_path, class: 'hcc-simple'
+            %li= link_to "Register", getting_started_path, class: 'hcc-simple'

@@ -112,6 +112,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     when 'worker'
       set_daycares
       new_user_daycare
+    when 'medical_professional'
+      new_user_profile
     end
   end
 
@@ -123,6 +125,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_daycare_attributes: [:daycare_id, :user_id],
       user_affiliate_attributes: [:affiliate_id, :user_id],
       children_attributes: [:_destroy, :id, :name, :parent_id, :department_id, :birth_date, profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]],
+      user_profile_attributes: [:id, :phone_number, :physical_address, :web_address, :about_yourself, :education, :online_presence, certifications: [], profile_image_attributes: [:id, :attachable_type, :attachable_id, :file], doctor_specialization_attributes: :medical_specialization_id],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -135,7 +138,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :country,
       :telephone,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]]
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
+      profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
 
@@ -162,6 +166,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new_daycare_department
     @daycare = Daycare.new
+    @daycare.build_profile_image
     @daycare.departments.build
     @user_daycare = @daycare.user_daycares.build
     @user_daycare.build_user
@@ -198,6 +203,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @departments ||= @daycare.departments
   end
 
+  def new_user_profile
+    profile = resource.build_user_profile
+    profile.build_profile_image
+    profile.build_doctor_specialization
+  end
 
   # def build_resource params
   #   self.resource = User.new(params)

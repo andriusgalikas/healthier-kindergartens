@@ -25,6 +25,3 @@
         %a{href: sub_subject_manager_messages_path(target_department: params[:target_department], target_role: params[:target_role], subject_id: params[:subject_id], sub_subject_id: params[:sub_subject_id]), class: 'btn btn-raised btn-info'} Back
       .col-md-6
         = submit_tag 'Send', class: 'btn btn-raised btn-success'
-
-:javascript
-  Messages.initNewMessage();
