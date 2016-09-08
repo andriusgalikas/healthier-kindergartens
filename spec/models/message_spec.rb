@@ -17,21 +17,11 @@
 #  index_messages_on_message_template_id  (message_template_id)
 #
 
-FactoryGirl.define do
-  factory :message do
-    title { Faker::Lorem.sentence }
-    content { Faker::Lorem.paragraph(10) }
-    target_roles ['worker', 'parentee']
+require 'rails_helper'
 
-    factory :message_for_workers do
-      target_roles ['worker']
-    end
+RSpec.describe Message, type: :model do
 
-    factory :message_for_parents do
-      target_roles ['parentee']
-    end
-
-    association :message_template
-    association :owner, factory: :user
+  describe '#create' do
   end
+
 end

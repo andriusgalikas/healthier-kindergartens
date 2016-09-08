@@ -13,11 +13,15 @@
 #
 
 FactoryGirl.define do
-    factory :daycare do
-        name Faker::Company.name
-        address_line1 Faker::Address.street_address
-        postcode Faker::Address.zip_code
-        country Faker::Address.country
-        telephone Faker::PhoneNumber.phone_number
+  factory :daycare do
+    name          { Faker::Company.name }
+    address_line1 { Faker::Address.street_address }
+    postcode      { Faker::Address.zip_code }
+    country       { Faker::Address.country }
+    telephone     { Faker::PhoneNumber.phone_number }
+
+    before(:create) do |daycare, evaluator|
+      daycare.departments << (FactoryGirl.create :department, daycare: daycare)
     end
+  end
 end

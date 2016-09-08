@@ -43,7 +43,7 @@ class Child < ActiveRecord::Base
     end
 
     def initialize_collaborators
-      child.collaborators.find_or_create_by(collaborator: child.department)
-      child.collaborators.find_or_create_by(collaborator: child.parentee)
+      collaborators.find_or_create_by(collaborator: self.department)
+      collaborators.find_or_create_by(collaborator: self.parentee)
     end
 end

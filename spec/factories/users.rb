@@ -28,25 +28,34 @@
 #
 
 FactoryGirl.define do
-    factory :user do
-        email { Faker::Internet.email }
-        name { Faker::Name.name }
-        password { Faker::Lorem.characters(8) }
-        password_confirmation { "#{password}" }
-        remember_me false
-        role { 'manager' }
+  factory :user do
+    email                 { Faker::Internet.email }
+    name                  { Faker::Name.name }
+    password              { Faker::Lorem.characters(8) }
+    password_confirmation { "#{password}" }
+    remember_me           false
+    role                  'manager'
 
-
-        factory :admin do
-            role { 'admin' }
-        end
-
-        factory :parentee do
-            role { 'parentee' }
-        end
-
-        factory :worker do
-            role { 'worker' }
-        end
+    factory :admin_user do
+      role 'admin'
     end
+
+    factory :parentee_user do
+      role 'parentee'
+
+      transient do
+        department nil
+      end
+
+      before(:create) do |parent, evaluator|
+        parent.children << (FactoryGirl.create :child, department: evaluator.department)
+      end
+    end
+
+    factory :worker_user do
+      role 'worker'
+    end
+
+    association :department
+  end
 end
