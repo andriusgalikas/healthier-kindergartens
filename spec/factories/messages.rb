@@ -23,15 +23,30 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraph(10) }
     target_roles ['worker', 'parentee']
 
-    factory :message_for_workers do
+    factory :mngr_message_for_workers do
+      target_roles ['worker']
+
+      association :message_template
+    end
+
+    factory :mngr_message_for_parents do
+      target_roles ['parentee']
+
+      association :message_template
+    end
+
+    factory :admin_message_for_workers do
       target_roles ['worker']
     end
 
-    factory :message_for_parents do
+    factory :admin_message_for_parents do
       target_roles ['parentee']
     end
 
-    association :message_template
+    factory :admin_message_for_managers do
+      target_roles ['manager']
+    end
+
     association :owner, factory: :user
   end
 end

@@ -31,5 +31,8 @@ FactoryGirl.define do
       target_role 'parentee'
     end
 
+    factory :message_template_for_managers do
+      target_role 'manager'
+    end
   end
 end
