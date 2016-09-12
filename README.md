@@ -72,6 +72,10 @@ https://stripe.com/docs/testing#cards
 
 # Synopsis
 
+## Affiliate
+
+The Affiliate model is used to represent the company that the Daycare Partner is connected to. It belongs to a User record with a 'partner' role. When a partner registers, he/she is required to fill in data for the User record as well as for the related Affiliate record.
+
 ## Attachment
 
 The Attachment model is a polymoprhic model which can be utilised by any other model to enable file attachments via the Carrierwave gem.
@@ -79,6 +83,14 @@ The Attachment model is a polymoprhic model which can be utilised by any other m
 ## Child
 
 The Child model belongs to a User record with the 'parentee' role. A parentee User can create a Child record when the register for an account.
+
+## ChildCollaborator
+
+The ChildCollaborator is a polymorphic model which is used to represent the different users which collaborates around a particular child. It is used in the Health Conversations, and only those users which has the child_collaborator connected to a child can see the conversations, and/or receive notifications around the child.
+
+## CollaboratorInvite
+
+The CollaboratorInvite is a model used to represent the invitations to collaborate around a child. In the Health Conversations, the parents of the child can send an invitation to other users to collaborate around the child. When they do this, a collaborator_invite record is created, containing invite code and the email of the user being invited.
 
 ## Daycare
 
@@ -102,6 +114,40 @@ The DiscountCode model is designed to define available DiscountCodes based aroun
 
 The DiscountCodeUser is a HABTM relationship handler between the DiscountCode and User models. A DiscountCode can have mutiple Users, whereas a User can only have one DiscountCode.
 
+## Discussion
+
+The Discussion model is used to represent the messages being exchanged in the Health Conversations.
+
+## DiscussionParticipant
+
+The DiscussionParticipant model is used to represent the target users of the connected discussion. In the Health Conversation, when a discussion is created, the sender can select the collaborators that's going to receive notifications. This receiver list is saved in the Discussion's Discussion Participant record.
+
+## DoctorSpecialization
+
+A DoctorSpecialization is record used to save the doctor's medical specialization. It is created when an invited doctor registers in the app.
+
+## HealthRecord
+
+The HealthRecord model is used to save the health records related to a child or a department. It is based on a particular protocol and has many related health-record component records.
+
+### Protocol
+
+A protocol is a predefined set of data that is related to a child or a department. The currently available protocols are defined in the config/initializers/protocols.rb. One Health Record record is based on a protocol, and the associated Health Record components are based on the protocol's list of data_codes.
+
+## Illness
+
+An Illness record represents the different illnesses that a child or a department can have. It is a currently a built-in data, found in config/initializers/illnesses.yml and can be loaded by running
+
+`rake setup:load_illnesses`
+
+Future support to add/edit/delete illnesses can be added in the Admin panel.
+
+## MedicalSpecialization
+
+The DoctorSpecialization model is a builtin data used to populate the different specializationa doctor can have. The list is in config/initializers/medical_specializations.rb and can be loaded by running
+
+`rake setup:load_medical_specializations`
+
 ## Message
 
 The Message model is designed to define the message content sent between users of the app. It can be user created, or based on a Message Template. It can have multiple target roles. When a message is created, a corresponding notification is created for all the recipients of the message.
@@ -117,13 +163,13 @@ As a Manager, I can
 As a Partner, I can
 - create regular messages
 
-## Message Subject
+## MessageSubject
 
-The Message Subject model is designed to define a predefined set of subjects for Messages. It is a main subject when the parent_subject_id is null, or sub-subject when it has a parent_subject_id.
+The MessageSubject model is designed to define a predefined set of subjects for Messages. It is a main subject when the parent_subject_id is null, or sub-subject when it has a parent_subject_id.
 
-## Message Template
+## MessageTemplate
 
-The Message Template model is designed to define a predefined message that the users can send to the other users of the app. It belongs to a main subject and sub-subject. It also has one target role.
+The MessageTemplate model is designed to define a predefined message that the users can send to the other users of the app. It belongs to a main subject and sub-subject. It also has one target role.
 
 ### User Story
 
@@ -136,7 +182,7 @@ As a Manager, I can
 - can use the message templates created by the Admin to be sent to the parents and workers under my daycare
 
 ## Notification
-The Notification model is designed to define any form of notifications out of any actions. It has a polymorphic field, which can be used to record the source of the notification. One possible source of notification is a Message.
+The Notification model is designed to define any form of notifications out of any actions. It has a polymorphic field, which can be used to record the source of the notification. Possible source of notification are Message, Discussion, to name a few.
 
 ## Plan
 
@@ -148,9 +194,21 @@ The Plan model is designed to define available Plans for when a User would like 
 
 The Subject model is designed to define a predefined set of subjects for when a User with the 'manager' role creates a new Todo for their associated Daycare. Instead of a User with a 'manager' role submitting custom text for the Title of the Todo, they need to select from a list of predefined Subjects which have been created by a User with an 'admin' role. This has been designed in order support legacy functionality and is advisable to restructure later on.
 
+## SubTask
+
+A SubTask record is sub-task associated with a TodoTask record. A TodoTask record can have many SubTask records, each of which contain a Title and Description attribute.
+
+## SubTaskComplete
+
+Behaves similar to TodoTaskComplete for TodoTask, but for SubTask.
+
 ## SurveySubject
 
 The SurveySubject model is designed to define the master subject for a Survey. Since there are mutliple modules (Survey model) in a Survey, it made sense to create a parent record which defined the survey Title, Description and Icon. After creating a SurveySubject record, a User can then create modules containing questions and answers with the Survey model. In order to create SurveySubject or Survey records, a User needs to have an 'admin' role.
+
+## Symptom
+
+A Symptom record represents the symptoms that the different illnesses can have. It belongs to a particular illness, and has unique code and name fields.
 
 ## Todo
 
@@ -192,6 +250,10 @@ A TodoTaskComplete record is a User's attempt at trying to complete TodoTask ass
 
 A User record is designed to allow people to create their own account, each of which is assigned either a 'parentee', 'worker', 'manager' and 'admin' role. Each of the aforementioned roles allow the User to perform different types of functionality inside the system. A User record is required in order to utilise alot of the dynamic functionality inside the system.
 
+## UserAffiliate
+
+A UserAffilate record is handler between the Users and the Affilicate models. Only users with 'partner' role can have have UserAffiliate records. An Affiliate can have multiple Users, whereas a User with a 'partner' role can only have one Affiliate.
+
 ## UserDaycare
 
 The UserDaycare is a HABTM relationship handler between the Users and Daycares models. A Daycare can have mutiple Users, whereas a User can only have one Daycare.
@@ -200,6 +262,17 @@ The UserDaycare is a HABTM relationship handler between the Users and Daycares m
 
 The UserOccurrence model is designed to prevent Users from repeating a Todo with a 'recurring' iteration type within the defined frequency defined for the aforementioned Todo. For example, if a Todo has a 'recurring' iteration type and a 'weekly' frequency, they cannot perform the Todo more than once a week.
 
+## UserProfile
+
+The UserProfile model is used to save additional information about the users. Currently, it is created when an invited doctor registers in the app.
+
+## Vote
+
+The Vote model is used to save any votes made by the user. As of writing, only Daycare Parents and Daycare Workers are allowed to vote. They can only vote once per VoteCandidate Record.
+
+## VoteCandidate
+
+The VoteCandidate model represents the possible votes that the user can do. As of writing, users can only vote on the survey about the app itself.
 
 # Troubleshooting
 
