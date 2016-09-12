@@ -1,61 +1,144 @@
-#legacy-home  
-  .container.slider
-    .row
+#legacy-home
+  %div
+    .row.slider
       #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
         / Indicators
         %ol#carousel-indicators.carousel-indicators
           %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
           %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
           %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
-        / Wrapper for slides
+          %li{"data-slide-to" => "3", "data-target" => "#carousel-example-generic"}
+          %li{"data-slide-to" => "4", "data-target" => "#carousel-example-generic"}
+        / Wrapper for stslides
         .carousel-inner{:role => "listbox"}
           .item.active
-            = image_tag 'slider.jpg'
+            = image_tag 'slide-0.png'
+            .carousel-content
+              .carousel-header
+                %b Healthier
+                %small and
+                %b Safer
+                %b Childcare Alliance
+              %p.carousel-main-content= t('pages.home.slide_header_0_content')
+          .item
+            = image_tag 'slide-1.png'
+            .carousel-content
+              .carousel-header
+                %b Healthier
+                %small and
+                %b Safer
+                %b Childcare Alliance
+              %p.carousel-main-content= t('pages.home.slide_header_1_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_1_subcontent')
+          .item
+            = image_tag 'slide-2.png'
+            .carousel-content
+              .carousel-header
+                %b Healthier
+                %small and
+                %b Safer
+                %b Childcare Alliance
+              %p.carousel-main-content= t('pages.home.slide_header_2_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_2_subcontent')
+          .item
+            = image_tag 'slide-3.png'
+            .carousel-content
+              .carousel-header
+                %b Healthier
+                %small and
+                %b Safer
+                %b Childcare Alliance
+              %p.carousel-main-content= t('pages.home.slide_header_3_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_3_subcontent')
+          .item
+            = image_tag 'slide-4.png'
+            .carousel-content
+              .carousel-header
+                %b Healthier
+                %small and
+                %b Safer
+                %b Childcare Alliance
+              %p.carousel-main-content= t('pages.home.slide_header_4_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_4_subcontent')
+
+        %a
+        / Controls
+        %a.left.carousel-control{href: '#carousel-example-generic', role: 'button', 'data-slide': 'prev'}
+          %span.glyphicon.glyphicon-chevron-left{'aria-hidden': 'true'}
+          %span.sr-only Previous
+        %a.right.carousel-control{href: '#carousel-example-generic', role: 'button', 'data-slide': 'next'}
+          %span.glyphicon.glyphicon-chevron-right{'aria-hidden': 'true'}
+          %span.sr-only Next
+
     / END SLIDER
     / END SLIDER
     / END SLIDER
     .main-content
       .container.content
+
         .row
-          .start.col-xs-12
-            = image_tag "start.png"
-            %h2.start-heading Start Here
-            .start-text
-              %p Childcare environments can be a breeding ground ground for bacterial and viral infections. Discover the top hidden health risks to children and employees in your daycare facility. Also, learn how we are committed to helping you, the childcare operator, take a few simple steps to effectively mitigate risk of infections—to keep your employees, children under your care, and parents as healthy as possible.
-              = link_to mission_path do
-                %i.fa.fa-angle-right
-          .standard.col-xs-12
-            = image_tag "standard.png"
-            %h2.standard-heading The Standard
-            .standard-text
-              = link_to standard_path do
-                %i.fa.fa-angle-left
-              %p
-                If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
-                The Health Preserving care Standard is designed to fulfill these
-          .Path.col-xs-12
-            = image_tag "standard.png"
-            %h2.Path-heading The Path to Accreditation
-            .Path-text
-              = link_to path_path do
-                %i.fa.fa-angle-right
-              %p
-                If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.
-                The Health Preserving care Standard is designed to fulfill these
-          .journey.col-xs-12
-            .journey-text
-              .jan-left
-                %p
-                  Assess and evaluate your staffs compitency  in  infection prevention.
+          .col-md-2  &nbsp;
+          .col-md-5.col-xs-12.sub-content.start
+            = image_tag "dart.png"
+            %h2= t('pages.home.subcontent_start_here')
+            .start-text.row
+              .col-md-10.col-xs-12
+                %p= t('pages.home.start_here_1')
+                %p= t('pages.home.start_here_2')
+              .col-md-2.col-xs-12
+                %button.btn.hcc-btn
+                  = link_to mission_path do
+                    %i.glyphicon.glyphicon-chevron-right
+                    = t('pages.home.learn_more')
+          .col-md-5 &nbsp;
+
+        .row
+          .col-md-5 &nbsp;
+          .col-md-5.col-xs-12.sub-content.standard
+            = image_tag "standard-new.png"
+            %h2= t('pages.home.subcontent_standard')
+            .standard-text.row
+              .col-md-2.col-xs-12
+                %button.btn.hcc-btn
+                  = link_to standard_path do
+                    %i.glyphicon.glyphicon-chevron-right
+                    = t('pages.home.learn_more')
+              .col-md-10.col-xs-12
+                %p= t('pages.home.standard_1')
+          .col-md-2 &nbsp;
+
+        .row
+          .col-md-2 &nbsp;
+          .col-md-5.col-xs-12.sub-content.path
+            = image_tag "flags.png"
+            %h2= t('pages.home.subcontent_path')
+            .path-text.row
+              .col-md-10.col-xs-12
+                %p= t('pages.home.path_1')
+                %p= t('pages.home.path_2')
+              .col-md-2.col-xs-12
+                %button.btn.hcc-btn
+                  = link_to path_path do
+                    %i.glyphicon.glyphicon-chevron-right
+                    = t('pages.home.learn_more')
+          .col-md-5 &nbsp;
+
+        .row
+          .col-md-5 &nbsp;
+          .col-md-5.col-xs-12.sub-content.journey
+            .row
+              = image_tag 'map.png'
+            %h2= t('pages.home.subcontent_journey')
+            .journey-text.row
+              .col-md-3.col-xs-12
+                .journey-extended
                   %p
-                    %h2
-                      Start your Journey
+                    = t('pages.home.journey_2')
+                  %div.journey-start
+                    = image_tag 'right-arrow.png', class: 'img'
+                    = image_tag 'right-arrow.png', class: 'img'
+                    %button.btn.hcc-btn
                       = link_to getting_started_path do
-                        %i.fa.fa-angle-right
-                    %p and get complimentary access here
-              .jan-right
-                %h2 The Journey
-                %p
-                  Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your
-                  %span Journey
-                  here.
+                        Get Complimentary Access
+              .col-md-9.col-xs-12
+                %p= t('pages.home.journey_1')

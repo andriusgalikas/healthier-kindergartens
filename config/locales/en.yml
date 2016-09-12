@@ -256,22 +256,59 @@ en:
       mission: The Mission
       your_journey: Your Journey
 
+    home:
+      slide_header: Healthier and Safer Childcare Alliance
+      slide_header_0_content: The ultimate resource for childcare operators who are committed to safeguarding the health of children under their care.
+      slide_header_1_content: Did you know that children in daycare are three times more likely to get infected? In such close proximity of each other, one child’s illness can rapidly spread through the entire group.
+      slide_header_1_subcontent: With the Health Preserving Care Program, you can provide children with the nurturing, safer, and healthier childcare setting they deserve.
+      slide_header_2_content: Studies show that the majority of daycare staff are women in their childbearing years. During pregnancy, the immune system undergoes several changes and becomes compromised.
+      slide_header_2_subcontent: This increases the risk of harmful infection to expectant mothers. You owe it to the staff under your supervision to give them the very best protection against infection.
+      slide_header_3_content: Parents of children exposed to illnesses with regularity are expected to take time off work to care for them. This results in a loss of earnings at best, or at worst, disciplinary proceedings against them.
+      slide_header_3_subcontent: Together, we can stop the spread of infection at source. Find out more about how you can play your part.
+      slide_header_4_content: When children face illness regularly, parents have to take time off from work to care for them. Taking time off from work means a loss of income, or at worst, facing redundancy. Together, we can fight the spread of infections at their source.
+      slide_header_4_subcontent: Find out how you can play your part below.
+      start_here_1: Daycare centers are a breeding ground for bacterial and viral infections.
+      start_here_2: Discover the top hidden health risks for the children and employees of your daycare facility, and learn how to effectively mitigate the risk of infection for the children and childcare staff under your care.
+      standard_1: Committed to avoiding unnecessary putting the health of children and employees at risk? Want to gain the edge on your facilities ongoing infection risk? The Standard is designed to achieve this crucial goal.
+      path_1: "Health­preserving childcare accreditation program includes six interconnected areas of risk exposure childcare facilities face, plus a clear, effective infection prevention protocol to help your facility mitigate these risks."
+      path_2: Discover the path you’ll take to become accredited and gain an edge on your facility’s ongoing infection risk.
+      journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
+      journey_2: Detect the level of infection risk in your facility.
+      learn_more: learn more
+      subcontent_start_here: Start Here
+      subcontent_standard: The Standard
+      subcontent_path: The Path to Accreditation
+      subcontent_journey: The Journey
+
     promo:
       title: You’re just 3 steps away from being part of The Health Preserving Accreditation
       description: Our health-preserving accreditation program includes six interconnected areas of infection risk exposure children and staff face, plus a clear, effective infection prevention protocol to help your facility mitigate theses risks.
 
     mission_step:
-      heading_1: "Is your daycare a breeding ground for childhood infections—with potential long-term damage?"
-      content_1_a: "In your childcare facility, the safety of children is of primary importance. We make facilitating that safety easier for you. We’re the Healthier and Safer Childcare Alliance: a unifying and supporting force in the world of childcare. We’re committed to assisting you, the childcare operator, in keeping children and workers out of harm’s way—so you can fulfill your ethical and professional duties—and meaningfully contribute to the health and happiness of the children and Employees under your care and supervision."
-      content_2_b: "Daycare settings are a breeding ground for infections and diseases. There are many scientific reasons for this, but it is due in part to the susceptibility of children to illnesses, the close proximity of children to each other, the way children share germs as they play, and the interactions of children with daycare workers and parents. But those aren’t the only reasons…"
-      content_3_c: "There’s one more widely-overlooked cause of infection and disease spreading—a cause that heavily intensifies this breeding ground for diseases in your daycare. And that’s the lack of adequate knowledge and training for effective infection mitigation procedures on the part of the daycare worker. Studies have shown you can greatly mitigate the most dangerous risks of infection with a few simple procedures—keep reading to find out what they are."
-      heading_2: Top risks to children in your daycare
-      content_2_a: "Studies show that children in daycare are 300% more vulnerable to illnesses than children cared for at home. Although most infectious illnesses get resolved without disrupting the development of children, some infections cause lasting physical damage to children2 , in terms of overuse of antibiotics or future learning, cognitive disabilities or even death. For example, middle ear infections, even when treated correctly in children under 3 years old, can have adverse consequences3 including reduced performance at reading comprehension and/or compromised cognitive ability in the future. Also, respiratory infections like pneumonia are the principal cause of death4 among children under 5 years old worldwide. In addition, children who attend daycare have an increased risk of being hospitalized5, especially from the rotavirus infection, which is responsible for 20 to 60% of hospital admissions of children. Varicella6, which causes chickenpox and shingles, can develop complications that result in hospitalization and death. Children are meant to be kept in safe environments that are conducive to health and learning. In today's terminology, this defines daycare environments: places where children can be open to learning without also being open to illness. We owe it to our children — and ourselves — to give children the safest and healthiest environment possible."
-      heading_3: Top risks to workers in your daycare
-      content_3_a: "Studies indicate that in a flu season, 50% of the surface areas7 in daycare facilities may be contaminated with the flu virus. The degree of contamination in your facility may vary. But the risk of infection remains a major concern, since the majority of childcare staff are women in childbearing age. Changes to the immune system and the respiratory and circulatory systems during pregnancy mean that pregnant women are at greater risk of being severely ill if they catch flu.In addition, the newborn babies of women with severe flu are at risk of complications, in particular premature birth and low birthweight8. The sad irony for childcare workers who become ill due to a lack of infection preventive practices at work is that, while caring for the children of others, they put their own unborn children at risk if they fall pregnant. Most childcare workers are women of childbearing age. Given these risks, no preventive measures — however small — should be overlooked."
-
-      heading_4: Top risks to parents of kids in your daycare
-      content_4_a: "As parents drop off or pick up children from your childcare facility and interact with their children at home, they, too, risk getting infections passed on from the daycare facility. Amplified infection rates associated with daycare centers have economic implications for both the family and the nation. A rise in disease results in an increase in the use of health care services and increased family spending on medical care and medications. Repeated illness can cause parents to earn less and even lose their jobs due to frequent absences. The primary reason parents put their children in daycare is so that they are in a safe environment while Mom or Dad are away at work. It is critical that daycares meet this basic need well. When children contract illnesses, the daycare not only puts them at risk, but also the parents, who can become infected because of the child. This defeats the entire purpose of daycare, as not only were the children not kept safe, but the parents are also not able to work if the child is at home sick."
+      promo_header: Keeping children, childcare workers, and parents free from harm.
+      promo_text: Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest start to life.
+      promo_subhead: Breeding ground for childhood infections with potential long­term damage
+      intro_1: or childcare facilities and their operators, understanding the cause of infections running rampant through daycare centers isn’t difficult. Poor hygiene habits among children, combined with their susceptibility to illness and greater crowding, makes sickness a constant challenge.
+      intro_2: This, of course, leads to higher infection rates among children attending daycare facilities ­ a fact documented by researchers for decades.
+      scientific_fact: Scientific Fact
+      fact_1: Wald et al found that children attending child care centers had a 51% higher rate of infection, and 134% more days of illness as compared to children cared for at home.
+      fact_2: Swedish children in child care required 40 to 80% more medical consultations for acute infections than other children who remained at home.
+      fact_3: A Danish study reported a 69% higher incidence of hospitalizations among children in daycare for acute respiratory infection compared with children in home care.
+      children_risk: Health Risks to Children
+      children_risk_1: The negative health effects of childhood infection can extend beyond the initial acute phase of illness. Although, in the majority of cases, infections resolve without interfering with later development, the consequences of increased poor health are not so simple.
+      children_risk_2: Respiratory infections and obstructed airways are a major cause of hospitalization and morbidity in small children and can lead to reduced lung function among children later in life.
+      children_risk_3: Otitis media ­ or middle ear infection ­ can have adverse consequences in children under 3 years old even when treated properly, including reduced reading comprehension and compromised cognitive ability. Daycare attendance has been cited as one of the leading risk factors for the onset of middle ear infection.
+      children_risk_4: Children who attend daycare also have an increased risk of urgent medical attention as a result of rotavirus infection. Rotaviruses are thought to be responsible for between 20% and 60% of hospital admissions in children.
+      children_risk_5: Additionally, varicella ­ a cause of chickenpox and shingles ­ is often considered a benign childhood disease, but can result in complications as serious as hospitalization or even death.
+      staff_parents_risk: Health Risks to Childcare Staff & Parents
+      staff_parents_risk_1: Infectious diseases are, by definition, transmitted from person­to­person. The increased risk of infection within childcare facilities extends far beyond the children in attendance, and puts adults in contact with them at greater risk too.
+      staff_parents_risk_2: Working in the childcare sector carries significant occupational risk for caregivers, including exposure to diseases like Hepatitis A, CMV, Influenza, Tuberculosis, Meningitis, Scabies, Pediculosis, and Herpes.
+      staff_parents_risk_3: A 1996 cross­sectional study found that 62% of childcare workers had contracted CMV; the majority of whom were of childbearing age. The risk of infection from children under their care is of serious concern, especially for those who may be pregnant.
+      staff_parents_risk_4: CMV is a leading cause of congenital infection transmitted by preschool children to their peers, parents, and caregivers. Babies born with the virus may suffer central nervous system abnormalities, growth restrictions, and jaundice. Up to 90% of young CMV survivors endure serious long­term health issues, including visual impairment and decreased neurological function.
+      next_step_header: 'Next step : mitigate risk in your facility and show you care'
+      next_step_text: Just as researchers have clarified the risk of increased infection rates in childcare facilities, they have also recognized that control measures to reduce the spread of infectious diseases is imperative.
+      mission_invite: To that end, the Health Preserving Care Standard was developed to enable you to utilize the most optimal infection control standards & practices to effectively mitigate the risk of infection in your facility.
+      learn_more: learn more
 
     standard_step:
       heading_1: Create the healthiest environment for your children and staff

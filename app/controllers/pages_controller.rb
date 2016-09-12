@@ -3,10 +3,6 @@ class PagesController < ApplicationController
     before_action :authenticate_subscribed!, only: :instruction
     before_filter :check_xhr, only: [:mission, :standard, :path]
 
-    def home
-      render layout: 'home'
-    end
-
     def welcome
 
     end
@@ -26,10 +22,6 @@ class PagesController < ApplicationController
 
     def implementation
 
-    end
-
-    def home_2
-     render layout: 'home_v2'
     end
 
     def invite_registration

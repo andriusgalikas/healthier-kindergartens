@@ -1,0 +1,63 @@
+.scientific-facts {
+  color: $hcc-pink;
+
+  p {
+    color: black;
+  }
+}
+
+.children-risk-content {
+  background: #f7f7f7;
+}
+
+.next-step-content {
+  background: image_url('next-step.png') no-repeat;
+  min-height: 300px;
+}
+
+.next-step {
+  width: 70%;
+  opacity: .7;
+  margin: 15% auto;
+  text-align: center;
+  padding: 2%;
+  position: relative;
+  box-sizing: border-box;
+  background: linear-gradient(to top right, $hcc-red 0%, $hcc-yellow 100%);
+  @include border-radius(20px);
+
+  h4 {
+    color: black;
+  }
+}
+.next-step::before {
+  content: '';
+  padding: 2%;
+  width: 97%;
+  height: 90%;
+  top: 5%;
+  left: 1.5%;
+  position: absolute;
+  z-index: -1;
+  background: white;
+  @include border-radius(10px);
+}
+
+.mission-invite-content {
+  text-align: center;
+
+  button {
+    font-size: large;
+    padding: 10px 30px;
+  }
+}
+
+.step-navs-horizontal {
+  @media screen and (max-width: 767px) {
+    div {
+      border-bottom: 1px solid #ccc;
+      padding: 4px;
+      text-align: left;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 $orange: #F7941D;
 
+
 header
 {
-    padding: 15px;
+
+    padding: 10px;
     margin: 0 auto;
     overflow: hidden;
-    max-width: 1170px;
 
     &.loggedin
     {
@@ -91,12 +92,12 @@ header
     .logo-container {
       margin-left: 10px;
       position: absolute;
+      z-index: 10000;
     }
 
     #header-logo
     {
-        height:120px;
-        float:left;
+        height:150px;
     }
 
     #menu, ul
@@ -106,7 +107,7 @@ header
     ul
     {
         list-style-type: none;
-        line-height: 120px;
+        line-height: 80px;
         margin:0;
 
         li
@@ -176,6 +177,47 @@ header
             }
         }
     }
+
+  @media only screen and (max-width : 1199px) {
+    .logo-container {
+      display: block;
+      position: relative;
+      text-align: center;
+    }
+
+    ul.main-nav {
+      float: none;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .logo-container {
+      display: block;
+      position: relative;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .logo-container {
+      display: block;
+      position: relative;
+      text-align: center;
+    }
+
+    ul.main-nav {
+      line-height: 30px;
+      padding: 0;
+
+      li {
+        display: block;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+
+
 }
 
 .alert.alert-warning {

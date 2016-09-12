@@ -108,6 +108,10 @@ module ApplicationHelper
     date.strftime('%d/%m/%Y')
   end
 
+  def get_active_link(current_action)
+    'active' if action_name == current_action
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}

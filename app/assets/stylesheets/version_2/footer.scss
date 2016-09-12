@@ -3,9 +3,10 @@ footer {
   background: black;
   color: white;
   max-width: none;
+  margin-top: 30px;
 
   a {
-    color: white;
+    color: white !important;
   }
 
   ul {
@@ -32,5 +33,11 @@ footer {
   .right-footer {
     padding-left: 10px;
     text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 767px) {
+    .left-footer, .right-footer {
+      text-align: center;
+    }
   }
 }

@@ -6,16 +6,16 @@ $(document).ready(function()
   healthChildcare.app.datepickers();
   healthChildcare.app.showRegisteredChildcaresNotification();
   healthChildcare.app.showUpgradedChildcaresNotification();
-  healthChildcare.app.homeStepNavigator();
   healthChildcare.app.addAnotherCertification();
 
+/**
   healthChildcare.survey.submitSurveyModule();
   healthChildcare.survey.updateSurveyAttemptSubject();
   healthChildcare.survey.showSurveySubjectResult();
   healthChildcare.survey.showSingleSurveyResult();
   healthChildcare.survey.showGroupSurveyResult();
   healthChildcare.survey.showGroupSurveyMembers();
-
+**/
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");
