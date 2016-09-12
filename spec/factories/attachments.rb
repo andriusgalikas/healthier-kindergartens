@@ -18,5 +18,10 @@ FactoryGirl.define do
         factory :icon_attachment do
             association :attachable, factory: :todo
         end
+
+        factory :child_profile_image do
+          association :attachable, factory: :child
+        end
+
     end
 end

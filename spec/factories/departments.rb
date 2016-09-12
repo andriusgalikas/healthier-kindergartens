@@ -11,7 +11,8 @@
 
 FactoryGirl.define do
   factory :department do
-    name "MyString"
-    daycare_id 1
+    name { Faker::Company.name }
+
+    association :daycare
   end
 end

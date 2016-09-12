@@ -13,9 +13,14 @@
 
 FactoryGirl.define do
   factory :child do
-    name "MyString"
-    parent_id 1
-    department_id 1
-    birth_date "2016-03-30 19:58:31"
+    name       { Faker::Name.name }
+    birth_date { Faker::Date.between(1.year.ago, 5.years.ago) }
+
+    before(:create) do |child, evaluator|
+      child.profile_image = FactoryGirl.create :child_profile_image, attachable: child
+    end
+
+    association :department
+    association :parentee, factory: :user
   end
 end

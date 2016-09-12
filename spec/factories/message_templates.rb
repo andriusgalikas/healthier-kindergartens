@@ -18,11 +18,21 @@
 
 FactoryGirl.define do
   factory :message_template do
-
-    target_role { ['worker'].to_json }
-    content { Faker::Lorem.paragraph(10) }
-    language { 'en' }
+    content  { Faker::Lorem.paragraph(10) }
+    language 'en'
 
     association :sub_subject, factory: :message_subject
+
+    factory :message_template_for_workers do
+      target_role 'worker'
+    end
+
+    factory :message_template_for_parents do
+      target_role 'parentee'
+    end
+
+    factory :message_template_for_managers do
+      target_role 'manager'
+    end
   end
 end

@@ -19,12 +19,34 @@
 
 FactoryGirl.define do
   factory :message do
-    association :message_template
-    association :owner, factory: :user
-
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraph(10) }
-    target_role {['worker'].to_json }
+    target_roles ['worker', 'parentee']
 
+    factory :mngr_message_for_workers do
+      target_roles ['worker']
+
+      association :message_template
+    end
+
+    factory :mngr_message_for_parents do
+      target_roles ['parentee']
+
+      association :message_template
+    end
+
+    factory :admin_message_for_workers do
+      target_roles ['worker']
+    end
+
+    factory :admin_message_for_parents do
+      target_roles ['parentee']
+    end
+
+    factory :admin_message_for_managers do
+      target_roles ['manager']
+    end
+
+    association :owner, factory: :user
   end
 end
