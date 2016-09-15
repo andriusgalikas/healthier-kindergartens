@@ -14,9 +14,9 @@
 
 class SubTask < ActiveRecord::Base
   belongs_to :todo_task
-  has_many :sub_task_completes
+  has_many   :sub_task_completes
 
-  validates :title, presence: true
+  validates  :title, :todo_task_id, presence: true
 
   enum sub_task_type: [:global, :local]
 

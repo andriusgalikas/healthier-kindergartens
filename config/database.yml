@@ -17,8 +17,8 @@ test:
   encoding: unicode
   database: health_childcare_test
   pool: 5
-  username: postgres
-  password: postgres
+  username: jean
+  password:
 
 production:
   adapter: postgresql
