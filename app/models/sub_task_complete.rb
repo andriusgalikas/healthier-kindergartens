@@ -26,7 +26,7 @@ class SubTaskComplete < ActiveRecord::Base
   # If all sub tasks are marked as completed, set the parent subtask as completed too
   def assign_task_completion_date
     if todo_task_complete.sub_task_completes.map(&:result).exclude?('pending')
-      todo_task_complete.update(completion_date: Time.now, result: 1)
+      todo_task_complete.update_column(:completion_date, Time.now)
     end
   end
 end

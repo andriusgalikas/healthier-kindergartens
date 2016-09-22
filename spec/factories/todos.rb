@@ -17,7 +17,7 @@
 FactoryGirl.define do
     factory :todo do
         title { Faker::Lorem.word}
-        frequency { 'week' }
+        frequency 'week'
 
         factory :single_todo do
             iteration_type { 'single' }
@@ -34,4 +34,5 @@ FactoryGirl.define do
         association :user
         association :daycare
     end
+
 end

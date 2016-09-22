@@ -30,7 +30,7 @@ RSpec.describe Todo, type: :model do
         end
 
         context "if todo has no associated daycare" do
-            let(:todo) { create(:single_todo, daycare: nil) }
+            let(:todo) { create(:single_todo, daycare: nil, user: create(:admin_user)) }
 
             it "should return true" do
                 expect(todo.global?).to eq true
@@ -39,10 +39,10 @@ RSpec.describe Todo, type: :model do
     end
 
     describe "#frequency_to_time method" do
-        let(:day_todo) { create(:todo, frequency: 'day') }
-        let(:week_todo) { create(:todo, frequency: 'week') }
-        let(:month_todo) { create(:todo, frequency: 'month') }
-        let(:year_todo) { create(:todo, frequency: 'year') }
+        let(:day_todo) { create(:recurring_todo, frequency: 'day') }
+        let(:week_todo) { create(:recurring_todo, frequency: 'week') }
+        let(:month_todo) { create(:recurring_todo, frequency: 'month') }
+        let(:year_todo) { create(:recurring_todo, frequency: 'year') }
 
         it "should return the correct datetime for the frequency" do
             expect(day_todo.frequency_to_time).to eq 1.days.ago.to_date
