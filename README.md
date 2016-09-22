@@ -277,3 +277,5 @@ The VoteCandidate model represents the possible votes that the user can do. As o
 # Troubleshooting
 
 When stripe or rollbar causes error in the initial migration, temporarily comment out the codes in their respective files in the config/, and run the migration.
+
+If there are missing files related to bootstrap-material-design, download and use the version from the repo https://github.com/FezVrasta/bootstrap-material-design.
