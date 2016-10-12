@@ -1,0 +1,32 @@
+= form_for [:admin, @illness] do |f|
+  .threecol
+  .ninecol.last
+    = render partial: 'shared/admin/errors', locals: {object: @illness}
+
+  .threecol
+    %h3 Illness Details
+    %p Set the title and code for your Illness.
+
+  .ninecol.last
+    %fieldset.widget.widget-content
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        = f.label :code
+        = f.text_field :code, class: 'form-control'
+
+  .threecol
+    %h3 Symptoms
+    %p Set the symptoms for your Illness.
+    = custom_link_to_add_fields 'Add Symptom', f, :symptoms
+
+  .ninecol.last
+    %fieldset.widget.widget-content
+      #symptoms.fields
+        = f.fields_for :symptoms do |symptom|
+          = render partial: 'symptom_fields', locals: {f: symptom}
+
+    .form-action
+      = f.submit 'Submit', class: 'btn btn-blue btn-large'

@@ -160,6 +160,7 @@ Rails.application.routes.draw do
           end
         end
         resources :messages, only: [:new, :create]
+        resources :illnesses
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]

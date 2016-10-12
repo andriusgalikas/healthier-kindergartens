@@ -16,4 +16,6 @@ class Illness < ActiveRecord::Base
   validates :code, :name,          presence: true
   validates :code,                 uniqueness: true
 
+  accepts_nested_attributes_for :symptoms, allow_destroy: true
+
 end
