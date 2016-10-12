@@ -13,6 +13,7 @@
 class Symptom < ActiveRecord::Base
   belongs_to :illness
 
-  validates :illness_id, :code, :name,    presence: true
+  validates :code, :name,                 presence: true
   validates :code,                        uniqueness: true
+
 end

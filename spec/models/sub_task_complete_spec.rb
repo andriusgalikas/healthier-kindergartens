@@ -39,8 +39,6 @@ RSpec.describe SubTaskComplete, type: :model do
         }.to change{
           sub_task_complete.todo_task_complete.completion_date
         }.from(nil).to(now)
-
-        puts sub_task_complete.inspect
       end
     end
 
