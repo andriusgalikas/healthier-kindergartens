@@ -57,6 +57,7 @@ end
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
+  gem 'dotenv'
 end
 
 gem 'compass-rails'

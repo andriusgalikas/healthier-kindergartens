@@ -47,12 +47,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user = @daycare.users.first
       send_confirmation_email(user)
       sign_up(:user, user)
-      respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
+      respond_with user, location: schedule_meeting_path, notice: "You have successfully signed up!"
+      # respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
       clean_up_passwords resource
       set_minimum_password_length
       render "register/#{params[:role]}"
     end
+  end
+
+  def schedule_meeting
   end
 
   def affiliate
