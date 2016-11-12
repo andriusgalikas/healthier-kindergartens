@@ -1,0 +1,30 @@
+.reg-worker-container.page-boxed
+  .page-header
+  .container
+    .form-content        
+      #rootwizard
+        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab1"} First
+        .tab-content
+          #tab1.tab-pane
+            .row.text-center.step-banner
+              = image_tag 'worker-md.png'
+              %h4 Daycare Worker
+            .row.pane-container.text-center
+              .row
+                = image_tag 'worker-bar-3.png'
+            .row.pane-search-result.text-center
+              %h3.complete-title.item-manager CONGRATULATIONS!
+              %h5.compelet-message You have now created your DayCare Profile.
+              %h5.compelet-message Shortly you will get a Email.
+            .parent-congratulation
+:javascript
+  function redirectDashboard(){
+    window.location.href = '#{dashboard_path()}';
+  }
+  jQuery(document).ready(function() {   
+    $('#footer_logo_image').attr("src","/assets/logo-yellow.png"); 
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    setTimeout(redirectDashboard, 2000);
+  });

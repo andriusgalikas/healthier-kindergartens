@@ -1,0 +1,58 @@
+.reg-worker-container.page-boxed
+  .page-header
+  .container
+    .form-content        
+      #rootwizard
+        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab1"} First
+        .tab-content
+          #tab1.tab-pane
+            .row.text-center.step-banner
+              = image_tag 'worker-md.png'
+              %h4 Daycare Worker
+            .row.pane-container.text-center
+              .row
+                = devise_error_messages!
+              .row
+                = image_tag 'worker-bar-3.png'
+              = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f|
+                .row.parent-info.text-left
+                  .col-sm-8
+                    .row
+                      %h4 User Information
+                    .row      
+                      = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name"
+                    .row
+                      = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email"
+                    .row
+                      = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password"
+                    .row
+                      = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation"
+                    - if @minimum_password_length
+                      .row
+                        %em
+                          (#{@minimum_password_length} characters minimum)
+                    = f.fields_for :user_daycare do |user_daycare|
+                      = user_daycare.hidden_field :daycare_id, value: params[:daycare_id]
+                    = f.hidden_field :department_id, value: params[:department_id]
+          .col-sm-6
+            %ul.pager.wizard.text-left
+              %li.next
+                %button.btn.btn-round.item-manager{:type => "button"} 
+                  Next
+              %li.previous.first{:style => "display:none;"}
+                %a{:href => "#"} First
+              %li.previous{:style => "display:none;"}
+                %a{:href => "#"} Previous
+              %li.next.last{:style => "display:none;"}
+                %a{:href => "#"} Last
+
+:javascript
+  jQuery(document).ready(function() {   
+    $('#footer_logo_image').attr("src","/assets/logo-yellow.png"); 
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    $('.next button').click(function(){
+      $('form').submit();
+    });
+  });

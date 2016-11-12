@@ -1,36 +1,45 @@
-#legacy-welcome.legacy
-  .row.welcome
-    .col-xs-10.col-xs-offset-1.outer
-      .main-heading
-        Welcome
-      .tag-line
-        Lets get started and choose who you are!
-      .wrapper
-        .col-sm-6.col-lg-4
-          = link_to parentee_select_daycare_path do
-            .block
-              .circle.parent-border
-                = image_tag 'parent.png'
-            %h5
-              Daycare Parent
-        .col-sm-6.col-lg-4
-          = link_to worker_select_daycare_path do
-            .block
-              .circle.worker-border
-                = image_tag 'worker.png'
-            %h5
-              Daycare Worker
-        .col-sm-6.col-lg-4
-          = link_to new_user_registration_path(role: 'manager') do
-            .block
-              .circle.manager-border
-                = image_tag 'manager.png'
+.welcome-container.page-boxed
+  .page-header
+    .page-header-inner.text-center
+      .col-sm-2.logo-mono
+        = image_tag 'logo-mono.png', class: 'header-mark'
+  .container
+    .row.title.text-center
+      %h3 Welcome
+      %h5 Let’s get started and choose who you are!
+    .row.round-menu
+      .row.menu-line
+        .col-sm-4.col-sm-offset-4.outer
+          .block
+            .circle.parent-border.item-worker
+              = link_to worker_select_daycare_path do
+                = image_tag 'worker-white.png'
+          %h5
+            Daycare Worker
+      .row.menu-line
+        .col-sm-4.col-sm-offset-2.outer
+          .block
+            .circle.parent-border.item-manager
+              = link_to new_user_registration_path(role: 'manager') do              
+                = image_tag 'manager-white.png'
             %h5
               Daycare Manager
-        .col-sm-6.col-lg-4
-          = link_to new_user_registration_path(role: 'partner') do
-            .block
-              .circle.partner-border
-                = image_tag 'partner.png'
+        .col-sm-4.outer.outer
+          .block
+            .circle.parent-border.item-partner
+              = link_to new_user_registration_path(role: 'partner') do
+                = image_tag 'partner-white.png'
             %h5
               Daycare Partner
+      .row.menu-line 
+        .col-sm-4.col-sm-offset-4.outer
+          .block
+            .circle.parent-border.item-parent
+              = link_to parentee_select_daycare_path do
+                = image_tag 'parent-white.png'
+            %h5
+              Daycare Parent
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+  });

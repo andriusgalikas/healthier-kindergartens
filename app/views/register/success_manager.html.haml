@@ -1,0 +1,39 @@
+.reg-manager-container.page-boxed
+  .page-header
+  .container
+    .form-content           
+      #rootwizard
+        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab1"} First
+        .tab-content
+          #tab1.tab-pane
+            .row.text-center.step-banner
+              = image_tag 'manager-md.png'
+              %h4 Daycare Manager
+            .row.pane-container.text-center
+              .row
+                = image_tag 'manager-bar-1.png'
+            .row.pane-search-result.text-center
+              %h3.complete-title.item-worker CONGRATULATIONS!
+              %h5.compelet-message You have now created your DayCare Profile.
+            .row.pane-invite.text-center
+              %h3 Now, Invite other Daycare?
+              .col-sm-6.text-right
+                %button.btn.btn-round.item-worker.btn-invite{:type => "button"} 
+                  Yes
+              .col-sm-6.text-left
+                %button.btn.btn-round.item-worker.btn-dashboard{:type => "button"} 
+                  No
+            .parent-congratulation
+:javascript
+  jQuery(document).ready(function() {    
+    $('#footer_logo_image').attr("src","/assets/logo-red.png");  
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    $('.btn-invite').click(function(){
+      window.location.href = '#{invite_manager_daycares_path}';
+    });
+    $('.btn-dashboard').click(function(){
+      window.location.href = '#{dashboard_path}';
+    });
+  });

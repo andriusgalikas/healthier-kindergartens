@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     end
 
     def getting_started
-
         render layout: 'login'
     end
 

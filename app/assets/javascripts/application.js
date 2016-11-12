@@ -26,3 +26,4 @@
 //= require bootstrap-notify.min
 //= require booknow
 //= require slick-carousel/slick/slick.min.js
+//= require smartwizard/js/jquery.smartWizard.js

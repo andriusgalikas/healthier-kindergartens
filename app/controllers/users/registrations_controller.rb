@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'dashboard'
+  layout 'registration'
   before_filter :configure_sign_up_params, only: [:create]
 
   def new
@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     set_minimum_password_length
     yield resource if block_given?
     render "register/#{params[:role]}"
+    #render "register/#{params[:role]}"
   rescue ActionView::MissingTemplate
     redirect_to new_user_session_url
   end
@@ -24,8 +25,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-
-        respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'
+        #respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'                
+        render "register/success_#{params[:role]}"
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -33,6 +34,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       new_user_daycare unless ['manager', 'partner'].include?(params[:role])
+      if ['parentee'].include?(params[:role])
+        @daycare ||= Daycare.find params[:user][:user_daycare_attributes][:daycare_id]           
+        @departments ||= @daycare.departments if ['parentee'].include?(params[:role])          
+      end
       clean_up_passwords resource
       set_minimum_password_length
       render "register/#{params[:role]}"
@@ -46,8 +51,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @daycare.save
       user = @daycare.users.first
       send_confirmation_email(user)
-      sign_up(:user, user)
-      respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
+      sign_up(:user, user)      
+      render "register/success_#{params[:role]}"
+      #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -70,6 +76,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       render "register/#{params[:role]}"
     end
+  end
+
+  def new_partner
+
   end
 
   # GET /resource/edit
@@ -150,6 +160,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :postcode,
       :country,
       :telephone,
+      :url,
       user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )

@@ -1,0 +1,48 @@
+.row.text-center.step-banner
+  = image_tag 'manager-md.png'
+  %h4 Daycare Manager
+.row.pane-container.text-center
+  .row.text-center
+    = image_tag 'manager-bar-1.png'
+  .row.parent-info
+    .col-sm-12.text-left
+      .row
+        %h5 NUMBER OF CHILDREN     
+        .row
+          .col-xs-3.text-center
+            = image_tag 'manager-child-icon.png'
+          .col-xs-9.inline-items
+            %a.btn-decrease{:href => "#", "data-for" =>"#child_input"} 
+              = image_tag 'manager-dec.png'
+            %input#child_input.form-control.input-round.sm-width-input.text-center{:value => "1"}      
+            %a.btn-increase{:href => "#", "data-for" =>"#child_input"} 
+              = image_tag 'manager-inc.png'
+      .ln-solid
+      .row
+        %h5 NUMBER OF WORKERS
+        .row
+          .col-xs-3.text-center
+            = image_tag 'manager-worker-icon.png'
+          .col-xs-9.inline-items
+            %a.btn-decrease{:href => "#", "data-for" =>"#worker_input"} 
+              = image_tag 'manager-dec.png'
+            %input#worker_input.form-control.input-round.sm-width-input.text-center{:value => "1"}      
+            %a.btn-increase{:href => "#", "data-for" =>"#worker_input"} 
+              = image_tag 'manager-inc.png'
+:javascript
+  jQuery(document).ready(function(e) {    
+    $('.btn-decrease').click(function(e){
+      var parent_id = $(this).attr("data-for");
+      var item_value = $(parent_id).val();
+      item_value = (parseInt(item_value) == 0) ? 0 : parseInt(item_value) - 1;
+      $(parent_id).val(item_value);
+      e.preventDefault();
+    });
+    $('.btn-increase').click(function(e){
+      var parent_id = $(this).attr("data-for");
+      var item_value = $(parent_id).val();
+      item_value = parseInt(item_value) + 1;      
+      $(parent_id).val(item_value);
+      e.preventDefault();
+    });
+  });

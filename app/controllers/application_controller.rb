@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
         admin_root_path
       elsif resource.partner?
         dashboard_path
+      elsif resource.manager?
+        puts "sign_in" + invite_manager_daycares_path
+        invite_manager_daycares_path
       elsif resource.medical_professional?
         if resource.collaborations.present?
           medical_professional_discussions_path
@@ -39,6 +42,7 @@ class ApplicationController < ActionController::Base
       if resource.admin?
         admin_root_path
       elsif resource.manager?
+        puts "sign_up" + invite_manager_daycares_path
         invite_manager_daycares_path
       elsif resource.medical_professional?
         choose_child_invitation_path

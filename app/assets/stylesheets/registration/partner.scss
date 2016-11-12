@@ -1,0 +1,42 @@
+.reg-partner-container{
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+
+  .page-header{
+    width: 100%;
+    box-shadow: none;
+    height: 72px;
+    min-height: 72px;
+    background: #dadada;
+    margin: 0;
+    padding: 0;    
+  }
+
+  .page-footer{
+    padding-bottom: 30px;
+    background: #242c3f;
+  }
+
+  .row{
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .item-partner{
+    color: #fff;
+  }
+
+  .btn.active, 
+  .btn:active{
+    background-color:#00c4cb;
+  }
+
+  .form-content{
+    top: -45px;
+    position: relative;    
+  }
+
+  .fileUpload input.upload{
+    left: -80px !important;
+  }
+}

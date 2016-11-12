@@ -1,0 +1,17 @@
+.row.text-center.step-banner
+  = image_tag 'worker-md.png'
+  %h4 Daycare Worker
+.row.pane-container.text-center
+  .row
+    .col-sm-8.nav-bar
+      = image_tag 'worker-bar-2.png'
+  .parent-list-container
+    .parent-item
+      .row.parent-department  
+        .col-sm-6
+          %h3 Select Department
+          - @departments.each do |department|
+            .row
+              %input{:type=>"radio", :name => "department_item", :id => "chk_depart_#{@daycare.id}_#{department.id}", :style => "display: none;", "select-link" => new_user_registration_path(role: 'worker', daycare_id: @daycare.id, department_id: department.id)}
+              %label{:for => "chk_depart_#{@daycare.id}_#{department.id}"}
+                =department.name

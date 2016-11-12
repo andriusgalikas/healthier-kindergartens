@@ -1,0 +1,54 @@
+.row.text-center.step-banner.fileupload-container
+  .fileUpload
+    %span.upload-wrapper
+      = image_tag 'parent-upload.png'
+      %span.caption 
+        Upload your child photo!
+    %input.upload{:type => "file"}          
+  %h4 Daycare Parent
+.row.pane-container.text-center
+  .row
+    .col-sm-8.nav-bar
+      = image_tag 'parent-bar-2.png'
+  .parent-list-container
+    .parent-item
+      .row.parent-info
+        .col-sm-6
+          .row      
+            %input.form-control.input-round{:placeholder => "Add your child name"}      
+          .row
+            %input.form-control.input-round{:placeholder => "Year of birth"}      
+      .row.parent-department  
+        .col-sm-6
+          %h3 Select Department
+          .row
+            %input{:type=>"checkbox", :name => "check_box", :id => "chk_depart_1", :style => "display: none;"}
+            %label{:for => "chk_depart_1"} Select Department
+          .row
+            %input{:type=>"checkbox", :name => "check_box", :id => "chk_depart_2", :style => "display: none;"}
+            %label{:for => "chk_depart_2"} Select Department
+          .row
+            %input{:type=>"checkbox", :name => "check_box", :id => "chk_depart_3", :style => "display: none;"}
+            %label{:for => "chk_depart_3"} Select Department
+          .row
+            %input{:type=>"checkbox", :name => "check_box", :id => "chk_depart_4", :style => "display: none;"}
+            %label{:for => "chk_depart_4"} Select Department
+  .parent-button-box
+    %a#add_child.add-child{:href => "#"} 
+      = image_tag 'parent-add.png'
+      ADD MORE CHILD
+:javascript
+  jQuery(document).ready(function() {
+    $('#add_child').click(function(e){
+      var template='<div class="parent-item"><div class="row parent-info"><div class="col-sm-4 col-sm-offset-3"><div class="row"><input class="form-control input-round" placeholder="Add your child name"></div><div class="row"><input class="form-control input-round" placeholder="Year of birth"></div></div></div><div class="row parent-department"><div class="col-sm-6 col-sm-offset-3"><h3>Select Department</h3>';
+
+      for(i = 0; i < 4; i++){
+        var chk_id = "chk_depart_" + $('.parent-item').length * 10 + i;
+        template += '<div class="row"><input id="'+chk_id+'" name="check_box" style="display: none;" type="checkbox"><label for="'+chk_id+'">Select Department</label></div>';
+      }
+      template += '</div></div></div>';
+      $('.parent-list-container').append(template);    
+
+      e.preventDefault()
+    });
+  });

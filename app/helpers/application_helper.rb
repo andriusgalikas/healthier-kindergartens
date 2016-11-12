@@ -4,6 +4,10 @@ module ApplicationHelper
         f.hidden_field(:_destroy) + __custom_link_to_function(name, "remove_fields(this)", 'red', class: opts[:class])
     end
 
+    def custom_link_to_remove_fields_alone name, opts={}
+        __custom_link_to_function(name, "remove_fields(this)", 'red', class: opts[:class])
+    end
+
     def custom_link_to_remove_subtask_fields f, opts={}
       f.hidden_field(:_destroy) + link_to(content_tag(:i, '', class: 'icon-cross icon-close'), 'javascript:void(0)', {onclick: "remove_fields(this)", class: 'subtask-link'})
     end
@@ -90,7 +94,7 @@ module ApplicationHelper
     elsif current_user.worker?
       'worker.png'
     elsif current_user.partner?
-      current_user.affiliate.profile_image.file.url
+      (current_user.affiliate.profile_image) ? current_user.affiliate.profile_image.file.url : 'partner.png'      
     elsif current_user.admin?
       'super-admin.png'
     elsif current_user.medical_professional?

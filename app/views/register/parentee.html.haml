@@ -1,0 +1,111 @@
+.reg-daycare-container.page-boxed
+  .page-header
+  .container
+    .form-content        
+      #rootwizard
+        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab1"} First
+        .tab-content
+          #tab1.tab-pane
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f|
+              .row.text-center.step-banner.fileupload-container
+                .fileUpload
+                  %span.upload-wrapper
+                    = image_tag 'parent-upload.png'
+                    %span.caption 
+                      Upload your child photo!
+                  /%input.upload{:type => "file"}          
+                %h4 Daycare Parent
+              .row.pane-container.text-center
+                .row
+                  = image_tag 'parent-bar-2.png'
+                .row
+                  = devise_error_messages!
+                .parent-list-container
+                  .parent-item
+                    .row.parent-info.text-left
+                      .col-sm-8
+                        .row
+                          %h3 Parent Information
+                        .row      
+                          = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name"
+                        .row
+                          = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email"
+                        .row
+                          = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password"
+                        .row
+                          = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation"
+                        - if @minimum_password_length
+                          .row
+                            %em
+                              (#{@minimum_password_length} characters minimum)
+                        = f.fields_for :user_daycare do |user_daycare|
+                          = user_daycare.hidden_field :daycare_id, value: (params[:daycare_id].blank?) ? params[:user][:user_daycare_attributes][:daycare_id] : params[:daycare_id]
+                    .row.parent-info.text-left
+                      .col-sm-8
+                        #children.multi-field
+                          = f.fields_for :children do |child|
+                            = render partial: 'child_fields', locals: { f: child }
+              .parent-button-box
+                = custom_link_to_add_fields image_tag('parent-add.png') + " ADD CHILDREN", f, :children, :class => "add-child"
+          .col-sm-6
+          %ul.pager.wizard.text-left
+            %li.next
+              %button.btn.btn-round.item-parent{:type => "button"} 
+                Next
+            %li.previous.first{:style => "display:none;"}
+              %a{:href => "#"} First
+            %li.previous{:style => "display:none;"}
+              %a{:href => "#"} Previous
+            %li.next.last{:style => "display:none;"}
+              %a{:href => "#"} Last
+
+:javascript
+  function remove_fields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+
+    if ($(link).hasClass('subtask-link')) {
+      $(link).parent('.subtask').hide();
+    } else {
+      $(link).parent().parent().hide();
+    }
+  }
+
+  function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+
+    if ($(link).hasClass('subtask-link')) {
+      $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
+    } else {
+      $('#children').append(content.replace(regexp, new_id));
+    }
+
+    $('.datepicker').datetimepicker({
+        format: 'd/m/Y',
+        timepicker: false
+    });
+  }
+
+  jQuery(document).ready(function() {    
+    $('#footer_logo_image').attr("src","/assets/logo-blue.png");
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    $('.add-child').removeClass("btn");
+    $('.add-child').removeClass("btn-normal");
+
+    $('.datepicker').datetimepicker({
+        format: 'd/m/Y',
+        timepicker: false
+    });
+
+    $('.next button').click(function(){
+      var tab_id = $('.tab-pane.active').attr('id');
+      if(tab_id == "tab1"){
+        $('form').submit();
+      } else if(tab_id == "tab2") {
+        $(this).html("Choose");
+        $(this).hide();
+      }
+    });
+  });
