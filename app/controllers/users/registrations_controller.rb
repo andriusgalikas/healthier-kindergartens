@@ -147,6 +147,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :postcode,
       :country,
       :telephone,
+      :url,
+      :num_children,
+      :num_worker,
       departments_attributes: [:_destroy, :name],
       user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]

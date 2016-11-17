@@ -2,10 +2,28 @@
   = image_tag 'worker-md.png'
   %h4 Daycare Worker
 .row.pane-container.text-center
-  .row
-    = image_tag 'worker-bar-3.png'
+  .row.step-banner
+    .col-sm-3.col-xs-3.step-item.first-step.item-worker
+      .step-label
+        = image_tag 'step-arrow.png', :class => "step-arrow right"
+        = image_tag 'step-check-mng.png'
+    .col-sm-3.col-xs-3.step-item.second-step.item-worker
+      .step-label
+        = image_tag 'step-arrow.png', :class => "step-arrow right"
+        = image_tag 'step-arrow.png', :class => "step-arrow left"
+        = image_tag 'step-check-mng.png'
+    .col-sm-3.col-xs-3.step-item.third-step.item-worker
+      .step-label
+        = image_tag 'step-arrow.png', :class => "step-arrow right"
+        = image_tag 'step-arrow.png', :class => "step-arrow left"
+        = image_tag 'step-check-mng.png'
+    .col-sm-3.col-xs-3.step-item.fourth-step.item-worker.active    
+      .step-label
+        = image_tag 'step-arrow.png', :class => "step-arrow left"
+        = image_tag 'worker-sm.png'
+        %span Congratulation
 .row.pane-search-result.text-center
-  %h3.complete-title.item-manager CONGRATULATIONS!
+  %h3.complete-title.item-worker CONGRATULATIONS!
   %h5.compelet-message You have now created your DayCare Profile.
   %h5.compelet-message Shortly you will get a Email.
 .parent-congratulation

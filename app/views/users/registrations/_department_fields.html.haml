@@ -1,5 +1,5 @@
 .row      
   %h5 DAYCARE DEPARTMENT
   .row.inline-input-link
-    = f.text_field :name, :class => 'form-control input-round', :placeholder => "Department Name"
+    = f.text_field :name, :class => 'form-control input-round', :placeholder => "Department Name", :required =>"true"
     = custom_link_to_remove_fields image_tag('manager-sub.png'), f

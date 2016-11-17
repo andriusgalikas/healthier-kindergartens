@@ -28,3 +28,407 @@
         }
     }
 }
+
+@media screen and (min-width: 1200px) {
+  .welcome-container{
+    .page-header{
+      height: 72px;
+      .logo-mono{
+        position: absolute;      
+      }
+    }
+  }
+
+  /* Manager Dashboard */
+  .manager-dash-container{
+    .page-header{
+      height: 155px;
+      h4{
+        &.stuff-parent{
+          font-weight: 600;
+          font-size: 24px;
+          margin-bottom: 10px !important;
+        }
+      }
+
+      .header-item{
+        span{
+          font-size: 48px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  /* Dashboard Menu Item */
+  #main-menu{
+    .menu-items{
+      a{
+        width: 200px;
+        height: 200px;
+        margin: 0 20px 20px 0;
+        padding: 10px 15px 0 15px;
+        border: 5px solid #ff0552;
+        img{
+          margin: 10px;
+        }
+        span{
+          padding:5px 0;
+          font-size: 20px;
+          line-height: 30px;
+          font-weight: 200;
+        }
+      }
+    }    
+  }  
+  .content-header{
+    p{
+      &.description{
+        font-size: 20px;
+      }
+      &.title{
+        font-size: 24px;
+      }
+    }
+  } 
+}
+
+@media screen and (max-width: 1199px) {
+  .welcome-container{
+    .page-header{
+      height: 72px;
+      .logo-mono{
+        position: absolute;      
+      }
+    }
+  }
+
+  /* Manager Dashboard */
+  .manager-dash-container{
+    .page-header{
+      height: 155px;
+      h4{
+        &.stuff-parent{
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+
+      .header-item{
+        span{
+          font-size: 48px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  /* Dashboard Menu Item */
+  #main-menu{
+    .menu-items{
+      a{
+        width: 200px;
+        height: 200px;
+        margin: 0 20px 20px 0;
+        padding: 10px 15px 0 15px;
+        border: 5px solid #ff0552;
+        img{
+          margin: 10px;
+        }
+        span{
+          padding:5px 0;
+          font-size: 20px;
+          line-height: 30px;
+          font-weight: 200;
+        }
+      }
+    }    
+  }
+  .content-header{
+    p{
+      &.description{
+        font-size: 20px;
+      }
+      &.title{
+        font-size: 24px;
+      }
+    }
+  }     
+}
+
+@media screen and (max-width: 992px) {
+  .step-banner{
+    .step-label{
+      span{
+        display: none !important;
+      }
+    }
+  }
+
+  .welcome-container{
+    .page-header{
+      height: 72px;
+      .logo-mono{
+        position: absolute;      
+      }
+    }
+  }
+
+  /* Manager Dashboard */
+  .manager-dash-container{
+    .page-header{
+      height: 125px;
+      .header-logo{
+        img{
+          width: 90px;
+        }
+      }
+  
+      h4{
+        &.stuff-parent{
+          font-weight: 600;
+          font-size: 18px;
+        }
+      }
+  
+      .header-item{
+        img{
+          width: 50px;
+        }
+
+        span{
+          font-size: 32px;
+          font-weight: 600;
+        }
+      }
+
+      .account-thumb{
+        padding: 0px !important;
+        .account-info{
+          font-size: 18px !important;        
+          .account-type{
+            font-size: 12px !important;
+          }          
+        }
+      }      
+    }
+  }
+
+  /* Dashboard Menu Item */
+  #main-menu{
+    .menu-items{
+      text-align: center;
+      a{
+        width: 150px;
+        height: 150px;
+        margin: 0 10px 10px 0;
+        padding: 5px 10px 5px 10px;
+        border: 4px solid #ff0552;
+        img{
+          margin: 10px;
+          width: 80px;
+        }
+        span{
+          padding:10px 0;
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 200;
+        }
+      }
+    }    
+  }
+  .content-header{
+    p{
+      &.description{
+        font-size: 16px;
+      }
+      &.title{
+        font-size: 16px;
+      }
+    }
+  }     
+}
+
+@media screen and (max-width: 767px) {
+  .step-banner{
+    .step-label{
+      span{
+        display: none !important;
+      }
+    }
+  }
+
+  /* Welcome Page */
+  .welcome-container{
+    .page-header{
+      height: 160px;
+      .logo-mono{
+        position: relative;     
+        img{
+          height: 100px !important;
+        }         
+      }
+    }
+    .container{
+      .title{
+        margin-top:-50px;
+        h3{
+          font-size:48px;
+          font-weight: 800;
+          color:#242c3f;
+        }
+        h5{
+          font-size:24px;
+          font-weight: 400;
+          color:#242c3f;
+          padding-top: 10px; 
+        }
+      }
+    }    
+  }
+
+  /* Register Partner Page */
+  .reg-partner-container{  
+    .upload-wrapper {
+      position: relative;
+      left: 10px;
+
+      .caption{
+        display: block;
+      }
+    }        
+  }
+
+  /* Manager Page */
+  .reg-manager-container{  
+    .inline-input-link{
+      width: 100%;
+    }    
+  }  
+
+  h3.complete-title{
+    font-size: 28px !important;
+    font-weight: 800;
+  }
+
+  h5.compelet-message{
+    font-size: 14px !important;
+  }
+
+  .pane-invite{
+    h3{
+      font-size: 16px !important;    
+    }
+  }
+
+  .btn-round {
+    line-height: 1 !important;;
+    font-size: 16px !important;  
+  }
+
+  /* Worker Page */
+  .reg-worker-container{
+    .parent-department{
+      h3{
+        font-size: 18px;
+      }
+      label{
+        font-size: 16px !important;
+      }
+    }
+  }
+
+  /* Parent Page */
+  .reg-daycare-container{  
+    .upload-wrapper {
+      position: relative;
+      left: 0px !important;
+      .caption{
+        display: block;
+      }
+      input.upload{
+        left: -10px !important;
+      }
+    }        
+  }
+
+  /* Dashboard Header*/
+  .manager-dash-container,
+  .parentee-dash-container,
+  .partner-dash-container,
+  .worker-dash-container{
+    .page-header{
+      text-align: center;
+      height: 100%;
+      .header-logo{
+        img{
+          width: 80px;
+          margin-left: 45px;
+        }
+      }
+  
+      h4{
+        &.stuff-parent{
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+  
+      .header-item{
+        padding: 0 !important;
+        img{
+          width: 35px;
+        }
+
+        span{
+          font-size: 24px;
+          font-weight: 600;
+        }
+      }
+
+      .account-thumb{
+        padding: 10px !important;
+        /* margin-top: 85px !important; */
+        margin-top: 30px !important;
+        .account-info{
+          display:none !important;
+        }
+      }
+    }
+  }  
+
+  /* Dashboard Menu Item */
+  #main-menu{
+    .menu-items{
+      text-align: center;
+      a{
+        width: 150px;
+        height: 150px;
+        margin: 0 10px 10px 0;
+        padding: 5px 10px 5px 10px;
+        border: 4px solid #ff0552;
+        img{
+          margin: 10px;
+          width: 80px;
+        }
+        span{
+          padding:10px 0;
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 200;
+        }
+      }
+    }    
+  }
+
+  .content-header{
+    p{
+      &.description{
+        font-size: 16px;
+      }
+      &.title{
+        font-size: 16px;
+      }
+    }
+  } 
+}

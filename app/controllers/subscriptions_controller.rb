@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+    layout 'legacy'
     before_action -> { authenticate_role!(["manager"]) }
     before_action :unsubscribed_user!, except: :complete
 

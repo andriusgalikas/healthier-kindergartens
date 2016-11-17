@@ -1,0 +1,24 @@
+.page-header
+  .container
+    .col-md-9.col-sm-8.col-xs-10.no-h-padding
+      .col-md-2.col-sm-3.col-xs-12.header-logo
+        = image_tag 'logo-md.png'
+      .col-md-10.col-sm-9.col-xs-12.hide
+        %h4.stuff-parent HOW MANY DAYCARE STAFF AND PARENT WANT THIS
+        .row
+          .col-sm-6.col-xs-6.header-item
+            = image_tag 'manager-nm.png'
+            %span 387
+          .col-sm-6.col-xs-6.header-item
+            = image_tag 'parent-nm.png'
+            %span 387
+    - if user_signed_in?
+      .col-md-3.col-sm-4.col-xs-2.account-thumb.no-h-padding.dropdown
+        %span.avatar
+          = image_tag 'account-avatar.png'
+          %span.account-info
+            %span=current_user.name
+            %span.account-type Daycare Manager 
+        %ul.dropdown-menu{role: 'menu', 'aria-labelledby': 'dLabel'}
+          %li= link_to 'Edit Information', welcome_path
+          %li= link_to 'Logout', destroy_user_session_path, method: :delete

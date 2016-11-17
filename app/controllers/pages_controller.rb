@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     end
 
     def getting_started
-        render layout: 'login'
+        render layout: 'registration'
     end
 
     def implementation

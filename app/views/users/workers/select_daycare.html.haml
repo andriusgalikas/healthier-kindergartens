@@ -9,31 +9,27 @@
         .tab-content
           #tab1.tab-pane
             = render 'pane_search'
-          .col-sm-6
+          .col-sm-12
             %ul.pager.wizard.text-left
-              %li.next
-                %button.btn.btn-round.item-manager{:type => "button"} 
+              %li.previous
+                %button.btn.btn-round.item-worker{:type => "button"} 
+                  Previous
+              %li.next{:style => "float:right;"}
+                %button.btn.btn-round.item-worker{:type => "button"} 
                   Next
               %li.previous.first{:style => "display:none;"}
                 %a{:href => "#"} First
-              %li.previous{:style => "display:none;"}
-                %a{:href => "#"} Previous
               %li.next.last{:style => "display:none;"}
                 %a{:href => "#"} Last
 
 :javascript
   jQuery(document).ready(function() {   
-    $('#footer_logo_image').attr("src","/assets/logo-yellow.png"); 
     $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
     $('.next button').click(function(){
       var tab_id = $('.tab-pane.active').attr('id');
       if(tab_id == "tab1"){        
-        window.location.href = $('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link');
-      } else if(tab_id == "tab3") {
-        $(this).html("Choose");
-        $(this).hide();
-      } else {
-        $(this).html("Save");      
+        if($('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link'))
+          window.location.href = $('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link');
       }
     });
   });

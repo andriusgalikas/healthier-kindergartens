@@ -12,12 +12,26 @@
               = image_tag 'manager-md.png'
               %h4 Daycare Manager
             .row.pane-container.text-center
-              .row
-                = image_tag 'manager-bar-1.png'
+              .row.step-banner
+                .col-sm-3.col-xs-3.step-item.first-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.second-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.third-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.fourth-step.active    
+                  .step-label
+                    = image_tag 'manager-sm.png'
+                    %span Invitation
             = form_tag send_invites_manager_daycares_path
             .row.pane-search-result.text-center
-              %h5 Invite parents and workers to your Daycare on our platform now by entering their email address in below:
-
+              %h5 
+                Invite parents and workers to your Daycare on our platform now 
+                %br
+                by entering their email address in below:
             .row.parent-info
               .col-sm-12.text-left.email-list
                 .row
@@ -25,12 +39,11 @@
                     = text_field_tag 'emails[]', '', :class => 'form-control input-round', :placeholder => 'Daycare Email'
                     = custom_link_to_remove_fields_alone image_tag('manager-sub.png'), :class => "remove_button"
               .col-sm-12.text-right
-                %button.btn.btn-round.item-worker.add-daycare{:type => "button"} 
+                %button.btn.btn-round.item-manager.add-daycare{:type => "button"} 
                   Add Daycare                
             .row.pane-invite.text-left
-              %button.btn.btn-round.item-worker.btn-invite{:type => "button"} 
+              %button.btn.btn-round.item-manager.btn-invite{:type => "button"} 
                 Send Invitation
-            .parent-congratulation
 :javascript
   function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
@@ -42,7 +55,6 @@
     }
   }
   jQuery(document).ready(function() {    
-    $('#footer_logo_image').attr("src","/assets/logo-red.png");  
     $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
     $('.remove_button').removeClass("btn");
     $('.remove_button').removeClass("btn-red");

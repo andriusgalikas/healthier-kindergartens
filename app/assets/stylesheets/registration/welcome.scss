@@ -159,39 +159,15 @@ a:hover, a:focus
   .page-header{
     width: 100%;
     box-shadow: none;
-    height: 72px;
     min-height: 72px;
     background: #dadada;
     margin: 0;
-    padding: 0;    
+    padding: 16px;
 
-    .page-header-inner {
-      height: 100%;
-      margin: auto;
-      .logo-mono{
-        position: absolute;
-        img.header-mark{
-          margin-top: 16px;
-        }
+    .logo-mono{
+      img{
+        height: 120px;
       }
-    }
-
-    @media (min-width: 768px){
-      .page-header-inner{
-          width: 750px;
-      }        
-    }
-
-    @media (min-width: 992px){
-      .page-header-inner{
-          width: 970px;
-      }    
-    }
-
-    @media (min-width: 1200px){
-      .page-header-inner{
-          width: 1170px;
-      }    
     }
   }
 
@@ -212,6 +188,7 @@ a:hover, a:focus
         font-size:32px;
         font-weight: 400;
         color:#242c3f;
+        padding-top: 30px;
       }
     }
 
@@ -280,5 +257,11 @@ a:hover, a:focus
         }
       }      
     }
+  }
+}
+
+footer{
+  .left-footer{
+    overflow:hidden !important;
   }
 }

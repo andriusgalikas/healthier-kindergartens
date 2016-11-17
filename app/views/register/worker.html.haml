@@ -14,21 +14,39 @@
             .row.pane-container.text-center
               .row
                 = devise_error_messages!
-              .row
-                = image_tag 'worker-bar-3.png'
+              .row.step-banner
+                .col-sm-3.col-xs-3.step-item.first-step.item-worker
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.second-step.item-worker
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.third-step.item-worker.active
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'worker-sm.png'
+                    %span Register
+                .col-sm-3.col-xs-3.step-item.fourth-step.item-worker    
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'step-pending.png'
               = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f|
                 .row.parent-info.text-left
                   .col-sm-8
                     .row
                       %h4 User Information
                     .row      
-                      = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name"
+                      = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name", :required =>"true"
                     .row
-                      = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email"
+                      = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email", :required =>"true"
                     .row
-                      = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password"
+                      = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password", :required =>"true"
                     .row
-                      = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation"
+                      = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation", :required =>"true"
                     - if @minimum_password_length
                       .row
                         %em
@@ -36,23 +54,27 @@
                     = f.fields_for :user_daycare do |user_daycare|
                       = user_daycare.hidden_field :daycare_id, value: params[:daycare_id]
                     = f.hidden_field :department_id, value: params[:department_id]
-          .col-sm-6
+          .col-sm-12
             %ul.pager.wizard.text-left
-              %li.next
-                %button.btn.btn-round.item-manager{:type => "button"} 
+              %li.previous
+                %button.btn.btn-round.item-worker{:type => "button"} 
+                  Previous
+              %li.next{:style => "float:right;"}
+                %button.btn.btn-round.item-worker{:type => "button"} 
                   Next
               %li.previous.first{:style => "display:none;"}
                 %a{:href => "#"} First
-              %li.previous{:style => "display:none;"}
-                %a{:href => "#"} Previous
               %li.next.last{:style => "display:none;"}
                 %a{:href => "#"} Last
 
 :javascript
   jQuery(document).ready(function() {   
-    $('#footer_logo_image').attr("src","/assets/logo-yellow.png"); 
     $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
     $('.next button').click(function(){
       $('form').submit();
+    });
+    $('.previous button').click(function(){
+      var daycare_id = $('#user_user_daycare_attributes_daycare_id').val();
+      window.location.href = '/worker/select_department?daycare_id=' + daycare_id;
     });
   });

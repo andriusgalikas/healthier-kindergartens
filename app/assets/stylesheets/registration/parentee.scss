@@ -138,8 +138,12 @@
     }
 
     .fileUpload{
-      height: 105px;
+      height: 120px;
       margin-top: 0;
+
+      input.upload{
+        left: -90px;
+      }
     }
 
     .fileupload-container{
@@ -148,7 +152,7 @@
 
     .upload-wrapper{
       position: relative;
-      left: 110px;      
+      left: 90px;      
     }
 
     .parent-info{
@@ -206,6 +210,7 @@
 
   .search-inline-text{
     display: inline-flex;
+    width: 100%;
     input{
       margin-right: -40px;
     }
@@ -213,6 +218,53 @@
       font-size:24px;
       margin-top: 1px;
       color: #888;
+    }
+  }  
+  .step-banner{
+    .step-item{
+      height: 40px;
+      color: #fff;
+      text-align: center;
+
+      .step-label{
+        margin-top: 8px;
+        img{
+          margin-bottom: 3px;
+          &.step-arrow.left{
+            position: absolute;
+            left: -14px;
+            top: 0;            
+          }
+          &.step-arrow.right{
+            position: absolute;
+            right: -15px;
+            top: 0;            
+          }
+        }
+        span{
+          font-size: 16px;
+          vertical-align: top;
+          display:none;
+        }              
+      }      
+
+      &.active{
+        .step-label span{      
+          display: inline-block;
+        }
+      }
+
+      &.first-step{
+        border-top-left-radius: 20px 20px;
+        border-bottom-left-radius: 20px 20px;        
+      }    
+      &.fourth-step{
+        border-top-right-radius: 20px 20px;
+        border-bottom-right-radius: 20px 20px;        
+        .step-label{
+          margin-left: 20px;
+        }
+      }    
     }
   }  
 }

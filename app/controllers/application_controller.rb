@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_subscribed!
-        unless (current_user && current_user.daycare.try(:active_subscription?)) || current_user.partner?
+        unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)
             redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
         end
     end
@@ -25,8 +25,7 @@ class ApplicationController < ActionController::Base
       elsif resource.partner?
         dashboard_path
       elsif resource.manager?
-        puts "sign_in" + invite_manager_daycares_path
-        invite_manager_daycares_path
+        dashboard_path
       elsif resource.medical_professional?
         if resource.collaborations.present?
           medical_professional_discussions_path

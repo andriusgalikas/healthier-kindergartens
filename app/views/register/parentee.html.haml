@@ -3,75 +3,27 @@
   .container
     .form-content        
       #rootwizard
-        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+        %ul.tab-nav{:style=> "visibility: hidden; height: 0; position:absolute;"}
           %li
             %a{"data-toggle" => "tab", :href => "#tab1"} First
-        .tab-content
-          #tab1.tab-pane
-            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f|
-              .row.text-center.step-banner.fileupload-container
-                .fileUpload
-                  %span.upload-wrapper
-                    = image_tag 'parent-upload.png'
-                    %span.caption 
-                      Upload your child photo!
-                  /%input.upload{:type => "file"}          
-                %h4 Daycare Parent
-              .row.pane-container.text-center
-                .row
-                  = image_tag 'parent-bar-2.png'
-                .row
-                  = devise_error_messages!
-                .parent-list-container
-                  .parent-item
-                    .row.parent-info.text-left
-                      .col-sm-8
-                        .row
-                          %h3 Parent Information
-                        .row      
-                          = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name"
-                        .row
-                          = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email"
-                        .row
-                          = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password"
-                        .row
-                          = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation"
-                        - if @minimum_password_length
-                          .row
-                            %em
-                              (#{@minimum_password_length} characters minimum)
-                        = f.fields_for :user_daycare do |user_daycare|
-                          = user_daycare.hidden_field :daycare_id, value: (params[:daycare_id].blank?) ? params[:user][:user_daycare_attributes][:daycare_id] : params[:daycare_id]
-                    .row.parent-info.text-left
-                      .col-sm-8
-                        #children.multi-field
-                          = f.fields_for :children do |child|
-                            = render partial: 'child_fields', locals: { f: child }
-              .parent-button-box
-                = custom_link_to_add_fields image_tag('parent-add.png') + " ADD CHILDREN", f, :children, :class => "add-child"
-          .col-sm-6
-          %ul.pager.wizard.text-left
-            %li.next
-              %button.btn.btn-round.item-parent{:type => "button"} 
-                Next
-            %li.previous.first{:style => "display:none;"}
-              %a{:href => "#"} First
-            %li.previous{:style => "display:none;"}
-              %a{:href => "#"} Previous
-            %li.next.last{:style => "display:none;"}
-              %a{:href => "#"} Last
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab2"} First
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'row'}) do |f|
+          .tab-content
+            #tab1.tab-pane
+              = render partial: 'pane_parentee_reg', locals: { f: f }
+            #tab2.tab-pane
+              = render partial: 'pane_parentee_child', locals: { f: f }
+          .col-sm-12
+            %ul.pager.wizard.text-left
+              %li.previous
+                %button.btn.btn-round.item-parent.btn-prev{:type => "button"} 
+                  Previous
+              %li.next{:style => "float:right;"}
+                %button.btn.btn-round.item-parent.btn-next{:type => "button"} 
+                  Next
 
 :javascript
-  function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("1");
-
-    if ($(link).hasClass('subtask-link')) {
-      $(link).parent('.subtask').hide();
-    } else {
-      $(link).parent().parent().hide();
-    }
-  }
-
   function add_fields(link, association, content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g");
@@ -79,33 +31,113 @@
     if ($(link).hasClass('subtask-link')) {
       $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
     } else {
-      $('#children').append(content.replace(regexp, new_id));
+      var new_tabid = 'tab'+new_id;
+      var new_tab_template = '<div class="tab-pane" id="'+new_tabid+'"></div>';
+      $('.tab-content').append(new_tab_template);
+      $('#'+new_tabid).append(content.replace(regexp, new_id));
+      $('.tab-pane').removeClass('active');
+      $('#'+new_tabid).addClass('active');
     }
 
     $('.datepicker').datetimepicker({
-        format: 'd/m/Y',
-        timepicker: false
+      format: 'd/m/Y',
+      timepicker: false
     });
   }
 
+  function onNextHandle(tab, navigation, index) {
+    var total = navigation.find('li').find("a[data-toggle*='tab']").length;
+    var tab_id = $('.tab-pane.active').attr('id');      
+    var tab_number = tab_id.replace('tab', '');      
+
+    var current = parseInt(tab_number) + 1;
+    if(current > total) current = current - 1;
+
+    var next_tab = '#tab' + current;
+    $('.tab-pane').removeClass('active');
+    $(next_tab).addClass('active');
+    return false;
+  }
+
+  function onPrevHandle(tab, navigation, index) {
+    var tab_id = $('.tab-pane.active').attr('id');      
+    var tab_number = tab_id.replace('tab', '');      
+
+    var current = parseInt(tab_number) - 1;
+    if(current <= 0) return false;
+    
+    var next_tab = '#tab' + current;
+    $('.tab-pane').removeClass('active');
+    $(next_tab).addClass('active');
+    return false;
+  }
+
   jQuery(document).ready(function() {    
-    $('#footer_logo_image').attr("src","/assets/logo-blue.png");
-    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills', onNext : onNextHandle, onPrevious : onPrevHandle}); 
     $('.add-child').removeClass("btn");
     $('.add-child').removeClass("btn-normal");
-
     $('.datepicker').datetimepicker({
         format: 'd/m/Y',
         timepicker: false
     });
 
-    $('.next button').click(function(){
-      var tab_id = $('.tab-pane.active').attr('id');
-      if(tab_id == "tab1"){
-        $('form').submit();
-      } else if(tab_id == "tab2") {
-        $(this).html("Choose");
-        $(this).hide();
+    $('.next button').on('click', function(){
+      var total = $('#rootwizard .tab-pane').length;
+      var tab_id = $('.tab-pane.active').attr('id');      
+      var tab_num = tab_id.replace('tab', '');
+      if(tab_num == total){
+        var bUpload = true;
+        $('input:file').each(function(){
+          if($(this).val() == '')
+            bUpload = false;
+        });
+        
+        if(bUpload){        
+          $('form').submit();
+        } else {
+          alert('You need to upload your children photo!');
+        }
       }
     });
+
+    $('.previous button').on('click', function(e){
+      var tab_id = $('.tab-pane.active').attr('id');      
+      if(tab_id == "tab1"){        
+        window.location.href = '#{parentee_select_daycare_path()}';
+      }
+    });
+
+    $('#rootwizard').on('click', '.add-child', function(e){
+      var tab_count = $('.tab-pane').length + 1;
+      var tab_last = $('.tab-pane').length;
+
+      var new_tab_id = 'tab'+ tab_count;
+      var new_tab_template = '<div id="'+new_tab_id+'" class="tab-pane"></div>';
+      var new_tab_nav = '<li class="active"><a data-toggle="tab" href="#'+new_tab_id+'" aria-expanded="true">First</a></li>';
+      $('#rootwizard ul.tab-nav li').removeClass('active');
+      $('#rootwizard ul.tab-nav').append(new_tab_nav);
+
+      $('.tab-content').append(new_tab_template);
+      $('.tab-pane').removeClass('active');
+      $('#' + new_tab_id).addClass('active');
+
+      var new_tab_content = $('#tab'+tab_last).html();
+      var value_index = parseInt(tab_last) - 2;
+      var new_value_index = parseInt(tab_last) - 1;
+
+      new_tab_content = new_tab_content.split('['+value_index+']').join('['+new_value_index+']');
+      new_tab_content = new_tab_content.split('_'+value_index+'_').join('_'+new_value_index+'_');
+      $('.add-child').remove();
+      $('#' + new_tab_id).append(new_tab_content);
+
+      $('#' + new_tab_id +' input.form-control').val("");
+      $('#' + new_tab_id +' input:file').val("");
+
+      $('.datepicker').datetimepicker({
+          format: 'd/m/Y',
+          timepicker: false
+      });
+      e.preventDefault();
+    });
+
   });

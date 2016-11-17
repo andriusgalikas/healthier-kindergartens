@@ -3,6 +3,12 @@
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
  *= require slick-carousel/slick/slick-theme.css
+ *= require normalize-css
+ *= require bootstrap/dist/css/bootstrap.min.css
+ *= require bootstrap/dist/css/bootstrap-theme.min.css
+ *= require font-awesome
+ *= require version_2
+ *= require responsive
 */
 @import "compass/css3";
 
@@ -31,3 +37,4 @@ $twitter-blue: #3bafda;
 @import "dashboard/registration";
 @import "dashboard/surveys";
 @import "dashboard/notifications";
+@import "dashboard/common";

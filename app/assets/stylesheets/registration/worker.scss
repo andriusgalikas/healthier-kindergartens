@@ -22,7 +22,7 @@
     margin-bottom: 10px;
   }
 
-  .item-manager{
+  .item-worker{
     color: #fff;
   }
 
@@ -206,6 +206,7 @@
 
   .search-inline-text{
     display: inline-flex;
+    width: 100%;
     input{
       margin-right: -40px;
     }
@@ -215,4 +216,52 @@
       color: #888;
     }
   }
+
+  .step-banner{
+    .step-item{
+      height: 40px;
+      color: #fff;
+      text-align: center;
+
+      .step-label{
+        margin-top: 8px;
+        img{
+          margin-bottom: 3px;
+          &.step-arrow.left{
+            position: absolute;
+            left: -14px;
+            top: 0;            
+          }
+          &.step-arrow.right{
+            position: absolute;
+            right: -15px;
+            top: 0;            
+          }
+        }
+        span{
+          font-size: 16px;
+          vertical-align: top;
+          display:none;
+        }              
+      }      
+
+      &.active{
+        .step-label span{      
+          display: inline-block;
+        }
+      }
+
+      &.first-step{
+        border-top-left-radius: 20px 20px;
+        border-bottom-left-radius: 20px 20px;        
+      }    
+      &.fourth-step{
+        border-top-right-radius: 20px 20px;
+        border-bottom-right-radius: 20px 20px;        
+        .step-label{
+          margin-left: 20px;
+        }
+      }    
+    }
+  }  
 }

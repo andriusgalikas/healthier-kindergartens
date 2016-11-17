@@ -12,8 +12,26 @@
               = image_tag 'parent-md.png'
               %h4 Daycare Parent
             .row.pane-container.text-center
-              .row
-                = image_tag 'parent-bar-3.png'
+              .row.step-banner
+                .col-sm-3.col-xs-3.step-item.first-step.item-parent
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-check-prt.png'
+                .col-sm-3.col-xs-3.step-item.second-step.item-parent
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'step-check-prt.png'
+                .col-sm-3.col-xs-3.step-item.third-step.item-parent
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'step-check-prt.png'
+                .col-sm-3.col-xs-3.step-item.fourth-step.item-parent.active    
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'parent-sm.png'
+                    %span Congratulation
             .row.pane-search-result.text-center
               %h3.complete-title.item-parent CONGRATULATIONS!
               %h5.compelet-message You have now created your DayCare Profile.
@@ -24,7 +42,6 @@
     window.location.href = '#{dashboard_path()}';
   }  
   jQuery(document).ready(function() {   
-    $('#footer_logo_image').attr("src","/assets/logo-blue.png");
     $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
     setTimeout(redirectDashboard, 2000);
   });

@@ -12,28 +12,29 @@
               = image_tag 'manager-md.png'
               %h4 Daycare Manager
             .row.pane-container.text-center
-              .row
-                = image_tag 'manager-bar-1.png'
+              .row.step-banner
+                .col-sm-3.col-xs-3.step-item.first-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.second-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.third-step
+                  .step-label
+                    = image_tag 'step-check-mng.png'
+                .col-sm-3.col-xs-3.step-item.fourth-step.active
+                  .step-label
+                    = image_tag 'manager-sm.png'
+                    %span Congratulation
             .row.pane-search-result.text-center
-              %h3.complete-title.item-worker CONGRATULATIONS!
+              %h3.complete-title.item-manager CONGRATULATIONS!
               %h5.compelet-message You have now created your DayCare Profile.
-            .row.pane-invite.text-center
-              %h3 Now, Invite other Daycare?
-              .col-sm-6.text-right
-                %button.btn.btn-round.item-worker.btn-invite{:type => "button"} 
-                  Yes
-              .col-sm-6.text-left
-                %button.btn.btn-round.item-worker.btn-dashboard{:type => "button"} 
-                  No
             .parent-congratulation
 :javascript
+  function redirectDashboard(){
+    window.location.href = '#{dashboard_path()}';
+  }  
   jQuery(document).ready(function() {    
-    $('#footer_logo_image').attr("src","/assets/logo-red.png");  
     $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
-    $('.btn-invite').click(function(){
-      window.location.href = '#{invite_manager_daycares_path}';
-    });
-    $('.btn-dashboard').click(function(){
-      window.location.href = '#{dashboard_path}';
-    });
+    setTimeout(redirectDashboard, 2000);
   });

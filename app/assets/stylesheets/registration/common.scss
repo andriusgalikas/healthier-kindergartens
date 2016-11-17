@@ -5,10 +5,11 @@
   }
 
   .btn-round {
-    border-radius: 30px;
+    border-radius: 20px;
     border: none;
-    min-width: 170px;
-    min-height: 40px;
+    min-width: 120px;
+    min-height: 30px;
+    padding: 6px 20px;
   }
 
   .btn.active.focus, 
@@ -61,14 +62,14 @@
     color: #aaa;
   }
 
-  .item-worker{
+  .item-manager{
     background: #ff5443;
     background: -webkit-linear-gradient(#ffa63e, #ff0a55);
     background: -o-linear-gradient(#ffa63e, #ff0a55);
     background: -moz-linear-gradient(#ffa63e, #ff0a55);
     background: linear-gradient(#ffa63e, #ff0a55);
   }
-  .item-manager{
+  .item-worker{
     background: #f1c942;
     background: -webkit-linear-gradient(#f2ff32, #f09751);
     background: -o-linear-gradient(#f2ff32, #f09751);
@@ -120,11 +121,10 @@
 
   .upload-wrapper{
     position: relative;
-    left: 110px;      
+    left: 85px;      
   }
 
   #rootwizard{
-    max-width: 570px;
     margin: auto !important;
   }
 

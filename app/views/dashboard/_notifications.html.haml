@@ -1,20 +1,28 @@
-.panel.panel-default
-  .panel-heading
-    = t('dashboard.notifications')
-
-    %span.badge#notif-count= @notifications.size
-  .panel-body
-    .content-group
-      .panel-subheading
-        = image_tag 'message_menu_icon.png', class: 'img img-thumbnail subheading-icon'
-        %span.subheading-title= t('dashboard.messages')
-        %span.badge= notif_per_source_type(@notifications, 'Message').size
-
-      .panel-subcontent
-        - notif_per_source_type(@notifications, 'Message').each do |notif|
-          .notification
-            = link_to list_messages_path(role: current_user.role, list_type: 'received', notification_id: notif.id)  do
-              %div.notif-sender-avatar
-                = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
-              %div.notif-sender-name
-                = notif_sender_name(notif)
+.notification-box
+  .row
+    %span.panel-title Notification
+  .row.panel-content
+    %span.item-title 
+      = image_tag 'todo-md.png'
+      ToDo List
+    .row.item-content
+      - current_user.all_todos.each_with_index do |todo, index|
+        .col-md-1.col-sm-2.col-xs-2.text-center
+          %span.item-number
+            = index+1
+        .col-md-11.col-sm-10.col-xs-10.no-h-padding
+          = link_to manager_todo_path(todo) do
+            %span.item-description 
+              = truncate(todo.title, length: 12)
+    %span.item-title 
+      = image_tag 'message-md.png'
+      Messages
+    .row.item-content
+      - notif_per_source_type(@notifications, 'Message').each do |notif, index|    
+        .col-md-1.col-sm-2.col-xs-2.text-center
+          %span.item-number 
+            = index+1
+        .col-md-11.col-sm-10.col-xs-10.no-h-padding
+          = link_to list_messages_path(role: current_user.role, list_type: 'received', notification_id: notif.id)  do
+            %span.item-description 
+              = notif_sender_name(notif)

@@ -1,3 +1,22 @@
+header{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+
+  .btn.active, 
+  .btn:active{
+    color: #fff;
+    background:#ff6632;
+  }
+
+  li{
+    a{
+      font-size: 16px;
+      color: #000;
+      font-weight: 200;
+    }
+  }  
+}
+/****************Original Version*************************/
 .legacy-common
 {
     .bg-custom
