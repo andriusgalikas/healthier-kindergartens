@@ -73,6 +73,8 @@ gem 'stripe-rails'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'copy_carrierwave_file'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 # background processing
 gem 'sidekiq'
