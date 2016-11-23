@@ -51,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @daycare.save
       user = @daycare.users.first
       send_confirmation_email(user)
-      sign_up(:user, user)      
+      sign_up(:user, user)  
       render "register/success_#{params[:role]}"
       #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
@@ -61,6 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # Action for calling schedule once
   def schedule_meeting
   end
 
