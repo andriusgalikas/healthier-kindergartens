@@ -148,6 +148,7 @@ GEM
     diffy (3.1.0)
     domain_name (0.5.20160309)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
     email_spec (2.0.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -479,6 +480,7 @@ DEPENDENCIES
   copy_carrierwave_file
   database_cleaner
   devise
+  dotenv
   email_spec
   factory_girl_rails
   faker
@@ -528,4 +530,4 @@ RUBY VERSION
    ruby 2.2.2p95
 
 BUNDLED WITH
-   1.12.4
+   1.13.6

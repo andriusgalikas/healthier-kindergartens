@@ -27,6 +27,10 @@ class PagesController < ApplicationController
       render layout: 'login'
     end
 
+    def home
+
+    end
+
     private
 
     def set_subjects

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
         post ':role/register_daycare',      to: 'users/registrations#daycare',  as: 'daycare_registration'
         post ':role/register_affiliate',    to: 'users/registrations#affiliate',as: 'affiliate_registration'
         post ':role/register_success',      to: 'users/registrations#success',  as: 'success_registration'
+
+        #Meeting (Schedule Once)
+        get '/schedule_meeting',            to: 'users/registrations#schedule_meeting', as: 'schedule_meeting'
     end
 
     # custom registration routes

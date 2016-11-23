@@ -61,6 +61,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def schedule_meeting
+  end
+
   def affiliate
     @affiliate = Affiliate.new(affiliate_sign_up_params)
 
