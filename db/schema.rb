@@ -87,6 +87,9 @@ ActiveRecord::Schema.define(version: 20161118130355) do
     t.string   "telephone"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "url"
+    t.integer  "num_children"
+    t.integer  "num_worker"
   end
 
   create_table "department_todos", force: :cascade do |t|

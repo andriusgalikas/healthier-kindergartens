@@ -21,6 +21,16 @@
 
 en:
   pages:
+    nav_bar:
+      home: Home
+      start_here: Start Here
+      standard: The HCC Standard
+      path: The Paths to Accreditation
+      about_us: About Us
+      get_started: Get Started For Free
+      mission: The Mission
+      your_journey: Your Journey
+
     about:
       sub_heading1: "Committed to healthier"
       sub_heading2: "and safer childcare facilities"
@@ -50,6 +60,28 @@ en:
       paragraph11: "and get complimentary access here"
 
     home:
+      slide_header: Healthier and Safer Childcare Alliance
+      slide_header_0_content: The ultimate resource for childcare operators who are committed to safeguarding the health of children under their care.
+      slide_header_1_content: Did you know that children in daycare are three times more likely to get infected? In such close proximity of each other, one child’s illness can rapidly spread through the entire group.
+      slide_header_1_subcontent: With the Health Preserving Care Program, you can provide children with the nurturing, safer, and healthier childcare setting they deserve.
+      slide_header_2_content: Studies show that the majority of daycare staff are women in their childbearing years. During pregnancy, the immune system undergoes several changes and becomes compromised.
+      slide_header_2_subcontent: This increases the risk of harmful infection to expectant mothers. You owe it to the staff under your supervision to give them the very best protection against infection.
+      slide_header_3_content: Parents of children exposed to illnesses with regularity are expected to take time off work to care for them. This results in a loss of earnings at best, or at worst, disciplinary proceedings against them.
+      slide_header_3_subcontent: Together, we can stop the spread of infection at source. Find out more about how you can play your part.
+      slide_header_4_content: When children face illness regularly, parents have to take time off from work to care for them. Taking time off from work means a loss of income, or at worst, facing redundancy. Together, we can fight the spread of infections at their source.
+      slide_header_4_subcontent: Find out how you can play your part below.
+      start_here_1: Daycare centers are a breeding ground for bacterial and viral infections.
+      start_here_2: Discover the top hidden health risks for the children and employees of your daycare facility, and learn how to effectively mitigate the risk of infection for the children and childcare staff under your care.
+      standard_1: Committed to avoiding unnecessary putting the health of children and employees at risk? Want to gain the edge on your facilities ongoing infection risk? The Standard is designed to achieve this crucial goal.
+      path_1: "Health­preserving childcare accreditation program includes six interconnected areas of risk exposure childcare facilities face, plus a clear, effective infection prevention protocol to help your facility mitigate these risks."
+      path_2: Discover the path you’ll take to become accredited and gain an edge on your facility’s ongoing infection risk.
+      journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
+      journey_2: Detect the level of infection risk in your facility.
+      learn_more: learn more
+      subcontent_start_here: Start Here
+      subcontent_standard: The Standard
+      subcontent_path: The Path to Accreditation
+      subcontent_journey: The Journey
       main_heading: "Start Here"
       para1: "Childcare environments can be a breeding ground ground for bacterial and viral infections. Discover the top hidden health risks to children and employees in your daycare facility. Also, learn how we are committed to helping you, the childcare operator, take a few simple steps to effectively mitigate risk of infections—to keep your employees, children under your care, and parents as healthy as possible."  
       main_heading2: "The Standard"
@@ -600,41 +632,6 @@ en:
 
     notifications:
       not_enough_data: Not enough data to show a trend.
-
-  pages:
-    nav_bar:
-      home: Home
-      start_here: Start Here
-      standard: The HCC Standard
-      path: The Paths to Accreditation
-      about_us: About Us
-      get_started: Get Started For Free
-      mission: The Mission
-      your_journey: Your Journey
-
-    home:
-      slide_header: Healthier and Safer Childcare Alliance
-      slide_header_0_content: The ultimate resource for childcare operators who are committed to safeguarding the health of children under their care.
-      slide_header_1_content: Did you know that children in daycare are three times more likely to get infected? In such close proximity of each other, one child’s illness can rapidly spread through the entire group.
-      slide_header_1_subcontent: With the Health Preserving Care Program, you can provide children with the nurturing, safer, and healthier childcare setting they deserve.
-      slide_header_2_content: Studies show that the majority of daycare staff are women in their childbearing years. During pregnancy, the immune system undergoes several changes and becomes compromised.
-      slide_header_2_subcontent: This increases the risk of harmful infection to expectant mothers. You owe it to the staff under your supervision to give them the very best protection against infection.
-      slide_header_3_content: Parents of children exposed to illnesses with regularity are expected to take time off work to care for them. This results in a loss of earnings at best, or at worst, disciplinary proceedings against them.
-      slide_header_3_subcontent: Together, we can stop the spread of infection at source. Find out more about how you can play your part.
-      slide_header_4_content: When children face illness regularly, parents have to take time off from work to care for them. Taking time off from work means a loss of income, or at worst, facing redundancy. Together, we can fight the spread of infections at their source.
-      slide_header_4_subcontent: Find out how you can play your part below.
-      start_here_1: Daycare centers are a breeding ground for bacterial and viral infections.
-      start_here_2: Discover the top hidden health risks for the children and employees of your daycare facility, and learn how to effectively mitigate the risk of infection for the children and childcare staff under your care.
-      standard_1: Committed to avoiding unnecessary putting the health of children and employees at risk? Want to gain the edge on your facilities ongoing infection risk? The Standard is designed to achieve this crucial goal.
-      path_1: "Health­preserving childcare accreditation program includes six interconnected areas of risk exposure childcare facilities face, plus a clear, effective infection prevention protocol to help your facility mitigate these risks."
-      path_2: Discover the path you’ll take to become accredited and gain an edge on your facility’s ongoing infection risk.
-      journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
-      journey_2: Detect the level of infection risk in your facility.
-      learn_more: learn more
-      subcontent_start_here: Start Here
-      subcontent_standard: The Standard
-      subcontent_path: The Path to Accreditation
-      subcontent_journey: The Journey
 
     promo:
       title: You’re just 3 steps away from being part of The Health Preserving Accreditation
