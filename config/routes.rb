@@ -166,6 +166,7 @@ Rails.application.routes.draw do
             match :upload, on: :member, via: [:get, :post]
             resources :surveys
         end
+        resources :videos, except: :show
     end
 
     namespace :partner do

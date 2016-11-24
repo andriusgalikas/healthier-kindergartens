@@ -1,0 +1,40 @@
+<%= form_for [:admin, @video], url: url do |f| %>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+        <%= render partial: 'shared/admin/errors', locals: { object: @subject } %>
+    </div>
+
+    <div class="threecol">
+        <h3>Video details</h3>
+    </div>
+
+    <div class="ninecol last">
+        <fieldset class="widget widget-content">
+            <div class="form-group">
+                <%= f.label :url %>
+                <%= f.text_field :url, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :category %>
+                <%= f.radio_button :category, 'free' %> Free
+                <%= f.radio_button :category, 'paid' %> Paid
+            </div>
+            <div class="form-group">
+                <%= f.label :type %>
+                <%= f.radio_button :video_type, '1' %> 1
+                <%= f.radio_button :video_type, '2' %> 2
+                <%= f.radio_button :video_type, '3' %> 3
+                <%= f.radio_button :video_type, '4' %> 4
+                <%= f.radio_button :video_type, '5' %> 5
+                <%= f.radio_button :video_type, '6' %> 6
+            </div>
+            <div class="form-group">
+                <%= f.label :language %>
+                <%= f.select :language, options_for_select(languages, :selected => f.object.language), {},{:class => 'form-control'} %>
+            </div>
+        </fieldset>
+        <div class="form-action">
+            <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        </div>
+    </div>
+<% end %>

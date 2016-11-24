@@ -2,9 +2,9 @@
   .row.welcome
     .col-xs-10.col-xs-offset-1.outer
       .main-heading
-        Welcome
+        = t('pages.getting_started.main_heading').html_safe
       .tag-line
-        Lets get started and choose who you are!
+        = t('pages.getting_started.sub_heading').html_safe
       .wrapper
         .col-sm-6.col-lg-4
           = link_to parentee_select_daycare_path do

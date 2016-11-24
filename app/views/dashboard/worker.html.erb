@@ -1,0 +1,18 @@
+<% content_for :page_title, "Worker Dashboard" %>
+<% content_for :previous_path, welcome_path %>
+
+<div id="main-menu">
+    <div class="row">
+        <div class="eightcol">
+            <div class="menu-items">
+                <%= link_to todos_path, :class => 'todos' , 'data-step'=>"14", 'data-intro'=>"As daycare work you can manage todo list" do %>
+                    <img src="http://placehold.it/100x100">
+                    <span><%= t('dashboard.worker.heading1')%></span>
+                <% end %>
+            </div>
+        </div>
+        <div class="fourcol last">
+
+        </div>
+    </div>
+</div>

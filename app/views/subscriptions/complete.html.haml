@@ -9,12 +9,12 @@
         %p
           We have sent an email confirmation to #{@subscription.user.email}.
         %p
-          You can now access some great new features which you can share with your parents and workers in your Daycare, such as :
+          = t('subscriptions.complete.line1')
         %ul
-          %li Todo Mangement
-          %li Online Training
-          %li Survey Management
+          %li= t('subscriptions.complete.line2')
+          %li= t('subscriptions.complete.line3')
+          %li= t('subscriptions.complete.line4')
         %p
-          You can get started now by going to your
+          = t('subscriptions.complete.line5')
           = link_to 'dashboard', welcome_path
           !
