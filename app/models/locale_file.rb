@@ -25,14 +25,18 @@
 
 class LocaleFile < ActiveRecord::Base
 
+  #Setting min and max size for the online training file
   MIN_VIDEO_SIZE = 0.megabytes
   MAX_VIDEO_SIZE = 2048.megabytes
+
+  #Supported language names will go here
   LANGUAGE_NAMES = [['Deutsche', 'de'], ['English', 'en'], ['French', 'fr'], ['Spanish', 'sp']]
 
   has_attached_file :file, path: "locale_files/:id_partition/:filename"
   has_attached_file :online_training, path: "images/:id_partition/:filename"
   has_attached_file :logo, path: "video/:id_partition/:filename"
 
+  #validates attachment of files
   validates_attachment_content_type :file, content_type: /./
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :online_training, content_type: /./, size: { in: MIN_VIDEO_SIZE..MAX_VIDEO_SIZE }

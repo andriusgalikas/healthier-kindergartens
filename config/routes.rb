@@ -195,5 +195,6 @@ Rails.application.routes.draw do
 
     get 'path_2', to: 'pages#path_2'
 
+    # Store data in Membership-app bucket
     post 'create_on_s3', to: 'admin/dashboard#create_on_s3'
 end
