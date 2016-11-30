@@ -170,6 +170,7 @@ Rails.application.routes.draw do
             match :upload, on: :member, via: [:get, :post]
             resources :surveys
         end
+        resources :videos, except: :show
     end
 
     namespace :partner do
@@ -197,4 +198,7 @@ Rails.application.routes.draw do
     get ':role/messages/:list_type/list', to: 'messages#list', as: 'list_messages'
 
     get 'path_2', to: 'pages#path_2'
+
+    # Store data in Membership-app bucket
+    post 'create_on_s3', to: 'admin/dashboard#create_on_s3'
 end

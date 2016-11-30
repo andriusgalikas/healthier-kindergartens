@@ -19,11 +19,13 @@ class TrainingsController < ApplicationController
 
     def free_trainings id
       # free users video urls 
-      FREE[id]
+      # FREE[id]
+      Video.where(category: "free",video_type: id,language: I18n.locale.upcase).last.url
     end
 
     def paid_trainings id
        # paid users video urls 
-      PAID[id]
+      # PAID[id]
+      Video.where(category: "paid",video_type: id,language: I18n.locale.upcase).last.url
     end
 end

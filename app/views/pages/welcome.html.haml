@@ -8,46 +8,34 @@
         .single{'data-step'=>"1", 'data-intro'=>"To access the Risk assessment", 'data-position' => 'right'}
           = image_tag 'back_page.png'
           %h2.infection
-            Infection
+            = t('pages.welcome.head1').html_safe
             %br
-              %span risk assessment Detect the level of infection risk in your facility
+              %span= t('pages.welcome.sub_head1').html_safe
           %p
-            The infection risk assessment component is the first step in the journey to your facility’s infection prevention excellence. It allows you as childcare manager to discover your staff’s level of competency in the six core areas of infection control.This assessment also enables you to detect exactly, the scope of risk of disease and infection in your facility, your staff may be exposing to children and other employees.
+            = t('pages.welcome.para1').html_safe
           %h4.click-here-infection{'data-step'=>"4", 'data-intro'=>"Click here to view risk assement"}
             = link_to 'Click here to access infection risk assessment for this module', infection_path
       .col-md-4
         .single{'data-step'=>"2", 'data-intro'=>"How to access Instruction component", 'data-position' => 'right'}
           = image_tag 'introduction.png'
           %h2.instroduction
-            Instruction
+            = t('pages.welcome.head2').html_safe
             %br
               %span
-                Learn best infection prevention practices
+                = t('pages.welcome.sub_head2').html_safe
           %p
-            Lack of knowledge in infection preventive practice limits your employees` ability to control and prevent the spread of infections. Knowledge of infection control is a great step in rooting out the causes of the spread of diseases and their risk to children and employees.
-            %br
-              %br
-                %br
-                  Ifeveryone shares this deep and rich pool of the same knowledge base in infection control and prevention, the chance of spread of diseases in the entire community will decreases significantly. For that reason, all our courses are open to the entire child care community, including parents.
+            = t('pages.welcome.para2').html_safe
           %h4.click-here-introduction{'data-step'=>"5", 'data-intro'=>"This is a tooltip!"}
             = link_to 'Click here to access infection risk assessment for this module', instruction_path
       .col-md-4
         .single{'data-step'=>"3", 'data-intro'=>"How to Access implementation component of the program", 'data-position' => 'left'}
           = image_tag 'implementaiotn.png'
           %h2.implementation
-            Implementation
+            = t('pages.welcome.head3').html_safe
             %br
-              %span Ensure the best practices are reinforced and upheld…
+              %span= t('pages.welcome.sub_head3').html_safe
           %p
-            After one-shot training your daycare staff will hardly retain what they have learned. Typically, they can easily forget the newly –learnt skill if there is no follow-up after the initial training.
-            %br
-              %br
-                %br
-                  This is why in the implementation part of the accreditation program we give you tools that will enable your childcare community to implement, measure, and track the newly learnt best infection preventive practices. The tools accompanying each module are specifically designed to ensure that the highest standards of infection prevention are implemented and upheld.
-                  %br
-                    %br
-                      %br
-                        Click the icon below and learn more about the tools you need for you to succeed in implementing the learnt infection preventive practices.
+            = t('pages.welcome.para3').html_safe
 
             %h4.click-here-implementation{'data-step'=>"6", 'data-intro'=>"Let move to next page where we can demostrate about Todos!"}
               = link_to 'Click here to access infection risk assessment for this module', dashboard_path

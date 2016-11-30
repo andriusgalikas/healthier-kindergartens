@@ -10,10 +10,10 @@
             </div>
         <% end %>
         <div class="page-header">
-            <h2>Todos</h2>
+            <h2><%= t('manager.todos.index.main_heading')%></h2>
         </div>
         <% if current_user.all_todos.empty? %>
-            <p>You have no Todos currently.</p>
+            <p><%= t('manager.todos.index.para1')%></p>
         <% else %>
             <ul>
                 <% current_user.all_todos.each do |todo| %>

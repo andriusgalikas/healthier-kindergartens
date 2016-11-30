@@ -53,3 +53,110 @@
   %button.btn.hcc-btn
     %a{'href': '#'}
       = t('pages.mission_step.learn_more')
+.legacy-mission
+  .container
+    .row.promo
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        .promo-img
+          = image_tag "mission_promo.jpg"
+          .img-text
+            %h2= t('pages.mission.main_heading').html_safe
+            %p= t('pages.mission.main_heading2').html_safe
+  / End Promo Area
+  .container
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        %ul#page-menu.nav.nav-pills
+          %li.active{:role => "presentation"}
+            %a{:href => "/mission"}
+              %i.fa.fa-angle-down>
+              1. The Mission
+          %li{:role => "presentation"}
+            %a{:href => "/standard"}
+              %i.fa.fa-angle-right>
+              2. The Standard
+          %li{:role => "presentation"}
+            %a{:href => "/path"}
+              %i.fa.fa-angle-right>
+              3. The Path to Accreditation
+          %li{:role => "presentation"}
+            %a{:href => "#"}
+              %i.fa.fa-angle-right>
+              Your Journey!
+  / End page-menu Area
+  .container.page-heading
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.mission-page-heading
+        %h2= t('pages.mission.sub_heading').html_safe
+  .container
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        .page-discription
+          %p= t('pages.mission.para1').html_safe
+  .container.risks-area
+    .row.risks-care
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare
+        %h2= t('pages.mission.sub_heading2')
+        %p
+          Studies show that children in daycare are
+          %span{:style => "font-size:50px"} 300%
+          %span= t('pages.mission.para2').html_safe
+          %span= t('pages.mission.para3').html_safe 
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare-parent-worder
+        .worder-daycare
+          %h2= t('pages.mission.sub_heading3')
+          %p
+            Studies indicate that in a flu season,
+            %span{:style => "font-size:50px"} 50%
+            %span= t('pages.mission.para4').html_safe
+        .parent-daycare
+          %h2= t('pages.mission.sub_heading4')
+          %p= t('pages.mission.para5')
+            
+  .container.what-do-next
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        = image_tag 'mission_hand.png'
+        %h2.what-do-next-heading
+          = t('pages.mission.sub_heading5').html_safe
+        %p.wdnp= t('pages.mission.para6').html_safe
+        %ul#mission-menu
+          %li
+            %a{:href => ""}= t('pages.mission.label1').html_safe
+          %li
+            %a{:href => ""}= t('pages.mission.label2').html_safe
+          %li
+            %a{:href => ""}= t('pages.mission.label3').html_safe
+  #threestrep.container
+    .row
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12.out-ben
+        .outline-risk
+          %h2
+            %span 1
+            = t('pages.mission.sub_heading6').html_safe
+          %p= t('pages.mission.para7').html_safe
+        .benchmark
+          %h2
+            %span 3
+            = t('pages.mission.sub_heading7').html_safe
+          %p= t('pages.mission.para8').html_safe
+      .col-lg-6.col-lg-6.col-md-6.col-sm-12.col-xs-12.community-area
+        .community
+          %h2
+            %span 2
+            = t('pages.mission.sub_heading8').html_safe
+          %p= t('pages.mission.para9').html_safe
+  #get-start-free.container
+    .row
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        %p= t('pages.mission.para10').html_safe
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        %h2.start-free
+          %span.get-start= t('pages.mission.head').html_safe
+          = link_to getting_started_path do
+            %i.fa.fa-angle-right
+            %i.fa.fa-angle-right
+            %i.fa.fa-angle-right
+        %p
+          = t('pages.mission.para11').html_safe
+          %a.child-care-link{:href => "/standard"} click here

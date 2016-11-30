@@ -3,12 +3,12 @@
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Daycares</h2>
+    <h2 class="widget widget-header"><%= t('admin.daycare.index.heading')%></h2>
   </div>
   <% if @daycares.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p>You don't have any daycares yet.</p>
+        <p><%= t('admin.daycare.index.line')%></p>
         <i class="icon-home"></i>
       </div>
     </div>
@@ -17,11 +17,11 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Postcode</th>
-            <th>Country</th>
-            <th>Telephone</th>
+            <th><%= t('admin.daycare.index.label1')%></th>
+            <th><%= t('admin.daycare.index.label2')%></th>
+            <th><%= t('admin.daycare.index.label3')%></th>
+            <th><%= t('admin.daycare.index.label4')%></th>
+            <th><%= t('admin.daycare.index.label5')%></th>
           </tr>
         </thead>
         <tbody>

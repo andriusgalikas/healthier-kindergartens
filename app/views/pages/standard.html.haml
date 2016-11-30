@@ -13,29 +13,28 @@
           %li{:role => "presentation"}
             %a{:href => "/mission"}
               %i.fa.fa-angle-right>
-              1. The Mission
+              = t('pages.standard.label1').html_safe
           %li.active{:role => "presentation"}
             %a{:href => "/standard"}
               %i.fa.fa-angle-down>
-              2. The Standard
+              = t('pages.standard.label2').html_safe
           %li{:role => "presentation"}
             %a{:href => "/path"}
               %i.fa.fa-angle-right>
-              3. The Path to Accreditation
+              = t('pages.standard.label3').html_safe
           %li{:role => "presentation"}
             %a{:href => "#"}
               %i.fa.fa-angle-right>
-              Your Journey!
+              = t('pages.standard.label4').html_safe
   / End page-menu Area
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-12.col-xs-12
         .page-heading
           %h2
-            The #1 benchmark of
-            health-preserving child care
+            = t('pages.standard.head1').html_safe
         .page-discription
-          %p ow you, your employees, and your kids’ parents can feel assured and confident your facility has top-notch health preservation—because you’ll be following the Health Preserving care program in you Childcare facility.
+          %p= t('pages.standard.para1').html_safe
   .container.page-description-list
     .row
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
@@ -44,45 +43,39 @@
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .list-description
           %h2
-            Create the healthiest environment
-            for your children and staff
-          %p Given the preponderance of risk factors in childcare settings, we have developed The Standard of health-preserving care. When you use it in your facility, your entire daycare community will cultivate a deep understanding of the risks of infectious diseases in childcare environments. They’ll also be professionally trained to utilize effective and trackable measures to control and prevent disease transmission.  By receiving HSCA accreditation, you’ll be operating your facility according to the health-preserving practices set forth in The Standard—the highest possible standard of illness and disease prevention there is in the daycare setting.
+            = t('pages.standard.head2').html_safe
+          %p= t('pages.standard.para2').html_safe
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .listed-thumb
           = image_tag 'list_two.png'
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .list-description
-          %h2 Decrease in absenteeism
-          %p Operating your childcare facility according to The Standard also helps decrease or eliminate the risk of ongoing infection and absenteeism. You know all too well that these factors can drain your childcare of productivity.
+          %h2= t('pages.standard.head3').html_safe
+          %p= t('pages.standard.para3').html_safe
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .listed-thumb
           = image_tag 'list_three.png'
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .list-description
-          %h2 Potential growth of your facility
-          %p Conforming to The Standard is likely to motivate discerning parents to seek out and select your childcare for their children, which would result in the growth or your facility.
+          %h2= t('pages.standard.head4').html_safe
+          %p= t('pages.standard.para4').html_safe
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .listed-thumb
           = image_tag 'list_four.png'
       .col-lg-6.col-md-6.col-sm-12.col-xs-12
         .list-description
           %h2
-            Raising the national standard —
-            and creating healthier, happier childcare
+            = t('pages.standard.head5').html_safe
           %p
-            Each time a childcare facility becomes HSCA accredited, it raises the global benchmark of health-preserving care. We’re proud to be leading this transformation, and we’d like you to join us in our journey.
-            With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents.
-            To find out how you can be one of the first daycare facilities to raise your standards against infection, click on the button below. When you become accredited, you will show parents you’re the only childcare center in your area qualified to practice higher safety standards for the health and well-being of their children.
+            = t('pages.standard.para5').html_safe
   .container
     .row
       #bg.col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-12.col-xs-12
         #get-start-free
           %h2.start-free
-            %span.get-start Get Started For Free
+            %span.get-start= t('pages.standard.head6').html_safe 
             = link_to getting_started_path do
               %i.fa.fa-angle-right
           %p
-            If you want to learn more about the highest standard
-            in the world for disease mitigation in childcare settings
-            — The Health prevering care Standard
+            = t('pages.standard.para6').html_safe
             %a{:href => "/standard"} click here

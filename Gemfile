@@ -18,6 +18,7 @@ gem 'devise'
 gem 'sitemap_generator'
 gem 'unicorn', platforms: :ruby
 gem 'pg'
+gem 'countries_and_languages', :require => 'countries_and_languages/rails'
 
 group :production do
   gem 'unicorn-worker-killer'
@@ -74,6 +75,8 @@ gem 'stripe-rails'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'copy_carrierwave_file'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 # background processing
 gem 'sidekiq'

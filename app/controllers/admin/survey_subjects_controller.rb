@@ -69,7 +69,7 @@ class Admin::SurveySubjectsController < AdminController
 	end
 
 	def subject_params
-		params.require(:survey_subject).permit(:daycare_id, :title, :description, icon_attributes: [:id, :attachable_type, :attachable_id, :file])
+		params.require(:survey_subject).permit(:daycare_id, :title, :description, :language, icon_attributes: [:id, :attachable_type, :attachable_id, :file])
 	end
 
 	def build_surveys_from_spreadsheet
