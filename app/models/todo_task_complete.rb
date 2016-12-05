@@ -13,6 +13,7 @@
 #
 
 class TodoTaskComplete < ActiveRecord::Base
+    default_scope { order(created_at: :asc) }
     belongs_to :submitter,                                                      class_name: 'User'
     belongs_to :todo_complete
     belongs_to :todo_task

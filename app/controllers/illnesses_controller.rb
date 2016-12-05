@@ -178,13 +178,15 @@ class IllnessesController < ApplicationController
     params.permit(
       department: [ :id ],
       record: [
+        :illness_code,
         :sick_workers_count,
         :sick_children_count,
         :start_date,
         :end_date,
         :possible_trigger,
         :extra_details,
-        :additional_actions
+        :additional_actions,
+        symptom_codes: []        
       ],
       worker: [
         :id,

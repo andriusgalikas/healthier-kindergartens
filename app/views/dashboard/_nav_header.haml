@@ -4,7 +4,7 @@
       .col-md-2.col-sm-3.col-xs-12.header-logo
         = image_tag 'logo-md.png'
       .col-md-10.col-sm-9.col-xs-12.hide
-        %h4.stuff-parent HOW MANY DAYCARE STAFF AND PARENT WANT THIS
+        %h4.stuff-parent=t('dashboard.nav_var.staff_parent') 
         .row
           .col-sm-6.col-xs-6.header-item
             = image_tag 'manager-nm.png'
@@ -18,7 +18,9 @@
           = image_tag 'account-avatar.png'
           %span.account-info
             %span=current_user.name
-            %span.account-type Daycare Manager 
+            %span.account-type=t('account.daycare.manager')
         %ul.dropdown-menu{role: 'menu', 'aria-labelledby': 'dLabel'}
-          %li= link_to 'Edit Information', welcome_path
-          %li= link_to 'Logout', destroy_user_session_path, method: :delete
+          %li= link_to t('dashboard.nav_var.link.edit_info'), edit_user_registration_path(id: current_user.id, role: current_user.role)
+          - if current_user.role == "manager"
+            %li= link_to t('dashboard.nav_var.link.invite'), invite_manager_daycares_path
+          %li= link_to t('dashboard.nav_var.link.logout'), destroy_user_session_path, method: :delete

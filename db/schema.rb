@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118130355) do
+ActiveRecord::Schema.define(version: 20161203172119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -328,6 +328,7 @@ ActiveRecord::Schema.define(version: 20161118130355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "survey_questions", force: :cascade do |t|
@@ -336,6 +337,7 @@ ActiveRecord::Schema.define(version: 20161118130355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "survey_subjects", force: :cascade do |t|
@@ -359,6 +361,7 @@ ActiveRecord::Schema.define(version: 20161118130355) do
     t.integer  "survey_subject_id"
     t.integer  "weight",            default: 0
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "symptoms", force: :cascade do |t|

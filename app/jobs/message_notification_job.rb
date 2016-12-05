@@ -2,12 +2,16 @@ class MessageNotificationJob < ActiveJob::Base
   queue_as :notification
 
   def perform(message, opts={})
-    target_users = get_target_users(message, opts)
+    if opts[:invitation] == true
+      target_users = get_target_all_users(message, opts)
+    else
+      target_users = get_target_users(message, opts)
+    end
 
     target_users.each do |user|
       notif = message.notifications.build(target_id: user.id)
       if notif.save!
-        NotificationMailer.notify(notif, message.owner).deliver_later
+        NotificationMailer.notify(notif, message.owner, message.content).deliver_later
       end
     end
   end
@@ -31,6 +35,17 @@ class MessageNotificationJob < ActiveJob::Base
         recipients = recipients.select{|rec| rec.department_id == dept_id}
       end
     end
+
+    recipients
+  end
+
+  def get_target_all_users(message, opts)
+    recipients = []
+    sender = message.owner
+
+    recipients += User.parentee if message.for_parentee?
+    recipients += User.worker if message.for_worker?
+    recipients += User.manager if message.for_manager?
 
     recipients
   end

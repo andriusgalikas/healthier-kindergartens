@@ -91,8 +91,31 @@
       }
     }
   } 
-}
 
+  /* Login */
+  .login-container{
+    .notification-box{
+      margin: 100px 0;
+    }
+  }    
+
+  /* Upgrade Page */
+  .legacy-upgrade{
+    .upgrade-plan{
+      margin-top: 40px;    
+    }
+
+    .instruction{
+      .ongoing{
+        padding: 20px;
+        p{
+          margin-left: 66px;
+        }
+      }
+    }
+  }
+}
+/*****************************************************/
 @media screen and (max-width: 1199px) {
   .welcome-container{
     .page-header{
@@ -154,7 +177,30 @@
       }
     }
   }     
+
+  /* Login */
+  .login-container{
+    .notification-box{
+      margin: 100px 0;
+    }
+  }  
+
+  /* Upgrade Page */
+  .legacy-upgrade{
+    .upgrade-plan{
+      margin-top: 0px;    
+    }
+    .instruction{
+      .ongoing{
+        padding: 20px;
+        p{
+          margin-left: 66px;
+        }
+      }
+    }
+  }
 }
+/**********************Tablet **************************************************/
 
 @media screen and (max-width: 992px) {
   .step-banner{
@@ -247,8 +293,43 @@
       }
     }
   }     
+
+  /* Login */
+  .login-container{
+    .notification-box{
+      margin: 60px 0;
+      .form-group{
+        min-height: 40px;
+      }
+    }
+  }  
+
+  /* Upgrade Page */
+  .legacy-upgrade{
+    h2{
+      font-size: 28px;
+    }
+    .upgrade-plan{
+      margin-top: 0px;    
+    }
+    .instruction{
+      .ongoing{
+        padding: 10px;
+        p{
+          margin-left: 55px;
+        }
+      }
+    }
+  }
+  /* Illness Board */
+  .illness-dash-container{
+    .link-content{
+      min-height: 362px !important;
+    }
+  }  
 }
 
+/**********************Mobile **************************************************/
 @media screen and (max-width: 767px) {
   .step-banner{
     .step-label{
@@ -304,6 +385,11 @@
     .inline-input-link{
       width: 100%;
     }    
+    .invite-option{
+      .text-center{
+        text-align: left !important;              
+      }
+    }
   }  
 
   h3.complete-title{
@@ -339,7 +425,7 @@
   }
 
   /* Parent Page */
-  .reg-daycare-container{  
+  .reg-parentee-container{  
     .upload-wrapper {
       position: relative;
       left: 0px !important;
@@ -431,4 +517,199 @@
       }
     }
   } 
+
+  /* Login */
+  .login-container{
+    .notification-box{
+      margin: 30px 0;
+      .form-group{
+        min-height: 30px;
+      }
+      .panel-content{
+        img{
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  /* Upgrade Page */
+  .legacy-upgrade{
+    h2{
+      font-size: 24px;
+    }
+    .upgrade-plan{
+      margin-top: 0px;    
+    }
+
+    .instruction{
+      .ongoing{
+        padding: 0;
+        p{
+          margin-left: 55px;
+        }
+      }
+    }
+  }
+
+  /* ToDo Dashboard */
+  .todo-dash-container{
+    .report-date-box{
+      h4{
+        font-size: 16px !important;
+        text-align: center !important;
+      }
+    }
+
+    ul#complete-task{
+      .btn-fx-small{
+        width: 60px !important;
+        font-size: 12px !important;
+        padding: 6px 3px !important;         
+      }      
+      span.btn-fx-small{
+        padding: 0 !important;         
+      }
+    }
+    .todo-info{
+      .twelvecol{
+        .btn{
+          padding: 3px !important;
+          font-size: 12px !important;          
+        }
+      }
+    }
+
+    #todos ul{
+      text-align: center;
+      li{
+        margin: 0 10px 10px 0 !important;
+      }
+    }
+
+    .todo-list{
+      .profile-thumb{
+        margin: 5px !important;
+        width: 125px !important;
+        height: 75px !important;
+        img{
+          height: 75px;
+        }
+      }
+      .btn-lightred,
+      .btn-yellow{
+        padding: 5px 20px;
+      }
+      span.todo-title{
+        font-size: 12px !important;
+      }
+    }
+  }
+
+  /* Todo Dashbord Header */
+  header{
+    a.previous{
+      margin-left: 0px !important;
+      padding: 0 8px !important;
+    }
+
+    .dropdown{
+      margin: 13px 3px !important;
+      width: 20px !important;
+    }
+
+    h2{
+      font-size: 14px !important;
+      font-weight: 400;
+    }
+
+    .partner-profile{
+      img{
+        height: 35px !important;
+      }
+    }
+  }
+
+  /* Sub Dashboard Menu Item */  
+  .link-content{
+    min-height: 125px !important;
+    padding: 10px !important;
+    .menu-img{
+      margin: 5px auto !important;
+      width: 65px !important;
+      height: 60px !important;
+      background-size: 65px 60px !important;
+    }
+
+    span{
+      font-size: 14px !important;
+      padding: 5px !important;
+    }
+  }
+
+  /* Message Board */
+  .message-dash-container{
+    h4.option-title{
+      font-size: 14px;
+    }
+    .form-group{
+      label{
+        font-size: 12px !important;
+      }
+    }
+
+    .filtered-item{
+      .filtered-item-info{
+        font-size: 12px !important;
+      }      
+    } 
+  }
+
+  /* Illness Board */
+  .illness-dash-container{
+    .link-content{
+      min-height: 166px !important;
+    }
+
+    .wizard{
+      .steps{
+        a{
+          font-size: 12px !important;
+          padding: 5px 10px !important;
+        }
+      }
+
+      .content{
+        min-height: 400px !important;
+        .child-profile{
+          .text-right{
+            text-align: left !important;
+          }
+        }
+      }
+
+      .dl-horizontal {
+        dd{
+          line-height: 20px !important;
+        }
+      }
+
+      .actions{
+        ul li{
+          width: 120px !important;
+          font-size: 14px !important; 
+        }
+      }
+
+      h3, h4{
+        font-size: 14px !important;
+      }
+    }
+
+    .filtered-contents{
+      .filtered-item-info{
+        font-size: 14px !important;
+      }
+    }
+  }
 }

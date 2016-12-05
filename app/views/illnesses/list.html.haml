@@ -1,21 +1,13 @@
 = content_for :title, t('illnesses.illness')
-
-.row
-  .page-header
-    %h3= t('illnesses.labels.basic_filter')
-
-.container-fluid.filters
-  - if params[:record_type] == 'child'
-    = render 'illnesses/child/health_record_filters'
-  - else
-    = render 'illnesses/department/health_record_filters'
-
-  .row.centralize
-    .form-buttons
-      = link_to 'Apply filters', '#', class: 'btn btn-raised btn-info', id: 'apply-health-record-filters'
-
-.row.filtered-contents
-  = render 'health_records_list'
-
-:javascript
-  //Illnesses.initList();
+.illness-dash-container
+  .container
+    .row.content-main
+      .col-md-12
+        %h4.option-title= t('illnesses.labels.basic_filter')
+      - if params[:record_type] == 'child'
+        = render 'illnesses/child/health_record_filters'
+      - else
+        = render 'illnesses/department/health_record_filters'
+      .row
+        .col-md-12.filtered-contents
+          = render 'health_records_list'

@@ -1,59 +1,63 @@
-= content_for :title, 'Create Message'
-
-.row#main-content
-  = form_for [:partner, @message] do |f|
-    .form-group
-      %label.step-instruction{for: :target_roles} Recipient for this message :
-      - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
-        .checkbox.partners
-          %label
-            = check_box_tag 'message[target_roles][]', target_role
-            = 'Daycare ' + target_role.humanize.pluralize
-          %span.recipient-count
-            - recipient_count = 20
-            %b #{User.send(target_role).size}
-            Daycare #{target_role.humanize.pluralize} will receive this message.
-
-    .form-group
-      %label.step-instruction{for: :title} Title :
-      = f.text_field :title, placeholder: t('messages.labels.write_title'), class: 'form-control', required: true
-
-    .form-group
-      .col-md-8.partner-message-content
-        %label.step-instruction{for: :content}= t('messages.labels.write_message_content')
-        = f.text_area :content, id: 'message-content'
-      .col-md-4.partners-list
-        .panel.panel-default
-          .panel-heading Healthier Childcare Alliance Members
-          .panel-body
-            .list
-              %table.table.table-striped
-                - Affiliate.all.each do |partner|
-                  %tr
-                    %td= partner.name
-            %span
-              = image_tag 'active-tick-white.png'
-              Total #{Affiliate.all.size} Daycare organizations are listed.
-    .form-buttons
-      .col-md-6
-        %a{href: partner_messages_path, class: 'btn btn-raised btn-info'} Cancel
-      .col-md-6
-        = submit_tag 'Send', class: 'btn btn-raised btn-success'
-
+= content_for :title, t('messages.breadcrumb.create_message')
+.message-dash-container
+  .container
+    .row.content-main
+      = form_for [:partner, @message] do |f|
+        .col-md-12      
+          %h4.option-title=t('messages.labels.recipient_for_message')
+          - index = 0
+          - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
+            - index += 1
+            .row.recipients-role
+              .col-md-4.col-sm-4.col-xs-6.role-elem.right-border
+                .check-box.partners
+                  = check_box_tag 'message[target_roles][]', target_role, false, :id => "chk_depart_#{index}", :style => "display: none;"
+                  %label{:for => "chk_depart_#{index}"}
+                    = 'Daycare ' + target_role.humanize.pluralize
+              .col-md-8.col-sm-8.col-xs-6.role-elem
+                %span.recipient-count
+                  - recipient_count = 20
+                  %b #{User.send(target_role).size}
+                  =t('messages.labels.receive_messages', account: target_role.humanize.pluralize)
+        .col-md-12
+          %h4.option-title Title :
+          = f.text_field :title, placeholder: t('messages.labels.write_title'), class: 'form-control', required: true
+        .col-md-8.col-sm-8.col-xs-12
+          %h4.option-title= t('messages.labels.write_message_content')
+          = f.text_area :content, id: 'message_content'
+        .col-md-4.col-sm-4.col-xs-12.partners-list
+          .panel
+            .panel-heading=t('messages.labels.childcare_member')
+            .panel-body
+              .list
+                %table.table.table-striped
+                  - Affiliate.all.each do |partner|
+                    %tr
+                      %td= partner.name
+              .body-bottom
+                %span
+                  =t('messages.labels.daycare_total', size: Affiliate.all.size)
+        .col-md-12.form-buttons.text-right.no-h-padding
+          .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-6
+            %a{href: partner_messages_path, class: 'btn btn-gray btn-wizard'} Cancel
+          .col-md-3.col-sm-3.col-xs-6
+            = submit_tag t('messages.labels.send'), class: 'btn btn-yellow-red btn-wizard'
 :javascript
-  $('#message-content').froalaEditor({
-    heightMin: 250
+  jQuery(document).ready(function() {    
+    $('#message_content').froalaEditor({
+      heightMin: 250
+    });
+
+    $.material.init();
+
+    $('input[type="checkbox"]').on('click', function() {
+
+      if ($(this).is(':checked')) {
+        $(this).parents('.checkbox').children('.recipient-count').show();
+      }
+      else {
+        $(this).parents('.checkbox').children('.recipient-count').hide();
+      }
+
+    })
   });
-
-  $.material.init();
-
-  $('input[type="checkbox"]').on('click', function() {
-
-    if ($(this).is(':checked')) {
-      $(this).parents('.checkbox').children('.recipient-count').show();
-    }
-    else {
-      $(this).parents('.checkbox').children('.recipient-count').hide();
-    }
-
-  })

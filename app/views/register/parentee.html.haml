@@ -1,4 +1,4 @@
-.reg-daycare-container.page-boxed
+.reg-parentee-container.page-boxed
   .page-header
   .container
     .form-content        
@@ -12,16 +12,19 @@
           .tab-content
             #tab1.tab-pane
               = render partial: 'pane_parentee_reg', locals: { f: f }
-            #tab2.tab-pane
-              = render partial: 'pane_parentee_child', locals: { f: f }
+            - index = 0
+            = f.fields_for :children do |child|
+              - index = index + 2
+              .tab-pane{:id => "tab#{index}"}
+                = render partial: 'pane_parentee_child', locals: { child: child }
           .col-sm-12
             %ul.pager.wizard.text-left
               %li.previous
-                %button.btn.btn-round.item-parent.btn-prev{:type => "button"} 
-                  Previous
+                %button.btn.btn-round.item-parentee.btn-prev{:type => "button"} 
+                  =t('register.labels.previous')
               %li.next{:style => "float:right;"}
-                %button.btn.btn-round.item-parent.btn-next{:type => "button"} 
-                  Next
+                %button.btn.btn-round.item-parentee.btn-next{:type => "button"} 
+                  =t('register.labels.next')
 
 :javascript
   function add_fields(link, association, content) {
@@ -46,7 +49,7 @@
   }
 
   function onNextHandle(tab, navigation, index) {
-    var total = navigation.find('li').find("a[data-toggle*='tab']").length;
+    var total = $('#rootwizard .tab-pane').length;
     var tab_id = $('.tab-pane.active').attr('id');      
     var tab_number = tab_id.replace('tab', '');      
 

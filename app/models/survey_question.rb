@@ -8,6 +8,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  deactivated_at :datetime
+#  remote_id      :integer
 #
 
 class SurveyQuestion < ActiveRecord::Base

@@ -6,7 +6,7 @@ class Admin::MessageTemplatesController < AdminController
     set_sub_subject
     @template = @sub_subject.message_templates
                 .build(message_template_params.merge(sub_subject_id: @sub_subject.id))
-
+    build_template_from_docx
     if @template.save
       redirect_to admin_message_templates_path, notice: t('messages.notifications.create_template_success')
     else
@@ -58,10 +58,16 @@ class Admin::MessageTemplatesController < AdminController
 
   end
 
+  def upload
+    if request.post?
+      build_template_from_spreadsheet
+    end
+  end
+
   private
 
   def set_subject
-    @subject = MessageSubject.create(title: params[:subject_title])
+    @subject = MessageSubject.find_or_create_by(title: params[:subject_title])
   end
 
   def set_sub_subject
@@ -89,6 +95,38 @@ class Admin::MessageTemplatesController < AdminController
     @sub_subject = @subject.sub_subjects.find(params[:sub_subject_id]) if @subject && params[:sub_subject_id].present?
 
     @template = @sub_subject.message_templates.active.for_role(params[:target_role]) if @sub_subject && params[:target_role]
+  end
+
+  def build_template_from_docx
+    file_data = params[:upload_template]
+    if file_data
+      doc = Docx::Document.open(file_data.path)
+      # Retrieve and display paragraphs
+      content = '';
+      doc.paragraphs.each do |p|
+        content += p.to_html
+      end    
+
+      puts content
+      @template.content = content
+    end
+  end
+
+  def build_template_from_spreadsheet
+    file_data = params[:spreadsheet_file]
+
+    if file_data
+      xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
+      if xlsx.sheets.count > 0
+        if xlsx.last_row > 1
+          2.upto(xlsx.last_row) do |line|
+            @subject = MessageSubject.find_or_create_by(title: xlsx.cell(line, 'A')) if xlsx.cell(line, 'A')
+            @sub_subject = @subject.sub_subjects.create(title: xlsx.cell(line, 'B')) if xlsx.cell(line, 'B')
+            template = @sub_subject.message_templates.create(target_role: xlsx.cell(line, 'C').downcase, language: params[:template_lang].downcase, content: xlsx.cell(line, 'D'))
+          end        
+        end
+      end
+    end
   end
 
 end

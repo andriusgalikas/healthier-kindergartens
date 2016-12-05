@@ -11,19 +11,19 @@
             /  %span Risk Assessment
             = link_to instruction_path do
               = image_tag 'dashboard-instruction.png'
-              %span Instruction
+              %span=t('dashboard.menu_item.instruction') 
             = link_to todos_path, 'data-step': '14', 'data-intro': 'As daycare worker, you can manage todo list' do
               = image_tag 'dashboard-taskmng.png'
-              %span Task Manager
+              %span=t('dashboard.menu_item.task_manager')
             = link_to list_messages_path(role: current_user.role, list_type: 'received'), 'data-step': '15', 'data-intro': 'As daycare worker, you can view messages' do
               = image_tag 'dashboard-com-mng.png'
-              %span Communication Manager
+              %span=t('dashboard.menu_item.communication')
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-ilness.png'
             /  %span ILLNESS ANALYTIC
             = link_to illnesses_path, 'data-step': '16', 'data-intro': 'As daycare worker, you can record and view Illness records' do
               = image_tag 'dashboard-ilness-rec.png'
-              %span ILLNESS Record
+              %span=t('dashboard.menu_item.illness_record')
             /= link_to set_filters_manager_illnesses_path do
             /  = image_tag 'dashboard-talk.png'
             /  %span Health Talk

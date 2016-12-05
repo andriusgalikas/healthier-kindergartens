@@ -11,13 +11,10 @@
             /  %span Risk Assessment
             = link_to instruction_path do
               = image_tag 'dashboard-instruction.png'
-              %span Instruction
-            = link_to todos_path, 'data-step': '14', 'data-intro': t('user_guide.menu.parent_todo') do
-              = image_tag 'dashboard-taskmng.png'
-              %span Task Manager
+              %span=t('dashboard.menu_item.instruction') 
             = link_to list_messages_path(role: current_user.role, list_type: 'received'), 'data-step': '15', 'data-intro': t('user_guide.menu.parent_message') do
               = image_tag 'dashboard-com-mng.png'
-              %span Communication Manager
+              %span=t('dashboard.menu_item.communication')
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-ilness.png'
             /  %span ILLNESS ANALYTIC

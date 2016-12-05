@@ -1,5 +1,5 @@
-.form-group
-  %label.step-instruction= t('illnesses.labels.worker_details')
+.col-md-12
+  %h5= t('illnesses.labels.worker_details')
   %dl.dl-horizontal
     %dt= t('illnesses.labels.name')
     %dd= @worker.name
@@ -10,6 +10,6 @@
     %dt= t('illness.labels.department')
     %dd= @worker.department.name
 
-.form-group
-  %label.step-instruction= t('illnesses.labels.confirmation_pw')
-  = password_field 'worker', 'password', class: 'form-control'
+.col-md-12
+  %h5= t('illnesses.labels.confirmation_pw')
+  = password_field 'worker', 'password', class: 'form-control', :required => "true"

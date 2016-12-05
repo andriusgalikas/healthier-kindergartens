@@ -12,6 +12,8 @@
 #
 
 class TodoComplete < ActiveRecord::Base
+    default_scope { order(created_at: :asc) }
+    
     has_many :task_completes,                   class_name: 'TodoTaskComplete', dependent: :destroy
     has_many :tasks,                            through: :task_completes, source: :todo_task
     belongs_to :submitter,                      class_name: 'User'

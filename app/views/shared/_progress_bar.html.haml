@@ -1,15 +1,16 @@
 - width = 12 / step_size
 
-.row.multi-step-form
-  - (1..step_size).each do |form_step|
-    .form-step{class: "col-md-#{width} " + progress_bar_step(page_step, form_step)}
-      .progress-bar-step.text-center
-        - if page_step > form_step
-          .btn.btn-fab.btn-fab-mini.btn-success
-            %i.material-icons grade
-        - else
-          %button.btn.btn-fab.btn-fab-mini
-            = form_step
-
-      .progress
-        .progress-bar
+.col-md-12.wizard_horizontal
+  %ul.wizard_steps.anchor
+    - (1..step_size).each do |form_step|
+      %li
+        - if (page_step > form_step)
+          %a{:href => "#step-#{form_step}", :isdone => "1", :rel => "#{form_step}", class: "done"}
+            %span.step_no
+              %i.fa.fa-check
+        - elsif (page_step == form_step)
+          %a{:href => "#step-#{form_step}", :isdone => "1", :rel => "#{form_step}", class: "selected"}
+            %span.step_no=form_step
+        - else        
+          %a{:href => "#step-#{form_step}", :isdone => "0", :rel => "#{form_step}", class: "disabled"}
+            %span.step_no=form_step

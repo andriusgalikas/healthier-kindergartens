@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-    layout 'login'
+    layout 'registration'
     # before_filter :configure_sign_in_params, only: [:create]
 
     # def new

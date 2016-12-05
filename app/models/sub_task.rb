@@ -14,6 +14,8 @@
 
 class SubTask < ActiveRecord::Base
   belongs_to :todo_task
+  default_scope { order(created_at: :asc) }
+
   has_many   :sub_task_completes
 
   validates  :title, presence: true

@@ -88,13 +88,13 @@ module ApplicationHelper
 
   def current_user_role_avatar
     if current_user.manager?
-      'manager.png'
+      'manager-md.png'
     elsif current_user.parentee?
-      'parent.png'
+      'parent-md.png'
     elsif current_user.worker?
-      'worker.png'
+      'worker-md.png'
     elsif current_user.partner?
-      (current_user.affiliate.profile_image) ? current_user.affiliate.profile_image.file.url : 'partner.png'      
+      (current_user.affiliate.profile_image) ? current_user.affiliate.profile_image.file.url : 'partner-md.png'      
     elsif current_user.admin?
       'super-admin.png'
     elsif current_user.medical_professional?

@@ -10,9 +10,9 @@
 body
 {
     font-family: 'OpenSans', sans-serif;
-    font-size:1em;
+    /*font-size:1em;*/
     color:$dark-grey;
-    line-height:1.3em;
+    /*line-height:1.3em;*/
     margin:0;
 }
 h1,h2,h3
@@ -64,15 +64,17 @@ p
 {
     color: $red;
 }
+.yellow{
+    color: $yellow;   
+}
 
 body
 {
+/*
     &.worker
     {
         header
         {
-            background-color: $orange;
-
             .dropdown
             {
                 ul
@@ -163,7 +165,7 @@ body
             }
         }
     }
-
+*/
 }
 
 .alert.alert-warning {

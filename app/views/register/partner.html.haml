@@ -21,30 +21,30 @@
                   - @affiliate.errors.full_messages.each do |message|
                     %li= message                                  
             .row
-              = affiliate.text_field :name, class: 'form-control input-round', :placeholder => "Orgnization"
+              = affiliate.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.organization')
             .row
-              = affiliate.text_field :url, class: 'form-control input-round', :placeholder => "Web URL"
+              = affiliate.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.url')
             .row
-              = affiliate.text_field :address, class: 'form-control input-round', :placeholder => "Address"
+              = affiliate.text_field :address, class: 'form-control input-round', :placeholder => t('register.labels.address')
             .row
-              = affiliate.text_field :postcode, class: 'form-control input-round', :placeholder => "PostCode"
+              = affiliate.text_field :postcode, class: 'form-control input-round', :placeholder => t('register.labels.postcode')
             .row
-              = affiliate.text_field :country, class: 'form-control input-round', :placeholder => "Country"
+              = affiliate.text_field :country, class: 'form-control input-round', :placeholder => t('register.labels.country')
             .row
-              = affiliate.text_field :telephone, class: 'form-control input-round', :placeholder => "Telephone"
+              = affiliate.text_field :telephone, class: 'form-control input-round', :placeholder => t('register.labels.telephone')
             = affiliate.fields_for :user_affiliates do |user_affiliate|
               = user_affiliate.fields_for :user do |user|
                 .row
-                  = user.text_field :name, class: 'form-control input-round', :placeholder => "Name"
+                  = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name')
                 .row
-                  = user.email_field :email, class: 'form-control input-round', :placeholder => "Email"
+                  = user.email_field :email, class: 'form-control input-round', :placeholder => t('register.labels.email')
                 .row
-                  = user.password_field :password, class: 'form-control input-round', :placeholder => "Password"
+                  = user.password_field :password, class: 'form-control input-round', :placeholder => t('register.labels.password')
                 .row
-                  = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-round', :placeholder => "Password Confirmation"
+                  = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-round', :placeholder => t('register.labels.pwd_confirm')
                 - if @minimum_password_length
                   .row
                     %em{:style => "padding-left: 20px;"}
                       (#{@minimum_password_length}) characters minimum
             .row{:style => "padding: 20px 0;"}
-              = affiliate.submit 'Register', class: 'btn btn-round item-partner'
+              = affiliate.submit t('register.labels.register'), class: 'btn btn-round item-partner'

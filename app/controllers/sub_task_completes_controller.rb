@@ -6,6 +6,14 @@ class SubTaskCompletesController < ApplicationController
     set_sub_task_complete
     set_task_complete
     update_sub_task_to_pass
+
+    @sub_task_completes = SubTaskComplete.where(todo_task_complete_id: @task_complete.id)
+    result = true
+    @sub_task_completes.each do |subtask|
+        result &&= subtask.pass?
+    end
+    update_task_to_pass if result == true
+
     redirect_to todo_todo_complete_url(@task_complete.todo_task.todo, @task_complete.todo_complete), notice: 'Successfully marked sub-task as completed.'
   end
 
@@ -20,8 +28,11 @@ class SubTaskCompletesController < ApplicationController
   end
 
   def update_sub_task_to_pass
-    @sub_task_complete.update(completion_date: Time.now, result: 1)
+    @sub_task_complete.update(completion_date: Time.now, result: 1)    
   end
 
+  def update_task_to_pass
+      @task_complete.update(completion_date: Time.now, result: 1)
+  end
 
 end

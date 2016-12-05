@@ -1,26 +1,21 @@
-= form_for [:admin, @template] do |f|
+= form_tag admin_message_templates_path, :method => :post, :multipart => true do
   = hidden_field_tag :subject_title, params[:subject_title]
   = hidden_field_tag :sub_subject_title, params[:sub_subject_title]
-  = f.hidden_field :target_role, value: params[:target_role] || @template.target_role
+  = hidden_field_tag 'message_template[target_role]', params[:target_role] || @template.target_role
 
   %fieldset
     .form-group
       %label.step-instruction{for: 'language'}= t('messages.labels.choose_language')
-      = f.select :language, options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), {}, class: 'form-control'
+      = select_tag 'message_template[language]', options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), class: 'form-control'
 
     .form-group
       %label.step-instruction{for: 'content'}= t('messages.labels.edit_and_save')
-      = f.text_area :content, id: 'message_template_content'
+      = text_area_tag 'message_template[content]'
 
     - if action_name != 'edit'
       .form-group
         %label.step-instruction= t('messages.labels.upload_template')
         %input{type: 'file', name: 'upload_template', id: 'upload-template'}
-        .input-group
-          %input{type: 'text', readonly: '', class: 'form-control', placeholder: 'Upload file'}
-          %span.input-group-btn.input-group-sm
-            %button{type: 'button', class: 'btn btn-fab btn-fab-mini'}
-              %i.material-icons attach_file
 
   .form-buttons
     .col-md-6

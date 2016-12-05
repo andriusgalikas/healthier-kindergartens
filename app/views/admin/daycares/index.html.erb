@@ -42,6 +42,11 @@
               <td class="align-left">
                 <%= dc.telephone %>
               </td>
+              <td class="align-left">
+                <%= link_to [:admin, dc], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-remove"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

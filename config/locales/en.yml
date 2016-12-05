@@ -30,6 +30,8 @@ en:
       get_started: Get Started For Free
       mission: The Mission
       your_journey: Your Journey
+      dashboard: Dashboard
+      logout: Logout
 
     about:
       sub_heading1: "Committed to healthier"
@@ -156,6 +158,32 @@ en:
       para11: "If you want to learn more about the highest standard in the world for disease mitigation in childcare settings — The Health prevering care Standard"
       head: "Get Started For Free"
 
+    mission_step:
+      promo_header: Keeping children, childcare workers, and parents free from harm.
+      promo_text: Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest start to life.
+      promo_subhead: Breeding ground for childhood infections with potential long­term damage
+      intro_1: or childcare facilities and their operators, understanding the cause of infections running rampant through daycare centers isn’t difficult. Poor hygiene habits among children, combined with their susceptibility to illness and greater crowding, makes sickness a constant challenge.
+      intro_2: This, of course, leads to higher infection rates among children attending daycare facilities ­ a fact documented by researchers for decades.
+      scientific_fact: Scientific Fact
+      fact_1: Wald et al found that children attending child care centers had a 51% higher rate of infection, and 134% more days of illness as compared to children cared for at home.
+      fact_2: Swedish children in child care required 40 to 80% more medical consultations for acute infections than other children who remained at home.
+      fact_3: A Danish study reported a 69% higher incidence of hospitalizations among children in daycare for acute respiratory infection compared with children in home care.
+      children_risk: Health Risks to Children
+      children_risk_1: The negative health effects of childhood infection can extend beyond the initial acute phase of illness. Although, in the majority of cases, infections resolve without interfering with later development, the consequences of increased poor health are not so simple.
+      children_risk_2: Respiratory infections and obstructed airways are a major cause of hospitalization and morbidity in small children and can lead to reduced lung function among children later in life.
+      children_risk_3: Otitis media ­ or middle ear infection ­ can have adverse consequences in children under 3 years old even when treated properly, including reduced reading comprehension and compromised cognitive ability. Daycare attendance has been cited as one of the leading risk factors for the onset of middle ear infection.
+      children_risk_4: Children who attend daycare also have an increased risk of urgent medical attention as a result of rotavirus infection. Rotaviruses are thought to be responsible for between 20% and 60% of hospital admissions in children.
+      children_risk_5: Additionally, varicella ­ a cause of chickenpox and shingles ­ is often considered a benign childhood disease, but can result in complications as serious as hospitalization or even death.
+      staff_parents_risk: Health Risks to Childcare Staff & Parents
+      staff_parents_risk_1: Infectious diseases are, by definition, transmitted from person­to­person. The increased risk of infection within childcare facilities extends far beyond the children in attendance, and puts adults in contact with them at greater risk too.
+      staff_parents_risk_2: Working in the childcare sector carries significant occupational risk for caregivers, including exposure to diseases like Hepatitis A, CMV, Influenza, Tuberculosis, Meningitis, Scabies, Pediculosis, and Herpes.
+      staff_parents_risk_3: A 1996 cross­sectional study found that 62% of childcare workers had contracted CMV; the majority of whom were of childbearing age. The risk of infection from children under their care is of serious concern, especially for those who may be pregnant.
+      staff_parents_risk_4: CMV is a leading cause of congenital infection transmitted by preschool children to their peers, parents, and caregivers. Babies born with the virus may suffer central nervous system abnormalities, growth restrictions, and jaundice. Up to 90% of young CMV survivors endure serious long­term health issues, including visual impairment and decreased neurological function.
+      next_step_header: 'Next step : mitigate risk in your facility and show you care'
+      next_step_text: Just as researchers have clarified the risk of increased infection rates in childcare facilities, they have also recognized that control measures to reduce the spread of infectious diseases is imperative.
+      mission_invite: To that end, the Health Preserving Care Standard was developed to enable you to utilize the most optimal infection control standards & practices to effectively mitigate the risk of infection in your facility.
+      learn_more: learn more
+
     path:
       main_heading: "You’re just 3 steps away from being<br>part of The Health Preserving Accreditation"  
       paragraph1: "Note that our health-preserving accreditation program has 3 major components. This program will acquaint you with high level of knowledge on six intertwined areas of infection risk exposure to children and staff. Plus a clear, effective infection prevention protocol to help your facility mitigate these risks."
@@ -222,15 +250,63 @@ en:
   register:
     manager: 
       main_heading: "Daycare" 
-      main_heading2: "Departments"
+      main_heading2: "Departments"      
 
     parentee:
       main_heading: "Children"  
 
     partner:
       main_heading: "Affiliate"  
-
-  manager:  
+    
+    labels:
+      next: Next
+      previous: Previous
+      update: Update
+      upload_child: You need to upload your children photo!
+      name: Name
+      daycare_name: Daycare Name
+      email: Email
+      password: Password
+      pwd_confirm: Password Confirmation 
+      url: URL
+      daycare_url: Daycare URL
+      address: Address
+      postcode: Postcode
+      country: Country
+      telephone: Telephone
+      organization: Orgnization      
+      register: Register
+      congratulation: Congratulation
+      congratulation_upper: CONGRATULATIONS!
+      complete_profile: You have now created your DayCare Profile.
+      short_email: Shortly you will get a Email.
+      user_info: User Information
+      parent_info: Parent Information
+      upload_child_photo: Upload your child photo!
+      select_department: Select Department
+      select_daycare: Select Daycare
+      add_child_name: Add your child name
+      birth_day: BirthDay
+      add_child: " ADD CHILDREN"
+      department: DAYCARE DEPARTMENT
+      department_name: Department Name
+      add_department: Add Department
+      number_of_child: NUMBER OF CHILDREN
+      child_worker:  Children & Worker
+      current_password: Current Password
+  manager:
+    invite:
+      title: Daycare Manager
+      invitation: Invitation
+      description: "Invite parents and workers to your Daycare on our platform now <br/> by entering their email address in below:"
+      subject:
+        label: Invitation Subject
+        placeholder: Please input invitation subject
+      message: 
+        label: Invitation Message
+        placeholder: Please input invitation message
+      send: Send Invitation
+      email: Daycare Email  
     todos:
       index:
         main_heading: "Todos"  
@@ -244,9 +320,33 @@ en:
         label1: "Title"  
         label2: "Iteration Type"
         label3: "Completion date"
+        label4: "Frequency"
         heading: "Tasks"
         label4: "Title"
         label5: "Description"
+        label6: "Sub-tasks"
+      report:
+        title: Daycare Todos
+        create_todo: You have no Daycare todos currently, you can %{create_link} one now.
+        search_title: "Search: %{query}"
+        search_desc: You have no Daycare todos matching the search parameters.
+        range_title: "Select a date range for your <b>%{title}</b> Todo report:"
+        none_message: None of your parents or workers have started or completed this todo yet within the set of date parameters provided
+      labels:
+        report: Report
+        generate_report: Generate Report
+        add_filter: Add Filters
+        start_date: "Start Date/Time:"
+        end_date: "End Date/Time:"
+        complete: "Complete:"
+        incomplete: "Incomplete:"
+        access: Access
+        task_manager: "Task Manager"
+        todos: Todos
+        no_todos: You have no Todos currently.
+        show: Show
+        tasks: Tasks
+        btn_complete: Complete
 
   subscriptions:
     index:
@@ -296,24 +396,49 @@ en:
       send_confirmation: "Thank you for signing up!" 
  
   dashboard:
+    nav_var:
+      staff_parent: "HOW MANY DAYCARE STAFF AND PARENT WANT THIS"
+      link:
+        edit_info: "Edit Information"
+        invite: "Invite"
+        logout: "Logout"
     manager:
       heading1: "Todos"
-      heading2: "Invite"
+      heading2: "Invite"    
     parentee:
       heading1: "Todos" 
     worker:
       heading1: "Todos" 
-
+    notifications: 
+      title: "Notifications"
+      todo_list: "Todo List"
+      messages: "Messages"
+    partners_carousel:
+      title_1: "So Many Associations Are Sending Critical Messages"
+      title_2: "To Childcare Community Through Healthier Childcare Portal"
+    upgrade:
+      description: "Want to keep children and staff under your care from harm's way and fulfil your ethical and professional obligation? Join us to eliminate the factors that spread ongoing infection and absenteeism which can drain your child care facility's productivity."
+      title: "CONTRIBUTE TO THE HEALTH AND HAPPINESS OF CHILDREN AND EMPLOYEES UNDER YOUR CARE AND SUPERVISION TODAY."
+      button: "Upgrade"
+    menu_item:
+      risk_assessment: Risk Assessment
+      instruction: Instruction
+      task_manager: Task Manager
+      communication: Communication Manager
+      illness_analytic: ILLNESS ANALYTIC
+      illness_record: ILLNESS Record    
+    health_conversations: Health Conversations
   todos:
     index: 
       heading1: "Available Todos"  
       heading2: "In Progress Todos"   
       line1: "You have no avaiable todos at the moment."
       line2: "You have no todos in progress currently."
+      show: Show
+      start: Start
     search:
-      heading1: "Search:"  
+      heading1: "Search: %{query}"  
       line1: "You have no Daycare todos matching the search parameters."
-
   todo_completes: 
     show:
       label1: "Title"  
@@ -397,7 +522,8 @@ en:
         para: "Set the title and description for your survey."
         heading1: "Icon"
         para2: "Set the icon imagery for your survey."
-
+        heading3: Upload
+        para3: "Select a spreadsheet file to upload. Please make sure the file you are uploading is a <b>.xlsx</b> format."
       new: 
         heading: "New Survey"  
 
@@ -449,6 +575,7 @@ en:
       message_options: Message Options
       choose_subject: Choose Subject
       choose_sub_subject: Choose Sub-subject
+      create_message: Create Message
       send: Send
       edit: Edit
 
@@ -479,6 +606,7 @@ en:
       write_message_content: Please write the content of your message
       create_message_template: Create Message Template
       edit_message_template: Edit Message Template
+      upload_message_template: Upload Message Template
       sent_messages: Sent Messages
       basic_filter: Filter options to see your messages
       new_notification: New Notification
@@ -489,7 +617,7 @@ en:
       edit_and_send: Please Edit and Send Message
       edit_and_save: Please Edit and Save Message
       choose_recipient: Please Choose Target Recipient
-      choose_department: Please choose target daycare for this message
+      choose_department: Please choose target department for this message
       choose_language: Please Select the Language
       upload_template: Or Upload Message Template File
       filter_by_subject: Filter by Subject
@@ -500,12 +628,12 @@ en:
       message_list: Message List
       show_only_messages_to_filter: Show only messages sent to
       show_only_messages_from_filter: Show only messages received from
-
-  dashboard:
-    notifications: Notifications
-    messages: Messages
-    health_conversations: Health Conversations
-
+      option_title: MESSAGE OPTION
+      recipient_for_message: "Recipient for this message :"
+      receive_messages: Daycare %{account} will receive this message.
+      childcare_member: Healthier Childcare Alliance Members
+      daycare_total: Total %{size} Daycare organizations are listed.
+      send: Send
   registrations:
     parentee:
       registration: Parent Registration
@@ -525,6 +653,7 @@ en:
       choose_department: Choose the Department
       department: Department
       daycare: Daycare
+      graph_type: Graph Type
       search: Search
       child_details: Child Details
       department_details: Department Details
@@ -557,6 +686,8 @@ en:
       trend_filters: Filter options for the Illness Trend
       select_multiple_departments: Select one or more Departments
       select_multiple_illnesses: Select one or more Illnesses
+      select_graph_type: Graph Type
+      apply_filter: Apply filters
 
   health_records:
     flashes:
@@ -682,3 +813,17 @@ en:
   footer:
     contact_us: Contact Us
     hcc: Healthier and Safer Childcare Alliance
+
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  account:
+    daycare:
+      manager: "Daycare Manager"
+      worker: "Daycare Worker"
+      partner: "Daycare Partner"
+      parent: "Daycare Parent"

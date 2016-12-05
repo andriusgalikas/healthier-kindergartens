@@ -4,6 +4,7 @@
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require bootstrap-material-design/dist/js/material.min.js
 //= require bootstrap-material-design/dist/js/ripples.min.js
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
 //= require turbolinks
 //= require froala_editor.min.js
 //= require plugins/colors.min.js
@@ -26,6 +27,8 @@
 //= require typeahead.js/dist/typeahead.bundle.min.js
 //= require handlebars/handlebars.min.js
 //= require select2.min.js
+//= require bootstrap-notify.min
+//= require slick-carousel/slick/slick.min.js
 //= require _healthChildcare
 //= require healthChildcare.app
 //= require healthChildcare.survey

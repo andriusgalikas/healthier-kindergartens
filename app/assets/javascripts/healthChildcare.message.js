@@ -3,6 +3,7 @@ healthChildcare.message = {
   initTemplateParser: function() {
     // readable files : [*.html, *.txt]
     $('#upload-template').on('change', function() {
+      /*
       var file = this.files[0]
       var reader = new FileReader();
 
@@ -16,6 +17,7 @@ healthChildcare.message = {
       else {
         alert(window._trans['invalid_template_file']);
       }
+      */
     });
   },
 
@@ -131,6 +133,4 @@ healthChildcare.message = {
       heightMin: 250
     });
   }
-
-
 }
