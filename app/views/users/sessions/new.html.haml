@@ -1,13 +1,26 @@
-.legacy-daycares.legacy
-  .row.login
-    .col-xs-10.col-xs-offset-1.outer
-      .main-heading
-        Login
-      .wrapper
-        = image_tag 'logo.png', :class => 'logo'
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          = f.email_field :email, :class => 'user_icon', :placeholder => 'Email', required: true
-          = f.password_field :password, :class => 'password_icon', :placeholder => 'Password', required: true
-          = link_to 'Forgot Password', new_user_password_path, :class => 'forgot-password pull-right'
-          = f.submit "Login", :class => "btn btn-primary col-md-12"
-          = link_to 'Register', getting_started_path, :class => 'btn btn-success col-xs-12'
+.login-container.page-boxed
+  .container
+    .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12.text-center
+      .notification-box
+        .row
+          %span.panel-title LOGIN
+        .row.panel-content
+          = image_tag 'logo.png', :class => 'logo'
+        .row
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .col-md-12.form-group
+              = f.email_field :email, :class => 'form-control input-round', :placeholder => 'Email', required: true
+            .col-md-12.form-group
+              = f.password_field :password, :class => 'form-control input-round', :placeholder => 'Password', required: true
+            .col-md-12.form-group.text-right
+              = link_to 'Forgot Password', new_user_password_path, :class => 'forgot-password pull-right'
+            .col-md-12.form-group.text-center
+              = f.submit "Login", :class => "btn btn-round col-xs-12 item-manager"
+            .col-md-12.form-group.text-center
+              = link_to 'Register', getting_started_path, :class => 'btn btn-round col-xs-12 item-manager'
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+    $('footer.normal .container').css("top", "0");
+    $('footer.normal .container .central-footer').css("display", "none");
+  });

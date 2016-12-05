@@ -10,7 +10,7 @@
           #tab1.tab-pane
             .row.text-center.step-banner
               = image_tag 'worker-md.png'
-              %h4 Daycare Worker
+              %h4=t('account.daycare.worker')
             .row.pane-container.text-center
               .row.step-banner
                 .col-sm-3.col-xs-3.step-item.first-step.item-worker
@@ -31,11 +31,11 @@
                   .step-label
                     = image_tag 'step-arrow.png', :class => "step-arrow left"
                     = image_tag 'worker-sm.png'
-                    %span Congratulation
+                    %span=t('register.labels.congratulation')
             .row.pane-search-result.text-center
-              %h3.complete-title.item-worker CONGRATULATIONS!
-              %h5.compelet-message You have now created your DayCare Profile.
-              %h5.compelet-message Shortly you will get a Email.
+              %h3.complete-title.item-worker=t('register.labels.congratulation_upper') 
+              %h5.compelet-message=t('register.labels.complete_profile')
+              %h5.compelet-message=t('register.labels.short_email')
             .parent-congratulation
 :javascript
   function redirectDashboard(){

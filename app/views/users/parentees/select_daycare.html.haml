@@ -1,4 +1,4 @@
-.reg-daycare-container.page-boxed
+.reg-parentee-container.page-boxed
   .page-header
   .container
     .form-content        
@@ -12,11 +12,11 @@
           .col-sm-12
             %ul.pager.wizard.text-left
               %li.previous
-                %button.btn.btn-round.item-parent{:type => "button"} 
-                  Previous
+                %button.btn.btn-round.item-parentee{:type => "button"} 
+                  =t('register.labels.previous')
               %li.next{:style => "float:right;"}
-                %button.btn.btn-round.item-parent{:type => "button"} 
-                  Next
+                %button.btn.btn-round.item-parentee{:type => "button"} 
+                  =t('register.labels.next')
               %li.previous.first{:style => "display:none;"}
                 %a{:href => "#"} First
               %li.next.last{:style => "display:none;"}

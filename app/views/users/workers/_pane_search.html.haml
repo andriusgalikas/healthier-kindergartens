@@ -1,13 +1,13 @@
 .row.text-center.step-banner
   = image_tag 'worker-md.png'
-  %h4 Daycare Worker
+  %h4=t('account.daycare.worker')
 .row.pane-container.text-center
   .row.step-banner
     .col-sm-3.col-xs-3.step-item.first-step.item-worker.active
       .step-label
         = image_tag 'step-arrow.png', :class => "step-arrow right"
         = image_tag 'worker-sm.png'
-        %span Select Daycare
+        %span=t('register.labels.select_daycare')
     .col-sm-3.col-xs-3.step-item.second-step.item-worker
       .step-label
         = image_tag 'step-arrow.png', :class => "step-arrow right"

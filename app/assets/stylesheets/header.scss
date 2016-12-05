@@ -3,7 +3,6 @@ $orange: #F7941D;
 
 header
 {
-
     padding: 10px;
     margin: 0 auto;
     overflow: hidden;
@@ -184,9 +183,21 @@ header
       position: relative;
       text-align: center;
     }
+  }
 
-    ul.main-nav {
-      float: none;
+  @media screen and (max-width: 992px) {
+    .logo-container {
+      display: block;
+      position: relative;
+      text-align: center;
+    }
+
+    ul{
+      line-height: 30px !important;
+      &.main-nav {
+        float: none;
+        padding: 0 !important;
+      }    
     }
   }
 

@@ -1,17 +1,16 @@
-.container-fluid.header
-  .col-md-4
-    .user-avatar
+%header
+  %h2= yield :page_title
+
+  - if user_signed_in?
+    .dropdown
+      %ul.dropdown-menu{role: 'menu', 'aria-labelledby': 'dLabel'}
+        %li= link_to t('pages.nav_bar.dashboard'), dashboard_path
+        %li= link_to t('pages.nav_bar.logout'), destroy_user_session_path, method: :delete
+
+    .partner-profile-left
       = image_tag current_user_role_avatar, class: 'img img-thumbnail img-circle'
-    .user-info
-      .user-name
-        = current_user.name
-      %small.user-role
-        =  'Daycare %s' % current_user.role.humanize
-
-  .col-md-4
-    - unless current_user.medical_professional?
-      .user-home.centralize
-        = link_to dashboard_path, class: 'img' do
-          = image_tag 'home-2.png', class: 'img'
-
-  .col-md-4
+      %span.short-user-info
+        %span
+          = current_user.name
+        %span.user-role
+          =  'Daycare %s' % current_user.role.humanize

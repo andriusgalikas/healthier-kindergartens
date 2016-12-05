@@ -13,6 +13,8 @@
 #
 
 class SubTaskComplete < ActiveRecord::Base
+  default_scope { order(created_at: :asc) }
+
   belongs_to :submitter, class_name: 'User'
   belongs_to :todo_task_complete
   belongs_to :sub_task

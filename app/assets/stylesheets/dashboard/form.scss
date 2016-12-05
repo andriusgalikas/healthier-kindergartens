@@ -1,6 +1,6 @@
 form
 {
-    margin-bottom:40px;
+    margin-bottom:20px;
 
     .page-header
     {
@@ -159,9 +159,10 @@ form
     margin-bottom:15px;
         label
         {
+            font-size: 14px;
             display: inline-block;
             margin-bottom:7px;
-            font-weight: bold;
+            font-weight: 400;
         }
         textarea.form-control
         {
@@ -181,10 +182,10 @@ form
     padding:8px 10px;
     line-height: 1.428571429;
     vertical-align: middle;
-    background-color:rgba(208,208,208,0.5);
+    /*background-color:rgba(208,208,208,0.5);*/
     border:0px;
     outline:0;
-    font-size:1em;
+    /*font-size:1em;*/
 
     + .gross
     {
@@ -199,14 +200,14 @@ form
     span
     {
         position: absolute;
-        top:0;
-        left:0;
-        height:38px;
-        width:38px;
-        display:block;
+        top: 5px;
+        right: 5px;
+        height: 30px;
+        width: 30px;
+        display: block;
         text-align: center;
-        line-height: 38px;
-        background-color: #d0d0d0;
+        line-height: 30px;
+        background-color: #fff;
     }
     .form-control
     {

@@ -24,6 +24,12 @@ Rails.application.routes.draw do
 
         #Meeting (Schedule Once)
         get '/schedule_meeting',            to: 'users/registrations#schedule_meeting', as: 'schedule_meeting'
+
+        # edit
+        get ':role/:id/edit',               to: 'users/registrations#edit',      as: 'edit_user_registration'
+        get ':role/:id/edit_user',          to: 'users/registrations#edit_user', as: 'edit_user_info'
+        put ':role/update_user',            to: 'users/registrations#update',    as: 'update_user_registration'
+        patch ':role/update_daycare',         to: 'users/registrations#update_daycare',   as: 'update_daycare'
     end
 
     # custom registration routes
@@ -54,7 +60,7 @@ Rails.application.routes.draw do
     end
 
     namespace :manager do
-        resources :todos, except: [:new, :create] do
+        resources :todos do
             collection do
                 get :dashboard
                 get :search
@@ -151,7 +157,7 @@ Rails.application.routes.draw do
         resources :plans, except: :show
         resources :todos
         resources :users, only: :index
-        resources :daycares, only: :index
+        resources :daycares
         resources :departments, only: :index
         resources :subjects, except: :show
         resources :message_templates do
@@ -161,10 +167,16 @@ Rails.application.routes.draw do
             get :recipient
             get :edit_filters
             get :filter
+            get :upload
+            post :upload
           end
         end
         resources :messages, only: [:new, :create]
         resources :illnesses
+
+        resources :illnesses do
+            match :upload, on: :collection, via: [:get, :post]
+        end
 
         resources :survey_subjects do
             match :upload, on: :member, via: [:get, :post]

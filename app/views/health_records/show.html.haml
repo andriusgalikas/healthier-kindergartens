@@ -1,7 +1,6 @@
 .panel.panel-info
   .panel-heading
     #{pretty_short_date(@record.created_at)} : #{@record.owner.name}
-
   .panel-body
     %dl
       %dt= t('illnesses.labels.reporting_date')
@@ -11,7 +10,6 @@
       %dt= t('illnesses.labels.name')
       %dd= @record.owner.name
       %hr
-
       - if @record.for_child?
         %dt= t('illnesses.labels.age')
         %dd= @record.owner.age
@@ -33,8 +31,6 @@
         %dt= t('illnesses.labels.daycare')
         %dd= @record.owner.daycare.name
         %hr
-
-
       - @record.health_record_components.each do |hr_component|
         - if hr_component.value.present?
           %dt= t("protocols.#{@record.protocol_code}.#{hr_component.code}")

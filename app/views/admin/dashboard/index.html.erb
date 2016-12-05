@@ -2,7 +2,6 @@
 <% content_for :breadcrumb, 'Dashboard' %>
 
 <div class="twelvecol">
-
 	<div class="page-header">
 		<%= form_for @locale_file_data, url: { controller: 'admin/dashboard', action: 'create_on_s3' }, method: 'post', multipart: true do |f| %>
 		

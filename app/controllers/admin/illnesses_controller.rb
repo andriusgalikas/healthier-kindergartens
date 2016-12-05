@@ -46,6 +46,13 @@ class Admin::IllnessesController < AdminController
     end
   end
 
+  def upload
+    if request.post?
+      build_illness_from_spreadsheet
+      redirect_to admin_illnesses_path(), notice: 'You have successfully uploaded a illness module'
+    end
+  end
+
   private
 
   def set_illness
@@ -60,4 +67,25 @@ class Admin::IllnessesController < AdminController
     )
   end
 
+  def build_illness_from_spreadsheet
+    file_data = params[:spreadsheet_file]
+
+    if file_data
+      xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
+      if xlsx.sheets.count > 0
+        if xlsx.last_row > 1
+          index = Time.now.to_i          
+          2.upto(xlsx.last_row) do |line|
+            index += 1
+            unless xlsx.cell(line, 'A').nil?
+              @illness = Illness.new(:code => "IL-#{index}", :name => xlsx.cell(line, 'A'))
+              @illness.save(validate: true)
+            end
+            symptom = @illness.symptoms.new(:code => "SY-#{index}", :name => xlsx.cell(line, 'B')) unless xlsx.cell(line, 'B').nil?
+            symptom.save(validate: true)
+          end        
+        end
+      end
+    end
+  end
 end

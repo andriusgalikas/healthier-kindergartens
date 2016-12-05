@@ -13,9 +13,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="<%= user_signed_in? ? current_user.role : (yield :color_code) %>">
+    <%= render partial: 'shared/headers/dashboard' if %(todos todo_completes).include?(controller.controller_name) %>
     <div class="main" id="dashboard">
       <%= yield %>
     </div>
-    <%= render partial: 'shared/footer_dashboard' %>
+    <%if %(todos todo_completes).include?(controller.controller_name)%>
+      <%= render partial: 'shared/footer_no_logo' %>
+    <%else%>
+      <%= render partial: 'shared/footer_dashboard' %>
+    <%end%>
 </body>
 </html>

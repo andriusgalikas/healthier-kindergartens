@@ -48,7 +48,16 @@ class IllnessTrendsGenerator
 
   def generate_trend_row(date)
     row = Array.new(header_columns.size, 0)
-    row[0] = date.strftime('%b %Y')
+    case @opts[:graph_type]
+    when 'day'
+      row[0] = date.strftime('%d/%m/%Y')
+    when 'week'
+      row[0] = date.strftime('%W wk %Y')
+    when 'month'
+      row[0] = date.strftime('%b %Y')
+    when 'year'
+      row[0] = date.strftime('%Y')
+    end
 
     header_columns.each_with_index do |illness, index|
       next if index == 0
@@ -89,7 +98,7 @@ class IllnessTrendsGenerator
   end
 
   def health_record_components_by_code(illness)
-    HealthRecordComponent.where(health_record_id: health_records, code: 'illness_code', value: illness).group("DATE_TRUNC('month', created_at)").count
+    HealthRecordComponent.where(health_record_id: health_records, code: 'illness_code', value: illness).group("DATE_TRUNC('#{@opts[:graph_type]}', created_at)").count
   end
 
   def illness_dates

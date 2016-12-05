@@ -1,12 +1,22 @@
-.legacy-daycares.legacy
-    .row.login
-        .col-xs-10.col-xs-offset-1.outer
-            .main-heading Forgot your password?
-            .wrapper
-                = image_tag 'Daycare-logo.gif', :class => 'logo'
-                = form_for(resource, as: resource_name, url: password_url(resource_name), html: { method: :post }) do |f|
-                    = devise_error_messages!
-                    = f.email_field :email, autofocus: true, :class => 'user_icon', placeholder: 'Email', required: true
-                    = f.submit "Send me reset password instructions", :class => "btn btn-primary #{@subdomain}-bg #{@subdomain}-border col-md-12"
-
-
+.login-container.page-boxed
+  .container
+    .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12.text-center
+      .notification-box
+        .row
+          %span.panel-title Forgot your password?
+        .row.panel-content
+          = image_tag 'Daycare-logo.gif', :class => 'logo'
+        .row
+          = form_for(resource, as: resource_name, url: password_url(resource_name), html: { method: :post }) do |f|
+            .col-md-12.form-group
+              = devise_error_messages!
+            .col-md-12.form-group
+              = f.email_field :email, autofocus: true, :class => 'form-control input-round', placeholder: 'Email', required: true
+            .col-md-12.form-group.text-center
+              = f.submit "Send Reset Password Guide", :class => "btn btn-round col-xs-12 item-manager"
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+    $('footer.normal .container').css("top", "0");
+    $('footer.normal .container .central-footer').css("display", "none");
+  });

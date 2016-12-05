@@ -1,0 +1,40 @@
+- content_for :page_title, t('manager.todos.labels.task_manager')
+- content_for :previous_path, dashboard_path
+.todo-dash-container
+  .container
+    #todos.row
+      .twelvecol
+        = form_tag search_todos_path, method: :get do
+          .input-group.todo-search
+            = text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control')
+            .input-group-btn
+              %button.btn.btn-default{:type => "submit"}
+                %i.glyphicon.glyphicon-search            
+        .todo-list
+          %h3=t('todos.index.heading1')
+          - if current_user.available_todos.empty?
+            %p=t('todos.index.line1')
+          - else
+            %ul
+              - current_user.available_todos.each do |todo|
+                %li
+                  .menu-item
+                    %span.todo-id= todo.id
+                    .profile-thumb
+                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block'
+                    %span.todo-title= truncate(todo.title, length: 20)
+                  = link_to t('todos.index.start'), todo_todo_completes_path(todo), method: :post, :class => 'btn btn-normal btn-lightred btn-block'
+        .todo-list
+          %h3=t('todos.index.heading2')
+          - if current_user.incomplete_todo_completes.active.empty?
+            %p=t('todos.index.line2')
+          - else
+            %ul
+              - current_user.incomplete_todo_completes.active.each do |todo_c|
+                %li
+                  .menu-item
+                    %span.todo-id= todo_c.id
+                    .profile-thumb
+                      = image_tag todo_c.todo.icon.file.thumb, class: 'img-responsive center-block'
+                    %span.todo-title= truncate(todo_c.todo.title, length: 20)
+                  = link_to t('todos.index.show'), todo_todo_complete_path(todo_c.todo, todo_c), :class => 'btn btn-yellow btn-normal btn-block'

@@ -4,28 +4,28 @@
     .row.content-header
     .row.content-main
       .col-md-5.col-sm-6.col-xs-12
-    #main-menu
-      .menu-items
-        /= link_to dashboard_manager_todos_path do
-        /  = image_tag 'dashboard-risk.png'
-        /  %span Risk Assessment
-        = link_to instruction_path do
-          = image_tag 'dashboard-instruction.png'
-          %span Instruction
-        /= link_to dashboard_manager_todos_path do
-        /  = image_tag 'dashboard-taskmng.png'
-        /  %span Task Manager
-        = link_to partner_messages_path do
-          = image_tag 'dashboard-com-mng.png'
-          %span Communication Manager
-        /= link_to dashboard_manager_todos_path do
-        /  = image_tag 'dashboard-ilness.png'
-        /  %span ILLNESS ANALYTIC
-        /= link_to set_filters_manager_illnesses_path do
-        /  = image_tag 'dashboard-ilness-rec.png'
-        /  %span ILLNESS Record
-        /= link_to partner_messages_path do
-        /  = image_tag 'dashboard-talk.png'
-        /  %span Health Talk
-      .col-md-7.col-sm-6.col-xs-12
-        /= render 'notifications'
+        #main-menu
+          .menu-items
+            /= link_to dashboard_manager_todos_path do
+            /  = image_tag 'dashboard-risk.png'
+            /  %span Risk Assessment
+            = link_to instruction_path do
+              = image_tag 'dashboard-instruction.png'
+              %span=t('dashboard.menu_item.instruction') 
+            /= link_to dashboard_manager_todos_path do
+            /  = image_tag 'dashboard-taskmng.png'
+            /  %span Task Manager
+            = link_to partner_messages_path do
+              = image_tag 'dashboard-com-mng.png'
+              %span=t('dashboard.menu_item.communication')
+            /= link_to dashboard_manager_todos_path do
+            /  = image_tag 'dashboard-ilness.png'
+            /  %span ILLNESS ANALYTIC
+            /= link_to set_filters_manager_illnesses_path do
+            /  = image_tag 'dashboard-ilness-rec.png'
+            /  %span ILLNESS Record
+            /= link_to partner_messages_path do
+            /  = image_tag 'dashboard-talk.png'
+            /  %span Health Talk
+          .col-md-7.col-sm-6.col-xs-12
+            /= render 'notifications'

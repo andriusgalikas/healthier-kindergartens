@@ -1,4 +1,4 @@
-.reg-daycare-container.page-boxed
+.reg-parentee-container.page-boxed
   .page-header
   .container
     .form-content        
@@ -10,32 +10,32 @@
           #tab1.tab-pane
             .row.text-center.step-banner
               = image_tag 'parent-md.png'
-              %h4 Daycare Parent
+              %h4=t('account.daycare.parent')
             .row.pane-container.text-center
               .row.step-banner
-                .col-sm-3.col-xs-3.step-item.first-step.item-parent
+                .col-sm-3.col-xs-3.step-item.first-step.item-parentee
                   .step-label
                     = image_tag 'step-arrow.png', :class => "step-arrow right"
                     = image_tag 'step-check-prt.png'
-                .col-sm-3.col-xs-3.step-item.second-step.item-parent
-                  .step-label
-                    = image_tag 'step-arrow.png', :class => "step-arrow right"
-                    = image_tag 'step-arrow.png', :class => "step-arrow left"
-                    = image_tag 'step-check-prt.png'
-                .col-sm-3.col-xs-3.step-item.third-step.item-parent
+                .col-sm-3.col-xs-3.step-item.second-step.item-parentee
                   .step-label
                     = image_tag 'step-arrow.png', :class => "step-arrow right"
                     = image_tag 'step-arrow.png', :class => "step-arrow left"
                     = image_tag 'step-check-prt.png'
-                .col-sm-3.col-xs-3.step-item.fourth-step.item-parent.active    
+                .col-sm-3.col-xs-3.step-item.third-step.item-parentee
+                  .step-label
+                    = image_tag 'step-arrow.png', :class => "step-arrow right"
+                    = image_tag 'step-arrow.png', :class => "step-arrow left"
+                    = image_tag 'step-check-prt.png'
+                .col-sm-3.col-xs-3.step-item.fourth-step.item-parentee.active    
                   .step-label
                     = image_tag 'step-arrow.png', :class => "step-arrow left"
                     = image_tag 'parent-sm.png'
-                    %span Congratulation
+                    %span=t('register.labels.congratulation')
             .row.pane-search-result.text-center
-              %h3.complete-title.item-parent CONGRATULATIONS!
-              %h5.compelet-message You have now created your DayCare Profile.
-              %h5.compelet-message Shortly you will get a Email.
+              %h3.complete-title.item-parentee=t('register.labels.congratulation_upper') 
+              %h5.compelet-message=t('register.labels.complete_profile')
+              %h5.compelet-message=t('register.labels.short_email')
             .parent-congratulation
 :javascript
   function redirectDashboard(){

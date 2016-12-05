@@ -9,6 +9,13 @@ class Manager::TodosController < ApplicationController
 		search_todos
 	end
 
+	def new
+	    @todo = current_user.todos.build
+	    new_icon_attachment
+	    set_departments
+	    new_task		
+	end
+
 	def show
 		set_todo
 	end
@@ -33,7 +40,7 @@ class Manager::TodosController < ApplicationController
 	def destroy
 		set_todo
         set_global_todo if @todo.local?
-        hide_todo_from_dashboard
+        #hide_todo_from_dashboard
 		@todo.destroy unless @todo.global?
 		redirect_to dashboard_manager_todos_path, notice: 'Todo was successfully destroyed.'
 	end
@@ -76,6 +83,15 @@ class Manager::TodosController < ApplicationController
 		@todo.build_icon
 	end
 
+    def new_task
+      @todo.tasks.build
+      @todo.tasks[0].sub_tasks.build
+    end
+
+    def set_departments
+      @departments ||= current_user.daycare.departments
+    end
+
   	def todo_params
   		params.require(:todo).permit(
         :title,
@@ -111,7 +127,7 @@ class Manager::TodosController < ApplicationController
     end
 
     def hide_todo_from_dashboard
-        binding.pry
+        #binding.pry
         UserTodoDestroy.create(todo_id: (@global_todo ||= @todo).id, user_id: current_user.id)
     end
 end

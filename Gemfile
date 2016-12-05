@@ -20,6 +20,10 @@ gem 'unicorn', platforms: :ruby
 gem 'pg'
 gem 'countries_and_languages', :require => 'countries_and_languages/rails'
 
+# Web Services
+gem 'sendinblue'
+gem 'survey-gizmo-ruby'
+
 group :production do
   gem 'unicorn-worker-killer'
   gem 'lograge'
@@ -101,6 +105,9 @@ gem 'chronic'
 # spreadsheet
 gem 'roo'
 gem 'roo-xls'
+
+# Word docx
+gem 'docx'
 
 # wysiwyg
 gem 'wysiwyg-rails'

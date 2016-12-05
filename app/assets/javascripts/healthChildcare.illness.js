@@ -3,7 +3,8 @@ healthChildcare.illness = {
   initDatePickers: function() {
     $('.datepicker').datetimepicker({
       format: 'd/m/Y',
-      timepicker: false
+      timepicker: false,
+      maxDate: new Date()
     });
   },
 
@@ -450,7 +451,7 @@ healthChildcare.illness = {
 
         var options = {
           title: 'Illness Over Time Period',
-          curveType: 'function',
+          /*curveType: 'function',*/
           legend: { position: 'right' }
         };
 
@@ -479,8 +480,8 @@ healthChildcare.illness = {
 
         // Set chart options
         var options = {'title': 'Sickness Among The Daycare Children',
-                       'width':  1000,
-                       'height': 500,
+                       'width':  $('#pie-chart-div').width(),
+                       'height': $('#pie-chart-div').width() / 2,
                        'is3D':   true
                       };
 
@@ -510,8 +511,8 @@ healthChildcare.illness = {
 
         // Set chart options
         var options = {'title' : 'Sickness Among The Daycare Children',
-                       'width' :  1000,
-                       'height': 500
+                       'width':  $('#bar-chart-div').width(),
+                       'height': $('#bar-chart-div').width() / 2,
                       };
 
         // Instantiate and draw our chart, passing in some options.

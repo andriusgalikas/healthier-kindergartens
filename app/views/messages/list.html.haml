@@ -1,19 +1,19 @@
 = content_for :title, t('messages.labels.message_list')
+.message-dash-container
+  .container
+    .row.content-main
+      .col-md-12
+        %h4.option-title= t('messages.labels.basic_filter') + ' :'    
+      - if params[:list_type] == 'sent'
+        - if current_user.manager?
+          = render '/messages/sent_message_filters_advanced'
+        - else
+          = render '/messages/sent_message_filters_basic'
+      - else
+        = render '/messages/received_message_filters'
 
-.page-header
-  %h3= t('messages.labels.basic_filter') + ' :'
-
-.container-fluid.filters
-  - if params[:list_type] == 'sent'
-    - if current_user.manager?
-      = render '/messages/sent_message_filters_advanced'
-    - else
-      = render '/messages/sent_message_filters_basic'
-  - else
-    = render '/messages/received_message_filters'
-
-.filtered-contents
-  - if @notification
-    = render @notification.source
-
-  = render '/messages/message_list'
+      .row
+        .col-md-12.filtered-contents
+          - if @notification
+            = render @notification.source
+          = render '/messages/message_list'

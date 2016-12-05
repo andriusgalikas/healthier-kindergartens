@@ -10,7 +10,7 @@
           #tab1.tab-pane
             .row.text-center.step-banner
               = image_tag 'manager-md.png'
-              %h4 Daycare Manager
+              %h4=t('account.daycare.manager')
             .row.pane-container.text-center
               .row.step-banner
                 .col-sm-3.col-xs-3.step-item.first-step
@@ -25,10 +25,10 @@
                 .col-sm-3.col-xs-3.step-item.fourth-step.active
                   .step-label
                     = image_tag 'manager-sm.png'
-                    %span Congratulation
+                    %span=t('register.labels.congratulation')
             .row.pane-search-result.text-center
-              %h3.complete-title.item-manager CONGRATULATIONS!
-              %h5.compelet-message You have now created your DayCare Profile.
+              %h3.complete-title.item-manager=t('register.labels.congratulation_upper') 
+              %h5.compelet-message=t('register.labels.complete_profile')
             .parent-congratulation
 :javascript
   function redirectDashboard(){

@@ -106,6 +106,35 @@
       }
     }
 
+    .pane-invite-info{
+      label{
+        font-size: 16px;
+        font-weight: 400;
+        height: 30px;
+      }
+
+      .invite-option{
+        input[type=radio]{
+          display: none;
+        }
+
+        input[type=radio] + label{
+          display: inline-block;
+          margin-right: 15px;          
+          background-image: none;
+          padding-left: 30px;
+        }
+
+        input[type=radio]:checked + label{
+          display: inline-block;
+          margin-right: 15px;
+          padding-left: 30px;
+          background-image: url(/assets/manager-check.png);
+          background-repeat: no-repeat;
+        }        
+      }
+    }
+
     .parent-department{
       text-align: left;
 

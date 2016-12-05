@@ -3,9 +3,9 @@
     %span.upload-wrapper
       = image_tag 'parent-upload.png'
       %span.caption 
-        Upload your child photo!
+        =t('register.labels.upload_child_photo')        
     /%input.upload{:type => "file"}          
-  %h4 Daycare Parent
+  %h4=t('account.daycare.parent')
 .row.pane-container.text-center
   .row
     = image_tag 'parent-bar-2.png'
@@ -16,15 +16,15 @@
       .row.parent-info.text-left
         .col-sm-8
           .row
-            %h3 Parent Information
+            %h3=t('register.labels.parent_info')
           .row      
-            = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => "User Name"
+            = f.text_field :name, autofocus: true, :class => 'form-control input-round', :placeholder => t('register.labels.name')
           .row
-            = f.email_field :email, :class => 'form-control input-round', :placeholder => "Email"
+            = f.email_field :email, :class => 'form-control input-round', :placeholder => t('register.labels.email')
           .row
-            = f.password_field :password, :class => 'form-control input-round', :placeholder => "Password"
+            = f.password_field :password, :class => 'form-control input-round', :placeholder => t('register.labels.password')
           .row
-            = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => "Password Confirmation"
+            = f.password_field :password_confirmation, :class => 'form-control input-round', :placeholder => t('register.labels.pwd_confirm')
           - if @minimum_password_length
             .row
               %em
