@@ -4,6 +4,7 @@ class Users::WorkersController < ApplicationController
     def select_daycare
         set_query
         set_daycares
+        render layout: 'registration'
     end
 
     def select_department
@@ -27,5 +28,6 @@ class Users::WorkersController < ApplicationController
 
     def set_departments
         @departments ||= @daycare.departments
+        render layout: 'registration'
     end
 end

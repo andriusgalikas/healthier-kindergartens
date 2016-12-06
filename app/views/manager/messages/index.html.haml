@@ -1,21 +1,22 @@
 = content_for :title, t('messages.message')
-
-.page-header
-  %h3= t('messages.breadcrumb.message')
-
-#main-menu
-  .menu-items
+.message-dash-container
+  .container
     .row
-      .col-md-6.centralize
-        = link_to select_department_manager_messages_path, class: 'btn btn-raised' do
-          = image_tag 'template-message.png'
-          %span= t('messages.labels.send_notifications')
-      .col-md-6.centralize
-        = link_to list_messages_path(role: current_user.role, list_type: 'sent'), class: 'btn btn-raised' do
-          = image_tag 'template-send.png'
-          %span= t('messages.labels.sent_notifications')
-    .row
-      .col-md-6.centralize
-        = link_to list_messages_path(role: current_user.role, list_type: 'received'), class: 'btn btn-raised' do
-          = image_tag 'message.png', style: 'background: #1194bd; border-radius: 10px;'
-          %span= t('messages.labels.received_notifications')
+      .col-md-12
+        %h3.option-title= t('messages.labels.option_title')
+    .row.content-main
+      .col-md-6.col-sm-6.col-xs-6.menu-item
+        = link_to select_department_manager_messages_path do
+          .link-content
+            .menu-img.send-notify
+            %span= t('messages.labels.send_notifications')
+      .col-md-6.col-sm-6.col-xs-6.menu-item
+        = link_to list_messages_path(role: current_user.role, list_type: 'sent') do
+          .link-content
+            .menu-img.sent-notify
+            %span= t('messages.labels.sent_notifications')
+      .col-md-6.col-sm-6.col-xs-6.menu-item
+        = link_to list_messages_path(role: current_user.role, list_type: 'received') do
+          .link-content
+            .menu-img.received-notify
+            %span= t('messages.labels.received_notifications')

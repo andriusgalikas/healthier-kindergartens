@@ -13,6 +13,7 @@
 #  survey_subject_id :integer
 #  weight            :integer          default("0")
 #  deactivated_at    :datetime
+#  remote_id         :integer
 #
 
 class SurveySurvey < ActiveRecord::Base

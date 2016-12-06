@@ -4,8 +4,8 @@
       .col-md-12
         .infect-heading
           = image_tag 'back_page.png'
-          %h2 Infection risk assessment
-          %p Detect the level of infection risk in your facility
+          %h2= t('pages.infection.main_heading')
+          %p= t('pages.infection.para1')
       .col-md-6.left-side
         - @subjects.each do |subject|
           .single

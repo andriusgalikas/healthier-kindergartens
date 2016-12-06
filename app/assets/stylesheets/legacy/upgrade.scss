@@ -1,3 +1,97 @@
+.legacy-upgrade{
+  font-family: 'Open Sans', sans-serif;
+  
+  .row{
+    margin: 0 0 15px 0;
+  }
+
+  h2{
+    color:#426cd5;    
+    font-weight: 200;
+  }
+
+  .upgrade-plan{
+    .price-plan-desc{
+      padding: 30px;
+      h2{
+        margin-top: 10px;
+      }
+    }
+
+    h4{
+      font-size: 20px;
+      margin: 20px 0;
+    }
+
+    .round-box {
+      border: 1px solid #fb045b;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-control{
+      margin-bottom: 10px;
+    }
+
+    .plan-price{
+      font-size: 42px;
+      font-weight: 600;
+      color: #fb045b;
+      margin: 0;
+    }
+
+    .plan-per{
+      font-size: 14px;
+      font-weight: 600;
+      color: #aaa;
+      margin: 0;
+    }
+
+    .plan-date{
+      font-size: 20px;
+      font-weight: 600;
+      color: #aaa;
+      margin: 0;
+    }
+
+    span{
+      line-height: 30px;    
+    }
+
+    select{
+      height: 40px;
+    }
+  }
+
+  .instruction{
+    background: #fefaf8;
+    .ongoing {
+      background: #fefaf8;
+      padding: 20px;
+      p {
+        font-weight: 200;
+        margin-left: 66px;
+      }      
+    }
+    .ongoing-heading h2{
+      margin-left: 66px;
+    }
+
+    .single-ongoing img {
+      float: left;
+    }
+  }
+
+  .money-back{
+
+  }
+
+  .guarantee{
+
+  }
+}
+
+/******* Original Version **************************/
 #legacy-upgrade
 {
     .alert {

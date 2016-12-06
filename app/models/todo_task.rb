@@ -12,6 +12,8 @@
 #
 
 class TodoTask < ActiveRecord::Base
+    default_scope { order(created_at: :asc) }
+    
     has_many :tasks_complete,                                       class_name: 'TodoTaskComplete'
 
     # sub-tasks-related assocs

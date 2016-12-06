@@ -3,19 +3,45 @@
 
 <div class="twelvecol">
 	<div class="page-header">
-		<h2 class="widget widget-header">Dashboard</h2>
+		<%= form_for @locale_file_data, url: { controller: 'admin/dashboard', action: 'create_on_s3' }, method: 'post', multipart: true do |f| %>
+		
+			<p class="widget widget-header">
+				Select Language: <%= f.select :language_short_name, LocaleFile::LANGUAGE_NAMES %>
+			</p>
+
+			<p class="widget widget-header">
+				Upload YML: <%= f.file_field :file %>
+			</p>
+
+			<p class="widget widget-header">
+				Upload Logo: <%= f.file_field :logo %>
+			</p>
+
+			<p class="widget widget-header">
+				Upload Training File: <%= f.file_field :online_training %>
+			</p>
+
+			<p class="widget widget-header">
+				Preview Link: <%= f.text_field :preview_link %>
+			</p>
+			<%= f.submit 'Create on S3' %>
+		<% end %>
+	</div>
+
+	<div class="page-header">
+		<h2 class="widget widget-header"><%= t('admin.dashboard.index.heading')%></h2>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Resource</th>
+					<th><%= t('admin.dashboard.index.sub_head')%></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Users</td>
+					<td><%= t('admin.dashboard.index.label1')%></td>
 					<td>
 						<%= link_to admin_users_path do %>
 							<i class="icon-search"></i>
@@ -23,7 +49,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Todos</td>
+					<td><%= t('admin.dashboard.index.label2')%></td>
 					<td>
 						<%= link_to admin_todos_path do %>
 							<i class="icon-search"></i>
@@ -31,7 +57,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Daycares</td>
+					<td><%= t('admin.dashboard.index.label3')%></td>
 					<td>
 						<%= link_to admin_daycares_path do %>
 							<i class="icon-search"></i>
@@ -39,7 +65,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Discount Codes</td>
+					<td><%= t('admin.dashboard.index.label4')%></td>
 					<td>
 						<%= link_to admin_discount_codes_path do %>
 							<i class="icon-search"></i>
@@ -47,7 +73,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Plans</td>
+					<td><%= t('admin.dashboard.index.label5')%></td>
 					<td>
 						<%= link_to admin_plans_path do %>
 							<i class="icon-search"></i>
@@ -55,7 +81,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Departments</td>
+					<td><%= t('admin.dashboard.index.label6')%></td>
 					<td>
 						<%= link_to admin_departments_path do %>
 							<i class="icon-search"></i>
@@ -63,7 +89,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Subjects</td>
+					<td><%= t('admin.dashboard.index.label7')%></td>
 					<td>
 						<%= link_to admin_subjects_path do %>
 							<i class="icon-search"></i>
@@ -71,7 +97,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Surveys</td>
+					<td><%= t('admin.dashboard.index.label8')%></td>
 					<td>
 						<%= link_to admin_survey_subjects_path do %>
 							<i class="icon-search"></i>
@@ -90,6 +116,14 @@
 					<td>Illness</td>
 					<td>
 						<%= link_to admin_illnesses_path do %>
+							<i class="icon-search"></i>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>Videos</td>
+					<td>
+						<%= link_to admin_videos_path do %>
 							<i class="icon-search"></i>
 						<% end %>
 					</td>

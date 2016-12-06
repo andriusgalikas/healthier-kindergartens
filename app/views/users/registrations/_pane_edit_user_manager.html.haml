@@ -1,0 +1,19 @@
+.row.text-center
+  = image_tag 'manager-md.png'
+  %h4=t('account.daycare.manager')
+.row.pane-container.text-center
+  .row.step-banner
+    .col-sm-3.col-xs-3.step-item.first-step.active
+      .step-label
+        = image_tag 'manager-sm.png'
+        %span=t('register.labels.user_info')
+    .col-sm-3.col-xs-3.step-item.second-step
+      .step-label
+        = image_tag 'step-pending.png'
+    .col-sm-3.col-xs-3.step-item.third-step
+      .step-label
+        = image_tag 'step-pending.png'
+    .col-sm-3.col-xs-3.step-item.fourth-step    
+      .step-label
+        = image_tag 'step-pending.png'
+  = render 'user_info_fields', user: user

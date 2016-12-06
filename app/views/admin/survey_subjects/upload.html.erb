@@ -17,7 +17,7 @@
             <fieldset class="widget widget-content widget-last">
                 <div class="form-group">
                     <%= label_tag 'Spreadsheet File' %>
-                    <%= file_field_tag :spreadsheet_file, accept: 'xlsx', :class => 'form-control' %>
+                    <%= file_field_tag "spreadsheet_file[]", accept: 'xlsx', :class => 'form-control', multiple: true %>
                 </div>
             </fieldset>
             <div class="form-action">

@@ -6,6 +6,7 @@
 #
 development:
   adapter: postgresql
+  host: localhost
   encoding: unicode
   database: health_childcare_dev
   pool: 5
@@ -14,6 +15,7 @@ development:
 
 test:
   adapter: postgresql
+  host: localhost
   encoding: unicode
   database: health_childcare_test
   pool: 5
@@ -22,5 +24,6 @@ test:
 
 production:
   adapter: postgresql
+  host: localhost
   encoding: unicode
   pool: 5

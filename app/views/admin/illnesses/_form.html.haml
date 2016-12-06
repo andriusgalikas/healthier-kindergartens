@@ -12,10 +12,7 @@
       .form-group
         = f.label :name
         = f.text_field :name, class: 'form-control'
-
-      .form-group
-        = f.label :code
-        = f.text_field :code, class: 'form-control'
+        = f.hidden_field :code, value: (@illness.id) ? @illness.code : "IL-#{Time.now.to_i}"
 
   .threecol
     %h3 Symptoms

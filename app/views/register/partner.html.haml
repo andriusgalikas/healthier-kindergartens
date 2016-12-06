@@ -1,71 +1,50 @@
-= content_for :page_title, 'Partner Registration'
-= content_for :previous_path, getting_started_path
-= content_for :color_code, 'partner'
-
-= form_for @affiliate, url: affiliate_registration_path, html: {method: :post, class: 'row'} do |affiliate|
-  - if @affiliate.errors.any?
-    #error_explanation
-      %h2= pluralize(@affiliate.errors.count, 'error') + " prohibited this affiliate from being saved."
-
-      %ul
-        - @affiliate.errors.full_messages.each do |message|
-          %li= message
-
-  = affiliate.fields_for :user_affiliates do |user_affiliate|
-    = user_affiliate.fields_for :user do |user|
-      .form-group
-        = user.label :name
-        = user.text_field :name, class: 'form-control'
-
-      .form-group
-        = user.label :email
-        = user.email_field :email, autofocus: 'true', class: 'form-control'
-
-      .form-group
-        = user.label :password
-        = user.password_field :password, autocomplete: 'off', class: 'form-control'
-
-      .form-group
-        = user.label :password_confirmation
-        = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
-
-      - if @minimum_password_length
-        %em
-          (#{@minimum_password_length}) characters minimum
-
+.reg-partner-container.page-boxed
   .page-header
-    %h2 Affiliate
-
-    .img-preview-container
-      = image_tag 'add_child_img.png'
-
-    .form-group
-      = affiliate.label :name
-      = affiliate.text_field :name, class: 'form-control'
-
-    .form-group
-      = affiliate.label :address
-      = affiliate.text_field :address, class: 'form-control'
-
-    .form-group
-      = affiliate.label :postcode
-      = affiliate.text_field :postcode, class: 'form-control'
-
-    .form-group
-      = affiliate.label :country
-      = affiliate.text_field :country, class: 'form-control'
-
-    .form-group
-      = affiliate.label :telephone
-      = affiliate.text_field :telephone, class: 'form-control'
-
-    .form-group
-      = affiliate.label :url
-      = affiliate.text_field :url, class: 'form-control'
-
-    = affiliate.fields_for :profile_image do |profile_image|
-      .form-group
-        = profile_image.label :profile_image
-        = profile_image.file_field :file, class: 'form-control previewer'
-
-  = affiliate.submit 'Register', class: 'btn btn-block btn-large btn-blue'
+  .container
+    = form_for @affiliate, url: affiliate_registration_path, html: {method: :post} do |affiliate|
+      .form-content
+        .row.text-center.fileupload-container
+          .fileUpload
+            %span.upload-wrapper
+              = image_tag 'partner-upload.png'
+              %span.caption Upload Company logo
+              = affiliate.fields_for :profile_image do |profile_image|
+                = profile_image.file_field :file, class: 'upload'              
+        .row
+          .col-sm-6.col-sm-offset-3
+            .row.text-center
+              %h4 Partner Registration        
+            - if @affiliate.errors.any?
+              #error_explanation
+                %h5= pluralize(@affiliate.errors.count, 'error') + " prohibited this affiliate from being saved."
+                %ul
+                  - @affiliate.errors.full_messages.each do |message|
+                    %li= message                                  
+            .row
+              = affiliate.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.organization')
+            .row
+              = affiliate.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.url')
+            .row
+              = affiliate.text_field :address, class: 'form-control input-round', :placeholder => t('register.labels.address')
+            .row
+              = affiliate.text_field :postcode, class: 'form-control input-round', :placeholder => t('register.labels.postcode')
+            .row
+              = affiliate.text_field :country, class: 'form-control input-round', :placeholder => t('register.labels.country')
+            .row
+              = affiliate.text_field :telephone, class: 'form-control input-round', :placeholder => t('register.labels.telephone')
+            = affiliate.fields_for :user_affiliates do |user_affiliate|
+              = user_affiliate.fields_for :user do |user|
+                .row
+                  = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name')
+                .row
+                  = user.email_field :email, class: 'form-control input-round', :placeholder => t('register.labels.email')
+                .row
+                  = user.password_field :password, class: 'form-control input-round', :placeholder => t('register.labels.password')
+                .row
+                  = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-round', :placeholder => t('register.labels.pwd_confirm')
+                - if @minimum_password_length
+                  .row
+                    %em{:style => "padding-left: 20px;"}
+                      (#{@minimum_password_length}) characters minimum
+            .row{:style => "padding: 20px 0;"}
+              = affiliate.submit t('register.labels.register'), class: 'btn btn-round item-partner'

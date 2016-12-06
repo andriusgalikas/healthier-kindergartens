@@ -1,20 +1,30 @@
-.panel.panel-default
-  .panel-heading
-    = t('dashboard.notifications')
-
-    %span.badge#notif-count= @notifications.size
-  .panel-body
-    .content-group
-      .panel-subheading
-        = image_tag 'message_menu_icon.png', class: 'img img-thumbnail subheading-icon'
-        %span.subheading-title= t('dashboard.messages')
-        %span.badge= notif_per_source_type(@notifications, 'Message').size
-
-      .panel-subcontent
-        - notif_per_source_type(@notifications, 'Message').each do |notif|
-          .notification
-            = link_to list_messages_path(role: current_user.role, list_type: 'received', notification_id: notif.id)  do
-              %div.notif-sender-avatar
-                = image_tag notif_sender_avatar(notif), class: 'img img-thumbnail'
-              %div.notif-sender-name
-                = notif_sender_name(notif)
+.notification-box
+  .row
+    %span.panel-title=t('dashboard.notifications.title')
+  .row.panel-content
+    %span.item-title 
+      = image_tag 'todo-md.png'
+      =t('dashboard.notifications.todo_list')
+    .row.item-content
+      - current_user.all_todos.each_with_index do |todo, index|
+        .col-md-2.col-sm-3.col-xs-3.text-center
+          %span.item-number
+            = index+1
+        .col-md-10.col-sm-9.col-xs-9.no-h-padding
+          = link_to manager_todo_path(todo) do
+            %span.item-description 
+              = truncate(todo.title, length: 20)
+    %span.item-title 
+      = image_tag 'message-md.png'
+      =t('dashboard.notifications.messages')
+    .row.item-content
+      - index = 1
+      - notif_per_source_type(@notifications, 'Message').each do |notif|    
+        .col-md-2.col-sm-3.col-xs-3.text-center
+          %span.item-number 
+            = index
+            - index = index + 1
+        .col-md-10.col-sm-9.col-xs-9.no-h-padding
+          = link_to list_messages_path(role: current_user.role, list_type: 'received', notification_id: notif.id)  do
+            %span.item-description 
+              = notif_sender_name(notif)

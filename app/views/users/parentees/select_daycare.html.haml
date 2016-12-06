@@ -1,22 +1,35 @@
-= content_for :page_title, t('registrations.parentee.registration')
-= content_for :previous_path, getting_started_path
-= content_for :color_code, 'parentee'
+.reg-parentee-container.page-boxed
+  .page-header
+  .container
+    .form-content        
+      #rootwizard
+        %ul{:style=> "visibility: hidden; height: 0; position:absolute;"}
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab1"} First
+        .tab-content
+          #tab1.tab-pane
+            = render 'pane_search'
+          .col-sm-12
+            %ul.pager.wizard.text-left
+              %li.previous
+                %button.btn.btn-round.item-parentee{:type => "button"} 
+                  =t('register.labels.previous')
+              %li.next{:style => "float:right;"}
+                %button.btn.btn-round.item-parentee{:type => "button"} 
+                  =t('register.labels.next')
+              %li.previous.first{:style => "display:none;"}
+                %a{:href => "#"} First
+              %li.next.last{:style => "display:none;"}
+                %a{:href => "#"} Last
 
-.row.select-daycare
-  .twelvecol
-    %h3= t('registrations.parentee.select_daycare')
-    = form_tag parentee_select_daycare_path, method: :get do
-      .form-prefix
-        %span
-          %i.icon-search
-        = text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: '1', class: 'form-control')
-
-    - @daycares.each do |daycare|
-      .row.item
-        .tencol
-          %h3= daycare.name
-          %p= daycare.address_line1
-          %p= daycare.postcode
-          %p= daycare.telephone
-        .twocol.last
-          = link_to t('form_labels.select'), new_user_registration_path(role: 'parentee', daycare_id: daycare.id), class: 'btn btn-green btn-normal btn-block'
+:javascript
+  jQuery(document).ready(function() {    
+    $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'}); 
+    $('.next button').click(function(){
+      var tab_id = $('.tab-pane.active').attr('id');
+      if(tab_id == "tab1"){
+        if($('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link'))
+          window.location.href = $('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link');
+      }
+    });
+  });

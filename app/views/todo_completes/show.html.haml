@@ -1,0 +1,55 @@
+- content_for :page_title, t('manager.todos.labels.task_manager')
+- content_for :previous_path, todos_path
+.todo-dash-container
+  .container
+    #todo.row.todo-info
+      .twelvecol
+        .profile-thumb
+          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block'
+        .row
+          .form-group
+            %label=t('manager.todos.show.label1')
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.title}"}/
+          .form-group
+            %label=t('manager.todos.show.label2')
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.iteration_type.titleize}"}/
+          .form-group
+            %label=t('manager.todos.show.label4')
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.try(:titleize)}"}/
+        .row
+          .info
+            %h2=t('manager.todos.labels.tasks')
+            %ul#complete-task
+              - index = 0
+              - @todo_complete.task_completes.each do |tk|
+                -index = index+1
+                %li.todo-li-item
+                  .row{:class => "#{(index % 2 == 1) ? 'odd' : 'even'}"}
+                    .col-md-1.col-sm-1.col-xs-1.text-right.no-h-padding
+                      %p=index
+                    .col-md-8.col-sm-8.col-xs-8.no-h-padding
+                      .col-md-2.col-sm-2.col-xs-12
+                        %p=t('manager.todos.show.label1')
+                      .col-md-10.col-sm-10.col-xs-12
+                        %p= tk.todo_task.title
+                      .col-md-2.col-sm-2.col-xs-12
+                        %p=t('manager.todos.show.label5')
+                      .col-md-10.col-sm-10.col-xs-12
+                        %p= tk.todo_task.description                  
+                      - if tk.sub_task_completes.present?
+                        .col-md-12.col-sm-12.col-xs-12
+                          %p=t('manager.todos.show.label6')
+                        .col-md-12.col-sm-12.col-xs-12.subtask-group
+                          - tk.sub_task_completes.each do |sub_task_complete|
+                            .subtask
+                              - unless sub_task_complete.pass?
+                                = link_to content_tag(:i, '', class:"fa fa-square-o #{sub_task_complete.result}"), sub_task_complete_path(sub_task_complete), method: :patch
+                              - else
+                                %i.fa.fa-check-square-o.pass
+                              %p= sub_task_complete.sub_task.title
+                    .col-md-3.col-sm-3.col-xs-3.text-right.no-h-padding
+                      - unless tk.pass?
+                        = link_to t('manager.todos.labels.btn_complete'), todo_task_complete_path(tk), method: :patch, :class => 'btn btn-yellow btn-normal btn-fx-small'
+                      - else
+                        %span.btn.btn-lightred-o.text-center.btn-fx-small
+                          %i.fa.fa-check

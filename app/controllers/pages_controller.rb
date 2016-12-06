@@ -16,8 +16,7 @@ class PagesController < ApplicationController
     end
 
     def getting_started
-
-        render layout: 'login'
+        render layout: 'registration'
     end
 
     def implementation
@@ -28,10 +27,14 @@ class PagesController < ApplicationController
       render layout: 'login'
     end
 
+    def home
+
+    end
+
     private
 
     def set_subjects
-        @subjects ||= SurveySubject.all
+        @subjects ||= SurveySubject.where(language: I18n.locale.upcase)
     end
 
     def check_xhr

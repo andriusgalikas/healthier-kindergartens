@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
     helper_method :current_daycare
+    before_action :set_locale
+ 
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
 
     def authenticate_role! roles
         if current_user.nil?
@@ -14,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_subscribed!
-        unless (current_user && current_user.daycare.try(:active_subscription?)) || current_user.partner?
+        unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)          
             redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
         end
     end
@@ -24,6 +29,8 @@ class ApplicationController < ActionController::Base
         admin_root_path
       elsif resource.partner?
         dashboard_path
+      elsif resource.manager?
+        dashboard_path
       elsif resource.medical_professional?
         if resource.collaborations.present?
           medical_professional_discussions_path
@@ -31,7 +38,7 @@ class ApplicationController < ActionController::Base
           choose_child_invitation_path
         end
       else
-        welcome_path
+        dashboard_path
       end
     end
 

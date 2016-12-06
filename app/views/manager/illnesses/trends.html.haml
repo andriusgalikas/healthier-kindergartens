@@ -1,28 +1,33 @@
 = content_for :title, t('illnesses.illness')
+.illness-dash-container
+  .container
+    .row
+      .col-md-12
+        %h4.option-title= t('illnesses.trends')
+    .row.content-main
+      .col-md-12
+        #trends
+          .col-md-6
+            %dl.dl-horizontal
+              %dt= t('illnesses.labels.daycare')
+              %dd= @trend.daycare_involved.name
 
-.page-header
-  %h4= t('illnesses.trends')
+              %dt= t('illnesses.labels.department')
+              %dd= @trend.departments_involved.map(&:name).join(', ')
 
-#trends
-  .container-fluid
-    %dl.dl-horizontal
-      %dt= t('illnesses.labels.daycare')
-      %dd= @trend.daycare_involved.name
+              %dt= t('illnesses.illness')
+              %dd= @trend.illnesses_involved.map(&:name).join(', ')
 
-      %dt= t('illnesses.labels.department')
-      %dd= @trend.departments_involved.map(&:name).join(', ')
+              %dt= t('illnesses.labels.graph_type')
+              %dd= params[:graph_type]
+          .row
+            .container-fluid
+              #line-chart-div{'data-trend_data': @trend.illness_data_over_time.to_json}
+              #pie-chart-div{'data-trend_data': @trend.illness_data_over_children_count.to_json}
+              #bar-chart-div{'data-trend_data': @trend.illness_data_over_children_count.to_json}
 
-      %dt= t('illnesses.illness')
-      %dd= @trend.illnesses_involved.map(&:name).join(', ')
-
-  .container-fluid
-    #line-chart-div{'data-trend_data': @trend.illness_data_over_time.to_json}
-    #pie-chart-div{'data-trend_data': @trend.illness_data_over_children_count.to_json}
-    #bar-chart-div{'data-trend_data': @trend.illness_data_over_children_count.to_json}
-
-  .container-fluid.centralize
-    %a.print-trend-btn{href: '#', 'data-target': '#trends', class: 'btn btn-success btn-raised'}
-      = t('form_labels.print')
-
+            .container-fluid.centralize.form-buttons
+              %a.print-trend-btn{href: '#', 'data-target': '#trends', class: 'btn btn-wizard'}
+                = t('form_labels.print')
 :javascript
   google.charts.load('current', {'packages':['corechart']});

@@ -5,8 +5,8 @@
 	</div>
 
 	<div class="threecol">
-  		<h3>Plan details</h3>
-  		<p>Set the name, price and child allocation for your plan.</p>
+  		<h3><%= t('admin.plans._form.heading')%></h3>
+  		<p><%= t('admin.plans._form.para')%></p>
 	</div>
 	<div class="ninecol last">
   		<fieldset class="widget widget-content widget-last">
@@ -18,10 +18,12 @@
 				<%= f.label :price %>
 				<%= f.text_field :price, :class => 'form-control' %>
 			</div>
+			<!--
 			<div class="form-group form-last">
 				<%= f.label :allocation %>
 				<%= f.number_field :allocation, :class => 'form-control' %>
 			</div>
+			-->
 		</fieldset>
 		<div class="form-action">
     		<%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>

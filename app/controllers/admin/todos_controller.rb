@@ -22,6 +22,7 @@ class Admin::TodosController < AdminController
 
   def create
     set_departments
+    params[:todo][:department_ids] = Department.ids
     @todo = current_user.todos.build(todo_params)
     respond_to do |format|
       if @todo.save
@@ -38,6 +39,7 @@ class Admin::TodosController < AdminController
   def update
     set_todo
     set_departments
+    params[:todo][:department_ids] = Department.ids
     respond_to do |format|
       if @todo.update(todo_params)
         format.html { redirect_to admin_todos_url, notice: 'Todo was successfully updated.' }

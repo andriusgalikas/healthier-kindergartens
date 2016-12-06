@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819074504) do
+ActiveRecord::Schema.define(version: 20161203172119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,9 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.string   "telephone"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "url"
+    t.integer  "num_children"
+    t.integer  "num_worker"
   end
 
   create_table "department_todos", force: :cascade do |t|
@@ -180,6 +183,27 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locale_files", force: :cascade do |t|
+    t.string   "name"
+    t.string   "preview_link"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "online_training_file_name"
+    t.string   "online_training_content_type"
+    t.integer  "online_training_file_size"
+    t.datetime "online_training_updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "language_name"
+    t.string   "language_short_name"
   end
 
   create_table "medical_specializations", force: :cascade do |t|
@@ -304,6 +328,7 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "survey_questions", force: :cascade do |t|
@@ -312,6 +337,7 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "survey_subjects", force: :cascade do |t|
@@ -321,6 +347,7 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.datetime "updated_at",     null: false
     t.text     "description"
     t.datetime "deactivated_at"
+    t.string   "language"
   end
 
   create_table "survey_surveys", force: :cascade do |t|
@@ -334,6 +361,7 @@ ActiveRecord::Schema.define(version: 20160819074504) do
     t.integer  "survey_subject_id"
     t.integer  "weight",            default: 0
     t.datetime "deactivated_at"
+    t.integer  "remote_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
@@ -452,6 +480,15 @@ ActiveRecord::Schema.define(version: 20160819074504) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.string   "language"
+    t.string   "video_type"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "votes", force: :cascade do |t|
     t.string   "vote_candidate_code"

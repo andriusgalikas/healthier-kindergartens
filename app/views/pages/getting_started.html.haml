@@ -1,36 +1,47 @@
-#legacy-welcome.legacy
-  .row.welcome
-    .col-xs-10.col-xs-offset-1.outer
-      .main-heading
-        Welcome
-      .tag-line
-        Lets get started and choose who you are!
-      .wrapper
-        .col-sm-6.col-lg-4
-          = link_to parentee_select_daycare_path do
-            .block
-              .circle.parent-border
-                = image_tag 'parent.png'
+.welcome-container.page-boxed
+  .page-header
+    .container.text-center
+      .col-sm-2.logo-mono
+        = image_tag 'logo.png', class: 'header-mark'
+  .container
+    .row.title.text-center
+      %h3=t('pages.getting_started.main_heading')
+      %h5=t('pages.getting_started.sub_heading')
+    .row.round-menu
+      .row.menu-line
+        .col-sm-4.col-sm-offset-4.col-xs-6.col-xs-offset-3.outer
+          .block
+            .circle.parent-border.item-manager
+              = link_to worker_select_daycare_path do
+                = image_tag 'worker-white.png'
+          %h5
+            =t('account.daycare.worker')
+      .row.menu-line
+        .col-sm-4.col-sm-offset-2.col-xs-6.outer
+          .block
+            .circle.parent-border.item-worker
+              = link_to new_user_registration_path(role: 'manager') do              
+                = image_tag 'manager-white.png'
             %h5
-              Daycare Parent
-        .col-sm-6.col-lg-4
-          = link_to worker_select_daycare_path do
-            .block
-              .circle.worker-border
-                = image_tag 'worker.png'
+              =t('account.daycare.manager')
+        .col-sm-4.col-xs-6.outer
+          .block
+            .circle.parent-border.item-partner
+              = link_to new_user_registration_path(role: 'partner') do
+                = image_tag 'partner-white.png'
             %h5
-              Daycare Worker
-        .col-sm-6.col-lg-4
-          = link_to new_user_registration_path(role: 'manager') do
-            .block
-              .circle.manager-border
-                = image_tag 'manager.png'
+              =t('account.daycare.partner')
+      .row.menu-line 
+        .col-sm-4.col-sm-offset-4.col-xs-6.col-xs-offset-3.outer
+          .block
+            .circle.parent-border.item-parentee
+              = link_to parentee_select_daycare_path do
+                = image_tag 'parent-white.png'
             %h5
-              Daycare Manager
-        .col-sm-6.col-lg-4
-          = link_to new_user_registration_path(role: 'partner') do
-            .block
-              .circle.partner-border
-                = image_tag 'partner.png'
-            %h5
-              Daycare Partner
+              =t('account.daycare.parent')
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+    $('footer.normal .container').css("top", "0");
+    $('footer.normal .container .central-footer').css("display", "none");
+  });

@@ -63,7 +63,7 @@ class IllnessRecorder
 
   def trigger_component_extra_actions
     contact_parent = @record.health_record_components.where(code: 'contact_parent_message').try(:first)
-
+    
     if contact_parent.present?
       illness = @record.health_record_components.where(code: 'illness_code').first
 

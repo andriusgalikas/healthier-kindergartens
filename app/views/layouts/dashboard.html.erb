@@ -10,13 +10,17 @@
   <%= stripe_javascript_tag %>
   <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="<%= user_signed_in? ? current_user.role : (yield :color_code) %>">
-    <%= render partial: 'shared/headers/dashboard' %>
-    <%= render partial: 'shared/flash' %>
+    <%= render partial: 'shared/headers/dashboard' if %(todos todo_completes).include?(controller.controller_name) %>
     <div class="main" id="dashboard">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
+    <%if %(todos todo_completes).include?(controller.controller_name)%>
+      <%= render partial: 'shared/footer_no_logo' %>
+    <%else%>
+      <%= render partial: 'shared/footer_dashboard' %>
+    <%end%>
 </body>
 </html>

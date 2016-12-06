@@ -1,13 +1,11 @@
 class SubscriptionsController < ApplicationController
+    layout 'legacy'
     before_action -> { authenticate_role!(["manager"]) }
     before_action :unsubscribed_user!, except: :complete
 
     def index
-        set_plans
-        set_range_data
-        @plan1=Plan.find_by_allocation(30)
-        @plan2=Plan.find_by_allocation(60)
-        @plan3=Plan.find_by_allocation(90)
+        set_plan
+        new_subscription
     end
 
     def new
@@ -39,7 +37,7 @@ class SubscriptionsController < ApplicationController
     end
 
     def set_plan
-        @plan ||= Plan.find(params[:plan_id])
+        @plan ||= Plan.find(1)
     end
 
     def set_subscription

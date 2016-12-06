@@ -4,6 +4,7 @@ class Users::ParenteesController < ApplicationController
   def select_daycare
     set_query
     set_daycares
+    render layout: 'registration'
   end
 
   private

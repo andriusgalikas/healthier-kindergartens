@@ -4,8 +4,8 @@
 
 <div class="twelvecol">
     <div class="page-header">
-        <h2 class="widget widget-header">New Survey</h2>
+        <h2 class="widget widget-header"><%= t('admin.survey_subjects.new.heading')%></h2>
     </div>
-    <%= render partial: 'form', locals: { url: admin_survey_subjects_path } %>
+    <%= render partial: 'form_new', locals: { url: admin_survey_subjects_path } %>
 </div>
 

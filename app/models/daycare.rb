@@ -10,9 +10,14 @@
 #  telephone     :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  url           :string
+#  num_children  :integer
+#  num_worker    :integer
 #
 
 class Daycare < ActiveRecord::Base
+    before_destroy :destroy_others
+
     has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments
     has_many :user_daycares
@@ -93,5 +98,19 @@ class Daycare < ActiveRecord::Base
     #
     def all_todos
         (global_todos.to_a.delete_if{ |gt| local_todos.map(&:title).include?(gt.title) } + local_todos)
+    end
+
+    def destroy_others
+        self.todo_destroys.where(id: self.todo_destroys.ids).delete_all
+        self.users.where(id: self.users.ids).delete_all
+        self.user_daycares.delete_all
+        self.children.where(id: self.children.ids).delete_all
+        self.departments.delete_all
+        self.surveys.where(id: self.surveys.ids).delete_all
+        self.survey_subjects.delete_all
+        self.health_records.delete_all
+        self.local_todos.delete_all
+        self.discussions.where(id: self.discussions.ids).delete_all
+        self.discussion_participants.delete_all     
     end
 end

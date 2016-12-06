@@ -1,3 +1,127 @@
+header{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  background: #fff;
+
+  .btn.active, 
+  .btn:active{
+    color: #fff;
+    background:#ff6632;
+  }
+
+  li{
+    a{
+      font-size: 16px;
+      color: #000;
+      font-weight: 200;
+    }
+  }  
+}
+
+.main{
+  font-family: 'Open Sans', sans-serif;
+  background: #fff;
+
+  .input-round{
+    border-radius: 30px;
+  }  
+
+  .btn{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+  }
+
+  .btn-round {
+    border-radius: 20px;
+    border: none;
+    min-width: 120px;
+    min-height: 30px;
+    padding: 6px 20px;
+  }
+
+  .btn.active.focus, 
+  .btn.active:focus, 
+  .btn.focus, 
+  .btn:active.focus, 
+  .btn:active:focus, 
+  .btn:focus{
+    color: #fff;
+    outline: none;
+  }
+
+  .btn.active, 
+  .btn:active{
+    color: #fff;
+    background-image:none;
+    background:#ff6632;
+  }
+
+  .btn.focus, 
+  .btn:focus, 
+  .btn:hover{
+    color: #fff;
+    text-decoration: none;  
+  }
+
+  input.form-control{
+    border: 1px solid #242c3f;
+    min-height: 40px;
+    vertical-align: top;
+    padding: 6px 20px;
+    line-height: normal;
+    font-size: 14px;
+
+    &:focus{
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .border-red{
+    border-color: #fb045b !important;
+  }
+
+  .item-red{
+    background-color: #fb045b !important;
+    color: #fff;
+  }
+
+  .item-manager{
+    background: #ff5443;
+    background: -webkit-linear-gradient(#ffa63e, #ff0a55);
+    background: -o-linear-gradient(#ffa63e, #ff0a55);
+    background: -moz-linear-gradient(#ffa63e, #ff0a55);
+    background: linear-gradient(#ffa63e, #ff0a55);
+    color: #fff;
+  }
+  .item-worker{
+    background: #f1c942;
+    background: -webkit-linear-gradient(#f2ff32, #f09751);
+    background: -o-linear-gradient(#f2ff32, #f09751);
+    background: -moz-linear-gradient(#f2ff32, #f09751);
+    background: linear-gradient(#f2ff32, #f09751);
+    color: #fff;
+  }
+  .item-partner{
+    background: #00c4cb;
+    background: -webkit-linear-gradient(#0085fe, #00ff9c);
+    background: -o-linear-gradient(#0085fe, #00ff9c);
+    background: -moz-linear-gradient(#0085fe, #00ff9c);
+    background: linear-gradient(#0085fe, #00ff9c);
+    color: #fff;
+  }
+  .item-parentee{
+    background: #8ea4f4;
+    background: -webkit-linear-gradient(#b879ff, #63d1e8);
+    background: -o-linear-gradient(#b879ff, #63d1e8);
+    background: -moz-linear-gradient(#b879ff, #63d1e8);
+    background: linear-gradient(#b879ff, #63d1e8);
+    color: #fff;
+  }  
+
+}
+
+/****************Original Version*************************/
 .legacy-common
 {
     .bg-custom

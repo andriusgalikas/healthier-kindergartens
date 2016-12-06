@@ -1,8 +1,18 @@
-/*
+/*12px
  *= require icomoon-bower
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
  *= require slick-carousel/slick/slick-theme.css
+ *= require normalize-css
+ *= require bootstrap/dist/css/bootstrap.min.css
+ *= require bootstrap/dist/css/bootstrap-theme.min.css
+ *= require font-awesome
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require jquery.steps/jquery.steps.css
+ *= require select2.css
+ *= require version_2
+ *= require responsive
 */
 @import "compass/css3";
 
@@ -20,6 +30,9 @@ $flamingo: #F05C52;
 $header-blue: #296BD1;
 $twitter-blue: #3bafda;
 
+$info-green: #4caf50;
+$lighter-grey: #eaeaea;
+
 @import "dashboard/base";
 @import "dashboard/1100";
 @import "dashboard/form";
@@ -31,3 +44,7 @@ $twitter-blue: #3bafda;
 @import "dashboard/registration";
 @import "dashboard/surveys";
 @import "dashboard/notifications";
+@import "dashboard/common";
+@import "dashboard_v2/messages";
+@import "dashboard_v2/illnesses";
+@import "dashboard_v2/discussions";

@@ -1,77 +1,38 @@
 #main-menu
 {
-    .menu-items
-    {
-            a
-            {
-                width:200px;
-                height: 200px;
-                @include border-radius(10px);
-                display: inline-block;
-                text-align: center;
-                margin:0 20px 20px 0;
-                padding:10px 15px 0 15px;
-                position: relative;
-                text-decoration: none;
-                color:#fff;
-                box-shadow:0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  .menu-items
+  {
+    a
+    {      
+      /*width:200px;*/
+      /*height: 200px;*/
+      @include border-radius(20px);
+      display: inline-block;
+      text-align: center;
+      /*margin:0 20px 20px 0;*/
+      /*padding:10px 15px 0 15px;*/
+      position: relative;
+      text-decoration: none;
+      color:#ff0552;
+      /*border: 5px solid #ff0552;*/
 
-                img
-                {
-                    height:138px;
-                    width:138px;
-                }
-                span
-                {
-                    display: block;
-                    height:40px;
-                    position: absolute;
-                    bottom: 0;
-                    width:100%;
-                    left:0;
-                    padding:5px 0;
-                    font-size:1.3em;
-                    background-color: rgba(0,0,0,0.2);
-                    @include border-bottom-left-radius(10px);
-                    @include border-bottom-right-radius(10px);
-                    line-height:30px;
-
-                }
-                &.todos
-                {
-                    background-color: $purple;
-                }
-                &.surveys
-                {
-                    background-color: $green;
-                }
-                &.trainings
-                {
-                    background-color: $red;
-                }
-                &.invite
-                {
-                    background-color: $yellow;
-                }
-
-                &.create
-                {
-                    background-color: $green;
-                }
-                &.access
-                {
-                    background-color: $cyan;
-                }
-                &.report
-                {
-                    background-color: $purple;
-                }
-                &.messages {
-                  background-color: white;
-                }
-                &.illnesses {
-                  background-color: $flamingo;
-                }
-            }
+      img
+      {
+        /*margin: 10px;*/
+      }
+      span
+      {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width:100%;
+        left:0;
+        /*padding:5px 0;*/
+        /*font-size:20px;*/
+        /*line-height:30px;*/
+        /*font-weight: 200;*/
+        text-transform: uppercase;
+      }
     }
+  }
 }

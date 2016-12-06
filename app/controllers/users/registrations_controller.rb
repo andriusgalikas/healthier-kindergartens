@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'dashboard'
+  layout 'registration'
   before_filter :configure_sign_up_params, only: [:create]
 
   def new
@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     set_minimum_password_length
     yield resource if block_given?
     render "register/#{params[:role]}"
+    #render "register/#{params[:role]}"
   rescue ActionView::MissingTemplate
     redirect_to new_user_session_url
   end
@@ -24,8 +25,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-
-        respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'
+        #respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'                
+        render "register/success_#{params[:role]}"
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -33,6 +34,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       new_user_daycare unless ['manager', 'partner'].include?(params[:role])
+      if ['parentee'].include?(params[:role])
+        @daycare ||= Daycare.find params[:user][:user_daycare_attributes][:daycare_id]           
+        @departments ||= @daycare.departments if ['parentee'].include?(params[:role])          
+      end
       clean_up_passwords resource
       set_minimum_password_length
       render "register/#{params[:role]}"
@@ -46,13 +51,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @daycare.save
       user = @daycare.users.first
       send_confirmation_email(user)
-      sign_up(:user, user)
-      respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
+      sign_up(:user, user)  
+      render "register/success_#{params[:role]}"
+      #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
       clean_up_passwords resource
       set_minimum_password_length
       render "register/#{params[:role]}"
     end
+  end
+
+  # Action for calling schedule once
+  def schedule_meeting
   end
 
   def affiliate
@@ -72,15 +82,80 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def new_partner
 
+  end
+
+  #GET /resource/edit
+  def edit
+    yield resource if block_given?
+    render "edit_user"
+  end
+
+  def edit_user
+    yield resource if block_given?
+    get_resource_per_role
+
+    case params[:role]
+    when 'manager'
+      render "register/edit_#{params[:role]}"
+    when 'partner'
+        render "register/edit_#{params[:role]}"
+    when 'parentee'
+      @user = User.find(current_user.id)
+      render "register/edit_#{params[:role]}"
+    when 'worker'
+      redirect_to dashboard_path
+    when 'medical_professional'
+    end
+  end
+
+  def update_daycare
+    get_daycare
+
+    result = false
+    case params[:role]
+    when 'manager'
+      result = @daycare.update(daycare_manager_params)
+    when 'partner'
+      get_affiliate
+      result = @affiliate.update(affiliate_partner_params)
+    when 'parentee'
+      result = current_user.update(daycare_parentee_params)
+    when 'medical_professional'
+    end
+
+    if result
+      redirect_to dashboard_path
+      #render "register/success_#{params[:role]}"
+      #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
+    else
+      render "register/edit_#{params[:role]}"
+    end
+  end
+  
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = User.find(current_user.id)
+    if @user.update_with_password(user_params_password)
+      sign_in @user, :bypass => true
+      get_resource_per_role      
+
+      case params[:role]
+      when 'manager'
+        render "register/edit_#{params[:role]}"
+      when 'partner'
+        render "register/edit_#{params[:role]}"
+      when 'parentee'
+        render "register/edit_#{params[:role]}"
+      when 'worker'
+        redirect_to dashboard_path
+      when 'medical_professional'
+      end
+    else
+      render "edit_user"
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -117,6 +192,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def get_resource_per_role
+    case params[:role]
+    when 'manager'
+      get_daycare_department
+    when 'partner'
+      get_affiliate
+    when 'parentee'
+      get_daycare
+      set_departments
+      get_child
+    when 'worker'
+      set_daycares
+    when 'medical_professional'
+      new_user_profile
+    end
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up).push(
@@ -137,6 +229,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :postcode,
       :country,
       :telephone,
+      :url,
+      :num_children,
+      :num_worker,
       departments_attributes: [:_destroy, :name],
       user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
@@ -150,6 +245,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :postcode,
       :country,
       :telephone,
+      :url,
       user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
@@ -159,9 +255,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @daycares ||= Daycare.all
   end
 
+  def get_daycare
+    @daycare ||= current_user.daycare
+  end
+
   def new_child
     child = resource.children.build
     child.build_profile_image
+  end
+
+  def get_child
+    
   end
 
   def new_daycare_department
@@ -172,11 +276,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user_daycare.build_user
   end
 
+  def get_daycare_department
+    @daycare = current_user.daycare
+  end
+
   def new_affiliate
     @affiliate = Affiliate.new
     @affiliate.build_profile_image
     @user_affiliate = @affiliate.user_affiliates.build
     @user_affiliate.build_user
+  end
+
+  def get_affiliate
+    @affiliate = current_user.affiliate
   end
 
   def new_user_daycare
@@ -207,6 +319,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     profile = resource.build_user_profile
     profile.build_profile_image
     profile.build_doctor_specialization
+  end
+
+  def user_params_password
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email)      
+  end
+
+  def daycare_manager_params
+    params.require(:daycare).permit(:name, :url, :address_line1, :postcode, :country, :telephone, :num_children, :num_worker,
+                                    departments_attributes: [:_destroy, :name, :id])      
+  end
+
+  def affiliate_partner_params
+    params.require(:affiliate).permit(:name, :url, :address, :postcode, :country, :telephone,
+                                      profile_image_attributes: [:id, :file])      
+  end
+
+  def daycare_parentee_params
+    params.require(:user).permit(children_attributes: [:id, :name, :birth_date, 
+                                                       profile_image_attributes: [:id, :file]])      
   end
 
   # def build_resource params

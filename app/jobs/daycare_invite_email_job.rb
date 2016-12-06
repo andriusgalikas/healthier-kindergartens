@@ -1,9 +1,23 @@
 class DaycareInviteEmailJob < ActiveJob::Base
     queue_as :mailers
+  def perform(message, opts={})
+    target_users = get_target_all_users(message, opts)
 
-    def perform emails
-        emails.each do |email|
-            DaycareMailer.invite(email).deliver_later
-        end
+    target_users.each do |user|
+    	DaycareMailer.invite(user.email, message).deliver_later
     end
+  end
+
+  private
+
+  def get_target_all_users(message, opts)
+    recipients = []
+    sender = message.owner
+
+    recipients += User.parentee if message.for_parentee?
+    recipients += User.worker if message.for_worker?
+    recipients += User.manager if message.for_manager?
+
+    recipients
+  end
 end
