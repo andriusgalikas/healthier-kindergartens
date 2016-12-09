@@ -3,19 +3,46 @@ healthChildcare.survey = {
   {
     $("body").on("submit", '.submit-attempt', function() {
       var tabId = $(this).attr('data-tab');
-
       $.ajax(
         {
-          url: $(this).attr('action'),
+          url: $(this).attr('action'), 
           type: 'POST',
           data: $(this).serialize(),
           dataType: 'json',
           success: function (data)
           {
-            click_tab(tabId);
+            click_tab(tabId);             
           }
         });
       return false;
+    });
+  },
+  
+  setPendingSurveyOptions: function() {
+    $('.survey-option').on('click', function() {
+      var option_id = $(this).val();
+      var question_id = $(this).data("question");
+      var survey_id = $(this).data("survey");
+      var user_id = $(this).data("user");
+      var subject_id = $(this).data("subject");
+
+      pending_url = '/add_pending_option';
+      $.ajax(
+        {
+          url: pending_url,
+          type: 'POST',
+          data: {
+            survey_id: survey_id,
+            question_id: question_id,
+            option_id: option_id,
+            user_id: user_id,
+            subject_id: subject_id            
+          },
+          dataType: 'json',
+          success: function (data)
+          {            
+          }
+        });
     });
   },
 
@@ -26,12 +53,27 @@ healthChildcare.survey = {
     });
   },
 
+  switchSurveyAttemptSubject: function() {
+    $('.retake-survey-radio').on('click', function() {
+      var subjectId = $(this).val();
+      if($('#current_subject').val() != subjectId){
+        window.location.href = '/subjects/' + subjectId + '/attempts/new';
+      }
+    });
+  },
+
+  trySurveyAttepmtSubject: function() {
+    $('.jcmc-buttons .btn-next').on('click', function() {
+      $(this).html("Next <i class='fa fa-icon fa-spinner load-animate'></i>");
+    });
+  },
+
   showSurveySubjectResult: function() {
     $('input.retake-radio').on('click', function() {
       var subjectId = $(this).val();
       var progressDiv = $('#progress_charts_partial');
       var currentRole = $(this).data('current_role');
-      var url = '/subjects/' + subjectId + '/results';
+      var url = '/subjects/' + subjectId + '/result';
 
       if (currentRole && currentRole.length > 0) {
         url = '/' + currentRole + url;

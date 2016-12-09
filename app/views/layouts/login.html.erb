@@ -12,7 +12,7 @@
   <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
   <script type='text/javascript'>
-    window.__trans = <%= yield_js_translations.to_json.html_safe %>
+    window._trans = <%= yield_js_translations.to_json.html_safe %>
   </script>
 </head>
 <body>

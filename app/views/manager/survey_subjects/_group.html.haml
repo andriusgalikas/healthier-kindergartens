@@ -5,7 +5,7 @@
 
     .survey-group
       .group-header.parents
-        = image_tag 'we_img3.png', class: 'img'
+        = image_tag 'parent-icon.png', class: 'img'
         = t('survey.labels.parents')
 
       .group-members.parents
@@ -15,7 +15,7 @@
 
     .survey-group
       .group-header.workers
-        = image_tag 'we_img1.png', class: 'img'
+        = image_tag 'worker-icon.png', class: 'img'
         = t('survey.labels.workers')
       .group-members.workers
         %a{href: '#', class: 'get-group-result', 'data-subject_group': 'worker'}= t('survey.labels.all')

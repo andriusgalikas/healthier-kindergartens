@@ -1,4 +1,5 @@
 class Manager::SurveySubjectsController < ApplicationController
+    layout 'dashboard_v2'
     before_action -> { authenticate_role!(["manager"]) }
     before_action :authenticate_subscribed!
 
@@ -7,9 +8,19 @@ class Manager::SurveySubjectsController < ApplicationController
         set_workers
         set_parents
         params[:role] = ['parentee', 'worker']
+#        @trend = SurveyTrendsGenerator.new(@subject, population)
+
+        if request.xhr?
+          render partial: 'survey_subjects/progress_charts', locals: {trend: @trend}
+        end
+    end
+
+    def result
+        set_workers
+        set_parents
+        @subject ||= SurveySubject.find(params[:id])
         population = @workers.map(&:id) + @parents.map(&:id)
         @trend = SurveyTrendsGenerator.new(@subject, population)
-
         if request.xhr?
           render partial: 'survey_subjects/progress_charts', locals: {trend: @trend}
         end
@@ -39,7 +50,7 @@ class Manager::SurveySubjectsController < ApplicationController
     private
 
     def set_subject
-        @subject ||= SurveySubject.find(params[:subject_id])
+        @subject ||= SurveySubject.where(language: I18n.locale.upcase).first
     end
 
     def set_workers

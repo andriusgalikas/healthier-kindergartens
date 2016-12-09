@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require stripe
 //= require bootstrap/dist/js/bootstrap.min.js
-//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require bootstrap-tagsinput/src/bootstrap-tagsinput.js
 //= require twitter-bootstrap-wizard/jquery.bootstrap.wizard.js
 //= require jquery.datetimepicker
 //= require froala_editor.min.js

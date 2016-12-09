@@ -8,14 +8,16 @@ $(document).ready(function()
   healthChildcare.app.showUpgradedChildcaresNotification();
   healthChildcare.app.addAnotherCertification();
 
-/**
   healthChildcare.survey.submitSurveyModule();
   healthChildcare.survey.updateSurveyAttemptSubject();
+  healthChildcare.survey.switchSurveyAttemptSubject();
+  healthChildcare.survey.trySurveyAttepmtSubject();
   healthChildcare.survey.showSurveySubjectResult();
   healthChildcare.survey.showSingleSurveyResult();
   healthChildcare.survey.showGroupSurveyResult();
   healthChildcare.survey.showGroupSurveyMembers();
-**/
+  healthChildcare.survey.setPendingSurveyOptions();
+
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");
@@ -239,7 +241,7 @@ function click_tab(id){
         $('.jcmc-tabs li').removeClass('jcmc-active-link');
         $("#li_"+id).addClass('jcmc-active-link');
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
-        $('#tab_'+id).addClass("jcmc-active-tab");
+        $('#tab_'+id).addClass("jcmc-active-tab"); 
     }
 
 function drawSurveyProgressTrend() {
@@ -247,7 +249,7 @@ function drawSurveyProgressTrend() {
   var trendData = google.visualization.arrayToDataTable(srcData);
 
   var options = {
-    title: window.__trans['worker_progress_chart_title'],
+    title: window._trans['worker_progress_chart_title'],
     curveType: 'function',
     legend: { position: 'bottom' },
     vAxis: {title: 'Score Percentage',

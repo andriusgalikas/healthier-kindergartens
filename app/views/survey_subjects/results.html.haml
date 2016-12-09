@@ -1,0 +1,12 @@
+#legacy-result.survey-result-dash-container
+  .container
+    = form_tag new_subject_attempt_path(@subject), method: :get, id: 'retake-form' do
+      .row.survey-subjects
+        = render 'subjects'
+      #progress_charts_partial.wrap
+        = render partial: 'progress_charts', :locals => {trend: nil}
+      .row.text-center.form-buttons
+        =submit_tag 'Retake Test', :class => 'btn btn-lightred'
+:javascript
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});

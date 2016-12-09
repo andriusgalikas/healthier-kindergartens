@@ -29,3 +29,9 @@
             /  %span Health Talk
           .col-md-7.col-sm-6.col-xs-12
             /= render 'notifications'
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+    $('footer.normal .container').css("top", "0");
+    $('footer.normal .container .central-footer').css("display", "none");
+  });

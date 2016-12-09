@@ -199,6 +199,10 @@
     padding: 6px 20px;
   }
 
+  .btn-round:focus{
+    outline: none;
+  }
+
   .btn.active.focus, 
   .btn.active:focus, 
   .btn.focus, 

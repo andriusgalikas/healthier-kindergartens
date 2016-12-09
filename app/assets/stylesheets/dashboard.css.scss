@@ -9,7 +9,7 @@
  *= require font-awesome
  *= require froala_editor.min.css
  *= require froala_style.min.css
- *= require jquery.steps/jquery.steps.css
+ *= require jquery.steps
  *= require select2.css
  *= require version_2
  *= require responsive
@@ -48,3 +48,4 @@ $lighter-grey: #eaeaea;
 @import "dashboard_v2/messages";
 @import "dashboard_v2/illnesses";
 @import "dashboard_v2/discussions";
+@import "legacy/survey";

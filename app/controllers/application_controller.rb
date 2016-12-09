@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_subscribed!
         unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)          
-            redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
+          redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
         end
     end
 

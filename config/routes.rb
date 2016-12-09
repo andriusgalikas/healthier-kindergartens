@@ -53,6 +53,9 @@ Rails.application.routes.draw do
 
     get 'upgrade', to: 'subscriptions#index'
 
+    post 'add_pending_option', to: 'survey_pending_option#new'
+    post 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'
+
     resources :plans, only: [] do
       resources :subscriptions, only: [:new, :create, :index] do
         get :complete, on: :member
@@ -80,7 +83,8 @@ Rails.application.routes.draw do
 
 
         resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
-            get :results
+            get :results, on: :collection
+            get :result, on: :member
             get :user_result
             get :group_result
         end
@@ -111,7 +115,8 @@ Rails.application.routes.draw do
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
-        get :results, on: :member
+        get :results, on: :collection
+        get :result, on: :member
         resources :attempts, only: :new
         resources :surveys, only: [] do
             resources :attempts, only: :create

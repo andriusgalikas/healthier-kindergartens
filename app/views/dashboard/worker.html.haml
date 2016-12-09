@@ -6,9 +6,9 @@
       .col-md-5.col-sm-6.col-xs-12
         #main-menu
           .menu-items
-            /= link_to dashboard_manager_todos_path do
-            /  = image_tag 'dashboard-risk.png'
-            /  %span Risk Assessment
+            = link_to results_subjects_path do
+              = image_tag 'dashboard-risk.png'
+              %span=t('dashboard.menu_item.risk_assessment')
             = link_to instruction_path do
               = image_tag 'dashboard-instruction.png'
               %span=t('dashboard.menu_item.instruction') 
@@ -29,3 +29,9 @@
             /  %span Health Talk
       .col-md-7.col-sm-6.col-xs-12
         = render 'notifications'
+:javascript
+  jQuery(document).ready(function() {
+    $('body').css("src","background-color: #242c3f !important;");
+    $('footer.normal .container').css("top", "0");
+    $('footer.normal .container .central-footer').css("display", "none");
+  });        

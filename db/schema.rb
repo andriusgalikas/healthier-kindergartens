@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203172119) do
+ActiveRecord::Schema.define(version: 20161209013813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -318,6 +318,8 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "remote_id"
+    t.decimal  "rate",             precision: 5, scale: 2
   end
 
   create_table "survey_options", force: :cascade do |t|
@@ -329,6 +331,15 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.datetime "updated_at"
     t.datetime "deactivated_at"
     t.integer  "remote_id"
+  end
+
+  create_table "survey_pending_options", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "survey_id"
+    t.integer "option_id"
+    t.integer "question_id"
+    t.integer "subject_id"
+    t.boolean "completed"
   end
 
   create_table "survey_questions", force: :cascade do |t|
@@ -348,6 +359,7 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.text     "description"
     t.datetime "deactivated_at"
     t.string   "language"
+    t.integer  "remote_id"
   end
 
   create_table "survey_surveys", force: :cascade do |t|

@@ -1,4 +1,5 @@
 class SurveyTrendsGenerator
+include ActionView::Helpers::NumberHelper
 
 =begin
  params :
@@ -12,14 +13,11 @@ class SurveyTrendsGenerator
   # check for results availability
 
   def individual_survey_result_over_time
-    trend_data = []
-    trend_data << header_columns
+    survey_attempt_dates
 
-    date_labels(survey_attempt_dates).each do |date|
-      trend_data << generate_trend_row(date, trend_data[0], survey_attempt_dates)
-    end
-
-    trend_data
+#    date_labels(survey_attempt_dates).each do |date|
+#      trend_data << generate_trend_row(date, trend_data[0], survey_attempt_dates)
+#    end    
   end
 =begin
   output :
@@ -92,11 +90,10 @@ class SurveyTrendsGenerator
         attempts = attempts_per_survey([survey.id])
 
         if attempts.present?
-          # get score percentage for every attempt groupings
-          # formula : average of correct scores / average # of questions * 100
-          attempts.each_pair{|date, score| attempts[date] = (score / survey.questions.size * 100).to_i}
-
-          list[survey.name] = attempts
+          # get rate percentage for every attempt groupings
+          # formula : average of correct rates / average # of questions * 100
+          #attempts.each_pair{|date, rate| attempts[date] = (rate / survey.questions.size * 100).to_i}
+          list[survey.name] = number_with_precision(attempts, precision: 0)
         end
         list
       end
@@ -105,16 +102,16 @@ class SurveyTrendsGenerator
 
   def subject_attempt_dates
     @subject_attempt_dates ||= (
-      scores_per_date = Hash.new{|h, k| h[k] = []}
+      rates_per_date = Hash.new{|h, k| h[k] = []}
 
       survey_attempt_dates.values.each do |date_hash|
-        date_hash.each_pair do |date, score_percentage|
-          scores_per_date[date] << score_percentage
+        date_hash.each_pair do |date, rate_percentage|
+          rates_per_date[date] << rate_percentage
         end
       end
 
-      # get the average score per date
-      scores_per_date.each_pair{|date, score| scores_per_date[date] = score.sum / score.size}
+      # get the average rate per date
+      rates_per_date.each_pair{|date, rate| rates_per_date[date] = rate.sum / rate.size}
       if scores_per_date.present?
         {@subject.title => scores_per_date}
       else
@@ -124,7 +121,7 @@ class SurveyTrendsGenerator
   end
 
   def attempts_per_survey(survey_id)
-    SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population).group("DATE_TRUNC('month', created_at)").average('score')
+    SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population).average('rate')
   end
 
   def date_labels(attempt_dates)
