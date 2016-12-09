@@ -282,7 +282,7 @@ If there are missing files related to bootstrap-material-design, download and us
 
 ## using RESTful API
 
-# SendingBlue API
+### SendingBlue API
 Sendingblue API is the transactional email platform. It has a very structured REST, webhooks and a next-generation websockets API to take care of all your needs.
 
 Reference - https://apidocs.sendinblue.com/
@@ -293,6 +293,7 @@ Reference - https://apidocs.sendinblue.com/
 - Call Sendingblue API for SMTP
 
 - Example
+```ruby
     m = Mailin.new("https://api.sendinblue.com/v2.0","<YOUR-API-KEY>")
 	data = { "to" => {email => "Daycare"},
 		"from" => [message.owner.email, message.owner.name],
@@ -301,20 +302,21 @@ Reference - https://apidocs.sendinblue.com/
 	}
  
 	result = m.send_email(data)
+```
 
-# SurveyGizmo API
+### SurveyGizmo API
 It's easier than ever for team members to collaborate across multiple survey projects while maintaining administrative control over users and their roles.
 
 API Reference - https://apihelp.surveygizmo.com/help/authentication
 
 - Ruby on Rails gem for SurveyGizmo 
 	https://github.com/jarthod/survey-gizmo-ruby/
+	
 	Currently supports SurveyGizmo API v4 (default) and v3.
-
 - Installation
 	`gem 'survey-gizmo-ruby'`
 - Examples
-`
+```ruby
 # Iterate over your all surveys directly with the iterator
 SurveyGizmo::API::Survey.all(all_pages: true).each { |survey| do_something_with(survey) }
 # Iterate over the 1st page of your surveys
@@ -376,4 +378,4 @@ SurveyGizmo::API::Survey.all(all_pages: true).each do |survey|
     end
   end
 end
-`
+```
