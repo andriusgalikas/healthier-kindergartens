@@ -2,8 +2,22 @@ class Manager::DaycaresController < ApplicationController
   layout 'registration'
   before_action -> { authenticate_role!(["manager"]) }
 
+  def invite_survey
+    @daycare_role = params[:type]
+
+    @subject = MessageSubject.find_or_create_by(title: ENV['SURVEY_TEMPLATE_SUBJECT']) 
+    template_key = 'SURVEY_TEMPLATE_SUBJECT_' + current_user.role.upcase
+    @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key])
+    @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[current_user.role], language: I18n.default_locale.downcase)
+  end
+  
   def invite
     @message = Message.new(owner_id: current_user.id)
+  end
+
+  def send_invite_survey    
+    ManagerInviteEmailJob.perform_now(params[:email], params[:title], params[:content], current_user.email, current_user.name)
+    redirect_to results_manager_subjects_path, notice: "Successfully sent your invites"
   end
 
   def send_invites      

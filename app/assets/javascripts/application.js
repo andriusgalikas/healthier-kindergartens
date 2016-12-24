@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require stripe
 //= require bootstrap/dist/js/bootstrap.min.js
-//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require bootstrap-tagsinput/src/bootstrap-tagsinput.js
 //= require bootstrap-material-design/dist/js/material.min.js
 //= require jquery.datetimepicker
 //= require _healthChildcare
@@ -28,8 +28,9 @@
 //= require booknow
 //= require slick-carousel/slick/slick.min.js
 //= require smartwizard/js/jquery.smartWizard.js
-//= require froala_editor.min.js
 //= require printThis.js
+//= require froala_editor.min.js
+//= require hopscotch.js
 //= require select2.min.js
 //= require jquery.shorten.min.js
 //= require jquery.steps/build/jquery.steps.min.js
@@ -38,4 +39,7 @@
 //= require healthChildcare.message
 //= require healthChildcare.illness
 //= require healthChildcare.discussion
+//= require healthChildcare.guideline
 //= require dashboard_v2.ready
+//= require jquery.plainmodal
+//= require jquery.easing

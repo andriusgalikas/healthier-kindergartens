@@ -279,3 +279,103 @@ The VoteCandidate model represents the possible votes that the user can do. As o
 When stripe or rollbar causes error in the initial migration, temporarily comment out the codes in their respective files in the config/, and run the migration.
 
 If there are missing files related to bootstrap-material-design, download and use the version from the repo https://github.com/FezVrasta/bootstrap-material-design.
+
+## using RESTful API
+
+### SendingBlue API
+Sendingblue API is the transactional email platform. It has a very structured REST, webhooks and a next-generation websockets API to take care of all your needs.
+
+Reference - https://apidocs.sendinblue.com/
+
+- Installation
+  Copy mailin.rb to lib directory
+- Prepare API key and secret key for user
+- Call Sendingblue API for SMTP
+
+- Example
+```ruby
+    m = Mailin.new("https://api.sendinblue.com/v2.0","<YOUR-API-KEY>")
+	data = { "to" => {email => "Daycare"},
+		"from" => [message.owner.email, message.owner.name],
+		"subject" => message.title,
+		"html" => message.content
+	}
+ 
+	result = m.send_email(data)
+```
+
+### SurveyGizmo API
+It's easier than ever for team members to collaborate across multiple survey projects while maintaining administrative control over users and their roles.
+
+API Reference - https://apihelp.surveygizmo.com/help/authentication
+
+- Ruby on Rails gem for SurveyGizmo 
+	https://github.com/jarthod/survey-gizmo-ruby/
+	
+	Currently supports SurveyGizmo API v4 (default) and v3.
+- Installation
+	`gem 'survey-gizmo-ruby'`
+- Examples
+```ruby
+# Iterate over your all surveys directly with the iterator
+SurveyGizmo::API::Survey.all(all_pages: true).each { |survey| do_something_with(survey) }
+# Iterate over the 1st page of your surveys
+SurveyGizmo::API::Survey.all(page: 1).each { |survey| do_something_with(survey) }
+
+# Retrieve the survey with id: 12345
+survey = SurveyGizmo::API::Survey.first(id: 12345)
+survey.title # => "My Title"
+survey.pages # => [page1, page2,...]
+survey.number_of_completed_responses # => 355
+survey.server_has_new_results_since?(Time.now.utc - 2.days) # => true
+survey.team_names # => ['Development', 'Test']
+survey.belongs_to?('Development') # => true
+
+# Retrieve all questions for all pages of this survey
+questions = survey.questions
+# Strip out instruction, urlredirect, logic, media, and other non question "questions"
+questions = survey.actual_questions
+
+# Create a question for your survey.  The returned object will be given an :id parameter by SG.
+question = SurveyGizmo::API::Question.create(survey_id: survey.id, title: 'Do u ruby?', type: 'checkbox')
+# Update a question
+question.title = "Do u <3 Ruby?"
+question.save
+# Destroy a question
+question.destroy
+
+# Iterate over all your Responses
+survey.responses.each { |response| do_something_with(response) }
+# Use filters to limit results - this example will iterate over page 3 of completed, non test data
+# SurveyResponses submitted within the past 3 days for contact 999. The example `filters` array
+# demonstrates how to use some of the gem's built in filters/generators as well as how to construct
+# an ad hoc filter hash.
+# See: http://apihelp.surveygizmo.com/help/article/link/filters for more info on filters
+filters = [
+  SurveyGizmo::API::Response::NO_TEST_DATA,
+  SurveyGizmo::API::Response::ONLY_COMPLETED,
+  SurveyGizmo::API::Response.submitted_since_filter(Time.now - 72.hours),
+  {
+    field: 'contact_id',
+    operator: '=',
+    value: 999
+  }
+]
+survey.responses(page: 3, filters: filters).each { |response| do_stuff_with(response) }
+
+# Parse the answer hash into a more usable format.
+# Answers with keys but empty values will not be returned.
+# "Other" text for some questions is parsed to Answer#other_text; all other answers to Answer#answer_text
+# Custom table question answers have the question_pipe string parsed out to Answer#question_pipe.
+# See http://apihelp.surveygizmo.com/help/article/link/surveyresponse-per-question for more info on answers
+response.parsed_answers => # [#<SurveyGizmo::API::Answer @survey_id=12345, @question_id=1, @option_id=2, @answer_text='text'>]
+
+# Retrieve all answers from all responses to all surveys, write rows to your database
+SurveyGizmo::API::Survey.all(all_pages: true).each do |survey|
+  survey.responses.each do |response|
+    response.parsed_answers.each do |answer|
+      MyLocalSurveyGizmoResponseModel.create(answer.to_hash)
+    end
+  end
+end
+```

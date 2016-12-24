@@ -1,4 +1,4 @@
-- content_for :page_title, "Task Manager"
+- content_for :page_title, t('manager.todos.labels.task_manager')
 - content_for :previous_path, dashboard_manager_todos_path
 .todo-dash-container
   .container
@@ -25,7 +25,7 @@
                     .profile-thumb
                       = image_tag todo.icon.file.thumb, class: 'img-responsive center-block'
                     %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
+                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
         .todo-list
           %h3 Global Todos
           - if current_user.global_todos.empty?
@@ -39,4 +39,4 @@
                     .profile-thumb
                       = image_tag todo.icon.file.thumb, class: 'img-responsive center-block'
                     %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
+                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'

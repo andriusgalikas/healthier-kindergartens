@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
     before_action :set_locale
  
     def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
+      local_name = LocaleUrl.find_by(url: request.host)
+      if local_name.nil?
+        I18n.locale = I18n.default_locale
+      else
+        I18n.locale = local_name.language
+      end       
     end
 
     def authenticate_role! roles
@@ -20,7 +25,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_subscribed!
         unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)          
-            redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
+          redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
         end
     end
 

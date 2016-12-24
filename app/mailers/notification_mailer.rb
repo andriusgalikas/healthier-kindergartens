@@ -4,7 +4,7 @@ class NotificationMailer < ApplicationMailer
 
   def notify notification, sender, content
     @email = notification.target.email
-    m = Mailin.new("https://api.sendinblue.com/v2.0","k4ptKwAELb0R6xB5")
+    m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
 #    puts notification.target.email
 	data = { "to" => {notification.target.email => notification.target.name},
 		"from" => [sender.email, sender.name],

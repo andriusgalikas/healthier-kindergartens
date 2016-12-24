@@ -14,7 +14,7 @@
           = link_to manager_todo_path(todo) do
             %span.item-description 
               = truncate(todo.title, length: 20)
-    %span.item-title 
+    %span.item-title{id: 'item_nofity_message'} 
       = image_tag 'message-md.png'
       =t('dashboard.notifications.messages')
     .row.item-content

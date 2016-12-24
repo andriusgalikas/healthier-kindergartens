@@ -10,6 +10,8 @@
 #  score            :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  remote_id        :integer
+#  rate             :decimal(5, 2)
 #
 
 class SurveyAttempts < ActiveRecord::Base

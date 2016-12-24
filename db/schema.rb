@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203172119) do
+ActiveRecord::Schema.define(version: 20161210191804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,13 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.string   "language_short_name"
   end
 
+  create_table "locale_urls", force: :cascade do |t|
+    t.string   "url"
+    t.string   "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "medical_specializations", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -318,6 +325,8 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "remote_id"
+    t.decimal  "rate",             precision: 5, scale: 2
   end
 
   create_table "survey_options", force: :cascade do |t|
@@ -329,6 +338,15 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.datetime "updated_at"
     t.datetime "deactivated_at"
     t.integer  "remote_id"
+  end
+
+  create_table "survey_pending_options", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "survey_id"
+    t.integer "option_id"
+    t.integer "question_id"
+    t.integer "subject_id"
+    t.boolean "completed"
   end
 
   create_table "survey_questions", force: :cascade do |t|
@@ -348,6 +366,7 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.text     "description"
     t.datetime "deactivated_at"
     t.string   "language"
+    t.integer  "remote_id"
   end
 
   create_table "survey_surveys", force: :cascade do |t|
@@ -410,6 +429,16 @@ ActiveRecord::Schema.define(version: 20161203172119) do
     t.datetime "updated_at",                        null: false
     t.integer  "completion_date_type",  default: 0
     t.integer  "completion_date_value", default: 1
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "user_affiliates", force: :cascade do |t|

@@ -68,9 +68,7 @@ end
 
 
 p "Creating plans..."
-Plan.create(name: 'DayCare 30', price: 29.99, allocation: 30)
-Plan.create(name: 'DayCare 60', price: 49.99, allocation: 60)
-Plan.create(name: 'DayCare 90', price: 99.99, allocation: 90)
+Plan.create(name: 'Plan', price: 5, allocation: 30)
 Stripe::Plans.put!
 
 p "Creating discount codes..."

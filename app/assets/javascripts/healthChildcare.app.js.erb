@@ -56,7 +56,7 @@ healthChildcare.app =
                 featuredDaycare.push(data.name);
                 $.notify({
                   icon: "<%= asset_path('back_page.png') %>",
-                  message: data.name + " " + window.__trans['featured_daycare']
+                  message: data.name + " " + window._trans['featured_daycare']
                 })
               }
               else if (featuredDaycare.length == data.set_size)
@@ -86,7 +86,7 @@ healthChildcare.app =
                 featuredDaycare.push(data.name);
                 $.notify({
                   icon: "<%= asset_path('back_page.png')%>",
-                  message: data.name + " " + window.__trans['featured_daycare_by_plan']
+                  message: data.name + " " + window._trans['featured_daycare_by_plan']
                 })
               }
               else if (featuredDaycare.length == data.set_size)

@@ -10,6 +10,7 @@
 #  description    :text
 #  deactivated_at :datetime
 #  language       :string
+#  remote_id      :integer
 #
 
 class SurveySubject < ActiveRecord::Base

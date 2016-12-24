@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :locales do
+    resources :translations, constraints: { :id => /[^\/]+/ }
+  end
+
   resources :message_subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
@@ -53,6 +57,11 @@ Rails.application.routes.draw do
 
     get 'upgrade', to: 'subscriptions#index'
 
+    post 'add_pending_option', to: 'survey_pending_option#new'
+    post 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'
+    post 'guide_text', to: 'pages#guide_text', :defaults => { :format => 'json' } 
+    get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
+
     resources :plans, only: [] do
       resources :subscriptions, only: [:new, :create, :index] do
         get :complete, on: :member
@@ -80,14 +89,17 @@ Rails.application.routes.draw do
 
 
         resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
-            get :results
+            get :results, on: :collection
+            get :result, on: :member
             get :user_result
             get :group_result
         end
         resources :daycares, only: [] do
             collection do
                 get :invite
+                get 'invite_survey/:type', to: 'daycares#invite_survey', as: 'invite_survey'
                 post :send_invites
+                post :send_invite_survey
             end
         end
 
@@ -111,7 +123,8 @@ Rails.application.routes.draw do
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
-        get :results, on: :member
+        get :results, on: :collection
+        get :result, on: :member
         resources :attempts, only: :new
         resources :surveys, only: [] do
             resources :attempts, only: :create
@@ -150,6 +163,8 @@ Rails.application.routes.draw do
 
     namespace :admin do
         root to: 'dashboard#index'
+        get 'localization', to: 'pages#localization'
+        post 'localization', to: 'pages#upload'
         authenticate :user, lambda { |u| u.admin? } do
             mount Sidekiq::Web => '/sidekiq'
         end

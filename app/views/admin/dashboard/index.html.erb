@@ -6,10 +6,6 @@
 		<%= form_for @locale_file_data, url: { controller: 'admin/dashboard', action: 'create_on_s3' }, method: 'post', multipart: true do |f| %>
 		
 			<p class="widget widget-header">
-				Select Language: <%= f.select :language_short_name, LocaleFile::LANGUAGE_NAMES %>
-			</p>
-
-			<p class="widget widget-header">
 				Upload YML: <%= f.file_field :file %>
 			</p>
 

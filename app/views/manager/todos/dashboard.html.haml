@@ -14,3 +14,9 @@
           .link-content
             .menu-img.report
             %span=t('manager.todos.labels.report')
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/manager_todo/dash';
+    });    
+  });

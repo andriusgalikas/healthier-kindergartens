@@ -2,7 +2,7 @@
   %h5= t('illnesses.labels.illness_details')
 .row
   .col-md-6.col-sm-6
-    %h3= t('protocols.child_illness_record.illness')
+    %h3= t('protocols.child_illness_record.illness_code')
     #search-illness-name{'data-illness_names': illness_list.to_json}
       = text_field_tag 'search-illness-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
   .col-md-6.col-sm-6

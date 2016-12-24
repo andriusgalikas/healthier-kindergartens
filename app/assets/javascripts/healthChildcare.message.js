@@ -99,7 +99,7 @@ healthChildcare.message = {
   },
 
   initMessagePrinter: function() {
-    $('body').on('click', '.print-msg-btn', function() {
+    $('.print-msg-btn').on('click', function() {
       var data = $(this).data();
       var target = data.target_message;
       var subject = data.subject;

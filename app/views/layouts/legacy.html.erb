@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type='text/javascript'>
-    window.__trans = <%= yield_js_translations.to_json.html_safe %>
+    window._trans = <%= yield_js_translations.to_json.html_safe %>
   </script>
 </head>
 <body>

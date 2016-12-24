@@ -8,14 +8,16 @@ $(document).ready(function()
   healthChildcare.app.showUpgradedChildcaresNotification();
   healthChildcare.app.addAnotherCertification();
 
-/**
   healthChildcare.survey.submitSurveyModule();
   healthChildcare.survey.updateSurveyAttemptSubject();
+  healthChildcare.survey.switchSurveyAttemptSubject();
+  healthChildcare.survey.trySurveyAttepmtSubject();
   healthChildcare.survey.showSurveySubjectResult();
   healthChildcare.survey.showSingleSurveyResult();
   healthChildcare.survey.showGroupSurveyResult();
   healthChildcare.survey.showGroupSurveyMembers();
-**/
+  healthChildcare.survey.setPendingSurveyOptions();
+
     $('.graph-bar').each(function() {
         var dataWidth = $(this).data('value');
         $(this).css("width", dataWidth + "%");
@@ -87,7 +89,7 @@ $(document).ready(function()
     $('#guild-btn').click(function(){
       startIntro()
     });
-
+/*
     if (RegExp('multipage', 'gi').test(window.location.search)) {
         if(getLocation(window.location.href).pathname == '/welcome')
         {
@@ -100,6 +102,7 @@ $(document).ready(function()
         }
 
     }
+    */
     guideBar();
 });
 
@@ -203,9 +206,9 @@ function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
 
   if ($(link).hasClass('subtask-link')) {
-    $(link).parent('.subtask').hide();
+    $(link).parent('.subtask').remove();
   } else {
-    $(link).closest(".fields").hide();
+    $(link).closest(".fields").remove();
 
   }
   return false;
@@ -239,7 +242,7 @@ function click_tab(id){
         $('.jcmc-tabs li').removeClass('jcmc-active-link');
         $("#li_"+id).addClass('jcmc-active-link');
         $('.jcmc-active-link').prev().addClass("jcmc-enabled");
-        $('#tab_'+id).addClass("jcmc-active-tab");
+        $('#tab_'+id).addClass("jcmc-active-tab"); 
     }
 
 function drawSurveyProgressTrend() {
@@ -247,7 +250,7 @@ function drawSurveyProgressTrend() {
   var trendData = google.visualization.arrayToDataTable(srcData);
 
   var options = {
-    title: window.__trans['worker_progress_chart_title'],
+    title: window._trans['worker_progress_chart_title'],
     curveType: 'function',
     legend: { position: 'bottom' },
     vAxis: {title: 'Score Percentage',

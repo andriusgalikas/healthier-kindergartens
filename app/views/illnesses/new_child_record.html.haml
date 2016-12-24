@@ -1,4 +1,5 @@
 = content_for :title, t('illnesses.illness')
+- content_for :page_title, t('illnesses.illness')
 .illness-dash-container
   .container
     .row
@@ -36,3 +37,9 @@
             .row.worker-names
             .row.worker-profile
             .row.worker-confirmation
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/worker_illness/add_child_step1';
+    });    
+  });

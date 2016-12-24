@@ -3,6 +3,12 @@
   padding-bottom: 50px;
   min-height: 60vh;
 
+  .header-guide{
+    a{
+      color: #808080;
+    }
+  }
+
   .ln_solid{
     border-top: 1px solid #ffaecb;
     color: #ffffff;
@@ -197,6 +203,10 @@
     min-width: 120px;
     min-height: 30px;
     padding: 6px 20px;
+  }
+
+  .btn-round:focus{
+    outline: none;
   }
 
   .btn.active.focus, 
@@ -578,4 +588,106 @@
 
 body{
   background: #242c3f;
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+.modal-dialog{
+  font-family: Georgia,Times,Times New Roman,serif; 
+  font-size: 16px;
+
+  .modal-header{
+    text-align: center;
+    padding-bottom: 0px;
+    h4{
+      font-size: 20px;
+    }    
+    a{
+      font-size: 18px;
+    }
+  }
+
+  button{
+    outline: none !important;
+  }
+
+  .btn{
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .btn-wizard{
+    width: 100%;
+
+    background: #ff5443;
+    background: -webkit-linear-gradient(left, #ffde00, #ff005a);
+    background: -o-linear-gradient(right, #ffde00, #ff005a);
+    background: -moz-linear-gradient(right, #ffde00, #ff005a);
+    background: linear-gradient(to right, #ffde00, #ff005a);      
+
+    &:active{
+      background: #ff5443 !important;
+    }
+  }
+
+  .btn-gray{
+    color: #000;
+    background: #dee2e5;
+
+    &:hover, &:active{
+      color: #000;
+    }
+  }
+
+  .btn-lightred{
+    color: #fff;
+    background: #ff2874;
+
+    &:hover, &:active{
+      color: #fff;
+    }
+  }  
+
+  .radio-box{
+    input[type=radio] + label{
+      display: block;
+      margin-right: 15px;          
+      background-image: url(/assets/msg-radio-off.png);
+      background-repeat: no-repeat;
+      padding-left: 25px;
+      height: 20px;
+      vertical-align: middle;
+      font-weight: 400;
+      margin: 5px 10px;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 18px;
+    }
+
+    input[type=radio]:checked + label{
+      display: block;
+      margin-right: 15px;
+      background-image: url(/assets/msg-radio-on.png);
+      background-repeat: no-repeat;
+      padding-left: 25px;
+      height: 20px;
+      vertical-align: middle;
+      font-weight: 400;
+      margin: 5px 10px;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 18px;
+      color: #ff2874;
+    }      
+  }    
+}
+
+.introjs-tooltip{
+  min-width: 400px !important;
 }
