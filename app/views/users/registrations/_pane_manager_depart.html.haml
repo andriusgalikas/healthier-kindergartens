@@ -21,15 +21,15 @@
       = daycare.fields_for :departments do |department|
         = render partial: 'department_fields', locals: { f: department }
     .col-sm-12.text-left
-      = custom_link_to_add_fields "Add Department", daycare, :departments, {:class => "btn-round item-manager"}
+      = custom_link_to_add_fields t('register.labels.add_department'), daycare, :departments, {:class => "btn-round item-manager"}
 :javascript
   function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
 
     if ($(link).hasClass('subtask-link')) {
-      $(link).parent('.subtask').hide();
+      $(link).parent('.subtask').remove();
     } else {
-      $(link).parent().parent().hide();
+      $(link).parent().parent().remove();
     }
   }
 

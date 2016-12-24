@@ -1,4 +1,5 @@
 = content_for :title, t('illnesses.illness')
+- content_for :page_title, t('illnesses.illness')
 .illness-dash-container
   .container
     .row
@@ -7,7 +8,7 @@
         %h5= t('illnesses.labels.filter_records_for')
     .row.content-main
       .col-md-6.col-sm-6.col-xs-6.menu-item
-        - if current_user[:role] == "worker"
+        - if current_user.role == "worker"
           = link_to '#' do
             .link-content.disabled
               .menu-img.add-record-child
@@ -22,3 +23,9 @@
           .link-content
             .menu-img.add-record-department
             %span= t('illnesses.labels.department')
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/worker_illness/view_dash';
+    });    
+  });

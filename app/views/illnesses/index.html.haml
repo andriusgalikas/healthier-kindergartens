@@ -1,4 +1,5 @@
 = content_for :title, t('illnesses.illness')
+- content_for :page_title, t('illnesses.illness')
 .illness-dash-container
   .container
     .row
@@ -15,3 +16,9 @@
           .link-content
             .menu-img.view-record
             %span= t('illnesses.labels.view_old_records')
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/worker_illness/dash';
+    });    
+  });

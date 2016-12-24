@@ -1,4 +1,5 @@
 = content_for :title, t('illnesses.illness')
+- content_for :page_title, t('illnesses.trends')
 .illness-dash-container
   .container
     .row
@@ -36,3 +37,9 @@
               = text_field_tag :end_date, params['end_date'], class: 'datepicker form-control datetime-input'
           .col-md-4.col-sm-4.col-xs-12.form-buttons.filter-buttons.centralize
             = submit_tag t('illnesses.labels.apply_filter'), class: 'btn btn-lightred'
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/manager_illness/graph_step1';
+    });    
+  });

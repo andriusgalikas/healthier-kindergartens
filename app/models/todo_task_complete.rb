@@ -21,7 +21,7 @@ class TodoTaskComplete < ActiveRecord::Base
     has_many :sub_task_completes
     validates :submitter_id, :todo_complete_id, :todo_task_id,                  presence: true
 
-    scope :report,                                                              -> (todo_complete_ids, todo_task_id) { where(todo_complete_id: todo_complete_ids).where(todo_task_id: todo_task_id) }
+    scope :report, -> (todo_complete_ids, todo_task_id) { where(todo_complete_id: todo_complete_ids).where(todo_task_id: todo_task_id) }
 
     enum result: [:pending, :pass, :failed]
 

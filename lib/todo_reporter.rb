@@ -21,7 +21,7 @@ class TodoReporter
 
     def failed
         # @todo_task_completes.where('result = 0 OR result = 2').size
-        @todo_task_completes.failed.size
+        @todo_task_completes.failed.size + @todo_task_completes.pending.size 
     end
 
     private

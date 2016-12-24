@@ -4,7 +4,7 @@ class DaycareMailer < ApplicationMailer
 
     def invite (email, message)
         @email = email
-	    m = Mailin.new("https://api.sendinblue.com/v2.0","k4ptKwAELb0R6xB5")
+	    m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
 #	    puts email
 		data = { "to" => {email => "Daycare"},
 			"from" => [message.owner.email, message.owner.name],

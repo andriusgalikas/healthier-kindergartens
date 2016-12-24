@@ -53,9 +53,9 @@
     $(link).prev("input[type=hidden]").val("1");
 
     if ($(link).hasClass('subtask-link')) {
-      $(link).parent('.subtask').hide();
+      $(link).parent('.subtask').remove();
     } else {
-      $(link).parent().parent().hide();
+      $(link).parent().parent().remove();
     }
   }
   jQuery(document).ready(function() {    

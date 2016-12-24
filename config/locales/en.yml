@@ -32,6 +32,10 @@ en:
       your_journey: Your Journey
       dashboard: Dashboard
       logout: Logout
+      invite: Invite
+      worker: Workers
+      parentee: Parents
+      manager: Managers
 
     about:
       sub_heading1: "Committed to healthier"
@@ -291,9 +295,16 @@ en:
       department: DAYCARE DEPARTMENT
       department_name: Department Name
       add_department: Add Department
+      add_email: Add Email
       number_of_child: NUMBER OF CHILDREN
       child_worker:  Children & Worker
       current_password: Current Password
+      invite_worker: Daycare Worker's Email Address
+      invite_parentee: Daycare Parent's Email Address
+      invite_manager: Daycare Manager's Email Address
+      invite_msg_worker: Invite Daycare Workers
+      invite_msg_parentee: Invite Daycare Parents
+      invite_msg_manager: Invite Daycare Managers
   manager:
     invite:
       title: Daycare Manager
@@ -306,7 +317,8 @@ en:
         label: Invitation Message
         placeholder: Please input invitation message
       send: Send Invitation
-      email: Daycare Email  
+      email: Daycare Email
+      recipient: Recipients  
     todos:
       index:
         main_heading: "Todos"  
@@ -333,15 +345,16 @@ en:
         range_title: "Select a date range for your <b>%{title}</b> Todo report:"
         none_message: None of your parents or workers have started or completed this todo yet within the set of date parameters provided
       labels:
-        report: Report
+        report: View Report of Performed Infection Control Tasks
+        view_report: View Report
         generate_report: Generate Report
         add_filter: Add Filters
         start_date: "Start Date/Time:"
         end_date: "End Date/Time:"
         complete: "Complete:"
         incomplete: "Incomplete:"
-        access: Access
-        task_manager: "Task Manager"
+        access: View and Add Task to Infection Control Task List
+        task_manager: Infection Control Task Manager
         todos: Todos
         no_todos: You have no Todos currently.
         show: Show
@@ -390,10 +403,8 @@ en:
   mailers:
     daycare:
       invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
-      invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
     registration:
       send_confirmation: "Thank you for signing up!"  
-      send_confirmation: "Thank you for signing up!" 
  
   dashboard:
     nav_var:
@@ -421,14 +432,24 @@ en:
       title: "CONTRIBUTE TO THE HEALTH AND HAPPINESS OF CHILDREN AND EMPLOYEES UNDER YOUR CARE AND SUPERVISION TODAY."
       button: "Upgrade"
     menu_item:
-      risk_assessment: Risk Assessment
+      risk_assessment: Infection Risk Assessment
       instruction: Instruction
-      task_manager: Task Manager
-      communication: Communication Manager
-      illness_analytic: ILLNESS ANALYTIC
+      task_manager: Infection Control Task Manager
+      communication: Outbreak Communication
+      illness_analytic: ILLNESS Trends
       illness_record: ILLNESS Record    
-    health_conversations: Health Conversations
+      guide_line: Guide Line
+      health_conversations: Health Conversations
+    menu_tooltip:
+      risk_assessment: "Infection Risk Assessment"
+      instruction: Instruction
+      task_manager: Infection Preventive Task Manager
+      communication: Outbreak Control Communication Manager
+      illness_analytic: Illness Trends
+      illness_record: Illness Record
+      health_conversations: Health Conversations      
   todos:
+    todo: Todos
     index: 
       heading1: "Available Todos"  
       heading2: "In Progress Todos"   
@@ -560,7 +581,7 @@ en:
       demand_2: "Vote for Health Preserving Care Program."
 
   messages:
-    message: Messages
+    message: Communication Manager
 
     breadcrumb:
       message: Message
@@ -607,13 +628,13 @@ en:
       create_message_template: Create Message Template
       edit_message_template: Edit Message Template
       upload_message_template: Upload Message Template
-      sent_messages: Sent Messages
+      sent_messages: Sent Messages      
       basic_filter: Filter options to see your messages
       new_notification: New Notification
       new_template: New Template
-      send_notifications: Send Notifications
-      sent_notifications: Sent Notifications
-      received_notifications: Received Notifications
+      send_notifications: Send Outbreak Notifications and Outbreak Control Guidance
+      sent_notifications: Sent Outbreak Notifications and Outbreak Control Guidance
+      received_notifications: View Received Messages
       edit_and_send: Please Edit and Send Message
       edit_and_save: Please Edit and Save Message
       choose_recipient: Please Choose Target Recipient
@@ -634,18 +655,24 @@ en:
       childcare_member: Healthier Childcare Alliance Members
       daycare_total: Total %{size} Daycare organizations are listed.
       send: Send
+    tooltip:
+      send_notifications: Send Outbreak Notifications and Outbreak Control Guidance
+      sent_notifications: Sent Outbreak Notifications and Outbreak Control Guidance
+      received_notifications: View Recieved Messages
   registrations:
     parentee:
       registration: Parent Registration
       select_daycare: Search and select the daycare which your child is part of
 
   illnesses:
-    illness: Illness
+    breadcrumb:
+      illness: Illness
+    illness: Illness Record
     trends: Illness Trends
 
     labels:
-      add_record: Add Illness Record
-      view_old_records: View Old Illness Records
+      add_record: Record Illness Occurrence
+      view_old_records: View Recorded Illness Occurrence
       illness_guidance: Illness Guidance
       choose_record_for: Add record related to a
       child: Child
@@ -670,13 +697,18 @@ en:
       contact_parent_question: Do you want to contact the parents of this child?
       contact_doctor: Contact Doctor
       contact_doctor_question: Do you want to contact the doctor of this child?
+      additional_actions: Additional Actions
+      worker_name: Worker Name
+      email: Email
+      worker_confirmation: Worker Confirmation
       worker_details_fill_up: Write your personal details to complete this record
       select_department: Select Department
       select_worker: Select Worker
       select_child: Select Child
+      select_children: Select Children
       worker_details: Worker Details
       department: Department
-      confirmation_pw: Please enter your login password to validate
+      confirmation_pw: Please enter your login password to validate      
       department_record_question: Please indicate the number of people having the same illness all at once
       department_record_help_text: You can only record one illness at a time. To record additional illness, please go through the process again.
       filter_records_for: Select records to filter
@@ -694,9 +726,6 @@ en:
       invalid_worker_pw: Invalid worker password.
       create_success: Successfully created the record.
       create_error: Something went wrong. Unable to save the data.
-
-  todos:
-    todo: Todos
 
   discussions:
     discussion: Health Conversations
@@ -755,14 +784,14 @@ en:
 
   survey:
     labels:
-      worker_progress_chard_title: Risk Assessment Performance
+      worker_progress_chard_title: Infection Risk Assessment
       groups: Groups
       workers: Daycare Workers
       parents: Daycare Parents
       all: All
 
     notifications:
-      not_enough_data: Not enough data to show a trend.
+      not_enough_data: Please enough data to show result.
 
     promo:
       title: You’re just 3 steps away from being part of The Health Preserving Accreditation
@@ -827,3 +856,389 @@ en:
       worker: "Daycare Worker"
       partner: "Daycare Partner"
       parent: "Daycare Parent"
+
+  guideline:
+    title: Start Help
+    tooltip: Get step by step tutorial in each functionality
+    benifit:
+      message:
+        title: "<b>Outbreak Communication</b>"
+        content: "<p>Get an edge on communication in a stressful outbreak scenario</p>
+                  <ul>
+                    <li>Instantly notify daycare staff and parents about illness outbreak in your facility</li>
+                    <li>Provide easy-to-read infection control guidance to parents and staff helping them make sense of the situation at hand and mitigate risk of further exposure in an outbreak scenario</li>
+                    <li>Become the source of guidance when needed most</li>
+                  </ul>"
+      todo:
+        title: "<b>Infection Control Task Manager</b> "
+        content: "<p>Ensure optimum infection risk mitigation practices are in place at your childcare facility.</p>
+                  <ul>
+                    <li>Enables you to set a baseline for the standard of infection control in your facility</li>
+                    <li>Help you coordinate Key infection control task effortlessly throughout your whole facility.</li>
+                    <li>Generate report that you can submit to the authorities affirming that infection control protocols are implemented, tracked and measured on daily basis</li>
+                  </ul>"
+      todo_worker:
+        title: "<b>Infection Control Task Manager</b> "
+        content: "<p>Ensure optimum infection risk mitigation practices are in place at your childcare facility.</p>"
+      survey:
+        title: "<b>Infection Risk Assessment</b>"
+        content: "<p>Detect the magnitude of infection risk exposure in your childcare facility</p>
+                  <ul>
+                    <li>Discover individual employees level of competency in key areas of infection control and risk mitigation </li>
+                    <li>Uncover critical knowledge gaps among individual day care staff which if not remedied can pose the risk of infection exposure to children under their care.</li>
+                    <li>Create awareness of infection risk and thereby internally motivate staff and parents to learn best practices to better protect children under their care as a natural reaction of becoming aware of infectious disease risk exposure</li>
+                  </ul>"
+      survey_take:
+        title: "<b>Infection Risk Assessment</b>"
+        content: "<p>Uncover critical knowledge gaps in infection control which if not remedied can pose the risk of infection exposure to children under your care</p>"
+      illness_record:
+        title: "<b>Illness Record</b>"
+        content: "<p>Keep accurate records to enable critical insight into illness occurrences</p>
+                  <ul>
+                    <li>Keep accurate records of each illness occurrences in your childcare facility. </li>
+                    <li>Makes identifying trends and emerging patterns in infectious sickness occurring in the childcare, possible.</li>
+                    <li>Eliminate unnecessary paperwork in recording critical information related to infectious illness occurrences in your childcare facility and preserve the nature in the process.</li>
+                  </ul>"
+      illness_graph:
+        title: "<b>Illness Trends</b>"
+        content: "<p>Get insight into the infection Occurrences in your facility</p>
+                  <ul>
+                    <li>Get complete overview of infections occurring your facility </li>
+                    <li>Get insight into trends of illnesses occurring in your facility so that you can easier anticipate seasonal illness outbreaks.</li>
+                    <li>See how illnesses occurring in your facility stack up against other so that you may know which illness is of primary concern and initiate collective effort to mitigate risk that  creates unified bond and team spirit in fighting infection throughout your facility.</li>
+                  </ul>"
+      notify_message:
+        title: "<b>Health and Safety Message Board</b>"
+        content: "<p>Get instant notification related to key areas of health and safety</p>"        
+    tour_lable:
+      nextBtn: Next
+      prevBtn: Previous
+      doneBtn: Done
+      skipBtn: Skip
+      closeTooltip: Close
+    manager:
+      dashboard:
+        title: Daycare Manager Dashboard Guide
+        messaging:
+          instruction: 
+            title: Introduction
+            content: "An outbreak can often create a high infection risk situation where lack of proper infection control guidance offered to daycare staff and parents can put their own health and health of children under their care at in further danger through cross contamination. <br/>To mitigate this outbreak communication manager provides you with infection control letter  templates covering 40 of the most infectious illness outbreaks likely to happen in childcare, written by qualified pediatrician. <br/>Now you can instantly notify and provide pivotal infection control guidance to your daycare staff and parents, that not only helps them minimize the risk of further exposure in an outbreak scenario but also shows them that you are both keeping a level head throughout an otherwise stressful outbreak scenario and have control of the situation, boosting employee morale in your facility."
+          send_message: 
+            title: Instantly notify daycare staff and parents about illness outbreak  and provide Outbreak infection control guidance, when needed most 
+            content: " "
+            link_text: "This is how you do it:"
+            step_content: "First click the <b>Send Outbreak Notifications and Outbreak control guidance button</b>. Here you get access to outbreak control guidance sample letters  covering 40 of the most infectious illness outbreaks likely to occur in a childcare facility, written by qualified pediatrician. Outbreak control guidance sample letters includes information about the infectious disease involved in the outbreak and answers critical questions daycare staff and parents need to know answers to for effective outbreak control. <br/>Critical question covered in guidance letters are :
+              <ul>
+                <li>What are the symptoms to detect infectious disease that is involved in the outbreak?</li>
+                <li>What are the ways of transmission of the specific infectious disease?</li>
+                <li>What to do in terms of preventive measures to mitigate risk of infectious disease outbreak from spreading further throughout the community?</li>
+                <li>Who are most the vulnerable and at high risk of developing complications if they are infected by the specific infectious disease involved in outbreak?</li>
+                <li>When should one contact the doctor, in case one is infected with the specific infectious disease?</li>
+              </ul>"
+          sent_message: 
+            title: Get report of sent outbreak control notification and guidance letters
+            content: All the outbreak control letters send by you as Daycare Manager are securely stored and can be printed out when you require.
+            link_text: "This is how you get access to sent letters:"
+            step_content: "Click Sent Outbreak Notification and Outbreak Control Guidance letter button."
+          view_message: 
+            title: View Critical Health and Safety received massages 
+            content: In order to avoid clutter and to ensure that you receive only massages related to health and safety only associations working for health and safety of children or governmental authorities are allowed to send massage to you. You can readily access important massages related to health and safety received by you as daycare in the infection control portal which you can print out use in meetings with your daycare staff and parents.
+            link_text: "This is how you may get access to received massages related to health and safety:"
+            step_content: "Click the View Received Messages button."
+        illness_trends:
+          instruction:
+            title: "Introduction"
+            content: "Proper preparation is key to mitigate on going infection risk. As one can only properly prepare for that which one can anticipate. Illness trends component of the infection control portal helps you better anticipate seasonal illness outbreaks by giving you instant overview illnesses occurring in your facility and detect the trends of illnesses occurring. <br/> In addition, you can also identify how infectious illnesses occurring in your facility stack up against each other so that you may which infectious disease is of primary concern in your facility so that you can initiate collective effort to root out cause of the specific infectious disease. <br/> Thus, laying the foundation for better protection for children under your care and creating a unified bond and team spirit among childcare worker and parents in fighting infectious disease in you childcare facility by coming together for a common cause."
+            overview: "Overview Illness Trends"
+          trends:
+            title: Get an overview of illness occurring in your facility and detect the trends of illnesses occurring in your facility 
+            content: " "
+            link_text: This is how you do it.
+        illness_record:
+          title: Illness record
+          content: Record the occurances of illnessesses in Your facility
+        todo:
+          instruction:
+            title: "Introduction"
+            content: "Encouraging and validating that infection control practices are implemented in your childcare facility are the cornerstone of optimum infection risk mitigation in your facility. To help you achieve this infection control task manager enables your childcare staff to perform predefined infection control tasks based on a checklist so that you can validate that tasks geared towards optimum risk mitigation and infection control are in place in your childcare facility. In addition using the infection control task manager, you can with a few clicks, create a report that you can submit to the authorities affirming that actions required for infection risk mitigation are performed tracked and measured on daily basis, in your childcare facility."
+          access:
+            title: View and add task to prewritten infection control task list and set a baseline for standard of infection control in your childcare facility
+            content: " "
+            link_text: This is how you do it.
+            step_content: Click the button for <b>View and Add Task to  Infection Control Task List</b>. The list of all current infection control task related to key areas if infection control in your facility will be shown.
+          report:
+            title: Generate report you can submit to the authorities affirming that infection control protocols are implemented, tracked and measured on daily basis
+            content: " "
+            link_text: This is how you do it.
+            step_content: Click the view report of performed infection control tasks <br/> Illustration missing 
+        survey:
+          instruction:
+            title: "Introduction"
+            content: "If daycare staff are not aware of which daily practices heavily intensify infection risk exposure to children, you may unknowingly become a vehicle for spreading infectious disease pathogens in your childcare facility. Infection risk assessment survey will help you assess the magnitude of infection risk in your facility by uncovering critical knowledge gaps among your staff.  Conducting the survey will create awareness of infection risk exposure and thereby internally motivate staff and parents to learn best practices to better protect children under their care as a natural reaction of becoming aware of the risk."
+          survey_report:
+            title: "Detect the magnitude of infection risk exposure in your childcare facility"
+            content: " "
+            link_text: This is how you do it.
+        conversations:
+          title: Health Conversations
+          content: "<ul><li>Getting the info about the particular child </li><li> Sending the message to any child collaborators</li>"
+      message_send_menu:
+        step1:
+          content: "Step 1: <br/>Specify the department to notify daycare workers and parents in the particular department where the outbreak has occurred."
+        step2:
+          content: "Step 2: <br/>Click the Next button to choose recipients of the outbreak notification and infection control letter."
+        step3:
+          content: "Step 3: <br/>In this step you can choose recipient for the notification and infection control letter . Daycare staff and Daycare parents will get infection control letter that are specially written for their circumstance."
+        step4:
+          content: "Step 4: <br/>Click the Next button to choose the subject of notification."
+        step5:
+          content: "Step 5: <br/>Here you can choose the prewritten subject for the notification."
+        step6:
+          content: "Step 6: <br/>Click the Next button to jump to choose the actual infectious illness involved in the outbreak."
+        step7:
+          content: "Step 7: <br/>Here you can choose the actual infectious disease involved in the outbreak from the list of infectious diseases. <br/>This will give you access to the outbreak control guidance for the specific infectious disease you have chosen."
+        step8:
+          content: "Step 8: <br/>Click the Next button to access and if required slightly edit the sample letter to customize it to your childcare."
+        step9:
+          content: "Step 9: <br/> <b>Edit message content.</b> <br/>Now you can customize and add write personalized outbreak control notification massage in the beginning of the prewritten outbreak control guidance letter. <br/>When done just Click Send button which will instantly notify the chosen recipients group about the outbreak and provide outbreak control guidance needed in an outbreak scenario."
+        step10:
+          content: "Step 10: <br/>After editing the text you can Click Send button to deliver the message to the chosen recipients in the department where the outbreak have occurred."
+      message_sent_menu:
+        step1:
+          content: "Step 1: <br/>Use sort by filters to sort the sent infection control letter by subject, Sub-Subject or Recipient."
+        step2:
+          content: "Step 2: <br/>Then use from date and to date filters to define the period of time during which the outbreak notification and outbreak control guidance was sent."
+        step3:
+          content: "Step 3: <br/>Click the Apply to see the results that can now be printed out if you require. Only outbreak control letters that match the chosen criteria will be displayed."
+        step4:
+          content: "Step 4: <br/>Click Print link to get the hard copy of the notification."
+      message_receive_menu:
+        step1:
+          content: "Step 1: <br/>Then use sort by filters to sort the received massages by sender. In order to ensure that you receive only massages related to health and safety only associations working for health and safety of children or governmental authorities are allowed to send massage to you."
+        step2:
+          content: "Step 2: <br/>Click the Apply Filters button to see the results. Only massages that match the chosen criteria will be displayed."
+        step3:
+          content: "Step 3: <br/>You can click print link to get the hard copy of the notification."
+      illness_graph:
+        step1:
+          content: "Step 1: <br/>First choose which department or departments you to get illness trend insight into. You can remove the rest of the options by clicking the cross sign in the department field."
+        step2:
+          content: "Step 2: <br/>Choose which infectious illness occurrences you want to get insight into. You can remove the rest of the options by clicking the cross sign in the illness field."
+        step3:
+          content: "Step 3: <br/>Use Choose start date and end date to define the period you want to view the illness trends."
+        step4:
+          content: "Step 4: <br/>Click the Apply Filters button to view the result."
+        step5:
+          content: "Step 5: <br/><b>View the result which are presented as three graphs.</b>This graph gives you insight into trends of illnesses occurring in your facility within the timeframe chosen so that you can easier anticipate seasonal illness outbreaks."
+        step6:
+          content: "Step 6: <br/>Following 2 graphs help you uncover how illnesses occurring in your facility stack up against other so that you may know which illness is of primary concern and initiate collective effort to mitigate risk that creates unified bond and team spirit in fighting infectious diseases occurring in your childcare facility."
+        step7:
+          content: "Step 7: <br/>Click Print button to get the hard copy of the results."
+      todo_access:
+        step2:
+          content: "Step 2: <br/>Click the appropriate infection control task list to view and add additional task to the list."
+      todo_report:
+        step1:
+          content: ""
+        step2:
+          content: "Step 2: <br/>Click the view report of performed infection control tasks."
+        step3:
+          content: "Step 3: <br/>Select date range you want to generate report for.<br/> Use Start date and End date filters to define the period of time during which the todos were set."
+        step4:
+          content: "Step 4: <br/>Click the Generate Report button to see the result based on the criteria you set above."
+        step5:
+          content: "Step 5: <br/>Once the report are generated Click the Print button to get the hard copy of the report."
+      survey:
+        step1: 
+          content: "Step 1: <br/> First invite child care workers and Parents to conduct infection risk assessment survey by Clicking the invite button."
+        step2: 
+          content: "Step 2: <br/>Input email addresses of your childcare worker and parents (Optional) and Write personalized massage to conduct the infection risk assessment survey. "
+        step3: 
+          content: "Step 3: <br/>Click the Next Button to jump invitation message screen."
+        step4: 
+          content: "Step 4: <br/>Edit message content. <br/> Now you can customize our prewritten massage template to invite to Childcare Workers and parents to perform the risk assessment survey."
+        step5: 
+          content: "Step 5: <br/>Click the Send Invite Button to send invitation."
+        step6:
+          content: "Step 6: <br/>Once Daycare staff or parents have registered into the infection control portal and conducted infection risk assessment survey you as a childcare manager are able to view the group result of the assessment by clicking the group icon. The pie chart represent the collective data of all the workers/parents in the group. It shows the ratio between the right and wrong answers in the assessments taken by the participants in the group."
+        step7:
+          content: "Step 7: <br/>To check the risk assessment result in any of the 5 core areas that contribute to the dissemination of disease in childcare settings click on the subject icon. "
+        step8:
+          content: "Step 8: <br/>This is how you Detect the magnitude of infection risk exposure in your childcare facility by inviting child workers and Parents (Optional) to conduct infection risk assessment survey "
+    worker:
+      dashboard:
+        messaging:
+          message_receive_menu: 
+            title: Get instant notification related to key areas of health and safety
+            content: " "
+            link_text: "This is how you see the received notification:"
+        illness:
+          instruction:
+            title: Introduction
+            content: To be able to take relevant precautions and apply the right infection risk mitigation. Daycare managers need to identify trends and emerging patterns related to infectious illness occurring in the childcare facility. But this is only possible if accurate information about illness occurring in the childcare facility are properly categorized and recorded. Illness record therefor serves as a critical component in enabling your childcare facility to put optimum infection control and risk mitigation policy in place to better keep children from harm’s way.
+          add_record:
+            title: Record Illness Occurrences             
+            content: "Click the Record Illness occurrence button in the Dashboard."
+            link_text: This is how you do it.
+            department: Choose Department button to record illness occurrence in the department 
+          view_record:
+            title: View Recorded Illness Occurrences
+            content: "Click the View Recorded Illness occurrence button in the Dashboard. "
+            link_text: This is how you do it.
+            department: Choose Department button to view recorded illness occurrence in the department 
+        todo:
+          instruction:
+            title: Introduction
+            content: Implementing infection control practices on consistent basis in your childcare facility are the cornerstone of optimum infection risk mitigation safeguarding children under your care from haram and suffering associated with avoidable infectious diseases. To help you achieve this infection control task manager includes predefined infection control tasks list that enable you to set a baseline for the standard of infection control you want in your facility. 
+          take_todo:
+            title: Completing infection control task list 
+            content: "Here is check off the infection control task to mitigate infection risk in your facility "
+            link_text: This is how you do it.
+        survey:
+          take:
+            title: Detect critical knowledge gaps in infection control and risk mitigation
+            content: "This is how you do it <br/> Step 1) Access the Infection Risk Assessment survey by clicking the Risk assessment button in the Dashboard."
+      message_receive_menu:
+        step1:
+          content: "Step 1: <br/>Filter the notifications based upon who sent you massage. You will be receiving massage for from Daycare Manager, healthier and Safer Childcare alliance along with associations working for health and safety of children and governmental authorities."
+        step2:
+          content: "Step 2: <br/>Use Start date and End date filters to define the period of time during which the notifications were received."
+        step3:
+          content: "Step 3: <br/>Click the Apply Filters button to see the results. Only notifications that match the chosen criteria will be displayed."      
+      illness_add_child:
+        step1:
+          content: "Step 1: <br/>Choose Department where the child registered and then choose the child who is undergoing illness "
+        step2:
+          content: "Step 2: <br/>Then Click the Next button to jump to the next step."
+        step3:
+          content: "Step 3: <br/>Specify if you are aware of the child’s sickness. Choose yes and Click the Next button to see list illnesses likely to occur in a childcare facility" 
+        step4:
+          content: "Step 4: <br/>Then Click the Next button to jump to the next step."
+        step5:
+          content: "Step 5: <br/>Choose a Sickness from the predefined list"  
+        step6:
+          content: "Step 6: <br/>Check the symptoms of the illness that you’re observing."                    
+        step7:
+          content: "Step 7: <br/>Fill in the illness details specifying the date when the symptoms have appeared and the date when they have disappeared. Click the Next button to jump to the next step."
+        step8:
+          content: "Step 8: <br/>Then Click the Next button to jump to the next step."          
+        step9:
+          content: "Step 9: <br/>Choose contacting the child’s parents option and write a message to them. If you have chosen not to contact them, specify a reason."                              
+        step10:
+          content: "Step 10: <br/>Then Click the Next button to jump to the next step."          
+        step11:
+          content: "Step 11: <br/>Choose contacting the doctor option and write a message to them. If you have chosen not to contact him/her, specify a reason."                              
+        step12:
+          content: "Step 12: <br/>Then Click the Next button to jump to the next step."          
+        step13:
+          content: "Step 13: <br/>Provide clear information on additional steps you have taken."
+        step14:
+          content: "Step 14: <br/>Then Click the Next button to jump to the next step."          
+        step15:
+          content: "Step 15: <br/>Verify your identity by selecting your Department and then choosing your name from the list."          
+        step16:
+          content: "Step 16: <br/>Verify your identity by selecting your Department and then choosing your name from the list."
+        step17:
+          content: "Step 17: <br/>Check your personal data and enter the password for the authorization."          
+        step18:
+          content: "Step 18: <br/>Click the Next button to add the record to the database. If you have chosen to send the notifications to the parents and/or doctor, they will be sent now."          
+      illness_add_depart:
+        step1:
+          content: "Step 1: <br/>Choose the Department you are recoding illness for. Please not you can only record illness occurrence in one department at a time."
+        step2:
+          content: "Step 2: <br/>Click the Next button to jump to the next step."
+        step3:
+          content: "Step 3: <br/>Choose a Sickness from the predefined list"
+        step4:
+          content: "Step 4: <br/>Check the symptoms of the illness that you’re observing."
+        step5:
+          content: "Step 5: <br/>Specify the number of daycare staff or / and Children are effected by the illness; specify the date when the symptoms of illness became apparent." 
+        step6:
+          content: "Step 6: <br/>Fill in the illness details specifying the date when the symptoms have appeared and the date when they have disappeared. Click the Next button to jump to the next step."
+        step7:
+          content: "Step 7: <br/>Then Click the Next button to jump to the next step."
+        step8:
+          content: "Step 8: <br/>Provide clear information on additional steps you have taken."
+        step9:
+          content: "Step 9: <br/>Then Click the Next button to jump to the next step."
+        step10:
+          content: "Step 10: <br/>Verify your identity by selecting your Department and then choosing your name from the list."          
+        step11:
+          content: "Step 11: <br/>Verify your identity by selecting your Department and then choosing your name from the list."
+        step12:
+          content: "Step 12: <br/>Check your personal data and enter the password for the authorization."
+        step13:
+          content: "Step 13: <br/>Click the Next button to add the record to the database. If you have chosen to send the notifications to the parents and/or doctor, they will be sent now."          
+      illness_view_child:
+        step1:
+          content: "Step 1: <br/>Use the filter to choose Department and then the child this illness occurrence record is about" 
+        step2:
+          content: "Step 2: <br/>Use From date and To date filters to define the period of time during which the illness occurrence was recorded."
+        step3:
+          content: "Step 3: <br/>Apply Filters button to see the results."
+        step4:
+          content: "Step 4: <br/>Click on the individual record that matches the chosen criteria and expand it to view the full report"
+        step5:
+          content: "Step 5: <br/>Click Print link to get the hard copy of the illness record."
+      illness_view_depart:
+        step1:
+          content: "Step 1: <br/>Use the filter to choose Department this illness occurrence record is about "
+        step2:
+          content: "Step 2: <br/>Use From date and To date filters to define the period of time during which the illness occurrence was recorded Use filters to sort the sent notifications by the Department." 
+        step3:
+          content: "Step 3: <br/>Apply Filters button to see the results."
+        step4:
+          content: "Step 4: <br/>Click on the individual record that matches the chosen criteria and expand it to view the full report"
+        step5:
+          content: "Step 5: <br/>Click Print link to get the hard copy of the illness record."
+      todo_report:
+        step1:
+          content: "Step 1: <br/> Choose from the infection control task lists the appropriate tasks list you want to complete and click the start button."
+        step2:
+          content: "Step 2: <br/>Click the Complete button to mark the tasks as completed. When all the Tasks are completed, the task list will be saved. "
+      survey_take:
+        step1:
+          content: " "
+        step2:
+          content: "Step 2: <br/> Click on any of the subject icon to access risk assessment survey in any of 5 core areas that contribute to the dissemination of disease in childcare settings. "
+        step3:
+          content: "Step 3: <br/> Choose the answer you believe to be true for questions related to infection control subject matter."
+        step4:
+          content: "Step 4: <br/> After completing the Survey, see the results of the Risk Assessment."
+        step5:
+          content: "Step 5: <br/> Retake the infection risk assessment surgery after completing the infection control training to test yourself again."
+    partner:      
+      dashboard:
+        title: Daycare Manager Dashboard Guide
+        messaging:
+          instruction: 
+            title: Introduction
+            content: "An infection outbreak can often lead to confusion, frustration, and even anger on behalf of parties involved. Clear communication is the key to eliminate confusion and frustration.  Communicating efficiently will reduce stress, help in trust building and minimizing the risk of further infection spreading throughout the childcare community. The Messages tool is therefore specially designed to help you reclaim control of communication in an otherwise stressful outbreak scenario. <br/>
+              Messaging module allows the users of the web app to send messages to the other users of the app and thus quickly share the important information about the child. Click the appropriate icon on the Dashboard to access this functionality.<br/>
+              The Daycare Partner has the opportunity to send notifications to Daycare Managers, Daycare Workers, and DayCare Parents collaborating around the child, and also to view the lists of sent notifications."
+          send_message: 
+            title: Creating the regular message 
+            content: " Click the appropriate button in the Message Dashboard. "
+            link_text: "Here is how you create the regular message:"
+            step_content: "Click Create Regular Message button"
+          sent_message: 
+            title: Viewing the Report of Sent Messages
+            content: Daycare Partner has an opportunity to view all the messages that were sent to other users, to find the required messages, and to print them if necessary. 
+            link_text: "Here is how you may investigate the sent messages:"
+            step_content: "Click the appropriate button in the Message Dashboard. "
+      message_send_menu:
+        step1:
+          content: "Step 1: <br/>Specify the Recipients of the message. You can send the message to Day Care Managers, Day Care Workers, and Day Care Parents. You may choose more than one user type if needed. <br/> By selecting a user type(s) you will see the number of users which will receive your message."
+        step2:
+          content: "Step 2: <br/>Write the message title."
+        step3:
+          content: "Step 3: <br/>Add the message content."
+        step4:
+          content: "Step 4: <br/>Click the Send button. <br/> The message will be send to all the users of a selected type(s). The recipient can see the message notification by entering the app's dashboard or checking the email. <br/> If the Cancel button is chosen instead, you will be redirected to the Message Dashboard, and the target recipients will NOT receive the message."
+      message_sent_menu:
+        step1:
+          content: "Step 1: <br/>Filter the messages. <br/> Use Sort by filters to sort the sent messages by Recipient. <br/> Use From date and To date filters to define the period of time during which the messages were sent."
+        step2:
+          content: "Step 2: <br/>Click the Apply filter button to see the results in the messages list. <br/> Only messages that match the chosen criteria will be displayed."
+        step3:
+          content: "Step 3: <br/>Click the Print link to get the hard copy of the message."

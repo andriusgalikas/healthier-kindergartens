@@ -59,6 +59,11 @@
       <i class="fa-video-camera" style="color:#8DC73F;"></i>
     <% end %>
   </li>
+  <li class="<%= active_controller?(controller: 'admin/localization') %>">
+    <%= link_to admin_localization_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Localization' do %>
+      <i class="fa fa-cogs" style="color:#00aff1;"></i>
+    <% end %>
+  </li>
   
 </ul>
 <ul id="secondary-menu">

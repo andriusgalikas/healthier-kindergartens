@@ -1,4 +1,5 @@
 = content_for :title, t('messages.message')
+- content_for :page_title, t('dashboard.menu_item.communication')
 .message-dash-container
   .container
     .row
@@ -15,3 +16,9 @@
           .link-content
             .menu-img.sent-notify
             %span Sent Messages
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/partner_message/dash';
+    });    
+  });

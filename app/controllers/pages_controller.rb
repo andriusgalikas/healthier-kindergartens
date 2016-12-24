@@ -4,11 +4,9 @@ class PagesController < ApplicationController
     before_filter :check_xhr, only: [:mission, :standard, :path]
 
     def welcome
-
     end
 
     def instruction
-
     end
 
     def infection
@@ -29,6 +27,23 @@ class PagesController < ApplicationController
 
     def home
 
+    end
+
+    def guide_text
+        respond_to do |format|
+            type = params[:type].split('.')
+            result = { :step => I18n.t(params[:type]), :label => I18n.t('guideline.tour_lable') }
+            format.json {render :json => result}
+        end
+    end
+
+    def guide_page
+        if params[:page] == 'manager_survey' && (%(result_step2 result_step3).include? params[:step])
+            layout_name = 'registration'
+        else
+            layout_name = 'dashboard_v2'
+        end
+        render action: "#{params[:page]}/#{params[:step]}", layout: layout_name
     end
 
     private

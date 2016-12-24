@@ -18,4 +18,4 @@
 //= require twitter-bootstrap-wizard/jquery.bootstrap.wizard.js
 //= require jquery.datetimepicker
 //= require froala_editor.min.js
-    
+//= require intro

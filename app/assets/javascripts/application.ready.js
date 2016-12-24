@@ -89,7 +89,7 @@ $(document).ready(function()
     $('#guild-btn').click(function(){
       startIntro()
     });
-
+/*
     if (RegExp('multipage', 'gi').test(window.location.search)) {
         if(getLocation(window.location.href).pathname == '/welcome')
         {
@@ -102,6 +102,7 @@ $(document).ready(function()
         }
 
     }
+    */
     guideBar();
 });
 
@@ -205,9 +206,9 @@ function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
 
   if ($(link).hasClass('subtask-link')) {
-    $(link).parent('.subtask').hide();
+    $(link).parent('.subtask').remove();
   } else {
-    $(link).closest(".fields").hide();
+    $(link).closest(".fields").remove();
 
   }
   return false;

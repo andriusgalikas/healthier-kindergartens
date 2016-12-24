@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
     before_action :set_locale
  
     def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
+      local_name = LocaleUrl.find_by(url: request.host)
+      if local_name.nil?
+        I18n.locale = I18n.default_locale
+      else
+        I18n.locale = local_name.language
+      end       
     end
 
     def authenticate_role! roles

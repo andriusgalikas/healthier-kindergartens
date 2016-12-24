@@ -45,9 +45,9 @@ function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
 
   if ($(link).hasClass('subtask-link')) {
-    $(link).parent('.subtask').hide();
+    $(link).parent('.subtask').remove();
   } else {
-    $(link).closest(".field").hide();
+    $(link).closest(".field").remove();
   }
 }
 

@@ -6,22 +6,22 @@
       .col-md-5.col-sm-6.col-xs-12
         #main-menu
           .menu-items
-            = link_to results_subjects_path do
+            = link_to results_subjects_path, id: 'item_survey' do
               = image_tag 'dashboard-risk.png'
               %span=t('dashboard.menu_item.risk_assessment')
-            = link_to instruction_path do
+            = link_to instruction_path, id: 'item_instruction', title: t('dashboard.menu_tooltip.instruction') do
               = image_tag 'dashboard-instruction.png'
               %span=t('dashboard.menu_item.instruction') 
-            = link_to todos_path, 'data-step': '14', 'data-intro': 'As daycare worker, you can manage todo list' do
+            = link_to todos_path, id: 'item_todo' do
               = image_tag 'dashboard-taskmng.png'
               %span=t('dashboard.menu_item.task_manager')
-            = link_to list_messages_path(role: current_user.role, list_type: 'received'), 'data-step': '15', 'data-intro': 'As daycare worker, you can view messages' do
-              = image_tag 'dashboard-com-mng.png'
-              %span=t('dashboard.menu_item.communication')
+            /= link_to list_messages_path(role: current_user.role, list_type: 'received'), id: 'item_message' do
+            /  = image_tag 'dashboard-com-mng.png'
+            /  %span=t('dashboard.menu_item.communication')
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-ilness.png'
             /  %span ILLNESS ANALYTIC
-            = link_to illnesses_path, 'data-step': '16', 'data-intro': 'As daycare worker, you can record and view Illness records' do
+            = link_to illnesses_path, id: 'item_illness' do
               = image_tag 'dashboard-ilness-rec.png'
               %span=t('dashboard.menu_item.illness_record')
             /= link_to set_filters_manager_illnesses_path do
@@ -34,4 +34,70 @@
     $('body').css("src","background-color: #242c3f !important;");
     $('footer.normal .container').css("top", "0");
     $('footer.normal .container .central-footer').css("display", "none");
+
+    $("#item_message").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.message.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.message.content')}";
+        }
+    });
+
+    $("#item_survey").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.survey_take.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.survey_take.content')}";
+        }
+    });
+
+    $("#item_todo").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.todo_worker.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.todo_worker.content')}";
+        }
+    });
+
+    $("#item_illness").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.illness_record.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.illness_record.content')}";
+        }
+    });
+
+    $("#item_nofity_message").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.notify_message.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.notify_message.content')}";
+        }
+    });
+
   });        

@@ -405,7 +405,7 @@ healthChildcare.illness = {
   },
 
   initFilteredItemContentToggler: function() {
-    $('body').on('click', '.expandable', function() {
+    $('.expandable').on('click', function() {
       var targetId = $(this).data('health_record_id');
       var targetEl = $("#health-record-" + targetId);
 
@@ -424,7 +424,7 @@ healthChildcare.illness = {
   },
 
   initHealthRecordPrinter: function() {
-    $('body').on('click', '.print-record-btn', function() {
+    $('.print-record-btn').on('click', function() {
       var data = $(this).data();
       var target = data.target_record;
 

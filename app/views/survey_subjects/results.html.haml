@@ -9,4 +9,8 @@
         =submit_tag 'Retake Test', :class => 'btn btn-lightred'
 :javascript
   // Load the Visualization API and the corechart package.
-  google.charts.load('current', {'packages':['corechart']});
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/worker_survey/take_step1';
+    });    
+  });  

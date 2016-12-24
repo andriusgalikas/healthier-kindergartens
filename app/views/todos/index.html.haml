@@ -38,3 +38,9 @@
                       = image_tag todo_c.todo.icon.file.thumb, class: 'img-responsive center-block'
                     %span.todo-title= truncate(todo_c.todo.title, length: 20)
                   = link_to t('todos.index.show'), todo_todo_complete_path(todo_c.todo, todo_c), :class => 'btn btn-yellow btn-normal btn-block'
+:javascript
+  jQuery(document).ready(function() {
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/worker_todo/todo_step1';
+    });    
+  });

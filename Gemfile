@@ -24,6 +24,9 @@ gem 'countries_and_languages', :require => 'countries_and_languages/rails'
 gem 'sendinblue'
 gem 'survey-gizmo-ruby'
 
+# Localization
+gem 'i18n-active_record', :require => 'i18n/active_record'
+
 group :production do
   gem 'unicorn-worker-killer'
   gem 'lograge'

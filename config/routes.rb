@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :locales do
+    resources :translations, constraints: { :id => /[^\/]+/ }
+  end
+
   resources :message_subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
 
@@ -55,6 +59,8 @@ Rails.application.routes.draw do
 
     post 'add_pending_option', to: 'survey_pending_option#new'
     post 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'
+    post 'guide_text', to: 'pages#guide_text', :defaults => { :format => 'json' } 
+    get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
 
     resources :plans, only: [] do
       resources :subscriptions, only: [:new, :create, :index] do
@@ -91,7 +97,9 @@ Rails.application.routes.draw do
         resources :daycares, only: [] do
             collection do
                 get :invite
+                get 'invite_survey/:type', to: 'daycares#invite_survey', as: 'invite_survey'
                 post :send_invites
+                post :send_invite_survey
             end
         end
 
@@ -155,6 +163,8 @@ Rails.application.routes.draw do
 
     namespace :admin do
         root to: 'dashboard#index'
+        get 'localization', to: 'pages#localization'
+        post 'localization', to: 'pages#upload'
         authenticate :user, lambda { |u| u.admin? } do
             mount Sidekiq::Web => '/sidekiq'
         end
