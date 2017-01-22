@@ -19,7 +19,21 @@
           <tr>
             <th><%= t('admin.departments.index.label1')%></th>
             <th><%= t('admin.departments.index.label2')%></th>
+            <th></th>
           </tr>
+          <form action="/admin/departments" method="get">
+          <tr>
+            <th>
+              <input type="text" name="name" class="form-control" value="<%= (params[:name].nil?) ? '' : params[:name]%>">
+            </th>
+            <th></th>
+            <th>
+              <button class="btn btn-blue btn-large">
+                Search
+              </button>
+            </th>
+          </tr>
+          </form>          
         </thead>
         <tbody>
           <% @departments.each do |dp| %>
@@ -28,7 +42,14 @@
                 <%= dp.name %>
               </td>
               <td class="align-left">
-                <%= dp.daycare.name %>
+                <a href="/admin/daycares?id=<%= dp.daycare.id unless dp.daycare.nil? %>">
+                  <%= dp.daycare.name unless dp.daycare.nil? %>
+                </a>
+              </td>
+              <td class="align-left">
+                <%= link_to [:admin, dp], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-remove"></i>
+                <% end %>
               </td>
             </tr>
           <% end %>

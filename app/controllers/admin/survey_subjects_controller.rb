@@ -69,6 +69,7 @@ class Admin::SurveySubjectsController < AdminController
   
   def new_subject
     @subject = SurveySubject.new
+    @ori_survey = SurveySubject.find(params[:survey_id]) unless params[:survey_id].nil?
   end
 
   def subject_params
@@ -114,7 +115,7 @@ class Admin::SurveySubjectsController < AdminController
                     options << question.options.new(:text => xlsx.cell(line, 'D').to_s, :weight => 1, :correct => false) unless xlsx.cell(line, 'D').nil?
                     options << question.options.new(:text => xlsx.cell(line, 'E').to_s, :weight => 1, :correct => false) unless xlsx.cell(line, 'E').nil?
                     answer = xlsx.cell(line, 'F').to_s unless xlsx.cell(line, 'F').nil?
-                    options.each{|op| op.correct = true if op.text.strip == answer.strip} if options.count > 0 && answer.present?
+                    options.each{|op| op.correct = true if op.text.strip.downcase == answer.strip.downcase} if options.count > 0 && answer.present?
                     if options.count > 0
                       options.each do |op|
                         remote_option = SurveyGizmo::API::Option.create(survey_id: @subject.remote_id, page_id: remote_subpage.id, question_id: remote_question.id, :value => op.text, :title => op.text)

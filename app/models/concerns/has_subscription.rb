@@ -2,22 +2,34 @@ module HasSubscription
     extend ActiveSupport::Concern
 
     included do
-        has_one :subscription
-        has_one :plan,                          through: :subscription
+        #has_many :subscriptions
+        has_many :transactions
 
-        scope :subscribed,                      -> { includes(:subscription).where.not(subscription: { id: nil } ) }
-        scope :unsubscribed,                    -> { includes(:subscription).where(subscription: { id: nil } ) }
+        scope :subscribed,                      -> { includes(:subscriptions).where.not(subscriptions: { id: nil, transaction_id: nil } ) }
+        scope :unsubscribed,                    -> { includes(:subscriptions).where(subscriptions: { id: nil } ) }
 
         # => Checks if a user has an active subscription
-        #
+        #        
         def subscribed?
-            subscription.nil? || active_trial? ? false : true
+            preminum? ? true : false
+#            if active_trial? 
+#                return false
+#            else
+#                total_month = subscriptions.where('transaction_id > 0').sum(:month)
+#                first_subscription = subscriptions.where('transaction_id > 0').order(:created_at).first
+#                if total_month == 0 || first_subscription.nil? || (first_subscription.created_at.to_date <= total_month.to_i.months.ago.to_date)                
+#                    return false
+#                else
+#                    return true
+#                end
+#            end
         end
 
         # => Checks if a user has an only active subscription 
         #
         def active_subscribed?
-            subscription.nil? ? false : true
+            preminum? ? true : false
+            #subscriptions.empty? ? false : true
         end
 
         # => Checks if a user has an active trial
@@ -29,7 +41,8 @@ module HasSubscription
         # => Checks if a user does not have an active subscription
         #
         def unsubscribed?
-            subscription.nil? ? true : false
+            preminum? ? false : true
+            #subscribed? ? false : true
         end
 
         # => Checks if a user is valid for a reminder email if they have not yet subscribed yet
@@ -42,6 +55,10 @@ module HasSubscription
         #
         def within_first? counter
             User.manager.count <= counter ? true : false
+        end
+
+        def preminum?
+            transactions.empty? ? false : true
         end
     end
 end

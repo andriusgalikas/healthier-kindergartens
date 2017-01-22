@@ -11,6 +11,7 @@
 #
 
 class DiscountCode < ActiveRecord::Base
+
     has_many :discount_code_users,              dependent: :restrict_with_exception
     has_many :users,                            through: :discount_code_users
 

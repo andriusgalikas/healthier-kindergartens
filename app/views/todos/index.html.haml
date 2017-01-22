@@ -21,7 +21,7 @@
                   .menu-item
                     %span.todo-id= todo.id
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block'
+                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   = link_to t('todos.index.start'), todo_todo_completes_path(todo), method: :post, :class => 'btn btn-normal btn-lightred btn-block'
         .todo-list
@@ -35,7 +35,7 @@
                   .menu-item
                     %span.todo-id= todo_c.id
                     .profile-thumb
-                      = image_tag todo_c.todo.icon.file.thumb, class: 'img-responsive center-block'
+                      = image_tag todo_c.todo.icon.file.thumb, class: 'img-responsive center-block' unless todo_c.todo.icon.nil?
                     %span.todo-title= truncate(todo_c.todo.title, length: 20)
                   = link_to t('todos.index.show'), todo_todo_complete_path(todo_c.todo, todo_c), :class => 'btn btn-yellow btn-normal btn-block'
 :javascript

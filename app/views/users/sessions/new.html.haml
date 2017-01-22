@@ -5,7 +5,10 @@
         .row
           %span.panel-title LOGIN
         .row.panel-content
-          = image_tag 'logo.png', :class => 'logo'
+          = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, :class => 'logo'
+        .row
+          = content_tag(:div, flash[:error], :id => "flash_error", :style => 'font-size:14px; color: darkred; padding: 10px 0;') if flash[:error]
+          = content_tag(:div, flash[:alert], :id => "flash_alert", :style => 'font-size:14px; color: darkred; padding: 10px 0;') if flash[:alert]        
         .row
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             .col-md-12.form-group
@@ -16,8 +19,6 @@
               = link_to 'Forgot Password', new_user_password_path, :class => 'forgot-password pull-right'
             .col-md-12.form-group.text-center
               = f.submit "Login", :class => "btn btn-round col-xs-12 item-manager"
-            .col-md-12.form-group.text-center
-              = link_to 'Register', getting_started_path, :class => 'btn btn-round col-xs-12 item-manager'
 :javascript
   jQuery(document).ready(function() {
     $('body').css("src","background-color: #242c3f !important;");

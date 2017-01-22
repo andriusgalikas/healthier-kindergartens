@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require stripe
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require bootstrap-tagsinput/src/bootstrap-tagsinput.js
 //= require bootstrap-material-design/dist/js/material.min.js
@@ -35,6 +34,7 @@
 //= require jquery.shorten.min.js
 //= require jquery.steps/build/jquery.steps.min.js
 //= require typeahead.js/dist/typeahead.bundle.min.js
+//= require healthChildcare.app
 //= require healthChildcare.survey
 //= require healthChildcare.message
 //= require healthChildcare.illness

@@ -4,6 +4,9 @@ class Admin::IllnessesController < AdminController
 
   def index
     @illnesses = Illness.all.order(:name)
+    @illnesses = @illnesses.name_like(params[:name]) unless params[:name].nil?
+    @illnesses = @illnesses.code_like(params[:code]) unless params[:code].nil?
+    @illnesses = @illnesses.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?    
   end
 
   def new

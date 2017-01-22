@@ -2,21 +2,26 @@
 #
 # Table name: daycares
 #
-#  id            :integer          not null, primary key
-#  name          :string
-#  address_line1 :string
-#  postcode      :string
-#  country       :string
-#  telephone     :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  url           :string
-#  num_children  :integer
-#  num_worker    :integer
+#  id               :integer          not null, primary key
+#  name             :string
+#  address_line1    :string
+#  postcode         :string
+#  country          :string
+#  telephone        :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  url              :string
+#  num_children     :integer
+#  num_worker       :integer
+#  care_type        :integer
+#  discount_code_id :integer          default("0")
+#  payment_month    :integer          default("0")
 #
 
-class Daycare < ActiveRecord::Base
+class Daycare < ActiveRecord::Base    
     before_destroy :destroy_others
+
+    belongs_to :discount_code
 
     has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments
@@ -33,7 +38,7 @@ class Daycare < ActiveRecord::Base
     has_many :health_records
 
     # Dashboard relations
-    has_many :local_todos,                              -> { includes(:icon) }, class_name: 'Todo'
+    has_many :local_todos,                              -> { includes(:icon).where(language: I18n.locale) }, class_name: 'Todo'
 
     # Reporting relations
     has_many :local_completed_todos,                    -> { complete }, class_name: 'Todo'
@@ -41,7 +46,7 @@ class Daycare < ActiveRecord::Base
     has_many :local_available_todos,                    -> { available }, class_name: 'Todo'
 
     # Dashboard relations
-    has_many :global_todos,                             -> { includes(:icon) }, through: :departments, source: :todos
+    has_many :global_todos,                             -> { includes(:icon).where(language: I18n.locale) }, through: :departments, source: :todos
 
     # Reporting relations
     has_many :global_completed_todos,                   -> { complete }, through: :departments, source: :todos
@@ -62,6 +67,10 @@ class Daycare < ActiveRecord::Base
     validates :departments,                             presence: true
 
     scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+
+    scope :name_like, ->(search) { where("LOWER(daycares.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :address_like, ->(search) { where("LOWER(daycares.address_line1) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :by_country, ->(search) { where("LOWER(daycares.country) = :search", :search => "#{search.downcase}") }
 
     accepts_nested_attributes_for :departments, :user_daycares, :profile_image, allow_destroy: true
 
@@ -97,7 +106,7 @@ class Daycare < ActiveRecord::Base
     # => Lists all todos within a daycare, both global and local
     #
     def all_todos
-        (global_todos.to_a.delete_if{ |gt| local_todos.map(&:title).include?(gt.title) } + local_todos)
+        (global_todos.where(language: I18n.locale).to_a.delete_if{ |gt| local_todos.map(&:title).include?(gt.title) } + local_todos)
     end
 
     def destroy_others
@@ -112,5 +121,18 @@ class Daycare < ActiveRecord::Base
         self.local_todos.delete_all
         self.discussions.where(id: self.discussions.ids).delete_all
         self.discussion_participants.delete_all     
+    end
+
+    def care_type_text
+        case care_type
+        when 1
+            I18n.t('register.caretype.ind')
+        when 1
+            I18n.t('register.caretype.fra')
+        when 1
+            I18n.t('register.caretype.gov')
+        else
+            ""
+        end
     end
 end

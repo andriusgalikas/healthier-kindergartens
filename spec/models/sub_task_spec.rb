@@ -10,6 +10,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  sub_task_type  :integer          default("0")
+#  language       :string
 #
 
 require 'rails_helper'

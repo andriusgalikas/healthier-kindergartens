@@ -8,12 +8,13 @@
   .ninecol.last
     %fieldset.widget.widget-content
       .form-group
+        = puts @ori_survey.to_yaml
         = f.label :title
-        = f.text_field :title, :class => 'form-control'
-      .form-group.form-last
-        = f.label :description
-        = f.text_area :description, :class => 'form-control'
+        = f.text_field :title, (@ori_survey.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_survey.title}"}
       .form-group
+        = f.label :description
+        = f.text_area :description, (@ori_survey.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_survey.description}"}
+      .form-group.form-last
         = f.label :language
         = f.select :language, options_for_select(languages, :selected => f.object.language), {},{:class => 'form-control'}
   .threecol

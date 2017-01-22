@@ -68,15 +68,16 @@ end
 
 
 p "Creating plans..."
-Plan.create(name: 'Plan', price: 5, allocation: 30)
-Stripe::Plans.put!
+Plan.create(name: 'Per Children Per Day', price: 5, allocation: 30)
+Plan.create(name: 'Deposit Amount', price: 100, allocation: 30)
+#Stripe::Plans.put!
 
 p "Creating discount codes..."
-DiscountCode.create(code: 'FIRST100', value: 50)
-DiscountCode.create(code: 'REDUCE15', value: 15)
-DiscountCode.create(code: 'REDUCE25', value: 25)
-DiscountCode.create(code: 'REDUCE50', value: 50)
-Stripe::Coupons.put!
+#DiscountCode.create(code: 'FIRST100', value: 50)
+#DiscountCode.create(code: 'REDUCE15', value: 15)
+#DiscountCode.create(code: 'REDUCE25', value: 25)
+#DiscountCode.create(code: 'REDUCE50', value: 50)
+#Stripe::Coupons.put!
 
 subjects = ['Food Handling', 'Outbreak Control Strategies', 'Exclusion Of Sick Children', 'Preventive Diapering', 'Cleaning Bodily Fluids', 'Preventive Hand Washing']
 

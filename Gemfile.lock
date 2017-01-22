@@ -551,6 +551,7 @@ DEPENDENCIES
   fuubar
   gibbon
   haml-rails
+  httparty
   i18n-active_record
   jazz_hands!
   jquery-datetimepicker-rails

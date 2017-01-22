@@ -57,7 +57,7 @@ $(document).ready(function()
   $.notifyDefaults({
     element: 'body',
     position: null,
-    type: 'warning',
+    type: 'white',
     icon_type: 'image',
     allow_dismiss: true,
     delay: 9000,

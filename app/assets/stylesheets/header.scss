@@ -183,6 +183,14 @@ header
       position: relative;
       text-align: center;
     }
+
+    ul{
+      line-height: 30px !important;
+      &.main-nav {
+        float: none;
+        padding: 0 !important;
+      }    
+    }
   }
 
   @media screen and (max-width: 992px) {

@@ -1,3 +1,8 @@
+%header{style: 'border-bottom : none; height: 0;'}
+  .header-guide.no-print
+    = link_to '#', id: 'link_dashboard_guide' do
+      %label.title=t('guideline.title')
+      %label.description=t('guideline.tooltip')        
 .partner-dash-container
   = render 'nav_header'
   .container
@@ -9,9 +14,9 @@
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-risk.png'
             /  %span Risk Assessment
-            = link_to instruction_path do
-              = image_tag 'dashboard-instruction.png'
-              %span=t('dashboard.menu_item.instruction') 
+            /= link_to instruction_path do
+            /  = image_tag 'dashboard-instruction.png'
+            /  %span=t('dashboard.menu_item.instruction') 
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-taskmng.png'
             /  %span Task Manager
@@ -34,4 +39,8 @@
     $('body').css("src","background-color: #242c3f !important;");
     $('footer.normal .container').css("top", "0");
     $('footer.normal .container .central-footer').css("display", "none");
+
+    $('#link_dashboard_guide').on('click', function(){
+      window.location.href = '/guide_page/partner_message/dash';
+    });    
   });

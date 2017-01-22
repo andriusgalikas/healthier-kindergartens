@@ -6,10 +6,20 @@ class Users::SessionsController < Devise::SessionsController
     #     super
     # end
 
-    # def create
-    #     super
-    # end
-
+    def create
+      self.resource = User.find_by_email(params[:user][:email])
+      if resource.email_confirmed
+        self.resource = warden.authenticate!(auth_options)
+        #set_flash_message!(:notice, :signed_in)
+        sign_in(resource_name, resource)
+        yield resource if block_given?
+        respond_with resource, location: after_sign_in_path_for(resource)        
+      else
+        flash[:error] = t('pages.login.invalid_activate')
+        respond_with resource, location: new_user_session_path
+      end
+    end
+    
     # def destroy
     #     super
     # end

@@ -2,7 +2,7 @@
   .page-header
     .container.text-center
       .col-sm-2.logo-mono
-        = image_tag 'logo.png', class: 'header-mark'
+        = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, class: 'header-mark'
   .container
     .row.title.text-center
       %h3=t('pages.getting_started.main_heading')

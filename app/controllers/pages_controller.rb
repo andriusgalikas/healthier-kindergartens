@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-    before_action :authenticate_user!, only: [:welcome, :infection, :instruction]
-    before_action :authenticate_subscribed!, only: :instruction
+    before_action :authenticate_user!, only: [:welcome, :infection, :ethic_4]
+    #before_action :authenticate_subscribed!, only: :instruction
     before_filter :check_xhr, only: [:mission, :standard, :path]
 
     def welcome
@@ -44,6 +44,33 @@ class PagesController < ApplicationController
             layout_name = 'dashboard_v2'
         end
         render action: "#{params[:page]}/#{params[:step]}", layout: layout_name
+    end
+
+    def ethic_4
+        scheduler = AcuityScheduling.new(ENV['ACUITY_SCHEDULE_USER'], ENV['ACUITY_SCHEDULE_PASSWORD'], ENV['ACUITY_SCHEDULE_URL'])
+        @app_types = scheduler.get_appointment_types        
+        rescue Exception
+            redirect_to dashboard_path
+    end
+
+    def add_schedule
+        scheduler = AcuityScheduling.new(ENV['ACUITY_SCHEDULE_USER'], ENV['ACUITY_SCHEDULE_PASSWORD'], ENV['ACUITY_SCHEDULE_URL'])
+
+        request = {
+            :appointmentTypeID => params[:appointment_type],
+            :datetime => params[:start_date],
+            :firstName => params[:firstName],
+            :lastName => params[:lastName],
+            :email => params[:email],
+            :phone => params[:phone],
+            :fields => [
+                {id: "2412391", value: params[:num_children]},
+                {id: "2412394", value: params[:num_worker]},
+                {id: "2421634", value: params[:care_type]}
+            ]
+        }
+        apps = scheduler.put_appointment request
+        redirect_to dashboard_path
     end
 
     private

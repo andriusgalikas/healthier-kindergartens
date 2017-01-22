@@ -3,44 +3,40 @@
     .row.back-page
       .col-md-12
         .infect-heading{'data-step'=>"7", 'data-intro'=>"In this section you are see videos", 'data-position' => 'top'}
-          = image_tag 'introduction.png'
-          %h2= t('pages.instruction.main_heading')
-          %p= t('pages.instruction.para1')
+          %h2.text-orange= t('pages.instruction.main_heading')
+          %h3.text-orange= t('pages.instruction.description')
       .col-md-6.left-side
         .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
-          = image_tag 'back3_one.png'
-          %h2= t('pages.instruction.sub_heading1')
-          %p= t('pages.instruction.para2')
-          %h4.click-here
-            %a{:href => "/trainings/1"} Click here to access infection risk assessment for this module
+          %a{:href => "/trainings/1"}
+            = image_tag 'intro_one.png'
+          %h3.text-orange= t('pages.instruction.sub_heading1')
+          %p.text-left= t('pages.instruction.para2')
         .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
-          = image_tag 'back3_two.png'
-          %h2= t('pages.instruction.sub_heading2')
-          %p= t('pages.instruction.para3')
-          %h4.click-here
-            %a{:href => "/trainings/2"} Click here to access infection risk assessment for this module
-        .single{'data-step'=>"10", 'data-intro'=>"Infection preventive diapering", 'data-position' => 'right'}
-          = image_tag 'back3_three.png'
-          %h2= t('pages.instruction.sub_heading3')
-          %p= t('pages.instruction.para4')
-          %h4.click-here
-            %a{:href => "/trainings/3"} Click here to access infection risk assessment for this module
+          %a{:href => "/trainings/3"}
+            = image_tag 'intro_three.png'
+          %h3.text-orange= t('pages.instruction.sub_heading3')
+          %p.text-left= t('pages.instruction.para4')
       .col-md-6.right-side
         .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
-          = image_tag 'back3_four.png'
-          %h2= t('pages.instruction.sub_heading4')
-          %p= t('pages.instruction.para5')
-          %h4.click-here
-            %a{:href => "/trainings/4"} Click here to access infection risk assessment for this module
+          %a{:href => "/trainings/4"}
+            = image_tag 'intro_two.png'
+          %h3.text-orange= t('pages.instruction.sub_heading2')
+          %p.text-left= t('pages.instruction.para3')
         .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
-          = image_tag 'back3_five.png'
-          %h2= t('pages.instruction.sub_heading5')
-          %p= t('pages.instruction.para6')
-          %h4.click-here
-            %a{:href => "/trainings/5"} Click here to access infection risk assessment for this module
+          %a{:href => "/trainings/5"}
+            = image_tag 'intro_four.png'
+          %h3.text-orange= t('pages.instruction.sub_heading4')
+          %p.text-left= t('pages.instruction.para5')
+      .col-md-offset-3.col-md-6
         .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
-          = image_tag 'back3_six.png'
-          %h2= t('pages.instruction.sub_heading6') 
-          %p= t('pages.instruction.para7')
-          %h4.click-here
-            %a{:href => "/trainings/6"} Click here to access infection risk assessment for this module
+          %a{:href => "/trainings/6"}
+            = image_tag 'intro_five.png'
+          %h3.text-orange= t('pages.instruction.sub_heading5') 
+          %p.text-left= t('pages.instruction.para6')
+  .col-md-12.step-contents
+    .cta-step-box
+      %p= t('pages.standard.para8_1')
+      %button.btn.hcc-btn
+        %a{'href': '/journey'}
+          = t('pages.mission_step.get_started')
+

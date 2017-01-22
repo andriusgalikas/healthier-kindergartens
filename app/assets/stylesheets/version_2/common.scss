@@ -20,6 +20,15 @@ $hcc-light-blue: #7fe6e2;
   color: white;
 }
 
+@mixin hcc-red-gradient-vertical {
+  background: $hcc-red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(bottom, $hcc-red , $hcc-orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $hcc-red, $hcc-orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $hcc-red, $hcc-orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, $hcc-red , $hcc-orange); /* Standard syntax */
+  color: white;
+}
+
 @mixin hcc-pink-gradient {
   background: $hcc-pink; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, $hcc-bright-pink , $hcc-orange); /* For Safari 5.1 to 6.0 */
@@ -68,11 +77,32 @@ a {
 
 }
 
-button {
+button, a {
   &.hcc-btn {
     border: 2px solid white;
     @include hcc-red-gradient;
     @include border-radius(20px);
+
+    color: white;
+    text-decoration: none;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include hcc-hover;
+    }
+  }
+
+  &.hcc-btn-vertical {
+    border: 2px solid white;
+    @include hcc-red-gradient-vertical;
+    @include border-radius(20px);
+
+    color: white;
+    text-decoration: none;
 
     a {
       color: white;
@@ -90,7 +120,7 @@ button {
 }
 
 .promo {
-  margin-top: -15px;
+  /*margin-top: -15px;*/
 
   .promo-img {
     max-height: 500px;
@@ -103,8 +133,8 @@ button {
 
     .promo-text {
       position: absolute;
-      top: 10%;
-      padding: 40px;
+      top: 15%;
+      padding-left: 15%;
       width: 50%;
       font-size: 20px;
       font-weight: 400;
@@ -127,11 +157,12 @@ button {
   text-align: center;
   @include border-radius(30px);
   @include hcc-red-gradient;
-  margin: 20px;
+  margin: 20px 0;
 
 
   a {
     color: white;
+    font-size: 15px;
 
     &:hover {
       color: $hcc-light-blue;
@@ -151,14 +182,19 @@ button {
       height: 30px;
       text-align: center;
       font-size: 26px;
+      font-weight: 600;
+      line-height: 30px;
+      vertical-align: middle;  
     }
   }
 
 }
 
 .step-contents {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
-  padding: 5px 50px;
+  line-height: 24px;
+  padding: 5px 10px;
 
   .heading {
     color: $hcc-pink;
@@ -169,4 +205,150 @@ button {
     font-weight: bold;
   }
 
+  .sub-heading{
+    color: #ff5016;
+    /*font-size: 24px;*/
+  }
+
+  h3, h4, h5{
+    font-family: Georgia, Times, "Times New Roman", serif;    
+  }
+
+  .reference-link{
+    font-size: 9px;    
+  }
+
+  p{
+    margin: 10px 0;
+  }
+}
+
+.popover{
+  color: #333;
+  max-width: 400px !important;
+  .popover-title{
+    font-weight: 600;
+  }
+}
+
+.text-gray{
+  color: #bbb;
+}
+
+.text-pink{
+  color: #ff6d92;
+}
+
+.text-dark-pink{
+  color: #ff2481;
+}
+
+.text-orange{
+  color: #ff5016;
+}
+
+.text-light-orange{
+  color: #ff7e00;
+}
+
+.text-yellow{
+  color: #ffd200;
+}
+
+.text-bold{
+  font-weight: 600;
+}
+
+
+.legacy-standard{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+
+  .heading {
+    color: $hcc-pink;
+  }
+
+  .heading-letter {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
+  .sub-heading{
+    color: #ff5016;
+    /*font-size: 24px;*/
+  }
+
+  h3, h4, h5{
+    font-family: Georgia, Times, "Times New Roman", serif;    
+  }
+
+  p{
+    margin: 10px 0;
+  } 
+
+  .reference-link{
+    font-size: 9px;    
+  }   
+}
+
+.legacy-path,
+#legacy-back-three,
+.legacy-upgrade,
+.legacy-ethic{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 600px;
+
+  .heading {
+    color: $hcc-pink;
+  }
+
+  .heading-letter {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
+  .sub-heading{
+    color: #ff5016;
+    /*font-size: 24px;*/
+  }
+
+  h2, h3, h4, h5{
+    font-family: Georgia, Times, "Times New Roman", serif;    
+  }
+
+  p{
+    margin: 10px 0;
+  }    
+}
+
+.cta-step-box{
+    width: 30%;
+    opacity: .99;
+    margin: 10px auto;
+    text-align: center;
+    padding: 2%;
+    position: relative;
+    box-sizing: border-box;
+    background: linear-gradient(to top right, #fc636b 0%, #ffe606 100%);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+
+    &::before{
+      content: '';
+      padding: 2%;
+      width: 97%;
+      height: 90%;
+      top: 5%;
+      left: 1.5%;
+      position: absolute;
+      z-index: -1;
+      background: white;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;    
+    }  
 }

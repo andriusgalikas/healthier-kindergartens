@@ -12,6 +12,7 @@
 #  updated_at            :datetime         not null
 #  completion_date_type  :integer          default("0")
 #  completion_date_value :integer          default("1")
+#  language              :string
 #
 
 FactoryGirl.define do

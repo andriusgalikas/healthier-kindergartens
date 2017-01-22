@@ -24,9 +24,15 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_subscribed!
-        unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)          
-          redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
+        if current_user.nil?
+          redirect_to new_user_session_url
         end
+#        else
+#          unless (current_user && current_user.daycare.try(:active_subscription?)) || (current_user && current_user.partner?)          
+#            #redirect_to implementation_url, alert: "You need to upgrade in order to access this feature"
+#            redirect_to dashboard_url, alert: "You need to upgrade in order to access this feature"
+#          end
+#        end
     end
 
     def after_sign_in_path_for resource

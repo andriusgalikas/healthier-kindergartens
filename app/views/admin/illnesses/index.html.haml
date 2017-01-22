@@ -7,41 +7,40 @@
       %i.icon-plus
 
     %h2.widget.widget-header Illnesses
-  = form_tag upload_admin_illnesses_path, method: :post, multipart: true do
-    .threecol
-      %h3 Upload
-      %p
-        Select a spreadsheet file to upload. Please make sure the file you are uploading is a
-        %b .xlsx
-        format.
-    .ninecol.last
-      %fieldset.widget.widget-content.widget-last
-        .form-group
-          = label_tag 'Spreadsheet Illnesses File'
-          = file_field_tag :spreadsheet_file, accept: 'xlsx', :class => 'form-control'
-      .form-action
-        = submit_tag 'Upload', :class => 'btn btn-blue btn-large'
-
-    - if @illnesses.empty?
-      .widget.widget-content
-        .helper-notification
-          %p You dont have any Illnesses yet.
-          %i.fa.fa-large
-    - else
-      .table-responsive
-        %table.table.table-striped.table-bordered.table-hover
-          %thead
+  .threecol
+  - if @illnesses.empty?
+    .widget.widget-content
+      .helper-notification
+        %p You dont have any Illnesses yet.
+        %i.fa.fa-large
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Name
+            %th Illness Code
+            %th Language
+            %th
+          %form{:action => "/admin/illnesses", :method => "get"}
             %tr
-              %th Name
-              %th Illness Code
               %th
-          %tbody
-            - @illnesses.each do |illness|
-              %tr
-                %td= illness.name
-                %td= illness.code
-                %td
-                  = link_to edit_admin_illness_path(illness) do
-                    %i.icon-pencil
-                  = link_to [:admin, illness], method: :delete, data: {confirm: 'Are you sure?'} do
-                    %i.icon-remove
+                %input.form-control{:name => "name", :type => "text", :value => "#{(params[:name].nil?) ? '' : params[:name]}"}
+              %th
+                %input.form-control{:name => "code", :type => "text", :value => "#{(params[:code].nil?) ? '' : params[:code]}"}
+              %th
+                = select_tag :language, options_for_select(languages, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}
+              %th
+                %button.btn.btn-blue.btn-large
+                  Search
+        %tbody
+          - @illnesses.each do |illness|
+            %tr
+              %td= illness.name
+              %td= illness.code
+              %td= illness.language
+              %td
+                = link_to edit_admin_illness_path(illness) do
+                  %i.icon-pencil
+                = link_to [:admin, illness], method: :delete, data: {confirm: 'Are you sure?'} do
+                  %i.icon-remove

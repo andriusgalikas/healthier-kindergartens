@@ -10,6 +10,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  sub_task_type  :integer          default("0")
+#  language       :string
 #
 
 class SubTask < ActiveRecord::Base
@@ -18,7 +19,7 @@ class SubTask < ActiveRecord::Base
 
   has_many   :sub_task_completes
 
-  validates  :title, presence: true
+  validates  :title, :language, presence: true
 
   enum sub_task_type: [:global, :local]
 

@@ -8,10 +8,20 @@
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://www.gstatic.com/charts/loader.js"></script>
-  <%= stripe_javascript_tag %>
   <%= tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript">
+    $crisp=[];
+    CRISP_WEBSITE_ID="2a0e587f-839b-4b8c-9ef3-3881e449188e";
+    (function(){
+      d=document;
+      s=d.createElement("script");
+      s.src="https://client.crisp.im/l.js";
+      s.async=1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
 </head>
 <body class="<%= user_signed_in? ? current_user.role : (yield :color_code) %>">
     <%= render partial: 'shared/headers/dashboard' if %(todos todo_completes).include?(controller.controller_name) %>

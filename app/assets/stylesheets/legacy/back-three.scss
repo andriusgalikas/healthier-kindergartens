@@ -68,21 +68,20 @@
 #loging li ul li a{text-decoration: none;color:#81a1f1;} 
 #loging li ul li:first-child{border-bottom:1px solid #000;}
 
-.infect-heading{text-align: center; margin-bottom: 50px}
-.infect-heading h2{font-size: 26px;color:#f06eaa;}
+.infect-heading{text-align: center; margin-bottom: 10px}
 .infect-heading p{font-size: 22px}
 .infect-heading img{   
-     background: #fff;
-    padding: 20px;
-    margin-top: -47px;
+    background: #fff;
+    margin: 20px;
     border-radius: 50%;
-
+    border: 2px solid #ff7200;
 }
+
 .left-side{padding-right: 60px;padding-left: 50px}
 .right-side{padding-left: 60px;padding-right: 50px}
-.single{text-align: center;font-size: 16px;    margin-bottom: 50px;}
+.single{text-align: center;font-size: 16px;    margin-bottom: 10px;}
 .single img{}
-.single h2{color:#426cd5;font-size: 16px;margin-bottom: 20px}
+.single h2{}
 .single p{}
 .click-here{}
 .click-here a{    
@@ -96,16 +95,19 @@
     border-radius: 21px
 }
 
-
-
-
-.back-page-content{background: image-url('backend_bg.png');}
+.back-page-content{}
 .back-page{
     margin-right: 47px;
-    margin-top: 124px;
+    margin-top: 74px;
     background: #fff;
     margin-left: 23px;
-    margin-bottom: 50px
+    margin-bottom: 0px;
+    border: 3px solid #ff7200;
+    border-radius: 30px;
 }
 
+.st_sharethis_large{
+    margin-top: 3px;
+    position: absolute;    
+}
 }

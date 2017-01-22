@@ -12,6 +12,7 @@
 #  updated_at            :datetime         not null
 #  completion_date_type  :integer          default("0")
 #  completion_date_value :integer          default("1")
+#  language              :string
 #
 
 class Todo < ActiveRecord::Base
@@ -46,10 +47,10 @@ class Todo < ActiveRecord::Base
     delegate :complete, :incomplete, :available,                                to: [:daycare, :department]
 
     validates :title, :user_id, :completion_date_type,
-                :completion_date_value, :iteration_type,                        presence: true
+                :completion_date_value, :iteration_type, :language,             presence: true
     validates :frequency,                                                       presence: true, :if => :recurring?
-    validates :icon,                                                            presence: true
-    validates :title,                                                           uniqueness: { scope: :user_id }
+    #validates :icon,                                                            presence: true
+    #validates :title,                                                           uniqueness: { scope: :user_id }
 
     enum iteration_type:            [:single, :recurring]
     enum frequency:                 [:day, :week, :month, :year]
@@ -60,6 +61,15 @@ class Todo < ActiveRecord::Base
 
 
     accepts_nested_attributes_for :tasks, :icon, allow_destroy: true
+
+    scope :title_like,      ->(search) { where("LOWER(todos.title) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :daycare_like,    ->(search) { joins('LEFT OUTER JOIN daycares ON todos.daycare_id = daycares.id').where("(LOWER(daycares.name) LIKE :search) OR (daycares.name IS NULL AND :search = '%%')", :search => "%#{search.downcase}%") }
+    scope :username_like,   ->(search) { joins(:user).where("LOWER(users.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :by_iteration,    ->(search) { where("(todos.iteration_type = :search) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
+    scope :by_frequency,    ->(search) { where("(todos.frequency = :search) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
+    scope :by_global,       ->(search) { where("((todos.daycare_id IS NULL) AND (:search = 0)) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
+    scope :by_language,     ->(search) { where("(LOWER(todos.language) LIKE :search)", :search => "%#{search.downcase}%") }
+
 
     # => Check if a todo is global (created by admin user)
     #

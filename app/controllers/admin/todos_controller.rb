@@ -1,7 +1,14 @@
 class Admin::TodosController < AdminController
 
   def index
-    @todos = Todo.global.all
+    @todos = Todo.all
+    @todos = @todos.title_like(params[:title]) unless params[:title].nil?
+    @todos = @todos.by_iteration(params[:iteration_type]) unless params[:iteration_type].nil?
+    @todos = @todos.by_frequency(params[:frequency]) unless params[:frequency].nil?
+    @todos = @todos.daycare_like(params[:daycare_name]) unless params[:daycare_name].nil?
+    @todos = @todos.by_global(params[:global]) unless params[:global].nil?
+    @todos = @todos.username_like(params[:user_name]) unless params[:user_name].nil?
+    @todos = @todos.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
   end
 
   def show

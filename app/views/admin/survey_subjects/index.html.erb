@@ -39,6 +39,9 @@
                 <%= subject.description %>
               </td>
               <td>
+                <%= link_to new_admin_survey_subject_path(survey_id: subject.id) do %>
+                    <i class="icon-plus"></i>
+                <% end %>
                 <%= link_to admin_survey_subject_path(subject) do %>
                     <i class="icon-search"></i>
                 <% end %>

@@ -16,7 +16,7 @@
                   .menu-item
                     %span.todo-id= todo.id
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block'
+                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   - if todo.in_progress?(current_user.id)
                     = link_to t('todos.index.show'), manager_todo_path(todo), :class => 'btn btn-yellow btn-normal btn-block'

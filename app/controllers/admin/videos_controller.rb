@@ -6,6 +6,7 @@ class Admin::VideosController < AdminController
 
 	def new
 		new_video
+		@ori_video = Video.find(params[:video_id]) unless params[:video_id].nil?
 	end
 
 	def edit
@@ -13,6 +14,7 @@ class Admin::VideosController < AdminController
 	end
 
 	def create
+		Video.where(video_type: params[:video][:video_type], language: params[:video][:language], category: params[:video][:category]).destroy_all
 		@video = Video.new(video_params)
 		if @video.save
 			redirect_to admin_videos_path, notice: 'You have created a new video'
@@ -44,6 +46,8 @@ class Admin::VideosController < AdminController
 
 	def set_videos
 		@videos = Video.all
+		@videos = @videos.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
+		@videos = @videos.by_category(params[:category]) unless params[:category].nil? || params[:category].blank?
 	end
   
 	def new_video

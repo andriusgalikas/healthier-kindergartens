@@ -2,21 +2,27 @@
 #
 # Table name: subscriptions
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  plan_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  terms      :boolean          default("false")
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  plan_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  terms            :boolean          default("false")
+#  month            :integer
+#  discount_code_id :integer
+#  transaction_id   :integer
 #
 
 class Subscription < ActiveRecord::Base
     belongs_to :plan
     belongs_to :user
 
-    validates :user_id, :plan_id,                       presence: true
-    validates :user_id,                                 uniqueness: true
+    belongs_to :discount_code
+
+    #validates :user_id, :plan_id,                       presence: true
+    #validates :user_id,                                 uniqueness: true
     validates :terms,                                   inclusion: { :in => [true], message: 'Please confirm your acceptance of our terms and conditions to complete your subscription upgrade.' }
+
     
     attr_accessor :stripe_card_token
 
