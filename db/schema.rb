@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210191804) do
+ActiveRecord::Schema.define(version: 20170120091909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,11 +85,14 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.string   "postcode"
     t.string   "country"
     t.string   "telephone"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "url"
     t.integer  "num_children"
     t.integer  "num_worker"
+    t.integer  "care_type"
+    t.integer  "discount_code_id", default: 0
+    t.integer  "payment_month",    default: 0
   end
 
   create_table "department_todos", force: :cascade do |t|
@@ -183,6 +186,7 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "language"
   end
 
   create_table "locale_files", force: :cascade do |t|
@@ -206,6 +210,30 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.string   "language_short_name"
   end
 
+  create_table "locale_logos", force: :cascade do |t|
+    t.integer  "logo_type"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "language"
+    t.string   "description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "locale_posters", force: :cascade do |t|
+    t.integer  "poster_type"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+    t.string   "language"
+    t.string   "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "locale_urls", force: :cascade do |t|
     t.string   "url"
     t.string   "language"
@@ -227,6 +255,7 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.integer  "parent_subject_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "language"
   end
 
   add_index "message_subjects", ["parent_subject_id"], name: "index_message_subjects_on_parent_subject_id", using: :btree
@@ -291,6 +320,7 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "sub_task_type",  default: 0
+    t.string   "language"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -303,9 +333,12 @@ ActiveRecord::Schema.define(version: 20161210191804) do
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "terms",      default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "terms",            default: false
+    t.integer  "month"
+    t.integer  "discount_code_id"
+    t.integer  "transaction_id"
   end
 
   create_table "survey_answers", force: :cascade do |t|
@@ -417,6 +450,7 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "task_type",   default: 0
+    t.string   "language"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -429,6 +463,18 @@ ActiveRecord::Schema.define(version: 20161210191804) do
     t.datetime "updated_at",                        null: false
     t.integer  "completion_date_type",  default: 0
     t.integer  "completion_date_value", default: 1
+    t.string   "language"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.string   "currency"
+    t.string   "card_num"
+    t.string   "charge_id"
+    t.integer  "user_id"
+    t.boolean  "deposit",                            default: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   create_table "translations", force: :cascade do |t|
@@ -488,23 +534,27 @@ ActiveRecord::Schema.define(version: 20161210191804) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "role",                   default: 0
     t.string   "name"
     t.string   "stripe_customer_token"
     t.integer  "department_id"
     t.datetime "trial_end_date"
+    t.boolean  "email_confirmed",        default: false
+    t.string   "confirm_token"
+    t.boolean  "deposit_required",       default: false
+    t.string   "card_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

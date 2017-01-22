@@ -39,7 +39,8 @@
     border-radius: 30px;
   }  
 
-  input.form-control{
+  input.form-control,
+  select.form-control{
     border: 1px solid #242c3f;
     min-height: 40px;
     vertical-align: top;

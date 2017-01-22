@@ -20,6 +20,10 @@
 #  stripe_customer_token  :string
 #  department_id          :integer
 #  trial_end_date         :datetime
+#  email_confirmed        :boolean          default("false")
+#  confirm_token          :string
+#  deposit_required       :boolean          default("false")
+#  card_number            :string
 #
 # Indexes
 #

@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     set_minimum_password_length
     yield resource if block_given?
-    render "register/#{params[:role]}"
+    render "register/#{params[:role]}", locals: {deposit: true}
     #render "register/#{params[:role]}"
   rescue ActionView::MissingTemplate
     redirect_to new_user_session_url
@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    build_resource(sign_up_params.merge(role: params[:role]))
+    build_resource(sign_up_params.merge(role: params[:role]), country: I18n.locale)
     set_daycares unless ['manager', 'partner'].include?(params[:role])
     resource.save
     yield resource if block_given?
@@ -24,9 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       send_confirmation_email(resource)
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
-        sign_up(resource_name, resource)
+        # sign_up(resource_name, resource)
         #respond_with resource, location: after_sign_up_path_for(resource), notice: 'You have successfully signed up!'                
-        render "register/success_#{params[:role]}"
+        render "register/success_#{params[:role]}", locals: {deposit: resource.deposit_required}
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -46,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def daycare
     @daycare = Daycare.new(daycare_sign_up_params)
-
+    @daycare.country = I18n.locale
     assign_daycare_manager_role
     if @daycare.save
       user = @daycare.users.first
@@ -58,6 +58,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       render "register/#{params[:role]}"
+    end
+  end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      sign_in :user, user
+      if user.deposit_required
+        redirect_to upgrade_url(type: 'deposit')
+      else        
+        redirect_to dashboard_url
+      end      
+    else
+      redirect_to root_url
     end
   end
 
@@ -227,13 +242,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :name,
       :address_line1,
       :postcode,
-      :country,
+      #:country,
       :telephone,
+      :care_type,
       :url,
       :num_children,
       :num_worker,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -304,7 +320,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def send_confirmation_email user
-    RegistrationMailer.send_confirmation(user).deliver_later
+    #RegistrationMailer.registration_confirmation(user).deliver_later
+    confirm_url = "#{ENV['BASE_URL']}/confirm_email/#{user.confirm_token}"
+    @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_VERIFICATION_SUBJECT'], language: I18n.locale.downcase) 
+    template_key = 'EMAIL_VERIFICATION_SUBJECT_' + ((user.deposit_required) ? "DEPOSIT" : "REGISTER")
+    @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
+    @message_template = @sub_subject.message_templates.find_by(target_role: 0, language: I18n.locale.downcase).first
+
+    template = @message_template.content.gsub! '[$NAME$]', user.name
+    template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
+
+    RegistrationMailer.registration_confirmation(user, template).deliver
   end
 
   def set_daycare

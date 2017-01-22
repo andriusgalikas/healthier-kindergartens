@@ -18,7 +18,7 @@
   .row.primary-header
     .col-md-2
       = link_to welcome_path do
-        = image_tag 'logo.png', id: 'header-logo'
+        = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, id: 'header-logo'
 
     .vote-invitations{class: current_user.manager? ? 'col-md-6' : 'col-md-5'}
       = vote_invitation.html_safe

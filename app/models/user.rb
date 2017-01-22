@@ -20,6 +20,10 @@
 #  stripe_customer_token  :string
 #  department_id          :integer
 #  trial_end_date         :datetime
+#  email_confirmed        :boolean          default("false")
+#  confirm_token          :string
+#  deposit_required       :boolean          default("false")
+#  card_number            :string
 #
 # Indexes
 #
@@ -30,6 +34,7 @@
 class User < ActiveRecord::Base
     include HasMailchimp
     include HasSubscription
+    include HasTransaction
     include HasDiscountCode
     include HasTodos
     include HasOccurrences
@@ -39,6 +44,8 @@ class User < ActiveRecord::Base
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+    before_create :confirmation_token
 
     has_one :user_daycare,                                       dependent: :destroy
     has_one :daycare,                                            through: :user_daycare
@@ -79,7 +86,28 @@ class User < ActiveRecord::Base
 
     accepts_nested_attributes_for :children, :user_daycare, :user_affiliate, :user_profile, allow_destroy: true
 
+
+    scope :name_like, ->(search) { where("LOWER(users.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :email_like, ->(search) { where("LOWER(users.email) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :daycare_like, ->(search) { joins(:user_daycare).joins('LEFT OUTER JOIN daycares ON user_daycares.daycare_id = daycares.id').where("LOWER(daycares.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :by_daycare, ->(search) { joins(:user_daycare).where("user_daycares.daycare_id = :search", :search => "#{search}") }
+    scope :department_like, ->(search) { joins(:department).where("LOWER(departments.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :by_role, ->(search) { where("(users.role = :search) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
+
     def newly_signed_up?
       sign_in_count == 1
+    end
+    
+    def email_activate
+      self.email_confirmed = true
+      self.confirm_token = nil
+      save!(:validate => false)
+    end
+
+private
+    def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
     end
 end

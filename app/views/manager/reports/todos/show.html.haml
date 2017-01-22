@@ -6,7 +6,7 @@
       .twelvecol
         %a#print-todo.btn.btn-normal.btn-yellow{:href => "#"} Print
         .profile-thumb
-          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block'
+          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block' unless @todo.icon.nil?
         .info
           %h2=t('manager.todos.labels.add_filter') 
           %p

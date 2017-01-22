@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         post 'login',                       to: 'users/sessions#create',        as: 'user_session'
         delete 'logout',                    to: 'users/sessions#destroy',       as: 'destroy_user_session'
 
+
         # passwords
         get 'password/new',                 to: 'users/passwords#new',          as: 'new_user_password'
         get 'password/edit',                to: 'users/password#edit',          as: 'edit_user_password'
@@ -33,7 +34,10 @@ Rails.application.routes.draw do
         get ':role/:id/edit',               to: 'users/registrations#edit',      as: 'edit_user_registration'
         get ':role/:id/edit_user',          to: 'users/registrations#edit_user', as: 'edit_user_info'
         put ':role/update_user',            to: 'users/registrations#update',    as: 'update_user_registration'
-        patch ':role/update_daycare',         to: 'users/registrations#update_daycare',   as: 'update_daycare'
+        patch ':role/update_daycare',       to: 'users/registrations#update_daycare',   as: 'update_daycare'
+
+        # email verification
+        get 'confirm_email/:id',            to: 'users/registrations#confirm_email',  as: 'confirm_email'
     end
 
     # custom registration routes
@@ -49,7 +53,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard getting_started welcome infection instruction implementation).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4).each do |page|
         get page, to: "pages##{page}"
     end
 
@@ -60,6 +64,7 @@ Rails.application.routes.draw do
     post 'add_pending_option', to: 'survey_pending_option#new'
     post 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'
     post 'guide_text', to: 'pages#guide_text', :defaults => { :format => 'json' } 
+    post 'add_schedule', to: 'pages#add_schedule'
     get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
 
     resources :plans, only: [] do
@@ -67,6 +72,8 @@ Rails.application.routes.draw do
         get :complete, on: :member
       end
     end
+
+    resources :transactions, only: [:create]
 
     namespace :manager do
         resources :todos do
@@ -163,17 +170,31 @@ Rails.application.routes.draw do
 
     namespace :admin do
         root to: 'dashboard#index'
-        get 'localization', to: 'pages#localization'
+
+        #localization
+        get 'lang_dashboard', to: 'pages#lang_dashboard'
+        get 'lang_survey', to: 'pages#lang_survey'
+        get 'lang_illness', to: 'pages#lang_illness'
+        get 'lang_training', to: 'pages#lang_training'
+        get 'lang_template', to: 'pages#lang_template'
+        get 'lang_video', to: 'pages#lang_video'
+        get 'lang_main', to: 'pages#lang_main'
+        get 'list_message', to: 'pages#list_message'
+        get 'list_invite', to: 'pages#list_invite'
+        get 'list_verify', to: 'pages#list_verify'
+
+        get 'clients', to: 'pages#clients'
         post 'localization', to: 'pages#upload'
+
         authenticate :user, lambda { |u| u.admin? } do
             mount Sidekiq::Web => '/sidekiq'
         end
         resources :discount_codes, except: :show
         resources :plans, except: :show
         resources :todos
-        resources :users, only: :index
+        resources :users, only: [:index, :destroy]
         resources :daycares
-        resources :departments, only: :index
+        resources :departments, only: [:index, :destroy]
         resources :subjects, except: :show
         resources :message_templates do
           collection do
@@ -198,6 +219,8 @@ Rails.application.routes.draw do
             resources :surveys
         end
         resources :videos, except: :show
+        resources :locale_logos, except: :show
+        resources :locale_posters, except: :show
     end
 
     namespace :partner do

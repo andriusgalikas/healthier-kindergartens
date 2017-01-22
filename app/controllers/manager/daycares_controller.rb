@@ -5,10 +5,10 @@ class Manager::DaycaresController < ApplicationController
   def invite_survey
     @daycare_role = params[:type]
 
-    @subject = MessageSubject.find_or_create_by(title: ENV['SURVEY_TEMPLATE_SUBJECT']) 
+    @subject = MessageSubject.find_or_create_by(title: ENV['SURVEY_TEMPLATE_SUBJECT'], language: I18n.locale.downcase) 
     template_key = 'SURVEY_TEMPLATE_SUBJECT_' + current_user.role.upcase
-    @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key])
-    @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[current_user.role], language: I18n.default_locale.downcase)
+    @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
+    @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[current_user.role], language: I18n.locale.downcase).first
   end
   
   def invite

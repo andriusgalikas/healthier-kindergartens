@@ -9,11 +9,13 @@
       <i class="icon-users"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/todos') %> <%= active_controller?(controller: 'admin/products/stock') %>">
     <%= link_to admin_todos_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Todos' do %>
       <i class="icon-pencil"></i>
     <% end %>
   </li>
+  -->
   <li class="<%= active_controller?(controller: 'admin/daycares') %>">
     <%= link_to admin_daycares_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Daycares' do %>
       <i class="icon-home"></i>
@@ -34,33 +36,39 @@
       <i class="icon-office" style="color:#ab8bff;"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/subjects') %>">
     <%= link_to admin_subjects_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Subjects' do %>
       <i class="icon-books" style="color:#8DC73F;"></i>
     <% end %>
   </li>
+  -->
   <li class="<%= active_controller?(controller: 'admin/survey_subjects') %> <%= active_controller?(controller: 'admin/surveys') %>">
     <%= link_to admin_survey_subjects_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Surveys' do %>
       <i class="icon-copy" style="color:#9bebff;"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/message_templates') %>">
     <%= link_to admin_message_templates_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Message Templates' do %>
       <i class="icon-bubble" style="color:#F05C52;"></i>
     <% end %>
   </li>
+  -->
   <li class="<%= active_controller?(controller: 'admin/illnesses') %>">
     <%= link_to admin_illnesses_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Illnesses' do %>
       <i class="icon-aid" style="color:#F70000;"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/videos') %>">
     <%= link_to admin_videos_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Videos' do %>
       <i class="fa-video-camera" style="color:#8DC73F;"></i>
     <% end %>
   </li>
+  -->
   <li class="<%= active_controller?(controller: 'admin/localization') %>">
-    <%= link_to admin_localization_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Localization' do %>
+    <%= link_to admin_lang_dashboard_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Localization' do %>
       <i class="fa fa-cogs" style="color:#00aff1;"></i>
     <% end %>
   </li>

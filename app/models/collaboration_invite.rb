@@ -19,6 +19,7 @@ class CollaborationInvite < ActiveRecord::Base
 
   before_create :assign_invite_code
 
+
   def generate_invite_code
     ('a'..'z').to_a.shuffle[0,10].join.upcase
   end

@@ -3,16 +3,15 @@
     .row
       .col-md-6.col-sm-6.col-xs-12.upgrade-plan
         .row
-          %h2 Your path toward higher level of Health Preserving Care starts here
-          %p Your decision to land on this page means you’re seriously committed to reducing the possibility of the spread of infections and diseases in your daycare facility. Congratulations on making this decision. 
-          %p HSCA accreditation is a public affirmation of your commitment to protect the health and wellbeing of children and staff under your care. This commitment resonates not only with parents but also with daycare staff, government agencies and the general public.
-          %p Get started on the journey now by clicking the box below for our complimentary Discovery Assessment or our Accreditation Program.
+          %h2=t('pages.upgrade.title')
+          = hidden_field_tag :notif_plan_id, 1
         .row.round-box.price-plan-desc
           %h2 
-            = "You've selected Accreditation program plan for #{current_user.daycare.num_children} children and it costs #{number_to_currency(@subscription.plan.price * current_user.daycare.num_children * 30)}"
+            =t('pages.upgrade.description', num_child: current_user.daycare.num_children, amount: number_to_currency(@plan.price * current_user.daycare.num_children * 30))
+          %p=t('pages.upgrade.para1', num_child: current_user.daycare.num_children, amount: number_to_currency(@plan.price))
         .row.round-box        
-          = form_for [@subscription.plan, @subscription], method: :post do |f|
-            %h4.text-center Discount Code
+          = form_for @transaction, method: :post do |f|
+            %h4.text-center= t('pages.upgrade.box_title')
             .row
               - if @subscription.errors.any?
                 .error_messages
@@ -22,160 +21,88 @@
                   %ul
                     - @subscription.errors.full_messages.each do |msg|
                       %li= msg
-                      = f.hidden_field :plan_id
-              = f.hidden_field :user_id, value: current_user.id
-              = f.hidden_field :stripe_card_token          
+              = hidden_field_tag :user_id, current_user.id
+              = hidden_field_tag :subscription_id, @subscription.id
+              = hidden_field_tag :stripe_card_token          
             .row{:style => "margin: 0;"}
               .col-md-8.col-sm-12.col-xs-12
-                = text_field_tag :card_number, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
+                = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
               .col-md-4.col-sm-12.col-xs-12
                 = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
             .row{:style => "margin: 0;"}
               .col-md-12.col-sm-12.col-xs-12
                 %span Card Expiration:
-              .col-md-3.col-sm-12.col-xs-12
-                = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
-              .col-md-3.col-sm-12.col-xs-12
-                = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
               .col-md-6.col-sm-12.col-xs-12
-                = text_field_tag :discount_code, "", :class => 'form-control input-round border-red', :placeholder => "Discount Code"
-            .row
-              .col-xs-12.text-right              
-                = f.submit "Apply",:class => "btn btn-round item-red"
-          .row
-            .col-md-6.col-sm-12.col-xs-12.text-center
-              %p.plan-price 
-                = number_to_currency(@subscription.plan.price * current_user.daycare.num_children * 30)
-              %p.plan-per PER
-              %p.plan-date MONTH
-            .col-md-6.col-sm-12.col-xs-12.text-center
-              %p.plan-price 
-                = number_to_currency(@subscription.plan.price * current_user.daycare.num_children * 360)
-              %p.plan-per PER
-              %p.plan-date YEAR
-          .row.text-center
-            %button.btn.btn-round.item-manager
-              Start Accreditation
+                = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
+              .col-md-6.col-sm-12.col-xs-12
+                = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+            .row 
+              .col-md-12.col-sm-12.col-xs-12.text-center 
+                %p.plan-price  
+                  = hidden_field_tag :upgrade_type, 1
+                  = number_to_currency(100)
+                  %p=t('pages.upgrade.para2').html_safe
+            .row.text-center
+              %button.btn.btn-round.item-manager{type: "submit"}
+                = t('pages.upgrade.reserve')
 
       .col-md-6.col-sm-6.col-xs-12.instruction
         .ongoing
           .ongoing-heading
-            %h2 ONGOING ACCREDITATION MEMBERSHIP BENEFITS
-            %p Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:
+            %h2=t('pages.upgrade.benefit')
+            %p=t('pages.upgrade.ben_para1') 
           .single-ongoing.pink
             = image_tag '101.png'
             %p
-              %span.periodic-pin
-                %b Periodic letter—
-                Receive the latest health and safety messages from the most cutting-edge research on infection mitigation in your facility. Rest assured you will stay up-to-date with information about mitigating risk of infections in your childcare facility.
+              %span.periodic-pin=t('pages.upgrade.ben_para2').html_safe 
           .single-ongoing.pink
             = image_tag '102.png'
             %p
-              %span.periodic-pin
-                %b Assess the scope of infection risk in your facility
-                %br
-                Get  insight in your employees level of competence in the six core areas for infection control. This action will enable you to assess the scope of the risk of infections that children under your supervision are exposed for
+              %span.periodic-pin=t('pages.upgrade.ben_para3').html_safe 
           .single-ongoing.blue
             = image_tag '103.png'
             %p
-              %span.practices-blu
-                %b Get instruction in optimal infective practices
-                %br
-                Exclusive online instruction in infection control  available nowhere else—In this instruction component, your daycare staff will be trained and qualified in the six core areas of mitigating risk of infection and diseases in your facility. This  provides them a clear course of performance. The net results will be infection preventive choices that are intrinsically linked to healthier and safer childcare environment.
+              %span.practices-blu=t('pages.upgrade.ben_para4').html_safe 
           .single-ongoing.all
             = image_tag '104.png'
             %p
-              %span.potential-gree
-                %b Boost employee  confidence
-                %br
-                Our online  instruction courses  are designed to increase  your employees’ knowledge and understanding of health and safety issues which impact children in childcare. This course of action  reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. Lower employee stress, help  employees to thrive and  make  your childcare facility a better place to work.
+              %span.potential-gree=t('pages.upgrade.ben_para5').html_safe 
           .single-ongoing.all
             = image_tag '105.png'
             %p
-              %span.potential-gree
-                %b Decrease in absenteeism
-                %br
-                Operating your childcare facility according to The Health Preserving Care Standard also helps decrease the risk of infection . You know all too well these factors can drain your childcare of productivity.The optimum  “cure” for employee turnover due to unnecessary sickness of your staff is to have infection preventive infrastructure in place through health preserving care accreditation program
+              %span.potential-gree=t('pages.upgrade.ben_para6').html_safe 
           .single-ongoing.all
             = image_tag '106.png'
             %p
-              %span.potential-gree
-                %b Avoid potentially costly lawsuits
-                %br
-                Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care.
+              %span.potential-gree=t('pages.upgrade.ben_para7').html_safe 
           .single-ongoing.all
             = image_tag '107.png'
             %p
-              %span.potential-gree
-                %b Meet regulatory standards gets easier
-                %br
-                %span
-                HSCA accreditation gives you the tools to track and report key actions required to reduce risk and increase the health and safety of children and your daycare staff. Our app makes reporting faster and easier and simplifies the process of record keeping, thereby potentially avoiding costly shutdowns and problematic inspections.
+              %span.potential-gree=t('pages.upgrade.ben_para8').html_safe 
           .single-ongoing.all
             = image_tag '108.png'
             %p
-              %span.potential-gree
-                %b Get access to tools that enables your staff to work smarter
-                %br
-                Achieving the goal of a healthy and safe childcare facility is especially difficult without the correct tools. That is why accreditation program comes with  tools that enables daycare staff to  work smarter instead of  just harder to provide the most optimal health preserving care possible.
+              %span.potential-gree=t('pages.upgrade.ben_para9').html_safe 
           .single-ongoing.all
             = image_tag '109.png'
             %p
-              %span.potential-gree
-                %b Get the competitive edge
-                %br
-                Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care.
+              %span.potential-gree=t('pages.upgrade.ben_para10').html_safe 
           .single-ongoing.all
             = image_tag '110.png'
             %p
-              %span.potential-gree
-                %b Positively affect  the next generation
-                %br
-                Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come.
+              %span.potential-gree=t('pages.upgrade.ben_para11').html_safe 
     .row.money-back
-    .row.guarantee
-      .col-md-8.col-sm-8.col-xs-12
-      .col-md-4.col-sm-4.col-xs-12
+  .row.guarantee
+    .container
+      .col-md-12.col-sm-12.col-xs-12.text-right.mark-image
+        = image_tag 'money-back.png'
+      .col-md-8.col-sm-8.col-xs-12.content
+        %h3=t('pages.journey.guarantee.heading').html_safe
+        %p=t('pages.journey.guarantee.para1').html_safe
 :javascript
-  var subscription;
-  subscription = {
-    setupForm: function() {
-      return $('#new_subscription').submit(function() {
-        $('input[type=submit]').attr('disabled', true);
-        if ($('#card_number').length) {
-          subscription.processCard();
-          return false;
-        } else {
-          return true;
-        }
-      });
-    },
-    processCard: function() {
-      var card;
-      card = {
-        number: $('#card_number').val(),
-        cvc: $('#card_code').val(),
-        expMonth: $('#card_month').val(),
-        expYear: $('#card_year').val()
-      };
-      return Stripe.createToken(card, subscription.handleStripeResponse);
-    },
-    handleStripeResponse: function(status, response) {
-      if (status === 200) {
-        $('#subscription_stripe_card_token').val(response.id);
-        return $('#new_subscription')[0].submit();
-      } else {
-        $('#stripe_error').text(response.error.message);
-        return $('input[type=submit]').attr('disabled', false);
-      }
-    }
-  };
 
   jQuery(document).ready(function() {
     $('body').css("background", "#242c3f");
     $('footer.normal .container').css("top", "0");
     $('footer.normal .container .central-footer').css("display", "none");
-
-    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
-    return subscription.setupForm();    
   });

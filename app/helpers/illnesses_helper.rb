@@ -5,7 +5,7 @@ module IllnessesHelper
   end
 
   def illness_list
-    Illness.all.sort_by(&:name).collect{|illness| {code: illness.code, name: illness.name}}
+    Illness.all.where(language: I18n.locale).sort_by(&:name).collect{|illness| {code: illness.code, name: illness.name}}
   end
 
 end

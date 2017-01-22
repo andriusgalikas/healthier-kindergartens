@@ -7,16 +7,21 @@ jQuery(function() {
 
 subscription = {
   setupForm: function() {
-    return $('#new_subscription').submit(function() {
+    return $('#new_transaction').submit(function() {
       $('input[type=submit]').attr('disabled', true);
-      if ($('#card_number').length) {
-        subscription.processCard();
-        return false;
+      if ($('#card_number').val().length) {
+        if($('#stripe_card_token').val().length == 0){
+          subscription.processCard();
+          return false;          
+        } else {
+          return true;
+        }
       } else {
         return true;
       }
     });
   },
+
   processCard: function() {
     var card;
     card = {
@@ -27,10 +32,11 @@ subscription = {
     };
     return Stripe.createToken(card, subscription.handleStripeResponse);
   },
+
   handleStripeResponse: function(status, response) {
     if (status === 200) {
-      $('#subscription_stripe_card_token').val(response.id);
-      return $('#new_subscription')[0].submit();
+      $('#stripe_card_token').val(response.id);
+      return $('#new_transaction').submit();
     } else {
       $('#stripe_error').text(response.error.message);
       return $('input[type=submit]').attr('disabled', false);

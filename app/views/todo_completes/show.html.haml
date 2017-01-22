@@ -5,7 +5,7 @@
     #todo.row.todo-info
       .twelvecol
         .profile-thumb
-          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block'
+          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block' unless @todo.icon.nil?
         .row
           .form-group
             %label=t('manager.todos.show.label1')

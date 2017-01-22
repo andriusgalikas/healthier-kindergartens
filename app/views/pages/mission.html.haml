@@ -3,160 +3,110 @@
     = image_tag "mission_promo.jpg"
     .promo-text
       %h2= t('pages.mission_step.promo_header')
-      %p= t('pages.mission_step.promo_text')
-      %br
-      %h4.promo-subhead= t('pages.mission_step.promo_subhead')
+      /%p= t('pages.mission_step.promo_text')
+      /%br
+      /%h4.promo-subhead= t('pages.mission_step.promo_subhead')
   / End Promo Area
+.container
+  = render 'steps_navigation'
+  .row.step-contents
+    %h4.heading-letter.heading= t('pages.mission_step.headline')
+    %h4.sub-heading= t('pages.mission_step.main_instro')
+  .row.step-contents
+    %p= t('pages.mission_step.intro_1')
+    %p
+      = t('pages.mission_step.intro_2')
+      %a.reference-link{href: '#', id: 'reference_1'}1
+      = t('pages.mission_step.intro_3')
 
-= render 'steps_navigation'
+  .row.step-contents
+    %p= t('pages.mission_step.scientific_fact')
+    %ul.scientific-facts
+      %li
+        %p
+          = t('pages.mission_step.fact_1')
+          %a.reference-link{href: '#', id: 'reference_2'}2
+      %li
+        %p
+          = t('pages.mission_step.fact_2')
+          %a.reference-link{href: '#', id: 'reference_3'}3
+          = t('pages.mission_step.fact_2_1')
+      %li
+        %p
+          = t('pages.mission_step.fact_3')
+          %a.reference-link{href: '#', id: 'reference_4'}4
+  .row.step-contents.children-risk-content
+    %p= t('pages.mission_step.fact_5')
+    %p= t('pages.mission_step.fact_6')
 
-.row.step-contents
-  %p
-    %span.heading-letter.heading F
-    = t('pages.mission_step.intro_1')
-  %p= t('pages.mission_step.intro_2')
+  .row.step-contents
+    %p
+    = image_tag('start-warning.png')
+    %h3.heading= t('pages.mission_step.children_risk')
+    %p= t('pages.mission_step.children_risk_1')
 
-.row.step-contents
-  %h3.heading= t('pages.mission_step.scientific_fact')
-  %ul.scientific-facts
-    %li
-      %p= t('pages.mission_step.fact_1')
-    %li
-      %p= t('pages.mission_step.fact_2')
-    %li
-      %p= t('pages.mission_step.fact_3')
+    %p
+      = t('pages.mission_step.children_risk_sub_1')
+      %a.reference-link{href: '#', id: 'reference_5'}5
+      = t('pages.mission_step.children_risk_sub_2')
+      %a.reference-link{href: '#', id: 'reference_6'}6
 
-.row.step-contents.children-risk-content
-  %h3.heading= t('pages.mission_step.children_risk')
-  %p= t('pages.mission_step.children_risk_1')
-  %p= t('pages.mission_step.children_risk_2')
-  %p= t('pages.mission_step.children_risk_3')
-  %p= t('pages.mission_step.children_risk_4')
-  %p= t('pages.mission_step.children_risk_5')
+    %p
+      = t('pages.mission_step.children_risk_2')
+      %a.reference-link{href: '#', id: 'reference_7'}7
+    %p
+      = t('pages.mission_step.children_risk_3').html_safe
+      %span{style: 'font-size: 8px;'}
+        %a.reference-link{href: '#', id: 'reference_8'}8, 
+        %a.reference-link{href: '#', id: 'reference_9'}9
 
-.row.step-contents
-  %h3.heading= t('pages.mission_step.staff_parents_risk')
-  %p= t('pages.mission_step.staff_parents_risk_1')
-  %p= t('pages.mission_step.staff_parents_risk_2')
-  %p= t('pages.mission_step.staff_parents_risk_3')
-  %p= t('pages.mission_step.staff_parents_risk_4')
+    %p
+      = t('pages.mission_step.children_risk_4').html_safe
+      %a.reference-link{href: '#', id: 'reference_10'}10
+
+    %h4.sub-heading= t('pages.mission_step.children_risk_5').html_safe
+    %p
+      = t('pages.mission_step.children_risk_6').html_safe
+      %a.reference-link{href: '#', id: 'reference_11'}11
+      = t('pages.mission_step.children_risk_7').html_safe
+      %a.reference-link{href: '#', id: 'reference_12'}12
+
+  .row.step-contents
+    %p
+    = image_tag('start-parent.png')
+    %h3.heading= t('pages.mission_step.staff_parents_risk')
+    %p
+      = t('pages.mission_step.staff_parents_risk_1').html_safe
+      %a.reference-link{href: '#', id: 'reference_13'}13
+    %p
+      = t('pages.mission_step.staff_parents_risk_2').html_safe
+      %a.reference-link{href: '#', id: 'reference_14'}14
+      %a.reference-link{href: '#', id: 'reference_15'}15
+      %a.reference-link{href: '#', id: 'reference_16'}16
+    %p
+      = t('pages.mission_step.staff_parents_risk_3').html_safe
+      %a.reference-link{href: '#', id: 'reference_17'}17
+    %p
+      = t('pages.mission_step.staff_parents_risk_4').html_safe
+      %a.reference-link{href: '#', id: 'reference_18'}18
+    %p
+      = t('pages.mission_step.staff_parents_risk_5').html_safe
+      %a.reference-link{href: '#', id: 'reference_19'}19
+
+    %h4.sub-heading= t('pages.mission_step.what_to_do').html_safe
+    %p
+      = t('pages.mission_step.what_to_do_1').html_safe
+      %span{ style: 'font-size: 8px;'}
+        %a.reference-link{href: '#', id: 'reference_20'}20
+        %a.reference-link{href: '#', id: 'reference_21'}21
+        %a.reference-link{href: '#', id: 'reference_22'}22
+      = t('pages.mission_step.what_to_do_2').html_safe
 
 .row.step-contents.next-step-content
   .next-step
     %h4= t('pages.mission_step.next_step_header')
-    %br
-    %p= t('pages.mission_step.next_step_text')
-
-.row.step-contents.mission-invite-content
-  %h3= t('pages.mission_step.mission_invite')
-  %br
-  %button.btn.hcc-btn
-    %a{'href': '#'}
-      = t('pages.mission_step.learn_more')
-.legacy-mission
-  .container
-    .row.promo
-      .col-lg-12.col-md-12.col-sm-12.col-xs-12
-        .promo-img
-          = image_tag "mission_promo.jpg"
-          .img-text
-            %h2= t('pages.mission.main_heading').html_safe
-            %p= t('pages.mission.main_heading2').html_safe
-  / End Promo Area
-  .container
-    .row
-      .col-lg-12.col-md-12.col-sm-12.col-xs-12
-        %ul#page-menu.nav.nav-pills
-          %li.active{:role => "presentation"}
-            %a{:href => "/mission"}
-              %i.fa.fa-angle-down>
-              1. The Mission
-          %li{:role => "presentation"}
-            %a{:href => "/standard"}
-              %i.fa.fa-angle-right>
-              2. The Standard
-          %li{:role => "presentation"}
-            %a{:href => "/path"}
-              %i.fa.fa-angle-right>
-              3. The Path to Accreditation
-          %li{:role => "presentation"}
-            %a{:href => "#"}
-              %i.fa.fa-angle-right>
-              Your Journey!
-  / End page-menu Area
-  .container.page-heading
-    .row
-      .col-lg-12.col-md-12.col-sm-12.col-xs-12.mission-page-heading
-        %h2= t('pages.mission.sub_heading').html_safe
-  .container
-    .row
-      .col-lg-12.col-md-12.col-sm-12.col-xs-12
-        .page-discription
-          %p= t('pages.mission.para1').html_safe
-  .container.risks-area
-    .row.risks-care
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare
-        %h2= t('pages.mission.sub_heading2')
-        %p
-          Studies show that children in daycare are
-          %span{:style => "font-size:50px"} 300%
-          %span= t('pages.mission.para2').html_safe
-          %span= t('pages.mission.para3').html_safe 
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12.daycare-parent-worder
-        .worder-daycare
-          %h2= t('pages.mission.sub_heading3')
-          %p
-            Studies indicate that in a flu season,
-            %span{:style => "font-size:50px"} 50%
-            %span= t('pages.mission.para4').html_safe
-        .parent-daycare
-          %h2= t('pages.mission.sub_heading4')
-          %p= t('pages.mission.para5')
-            
-  .container.what-do-next
-    .row
-      .col-lg-12.col-md-12.col-sm-12.col-xs-12
-        = image_tag 'mission_hand.png'
-        %h2.what-do-next-heading
-          = t('pages.mission.sub_heading5').html_safe
-        %p.wdnp= t('pages.mission.para6').html_safe
-        %ul#mission-menu
-          %li
-            %a{:href => ""}= t('pages.mission.label1').html_safe
-          %li
-            %a{:href => ""}= t('pages.mission.label2').html_safe
-          %li
-            %a{:href => ""}= t('pages.mission.label3').html_safe
-  #threestrep.container
-    .row
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12.out-ben
-        .outline-risk
-          %h2
-            %span 1
-            = t('pages.mission.sub_heading6').html_safe
-          %p= t('pages.mission.para7').html_safe
-        .benchmark
-          %h2
-            %span 3
-            = t('pages.mission.sub_heading7').html_safe
-          %p= t('pages.mission.para8').html_safe
-      .col-lg-6.col-lg-6.col-md-6.col-sm-12.col-xs-12.community-area
-        .community
-          %h2
-            %span 2
-            = t('pages.mission.sub_heading8').html_safe
-          %p= t('pages.mission.para9').html_safe
-  #get-start-free.container
-    .row
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        %p= t('pages.mission.para10').html_safe
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        %h2.start-free
-          %span.get-start= t('pages.mission.head').html_safe
-          = link_to getting_started_path do
-            %i.fa.fa-angle-right
-            %i.fa.fa-angle-right
-            %i.fa.fa-angle-right
-        %p
-          = t('pages.mission.para11').html_safe
-          %a.child-care-link{:href => "/standard"} click here
+    %button.btn.hcc-btn
+      %a{'href': '/journey'}
+        = t('pages.mission_step.get_started')
+- (1..22).each do |num|        
+  = render 'reference_popover', index: num

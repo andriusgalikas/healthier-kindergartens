@@ -1,8 +1,35 @@
+$hcc-red: #fc636b;
+$hcc-pink: #ff6d92;
+$hcc-bright-pink: #ff48be;
+$hcc-orange: #ffb900;
+$hcc-dark-orange: #ff8a00;
+$hcc-yellow: #ffe606;
+$hcc-blue: #4186e0;
+$hcc-light-blue: #7fe6e2;
+
+@mixin hcc-red-gradient {
+  background: $hcc-red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $hcc-red , $hcc-orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $hcc-red, $hcc-orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $hcc-red, $hcc-orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $hcc-red , $hcc-orange); /* Standard syntax */
+  color: white;
+}
+
+@mixin hcc-red-gradient-vertical {
+  background: $hcc-red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(bottom, $hcc-red , $hcc-orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $hcc-red, $hcc-orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $hcc-red, $hcc-orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, $hcc-red , $hcc-orange); /* Standard syntax */
+  color: white;
+}
+
 .legacy-upgrade{
   font-family: 'Open Sans', sans-serif;
   
   .row{
-    margin: 0 0 15px 0;
+    margin: 0;
   }
 
   h2{
@@ -12,7 +39,8 @@
 
   .upgrade-plan{
     .price-plan-desc{
-      padding: 30px;
+      padding: 0px 20px 10px 20px !important;
+      text-align: center;
       h2{
         margin-top: 10px;
       }
@@ -27,6 +55,7 @@
       border: 1px solid #fb045b;
       border-radius: 20px;
       margin-bottom: 20px;
+      padding: 10px 20px 20px 20px;
     }
 
     .form-control{
@@ -38,6 +67,7 @@
       font-weight: 600;
       color: #fb045b;
       margin: 0;
+      line-height: 60px;
     }
 
     .plan-per{
@@ -55,7 +85,14 @@
     }
 
     span{
-      line-height: 30px;    
+      line-height: 30px;
+
+      &.original{
+        font-size: 24px;
+        color: #777;
+        text-decoration: line-through;
+        padding: 0px 5px;        
+      }    
     }
 
     select{
@@ -86,8 +123,173 @@
 
   }
 
-  .guarantee{
+  .radio-box{
+    input[type=radio] + label{
+      display: block;
+      margin-right: 15px;          
+      background-image: url(/assets/msg-radio-off.png);
+      background-repeat: no-repeat;
+      background-position-y: 15px;      
+      background-position-x: 10px;      
+      padding: 0px 10px 20px 40px;
+      height: auto;
+      vertical-align: middle;
+      font-weight: 400;
+      margin: 5px 10px;
+      font-size: 16px;
+      text-decoration: none;
+      text-align: center;
 
+      border: 1px solid #ff6d92;      
+      margin-bottom: 20px;
+      border-radius: 10px;      
+      color: #333;
+      background-color: #fff;
+    }
+
+    input[type=radio]:checked + label{
+      display: block;
+      margin-right: 15px;
+      background-image: url(/assets/msg-radio-on.png);
+      background-position-y: 15px;      
+      background-position-x: 10px;      
+      background-repeat: no-repeat;
+      padding: 0px 10px 20px 40px;
+      height: auto;
+      vertical-align: middle;
+      font-weight: 400;
+      margin: 5px 10px;
+      font-size: 16px;
+      text-decoration: none;
+      text-align: center;
+
+      border: 1px solid #ff9a31;      
+      margin-bottom: 20px;
+      border-radius: 10px;      
+      color: #fff !important;
+      background-color: #ff9a31 !important;      
+    }
+
+    .hcc-btn-vertical{
+      padding: 10px 20px;
+      font-size: 28px;
+      border-radius: 40px;
+    }    
+  }  
+
+  .guarantee{
+    color: #fff;
+    @include hcc-red-gradient;
+    padding: 40px 0;
+
+    .mark-image{
+      height: 30px;
+      img{
+        position: relative;
+        top: -90px;
+        right: 50px;
+      }
+    }
+  }
+
+}
+
+.alert-white{
+  background: white;
+  border: 1px solid #ddd;    
+}
+
+.legacy-ethic{
+  .step-wrapper{
+    border-radius: 20px;
+    border: 2px solid $hcc-orange;
+    margin-top: 70px;
+    margin-bottom: 20px;    
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 20px;
+
+    .step-title{
+      @include hcc-red-gradient-vertical;
+      margin: 0;
+      padding: 10px;
+      border-radius: 16px;
+      text-align: Center;      
+    }
+    .content{
+      padding: 20px;
+      b{
+        color: $hcc_dark_orange;
+      }
+
+      .radio-box{
+        &.agree{
+          input[type=radio]:checked + label{
+            background-image: url(/assets/msg-radio-on-green.png) !important;
+          }
+        }
+        input[type=radio] + label{
+          display: block;
+          margin-right: 15px;          
+          background-image: url(/assets/msg-radio-off.png);
+          background-repeat: no-repeat;
+          background-position-y: 2px;      
+          padding-left: 30px;
+          height: auto;
+          vertical-align: middle;
+          font-weight: 400;
+          margin: 5px 10px;
+          font-size: 16px;
+          text-decoration: none;
+          text-align: left;
+        }
+
+        input[type=radio]:checked + label{
+          display: block;
+          margin-right: 15px;
+          background-image: url(/assets/msg-radio-on.png);
+          background-position-y: 2px;      
+          background-repeat: no-repeat;
+          padding-left: 30px;
+          height: auto;
+          vertical-align: middle;
+          font-weight: 400;
+          margin: 5px 10px;
+          font-size: 16px;
+          text-decoration: none;
+          text-align: left;
+        }
+      }      
+    }
+  }
+
+  .hcc-btn-vertical{
+    min-width: 200px;
+
+    &.disagree{
+      background: #fff;
+      border: 1px solid $hcc-dark-orange;
+      color: $hcc-pink !important;
+      a{
+        color: $hcc-pink;
+      }      
+    }
+  }
+
+  .ethic-single{
+    clear: both;
+    img{
+      float: left;
+      width: 45px;
+      margin: -5px 5px 10px 5px;
+    }
+    p{
+      margin-left: 66px;
+    }
+  }
+
+  input.form-control{
+    border-color: #ccc !important;
   }
 }
 

@@ -7,6 +7,7 @@
 #  parent_subject_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  language          :string
 #
 # Indexes
 #
@@ -25,7 +26,18 @@ class MessageSubject < ActiveRecord::Base
     end
   end
 
-  scope :main_subjects, -> { where(parent_subject_id: nil).order(title: :asc) }
+  scope :main_subjects, -> { where(parent_subject_id: nil)
+                                .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['SURVEY_TEMPLATE_SUBJECT']}%")
+                                .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_VERIFICATION_SUBJECT']}%").order(title: :asc) }
 
-  validates :title, presence: true
+  scope :template_subjects, -> { where(parent_subject_id: nil)
+                                .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['SURVEY_TEMPLATE_SUBJECT']}%")
+                                .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_VERIFICATION_SUBJECT']}%").order(title: :asc) }
+  scope :invite_subjects, -> { where(parent_subject_id: nil).where("message_subjects.title LIKE :search", :search => "%#{ENV['SURVEY_TEMPLATE_SUBJECT']}%").order(title: :asc) }
+  scope :verify_subjects, -> { where(parent_subject_id: nil).where("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_VERIFICATION_SUBJECT']}%").order(title: :asc) }
+
+  scope :main_title_like,      ->(search) { where("LOWER(message_subjects.title) LIKE :search", :search => "%#{search.downcase}%") }
+  scope :main_by_language,     ->(search) { where("(LOWER(message_subjects.language) LIKE :search)", :search => "%#{search.downcase}%") }
+
+  validates :title, :language, presence: true
 end

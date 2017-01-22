@@ -7,7 +7,7 @@
       = text_field_tag 'search-illness-name', '', placeholder: t('illnesses.labels.search'), class: 'form-control typeahead'
   .col-md-6.col-sm-6
     .radio-box-group
-      - Illness.all.each do |illness|
+      - Illness.all.where(language: I18n.locale).each do |illness|
         .radio-box
           %input{:type=>"radio", :name => "record[illness_code]", :id => "chk_illness_#{illness.code}", :style => "display: none;", value: illness.code,  'data-illness_name': illness.name, :required => "true"}
           %label{:for => "chk_illness_#{illness.code}"}

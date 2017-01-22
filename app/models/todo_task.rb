@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  task_type   :integer          default("0")
+#  language    :string
 #
 
 class TodoTask < ActiveRecord::Base
@@ -19,11 +20,11 @@ class TodoTask < ActiveRecord::Base
     # sub-tasks-related assocs
     has_many :sub_tasks,                                            dependent: :destroy
     has_many :global_sub_tasks,                                     -> {where(sub_task_type: 0)}, class_name: 'SubTask'
-    has_many :local_sub_tasks,                                     -> {where(sub_task_type: 1)}, class_name: 'SubTask'
+    has_many :local_sub_tasks,                                      -> {where(sub_task_type: 1)}, class_name: 'SubTask'
 
     belongs_to :todo
 
-    validates :title, :description,                                 presence: true
+    validates :title, :description, :language,                      presence: true
 
     enum task_type: [:global, :local]
 

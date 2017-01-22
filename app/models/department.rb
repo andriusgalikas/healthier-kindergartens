@@ -24,4 +24,8 @@ class Department < ActiveRecord::Base
     has_many :health_records,                           :as => :owner
 
     validates :name,                                    presence: true, uniqueness: { scope: :daycare_id }
+
+
+    scope :name_like, ->(search) { where("LOWER(departments.name) LIKE :search", :search => "%#{search.downcase}%") }
+    scope :by_daycare, ->(search) { where("departments.daycare_id = :search", :search => "#{search}") }
 end

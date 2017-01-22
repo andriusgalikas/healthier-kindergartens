@@ -2,12 +2,15 @@
 #
 # Table name: subscriptions
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  plan_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  terms      :boolean          default("false")
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  plan_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  terms            :boolean          default("false")
+#  month            :integer
+#  discount_code_id :integer
+#  transaction_id   :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

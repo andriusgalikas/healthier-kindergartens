@@ -1,0 +1,35 @@
+= form_for [:admin, @daycare] do |f|
+  .threecol
+  .ninecol.last
+    = render partial: 'shared/admin/errors', locals: { object: @daycare }
+  .threecol
+    %h3= t('admin.daycare._form.heading')
+    %p= t('admin.daycare._form.para')
+  .ninecol.last
+    %fieldset.widget.widget-content.widget-last
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+      .form-group
+        = f.label 'Address'
+        = f.text_field :address_line1, :class => 'form-control'
+      .form-group
+        = f.label :postcode
+        = f.text_field :postcode, :class => 'form-control'
+      .form-group
+        = f.label :telephone
+        = f.text_field :telephone, :class => 'form-control'
+      .form-group
+        = f.label 'Nubmer of Childrens'
+        = f.text_field :num_children, :class => 'form-control'
+      .form-group
+        = f.label 'Nubmer of Workers'
+        = f.text_field :num_worker, :class => 'form-control'
+      .form-group
+        = f.label 'Payment Mode(month)'
+        = f.select :payment_month, options_for_select([['Select Mode', '0'], ['1 month', '1'], ['3 months', '3'], ['1 year', '12']], @daycare.payment_month), :class => 'form-control'
+      .form-group
+        = f.label 'Discount Code: '
+        = f.select :discount_code_id, options_from_collection_for_select(DiscountCode.all, 'id', 'code', @daycare.discount_code_id), :class => 'form-control', :include_blank => true
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'

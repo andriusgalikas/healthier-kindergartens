@@ -7,6 +7,7 @@
 #  parent_subject_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  language          :string
 #
 # Indexes
 #

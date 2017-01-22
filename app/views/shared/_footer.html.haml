@@ -10,7 +10,7 @@
         %p +47 467 47 016
 
       .col-md-4.central-footer
-        = image_tag 'logo.png'
+        = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url
         %p= t('footer.hcc')
         %p &copy; 2016
 
@@ -23,6 +23,5 @@
           %li= link_to "About Us", about_path, class: 'hcc-simple'
           - unless user_signed_in?
             %li= link_to "Login", new_user_session_path, class: 'hcc-simple'
-            %li= link_to "Register", getting_started_path, class: 'hcc-simple'
           - else
             %li= link_to "Logout", destroy_user_session_path, method: :delete, class: 'hcc-simple'

@@ -29,8 +29,8 @@
         %h5=t('register.labels.daycare_name').upcase
         = daycare.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.daycare_name'), :required =>"true"
       .row
-        %h5=t('register.labels.daycare_url').upcase
-        = daycare.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.daycare_url')
+        %h5=t('register.labels.daycare_type').upcase
+        = daycare.select :care_type, options_for_select([[t('register.caretype.ind'), 1], [t('register.caretype.fra'), 2], [t('register.caretype.gov'), 3]]), {},class: 'form-control input-round', :placeholder => t('register.labels.daycare_type')
       .row
         %h5=t('register.labels.address').upcase
         = daycare.text_field :address_line1, class: 'form-control input-round', :placeholder => t('register.labels.address'), :required =>"true"

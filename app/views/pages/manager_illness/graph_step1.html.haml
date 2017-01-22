@@ -18,7 +18,7 @@
             .form-group{data:{step: 2, intro: t("guideline.manager.illness_graph.step2.content")}}
               = label_tag :illness, t('illnesses.labels.select_multiple_illnesses')
               %br
-              = select_tag 'illness_codes[]', options_from_collection_for_select(Illness.all, 'code', 'name'), class: 'multiple-select', required: true, multiple: true
+              = select_tag 'illness_codes[]', options_from_collection_for_select(Illness.all.where(language: I18n.locale), 'code', 'name'), class: 'multiple-select', required: true, multiple: true
 
           .col-md-4.col-sm-4.col-xs-12
             .form-group

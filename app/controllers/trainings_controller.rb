@@ -1,4 +1,5 @@
 class TrainingsController < ApplicationController
+    layout 'pages'
     before_action -> { authenticate_role!(["parentee", "worker", "manager"]) }
     before_action :authenticate_subscribed!
 
@@ -20,12 +21,14 @@ class TrainingsController < ApplicationController
     def free_trainings id
       # free users video urls 
       # FREE[id]
-      Video.where(category: "free",video_type: id,language: I18n.locale.upcase).last.url
+      video = Video.where(category: "free",video_type: id,language: I18n.locale.upcase).last
+      video.url unless video.nil?
     end
 
     def paid_trainings id
        # paid users video urls 
       # PAID[id]
-      Video.where(category: "paid",video_type: id,language: I18n.locale.upcase).last.url
+      video = Video.where(category: "paid",video_type: id,language: I18n.locale.upcase).last
+      video.url unless video.nil?
     end
 end

@@ -1,11 +1,11 @@
 class SubscriptionsController < ApplicationController
     layout 'legacy'
     before_action -> { authenticate_role!(["manager"]) }
-    before_action :unsubscribed_user!, except: :complete
+    #before_action :unsubscribed_user!, except: :complete
 
     def index
         set_plan
-        new_subscription
+        get_subscription
     end
 
     def new
@@ -19,7 +19,8 @@ class SubscriptionsController < ApplicationController
         set_discount_code
         if @subscription.save_with_payment(@discount_code)
             PlanMailer.send_confirmation(current_user).deliver_later
-            redirect_to complete_plan_subscription_url(@subscription.plan, @subscription), :notice => "Thank you for subscribing!"
+            #redirect_to complete_plan_subscription_url(@subscription.plan, @subscription), :notice => "Thank you for subscribing!"
+            redirect_to ethic_2_path
         else
             render :new
         end
@@ -45,7 +46,20 @@ class SubscriptionsController < ApplicationController
     end
 
     def new_subscription
-        @subscription = @plan.subscriptions.build
+        @subscription = Subscription.new
+    end
+
+    def get_subscription        
+        @subscription = Subscription.where(transaction_id: nil, user_id: current_user.id).first
+        if @subscription.nil?
+            new_subscription            
+            @subscription.user_id = current_user.id
+            @subscription.plan_id = 1
+            @subscription.terms = true
+            @subscription.month = 12
+            @subscription.save
+        end
+        @transaction = Transaction.new
     end
 
     def set_plans

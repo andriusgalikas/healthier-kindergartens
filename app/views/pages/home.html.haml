@@ -7,60 +7,29 @@
           %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
           %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
           %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
-          %li{"data-slide-to" => "3", "data-target" => "#carousel-example-generic"}
-          %li{"data-slide-to" => "4", "data-target" => "#carousel-example-generic"}
         / Wrapper for stslides
         .carousel-inner{:role => "listbox"}
           .item.active
             = image_tag 'slide-0.png'
             .carousel-content
               .carousel-header
-                %b Healthier
-                %small and
-                %b Safer
-                %b Childcare Alliance
+                = t('pages.home.slide_header').html_safe
               %p.carousel-main-content= t('pages.home.slide_header_0_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_0_subcontent')
           .item
             = image_tag 'slide-1.png'
             .carousel-content
               .carousel-header
-                %b Healthier
-                %small and
-                %b Safer
-                %b Childcare Alliance
+                = t('pages.home.slide_header').html_safe
               %p.carousel-main-content= t('pages.home.slide_header_1_content')
               %p.carousel-sub-content= t('pages.home.slide_header_1_subcontent')
-          .item
-            = image_tag 'slide-2.png'
-            .carousel-content
-              .carousel-header
-                %b Healthier
-                %small and
-                %b Safer
-                %b Childcare Alliance
-              %p.carousel-main-content= t('pages.home.slide_header_2_content')
-              %p.carousel-sub-content= t('pages.home.slide_header_2_subcontent')
           .item
             = image_tag 'slide-3.png'
             .carousel-content
               .carousel-header
-                %b Healthier
-                %small and
-                %b Safer
-                %b Childcare Alliance
-              %p.carousel-main-content= t('pages.home.slide_header_3_content')
-              %p.carousel-sub-content= t('pages.home.slide_header_3_subcontent')
-          .item
-            = image_tag 'slide-4.png'
-            .carousel-content
-              .carousel-header
-                %b Healthier
-                %small and
-                %b Safer
-                %b Childcare Alliance
-              %p.carousel-main-content= t('pages.home.slide_header_4_content')
-              %p.carousel-sub-content= t('pages.home.slide_header_4_subcontent')
-
+                = t('pages.home.slide_header').html_safe
+              %p.carousel-main-content= t('pages.home.slide_header_2_content')
+              %p.carousel-sub-content= t('pages.home.slide_header_2_subcontent')
         %a
         / Controls
         %a.left.carousel-control{href: '#carousel-example-generic', role: 'button', 'data-slide': 'prev'}
@@ -75,57 +44,54 @@
     / END SLIDER
     .main-content
       .container.content
-
         .row
-          .col-md-2  &nbsp;
-          .col-md-5.col-xs-12.sub-content.start
+          .col-md-7.col-xs-12.sub-content.start
             = image_tag "dart.png"
             %h2= t('pages.home.subcontent_start_here')
             .start-text.row
-              .col-md-10.col-xs-12
+              .col-md-9.col-xs-12
                 %p= t('pages.home.start_here_1')
-                %p= t('pages.home.start_here_2')
-              .col-md-2.col-xs-12
+                %a.content-link{href: mission_path}= t('pages.home.start_here_link')
+              .col-md-3.col-xs-12
                 %button.btn.hcc-btn
-                  = link_to mission_path do
+                  = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.learn_more')
+                    = t('pages.home.start_here_button')
           .col-md-5 &nbsp;
 
         .row
           .col-md-5 &nbsp;
-          .col-md-5.col-xs-12.sub-content.standard
+          .col-md-7.col-xs-12.sub-content.standard
             = image_tag "standard-new.png"
             %h2= t('pages.home.subcontent_standard')
             .standard-text.row
               .col-md-2.col-xs-12
                 %button.btn.hcc-btn
-                  = link_to standard_path do
+                  = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.learn_more')
+                    = t('pages.home.standard_button')
               .col-md-10.col-xs-12
                 %p= t('pages.home.standard_1')
-          .col-md-2 &nbsp;
+                %a.content-link{href: standard_path}= t('pages.home.standard_link')
 
         .row
-          .col-md-2 &nbsp;
-          .col-md-5.col-xs-12.sub-content.path
+          .col-md-7.col-xs-12.sub-content.path
             = image_tag "flags.png"
             %h2= t('pages.home.subcontent_path')
             .path-text.row
               .col-md-10.col-xs-12
                 %p= t('pages.home.path_1')
-                %p= t('pages.home.path_2')
+                %a.content-link{href: path_path}= t('pages.home.path_link')
               .col-md-2.col-xs-12
                 %button.btn.hcc-btn
-                  = link_to path_path do
+                  = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.learn_more')
+                    = t('pages.home.path_button')
           .col-md-5 &nbsp;
 
         .row
           .col-md-5 &nbsp;
-          .col-md-5.col-xs-12.sub-content.journey
+          .col-md-7.col-xs-12.sub-content.journey
             .row
               = image_tag 'map.png'
             %h2= t('pages.home.subcontent_journey')
@@ -138,7 +104,8 @@
                     = image_tag 'right-arrow.png', class: 'img'
                     = image_tag 'right-arrow.png', class: 'img'
                     %button.btn.hcc-btn
-                      = link_to getting_started_path do
-                        Get Complimentary Access
+                      = link_to journey_path do
+                        = t('pages.home.journey_button')
               .col-md-9.col-xs-12
                 %p= t('pages.home.journey_1')
+                %a.content-link{href: journey_path}= t('pages.home.journey_link')
