@@ -773,6 +773,7 @@ en:
         label8: "Edit Invite Message Template"
         label9: "Edit Email Verification Message Template"
         label10: "Edit Logo"
+        label11: "Edit Plans"
     daycare:
       index:
         heading: "Daycares"  

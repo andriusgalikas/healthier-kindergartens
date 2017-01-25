@@ -15,7 +15,12 @@
  *= require responsive
  *= require hopscotch.css
 */
+
+@import "compass";
+@import "compass/reset";
 @import "compass/css3";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
 
 $blue: #00aff1;
 $purple: #ab8bff;

@@ -12,3 +12,7 @@ if Translation.table_exists?
 
   I18n.backend = I18n::Backend::Chain.new(I18n.backend, I18n::Backend::Simple.new)
 end
+
+I18n::Backend::ActiveRecord.configure do |config|
+  config.cleanup_with_destroy = true # defaults to false
+end

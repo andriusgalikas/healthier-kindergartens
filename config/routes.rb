@@ -169,7 +169,7 @@ Rails.application.routes.draw do
     resources :health_records, only: [:show]
 
     namespace :admin do
-        root to: 'dashboard#index'
+        root to: 'pages#lang_dashboard'
 
         #localization
         get 'lang_dashboard', to: 'pages#lang_dashboard'

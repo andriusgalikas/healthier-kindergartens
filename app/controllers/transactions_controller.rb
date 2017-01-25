@@ -1,8 +1,8 @@
 class TransactionsController < ApplicationController
   def create
     @subscription = Subscription.find(params[:subscription_id])
-    @plan = Plan.find(1)
-    @deposit_plan = Plan.find(2)
+    @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase)
+    @deposit_plan = Plan.where(plan_type: 0, language: I18n.locale.upcase)
 
     full_amount = @plan.price * current_user.daycare.num_children * 30 * @subscription.month.to_i
     bill_amount = @subscription.discount_code.nil? ? full_amount : full_amount * (100-@subscription.discount_code.value) * 0.01
