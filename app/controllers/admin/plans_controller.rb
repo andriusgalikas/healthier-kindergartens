@@ -4,6 +4,7 @@ class Admin::PlansController < AdminController
   # GET /plans.json
   def index
     @plans = Plan.all
+    @plans = @plans.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
   end
 
   # GET /plans/new
@@ -23,7 +24,6 @@ class Admin::PlansController < AdminController
 
     respond_to do |format|
       if @plan.save
-        Stripe::Plans.put!
         format.html { redirect_to admin_plans_url, notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else
@@ -67,6 +67,6 @@ class Admin::PlansController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :price, :allocation)
+      params.require(:plan).permit(:name, :price, :allocation, :plan_type, :language)
     end
 end

@@ -10,7 +10,7 @@
  *= require plugins/image_manager.min.css
  *= require plugins/image.min.css
  *= require plugins/quick_insert.min.css
- *= require jquery.steps/jquery.steps.css
+ *= require jquery.steps
  *= require jquery.datetimepicker
  *= require slick-carousel/slick/slick.css
  *= require slick-carousel/slick/slick-theme.css
@@ -18,7 +18,11 @@
  *= require responsive
 */
 
-@import 'compass/css3';
+@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
 
 $grey: #d5d5de;
 $darker-grey: #ccc;

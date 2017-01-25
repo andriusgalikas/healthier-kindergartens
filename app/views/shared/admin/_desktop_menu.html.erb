@@ -1,4 +1,10 @@
 <ul>
+  <li class="<%= active_controller?(controller: 'admin/localization') %>">
+    <%= link_to admin_lang_dashboard_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Localization' do %>
+      <i class="icon-dashboard" style="color:#00aff1;"></i>
+    <% end %>
+  </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/dashboard', action: 'index') %>">
     <%= link_to admin_root_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Dashboard' do %>
       <i class="icon-dashboard"></i>
@@ -9,7 +15,6 @@
       <i class="icon-users"></i>
     <% end %>
   </li>
-  <!--
   <li class="<%= active_controller?(controller: 'admin/todos') %> <%= active_controller?(controller: 'admin/products/stock') %>">
     <%= link_to admin_todos_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Todos' do %>
       <i class="icon-pencil"></i>
@@ -26,6 +31,7 @@
       <i class="icon-ticket"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/plans') %>">
     <%= link_to admin_plans_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Plans' do %>
       <i class="fa fa-th-large" style="color:#00aff1;"></i>
@@ -36,7 +42,6 @@
       <i class="icon-office" style="color:#ab8bff;"></i>
     <% end %>
   </li>
-  <!--
   <li class="<%= active_controller?(controller: 'admin/subjects') %>">
     <%= link_to admin_subjects_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Subjects' do %>
       <i class="icon-books" style="color:#8DC73F;"></i>
@@ -54,12 +59,12 @@
       <i class="icon-bubble" style="color:#F05C52;"></i>
     <% end %>
   </li>
-  -->
   <li class="<%= active_controller?(controller: 'admin/illnesses') %>">
     <%= link_to admin_illnesses_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Illnesses' do %>
       <i class="icon-aid" style="color:#F70000;"></i>
     <% end %>
   </li>
+  -->
   <!--
   <li class="<%= active_controller?(controller: 'admin/videos') %>">
     <%= link_to admin_videos_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Videos' do %>
@@ -67,11 +72,6 @@
     <% end %>
   </li>
   -->
-  <li class="<%= active_controller?(controller: 'admin/localization') %>">
-    <%= link_to admin_lang_dashboard_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Localization' do %>
-      <i class="fa fa-cogs" style="color:#00aff1;"></i>
-    <% end %>
-  </li>
   
 </ul>
 <ul id="secondary-menu">

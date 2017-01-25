@@ -1,6 +1,16 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  config.paperclip_defaults = {
+  storage: :s3,
+  s3_credentials: {
+    bucket: Rails.application.secrets.aws_s3_bucket,
+    access_key_id: Rails.application.secrets.s3_access_key,
+    secret_access_key: Rails.application.secrets.s3_secret_key,
+    s3_region: Rails.application.secrets.s3_region
+  }
+}
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -49,7 +59,7 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
