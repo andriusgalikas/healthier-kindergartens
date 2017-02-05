@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap.min.js
-//= require bootstrap-tagsinput/src/bootstrap-tagsinput.js
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
 //= require twitter-bootstrap-wizard/jquery.bootstrap.wizard.js
 //= require jquery.datetimepicker
 //= require froala_editor.min.js

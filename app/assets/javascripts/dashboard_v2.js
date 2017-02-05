@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require jquery.datetimepicker
 //= require bootstrap/dist/js/bootstrap.min.js
-//= require bootstrap-tagsinput/src/bootstrap-tagsinput.js
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
 //= require turbolinks
 //= require froala_editor.min.js
 //= require plugins/colors.min.js
