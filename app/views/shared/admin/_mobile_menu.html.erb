@@ -2,11 +2,12 @@
   <div class="mp-level">
     <ul>
       <li>
-        <%= link_to admin_root_path do %>
+        <%= link_to admin_lang_dashboard_path do %>
           <i class="icon-dashboard"></i>
-          <span>Dashboard</span>
+          <span>Localization</span>
         <% end %>
       </li>
+      <!--
       <li>
         <%= link_to admin_users_path do %>
           <i class="icon-users"></i>
@@ -19,6 +20,7 @@
           <span>Todos</span>
         <% end %>
       </li>
+      -->
       <li>
         <%= link_to admin_daycares_path do %>
           <i class="icon-home"></i>
@@ -31,6 +33,19 @@
           <span>Discount Codes</span>
         <% end %>
       </li>
+      <li>
+        <%= link_to admin_payment_modes_path do %>
+          <i class="icon-books"></i>
+          <span>Payment Modes</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_payment_starts_path do %>
+          <i class="icon-office"></i>
+          <span>Payment Starts</span>
+        <% end %>
+      </li>
+      <!--
       <li>
         <%= link_to admin_plans_path do %>
           <i class="fa fa-th-large" style="color:#00aff1;"></i>
@@ -49,12 +64,14 @@
           <span>Subjects</span>
         <% end %>
       </li>
+      -->
       <li>
         <%= link_to admin_survey_subjects_path do %>
           <i class="icon-copy" style="color:#9bebff;"></i>
           <span>Surveys</span>
         <% end %>
       </li>
+      <!--
       <li>
         <%= link_to admin_message_templates_path do %>
           <i class="icon-bubble" style="color:#9bebff;"></i>
@@ -67,6 +84,7 @@
           <span>Illness</span>
         <% end %>
       </li>
+      -->
     </ul>
     <ul id="mobile-secondary-menu">
       <li>

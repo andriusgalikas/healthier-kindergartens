@@ -38,7 +38,7 @@ module HealthChildcare
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
-    config.asset_host = 'http://localhost:3000'
+    #config.asset_host = 'http://localhost:3000'
     
     #Survey Gizmo Configuration
     # Version of your assets, change this if you want to expire all your assets

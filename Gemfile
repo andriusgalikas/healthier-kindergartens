@@ -30,6 +30,10 @@ gem 'httparty'
 # Localization
 gem 'i18n-active_record', :require => 'i18n/active_record'
 
+# Currency List
+gem 'currency_select'
+gem 'currencies', :require => 'iso4217'
+
 group :production do
   gem 'unicorn-worker-killer'
   gem 'lograge'

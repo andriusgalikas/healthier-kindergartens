@@ -11,13 +11,15 @@
 #  month            :integer
 #  discount_code_id :integer
 #  transaction_id   :integer
+#  payment_mode_id  :integer
 #
 
 class Subscription < ActiveRecord::Base
     belongs_to :plan
-    belongs_to :user
+    belongs_to :user    
 
     belongs_to :discount_code
+    belongs_to :payment_mode
 
     #validates :user_id, :plan_id,                       presence: true
     #validates :user_id,                                 uniqueness: true

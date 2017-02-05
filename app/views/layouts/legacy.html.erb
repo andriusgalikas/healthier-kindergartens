@@ -15,17 +15,19 @@
     window._trans = <%= yield_js_translations.to_json.html_safe %>
   </script>
 
-  <script type="text/javascript">
-    $crisp=[];
-    CRISP_WEBSITE_ID="2a0e587f-839b-4b8c-9ef3-3881e449188e";
-    (function(){
-      d=document;
-      s=d.createElement("script");
-      s.src="https://client.crisp.im/l.js";
-      s.async=1;
-      d.getElementsByTagName("head")[0].appendChild(s);
-    })();
-  </script>
+  <% if current_user.nil? %>
+    <script type="text/javascript">
+      $crisp=[];
+      CRISP_WEBSITE_ID="2a0e587f-839b-4b8c-9ef3-3881e449188e";
+      (function(){
+        d=document;
+        s=d.createElement("script");
+        s.src="https://client.crisp.im/l.js";
+        s.async=1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })();
+    </script>
+  <% end %>
 
 </head>
 <body>

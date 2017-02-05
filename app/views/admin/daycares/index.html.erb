@@ -14,6 +14,7 @@
             <th><%= t('admin.daycare.index.label3')%></th>
             <th><%= t('admin.daycare.index.label4')%></th>
             <th><%= t('admin.daycare.index.label5')%></th>
+            <th><%= t('admin.daycare.index.label8')%></th>
             <th><%= t('admin.daycare.index.label6')%></th>
             <th><%= t('admin.daycare.index.label7')%></th>
             <th></th>
@@ -29,6 +30,7 @@
             <th>
               <%= select_tag :country, options_for_select(languages, :selected=> (params[:country].nil?) ? '' : params[:country].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>
             </th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -57,7 +59,10 @@
                 <%= dc.discount_code.value unless dc.discount_code.nil?%>
               </td>
               <td class="align-left">
-                <%= dc.payment_month%>
+                <%= "#{dc.payment_mode.period} #{dc.payment_mode.unit}" unless dc.payment_mode.nil?%>
+              </td>
+              <td class="align-left">
+                <%= "#{dc.payment_start.period} #{dc.payment_start.unit}" unless dc.payment_start.nil?%>
               </td>
               <td>
                 <a href="/admin/users?daycare_id=<%=dc.id%>">

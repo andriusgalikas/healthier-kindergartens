@@ -68,8 +68,8 @@ p "Assigning todos to departments..."
 
 
 p "Creating plans..."
-Plan.create(name: 'Per Children Per Day', price: 5, allocation: 30, plan_type: 1, language: 'EN')
-Plan.create(name: 'Deposit Amount', price: 100, allocation: 30, plan_type: 0, language: 'EN')
+Plan.create(name: 'Per Children Per Day', price: 5, allocation: 30, plan_type: 1, language: 'EN', currency: 'usd')
+Plan.create(name: 'Deposit Amount', price: 100, allocation: 30, plan_type: 0, language: 'EN', currency: 'usd')
 #Stripe::Plans.put!
 
 p "Creating discount codes..."
@@ -103,3 +103,23 @@ p "Creating Notification"
 
 p "Creating Locale URL"
 local_url = LocaleUrl.create(url: "www.healthierandsaferchildcare.org", language: "en")
+
+p "Creating Locale Logo"
+local_url = LocaleLogo.create(language: "EN", 
+							  description: "Default",
+							  address1: "Stasjonsveien 23B",
+							  address2: "2010 STROMMEN Norway",
+							  email: "infectionpreventivecare@healthierandsaferchildcare.org",
+							  phone_number: "+47 467 47 016",
+							  title: "Healthier and Safer Childcare Alliance",
+							  copyright: "© 2016")
+
+p "Creating Payment Mode"
+PaymentMode.create(period: 2, unit: 'week')
+PaymentMode.create(period: 1, unit: 'month')
+PaymentMode.create(period: 3, unit: 'month')
+PaymentMode.create(period: 1, unit: 'year')
+
+p "Creating Payment Start"
+PaymentStart.create(period: 7, unit: 'day')
+PaymentStart.create(period: 14, unit: 'day')

@@ -16,16 +16,17 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     :javascript
       window._trans = #{yield_js_translations.to_json.html_safe}
-    :javascript
-      $crisp=[];
-      CRISP_WEBSITE_ID="2a0e587f-839b-4b8c-9ef3-3881e449188e";
-      (function(){
-        d=document;
-        s=d.createElement("script");
-        s.src="https://client.crisp.im/l.js";
-        s.async=1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-      })();
+    - if current_user.nil? && !(params[:controller] == 'pages' && (params[:action] == 'ethic_1' || params[:action] == 'ethic_2' || params[:action] == 'ethic_3' || params[:action] == 'ethic_4'))
+      :javascript
+        $crisp=[];
+        CRISP_WEBSITE_ID="2a0e587f-839b-4b8c-9ef3-3881e449188e";
+        (function(){
+          d=document;
+          s=d.createElement("script");
+          s.src="https://client.crisp.im/l.js";
+          s.async=1;
+          d.getElementsByTagName("head")[0].appendChild(s);
+        })();
   %body
     .container-fluid.main
       = render partial: 'shared/headers/home'

@@ -6,7 +6,6 @@ class Admin::LocaleLogosController < AdminController
 
 	def new
 		new_locale_logo
-		@ori_locale_logo = LocaleLogo.find(params[:logo_id]) unless params[:logo_id].nil?
 	end
 
 	def edit
@@ -54,6 +53,9 @@ class Admin::LocaleLogosController < AdminController
 	end
 
 	def locale_logo_params
-		params.require(:locale_logo).permit(:logo_type, :logo, :language, :description)
+		params.require(:locale_logo).permit(:logo_type, :logo, :language, 
+											:description, :address1, :address2, 
+											:email, :phone_number, :title, :copyright, 
+											:upgrade_notifier, :invitation_notifier)
 	end
 end

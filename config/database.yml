@@ -27,3 +27,6 @@ production:
   host: localhost
   encoding: unicode
   pool: 5
+  database: health_childcare
+  username: postgres
+  password: postgres

@@ -7,8 +7,8 @@
           = hidden_field_tag :notif_plan_id, 1
         .row.round-box.price-plan-desc
           %h2 
-            =t('pages.upgrade.description', num_child: current_user.daycare.num_children, amount: number_to_currency(@plan.price * current_user.daycare.num_children * 30))
-          %p=t('pages.upgrade.para1', num_child: current_user.daycare.num_children, amount: number_to_currency(@plan.price))
+            =t('pages.upgrade.description', num_child: current_user.daycare.num_children, currency_symbol: @currency.symbol)
+          %p=t('pages.upgrade.para1', num_child: current_user.daycare.num_children, amount: @plan.price, currency_symbol: @currency.symbol)
         .row.round-box        
           = form_for @transaction, method: :post do |f|
             %h4.text-center= t('pages.upgrade.box_title')
@@ -40,7 +40,7 @@
               .col-md-12.col-sm-12.col-xs-12.text-center 
                 %p.plan-price  
                   = hidden_field_tag :upgrade_type, 1
-                  = number_to_currency(100)
+                  = "#{@currency.symbol unless @currency.nil?} #{Plan.where(plan_type: 0, language: I18n.locale.upcase).first.price}"
                   %p=t('pages.upgrade.para2').html_safe
             .row.text-center
               %button.btn.btn-round.item-manager{type: "submit"}

@@ -11,6 +11,7 @@
 #  month            :integer
 #  discount_code_id :integer
 #  transaction_id   :integer
+#  payment_mode_id  :integer
 #
 
 require 'test_helper'

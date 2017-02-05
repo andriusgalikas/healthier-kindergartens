@@ -16,12 +16,16 @@
 #  care_type        :integer
 #  discount_code_id :integer          default("0")
 #  payment_month    :integer          default("0")
+#  payment_mode_id  :integer
+#  payment_start_id :integer
 #
 
 class Daycare < ActiveRecord::Base    
     before_destroy :destroy_others
 
     belongs_to :discount_code
+    belongs_to :payment_mode
+    belongs_to :payment_start
 
     has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments

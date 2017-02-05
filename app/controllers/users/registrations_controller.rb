@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user = @daycare.users.first
       send_confirmation_email(user)
       sign_up(:user, user)  
-      render "register/success_#{params[:role]}"
+      render "register/success_#{params[:role]}", locals: {deposit: user.deposit_required}
       #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
       clean_up_passwords resource
@@ -325,7 +325,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_VERIFICATION_SUBJECT'], language: I18n.locale.downcase) 
     template_key = 'EMAIL_VERIFICATION_SUBJECT_' + ((user.deposit_required) ? "DEPOSIT" : "REGISTER")
     @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
-    @message_template = @sub_subject.message_templates.find_by(target_role: 0, language: I18n.locale.downcase).first
+    @message_template = @sub_subject.message_templates.find_by(target_role: 0, language: I18n.locale.downcase)
 
     template = @message_template.content.gsub! '[$NAME$]', user.name
     template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url

@@ -38,7 +38,8 @@ class SubscriptionsController < ApplicationController
     end
 
     def set_plan
-        @plan ||= Plan.find(1)
+        @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase).first
+        @currency = ISO4217::Currency.from_code(@plan.currency.upcase)
     end
 
     def set_subscription
@@ -54,7 +55,7 @@ class SubscriptionsController < ApplicationController
         if @subscription.nil?
             new_subscription            
             @subscription.user_id = current_user.id
-            @subscription.plan_id = 1
+            @subscription.plan_id = Plan.where(plan_type: 1, language: I18n.locale.upcase).first.id
             @subscription.terms = true
             @subscription.month = 12
             @subscription.save

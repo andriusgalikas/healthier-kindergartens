@@ -5,6 +5,7 @@ class Admin::PlansController < AdminController
   def index
     @plans = Plan.all
     @plans = @plans.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
+    @plans = @plans.by_currency(params[:plan][:currency]) unless params[:plan].nil? || params[:plan].blank?
   end
 
   # GET /plans/new
@@ -67,6 +68,6 @@ class Admin::PlansController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :price, :allocation, :plan_type, :language)
+      params.require(:plan).permit(:name, :price, :allocation, :plan_type, :language, :currency)
     end
 end

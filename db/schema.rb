@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125092239) do
+ActiveRecord::Schema.define(version: 20170130084102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20170125092239) do
     t.integer  "care_type"
     t.integer  "discount_code_id", default: 0
     t.integer  "payment_month",    default: 0
+    t.integer  "payment_mode_id"
+    t.integer  "payment_start_id"
   end
 
   create_table "department_todos", force: :cascade do |t|
@@ -218,8 +220,16 @@ ActiveRecord::Schema.define(version: 20170125092239) do
     t.datetime "logo_updated_at"
     t.string   "language"
     t.string   "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "title"
+    t.string   "copyright"
+    t.string   "upgrade_notifier"
+    t.string   "invitation_notifier"
   end
 
   create_table "locale_posters", force: :cascade do |t|
@@ -294,6 +304,20 @@ ActiveRecord::Schema.define(version: 20170125092239) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "payment_modes", force: :cascade do |t|
+    t.integer  "period"
+    t.string   "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_starts", force: :cascade do |t|
+    t.integer  "period"
+    t.string   "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "plans", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price",      default: 0.0
@@ -302,6 +326,7 @@ ActiveRecord::Schema.define(version: 20170125092239) do
     t.datetime "updated_at",               null: false
     t.integer  "plan_type"
     t.string   "language"
+    t.string   "currency"
   end
 
   create_table "sub_task_completes", force: :cascade do |t|
@@ -341,6 +366,7 @@ ActiveRecord::Schema.define(version: 20170125092239) do
     t.integer  "month"
     t.integer  "discount_code_id"
     t.integer  "transaction_id"
+    t.integer  "payment_mode_id"
   end
 
   create_table "survey_answers", force: :cascade do |t|

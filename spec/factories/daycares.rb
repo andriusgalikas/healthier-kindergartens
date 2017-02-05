@@ -16,6 +16,8 @@
 #  care_type        :integer
 #  discount_code_id :integer          default("0")
 #  payment_month    :integer          default("0")
+#  payment_mode_id  :integer
+#  payment_start_id :integer
 #
 
 FactoryGirl.define do

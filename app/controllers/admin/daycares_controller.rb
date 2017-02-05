@@ -20,7 +20,7 @@ class Admin::DaycaresController < AdminController
             @daycare.users.each do |user|
                 subscription = Subscription.where(transaction_id: nil, user_id: user.id).first
                 if subscription
-                    subscription.month = @daycare.payment_month
+                    subscription.payment_mode = @daycare.payment_mode
                     subscription.discount_code_id = @daycare.discount_code_id
                     subscription.save
                 end
@@ -45,7 +45,6 @@ class Admin::DaycaresController < AdminController
     end
 
     private
-
       def daycare_params
         params.require(:daycare).permit(
           :name,
@@ -55,7 +54,9 @@ class Admin::DaycaresController < AdminController
           :num_children,          
           :num_worker,          
           :payment_month,          
-          :discount_code_id        
+          :discount_code_id,
+          :payment_mode_id,
+          :payment_start_id        
         )
       end
 

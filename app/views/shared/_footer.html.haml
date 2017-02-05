@@ -3,16 +3,16 @@
     .row
       .col-md-4.left-footer
         %h3= t('footer.contact_us')
-        %p Stasjonsveien 23B
-        %p 2010 STROMMEN Norway
+        %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.address1.html_safe
+        %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.address2.html_safe
         %p
-          = link_to 'infectionpreventivecare@healthierandsaferchildcare.org', 'mailto:infectionpreventivecare@healthierandsaferchildcare.org', class: 'hcc-simple'
-        %p +47 467 47 016
+          = link_to LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.email.html_safe, "mailto:#{LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.email.html_safe}", class: 'hcc-simple'
+        %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.phone_number.html_safe
 
       .col-md-4.central-footer
         = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url
-        %p= t('footer.hcc')
-        %p &copy; 2016
+        %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.title.html_safe
+        %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.copyright.html_safe
 
       .col-md-4.right-footer
         %ul

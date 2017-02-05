@@ -21,6 +21,7 @@
                 %th Country
                 %th Discount Code(%)
                 %th Payment Mode(month)
+                %th Payment Start
                 %th Created Date
                 %th
             %tbody
@@ -37,7 +38,9 @@
                   %td
                     = client.discount_code.value unless client.discount_code.nil?
                   %td
-                    = client.payment_month                    
+                    = "#{client.payment_mode.period} #{client.payment_mode.unit}" unless client.payment_mode.nil?
+                  %td
+                    = "#{client.payment_start.period} #{client.payment_start.unit}" unless client.payment_start.nil?
                   %td.align-left
                     = client.created_at.strftime('%d/%m/%Y at %I:%M%p')
                   %td

@@ -31,6 +31,16 @@
       <i class="icon-ticket"></i>
     <% end %>
   </li>
+  <li class="<%= active_controller?(controller: 'admin/payment_modes') %>">
+    <%= link_to admin_payment_modes_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Payment Modes' do %>
+      <i class="icon-books"></i>
+    <% end %>
+  </li>
+  <li class="<%= active_controller?(controller: 'admin/payment_starts') %>">
+    <%= link_to admin_payment_starts_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Payment Modes' do %>
+      <i class="icon-office"></i>
+    <% end %>
+  </li>
   <!--
   <li class="<%= active_controller?(controller: 'admin/plans') %>">
     <%= link_to admin_plans_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Plans' do %>

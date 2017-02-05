@@ -496,7 +496,7 @@ en:
     upgrade:
       title: Your path toward higher level of Healthier and Safer ChildCare starts here
       description: You have selected accreditation plan for %{num_child} children.
-      para1: Your Investment in Health and Safety of Children and the wider childcare community is calculated based on %{num_child} children in your facility multiplied by %{amount} per child per day.
+      para1: Your Investment in Health and Safety of Children and the wider childcare community is calculated based on %{num_child} children in your facility multiplied by %{currency_symbol} %{amount} per child per day.
       para2: "Please Note: You will only be able to make deposit of $100,  if there are availble spots on the program. If the deposit is accepted that means you are now onboard."
       reserve: Reserve My Spot
       button: Pay
@@ -782,6 +782,7 @@ en:
         label3: "Country"
         label4: "Discount(%)"
         label5: "Payment Mode"
+        label8: "Payment Start"
         label6: "Users"
         label7: "Departments"
         line: "There is no result"
@@ -799,6 +800,38 @@ en:
         label1: "Name"
         label2: "Daycare" 
         line: You don't have any daycares yet.  
+
+    payment_modes: 
+      _form: 
+        heading: "Payment Mode details" 
+        para: "Set the period, unit for payment modes."  
+      
+      new: 
+        heading: "New Payment Mode" 
+
+      edit: 
+        heading: "Edit Payment Mode"  
+
+      index: 
+        heading: "Payment Modes"
+        label1: "Period"
+        label2: "Unit"
+
+    payment_starts: 
+      _form: 
+        heading: "Payment Start details" 
+        para: "Set the period, unit for payment starts."  
+      
+      new: 
+        heading: "New Payment Start" 
+
+      edit: 
+        heading: "Edit Payment Start"  
+
+      index: 
+        heading: "Payment Starts"
+        label1: "Period"
+        label2: "Unit"
 
     discount_codes: 
       _form: 
