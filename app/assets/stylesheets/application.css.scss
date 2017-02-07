@@ -13,24 +13,25 @@
  *= require_self
  *= require jquery.datetimepicker
  *= require normalize-css
- *= require 1100
- *= require header
- *= require footer
- *= require introjs
- *= require responsive
- *= require animate
- *= require legacy/standard
- *= require legacy/path
- *= require legacy/upgrade
- *= require legacy/css
- *= require legacy/daycares
- *= require legacy/common
- *= require legacy/header
- *= require legacy/back-index
- *= require legacy/back-one
- *= require legacy/back-two
- *= require legacy/back-three
- *= require legacy/survey
- *= require legacy/result
- *= require version_2
  */
+
+@import "1100"
+@import "header"
+@import "footer"
+@import "introjs";
+@import "animate";
+@import "legacy/standard"
+@import "legacy/path"
+@import "legacy/upgrade"
+@import "legacy/css"
+@import "legacy/daycares"
+@import "legacy/common"
+@import "legacy/header"
+@import "legacy/back-index";
+@import "legacy/back-one";
+@import "legacy/back-two";
+@import "legacy/back-three";
+@import "legacy/survey";
+@import "legacy/result";
+@import "version_2";
+@import "responsive";

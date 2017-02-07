@@ -7,11 +7,12 @@
  *= require bootstrap/dist/css/bootstrap.min.css
  *= require bootstrap/dist/css/bootstrap-theme.min.css
  *= require font-awesome
- *= require header
- *= require introjs
- *= require legacy/upgrade
- *= require legacy/common
- *= require legacy/header
- *= require version_2
- *= require responsive
 */
+
+@import "header";
+@import "introjs";
+@import "legacy/upgrade";
+@import "legacy/common";
+@import "legacy/header";
+@import "version_2";
+@import "responsive";
