@@ -16,6 +16,15 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: Rails.application.secrets.aws_s3_bucket,
+      access_key_id: Rails.application.secrets.s3_access_key,
+      secret_access_key: Rails.application.secrets.s3_secret_key,
+      s3_region: Rails.application.secrets.s3_region
+    }
+  }
 
   config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews"
 
