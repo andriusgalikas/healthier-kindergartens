@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-material-design/dist/js/material.min.js
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require twitter-bootstrap-wizard/jquery.bootstrap.wizard.js
 //= require jquery.datetimepicker

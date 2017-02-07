@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap.min.js
-//= require bootstrap-material-design/dist/js/material.min.js
 //= require jquery.datetimepicker
 //= require _healthChildcare
 //= require healthChildcare.app
