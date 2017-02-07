@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $.material.init();
+  //$.material.init();
 
   $(".multiple-select").select2();
 

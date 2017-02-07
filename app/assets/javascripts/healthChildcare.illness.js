@@ -84,7 +84,7 @@ healthChildcare.illness = {
         type: 'GET',
         success: function(html) {
           $('form').find('.choose-child').html(html);
-          $.material.init();
+          //$.material.init();
 
           var data = $('form').find('#search-child-name').data('children_names');
 
@@ -150,7 +150,7 @@ healthChildcare.illness = {
         type: 'GET',
         success: function(html) {
           $('form').find('.child-profile').html(html);
-          $.material.init();
+          //$.material.init();
         }
       });
     });
@@ -227,7 +227,7 @@ healthChildcare.illness = {
           type: 'GET',
           success: function(html) {
             $('form').find('#symptoms').html(html);
-            $.material.init();
+            //$.material.init();
           }
         })
       }
