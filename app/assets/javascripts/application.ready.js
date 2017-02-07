@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-  healthChildcare.app.multiInput();
+//  healthChildcare.app.multiInput();
   healthChildcare.app.toggleMenu();
   healthChildcare.app.printTodo();
   healthChildcare.app.datepickers();
