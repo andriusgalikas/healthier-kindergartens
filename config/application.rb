@@ -38,6 +38,7 @@ module HealthChildcare
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    config.assets.initialize_on_precompile = false
     #config.asset_host = 'http://localhost:3000'
     
     #Survey Gizmo Configuration
