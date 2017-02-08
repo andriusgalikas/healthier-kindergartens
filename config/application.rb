@@ -13,6 +13,8 @@ module HealthChildcare
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.assets.initialize_on_precompile = false
+
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.autoload_paths << Rails.root.join('lib')
 
@@ -38,7 +40,6 @@ module HealthChildcare
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
-    config.assets.initialize_on_precompile = false
     #config.asset_host = 'http://localhost:3000'
     
     #Survey Gizmo Configuration
