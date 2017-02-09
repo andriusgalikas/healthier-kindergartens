@@ -13,6 +13,7 @@
         = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url
         %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.title.html_safe
         %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.copyright.html_safe
+        %p= I18n.locale
 
       .col-md-4.right-footer
         %ul
