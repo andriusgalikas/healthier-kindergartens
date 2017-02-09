@@ -106,6 +106,7 @@ local_url = LocaleUrl.create(url: "www.healthierandsaferchildcare.org", language
 
 p "Creating Locale Logo"
 local_url = LocaleLogo.create(language: "EN", 
+							  logo_type: 1,
 							  description: "Default",
 							  address1: "Stasjonsveien 23B",
 							  address2: "2010 STROMMEN Norway",
