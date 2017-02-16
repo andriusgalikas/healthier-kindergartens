@@ -17,7 +17,7 @@
               %th
                 %input.form-control{:name => "title", :type => "text", :value => "#{(params[:title].nil?) ? '' : params[:title]}"}
               %th
-                = select_tag :language, options_for_select(languages, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}
+                = select_tag :language, options_for_select(pre_countries, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}
               %th
                 %button.btn.btn-blue.btn-large
                   Search

@@ -16,7 +16,7 @@
         = f.text_area :description, (@ori_survey.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_survey.description}"}
       .form-group.form-last
         = f.label :language
-        = f.select :language, options_for_select(languages, :selected => f.object.language), {},{:class => 'form-control'}
+        = f.select :language, options_for_select(pre_countries, :selected => f.object.language), {},{:class => 'form-control'}
   .threecol
     %h3= t('admin.survey_subjects._form.heading1')
     %p= t('admin.survey_subjects._form.para2')

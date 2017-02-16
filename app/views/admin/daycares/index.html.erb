@@ -28,7 +28,7 @@
               <input type="text" name="address" class="form-control" value="<%= (params[:address].nil?) ? '' : params[:address]%>">
             </th>            
             <th>
-              <%= select_tag :country, options_for_select(languages, :selected=> (params[:country].nil?) ? '' : params[:country].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>
+              <%= select_tag :country, options_for_select(pre_countries, :selected=> (params[:country].nil?) ? '' : params[:country].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>
             </th>
             <th></th>
             <th></th>

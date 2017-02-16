@@ -16,14 +16,14 @@
               %button.btn.hcc-btn-vertical
                 %a{'href': '/ethic_1'}
                   = t('pages.journey.label.apply')            
-          .radio-box
-            %input{:type=>"radio", :name => "target_option", :id => "target_register", :style => "display: none;", checked: false, value: "register"}
-            %label{:for => "target_register"}
-              .text-left
-                %p=t('pages.journey.process.register_para1').html_safe
-              %button.btn.hcc-btn-vertical
-                %a{'href': '/manager/register'}
-                  = t('pages.journey.label.register')            
+          /.radio-box
+          /  %input{:type=>"radio", :name => "target_option", :id => "target_register", :style => "display: none;", checked: false, value: "register"}
+          /  %label{:for => "target_register"}
+          /    .text-left
+          /      %p=t('pages.journey.process.register_para1').html_safe
+          /    %button.btn.hcc-btn-vertical
+          /      %a{'href': '/manager/register'}
+          /        = t('pages.journey.label.register')            
       .col-md-6.col-sm-6.col-xs-12.instruction
         .ongoing
           .register-benefit

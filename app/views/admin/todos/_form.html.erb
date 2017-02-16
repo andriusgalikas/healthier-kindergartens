@@ -31,7 +31,7 @@
             </div>
             <div class="form-group form-last">
                 <%= f.label :language %>
-                <%= f.select :language, options_for_select(languages, :selected => (f.object.language.nil?) ? '' : f.object.language.upcase ), {}, {:class => 'form-control'} %>
+                <%= f.select :language, options_for_select(pre_countries, :selected => (f.object.language.nil?) ? '' : f.object.language.upcase ), {}, {:class => 'form-control'} %>
             </div>
         </fieldset>
     </div>

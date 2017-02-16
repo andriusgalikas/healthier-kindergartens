@@ -9,7 +9,7 @@
       %fieldset.widget.widget-content
         .form-group
           = label_tag 'Select Language:'
-          = select_tag :language_short_name, options_for_select(languages)
+          = select_tag :language_short_name, options_for_select(pre_countries)
         .form-group
           = label_tag 'Website URL:'
           = text_field_tag :web_url, '', class: "form-control"
