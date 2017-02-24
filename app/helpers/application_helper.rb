@@ -119,6 +119,13 @@ module ApplicationHelper
     'active' if action_name == current_action
   end
 
+  def get_video_link(cat, type, lang)
+    video = Video.where(category: cat, video_type: type, language: lang.upcase).last
+    url = '';
+    url = video.url unless video.nil?
+    return url
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}

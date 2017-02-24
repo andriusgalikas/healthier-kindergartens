@@ -27,7 +27,7 @@ en:
       standard: The HCC Standard
       path: The Paths to Accreditation
       about_us: About Us
-      get_started: Get Started For Free
+      get_started: Protect children under you care <br/> Apply Here
       mission: The Mission
       your_journey: Your Journey
       dashboard: Dashboard
@@ -36,6 +36,16 @@ en:
       worker: Workers
       parentee: Parents
       manager: Managers
+
+    footer:
+      home: Home
+      mission: Our Mission
+      standard: Our Standard
+      path: Path to Accreditation
+      about_us: About Us
+      resources: Free Resources
+      login: Login
+      logout: Logout
 
     about:
       sub_heading1: "Protecting Children and Employees"
@@ -61,7 +71,7 @@ en:
       question_para5: No family or daycare provider should ever have to experience the loss of a child under their care. 
     home:
       slide_header: <b>Healthier</b> <small>and</small> <b>Safer Childcare Alliance</b>
-      slide_header_0_content: Children who attend daycare are 2 to 3 times more vulnerable to illnesses than children cared for at home. 1 One child’s infection can rapidly spread in a close proximity environment like a daycare. 
+      slide_header_0_content: Children who attend daycare are 2 to 3 times more vulnerable to illnesses than children cared for at home. One child’s infection can rapidly spread in a close proximity environment like a daycare. 
       slide_header_0_subcontent: Now your daycare can  become a safer place for children to grow and be nurtured through healthier and Safer Childcare Accreditation Program.
       slide_header_1_content: Working in day care center involves significant occupational risk  for predominantly  female daycare staff in childbearing age. Several changes in the body happening during pregnancy weakens the immune system increasing the chances of the harmful effects of infection for both expecting mothers and children.
       slide_header_1_subcontent: Now your daycare can become a safer place for your employees to work in, through healthier and Safer Childcare Accreditation Program.
@@ -76,23 +86,19 @@ en:
       start_here_1: Discover the top hidden health risks for children and your daycare staff. Also, learn what it needs to be done to mitigate risks in you daycare facility — to better safeguard children under your care  and also your daycare staff from avoidable harm and suffering. 
       start_here_2: Discover the top hidden health risks for the children and employees of your daycare facility, and learn how to effectively mitigate the risk of infection for the children and childcare staff under your care.
       start_here_link: Discover more...
-      start_here_button: Get Started For Free
       
       subcontent_standard: Healthier and Safer Child Care standard
       standard_1: If you’re committed to keeping the children under you care out of harm’s way then the Healthier and Safer Childcare accreditation standard is specially designed to help you fulfill these ethical and professional responsibility as a childcare provider.
       standard_link: Learn more...
-      standard_button: Get Started For Free
 
       subcontent_path: The Path to Accreditation
       path_1: Discover the path you and your childcare facility can take to avoid unnecessary health maladies of the children and daycare staff  by going through the accreditation process which involves addressing five critical areas of infection risk exposure cutting-edge research deemed necessary for infection risk mitigation.
       path_link: Explore more...
-      path_button: Get Started For Free
 
       subcontent_journey: Start your Journey towards a healtheir and safer Childcare
       journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
       journey_2: Detect the level of infection risk in your facility.
       journey_link: You are welcome to apply here...
-      journey_button: Start Your Journey
       learn_more: learn more
             
       main_heading: "Start Here"
@@ -192,7 +198,6 @@ en:
       para9: "Create a community of like-minded childcare operators who will help grow, promote and sustain a superior network of safe and health-preserving places for children to grow and be nurtured." 
       para10: "With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents."
       para11: "If you want to learn more about the highest standard in the world for disease mitigation in childcare settings — The Health prevering care Standard"
-      head: "Get Started For Free"
 
     mission_step:
       promo_header: The Optimum Resource for Childcare Operators Committed to Safeguarding the Health and Well-being of Children Under Thier Care
@@ -237,7 +242,6 @@ en:
       next_step_header: 'Next step : mitigate risk in your facility and show you care'
       next_step_text: Just as researchers have clarified the risk of increased infection rates in childcare facilities, they have also recognized that control measures to reduce the spread of infectious diseases is imperative.
       mission_invite: To that end, the Health Preserving Care Standard was developed to enable you to utilize the most optimal infection control standards & practices to effectively mitigate the risk of infection in your facility.
-      get_started: Get Started For Free
 
       ref_title: Reference
       ref_text_1: "1. Kamper-Jorgensen, M., Benn, C. S., & Wohlfahrt, J. (2011). Childcare and health: a review of using linked national registers. Scand J Public Health, 39(7 Suppl), 126-130. doi:10.1177/1403494810395826"
@@ -472,7 +476,6 @@ en:
       para7_6: "For health preserving care committed childcare providers, the reward of adopting the systematic and evidence-based Infection risk mitigating accreditation standard is more than mitigating infection, but also having the confidence and the peace of mind of knowing, that whatever is necessary to safeguard children from potential harm and suffering."
       para7_7: "Associated with preventable infectious diseases, are promoted, implemented and upheld in their childcare facility. This commitment naturally  resonates not only with parents of children  but also with daycare staff, government agencies and the general public."
       para7_8: "If you want to learn more about the highest standard in the world for disease mitigation in childcare settings — The Health prevering care Standard."
-      head8: "Get Started For Free"
       para8_1: "Get started on the journey healthier and safer childcare by clicking the box below for complimentary infection risk assessment or apply to see if you qualify for enlisting into the accreditation program"
 
     getting_started:  

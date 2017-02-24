@@ -56,6 +56,7 @@ class Admin::LocaleLogosController < AdminController
 		params.require(:locale_logo).permit(:logo_type, :logo, :language, 
 											:description, :address1, :address2, 
 											:email, :phone_number, :title, :copyright, 
-											:upgrade_notifier, :invitation_notifier)
+											:upgrade_notifier, :invitation_notifier,
+											:app_title)
 	end
 end

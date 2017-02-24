@@ -107,6 +107,6 @@
     %h4= t('pages.mission_step.next_step_header')
     %button.btn.hcc-btn
       %a{'href': '/journey'}
-        = t('pages.mission_step.get_started')
+        = t('pages.nav_bar.get_started').html_safe
 - (1..22).each do |num|        
   = render 'reference_popover', index: num

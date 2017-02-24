@@ -56,7 +56,7 @@
                 %button.btn.hcc-btn
                   = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.start_here_button')
+                    = t('pages.nav_bar.get_started').html_safe
           .col-md-5 &nbsp;
 
         .row
@@ -69,7 +69,7 @@
                 %button.btn.hcc-btn
                   = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.standard_button')
+                    = t('pages.nav_bar.get_started').html_safe
               .col-md-10.col-xs-12
                 %p= t('pages.home.standard_1')
                 %a.content-link{href: standard_path}= t('pages.home.standard_link')
@@ -86,7 +86,7 @@
                 %button.btn.hcc-btn
                   = link_to journey_path do
                     %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.home.path_button')
+                    = t('pages.nav_bar.get_started').html_safe
           .col-md-5 &nbsp;
 
         .row
@@ -105,7 +105,7 @@
                     = image_tag 'right-arrow.png', class: 'img'
                     %button.btn.hcc-btn
                       = link_to journey_path do
-                        = t('pages.home.journey_button')
+                        = t('pages.nav_bar.get_started').html_safe
               .col-md-9.col-xs-12
                 %p= t('pages.home.journey_1')
                 %a.content-link{href: journey_path}= t('pages.home.journey_link')

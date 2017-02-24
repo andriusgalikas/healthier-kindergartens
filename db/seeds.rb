@@ -113,7 +113,9 @@ local_url = LocaleLogo.create(language: "EN",
 							  email: "infectionpreventivecare@healthierandsaferchildcare.org",
 							  phone_number: "+47 467 47 016",
 							  title: "Healthier and Safer Childcare Alliance",
-							  copyright: "© 2016")
+							  copyright: "© 2016",
+							  upgrade_notifier: "Daycare has Reserved their spot on the accreditation program by making a deposit of $50.",
+							  app_title: "Healthierandsaferchildcare")
 
 p "Creating Payment Mode"
 PaymentMode.create(period: 2, unit: 'week')

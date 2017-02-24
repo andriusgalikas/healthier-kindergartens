@@ -3,7 +3,9 @@
 
 .twelvecol
   .page-header
-    %h2.widget.widget-header Localization
+    %h2.widget.widget-header 
+      Localization
+      = "(#{country_name_from_code(I18n.locale)})"
   = form_tag admin_localization_path, method: :post, multipart: true do
     .twelvecol
       %fieldset.widget.widget-content

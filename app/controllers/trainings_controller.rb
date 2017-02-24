@@ -1,7 +1,7 @@
 class TrainingsController < ApplicationController
     layout 'pages'
-    before_action -> { authenticate_role!(["parentee", "worker", "manager"]) }
-    before_action :authenticate_subscribed!
+    #before_action -> { authenticate_role!(["parentee", "worker", "manager"]) }
+    #before_action :authenticate_subscribed!
 
     def index
 

@@ -4,14 +4,8 @@
           <div class="row">
             <div class="col-md-12">
               <br/><br/>
-              <%unless current_user.active_subscribed? %>
-                <div class="alert alert-info" role="alert">
-                   <strong>Heads up!</strong> Upgrade your membership to watch full module
-                   <%=link_to 'Upgrade', upgrade_path, class: 'btn btn-xs btn-success'%>
-                </div>
-              <%end%>
               <div class="start_box">
-                <iframe src="<%= @course_url %>" frameborder="0" scrolling="no" onload="resizeIframe(this)" />
+                <iframe src="<%= @course_url %>" frameborder="0" scrolling="no" style="width: 100%; height: 650px;" />
               </div>
             </div>
           </div>

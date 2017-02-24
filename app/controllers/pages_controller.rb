@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     def welcome
     end
 
-    def instruction
+    def instruction                
     end
 
     def infection

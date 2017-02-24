@@ -109,6 +109,6 @@
     %p= t('pages.standard.para8_1')
     %button.btn.hcc-btn
       %a{'href': '#'}
-        = t('pages.mission_step.get_started')
+        = t('pages.nav_bar.get_started').html_safe
 - (21..25).each do |num|        
   = render 'reference_popover', index: num

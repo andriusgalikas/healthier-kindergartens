@@ -108,6 +108,7 @@ class Admin::PagesController < AdminController
         end
       end
     end
+    flash[:notice] = "Upload message template is sucessfully."
   rescue => e
     flash[:alert] = "Upload message template is failed."
   end
@@ -130,6 +131,7 @@ class Admin::PagesController < AdminController
         end
       end
     end
+    flash[:notice] = "Upload invite template is sucessfully."
   rescue => e
     flash[:alert] = "Upload invite template is failed."
   end
@@ -152,6 +154,7 @@ class Admin::PagesController < AdminController
         end
       end
     end
+    flash[:notice] = "Upload email verification template is sucessfully."
   rescue => e
     flash[:alert] = "Upload email verification template is failed."
   end
@@ -165,14 +168,13 @@ class Admin::PagesController < AdminController
         if xlsx.last_row > 1
           SubTask.transaction do
             TodoTask.transaction do
-              Todo.transaction do
-                Todo.where(:language => params[:language_short_name].downcase).destroy_all
+              Todo.transaction do                
                 2.upto(xlsx.last_row) do |line|
-                  unless (xlsx.cell(line, 'A').nil? || xlsx.cell(line, 'A').strip.blank?)
+                  unless (xlsx.cell(line, 'A').nil?)
                     frequency = 0
 
-                    unless xlsx.cell(line, 'C').nil?
-                      case xlsx.cell(line, 'C').downcase
+                    unless xlsx.cell(line, 'D').nil?
+                      case xlsx.cell(line, 'D').downcase
                       when 'day'
                         frequency = 0
                       when 'week'
@@ -187,7 +189,7 @@ class Admin::PagesController < AdminController
                     end
 
                     completion_date_type = 0
-                    case xlsx.cell(line, 'E').downcase
+                    case xlsx.cell(line, 'F').downcase
                     when 'day'
                       completion_date_type = 0
                     when 'week'
@@ -202,37 +204,58 @@ class Admin::PagesController < AdminController
                       completion_date_type = 0
                     end
 
-                    @todo = Todo.new( :title => xlsx.cell(line, 'A'), 
-                                      :iteration_type => (xlsx.cell(line, 'B').downcase == 'single') ? 0 : 1, 
-                                      :frequency => (xlsx.cell(line, 'B').downcase == 'single') ? nil : frequency,
-                                      :completion_date_value => (xlsx.cell(line, 'D').nil?) ? 0 : xlsx.cell(line, 'D').to_i,
+                    isNewObject = false
+                    @todo = Todo.where(ref_id: xlsx.cell(line, 'A')).first unless xlsx.cell(line, 'A').nil?
+                    if @todo.nil?
+                      @todo = Todo.new
+                      isNewObject = true
+                    end
+                    @todo.update( :title => xlsx.cell(line, 'B'), 
+                                      :iteration_type => (xlsx.cell(line, 'C').downcase == 'single') ? 0 : 1, 
+                                      :frequency => (xlsx.cell(line, 'C').downcase == 'single') ? nil : frequency,
+                                      :completion_date_value => (xlsx.cell(line, 'E').nil?) ? 0 : xlsx.cell(line, 'E').to_i,
                                       :completion_date_type => completion_date_type,
                                       :user_id => current_user.id,
-                                      :language => params[:language_short_name].downcase
+                                      :language => params[:language_short_name].downcase,
+                                      :ref_id => xlsx.cell(line, 'A')
                                     )
                     #@todo.build_icon
                     @todo.save(validate: true)
 
-                    @departments = Department.all
-                    @departments.each do |item|
-                      @todo_dept = DepartmentTodo.new(todo_id: @todo.id, department_id: item.id)
-                      @todo_dept.save
+                    if isNewObject
+                      @departments = Department.all
+                      @departments.each do |item|
+                        @todo_dept = DepartmentTodo.new(todo_id: @todo.id, department_id: item.id)
+                        @todo_dept.save
+                      end
                     end
                   end
 
-                  unless xlsx.cell(line, 'F').nil? || xlsx.cell(line, 'F').strip.blank?
-                    @todo_task = @todo.tasks.new(
-                                      :title => xlsx.cell(line, 'F'),
-                                      :description => xlsx.cell(line, 'G') ,
+                  unless xlsx.cell(line, 'G').nil?
+                    @todo_task = @todo.tasks.where(ref_id: xlsx.cell(line, 'G')).first unless xlsx.cell(line, 'G').nil?
+                    if @todo_task.nil?
+                      @todo_task = @todo.tasks.new
+                    end
+
+                    @todo_task.update(
+                                      :title => xlsx.cell(line, 'H'),
+                                      :description => xlsx.cell(line, 'I'),
                                       :task_type => 0,
-                                      :language => params[:language_short_name].downcase
+                                      :language => params[:language_short_name].downcase,
+                                      :ref_id => xlsx.cell(line, 'G')
                       )
                     @todo_task.save(validate: true)
                   end           
-                  sub_task = @todo_task.sub_tasks.new(
-                                      :title => xlsx.cell(line, 'H'),
+                  sub_task = @todo_task.sub_tasks.where(ref_id: xlsx.cell(line, 'J')).first unless xlsx.cell(line, 'J').nil?
+                  if sub_task.nil?
+                    sub_task = @todo_task.sub_tasks.new
+                  end
+
+                  sub_task.update(
+                                      :title => xlsx.cell(line, 'K'),
                                       :sub_task_type => 0,
-                                      :language => params[:language_short_name].downcase
+                                      :language => params[:language_short_name].downcase,
+                                      ref_id: xlsx.cell(line, 'J')
                       )
                   sub_task.save(validate: true)
                 end        
@@ -242,6 +265,7 @@ class Admin::PagesController < AdminController
         end
       end
     end
+    flash[:notice] = "Upload todo is sucessfully."
   rescue => e
     flash[:alert] = "Upload todo is failed."
   end
@@ -254,19 +278,34 @@ class Admin::PagesController < AdminController
       if xlsx.sheets.count > 0
         if xlsx.last_row > 1
           index = Time.now.to_i     
-          Illness.where(:language => params[:language_short_name].downcase).destroy_all     
           2.upto(xlsx.last_row) do |line|
             index += 1
             unless xlsx.cell(line, 'A').nil?
-              @illness = Illness.new(:code => "IL-#{index}", :name => xlsx.cell(line, 'A'), :language => params[:language_short_name].downcase)
+              @illness = Illness.where(ref_id: xlsx.cell(line, 'A')).first unless xlsx.cell(line, 'A').nil?
+              if @illness.nil?
+                @illness = Illness.new
+              end
+              @illness.ref_id = xlsx.cell(line, 'A')
+              @illness.code = "IL-#{index}"
+              @illness.name = xlsx.cell(line, 'B')
+              @illness.language = params[:language_short_name].downcase
               @illness.save(validate: true)
             end
-            symptom = @illness.symptoms.new(:code => "SY-#{index}", :name => xlsx.cell(line, 'B')) unless xlsx.cell(line, 'B').nil?
-            symptom.save(validate: true)
+            unless xlsx.cell(line, 'D').nil?
+              symptom = @illness.symptoms.where(ref_id: xlsx.cell(line, 'C')).first unless xlsx.cell(line, 'C').nil?
+              if symptom.nil?
+                symptom = @illness.symptoms.new
+              end
+              symptom.ref_id = xlsx.cell(line, 'C')
+              symptom.code = "SY-#{index}"
+              symptom.name = xlsx.cell(line, 'D')
+              symptom.save(validate: true)
+            end
           end        
         end
       end
     end
+    flash[:notice] = "Upload illness is sucessfully."
   rescue => e
     flash[:alert] = "Upload illness is failed."
   end

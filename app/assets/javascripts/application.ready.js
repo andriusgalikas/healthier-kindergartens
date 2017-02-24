@@ -235,7 +235,8 @@ function add_fields(link, association, content) {
 function resizeIframe(obj) {
      // debugger
     obj.style.width = '100%';
-    obj.style.height = '650px';
+    obj.style['height'] = '500px';
+    obj.style['max-height'] = '80%';
 }
 function click_tab(id){
         $('.jcmc-tab').removeClass('jcmc-active-tab');

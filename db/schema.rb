@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130084102) do
+ActiveRecord::Schema.define(version: 20170219105941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "language"
+    t.string   "ref_id"
   end
 
   create_table "locale_files", force: :cascade do |t|
@@ -230,6 +231,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.string   "copyright"
     t.string   "upgrade_notifier"
     t.string   "invitation_notifier"
+    t.string   "app_title"
   end
 
   create_table "locale_posters", force: :cascade do |t|
@@ -266,6 +268,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "language"
+    t.string   "ref_id"
   end
 
   add_index "message_subjects", ["parent_subject_id"], name: "index_message_subjects_on_parent_subject_id", using: :btree
@@ -348,6 +351,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.datetime "updated_at",                 null: false
     t.integer  "sub_task_type",  default: 0
     t.string   "language"
+    t.string   "ref_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -450,6 +454,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ref_id"
   end
 
   create_table "todo_completes", force: :cascade do |t|
@@ -479,6 +484,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.datetime "updated_at",              null: false
     t.integer  "task_type",   default: 0
     t.string   "language"
+    t.string   "ref_id"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -492,6 +498,7 @@ ActiveRecord::Schema.define(version: 20170130084102) do
     t.integer  "completion_date_type",  default: 0
     t.integer  "completion_date_value", default: 1
     t.string   "language"
+    t.string   "ref_id"
   end
 
   create_table "transactions", force: :cascade do |t|

@@ -2,7 +2,9 @@
 - content_for :breadcrumb, 'Localization'
 .twelvecol
   .page-header
-    %h2.widget.widget-header= t('admin.lang_dashboard.index.heading')
+    %h2.widget.widget-header
+      = t('admin.lang_dashboard.index.heading')
+      = "(#{country_name_from_code(I18n.locale)})"
   .table-responsive
     %table.table.table-striped.table-bordered.table-hover
       %thead

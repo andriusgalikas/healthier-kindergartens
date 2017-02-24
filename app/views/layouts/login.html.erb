@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HealthChildcare</title>
+  <title>
+    <%= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? " - Healthier Childcare Administration" : LocaleLogo.by_type_language(1, I18n.locale).first.app_title.html_safe %>
+  </title>
   <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">

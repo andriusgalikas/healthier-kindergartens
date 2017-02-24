@@ -25,6 +25,7 @@
     %input.form-control{:readonly => "true", :type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}/
     = f.hidden_field :completion_date_value, value: @todo.completion_date_value
     = f.hidden_field :completion_date_type, value: @todo.completion_date_type
+    = f.hidden_field :language
   .page-header
     %h2=t('manager.todos.labels.tasks')
   #tasks.multi-field

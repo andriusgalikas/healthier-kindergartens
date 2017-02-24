@@ -16,4 +16,5 @@ class Video < ActiveRecord::Base
 
     scope :by_language,     ->(search) { where("(LOWER(videos.language) LIKE :search)", :search => "%#{search.downcase}%") }
     scope :by_category,     ->(search) { where("(LOWER(videos.category) LIKE :search)", :search => "%#{search.downcase}%") }
+
 end

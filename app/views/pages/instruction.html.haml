@@ -5,38 +5,91 @@
         .infect-heading{'data-step'=>"7", 'data-intro'=>"In this section you are see videos", 'data-position' => 'top'}
           %h2.text-orange= t('pages.instruction.main_heading')
           %h3.text-orange= t('pages.instruction.description')
-      .col-md-6.left-side
-        .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
-          %a{:href => "/trainings/1"}
-            = image_tag 'intro_one.png'
-          %h3.text-orange= t('pages.instruction.sub_heading1')
-          %p.text-left= t('pages.instruction.para2')
-        .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
-          %a{:href => "/trainings/2"}
-            = image_tag 'intro_three.png'
-          %h3.text-orange= t('pages.instruction.sub_heading3')
-          %p.text-left= t('pages.instruction.para4')
-      .col-md-6.right-side
-        .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
-          %a{:href => "/trainings/3"}
-            = image_tag 'intro_two.png'
-          %h3.text-orange= t('pages.instruction.sub_heading2')
-          %p.text-left= t('pages.instruction.para3')
-        .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
-          %a{:href => "/trainings/4"}
-            = image_tag 'intro_four.png'
-          %h3.text-orange= t('pages.instruction.sub_heading4')
-          %p.text-left= t('pages.instruction.para5')
-      .col-md-offset-3.col-md-6
-        .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
-          %a{:href => "/trainings/5"}
-            = image_tag 'intro_five.png'
-          %h3.text-orange= t('pages.instruction.sub_heading5') 
-          %p.text-left= t('pages.instruction.para6')
+      - if current_user.nil? || !current_user.active_subscribed?
+        .col-md-6.left-side
+          .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
+            %a{:href => "#", "data-url": get_video_link("free", 1, I18n.locale), "data-popup-open": "video-popup"}
+              = image_tag 'intro_one.png'
+            %h3.text-orange= t('pages.instruction.sub_heading1')
+            %p.text-left= t('pages.instruction.para2')
+          .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
+            %a{:href => "#", "data-url": get_video_link("free", 2, I18n.locale), "data-popup-open": "video-popup"}
+              = image_tag 'intro_three.png'
+            %h3.text-orange= t('pages.instruction.sub_heading3')
+            %p.text-left= t('pages.instruction.para4')
+        .col-md-6.right-side
+          .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
+            %a{:href => "#", "data-url": get_video_link("free", 3, I18n.locale), "data-popup-open": "video-popup"}
+              = image_tag 'intro_two.png'
+            %h3.text-orange= t('pages.instruction.sub_heading2')
+            %p.text-left= t('pages.instruction.para3')
+          .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
+            %a{:href => "#", "data-url": get_video_link("free", 4, I18n.locale), "data-popup-open": "video-popup"}
+              = image_tag 'intro_four.png'
+            %h3.text-orange= t('pages.instruction.sub_heading4')
+            %p.text-left= t('pages.instruction.para5')
+        .col-md-offset-3.col-md-6
+          .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
+            %a{:href => "#", "data-url": get_video_link("free", 5, I18n.locale), "data-popup-open": "video-popup"}
+              = image_tag 'intro_five.png'
+            %h3.text-orange= t('pages.instruction.sub_heading5') 
+            %p.text-left= t('pages.instruction.para6')
+      - else
+        .col-md-6.left-side
+          .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
+            %a{:href => "/trainings/1"}
+              = image_tag 'intro_one.png'
+            %h3.text-orange= t('pages.instruction.sub_heading1')
+            %p.text-left= t('pages.instruction.para2')
+          .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
+            %a{:href => "/trainings/2"}
+              = image_tag 'intro_three.png'
+            %h3.text-orange= t('pages.instruction.sub_heading3')
+            %p.text-left= t('pages.instruction.para4')
+        .col-md-6.right-side
+          .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
+            %a{:href => "/trainings/3"}
+              = image_tag 'intro_two.png'
+            %h3.text-orange= t('pages.instruction.sub_heading2')
+            %p.text-left= t('pages.instruction.para3')
+          .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
+            %a{:href => "/trainings/4"}
+              = image_tag 'intro_four.png'
+            %h3.text-orange= t('pages.instruction.sub_heading4')
+            %p.text-left= t('pages.instruction.para5')
+        .col-md-offset-3.col-md-6
+          .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
+            %a{:href => "/trainings/5"}
+              = image_tag 'intro_five.png'
+            %h3.text-orange= t('pages.instruction.sub_heading5') 
+            %p.text-left= t('pages.instruction.para6')
   .col-md-12.step-contents
     .cta-step-box
       %p= t('pages.standard.para8_1')
       %button.btn.hcc-btn
         %a{'href': '/journey'}
-          = t('pages.mission_step.get_started')
+          = t('pages.nav_bar.get_started').html_safe
 
+.popup{"data-popup" => "video-popup"}
+  .popup-inner
+    %iframe{:frameborder => "0", :onload => "resizeIframe(this)", :scrolling => "no", :src => "",  id: 'video-iframe'}
+    %a.popup-close{"data-popup-close" => "video-popup", :href => "#"} x
+
+:javascript
+  jQuery(document).ready(function() {
+    $('[data-popup-open]').on('click', function(e)  {
+
+        $('#video-iframe').attr('src', $(this).data('url'));
+        var targeted_popup_class = jQuery(this).attr('data-popup-open');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+        e.preventDefault();
+    });
+    //----- CLOSE
+    $('[data-popup-close]').on('click', function(e)  {
+        $('#video-iframe').attr('src', '');
+        var targeted_popup_class = jQuery(this).attr('data-popup-close');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+        e.preventDefault();
+    });
+
+  });

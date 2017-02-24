@@ -2,6 +2,7 @@
     <div class="form-group">
         <%= f.label :title %>
         <%= f.text_field :title, :class => 'form-control' %>
+        <%= f.hidden_field :language, value: I18n.locale.downcase %>
     </div>
     <div class="form-group">
         <%= f.label :description %>

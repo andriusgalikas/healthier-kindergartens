@@ -7,6 +7,7 @@ header
     line-height: 45px;
     text-align: center;
     border-bottom: 5px solid #ddd;
+    padding-top: 3px;
 
     .partner-profile {
       float: right;
@@ -45,7 +46,7 @@ header
             font-weight: 600;
             line-height: 18px;
             text-align: center;
-            vertical-align: middle;            
+            vertical-align: top;            
             .user-role{
                 display: block;
                 font-size: 12px;
@@ -155,11 +156,11 @@ header
         color: #6a7884;
         font-size: 16px;
         font-weight: 600;
-        vertical-align: middle;
+        vertical-align: top;
     }
 
     .header-mark{
-        margin: 0 5px;
+        margin: 5px;
         height: 30px;
     }
 
@@ -193,14 +194,14 @@ header
 
         background: #ffa030;
         color: #fff;
-        margin-left: 35px;
+        margin-left: 30px;
         text-transform: uppercase;
         float: left;
 
         position: fixed;
         top: 20%;
         border-radius: 10px 10px 0px 0px;
-        padding: 3px 10px 1px 10px;
+        padding: 3px 10px 10px 10px;
 
         a{
             color: #fff;

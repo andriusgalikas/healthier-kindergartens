@@ -3,7 +3,7 @@
     = image_tag 'todo-left-arrow.png'
 
   -if %(todos todo_completes).include?(controller.controller_name)
-    = image_tag 'todo-md.png', class: 'header-mark'  
+    = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo-new.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, id: 'header-logo', class: 'header-mark'  
   %h2= yield :page_title
 
   - if user_signed_in?

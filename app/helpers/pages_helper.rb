@@ -81,4 +81,15 @@ module PagesHelper
     @@countries ||= [['Austria', 'AT'], ['Australia', 'AU'], ['Belgium', 'BE'], ['Bulgaria', 'BG'], ['Canada', 'CA'], ['China', 'CN'], ['Croatia', 'HR'], ['Cyprus', 'CY'], ['Czech Republic', 'CZ'], ['Denmark', 'DK'], ['Estonia', 'EE'], ['Finland', 'FI'], ['France', 'FR'], ['Germany', 'DE'], ['Greece', 'GR'], ['Hungary', 'HU'], ['Iceland', 'IS'], ['Ireland', 'IE'], ['Italy', 'IT'], ['Japan', 'JP'], ['Latvia', 'LV'], ['Lithuania', 'LT'], ['Luxembourg', 'LU'], ['Malta', 'MT'], ['Netherlands', 'NL'], ['New Zealand', 'NZ'], ['Norway', 'NK'], ['Poland', 'PL'], ['Portugal', 'PT'], ['Romania', 'RO'], ['Russia', 'RU'], ['Saudi Arabia', 'SA'], ['Slovakia', 'SK'], ['Slovenia', 'SI'], ['South Korea', 'KR'], ['Spain', 'ES'], ['Sweden', 'SE'], ['Turkey', 'TR'], ['United Arab Emirates', 'AE'], ['United Kingdom', 'GB'], ['USA', 'US']]
   end
 
+  def country_name_from_code(code)
+    country_name = ''
+    pre_countries.each do |item|
+      country_name = item[0].upcase if code.to_s.upcase == item[1].upcase
+    end
+    if code.to_s == 'en'
+      country_name = 'English'
+    end
+    return country_name
+  end
+
 end
