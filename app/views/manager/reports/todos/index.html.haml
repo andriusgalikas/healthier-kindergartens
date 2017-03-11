@@ -10,33 +10,34 @@
             .input-group-btn
               %button.btn.btn-default{:type => "submit"}
                 %i.glyphicon.glyphicon-search
-        .todo-list
-          %h3=t('manager.todos.report.title')
-          - if current_user.local_todos.empty?
-            %p
-              /You have no Daycare todos currently, you can #{link_to 'create', new_manager_todo_path} one now.
-              =t('manager.todos.report.create_todo', create_link: link_to('create', '#')).html_safe
-          - else
-            %ul
-              - current_user.local_todos.each do |todo|
-                %li
-                  .menu-item
-                    %span.todo-id= todo.id
-                    .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
-                    %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
+        /.todo-list
+        /  %h3=t('manager.todos.report.title')
+        /  - if current_user.local_todos.empty?
+        /    %p
+        /      /You have no Daycare todos currently, you can #{link_to 'create', new_manager_todo_path} one now.
+        /      =t('manager.todos.report.create_todo', create_link: "create").html_safe
+        /  - else
+        /    %ul
+        /      - current_user.local_todos.each do |todo|
+        /        %li
+        /          .menu-item
+        /            %span.todo-id= todo.id
+        /            .profile-thumb
+        /              = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
+        /            %span.todo-title= truncate(todo.title, length: 20)
+        /          = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
         .todo-list
           %h3 Global Todos
           - if current_user.global_todos.empty?
             %p You have no Global todos currently.
           - else
             %ul
-              - current_user.global_todos.each do |todo|
+              - User.all_global_todos.where(id: current_user.id).each do |todo|
                 %li
                   .menu-item
                     %span.todo-id= todo.id
+                    %span.department-name= todo.department_name
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
+                      = image_tag Todo.find(todo.id).icon.file.thumb, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
+                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo, department: todo.department_id), :class => 'btn btn-normal btn-yellow btn-block'

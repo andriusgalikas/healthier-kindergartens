@@ -5,20 +5,29 @@
     .row.content-main
       .col-md-5.col-sm-6.col-xs-12
         #main-menu
-          .menu-items
+          .menu-items          
             = link_to results_subjects_path, id: 'item_survey' do
               = image_tag 'dashboard-risk.png'
               %span=t('dashboard.menu_item.risk_assessment')
             = link_to instruction_path, id: 'item_instruction', title: t('dashboard.menu_tooltip.instruction') do
               = image_tag 'dashboard-instruction.png'
               %span=t('dashboard.menu_item.instruction') 
-            - if current_user.preminum?
+
+            - if current_user.active_subscribed?
               = link_to todos_path, id: 'item_todo' do
                 = image_tag 'dashboard-taskmng.png'
                 %span=t('dashboard.menu_item.task_manager')
               = link_to illnesses_path, id: 'item_illness' do
                 = image_tag 'dashboard-ilness-rec.png'
                 %span=t('dashboard.menu_item.illness_record')
+            - else
+              %a#item_todo{href: '/guide_page/worker_todo/todo_step1'}
+                = image_tag 'dashboard-taskmng.png'
+                %span=t('dashboard.menu_item.task_manager')
+              %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
+                = image_tag 'dashboard-ilness-rec.png'
+                %span=t('dashboard.menu_item.illness_record')
+
       .col-md-7.col-sm-6.col-xs-12
         = render 'notifications'
 :javascript

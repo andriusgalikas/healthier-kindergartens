@@ -79,6 +79,7 @@ module PagesHelper
 
   def pre_countries
     @@countries ||= [['Austria', 'AT'], ['Australia', 'AU'], ['Belgium', 'BE'], ['Bulgaria', 'BG'], ['Canada', 'CA'], ['China', 'CN'], ['Croatia', 'HR'], ['Cyprus', 'CY'], ['Czech Republic', 'CZ'], ['Denmark', 'DK'], ['Estonia', 'EE'], ['Finland', 'FI'], ['France', 'FR'], ['Germany', 'DE'], ['Greece', 'GR'], ['Hungary', 'HU'], ['Iceland', 'IS'], ['Ireland', 'IE'], ['Italy', 'IT'], ['Japan', 'JP'], ['Latvia', 'LV'], ['Lithuania', 'LT'], ['Luxembourg', 'LU'], ['Malta', 'MT'], ['Netherlands', 'NL'], ['New Zealand', 'NZ'], ['Norway', 'NK'], ['Poland', 'PL'], ['Portugal', 'PT'], ['Romania', 'RO'], ['Russia', 'RU'], ['Saudi Arabia', 'SA'], ['Slovakia', 'SK'], ['Slovenia', 'SI'], ['South Korea', 'KR'], ['Spain', 'ES'], ['Sweden', 'SE'], ['Turkey', 'TR'], ['United Arab Emirates', 'AE'], ['United Kingdom', 'GB'], ['USA', 'US']]
+    #@@countries ||= [['Austria', 'EN'], ['Australia', 'AU']]
   end
 
   def country_name_from_code(code)

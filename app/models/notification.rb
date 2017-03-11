@@ -18,9 +18,17 @@ class Notification < ActiveRecord::Base
   belongs_to :source, polymorphic: true
   belongs_to :target, class_name: 'User'
 
-  default_scope {order('created_at DESC')}
+  #default_scope {order('created_at DESC')}
   scope :unread, -> {where(archived: false)}
   scope :by_source_type, ->(source_type) {where(source_type: source_type)}
+
+  scope :count_by_owner, ->(target_id) { 
+                                        joins("LEFT JOIN messages ON messages.id = notifications.source_id")
+                                        .where(notifications: {target_id: target_id})
+                                        .unread
+                                        .group("messages.owner_id")
+                                        .select("count(messages.owner_id) as count_message, messages.owner_id as owner_id")
+  }
 
   delegate :owner, to: :source, prefix: true
 

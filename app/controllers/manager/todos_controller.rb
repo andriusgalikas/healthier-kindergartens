@@ -118,7 +118,8 @@ class Manager::TodosController < ApplicationController
     end
 
     def search_todos
-        @todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
+        #@todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
+        @todos = User.all_global_todos(@query).where(id: current_user.id)
     end
 
     def set_global_todo

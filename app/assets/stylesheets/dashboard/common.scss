@@ -476,6 +476,9 @@
         color: #fff;
         background: #ff2874;
         font-size: 16px;
+        &.highlight{
+          background: #ff6d2e;
+        }
         .filtered-item-date {
           text-align: center;
         }

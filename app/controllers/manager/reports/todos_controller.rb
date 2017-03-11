@@ -7,6 +7,7 @@ class Manager::Reports::TodosController < ApplicationController
 
     def show
         set_global_todo
+        set_department
         set_report_todo_completes
     end
 
@@ -22,6 +23,10 @@ class Manager::Reports::TodosController < ApplicationController
 
     private
 
+    def set_department
+        @department = Department.find(params[:department])
+    end    
+
     def set_global_todo
         @todo = Todo.find(params[:todo_id])
     end
@@ -35,10 +40,11 @@ class Manager::Reports::TodosController < ApplicationController
     end
 
     def set_report_todo_completes
-        @todo_completes = TodoComplete.generate_report(@todo.id, params[:start_date], params[:end_date])
+        @todo_completes = TodoComplete.generate_report(@todo.id, params[:start_date], params[:end_date], params[:department])
     end
 
     def search_todos
-        @todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
+        #@todos ||= Todo.search(@query, @ids, params[:page], 100, 300)
+        @todos = User.all_global_todos(@query).where(id: current_user.id)
     end
 end

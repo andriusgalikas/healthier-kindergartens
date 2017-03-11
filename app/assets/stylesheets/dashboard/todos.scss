@@ -110,7 +110,13 @@
         font-size: 14px;
         text-align: left;
         padding: 5px;
+      }
 
+      &.department-name{
+        color: #000;
+        font-size: 14px;
+        text-align: center;
+        padding: 10px 5px 0px 40px;
       }
     }
 
@@ -164,6 +170,9 @@
 
     .submit-wrapper{
       margin-top: 27px;
+      &.single-line{
+        margin-top: 22px;
+      }
     }
   }
 
@@ -274,9 +283,16 @@
             }
           }
           .row{
-            padding: 10px 10px 10px 0px;
-            &.odd{
-              background: #ffedf3;
+            //padding: 10px 10px 10px 0px;
+            margin-bottom: 10px;
+            
+            p{
+              margin: 0;
+              line-height: 42px;
+            }
+
+            &.key-task{
+              background: whitesmoke;
             }
           }
 
@@ -298,26 +314,29 @@
           }
 
           .subtask-group{
-            background: #fff6f9;
-            border: 1px solid #aaa;
+            background: whitesmoke;
+            min-height: 40px;
+            p{
+              margin: 0;
+              line-height: 42px;
+            }
           }
           .subtask {
             font-size: 20px;
             font-weight: 400;
-            padding: 7px 10px;
+            padding: 0;
             a, .fa-check-square-o {
               position: inherit;
-              float: left;
-              color: grey;
-              line-height: 15px;
+              color: darkgray;
+              line-height: 42px;
               margin-right: 5px;
+              font-size: 30px;
               &.pass {
                 color: darkgreen;
               }
             }
             .fa-check-square-o, .fa-square-o{
               font-weight: 600;
-              line-height: 20px;
             }
             p{
               margin: 2px 0;

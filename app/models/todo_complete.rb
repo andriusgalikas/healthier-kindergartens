@@ -21,11 +21,16 @@ class TodoComplete < ActiveRecord::Base
 
     scope :incomplete,                          -> { where.not(id: nil).where(completion_date: nil) }
 
-    scope :generate_report,                     -> (todo_id, start_date, end_date) { where(todo_id: todo_id).where('created_at > ?', start_date).where('created_at < ?', end_date) }
+    scope :generate_report,                     -> (todo_id, start_date, end_date, department) { 
+                                                    joins("LEFT JOIN users ON todo_completes.submitter_id = users.id")
+                                                    .where("users.department_id = ?", department)
+                                                    .where(todo_id: todo_id)
+                                                    .where('todo_completes.created_at > ?', start_date)
+                                                    .where('todo_completes.created_at < ?', end_date) }
 
     validates :submitter_id, :todo_id,          presence: true
 
-    validates :submitter_id,                    uniqueness: { scope: [:status, :todo_id] }, :if => :todo_recurring?
+    #validates :submitter_id,                    uniqueness: { scope: [:status, :todo_id] }, :if => :todo_recurring?
 
     scope :recurring,                           -> { includes(:todo).where(todos: { iteration_type: 1}) }
 

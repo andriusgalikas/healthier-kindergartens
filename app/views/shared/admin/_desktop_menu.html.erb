@@ -63,12 +63,13 @@
       <i class="icon-copy" style="color:#9bebff;"></i>
     <% end %>
   </li>
-  <!--
-  <li class="<%= active_controller?(controller: 'admin/message_templates') %>">
-    <%= link_to admin_message_templates_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Message Templates' do %>
+  
+  <li class="<%= active_controller?(controller: 'admin/messages') %>">
+    <%= link_to new_admin_message_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Messages' do %>
       <i class="icon-bubble" style="color:#F05C52;"></i>
     <% end %>
   </li>
+  <!--
   <li class="<%= active_controller?(controller: 'admin/illnesses') %>">
     <%= link_to admin_illnesses_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Illnesses' do %>
       <i class="icon-aid" style="color:#F70000;"></i>

@@ -1,5 +1,5 @@
 .filtered-item
-  .row.filtered-item-info
+  .row.filtered-item-info{class: (message.id == @notification.try(:source_id)) ? "highlight" : ""}
     .col-md-4.col-sm-4.col-xs-4
       %span= message_role_label + ' : '
       %span= message_role_value(message)

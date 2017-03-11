@@ -609,9 +609,9 @@ en:
         label1: "Title"  
         label2: "Iteration Type"
         label3: "Completion date"
+        department: "Department"
         label4: "Frequency"
         heading: "Tasks"
-        label4: "Title"
         label5: "Description"
         label6: "Sub-tasks"
       report:
@@ -626,16 +626,19 @@ en:
         view_report: View Report
         generate_report: Generate Report
         add_filter: Add Filters
+        department: "Department:"
         start_date: "Start Date/Time:"
         end_date: "End Date/Time:"
         complete: "Complete:"
         incomplete: "Incomplete:"
-        access: View and Add Task to Infection Control Task List
+        access: View Task to Infection Control Task List
         task_manager: Infection Control Task Manager
         todos: Todos
         no_todos: You have no Todos currently.
         show: Show
         tasks: Tasks
+        keytasks: Key Tasks
+        subtasks: Sub Tasks
         btn_complete: Complete
 
   subscriptions:
@@ -1153,6 +1156,7 @@ en:
       worker: "Daycare Worker"
       partner: "Daycare Partner"
       parent: "Daycare Parent"
+      parentee: "Daycare Parent"
 
   guideline:
     title: Start Help

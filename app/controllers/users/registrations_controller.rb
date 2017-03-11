@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    build_resource(sign_up_params.merge(role: params[:role]), country: I18n.locale)
+    build_resource(sign_up_params.merge(role: params[:role]))
     set_daycares unless ['manager', 'partner'].include?(params[:role])
     resource.save
     yield resource if block_given?

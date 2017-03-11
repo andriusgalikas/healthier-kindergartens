@@ -4,9 +4,9 @@
   .container
     #todo.row.todo-info
       .twelvecol
-        = link_to 'Delete', manager_todo_path(@todo), method: :delete, :class => 'btn btn-normal btn-red', id: 'delete-todo'
-        = link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo'
-        = link_to 'Report', manager_reports_todo_set_date_range_path(@todo), :class => 'btn btn-normal btn-yellow', id: 'report-todo'
+        /= link_to 'Delete', manager_todo_path(@todo), method: :delete, :class => 'btn btn-normal btn-red', id: 'delete-todo'
+        /= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo'
+        /= link_to 'Report', manager_reports_todo_set_date_range_path(@todo), :class => 'btn btn-normal btn-yellow', id: 'report-todo'
         .profile-thumb
           = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block' unless @todo.icon.nil?
         .row
@@ -22,7 +22,7 @@
               %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.titleize}"}/
           .form-group
             %label=t('manager.todos.show.label3')
-            %input.form-control{:readonly => "true", :type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}/           
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}
         .ln_solid
         .row
           .info

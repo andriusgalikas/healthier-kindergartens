@@ -49,6 +49,7 @@ class Admin::TodosController < AdminController
     params[:todo][:department_ids] = Department.ids
     respond_to do |format|
       if @todo.update(todo_params)
+        Rails.logger.info(@todo.errors.inspect)         
         format.html { redirect_to admin_todos_url, notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
       else
@@ -88,6 +89,14 @@ class Admin::TodosController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :iteration_type, :frequency, :user_id, :completion_date_type, :completion_date_value, department_ids: [], tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, sub_tasks_attributes: [:id, :title, :_destroy]], icon_attributes: [:id, :attachable_type, :attachable_id, :file])
+      params.require(:todo).permit( :title, 
+                                    :iteration_type, 
+                                    :frequency, 
+                                    :user_id, 
+                                    :completion_date_type, 
+                                    :completion_date_value, 
+                                    department_ids: [], 
+                                    tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, sub_tasks_attributes: [:id, :title, :_destroy]], 
+                                    icon_attributes: [:id, :attachable_type, :attachable_id, :file])
     end
 end

@@ -4,7 +4,7 @@ header
     height:50px;
     background-color: #fff;
     color:#aaa;
-    line-height: 45px;
+    line-height: 40px;
     text-align: center;
     border-bottom: 5px solid #ddd;
     padding-top: 3px;
@@ -156,7 +156,7 @@ header
         color: #6a7884;
         font-size: 16px;
         font-weight: 600;
-        vertical-align: top;
+        vertical-align: middle;
     }
 
     .header-mark{
@@ -225,8 +225,9 @@ header
                 &.description{
                     font-size: 14px;
                     font-weight: 400;
-                    line-height: 5px;  
+                    line-height: 0px;  
                     text-transform: capitalize;
+                    margin-bottom: 1px;
                 }
             }
         }

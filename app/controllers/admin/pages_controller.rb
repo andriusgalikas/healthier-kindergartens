@@ -219,7 +219,7 @@ class Admin::PagesController < AdminController
                                       :language => params[:language_short_name].downcase,
                                       :ref_id => xlsx.cell(line, 'A')
                                     )
-                    #@todo.build_icon
+                    @todo.build_icon
                     @todo.save(validate: true)
 
                     if isNewObject
@@ -266,8 +266,8 @@ class Admin::PagesController < AdminController
       end
     end
     flash[:notice] = "Upload todo is sucessfully."
-  rescue => e
-    flash[:alert] = "Upload todo is failed."
+  #rescue => e
+  #  flash[:alert] = "Upload todo is failed."
   end
 
   def build_illness_from_spreadsheet

@@ -15,7 +15,8 @@
                 %li
                   .menu-item
                     %span.todo-id= todo.id
+                    %span.department-name= todo.department_name
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
+                    = image_tag Todo.find(todo.id).icon.file.thumb, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   = link_to t('manager.todos.labels.show'), manager_todo_path(todo), :class => 'btn btn-yellow btn-normal btn-block'

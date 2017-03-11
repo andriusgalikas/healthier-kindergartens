@@ -28,7 +28,19 @@ module HasSubscription
         # => Checks if a user has an only active subscription 
         #
         def active_subscribed?
-            preminum? ? true : false
+            result = false
+            if manager?
+                result = preminum? ? true : false
+            elsif worker? || parentee?
+                daycare.managers.each do |item|
+                    if item.active_subscribed?
+                        result = true
+                    end
+                end
+            else
+                result = true
+            end
+            return result
             #subscriptions.empty? ? false : true
         end
 

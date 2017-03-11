@@ -18,9 +18,16 @@
           = image_tag 'account-avatar.png'
           %span.account-info
             %span=current_user.name
-            %span.account-type=t('account.daycare.manager')
+            %span.account-type=t("account.daycare.#{current_user.role}")
         %ul.dropdown-menu{role: 'menu', 'aria-labelledby': 'dLabel'}
           %li= link_to t('dashboard.nav_var.link.edit_info'), edit_user_registration_path(id: current_user.id, role: current_user.role)
           - if current_user.role == "manager"
-            %li= link_to t('dashboard.nav_var.link.invite'), invite_manager_daycares_path
+            %li.dropdown-submenu
+              = link_to t('pages.nav_bar.invite'), '#'
+              %ul.dropdown-menu.pull-right
+                %li= link_to t('pages.nav_bar.worker'), invite_survey_manager_daycares_path('worker')
+                %li= link_to t('pages.nav_bar.parentee'), invite_survey_manager_daycares_path('parentee')
+                %li= link_to t('pages.nav_bar.manager'), invite_survey_manager_daycares_path('manager')
+          /- if current_user.role == "manager"
+          /  %li= link_to t('dashboard.nav_var.link.invite'), invite_manager_daycares_path
           %li= link_to t('dashboard.nav_var.link.logout'), destroy_user_session_path, method: :delete

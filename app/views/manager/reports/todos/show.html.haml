@@ -9,6 +9,10 @@
           = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block' unless @todo.icon.nil?
         .info
           %h2=t('manager.todos.labels.add_filter') 
+          - unless @department.nil?
+            %p
+              =t('manager.todos.labels.department')             
+              = @department.name
           %p
             =t('manager.todos.labels.start_date')             
             = params[:start_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')

@@ -97,7 +97,7 @@ module ApplicationHelper
     elsif current_user.worker?
       'worker-md.png'
     elsif current_user.partner?
-      (current_user.affiliate.profile_image) ? current_user.affiliate.profile_image.file.url : 'partner-md.png'      
+      (!current_user.affiliate.nil? && current_user.affiliate.profile_image) ? current_user.affiliate.profile_image.file.url : 'partner-md.png'      
     elsif current_user.admin?
       'super-admin.png'
     elsif current_user.medical_professional?

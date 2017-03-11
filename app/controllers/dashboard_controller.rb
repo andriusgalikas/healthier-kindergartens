@@ -13,5 +13,6 @@ class DashboardController < ApplicationController
 
     def set_notifications
       @notifications ||= current_user.notifications.unread
+      @notifications_by_sender ||= Notification.count_by_owner(current_user.id)
     end
 end
