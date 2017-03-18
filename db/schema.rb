@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219105941) do
+ActiveRecord::Schema.define(version: 20170318164443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -590,6 +590,7 @@ ActiveRecord::Schema.define(version: 20170219105941) do
     t.string   "confirm_token"
     t.boolean  "deposit_required",       default: false
     t.string   "card_number"
+    t.string   "stripe_customer"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

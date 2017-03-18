@@ -15,4 +15,5 @@ end
 
 every 1.day, at: '8:30 am' do
     rbenv_runner 'PlanReminderJob.perform_later'
+    rbenv_runner 'AutoPaymentJob.perform_later'    
 end

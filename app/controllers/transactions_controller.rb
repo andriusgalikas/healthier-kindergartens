@@ -5,8 +5,8 @@ class TransactionsController < ApplicationController
     @deposit_plan = Plan.where(plan_type: 0, language: I18n.locale.upcase).first
 
     days = 0
-    unless @subscription.payment_mode
-      case @subscription.payment_mode.until
+    unless @subscription.payment_mode.nil?
+      case @subscription.payment_mode.unit
       when 'week'
         days = 7 * @subscription.payment_mode.period
       when 'month'
@@ -30,19 +30,25 @@ class TransactionsController < ApplicationController
 
     # Create a charge: this will charge the user's card
     begin
+      stripe_customer = Stripe::Customer.create(
+        :email => current_user.email,
+        :source => params[:stripe_card_token],
+      )
+
       charge = Stripe::Charge.create(
         :amount => (@transaction.amount * 100).to_i, # Amount in cents
         :currency => @transaction.currency,
-        :source => params[:stripe_card_token],
+        :customer => stripe_customer.id,
         :description => ""
       )
       @transaction.charge_id = charge.id
-      @transaction.deposit = params[:upgrade_type]
+      @transaction.deposit = params[:upgrade_type] ? true : false
       @transaction.save
 
       @subscription.transaction_id = @transaction.id
       @subscription.save
 
+      current_user.stripe_customer = stripe_customer.id
       current_user.card_number = params[:card_number]
       current_user.save
 
