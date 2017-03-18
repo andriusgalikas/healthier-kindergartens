@@ -7,7 +7,17 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # POST /resource/password
    def create
-     super
+    super
+
+    raw, enc = Devise.token_generator.generate(resource.class, :reset_password_token)
+
+    resource.reset_password_token   = enc
+    resource.reset_password_sent_at = Time.now.utc
+    resource.save(validate: false)
+
+    reset_url = Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: raw)
+    template = t('mailers.mail_reset_password.content', name: resource.name, url: reset_url).html_safe
+    RegistrationMailer.reset_password_confirmation(resource, template).deliver_now
    end
 
   # GET /resource/password/edit?reset_password_token=abcdef

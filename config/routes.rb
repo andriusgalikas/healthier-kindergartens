@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
         # passwords
         get 'password/new',                 to: 'users/passwords#new',          as: 'new_user_password'
-        get 'password/edit',                to: 'users/password#edit',          as: 'edit_user_password'
+        get 'password/edit',                to: 'users/passwords#edit',          as: 'edit_user_password'
         patch 'password',                   to: 'users/passwords#update',       as: 'user_password'
         post 'password',                    to: 'users/passwords#create'
 

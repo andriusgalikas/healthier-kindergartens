@@ -110,4 +110,15 @@ private
           self.confirm_token = SecureRandom.urlsafe_base64.to_s
       end
     end
+
+
+  def self.find_first_by_auth_conditions warden_conditions
+    conditions = warden_conditions.dup
+
+    if (email = conditions.delete(:email)).present?
+      where(email: email.downcase).first
+    elsif conditions.has_key?(:reset_password_token)
+      where(reset_password_token: conditions[:reset_password_token]).first
+    end
+  end    
 end

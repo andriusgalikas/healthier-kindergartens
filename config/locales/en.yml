@@ -690,6 +690,16 @@ en:
                 Thank you for signing up. <br/>
                 Please verify your email address using below url <br/>
                 <a href='%{url}'>%{url}</a>" 
+    mail_reset_password:
+      subject: "Please reset your password for healthcare"
+      content: "<p>Hello %{name}!</p>
+                  <p>Someone has requested a link to change your password. You can do this through the link below.</p>
+                  <p>
+                        <a href='%{url}'> Change my password </a>
+                  </p>
+                  <p>If you didn't request this, please ignore this email.</p>
+                  <p>Your password won't change until you access the link above and create a new one.</p>" 
+
   dashboard:
     nav_var:
       staff_parent: "HOW MANY DAYCARE STAFF AND PARENT WANT THIS"
@@ -1263,10 +1273,10 @@ en:
             title: "Introduction"
             content: "Encouraging and validating that infection control practices are implemented in your childcare facility are the cornerstone of optimum infection risk mitigation in your facility. To help you achieve this infection control task manager enables your childcare staff to perform predefined infection control tasks based on a checklist so that you can validate that tasks geared towards optimum risk mitigation and infection control are in place in your childcare facility. In addition using the infection control task manager, you can with a few clicks, create a report that you can submit to the authorities affirming that actions required for infection risk mitigation are performed tracked and measured on daily basis, in your childcare facility."
           access:
-            title: View and add task to prewritten infection control task list and set a baseline for standard of infection control in your childcare facility
+            title: View infection control task list and set a baseline for standard of infection control in your childcare facility
             content: " "
             link_text: This is how you do it.
-            step_content: Click the button for <b>View and Add Task to  Infection Control Task List</b>. The list of all current infection control task related to key areas if infection control in your facility will be shown.
+            step_content: Click the button for <b>View Infection Control Task List</b>. The list of all current infection control task related to key areas if infection control in your facility will be shown.
           report:
             title: Generate report you can submit to the authorities affirming that infection control protocols are implemented, tracked and measured on daily basis
             content: " "
@@ -1337,7 +1347,7 @@ en:
           content: "Step 7: <br/>Click Print button to get the hard copy of the results."
       todo_access:
         step2:
-          content: "Step 2: <br/>Click the appropriate infection control task list to view and add additional task to the list."
+          content: "Step 2: <br/>Click the appropriate infection control task list to view current infection tasks."
       todo_report:
         step1:
           content: ""
