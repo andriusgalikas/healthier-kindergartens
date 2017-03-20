@@ -1,5 +1,5 @@
 / Mission
-.row.promo
+.row.promo#mark_mission
   .promo-img
     = image_tag "mission_promo.jpg"
     .promo-text
@@ -8,7 +8,10 @@
       /%br
       /%h4.promo-subhead= t('pages.mission_step.promo_subhead')
   / End Promo Area
-.container#mark_mission
+  .container
+    = render 'steps_navigation', page_name: 'mission'
+
+.container
   .row.step-contents
     %h4.heading-letter.heading= t('pages.mission_step.headline')
     %h4.sub-heading= t('pages.mission_step.main_instro')
@@ -336,11 +339,6 @@
   .row.promo
     .promo-img
       = image_tag 'Dollarphotoclub74523.png'
-      .img-text.image-text-path
-        %h2
-          = t('pages.about.sub_heading1')
-          %br
-          = t('pages.about.sub_heading2')
   .container
     = render 'steps_navigation', page_name: 'journey'
   #path-content.container
