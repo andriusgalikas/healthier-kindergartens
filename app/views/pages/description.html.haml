@@ -1,0 +1,382 @@
+/ Mission
+.row.promo
+  .promo-img
+    = image_tag "mission_promo.jpg"
+    .promo-text
+      %h2= t('pages.mission_step.promo_header')
+      /%p= t('pages.mission_step.promo_text')
+      /%br
+      /%h4.promo-subhead= t('pages.mission_step.promo_subhead')
+  / End Promo Area
+.container#mark_mission
+  .row.step-contents
+    %h4.heading-letter.heading= t('pages.mission_step.headline')
+    %h4.sub-heading= t('pages.mission_step.main_instro')
+  .row.step-contents
+    %p= t('pages.mission_step.intro_1')
+    %p
+      = t('pages.mission_step.intro_2')
+      %a.reference-link{href: '#', id: 'reference_1'}1
+      = t('pages.mission_step.intro_3')
+
+  .row.step-contents
+    %p= t('pages.mission_step.scientific_fact')
+    %ul.scientific-facts
+      %li
+        %p
+          = t('pages.mission_step.fact_1')
+          %a.reference-link{href: '#', id: 'reference_2'}2
+      %li
+        %p
+          = t('pages.mission_step.fact_2')
+          %a.reference-link{href: '#', id: 'reference_3'}3
+          = t('pages.mission_step.fact_2_1')
+      %li
+        %p
+          = t('pages.mission_step.fact_3')
+          %a.reference-link{href: '#', id: 'reference_4'}4
+  .row.step-contents.children-risk-content
+    %p= t('pages.mission_step.fact_5')
+    %p= t('pages.mission_step.fact_6')
+
+  .row.step-contents
+    %p
+    = image_tag('start-warning.png')
+    %h3.heading= t('pages.mission_step.children_risk')
+    %p= t('pages.mission_step.children_risk_1')
+
+    %p
+      = t('pages.mission_step.children_risk_sub_1')
+      %a.reference-link{href: '#', id: 'reference_5'}5
+      = t('pages.mission_step.children_risk_sub_2')
+      %a.reference-link{href: '#', id: 'reference_6'}6
+
+    %p
+      = t('pages.mission_step.children_risk_2')
+      %a.reference-link{href: '#', id: 'reference_7'}7
+    %p
+      = t('pages.mission_step.children_risk_3').html_safe
+      %span{style: 'font-size: 8px;'}
+        %a.reference-link{href: '#', id: 'reference_8'}8, 
+        %a.reference-link{href: '#', id: 'reference_9'}9
+
+    %p
+      = t('pages.mission_step.children_risk_4').html_safe
+      %a.reference-link{href: '#', id: 'reference_10'}10
+
+    %h4.sub-heading= t('pages.mission_step.children_risk_5').html_safe
+    %p
+      = t('pages.mission_step.children_risk_6').html_safe
+      %a.reference-link{href: '#', id: 'reference_11'}11
+      = t('pages.mission_step.children_risk_7').html_safe
+      %a.reference-link{href: '#', id: 'reference_12'}12
+
+  .row.step-contents
+    %p
+    = image_tag('start-parent.png')
+    %h3.heading= t('pages.mission_step.staff_parents_risk')
+    %p
+      = t('pages.mission_step.staff_parents_risk_1').html_safe
+      %a.reference-link{href: '#', id: 'reference_13'}13
+    %p
+      = t('pages.mission_step.staff_parents_risk_2').html_safe
+      %a.reference-link{href: '#', id: 'reference_14'}14
+      %a.reference-link{href: '#', id: 'reference_15'}15
+      %a.reference-link{href: '#', id: 'reference_16'}16
+    %p
+      = t('pages.mission_step.staff_parents_risk_3').html_safe
+      %a.reference-link{href: '#', id: 'reference_17'}17
+    %p
+      = t('pages.mission_step.staff_parents_risk_4').html_safe
+      %a.reference-link{href: '#', id: 'reference_18'}18
+    %p
+      = t('pages.mission_step.staff_parents_risk_5').html_safe
+      %a.reference-link{href: '#', id: 'reference_19'}19
+
+    %h4.sub-heading= t('pages.mission_step.what_to_do').html_safe
+    %p
+      = t('pages.mission_step.what_to_do_1').html_safe
+      %span{ style: 'font-size: 8px;'}
+        %a.reference-link{href: '#', id: 'reference_20'}20
+        %a.reference-link{href: '#', id: 'reference_21'}21
+        %a.reference-link{href: '#', id: 'reference_22'}22
+      = t('pages.mission_step.what_to_do_2').html_safe
+- (1..22).each do |num|        
+  = render 'reference_popover', index: num
+
+/ Standard
+.legacy-standard#mark_standard
+  .row.promo
+    .promo-img
+      = image_tag 'standard-banner.jpg'
+      .img-text
+  / End page-menu Area
+  .container
+    .row
+      %h3.heading.heading-letter
+        = t('pages.standard.head1').html_safe
+      %h4.sub-heading= t('pages.standard.sub_head1').html_safe
+      %p
+        = t('pages.standard.para1').html_safe
+        = t('pages.standard.instro1').html_safe
+        %a.reference-link{href: '#', id: 'reference_23'}23
+        = t('pages.standard.instro2').html_safe
+  .container.page-description-list
+    .row
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .listed-thumb
+          = image_tag 'standard-1.png'
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .list-description
+          %h3= t('pages.standard.head2').html_safe
+          %h4.text-pink= t('pages.standard.subhead2_1').html_safe
+          %p= t('pages.standard.para2_1').html_safe
+          %h4.text-pink= t('pages.standard.subhead2_2').html_safe
+          %p= t('pages.standard.para2_2').html_safe
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .listed-thumb
+          = image_tag 'standard-2.png'
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .list-description
+          %h3= t('pages.standard.head3').html_safe
+          %h4.text-pink= t('pages.standard.subhead3_1').html_safe
+          %p= t('pages.standard.para3_1').html_safe
+          %h4.text-pink= t('pages.standard.subhead3_2').html_safe
+          %p= t('pages.standard.para3_2').html_safe
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .listed-thumb
+          = image_tag 'standard-3.png'
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .list-description
+          %h3= t('pages.standard.head4').html_safe
+          %h4.text-pink= t('pages.standard.subhead4_1').html_safe
+          %p= t('pages.standard.para4_1').html_safe
+          %h4.text-pink= t('pages.standard.subhead4_2').html_safe
+          %p= t('pages.standard.para4_2').html_safe
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .listed-thumb
+          = image_tag 'standard-4.png'
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .list-description
+          %h3= t('pages.standard.head5').html_safe
+          %h4.text-pink= t('pages.standard.subhead5_1').html_safe
+          %p= t('pages.standard.para5_1').html_safe
+          %h4.text-pink= t('pages.standard.subhead5_2').html_safe
+          %p= t('pages.standard.para5_2').html_safe
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .listed-thumb
+          = image_tag 'standard-5.png'
+      .col-lg-6.col-md-6.col-sm-12.col-xs-12
+        .list-description
+          %h3= t('pages.standard.head6').html_safe
+          %h4.text-pink= t('pages.standard.subhead6_1').html_safe
+          %p= t('pages.standard.para6_1').html_safe
+          %h4.text-pink= t('pages.standard.subhead6_2').html_safe
+          %p= t('pages.standard.para6_2').html_safe
+
+  .container
+    .row
+      %h4.text-orange= t('pages.standard.head7').html_safe
+      %p= t('pages.standard.para7_1').html_safe      
+      %p= t('pages.standard.para7_2').html_safe      
+      %p= t('pages.standard.para7_3').html_safe      
+      %p
+        = t('pages.standard.para7_4').html_safe      
+        %a.reference-link{href: '#', id: 'reference_24'}24
+        = t('pages.standard.para7_5').html_safe
+        %a.reference-link{href: '#', id: 'reference_25'}25
+      %p
+        = t('pages.standard.para7_6').html_safe
+        %a.reference-link{href: '#', id: 'reference_21'}21
+      %p= t('pages.standard.para7_7').html_safe
+      %p= t('pages.standard.para7_8').html_safe
+- (21..25).each do |num|        
+  = render 'reference_popover', index: num
+
+/ Path Page
+.legacy-path#mark_path
+  .row.promo
+    .promo-img
+      = image_tag 'home_slider.jpg'
+      .img-text.image-text-path
+        %h2= t('pages.path.main_heading').html_safe
+        %p= t('pages.path.paragraph1').html_safe
+        %h4.text-orange
+          =image_tag('standard-new.png')
+          = t('pages.path.instro').html_safe
+  .container
+    .row
+      .col-md-12
+        %h3.heading-letter.text-pink= t('pages.path.sub_heading1').html_safe
+        %p= t('pages.path.instro_2').html_safe
+        %p
+          %b= t('pages.path.instro_3').html_safe
+    .row.phase-wrapper
+      .col-md-4.col-sm-8.col-xs-12.path-step-graph.first-phase
+        =image_tag 'path-step-1.png', class: 'path-step-mark'
+        %h3.text-orange= t('pages.path.step_point1').html_safe
+        %p.text-orange.step-desc= t('pages.path.step_point1_desc').html_safe
+        .phase-frame
+          %h1.text-dark-pink 1
+          %h4.text-bold.text-center= t('pages.path.phase1_title').html_safe
+          %ul
+            %li
+              = t('pages.path.phase1_para1').html_safe
+            %li
+              = t('pages.path.phase1_para2').html_safe
+            %li
+              = t('pages.path.phase1_para3').html_safe
+
+      .col-md-4.col-sm-8.col-xs-12.path-step-graph.second-phase
+        =image_tag 'path-step-2.png', class: 'path-step-mark'
+        %h3.text-light-orange= t('pages.path.step_point2').html_safe
+        %p.text-light-orange.step-desc= t('pages.path.step_point2_desc').html_safe        
+        .phase-frame
+          %h1.text-orange 2
+          %h4.text-bold.text-center= t('pages.path.phase2_title').html_safe
+          %ul
+            %li
+              = t('pages.path.phase2_para1').html_safe
+            %li
+              = t('pages.path.phase2_para2').html_safe
+            %li
+              = t('pages.path.phase2_para3').html_safe
+      .col-md-4.col-sm-8.col-xs-12.path-step-graph.third-phase
+        =image_tag 'path-step-3.png', class: 'path-step-mark'
+        %h3.text-yellow= t('pages.path.step_point3').html_safe
+        %p.text-yellow.step-desc= t('pages.path.step_point3_desc').html_safe
+        .phase-frame
+          %h1.text-yellow 3
+          %h4.text-bold.text-center= t('pages.path.phase3_title').html_safe
+          %ul
+            %li
+              = t('pages.path.phase3_para1').html_safe
+            %li
+              = t('pages.path.phase3_para2').html_safe
+            %li
+              = t('pages.path.phase3_para3').html_safe
+      .col-md-12.text-center
+        %p.text-left= t('pages.path.instro_4').html_safe
+  .row.step-detail-1.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3.heading= t('pages.path.phase1_det_title').html_safe
+        %p= t('pages.path.phase1_det_para1').html_safe
+        %h4.sub-heading= t('pages.path.phase1_det_subtitle').html_safe
+        %p= t('pages.path.phase1_det_para2').html_safe
+  .row.step-detail-2.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3.heading= t('pages.path.phase2_det_title').html_safe
+        %p= t('pages.path.phase2_det_para1').html_safe
+        %h4.sub-heading= t('pages.path.phase2_det_subtitle').html_safe
+        %p= t('pages.path.phase2_det_para2').html_safe
+        %p= t('pages.path.phase2_det_para3').html_safe
+        .col-md-offset-3.col-md-6.step-contents.text-center          
+          %p= t('pages.path.preview_text')
+          %button.btn.hcc-btn
+            %a{'href': '/instruction'}
+              = t('pages.path.phase2_button')
+
+  .row.step-detail-3.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3.heading= t('pages.path.phase3_det_title').html_safe
+        %p= t('pages.path.phase3_det_para1').html_safe
+        %h4.sub-heading= t('pages.path.phase3_det_subtitle').html_safe
+        %p= t('pages.path.phase3_det_para2').html_safe
+        .col-md-offset-3.col-md-6.step-contents.text-center          
+          %p= t('pages.path.action_text')
+          %button.btn.hcc-btn
+            %a{'href': '/take_action'}
+              = t('pages.path.phase3_button')
+  .row.step-detail-4.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3.heading= t('pages.path.phase4_title')
+        %p= t('pages.path.phase4_para1')
+        %p= t('pages.path.phase4_para2')
+        %p= t('pages.path.phase4_para3')
+
+/ About Us Page
+
+.legacy-path#mark_about 
+  .row.promo
+    .promo-img
+      = image_tag 'Dollarphotoclub74523.png'
+      .img-text.image-text-path
+        %h2
+          = t('pages.about.sub_heading1')
+          %br
+          = t('pages.about.sub_heading2')
+  #path-content.container
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.about-content
+        %h3.heading-letter.text-pink= t('pages.about.main_heading')
+        %p.text-left= t('pages.about.paragraph1').html_safe
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left
+        %h4.text-orange= t('pages.about.sub_para1')
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.round-step-box
+        %label.step-number 1
+        %p= t('pages.about.step_1').html_safe
+    .row
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6.step-box-gap
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.round-step-box
+        %label.step-number 2
+        %p= t('pages.about.step_2').html_safe
+    .row
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6.step-box-gap
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.round-step-box
+        %label.step-number 3
+        %p= t('pages.about.step_3').html_safe
+    .row
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6.step-box-gap
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12.round-step-box
+        %label.step-number 4
+        %p= t('pages.about.step_4').html_safe
+  .row.president
+    .container
+      .col-md-12
+        %h3.heading-letter.text-pink.text-center= t('pages.about.president_heading')
+        %h4.text-orange.text-center= t('pages.about.president_subheading')
+        %p= t('pages.about.president_para1').html_safe
+        %p= t('pages.about.president_para2').html_safe
+        %p= t('pages.about.president_para3').html_safe
+  .row.second-row
+    .col-lg-4.col-md-4.col-sm-4.col-xs-2.left_line-last
+      %hr.about-dash
+    .col-lg-4.col-md-4.col-sm-4.col-xs-8.text-center.title-box
+      %h3.text-pink= t('pages.about.question_heading')
+    .col-lg-4.col-md-4.col-sm-4.col-xs-2.left_line-last
+      %hr.about-dash
+  .row
+    .container
+      .col-md-12
+        %p= t('pages.about.question_para1').html_safe
+        %p= t('pages.about.question_para2').html_safe
+        %p= t('pages.about.question_para3').html_safe
+        %p= t('pages.about.question_para4').html_safe
+        %p= t('pages.about.question_para5').html_safe
+  .row.call-action-row
+    .next-step
+      %p= t('pages.standard.para8_1')
+      %button.btn.hcc-btn
+        %a{'href': '/journey'}
+          = t('pages.nav_bar.get_started').html_safe
+:javascript
+  jQuery(document).ready(function() {
+    if(window.location.hash) {
+      var bookmark = "#" + window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      $('html, body').animate({
+          scrollTop: $(bookmark).offset().top
+      }, 1000);      
+    }    
+  });

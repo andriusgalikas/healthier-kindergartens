@@ -89,9 +89,9 @@ header
     }
 
     .logo-container {
-      margin-left: 10px;
       position: absolute;
       z-index: 10000;
+      left: 45%;
     }
 
     #header-logo
@@ -182,6 +182,7 @@ header
       display: block;
       position: relative;
       text-align: center;
+      left: 0;
     }
 
     ul{
@@ -198,6 +199,7 @@ header
       display: block;
       position: relative;
       text-align: center;
+      left: 0;
     }
 
     ul{
@@ -214,6 +216,7 @@ header
       display: block;
       position: relative;
       text-align: center;
+      left: 0;
     }
   }
 
@@ -222,6 +225,7 @@ header
       display: block;
       position: relative;
       text-align: center;
+      left: 0;
     }
 
     ul.main-nav {

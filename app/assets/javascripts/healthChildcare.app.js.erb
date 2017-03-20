@@ -108,6 +108,20 @@ healthChildcare.app =
       $(this).before(html);
     });
 
+  },
+
+  homeSubContentLink: function(){
+    $('#legacy-home .sub-content').on('click', function() {
+      if($(this).hasClass('start')){
+        window.location.href="/description#mark_mission";
+      } else if($(this).hasClass('standard')) {
+        window.location.href="/description#mark_standard";
+      } else if($(this).hasClass('path')) {
+        window.location.href="/description#mark_path";
+      } else if($(this).hasClass('journey')) {
+        window.location.href="/description#mark_about";
+      }
+    });    
   }
 
 }

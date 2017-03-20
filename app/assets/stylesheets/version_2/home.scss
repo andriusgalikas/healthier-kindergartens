@@ -381,6 +381,7 @@ textarea {
   margin-bottom: 40px;
   overflow: visible;
   border: 3px solid;
+  cursor: pointer;
   @include border-radius(50px);
   color: #8f6aa3;
 
@@ -559,6 +560,10 @@ textarea {
 
 
 @media only screen and (max-width : 1199px){
+
+    .content {
+      padding: 15px;
+    }
 
     .wrapper {
       width: 100%;
@@ -791,8 +796,11 @@ textarea {
 
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    .content {
+      padding: 15px;
+    }
 
-        .wrapper {
+    .wrapper {
       width: 100%;
     }
     .logo {
@@ -1074,6 +1082,9 @@ textarea {
 
 /*responsive design is done by mehedi hasan*/
 @media screen and (max-width: 767px) {
+    .content {
+      padding: 15px;
+    }
 
     .wrapper {
       width: 100%;
@@ -1454,6 +1465,10 @@ textarea {
 
 /*responsive design is done by mehedi hasan*/
 @media screen and (max-width: 480px) {
+    .content {
+      padding: 15px;
+    }
+
     .wrapper {
       width: 100%;
     }

@@ -44,20 +44,15 @@
     / END SLIDER
     .main-content
       .container.content
-        .row
+        .row        
           .col-md-7.col-xs-12.sub-content.start
             = image_tag "dart.png"
             %h2= t('pages.home.subcontent_start_here')
             .start-text.row
               .col-md-9.col-xs-12
                 %p= t('pages.home.start_here_1')
-                %a.content-link{href: mission_path}= t('pages.home.start_here_link')
-              .col-md-3.col-xs-12
-                %button.btn.hcc-btn
-                  = link_to journey_path do
-                    %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.nav_bar.get_started').html_safe
-          .col-md-5 &nbsp;
+                %a.content-link{href: '/description#mark_mission'}= t('pages.home.start_here_link')
+          .col-md-5.col-xs-12 &nbsp;
 
         .row
           .col-md-5 &nbsp;
@@ -65,14 +60,9 @@
             = image_tag "standard-new.png"
             %h2= t('pages.home.subcontent_standard')
             .standard-text.row
-              .col-md-2.col-xs-12
-                %button.btn.hcc-btn
-                  = link_to journey_path do
-                    %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.nav_bar.get_started').html_safe
               .col-md-10.col-xs-12
                 %p= t('pages.home.standard_1')
-                %a.content-link{href: standard_path}= t('pages.home.standard_link')
+                %a.content-link{href: '/description#mark_standard'}= t('pages.home.standard_link')
 
         .row
           .col-md-7.col-xs-12.sub-content.path
@@ -81,12 +71,7 @@
             .path-text.row
               .col-md-10.col-xs-12
                 %p= t('pages.home.path_1')
-                %a.content-link{href: path_path}= t('pages.home.path_link')
-              .col-md-2.col-xs-12
-                %button.btn.hcc-btn
-                  = link_to journey_path do
-                    %i.glyphicon.glyphicon-chevron-right
-                    = t('pages.nav_bar.get_started').html_safe
+                %a.content-link{href: '/description#mark_path'}= t('pages.home.path_link')
           .col-md-5 &nbsp;
 
         .row
@@ -96,16 +81,6 @@
               = image_tag 'map.png'
             %h2= t('pages.home.subcontent_journey')
             .journey-text.row
-              .col-md-3.col-xs-12
-                .journey-extended
-                  %p
-                    = t('pages.home.journey_2')
-                  %div.journey-start
-                    = image_tag 'right-arrow.png', class: 'img'
-                    = image_tag 'right-arrow.png', class: 'img'
-                    %button.btn.hcc-btn
-                      = link_to journey_path do
-                        = t('pages.nav_bar.get_started').html_safe
               .col-md-9.col-xs-12
                 %p= t('pages.home.journey_1')
                 %a.content-link{href: journey_path}= t('pages.home.journey_link')

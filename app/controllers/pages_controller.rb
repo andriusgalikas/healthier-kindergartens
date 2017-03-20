@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection, :ethic_4]
     #before_action :authenticate_subscribed!, only: :instruction
-    before_filter :check_xhr, only: [:mission, :standard, :path]
+    before_filter :check_xhr, only: [:mission, :standard, :path, :description]
 
     def welcome
     end

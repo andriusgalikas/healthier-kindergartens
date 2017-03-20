@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description).each do |page|
         get page, to: "pages##{page}"
     end
 
