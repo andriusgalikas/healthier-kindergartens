@@ -1011,6 +1011,26 @@
 
   .next-step{
     width: 90% !important;
+    font-size: 14px;
+  }
+
+  /* Path Page*/
+  .legacy-path{
+    .img-text{
+      font-size: 16px !important;
+      top: 5% !important;
+      padding-left: 10% !important;
+      width: 72%;
+
+      h2{
+        font-size: 22px !important;
+        margin-bottom: 60px;
+      }
+
+      h4{
+        font-size: 16px !important;
+      }
+    }
   }
 
   /* Path Page*/
