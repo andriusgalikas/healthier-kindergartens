@@ -225,7 +225,18 @@ $hcc-light-blue: #7fe6e2;
       .radio-box{
         &.agree{
           input[type=radio]:checked + label{
-            background-image: url(/assets/msg-radio-on-green.png) !important;
+            background-image: url(/assets/msg-radio-on-green.jpg) !important;
+          }
+          input[type=radio] + label{
+            background-image: url(/assets/msg-radio-off-green.jpg) !important;
+          }
+        }
+        &.disagree{
+          input[type=radio]:checked + label{
+            background-image: url(/assets/msg-radio-on-red.jpg) !important;
+          }
+          input[type=radio] + label{
+            background-image: url(/assets/msg-radio-off-red.jpg) !important;
           }
         }
         input[type=radio] + label{
