@@ -9,7 +9,7 @@
       .col-md-6.left-side
         - @subjects.each do |subject|
           .single
-            = image_tag subject.icon.file.thumb unless subject.icon.nil?
+            = image_tag subject.icon.file unless subject.icon.nil?
             %h2= subject.title
             %p= subject.description
             %h4.click-here

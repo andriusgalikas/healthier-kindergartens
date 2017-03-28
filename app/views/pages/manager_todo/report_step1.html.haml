@@ -23,7 +23,7 @@
                   .menu-item
                     %span.todo-id= todo.id
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
+                      = image_tag todo.icon.file, class: 'img-responsive center-block' unless todo.icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
         .todo-list
@@ -37,7 +37,7 @@
                   .menu-item
                     %span.todo-id= todo.id
                     .profile-thumb
-                      = image_tag todo.icon.file.thumb, class: 'img-responsive center-block' unless todo.icon.nil?
+                      = image_tag todo.icon.file, class: 'img-responsive center-block' unless todo.icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
 :javascript

@@ -22,7 +22,7 @@
                   .menu-item
                     %span.todo-id= todo.id
                     .profile-thumb
-                      = image_tag Todo.find(todo.id).icon.file.thumb, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
+                      = image_tag Todo.find(todo.id).icon.file, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
                   = link_to t('todos.index.start'), todo_todo_completes_path(todo), method: :post, :class => 'btn btn-normal btn-lightred btn-block'
         .todo-list
@@ -36,8 +36,8 @@
                 .menu-item
                   %span.todo-id= todo_c.id
                   .profile-thumb
-                    /= image_tag todo_c.todo.icon.file.thumb, class: 'img-responsive center-block' unless todo_c.todo.icon.nil?
-                    = image_tag Todo.find(todo_c.id).icon.file.thumb, class: 'img-responsive center-block' unless Todo.find(todo_c.id).icon.nil?
+                    /= image_tag todo_c.todo.icon.file, class: 'img-responsive center-block' unless todo_c.todo.icon.nil?
+                    = image_tag Todo.find(todo_c.id).icon.file, class: 'img-responsive center-block' unless Todo.find(todo_c.id).icon.nil?
                   %span.todo-title= truncate(todo_c.title, length: 20)
                 = link_to t('todos.index.show'), todo_todo_complete_path(todo_c.id, todo_c.tc_id), :class => 'btn btn-yellow btn-normal btn-block'
 :javascript

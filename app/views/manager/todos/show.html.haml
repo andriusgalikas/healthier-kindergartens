@@ -8,7 +8,7 @@
         /= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo'
         /= link_to 'Report', manager_reports_todo_set_date_range_path(@todo), :class => 'btn btn-normal btn-yellow', id: 'report-todo'
         .profile-thumb
-          = image_tag @todo.icon.file.thumb, class: 'img-responsive center-block' unless @todo.icon.nil?
+          = image_tag @todo.icon.file, class: 'img-responsive center-block' unless @todo.icon.nil?
         .row
           .form-group
             %label=t('manager.todos.show.label1')

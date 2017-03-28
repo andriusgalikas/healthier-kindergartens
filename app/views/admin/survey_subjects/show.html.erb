@@ -16,7 +16,7 @@
         <h2 class="widget widget-header"><%= @subject.title %></h2>
     </div>
     <div class="widget widget-content">
-        <%= image_tag @subject.icon.file.thumb %>
+        <%= image_tag @subject.icon.file %>
         <p><%= @subject.description %></p>
     </div>
     <% if @subject.surveys.empty? %>

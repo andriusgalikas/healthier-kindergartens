@@ -22,7 +22,7 @@
     %p= t('admin.survey_subjects._form.para2')
   .ninecol.last
     %fieldset.widget.widget-content
-      = image_tag @subject.icon.file.thumb unless @subject.icon.nil?
+      = image_tag @subject.icon.file unless @subject.icon.nil?
       .form-group.form-last
         = f.fields_for :icon do |ff|
           = ff.file_field :file

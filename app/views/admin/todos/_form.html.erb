@@ -41,7 +41,7 @@
     </div>
     <div class="ninecol last">
         <fieldset class="widget widget-content">
-            <%= image_tag @todo.icon.file.thumb unless @todo.icon.nil? %>
+            <%= image_tag @todo.icon.file unless @todo.icon.nil? %>
             <div class="form-group form-last">
             <input type="file" name="todo[icon_attributes][file]" id="todo_icon_attributes_file">
             <!--

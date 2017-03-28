@@ -3,6 +3,6 @@
     .radio-box
       %input.retake-radio{:type=>"radio", :name => "subject_id", :id => "radio#{subject.id}", :style => "display: none;", value: subject.id}
       %label{:for => "radio#{subject.id}"}
-        = image_tag subject.icon.file.thumb, class: 'img' unless subject.icon.nil?
+        = image_tag subject.icon.file, class: 'img' unless subject.icon.nil?
       .row.survey-title
         %span= subject.title

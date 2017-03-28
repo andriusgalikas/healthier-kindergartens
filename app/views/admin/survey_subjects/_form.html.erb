@@ -31,7 +31,7 @@
     </div>
     <div class="ninecol last">
         <fieldset class="widget widget-content widget-last">
-            <%= image_tag @subject.icon.file.thumb unless @subject.icon.nil? %>
+            <%= image_tag @subject.icon.file unless @subject.icon.nil? %>
             <div class="form-group form-last">
                 <%= f.fields_for :icon do |ff| %>
                 <%= ff.file_field :file %>
