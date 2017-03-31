@@ -17,7 +17,7 @@ class AttemptsController < ApplicationController
     @attempt = @survey.attempts.new(attempt_params)
     build_remote_survey_answer
     @attempt.participant = current_user
-    @attempt.remote_id = @remote_response.id
+    # @attempt.remote_id = @remote_response.id
 
     if @attempt.valid? && @attempt.save
       set_attempt_rate
@@ -81,7 +81,7 @@ class AttemptsController < ApplicationController
       answer_key = "[#{ans.question.remote_id}][#{ans.option.remote_id}]"
       answer[answer_key] = ans.option.text
     end
-    @remote_response = ResponseEx.create(survey_id: @subject.remote_id, data: answer)
+    # @remote_response = ResponseEx.create(survey_id: @subject.remote_id, data: answer)
   end
 
   def set_attempt_rate

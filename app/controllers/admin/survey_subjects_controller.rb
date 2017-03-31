@@ -20,7 +20,7 @@ class Admin::SurveySubjectsController < AdminController
   def create
     @subject = SurveySubject.new(subject_params)
     if @subject.save
-      set_remote_survey
+      # set_remote_survey
       build_surveys_from_spreadsheet
       redirect_to admin_survey_subject_path(@subject), notice: 'You have created a new subject'
     else
@@ -40,7 +40,7 @@ class Admin::SurveySubjectsController < AdminController
 
   def destroy
       set_subject
-      delete_remote_survey      
+      # delete_remote_survey      
       @subject.destroy
       redirect_to admin_survey_subjects_path(@subject), notice: 'You have successfully deleted a survey.'
     end
@@ -100,14 +100,16 @@ class Admin::SurveySubjectsController < AdminController
       survey_name = file_data.original_filename.split('.xlsx').first.titleize
       if xlsx.sheets.count > 0
         if xlsx.last_row > 1
-          remote_subpage = SurveyGizmo::API::Page.create(survey_id: @subject.remote_id, :title => survey_name, :description => "Uploaded survey of #{survey_name}")
-          if remote_subpage.save
-            survey = @subject.surveys.build(name: survey_name, description: "Uploaded survey of #{survey_name}", attempts_number: 100000, active: true, remote_id: remote_subpage.id)
+          # remote_subpage = SurveyGizmo::API::Page.create(survey_id: @subject.remote_id, :title => survey_name, :description => "Uploaded survey of #{survey_name}")
+          # if remote_subpage.save
+            # survey = @subject.surveys.build(name: survey_name, description: "Uploaded survey of #{survey_name}", attempts_number: 100000, active: true, remote_id: remote_subpage.id)
+            survey = @subject.surveys.build(name: survey_name, description: "Uploaded survey of #{survey_name}", attempts_number: 100000, active: true, remote_id: 0)
             if survey.save(validate: false)
               2.upto(xlsx.last_row) do |line|
-                remote_question = SurveyGizmo::API::Question.create(survey_id: @subject.remote_id, page_id: remote_subpage.id, :title => xlsx.cell(line, 'A'), type: 'radio') unless xlsx.cell(line, 'A').nil?
-                if remote_question.save
-                  question = survey.questions.new(:text => xlsx.cell(line, 'A'), remote_id: remote_question.id) unless xlsx.cell(line, 'A').nil?
+                # remote_question = SurveyGizmo::API::Question.create(survey_id: @subject.remote_id, page_id: remote_subpage.id, :title => xlsx.cell(line, 'A'), type: 'radio') unless xlsx.cell(line, 'A').nil?
+                # if remote_question.save
+                  # question = survey.questions.new(:text => xlsx.cell(line, 'A'), remote_id: remote_question.id) unless xlsx.cell(line, 'A').nil?
+                  question = survey.questions.new(:text => xlsx.cell(line, 'A'), remote_id: 0) unless xlsx.cell(line, 'A').nil?
                   if question.present? && question.save!
                     options = []
                     options << question.options.new(:text => xlsx.cell(line, 'B').to_s, :weight => 1, :correct => false) unless xlsx.cell(line, 'B').nil?
@@ -118,18 +120,19 @@ class Admin::SurveySubjectsController < AdminController
                     options.each{|op| op.correct = true if op.text.strip.downcase == answer.strip.downcase} if options.count > 0 && answer.present?
                     if options.count > 0
                       options.each do |op|
-                        remote_option = SurveyGizmo::API::Option.create(survey_id: @subject.remote_id, page_id: remote_subpage.id, question_id: remote_question.id, :value => op.text, :title => op.text)
-                        if remote_option.save
-                          op.remote_id = remote_option.id
+                        # remote_option = SurveyGizmo::API::Option.create(survey_id: @subject.remote_id, page_id: remote_subpage.id, question_id: remote_question.id, :value => op.text, :title => op.text)
+                        # if remote_option.save
+                          # op.remote_id = remote_option.id
+                          op.remote_id = 0
                           op.save!
-                        end
+                        # end
                       end
                     end
                   end
-                end
+                # end
               end
             end
-          end
+          # end
         end
       end
     end
