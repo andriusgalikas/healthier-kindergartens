@@ -1,8 +1,7 @@
 %header.header.clearfix
-  .container
-    .logo-container
-      = link_to root_path do
-        = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo-new.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, id: 'header-logo'
+  .text-center
+    = link_to root_path do
+      = image_tag LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? 'logo-new.png' : LocaleLogo.by_type_language(1, I18n.locale).first.logo.url, id: 'header-logo'
     / %ul.main-nav
     /   %li= link_to t('pages.nav_bar.home'), root_path, class: "hcc-simple #{get_active_link('home')}"
     /   %li= link_to t('pages.nav_bar.start_here'), mission_path, class: "hcc-simple #{get_active_link('')}"

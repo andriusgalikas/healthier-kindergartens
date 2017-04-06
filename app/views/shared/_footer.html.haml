@@ -17,10 +17,10 @@
       .col-md-4.right-footer
         %ul
           %li= link_to t("pages.footer.home"), root_path, class: 'hcc-simple'
-          %li= link_to t("pages.footer.mission"), mission_path, class: 'hcc-simple'
-          %li= link_to t("pages.footer.standard"), standard_path, class: 'hcc-simple'
-          %li= link_to t("pages.footer.path"), path_path, class: 'hcc-simple'
-          %li= link_to t("pages.footer.about_us"), about_path, class: 'hcc-simple'
+          %li= link_to t("pages.footer.mission"), 'description#mark_mission', class: 'hcc-simple'
+          %li= link_to t("pages.footer.standard"), 'description#mark_standard', class: 'hcc-simple'
+          %li= link_to t("pages.footer.path"), 'description#mark_path', class: 'hcc-simple'
+          %li= link_to t("pages.footer.about_us"), 'description#mark_about', class: 'hcc-simple'
           %li= link_to t("pages.footer.resources"), take_action_path, class: 'hcc-simple'
           - unless user_signed_in?
             %li= link_to t("pages.footer.login"), new_user_session_path, class: 'hcc-simple'
