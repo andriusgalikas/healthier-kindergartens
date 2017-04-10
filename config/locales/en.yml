@@ -1553,3 +1553,121 @@ en:
           content: "Step 2: <br/>Click the Apply filter button to see the results in the messages list. <br/> Only messages that match the chosen criteria will be displayed."
         step3:
           content: "Step 3: <br/>Click the Print link to get the hard copy of the message."
+
+  # ------------------ Additional Yml Texts -----------------
+  deposit:
+    button:
+      invest: Invest
+    plan:
+      description_2: You have selected Informed Membership Plan
+      description_3: You have selected Certification Membership Plan
+      description_4: You have selected Accreditation Membership Plan
+  user_plan:
+    header:
+      title: Healthier Childcare membership
+      content: Enjoy the benefits of being part of our Healthier Childcare network. Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community.
+    button:
+      book: BOOK NOW
+    phase1:
+      label: PHASE 1
+      type: Informed Membership
+      rate: $ 19 / mo
+      desc: (USD, billed yearly) 
+
+    phase2:
+      label: PHASE 2
+      type: Certification Membership
+      rate: $ 39 / mo
+      desc: (USD, billed yearly) 
+
+    phase3:
+      label: PHASE 3
+      type: Accreditation Membership
+      rate: $ 99 / mo
+      desc: (USD, billed yearly) 
+
+    benefit:
+      title: ONGOING ACCREDITATION MEMBERSHIP BENEFITS
+      text1: Access the scope of infection risk in your facility
+      text2: Priodic Newsletter
+      text3: Get instruction in optimal infective practices
+      text4: Boost employee confidence
+      text5: Positively affect the next generation
+      text6: Infection record management
+      text7: Infection analytics
+      text8: Infection preventive communication manager 
+      text9: Infection preventive task manager
+      text10: Avoid potentially costly lawsuits
+      text11: Get the competitive edge
+      content1: Description
+      content2: Description
+      content3: Description
+      content4: Description
+      content5: Description
+      content6: Description
+      content7: Description
+      content8: Description
+      content9: Description
+      content10: Description
+      content11: Description
+
+
+  campaign:
+    header:
+      title: How to prevent infection in the nursery 
+      description: daily lives of children and staff in your nursery is as safe as possible
+    content:
+      text1: In no jobs are riskonen of becoming ill as large as in kindergartens. Infection control in a nursery poses a real multi-faceted challenge for kindergarten boards. To fail to address the critical areas of exposure of contagion in kindergarten, leading to infections which leaves both children and staff sick, putting their health in potential danger and may even damage the reputation of the institution.
+      text2: In line with Norway's national association for fresher kindergartens aim to assist center supervisors who are dedicated to protecting children under their care from harm and suffering associated with infectious diseases occurring in kindergarten addition, launching the Norwegian Association for fresher kindergartens and accreditation program, Healthier and Safer in nurseries.
+      text3: And in connection with the launch, you now have a <span class="pink-text">free 7 day email course </span> on how to prevent infection in the nursery to help you on your weight to a healthier and safer nursery, while providing an insight into the accreditation program, Healthier and Safer childcare.
+      text4: The course is a result of collaboration between Private Barnegagesr Association and Norges landsfroening for healthier and safer Branehgare
+    step_header: "In this email course you will learn:"
+    module1:
+      label: "Module 1:"
+      title: Preventative strategies for handling food in the nursery.
+      text1: Primary Design
+      text2: Handling of food in your nursery, including storage, preparation and serving of food to children in kindergarten presents some unique challenges for the nursery. Here there are countless opportunities for cross-contamination and damage caused by food-borne illnesses.
+      text3: "In this course you will learn why:"
+      fn1: What important biosecurity measures you as kindergarten boards can take to reduce the risk of foodborne illnesses in your nursery and how to make sure that the infection prevention practices for safe food handling is implemented, tracked and measured on a daily basis in your nursery.
+      fn2: What any of your nursery personnel should know to be able to arrange for children who suffer from food allergies in kindergarten?
+      fn3: What mistakes should be avoided when preparing food for infants in the nursery
+
+    module2:
+      label: "Module 2:"
+      title: Preventative strategies for the control of infectious sykdomsutbrudds kindergarten.
+      text1: Primary motive
+      text2: There are several factors in the nursery that contribute to outbreaks of infectious diseases. A severe outbreak can spread quickly, thanks to children's habits, the number of people in the nursery and the dense close they have to each other. In many cases, the way we approach an outbreak of, including timely biosecurity communication between parents and kindergarten during the early stages of the outbreak can affect the outbreak course and its potential to spread.
+      text3: "In this course you will learn why:"
+      fn1: Which essential biosecurity measures you as kindergarten controls can take before infectious disease breaks out in your nursery
+      fn2: Communication Strategies you like kindergarten boards should know in case it occurs infectious disease outbreaks in your nursery
+      fn3: What mistakes kindergarten personnel should avoid, too few to avert panic when they communicate with parents during infectious disease outbreaks in nursery
+
+    module3:
+      label: "Module 3:"
+      title: Preventative cleaning after episodes of bodily fluids
+      text1: Primary design
+      text2: Kindergartens must face a daily struggle against bodily fluids, which creates a substantial risk of being exposed to infectious disease-carrying germs and viruses. This is particularly challenging since cross- infection can easily although one had directly with the body fluids of a sick child.
+      text3: "In this course you will learn why:"
+      fn1: What measures you as kindergarten boards can take to ensure that there are biosecurity procedures in your nursery for cleaning after episodes of bodily fluids.
+      fn2: Which smittforebyggende cleaning equipment nursery staff needs to avoid becoming infected
+      fn3: How to clean the body fluids that may contain infectious disease-carrying germs and viruses
+
+    module4:
+      label: "Module 4:"
+      title: Preventative changing diapers in the nursery
+      text1: Primary motive
+      text2: Changing diapers is considered that the task with the highest risk of transmission of pathogenic germs and viruses among children and staff in kindergartens. The risk of infection associated with changing diapers is quite real as disease-bearing pathogens can spread from person to person, although there are no signs of illness.
+      text3: "In this course you will learn why:"
+      fn1: The ratio of infectious disease outbreaks and performing diaper shifts in kindergarten
+      fn2: What measures you as kindergarten boards can take to create more awareness among kindergarten staff about infection prevention nappy changing.
+      fn3: Overview of diaper changing procedures that minimize the risk of spread of disease carrying germs and viruses.
+
+    module5:
+      label: "Module 5:"
+      title: Preventative hand hygiene in kindergarten.
+      text1: Primary motive
+      text2: Good hand hygiene constitute the first line of defense against the spread of infectious diseases. A hand that has been in contact with the infection, spreading it on to surfaces that come in contact with, where viruses can remain active for a long time. When children and adults touch these surfaces and then touching your face spread the infection further.
+      text3: "In this course you will learn why:"
+      fn1: The ratio of infectious disease outbreaks and lack of good hand hygiene in kindergarten
+      fn2: What measures you as kindergarten boards can take to promote good hand hygiene in your nursery.
+      fn3: Critical rules for biosecurity sink any nursery employee should know about

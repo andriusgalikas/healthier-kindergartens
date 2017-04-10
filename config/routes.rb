@@ -53,13 +53,15 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description user_plan).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign).each do |page|
         get page, to: "pages##{page}"
     end
 
     get 'dashboard', to: 'dashboard#index'
 
     get 'upgrade', to: 'subscriptions#index'
+    get 'user_plan', to: 'subscriptions#user_plan'    
+    get 'set_userplan', to: 'subscriptions#set_userplan'    
 
     post 'add_pending_option', to: 'survey_pending_option#new'
     get 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'

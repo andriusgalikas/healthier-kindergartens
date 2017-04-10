@@ -42,7 +42,7 @@
           <% @plans.each do |plan| %>
             <tr>
               <td>
-                <%= "#{(plan.plan_type == 1) ? 'Daily Rate' : 'Deposit'}"  %>
+                <%= ['Deposit', 'Daily Rate', 'Phase 1', 'Phase 2', 'Phase 3'][plan.plan_type]  %>
               </td>
               <td>
                 <%= plan.name %>

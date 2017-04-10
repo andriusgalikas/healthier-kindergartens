@@ -10,7 +10,7 @@
 
       .col-md-2.col-sm-6
         - unless current_user.subscribed? || !current_user.manager?
-          = link_to 'Upgrade', upgrade_path, class: 'btn btn-success btn-lg'
+          = link_to 'Upgrade', user_plan_path, class: 'btn btn-success btn-lg'
 
       .col-md-2.col-sm-6
         = render partial: 'shared/user_header_menu'

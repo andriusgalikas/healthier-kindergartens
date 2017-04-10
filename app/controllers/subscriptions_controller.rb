@@ -31,6 +31,14 @@ class SubscriptionsController < ApplicationController
         validate_user_subscription
     end
 
+    def set_userplan
+        unless params[:plan].nil?
+            current_user.plan_type = params[:plan]
+            current_user.save
+        end
+        redirect_to upgrade_path
+    end
+
     private
 
     def subscription_params
@@ -40,6 +48,9 @@ class SubscriptionsController < ApplicationController
     def set_plan
         @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase).first
         @currency = ISO4217::Currency.from_code(@plan.currency.upcase)
+
+        @main_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first        
+        @main_plan_currency = ISO4217::Currency.from_code(@main_plan.currency.upcase) unless @main_plan.nil?
     end
 
     def set_subscription

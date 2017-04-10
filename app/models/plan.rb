@@ -4,13 +4,11 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  price      :decimal(, )      default("0.0")
-#  allocation :integer          default("0")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  plan_type  :integer
-#  language   :string
-#  currency   :string
+#  
+#  plan_type: 1: Daily amount
+#  			  2: Phase 1 Deposit
+#  			  3: Phase 2 Deposit
+#  			  4: Phase 3 Deposit
 #
 
 class Plan < ActiveRecord::Base

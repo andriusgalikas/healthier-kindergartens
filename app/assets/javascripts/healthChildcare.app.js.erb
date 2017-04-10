@@ -74,32 +74,32 @@ healthChildcare.app =
   },
 
   showUpgradedChildcaresNotification: function() {
-    var newPlan = $('input#notif_plan_id').val() || '';
-    var featuredDaycare = [];
+    // var newPlan = $('input#notif_plan_id').val() || '';
+    // var featuredDaycare = [];
 
-    if (newPlan != '') {
-      function fetchSimilarPlans() {
-        $.ajax(
-          {
-            url: '/api/daycares/by_plan?plan_id=' + newPlan,
-            type: 'GET',
-            dataType: 'json',
-            success: function (data)
-            {
-              if ($.inArray(data.name, featuredDaycare) < 0 ) {
-                featuredDaycare.push(data.name);
-                $.notify({
-                  message: data.name + " " + window._trans['featured_daycare_by_plan']
-                })
-              }
-              else if (featuredDaycare.length == data.set_size)
-                clearInterval(occasionalFetch);
-            }
-          })
-      }
+    // if (newPlan != '') {
+    //   function fetchSimilarPlans() {
+    //     $.ajax(
+    //       {
+    //         url: '/api/daycares/by_plan?plan_id=' + newPlan,
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         success: function (data)
+    //         {
+    //           if ($.inArray(data.name, featuredDaycare) < 0 ) {
+    //             featuredDaycare.push(data.name);
+    //             $.notify({
+    //               message: data.name + " " + window._trans['featured_daycare_by_plan']
+    //             })
+    //           }
+    //           else if (featuredDaycare.length == data.set_size)
+    //             clearInterval(occasionalFetch);
+    //         }
+    //       })
+    //   }
 
-      occasionalFetch = setInterval(fetchSimilarPlans, 15000);
-    }
+    //   occasionalFetch = setInterval(fetchSimilarPlans, 15000);
+    // }
   },
 
   addAnotherCertification: function() {

@@ -11,7 +11,7 @@
     <div id="menu">
         <% if user_signed_in? %>
             <% unless current_user.active_subscribed? || !current_user.manager? %>
-                <%= link_to "Upgrade", upgrade_path ,id: 'upgrade_btn' %>
+                <%= link_to "Upgrade", user_plan_path ,id: 'upgrade_btn' %>
             <%else%>    
                 <%= link_to 'Dashboard', dashboard_path %>
             <% end %>

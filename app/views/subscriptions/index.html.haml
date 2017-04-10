@@ -1,96 +1,142 @@
 .legacy-upgrade
   .container
     .row
-      .col-md-6.col-sm-6.col-xs-12.upgrade-plan
-        .row
-          %h2=t('pages.upgrade.title')
-          = hidden_field_tag :notif_plan_id, 1
-        .row.round-box.price-plan-desc
-          %h2 
-            =t('pages.upgrade.description', num_child: current_user.daycare.num_children, currency_symbol: @currency.symbol)
-          %p=t('pages.upgrade.para1', num_child: current_user.daycare.num_children, amount: @plan.price, currency_symbol: @currency.symbol)
-        .row.round-box        
-          = form_for @transaction, method: :post do |f|
-            %h4.text-center= t('pages.upgrade.box_title')
-            .row
-              - if @subscription.errors.any?
-                .error_messages
-                  %h2
-                    = pluralize(@subscription.errors.count, "error")
-                    prohibited this subscription from being saved:
-                  %ul
-                    - @subscription.errors.full_messages.each do |msg|
-                      %li= msg
-              = hidden_field_tag :user_id, current_user.id
-              = hidden_field_tag :subscription_id, @subscription.id
-              = hidden_field_tag :stripe_card_token          
-            .row{:style => "margin: 0;"}
-              .col-md-8.col-sm-12.col-xs-12
-                = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
-              .col-md-4.col-sm-12.col-xs-12
-                = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
-            .row{:style => "margin: 0;"}
-              .col-md-12.col-sm-12.col-xs-12
-                %span Card Expiration:
-              .col-md-6.col-sm-12.col-xs-12
-                = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
-              .col-md-6.col-sm-12.col-xs-12
-                = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
-            .row 
-              .col-md-12.col-sm-12.col-xs-12.text-center 
-                %p.plan-price  
-                  = hidden_field_tag :upgrade_type, 1
-                  = "#{@currency.symbol unless @currency.nil?} #{Plan.where(plan_type: 0, language: I18n.locale.upcase).first.price}"
-                  %p=t('pages.upgrade.para2').html_safe
-            .row.text-center
-              %button.btn.btn-round.item-manager{type: "submit"}
-                = t('pages.upgrade.reserve')
+      - if current_user.plan_type == 4
+        .col-md-6.col-sm-6.col-xs-12.upgrade-plan
+          .row
+            %h2=t('pages.upgrade.title')
+            = hidden_field_tag :notif_plan_id, 1
+          .row.round-box.price-plan-desc
+            %h2 
+              =t('pages.upgrade.description', num_child: current_user.daycare.num_children, currency_symbol: @currency.symbol)
+            %p=t('pages.upgrade.para1', num_child: current_user.daycare.num_children, amount: @plan.price, currency_symbol: @currency.symbol)
+          .row.round-box        
+            = form_for @transaction, method: :post do |f|
+              %h4.text-center= t('pages.upgrade.box_title')
+              .row
+                - if @subscription.errors.any?
+                  .error_messages
+                    %h2
+                      = pluralize(@subscription.errors.count, "error")
+                      prohibited this subscription from being saved:
+                    %ul
+                      - @subscription.errors.full_messages.each do |msg|
+                        %li= msg
+                = hidden_field_tag :user_id, current_user.id
+                = hidden_field_tag :subscription_id, @subscription.id
+                = hidden_field_tag :stripe_card_token          
+              .row{:style => "margin: 0;"}
+                .col-md-8.col-sm-12.col-xs-12
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
+                .col-md-4.col-sm-12.col-xs-12
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
+              .row{:style => "margin: 0;"}
+                .col-md-12.col-sm-12.col-xs-12
+                  %span Card Expiration:
+                .col-md-6.col-sm-12.col-xs-12
+                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
+                .col-md-6.col-sm-12.col-xs-12
+                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+              .row 
+                .col-md-12.col-sm-12.col-xs-12.text-center 
+                  %p.plan-price  
+                    = hidden_field_tag :upgrade_type, 1
+                    = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
+                    %p=t('pages.upgrade.para2').html_safe
+              .row.text-center
+                %button.btn.btn-round.item-manager{type: "submit"}
+                  = t('pages.upgrade.reserve')
+      - else
+        .col-md-6.col-sm-6.col-xs-12.upgrade-plan
+          .row
+            %h2=t('pages.upgrade.title')
+            = hidden_field_tag :notif_plan_id, 1
+          .row.round-box.price-plan-desc
+            %h2 
+              =t("deposit.plan.description_#{current_user.plan_type}")
+          .row.round-box        
+            = form_for @transaction, method: :post do |f|
+              .row
+                - if @subscription.errors.any?
+                  .error_messages
+                    %h2
+                      = pluralize(@subscription.errors.count, "error")
+                      prohibited this subscription from being saved:
+                    %ul
+                      - @subscription.errors.full_messages.each do |msg|
+                        %li= msg
+                = hidden_field_tag :user_id, current_user.id
+                = hidden_field_tag :subscription_id, @subscription.id
+                = hidden_field_tag :stripe_card_token          
+              .row{:style => "margin: 0;"}
+                .col-md-8.col-sm-12.col-xs-12
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
+                .col-md-4.col-sm-12.col-xs-12
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
+              .row{:style => "margin: 0;"}
+                .col-md-12.col-sm-12.col-xs-12
+                  %span Card Expiration:
+                .col-md-6.col-sm-12.col-xs-12
+                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
+                .col-md-6.col-sm-12.col-xs-12
+                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+              .row 
+                .col-md-12.col-sm-12.col-xs-12.text-center 
+                  %p.plan-price  
+                    = hidden_field_tag :upgrade_type, 1
+                    = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
+              .row.text-center
+                %button.btn.btn-round.item-manager{type: "submit"}
+                  = t('deposit.button.invest')
 
       .col-md-6.col-sm-6.col-xs-12.instruction
         .ongoing
           .ongoing-heading
             %h2=t('pages.upgrade.benefit')
             %p=t('pages.upgrade.ben_para1') 
-          .single-ongoing.pink
-            = image_tag '101.png'
-            %p
-              %span.periodic-pin=t('pages.upgrade.ben_para2').html_safe 
-          .single-ongoing.pink
-            = image_tag '102.png'
-            %p
-              %span.periodic-pin=t('pages.upgrade.ben_para3').html_safe 
-          .single-ongoing.blue
-            = image_tag '103.png'
-            %p
-              %span.practices-blu=t('pages.upgrade.ben_para4').html_safe 
-          .single-ongoing.all
-            = image_tag '104.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para5').html_safe 
-          .single-ongoing.all
-            = image_tag '105.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para6').html_safe 
-          .single-ongoing.all
-            = image_tag '106.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para7').html_safe 
-          .single-ongoing.all
-            = image_tag '107.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para8').html_safe 
-          .single-ongoing.all
-            = image_tag '108.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para9').html_safe 
-          .single-ongoing.all
-            = image_tag '109.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para10').html_safe 
-          .single-ongoing.all
-            = image_tag '110.png'
-            %p
-              %span.potential-gree=t('pages.upgrade.ben_para11').html_safe 
+          - if [2, 3, 4].include? current_user.plan_type
+            .single-ongoing.pink
+              = image_tag '101.png'
+              %p
+                %span.periodic-pin=t('pages.upgrade.ben_para2').html_safe 
+            .single-ongoing.pink
+              = image_tag '102.png'
+              %p
+                %span.periodic-pin=t('pages.upgrade.ben_para3').html_safe 
+          - if [3, 4].include? current_user.plan_type
+            .single-ongoing.blue
+              = image_tag '103.png'
+              %p
+                %span.practices-blu=t('pages.upgrade.ben_para4').html_safe 
+            .single-ongoing.all
+              = image_tag '104.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para5').html_safe 
+            .single-ongoing.all
+              = image_tag '110.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para11').html_safe 
+          - if [4].include? current_user.plan_type
+            .single-ongoing.all
+              = image_tag '105.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para6').html_safe 
+            .single-ongoing.all
+              = image_tag '106.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para7').html_safe 
+            .single-ongoing.all
+              = image_tag '107.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para8').html_safe 
+            .single-ongoing.all
+              = image_tag '108.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para9').html_safe 
+            .single-ongoing.all
+              = image_tag '109.png'
+              %p
+                %span.potential-gree=t('pages.upgrade.ben_para10').html_safe 
     .row.money-back
   .row.guarantee
     .container

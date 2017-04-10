@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   def create
     @subscription = Subscription.find(params[:subscription_id])
     @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase).first
-    @deposit_plan = Plan.where(plan_type: 0, language: I18n.locale.upcase).first
+    @deposit_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first
 
     days = 0
     unless @subscription.payment_mode.nil?
@@ -23,22 +23,25 @@ class TransactionsController < ApplicationController
       bill_amount = 0 if bill_amount <= 0
     end
     @transaction = Transaction.new
-    @transaction.amount = params[:upgrade_type] ? @deposit_plan.price : bill_amount
+    @transaction.amount   = params[:upgrade_type] ? @deposit_plan.price : bill_amount
     @transaction.currency = params[:upgrade_type] ? @deposit_plan.currency : @plan.currency
     @transaction.card_num = params[:card_number]
-    @transaction.user_id = current_user.id
+    @transaction.user_id  = current_user.id
 
     # Create a charge: this will charge the user's card
     begin
-      stripe_customer = Stripe::Customer.create(
-        :email => current_user.email,
-        :source => params[:stripe_card_token],
-      )
+      stripe_customer = current_user.stripe_customer
+      if stripe_customer.blank?
+        stripe_customer = Stripe::Customer.create(
+          :email => current_user.email,
+          :source => params[:stripe_card_token],
+        ).id
+      end
 
       charge = Stripe::Charge.create(
         :amount => (@transaction.amount * 100).to_i, # Amount in cents
         :currency => @transaction.currency,
-        :customer => stripe_customer.id,
+        :customer => stripe_customer,
         :description => ""
       )
       @transaction.charge_id = charge.id
@@ -48,7 +51,7 @@ class TransactionsController < ApplicationController
       @subscription.transaction_id = @transaction.id
       @subscription.save
 
-      current_user.stripe_customer = stripe_customer.id
+      current_user.stripe_customer = stripe_customer
       current_user.card_number = params[:card_number]
       current_user.save
 
