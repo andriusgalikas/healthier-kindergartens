@@ -11,13 +11,17 @@ class AutoPaymentJob < ActiveJob::Base
                 days = 0
                 if last_transaction.deposit == false                
                   unless subitem.payment_mode.nil?
-                    case subitem.payment_mode.unit
-                    when 'week'
-                      days = 7 * subitem.payment_mode.period
-                    when 'month'
-                      days = 30 * subitem.payment_mode.period
-                    when 'year'        
-                      days = 30 * subitem.payment_mode.period * 12
+                    if subitem.plan_id == 1
+                      case subitem.payment_mode.unit
+                      when 'week'
+                        days = 7 * subitem.payment_mode.period
+                      when 'month'
+                        days = 30 * subitem.payment_mode.period
+                      when 'year'        
+                        days = 30 * subitem.payment_mode.period * 12
+                      end
+                    else
+                      days = 30
                     end
                   end
                 else
@@ -66,7 +70,7 @@ class AutoPaymentJob < ActiveJob::Base
           bill_amount = 0 if bill_amount <= 0
         end
 
-        if [2, 3].include? @job_user.plan_type
+        if [2, 3, 4].include? @job_user.plan_type
           @job_plan = Plan.where(plan_type: @job_user.plan_type, language: I18n.locale.upcase).first
           bill_amount = @job_plan.price
         end

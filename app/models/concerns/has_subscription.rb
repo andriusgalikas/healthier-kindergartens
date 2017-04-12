@@ -72,5 +72,9 @@ module HasSubscription
         def preminum?
             transactions.empty? ? false : true
         end
+
+        def manager_plan_type
+            daycare.managers.first.plan_type
+        end
     end
 end

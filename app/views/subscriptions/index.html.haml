@@ -1,7 +1,7 @@
 .legacy-upgrade
   .container
     .row
-      - if current_user.plan_type == 4
+      - if current_user.plan_type == 0
         .col-md-6.col-sm-6.col-xs-12.upgrade-plan
           .row
             %h2=t('pages.upgrade.title')
@@ -54,7 +54,7 @@
           .row.round-box.price-plan-desc
             %h2 
               =t("deposit.plan.description_#{current_user.plan_type}")
-          .row.round-box        
+          .row.round-box
             = form_for @transaction, method: :post do |f|
               .row
                 - if @subscription.errors.any?
@@ -94,7 +94,7 @@
           .ongoing-heading
             %h2=t('pages.upgrade.benefit')
             %p=t('pages.upgrade.ben_para1') 
-          - if [2, 3, 4].include? current_user.plan_type
+          - if [0, 2, 3, 4].include? current_user.plan_type
             .single-ongoing.pink
               = image_tag '101.png'
               %p
@@ -103,7 +103,7 @@
               = image_tag '102.png'
               %p
                 %span.periodic-pin=t('pages.upgrade.ben_para3').html_safe 
-          - if [3, 4].include? current_user.plan_type
+          - if [0, 3, 4].include? current_user.plan_type
             .single-ongoing.blue
               = image_tag '103.png'
               %p
@@ -116,7 +116,7 @@
               = image_tag '110.png'
               %p
                 %span.potential-gree=t('pages.upgrade.ben_para11').html_safe 
-          - if [4].include? current_user.plan_type
+          - if [0, 4].include? current_user.plan_type
             .single-ongoing.all
               = image_tag '105.png'
               %p

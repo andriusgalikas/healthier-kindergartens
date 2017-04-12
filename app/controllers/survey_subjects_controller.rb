@@ -5,6 +5,10 @@ class SurveySubjectsController < ApplicationController
 
     def results
         set_subject
+        if @subject.nil?
+          redirect_to dashboard_path
+        end
+
         if request.xhr?
           render partial: 'progress_charts'
         end
@@ -12,6 +16,10 @@ class SurveySubjectsController < ApplicationController
 
     def result
         @subject ||= SurveySubject.find(params[:id])
+        if @subject.nil?
+          redirect_to dashboard_path
+        end
+
         @trend = SurveyTrendsGenerator.new(@subject, [current_user.id])
         if request.xhr?
           render partial: 'progress_charts', locals: {trend: @trend}

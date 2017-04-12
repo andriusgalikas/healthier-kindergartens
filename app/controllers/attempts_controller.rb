@@ -6,6 +6,9 @@ class AttemptsController < ApplicationController
 
   def new
     set_subject
+    if @subject.nil?
+      redirect_to dashboard_path
+    end
     set_user
     @pending_checker = SurveyPendingChecker.new
   end

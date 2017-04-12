@@ -249,7 +249,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :num_children,
       :num_worker,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required]],
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end

@@ -44,6 +44,7 @@ class TransactionsController < ApplicationController
         :customer => stripe_customer,
         :description => ""
       )
+      
       @transaction.charge_id = charge.id
       @transaction.deposit = params[:upgrade_type] ? true : false
       @transaction.save

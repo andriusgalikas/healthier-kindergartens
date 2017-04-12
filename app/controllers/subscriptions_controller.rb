@@ -63,12 +63,14 @@ class SubscriptionsController < ApplicationController
 
     def get_subscription        
         @subscription = Subscription.where(transaction_id: nil, user_id: current_user.id).first
+        plan_type = (current_user.plan_type == 0) ? 1 : current_user.plan_type
+        plan_month = (current_user.plan_type == 0) ? 12 : 1
         if @subscription.nil?
-            new_subscription            
+            new_subscription
             @subscription.user_id = current_user.id
-            @subscription.plan_id = Plan.where(plan_type: 1, language: I18n.locale.upcase).first.id
+            @subscription.plan_id = Plan.where(plan_type: plan_type, language: I18n.locale.upcase).first.id
             @subscription.terms = true
-            @subscription.month = 12
+            @subscription.month = plan_month
             @subscription.save
         end
         @transaction = Transaction.new
