@@ -31,4 +31,15 @@ class RegistrationMailer < ApplicationMailer
         }    
         result = m.send_email(data)
     end
+
+    def register_email_campaign (user, subject, content)
+        @user = user
+        m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
+        data = { "to" => {@user.email => "Daycare"},
+            "from" => [ENV['SITE_MANAGER_EMAIL'], ENV['SITE_MANAGER_NAME']],
+            "subject" => subject,
+            "html" => content
+        }    
+        result = m.send_email(data)
+    end
 end

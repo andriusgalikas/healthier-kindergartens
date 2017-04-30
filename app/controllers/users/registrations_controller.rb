@@ -51,6 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @daycare.save
       user = @daycare.users.first
       send_confirmation_email(user)
+      send_email_campaign(user) unless user.deposit_required
       sign_up(:user, user)  
       render "register/success_#{params[:role]}", locals: {deposit: user.deposit_required}
       #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
@@ -331,6 +332,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
 
     RegistrationMailer.registration_confirmation(user, template).deliver
+  end
+
+  def send_email_campaign user
+    @email_campaigns = EmailCampaign.by_language(I18n.locale.downcase)
+    @email_campaigns.each do |item|
+      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver
+    end
   end
 
   def set_daycare
