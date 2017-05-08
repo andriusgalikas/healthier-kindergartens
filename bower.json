@@ -23,6 +23,6 @@
     "typeahead.js": "^0.11.1",
     "bootstrap": "^3.3.7",
     "twitter-bootstrap-wizard": "^1.3.2",
-    "smartwizard": "latest"
+    "smartwizard": "^4.0.1"
   }
 }
