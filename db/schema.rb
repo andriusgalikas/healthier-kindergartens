@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426063145) do
+ActiveRecord::Schema.define(version: 20170503102603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -334,13 +334,17 @@ ActiveRecord::Schema.define(version: 20170426063145) do
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "price",      default: 0.0
-    t.integer  "allocation", default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.decimal  "price",                 default: 0.0
+    t.integer  "allocation",            default: 0
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "plan_type"
     t.string   "language"
     t.string   "currency"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "sub_task_completes", force: :cascade do |t|
@@ -521,6 +525,7 @@ ActiveRecord::Schema.define(version: 20170426063145) do
     t.boolean  "deposit",                            default: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
+    t.integer  "plan_type",                          default: 0
   end
 
   create_table "translations", force: :cascade do |t|

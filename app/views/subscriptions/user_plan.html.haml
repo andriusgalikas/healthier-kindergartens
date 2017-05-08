@@ -29,9 +29,10 @@
                                     = image_tag 'plan-icon-2.png'
                                 .feature-text.text-left
                                     %span= t('user_plan.benefit.text2').html_safe
-                        %button.btn.hcc-btn-vertical
-                            %a{'href': '/set_userplan?plan=2'}
-                                = t('user_plan.button.book').html_safe
+                        - if !current_user.deposit_required && current_user.paid_plan_type < 2
+                            %button.btn.hcc-btn-vertical
+                                %a{'href': '/set_userplan?plan=2'}
+                                    = t('user_plan.button.book').html_safe
                 #plan_phase2.col-md-4.col-sm-4
                     .row.plan-header
                         .plan-bg
@@ -68,9 +69,10 @@
                                     = image_tag 'plan-icon-5.png'
                                 .feature-text.text-left
                                     %span= t('user_plan.benefit.text5').html_safe
-                        %button.btn.hcc-btn-vertical
-                            %a{'href': '/set_userplan?plan=3'}
-                                BOOK NOW
+                        - if !current_user.deposit_required && current_user.paid_plan_type < 3
+                            %button.btn.hcc-btn-vertical
+                                %a{'href': '/set_userplan?plan=3'}
+                                    BOOK NOW
                 #plan_phase3.col-md-4.col-sm-4
                     .row.plan-header.right-top-radius
                         .plan-bg
@@ -137,9 +139,10 @@
                                     = image_tag 'plan-icon-11.png'
                                 .feature-text.text-left
                                     %span= t('user_plan.benefit.text11').html_safe
-                        %button.btn.hcc-btn-vertical
-                            %a{'href': '/set_userplan?plan=4'}
-                                BOOK NOW
+                        - if !current_user.deposit_required && current_user.paid_plan_type < 4
+                            %button.btn.hcc-btn-vertical
+                                %a{'href': '/set_userplan?plan=4'}
+                                    BOOK NOW
         .col-md-4.col-sm-12.plan-features
             .row
                 .col-md-12

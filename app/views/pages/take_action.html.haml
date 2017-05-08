@@ -19,17 +19,18 @@
               = image_tag 'take-action-2.png'
             %h3.text-orange= t('pages.take_action.sub_heading2')
             %p.text-left= t('pages.take_action.para3')
-      .row{style:'margin-bottom: 30px;'}
-        .col-md-6.text-center
-          %button.btn.hcc-btn
-            %a{'href': LocalePoster.by_type_language(1, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(1, I18n.locale).first.poster.url}
-              = t('pages.take_action.label_post1')
-          %span.st_sharethis_large{:displaytext => "ShareThis"}
-        .col-md-6.text-center   
-          %button.btn.hcc-btn
-            %a{'href': LocalePoster.by_type_language(2, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(2, I18n.locale).first.poster.url}
-              = t('pages.take_action.label_post2')          
-          %span.st_sharethis_large{:displaytext => "ShareThis"}
+      - unless current_user.nil?
+        .row{style:'margin-bottom: 30px;'}
+          .col-md-6.text-center
+            %button.btn.hcc-btn
+              %a{'href': LocalePoster.by_type_language(1, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(1, I18n.locale).first.poster.url}
+                = t('pages.take_action.label_post1')
+            %span.st_sharethis_large{:displaytext => "ShareThis"}
+          .col-md-6.text-center   
+            %button.btn.hcc-btn
+              %a{'href': LocalePoster.by_type_language(2, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(2, I18n.locale).first.poster.url}
+                = t('pages.take_action.label_post2')          
+            %span.st_sharethis_large{:displaytext => "ShareThis"}
       .row    
         .col-md-6.left-side
           .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
@@ -56,10 +57,11 @@
               = image_tag 'take-action-6.png'
             %h3.text-orange= t('pages.take_action.sub_heading6') 
             %p.text-left= t('pages.take_action.para7')
-            %button.btn.hcc-btn
-              %a{'href': LocalePoster.by_type_language(3, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(3, I18n.locale).first.poster.url}
-                = t('pages.take_action.label_post6')          
-            %span.st_sharethis_large{:displaytext => "ShareThis"}
+            - unless current_user.nil?
+              %button.btn.hcc-btn
+                %a{'href': LocalePoster.by_type_language(3, I18n.locale).first.nil? ? '#' : LocalePoster.by_type_language(3, I18n.locale).first.poster.url}
+                  = t('pages.take_action.label_post6')          
+              %span.st_sharethis_large{:displaytext => "ShareThis"}
   .col-md-12.step-contents
     .cta-step-box
       %p= t('pages.standard.para8_1')

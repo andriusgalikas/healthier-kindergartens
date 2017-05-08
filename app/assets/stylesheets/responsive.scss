@@ -74,7 +74,7 @@
       a{
         width: 200px;
         height: 200px;
-        margin: 0 20px 20px 0;
+        margin: 10px;
         padding: 10px 15px 0 15px;
         border: 5px solid #ff0552;
         img{
@@ -87,6 +87,10 @@
           font-weight: 200;
         }
       }
+    }    
+    a.btn-round{
+      width: 200px;
+      margin: 0px 0px 25px 0;
     }    
   }  
   .content-header{
@@ -218,6 +222,10 @@
           font-weight: 200;
         }
       }
+    }
+    a.btn-round{
+      width: 200px;
+      margin: 0px 20px 25px 0;
     }    
   }
   .content-header{
@@ -404,6 +412,11 @@
           font-weight: 200;
         }
       }
+    }
+    a.btn-round{
+      width: 150px;
+      font-size: 12px !important;
+      margin: 0px 20px 25px 0;
     }    
   }
   .content-header{
@@ -734,6 +747,11 @@
           font-weight: 200;
         }
       }
+    }    
+    a.btn-round{
+      width: 150px;
+      font-size: 12px !important;
+      margin: 0px 20px 25px 0;
     }    
   }
 

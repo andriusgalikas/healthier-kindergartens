@@ -35,6 +35,7 @@ class MessageSubject < ActiveRecord::Base
                                 .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_VERIFICATION_SUBJECT']}%").order(title: :asc) }
   scope :invite_subjects, -> { where(parent_subject_id: nil).where("message_subjects.title LIKE :search", :search => "%#{ENV['SURVEY_TEMPLATE_SUBJECT']}%").order(title: :asc) }
   scope :verify_subjects, -> { where(parent_subject_id: nil).where("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_VERIFICATION_SUBJECT']}%").order(title: :asc) }
+  scope :confirm_subjects, -> { where(parent_subject_id: nil).where("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_CONFIRMATION_SUBJECT']}%").order(title: :asc) }
 
   scope :main_title_like,      ->(search) { where("LOWER(message_subjects.title) LIKE :search", :search => "%#{search.downcase}%") }
   scope :main_by_language,     ->(search) { where("(LOWER(message_subjects.language) LIKE :search)", :search => "%#{search.downcase}%") }

@@ -412,7 +412,7 @@ en:
         para4: "Identify the most powerful actions that will move you toward to optimum infection control and prevention in your facility"
         para5: "Complete the breakthrough session with the excitement of knowing EXACTLY what to do next to create the optimum level of optimum infection control and risk mitigation in your facility"
         para6: "We'll explain exactly how the program works"
-        para7: "You'll have a chance to ask any and all questions you may have!"
+        para7: "Unsure about which package to choose or talk to us before starting Your Journey, schedule a free sessseion to talk to us"
         para8: "That's it... simple. If, at the end of the Strategy session, we determine is a WIN-WIN, we'll handle the rest of the logistics... ... if NOT, no worries, we'll simply return your deposit to you"
       step3:
         title: Congratulations
@@ -699,6 +699,8 @@ en:
                   </p>
                   <p>If you didn't request this, please ignore this email.</p>
                   <p>Your password won't change until you access the link above and create a new one.</p>" 
+    plan_confirm: 
+      subject: "You have upgraded Phase"
 
   dashboard:
     nav_var:
@@ -725,9 +727,23 @@ en:
       description: "Want to keep children and staff under your care from harm's way and fulfil your ethical and professional obligation? Join us to eliminate the factors that spread ongoing infection and absenteeism which can drain your child care facility's productivity."
       title: "CONTRIBUTE TO THE HEALTH AND HAPPINESS OF CHILDREN AND EMPLOYEES UNDER YOUR CARE AND SUPERVISION TODAY."
       button: "Upgrade"
+      plan:
+        title: Your current plan is Phase %{plan_type}
+        button: Proceed to Phase %{new_plan_type}
+        phase1: Proceed to PHASE 1
+        phase2: Proceed to PHASE 2
+        phase3: Proceed to PHASE 3
+      phase0: You are in FREE ACCOUNT PHASE
+      phase1: You are in RISK ASSESSMENT PHASE
+      phase2: You are in COMPETENCE PHASE
+      phase3: You are in ACTION PHASE
+      phase1_title: RISK ASSESSMENT PHASE
+      phase2_title: COMPETENCE PHASE
+      phase3_title: ACTION PHASE
+    free_resource: "Free Resources"
     menu_item:
-      risk_assessment: Infection Risk Assessment
-      instruction: Instruction
+      risk_assessment: Risk Assessment Module
+      instruction: Competence Module
       task_manager: Infection Control Task Manager
       communication: Outbreak Communication
       illness_analytic: ILLNESS Trends
@@ -791,6 +807,7 @@ en:
         label10: "Edit Logo"
         label11: "Edit Plans"
         label12: "Edit Email Campaign Template"
+        label13: "Edit Confirm Email Template"
     daycare:
       index:
         heading: "Daycares"  
@@ -802,6 +819,7 @@ en:
         label8: "Payment Start"
         label6: "Users"
         label7: "Departments"
+        label8: "Phase"
         line: "There is no result"
 
       edit:

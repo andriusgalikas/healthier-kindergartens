@@ -34,6 +34,10 @@
                 <%= f.label :currency %>
                 <%= f.currency_select :currency, :selected => f.object.currency %>
             </div>
+            <div class="form-group">
+                <%= f.label :document %>
+                <%= f.file_field :document, :class => 'form-control' %>
+            </div>
 			<!--
 			<div class="form-group form-last">
 				<%= f.label :allocation %>

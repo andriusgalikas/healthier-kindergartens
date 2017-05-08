@@ -14,9 +14,5 @@
             %a{'href': '/manager/register?deposit=true'}
               = t('pages.ethic.label.ready')
           - else
-            - if current_user.deposit_required  
-              %a{'href': '/upgrade'}
-                = t('pages.ethic.label.ready')
-            - else
-              %a{'href': '/user_plan'}
-                = t('pages.ethic.label.ready')
+            %a{'href': '/upgrade'}
+              = t('pages.ethic.label.ready')

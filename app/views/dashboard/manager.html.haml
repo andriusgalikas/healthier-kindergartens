@@ -1,80 +1,23 @@
 .manager-dash-container
   = render 'nav_header'
   .container
-    .row.content-header
-      - unless current_user.active_subscribed? || !current_user.manager?    
-        = render 'upgrade_notify'
-    .row.content-main
-      .col-md-5.col-sm-6.col-xs-12
-        #main-menu
-          .menu-items
-            - if current_user.preminum? 
-              - if current_user.plan_type == 2 || current_user.plan_type == 3
-                = link_to results_manager_subjects_path, id: 'item_survey' do
-                  = image_tag 'dashboard-risk.png'
-                  %span=t('dashboard.menu_item.risk_assessment')
-                = link_to instruction_path, id: 'item_instruction' do
-                  = image_tag 'dashboard-instruction.png'
-                  %span=t('dashboard.menu_item.instruction') 
-                %a#item_todo{href: '/guide_page/manager_todo/dash'}
-                  = image_tag 'dashboard-taskmng.png'
-                  %span=t('dashboard.menu_item.task_manager')
-                %a#item_message{href: '/guide_page/manager_message/dash'}
-                  = image_tag 'dashboard-com-mng.png'
-                  %span=t('dashboard.menu_item.communication')
-                %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
-                  = image_tag 'dashboard-ilness.png'
-                  %span=t('dashboard.menu_item.illness_analytic')
-                %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-                  = image_tag 'dashboard-ilness-rec.png'
-                  %span=t('dashboard.menu_item.illness_record')
-
-              - if current_user.plan_type == 4
-                = link_to results_manager_subjects_path, id: 'item_survey' do
-                  = image_tag 'dashboard-risk.png'
-                  %span=t('dashboard.menu_item.risk_assessment')
-                = link_to instruction_path, id: 'item_instruction' do
-                  = image_tag 'dashboard-instruction.png'
-                  %span=t('dashboard.menu_item.instruction') 
-                = link_to dashboard_manager_todos_path, id: 'item_todo' do
-                  = image_tag 'dashboard-taskmng.png'
-                  %span=t('dashboard.menu_item.task_manager')
-                = link_to manager_messages_path, id: 'item_message' do
-                  = image_tag 'dashboard-com-mng.png'
-                  %span=t('dashboard.menu_item.communication')
-                = link_to set_filters_manager_illnesses_path, id: 'item_illness_graph' do
-                  = image_tag 'dashboard-ilness.png'
-                  %span=t('dashboard.menu_item.illness_analytic')
-                = link_to filter_illnesses_path, id: 'item_illness' do
-                  = image_tag 'dashboard-ilness-rec.png'
-                  %span=t('dashboard.menu_item.illness_record')
-            - else
-              %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
-                = image_tag 'dashboard-risk.png'
-                %span=t('dashboard.menu_item.risk_assessment')
-              = link_to instruction_path, id: 'item_instruction' do
-                = image_tag 'dashboard-instruction.png'
-                %span=t('dashboard.menu_item.instruction') 
-              %a#item_todo{href: '/guide_page/manager_todo/dash'}
-                = image_tag 'dashboard-taskmng.png'
-                %span=t('dashboard.menu_item.task_manager')
-              %a#item_message{href: '/guide_page/manager_message/dash'}
-                = image_tag 'dashboard-com-mng.png'
-                %span=t('dashboard.menu_item.communication')
-              %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
-                = image_tag 'dashboard-ilness.png'
-                %span=t('dashboard.menu_item.illness_analytic')
-              %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-                = image_tag 'dashboard-ilness-rec.png'
-                %span=t('dashboard.menu_item.illness_record')
-
-      .col-md-7.col-sm-6.col-xs-12
-        = render 'notifications'
+    - if current_user.deposit_required
+      = render 'manager_dep'
+    - else
+      = render 'manager_email'
 :javascript
   jQuery(document).ready(function() {
     $('body').css("src","background-color: #242c3f !important;");
     $('footer.normal .container').css("top", "0");
     $('footer.normal .container .central-footer').css("display", "none");
+
+    $('#main-menu.free-customer .btn-red').on('click', function(){
+        $(this).attr('disabled', true);
+    });
+
+    $('#main-menu.apply-customer .btn-red').on('click', function(){    
+        #{current_user.plan_type == 0 ? 'alert("You are already in the process to get access to this package");' : '$(this).attr("disabled", true);'}
+    });
 
     $("#item_message").popover({
         container: '.content-main',

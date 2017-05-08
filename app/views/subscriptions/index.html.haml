@@ -14,18 +14,18 @@
             = form_for @transaction, method: :post do |f|
               %h4.text-center= t('pages.upgrade.box_title')
               .row
-                - if @subscription.errors.any?
-                  .error_messages
-                    %h2
-                      = pluralize(@subscription.errors.count, "error")
-                      prohibited this subscription from being saved:
-                    %ul
-                      - @subscription.errors.full_messages.each do |msg|
-                        %li= msg
+                / - if @subscription.errors.any?
+                /   .error_messages
+                /     %h2
+                /       = pluralize(@subscription.errors.count, "error")
+                /       prohibited this subscription from being saved:
+                /     %ul
+                /       - @subscription.errors.full_messages.each do |msg|
+                /         %li= msg
                 = hidden_field_tag :user_id, current_user.id
                 = hidden_field_tag :subscription_id, @subscription.id
                 = hidden_field_tag :stripe_card_token          
-              .row{:style => "margin: 0;"}
+              .row{:style => "margin: 10px 0;"}
                 .col-md-8.col-sm-12.col-xs-12
                   = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
                 .col-md-4.col-sm-12.col-xs-12
@@ -57,14 +57,14 @@
           .row.round-box
             = form_for @transaction, method: :post do |f|
               .row
-                - if @subscription.errors.any?
-                  .error_messages
-                    %h2
-                      = pluralize(@subscription.errors.count, "error")
-                      prohibited this subscription from being saved:
-                    %ul
-                      - @subscription.errors.full_messages.each do |msg|
-                        %li= msg
+                / - if @subscription.errors.any?
+                /   .error_messages
+                /     %h2
+                /       = pluralize(@subscription.errors.count, "error")
+                /       prohibited this subscription from being saved:
+                /     %ul
+                /       - @subscription.errors.full_messages.each do |msg|
+                /         %li= msg
                 = hidden_field_tag :user_id, current_user.id
                 = hidden_field_tag :subscription_id, @subscription.id
                 = hidden_field_tag :stripe_card_token          
@@ -80,6 +80,10 @@
                   = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
                 .col-md-6.col-sm-12.col-xs-12
                   = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+              - if current_user.plan_type != 1
+                .row{:style => "margin: 10px 0;"}
+                  .col-md-6.col-sm-12.col-xs-12
+                    = text_field_tag :discount_code, nil, name: :discount_code, :class => 'form-control input-round border-red', :placeholder => "Discount Code"
               .row 
                 .col-md-12.col-sm-12.col-xs-12.text-center 
                   %p.plan-price  

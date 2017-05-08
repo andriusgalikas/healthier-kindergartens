@@ -13,6 +13,7 @@
             <th><%= t('admin.daycare.index.label2')%></th>
             <th><%= t('admin.daycare.index.label3')%></th>
             <th><%= t('admin.daycare.index.label4')%></th>
+            <th><%= t('admin.daycare.index.label8')%></th>
             <th><%= t('admin.daycare.index.label5')%></th>
             <th><%= t('admin.daycare.index.label8')%></th>
             <th><%= t('admin.daycare.index.label6')%></th>
@@ -30,6 +31,7 @@
             <th>
               <%= select_tag :country, options_for_select(pre_countries, :selected=> (params[:country].nil?) ? '' : params[:country].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>
             </th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -57,6 +59,12 @@
               </td>
               <td>
                 <%= dc.discount_code.value unless dc.discount_code.nil?%>
+              </td>
+              <td>
+                <%= "Phase #{dc.managers.first.paid_plan_type - 1}" unless dc.managers.first.paid_plan_type == 0%>
+                <%= "Free" if dc.managers.first.paid_plan_type == 0 && !dc.managers.first.deposit_required %>
+                <%= "Depoist" if dc.managers.first.deposit_required && (dc.managers.first.plan_type == 0 || dc.managers.first.plan_type.nil?) %>
+                <%= "Phase #{dc.managers.first.plan_type - 1}" if dc.managers.first.deposit_required && dc.managers.first.plan_type != 0 && !dc.managers.first.plan_type.nil? %>
               </td>
               <td class="align-left">
                 <%= "#{dc.payment_mode.period} #{dc.payment_mode.unit}" unless dc.payment_mode.nil?%>

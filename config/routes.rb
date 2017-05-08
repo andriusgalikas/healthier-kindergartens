@@ -184,6 +184,7 @@ Rails.application.routes.draw do
         get 'list_message', to: 'pages#list_message'
         get 'list_invite', to: 'pages#list_invite'
         get 'list_verify', to: 'pages#list_verify'
+        get 'list_confirm', to: 'pages#list_confirm'
 
         get 'clients', to: 'pages#clients'
         post 'localization', to: 'pages#upload'

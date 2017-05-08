@@ -8,7 +8,7 @@ jQuery(function() {
 subscription = {
   setupForm: function() {
     return $('#new_transaction').submit(function() {
-      $('input[type=submit]').attr('disabled', true);
+      $('#new_transaction button[type=submit]').attr('disabled', true);
       if ($('#card_number').val().length) {
         if($('#stripe_card_token').val().length == 0){
           subscription.processCard();
@@ -39,7 +39,7 @@ subscription = {
       return $('#new_transaction').submit();
     } else {
       $('#stripe_error').text(response.error.message);
-      return $('input[type=submit]').attr('disabled', false);
+      return $('#new_transaction button[type=submit]').attr('disabled', false);
     }
   }
 };

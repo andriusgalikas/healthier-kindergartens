@@ -26,6 +26,20 @@ class Admin::DaycaresController < AdminController
                 end
             end
 
+            if params[:plan_type]
+              @daycare.managers.each do |user|
+                  user.plan_type = params[:plan_type]
+                  user.save
+                  if !user.deposit_required
+                    transactions = Transaction.where(user_id: user.id, deposit: true)
+                    transactions.each do |trans|
+                      trans.plan_type = params[:plan_type]
+                      trans.save
+                    end
+                  end
+              end              
+            end
+
             format.html { redirect_to admin_clients_path(country: @daycare.country), notice: 'Daycare was successfully updated.' }
             format.json { render :show, status: :ok, location: @daycare }            
           else

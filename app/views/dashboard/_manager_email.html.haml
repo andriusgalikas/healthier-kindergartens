@@ -1,0 +1,120 @@
+.row.content-main
+  .col-md-5.col-sm-6.col-xs-12
+    #main-menu.text-center.free-customer
+      - if current_user.paid_plan_type == 0        
+        .menu-items.text-center
+          %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 2})}
+          =t('dashboard.upgrade.plan.phase1')
+        .menu-items.text-center
+          = link_to instruction_path, id: 'item_instruction' do
+            = image_tag 'dashboard-instruction.png'
+            %span=t('dashboard.menu_item.instruction')         
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3})}
+          =t('dashboard.upgrade.plan.phase2')
+        .menu-items
+          %a#item_todo{href: '/guide_page/manager_todo/dash'}
+            = image_tag 'dashboard-taskmng.png'
+            %span=t('dashboard.menu_item.task_manager')
+          %a#item_message{href: '/guide_page/manager_message/dash'}
+            = image_tag 'dashboard-com-mng.png'
+            %span=t('dashboard.menu_item.communication')
+          %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
+            = image_tag 'dashboard-ilness.png'
+            %span=t('dashboard.menu_item.illness_analytic')
+          %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
+            = image_tag 'dashboard-ilness-rec.png'
+            %span=t('dashboard.menu_item.illness_record')
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4})}
+          =t('dashboard.upgrade.plan.phase3')
+      - if current_user.paid_plan_type == 2        
+        .menu-items.text-center
+          = link_to results_manager_subjects_path, id: 'item_survey' do
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase1_title')
+        .menu-items.text-center
+          = link_to instruction_path, id: 'item_instruction' do
+            = image_tag 'dashboard-instruction.png'
+            %span=t('dashboard.menu_item.instruction')         
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3})}
+          =t('dashboard.upgrade.plan.phase2')
+        .menu-items
+          %a#item_todo{href: '/guide_page/manager_todo/dash'}
+            = image_tag 'dashboard-taskmng.png'
+            %span=t('dashboard.menu_item.task_manager')
+          %a#item_message{href: '/guide_page/manager_message/dash'}
+            = image_tag 'dashboard-com-mng.png'
+            %span=t('dashboard.menu_item.communication')
+          %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
+            = image_tag 'dashboard-ilness.png'
+            %span=t('dashboard.menu_item.illness_analytic')
+          %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
+            = image_tag 'dashboard-ilness-rec.png'
+            %span=t('dashboard.menu_item.illness_record')
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4})}
+          =t('dashboard.upgrade.plan.phase3')
+
+      - if current_user.paid_plan_type == 3        
+        .menu-items.text-center
+          = link_to results_manager_subjects_path, id: 'item_survey' do
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase1_title')
+        .menu-items.text-center
+          = link_to instruction_path, id: 'item_instruction' do
+            = image_tag 'dashboard-instruction.png'
+            %span=t('dashboard.menu_item.instruction')         
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase2_title')
+        .menu-items
+          %a#item_todo{href: '/guide_page/manager_todo/dash'}
+            = image_tag 'dashboard-taskmng.png'
+            %span=t('dashboard.menu_item.task_manager')
+          %a#item_message{href: '/guide_page/manager_message/dash'}
+            = image_tag 'dashboard-com-mng.png'
+            %span=t('dashboard.menu_item.communication')
+          %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
+            = image_tag 'dashboard-ilness.png'
+            %span=t('dashboard.menu_item.illness_analytic')
+          %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
+            = image_tag 'dashboard-ilness-rec.png'
+            %span=t('dashboard.menu_item.illness_record')
+        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4})}
+          =t('dashboard.upgrade.plan.phase3')
+
+      - if current_user.paid_plan_type == 4        
+        .menu-items.text-center
+          = link_to results_manager_subjects_path, id: 'item_survey' do
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase1_title')
+        .menu-items.text-center
+          = link_to instruction_path, id: 'item_instruction' do
+            = image_tag 'dashboard-instruction.png'
+            %span=t('dashboard.menu_item.instruction')         
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase2_title')
+        .menu-items
+          = link_to dashboard_manager_todos_path, id: 'item_todo' do
+            = image_tag 'dashboard-taskmng.png'
+            %span=t('dashboard.menu_item.task_manager')
+          = link_to manager_messages_path, id: 'item_message' do
+            = image_tag 'dashboard-com-mng.png'
+            %span=t('dashboard.menu_item.communication')
+          = link_to set_filters_manager_illnesses_path, id: 'item_illness_graph' do
+            = image_tag 'dashboard-ilness.png'
+            %span=t('dashboard.menu_item.illness_analytic')
+          = link_to filter_illnesses_path, id: 'item_illness' do
+            = image_tag 'dashboard-ilness-rec.png'
+            %span=t('dashboard.menu_item.illness_record')
+        %a.btn.btn-round.btn-green{:href => '#'}
+          =t('dashboard.upgrade.phase3_title')
+
+  .col-md-7.col-sm-6.col-xs-12
+    = render 'notifications'

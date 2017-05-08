@@ -21,7 +21,10 @@
           %li= link_to t("pages.footer.standard"), 'description#mark_standard', class: 'hcc-simple'
           %li= link_to t("pages.footer.path"), 'description#mark_path', class: 'hcc-simple'
           %li= link_to t("pages.footer.about_us"), 'description#mark_about', class: 'hcc-simple'
-          %li= link_to t("pages.footer.resources"), take_action_path, class: 'hcc-simple'
+          / - unless current_user.nil?
+          /   %li= link_to t("pages.footer.resources"), take_action_path, class: 'hcc-simple'
+          / - else
+          /   %li= link_to t("pages.footer.resources"), email_campaign_path, class: 'hcc-simple'
           - unless user_signed_in?
             %li= link_to t("pages.footer.login"), new_user_session_path, class: 'hcc-simple'
           - else

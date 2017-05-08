@@ -28,6 +28,8 @@ class Admin::PagesController < AdminController
 
     build_verify_template_from_spreadsheet    
 
+    build_confirm_template_from_spreadsheet    
+
     build_todo_from_spreadsheet
 
     build_illness_from_spreadsheet
@@ -47,6 +49,10 @@ class Admin::PagesController < AdminController
     get_all_verify_subjects
   end
 
+  def list_confirm
+    get_all_confirm_subjects
+  end
+
   private
 
   def get_all_template_subjects
@@ -64,6 +70,12 @@ class Admin::PagesController < AdminController
 
   def get_all_verify_subjects
     @subjects = MessageSubject.verify_subjects
+    @subjects = @subjects.main_title_like(params[:title]) unless params[:title].nil?
+    @subjects = @subjects.main_by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
+  end
+
+  def get_all_confirm_subjects
+    @subjects = MessageSubject.confirm_subjects
     @subjects = @subjects.main_title_like(params[:title]) unless params[:title].nil?
     @subjects = @subjects.main_by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
   end
@@ -147,6 +159,29 @@ class Admin::PagesController < AdminController
           2.upto(xlsx.last_row) do |line|
             @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_VERIFICATION_SUBJECT'], :language => params[:language_short_name].downcase) 
             template_key = 'EMAIL_VERIFICATION_SUBJECT_' + xlsx.cell(line, 'A').upcase if xlsx.cell(line, 'A')
+            @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => params[:language_short_name].downcase)            
+            @sub_subject.message_templates.where(target_role: 0, language: params[:language_short_name].downcase).destroy_all
+            template = @sub_subject.message_templates.create(target_role: 0, language: params[:language_short_name].downcase, content: xlsx.cell(line, 'B'))
+          end        
+        end
+      end
+    end
+    flash[:notice] = "Upload email verification template is sucessfully."
+  rescue => e
+    flash[:alert] = "Upload email verification template is failed."
+  end
+
+  def build_confirm_template_from_spreadsheet
+    file_data = params[:confirm_template]
+
+    if file_data
+      xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
+      if xlsx.sheets.count > 0
+        if xlsx.last_row > 1
+          MessageSubject.where(:language => params[:language_short_name].downcase).where("message_subjects.title LIKE :search", :search => "%#{ENV['EMAIL_CONFIRMATION_SUBJECT']}%").destroy_all
+          2.upto(xlsx.last_row) do |line|
+            @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_CONFIRMATION_SUBJECT'], :language => params[:language_short_name].downcase) 
+            template_key = 'EMAIL_CONFIRMATION_SUBJECT_' + xlsx.cell(line, 'A').upcase if xlsx.cell(line, 'A')
             @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => params[:language_short_name].downcase)            
             @sub_subject.message_templates.where(target_role: 0, language: params[:language_short_name].downcase).destroy_all
             template = @sub_subject.message_templates.create(target_role: 0, language: params[:language_short_name].downcase, content: xlsx.cell(line, 'B'))

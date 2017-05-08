@@ -17,4 +17,16 @@ class NotificationMailer < ApplicationMailer
 
   end
 
+    def plan_confirmation (user, template, attachment)
+        @user = user
+	    m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
+		data = { "to" => {@user.email => "Daycare"},
+			"from" => [ENV['SITE_MANAGER_EMAIL'], ENV['SITE_MANAGER_NAME']],
+			"subject" => t('mailers.plan_confirm.subject'),
+			"html" => template,
+			"attachment" => attachment
+		}	 
+		result = m.send_email(data)
+    end
+
 end
