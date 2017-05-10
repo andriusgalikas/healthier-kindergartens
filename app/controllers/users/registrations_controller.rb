@@ -337,7 +337,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def send_email_campaign user
     @email_campaigns = EmailCampaign.by_language(I18n.locale.downcase)
     @email_campaigns.each do |item|
-      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver
+      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver_later
     end
   end
 
