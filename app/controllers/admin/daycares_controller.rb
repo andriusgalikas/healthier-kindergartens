@@ -29,18 +29,19 @@ class Admin::DaycaresController < AdminController
             if params[:plan_type]
               @daycare.managers.each do |user|
                   user.plan_type = params[:plan_type]
+                  if user.deposit_required && params[:plan_type].to_i >= 2
+                    user.deposit_required = false
+                  end
                   user.save
-                  if !user.deposit_required
-                    transactions = Transaction.where(user_id: user.id, deposit: true)
-                    transactions.each do |trans|
-                      trans.plan_type = params[:plan_type]
-                      trans.save
-                    end
+                  transactions = Transaction.where(user_id: user.id)
+                  transactions.each do |trans|
+                    trans.plan_type = params[:plan_type]
+                    trans.save
                   end
               end              
             end
 
-            format.html { redirect_to admin_clients_path(country: @daycare.country), notice: 'Daycare was successfully updated.' }
+            format.html { redirect_to admin_daycares_path(country: @daycare.country), notice: 'Daycare was successfully updated.' }
             format.json { render :show, status: :ok, location: @daycare }            
           else
             format.html { render :edit }

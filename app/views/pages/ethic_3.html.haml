@@ -2,6 +2,8 @@
   .container
     .row.step-wrapper
       %h2.step-title=t('pages.ethic.step3.title').html_safe
+      .col-md-12.content.clock-box
+        .clock
       .col-md-12.content
         %p=t('pages.ethic.step3.para1').html_safe
         %p=t('pages.ethic.step3.para2').html_safe
@@ -16,3 +18,22 @@
           - else
             %a{'href': '/upgrade'}
               = t('pages.ethic.label.ready')
+:javascript
+  var clock;
+  
+  jQuery(document).ready(function() {
+    var clock;
+
+    clock = $('.clock').FlipClock({
+          clockFace: 'DailyCounter',
+          autoStart: false,
+          callbacks: {
+            stop: function() {              
+            }
+          }
+      });          
+      clock.setTime(24 * 60 * 60 -1);
+      clock.setCountdown(true);
+      clock.start();
+  });
+

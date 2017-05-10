@@ -5,20 +5,18 @@
   .col-md-5.col-sm-6.col-xs-12
     #main-menu.text-center.apply-customer
       - if current_user.plan_type == 0        
-        %a.btn.btn-round.btn-red{:href => "#" }
-          =t('dashboard.upgrade.plan.phase1')
         .menu-items.text-center
           %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
             = image_tag 'dashboard-risk.png'
             %span=t('dashboard.menu_item.risk_assessment')        
-        %a.btn.btn-round.btn-red{:href => "#"}
-          =t('dashboard.upgrade.plan.phase2')
+        %a.btn.btn-round.btn-red{:href => "#" }
+          =t('dashboard.upgrade.plan.phase1')
         .menu-items.text-center
           = link_to instruction_path, id: 'item_instruction' do
             = image_tag 'dashboard-instruction.png'
             %span=t('dashboard.menu_item.instruction')         
         %a.btn.btn-round.btn-red{:href => "#"}
-          =t('dashboard.upgrade.plan.phase3')
+          =t('dashboard.upgrade.plan.phase2')
         .menu-items
           %a#item_todo{href: '/guide_page/manager_todo/dash'}
             = image_tag 'dashboard-taskmng.png'
@@ -32,24 +30,23 @@
           %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
             = image_tag 'dashboard-ilness-rec.png'
             %span=t('dashboard.menu_item.illness_record')
+        %a.btn.btn-round.btn-red{:href => "#"}
+          =t('dashboard.upgrade.plan.phase3')
       - else        
+        .menu-items.text-center
+          %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
         - if current_user.plan_type == 2
           %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 2}) }
             =t('dashboard.upgrade.plan.phase1')
         .menu-items.text-center
-          %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
-            = image_tag 'dashboard-risk.png'
-            %span=t('dashboard.menu_item.risk_assessment')        
-        - if current_user.plan_type == 3
-          %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3}) }
-            =t('dashboard.upgrade.plan.phase2')
-        .menu-items.text-center
           = link_to instruction_path, id: 'item_instruction' do
             = image_tag 'dashboard-instruction.png'
             %span=t('dashboard.menu_item.instruction')         
-        - if current_user.plan_type == 4
-          %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4}) }
-            =t('dashboard.upgrade.plan.phase3')
+        - if current_user.plan_type == 3
+          %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3}) }
+            =t('dashboard.upgrade.plan.phase2')
         .menu-items
           %a#item_todo{href: '/guide_page/manager_todo/dash'}
             = image_tag 'dashboard-taskmng.png'
@@ -63,6 +60,9 @@
           %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
             = image_tag 'dashboard-ilness-rec.png'
             %span=t('dashboard.menu_item.illness_record')
+        - if current_user.plan_type == 4
+          %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4}) }
+            =t('dashboard.upgrade.plan.phase3')
 
 
   .col-md-7.col-sm-6.col-xs-12
