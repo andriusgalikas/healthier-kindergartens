@@ -22,7 +22,7 @@
             = hidden_field_tag :num_worker, current_user.daycare.num_worker
             = hidden_field_tag :care_type, current_user.daycare.care_type_text
           .col-md-12.text-center
-            %button.btn.hcc-btn-vertical{type: 'submit'}
+            %button.btn.hcc-green-btn-vertical{type: 'submit'}
               = t('pages.ethic.label.schedule')            
 :javascript
   jQuery(document).ready(function() {

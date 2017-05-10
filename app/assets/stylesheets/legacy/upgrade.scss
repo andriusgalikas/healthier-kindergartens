@@ -6,6 +6,7 @@ $hcc-dark-orange: #ff8a00;
 $hcc-yellow: #ffe606;
 $hcc-blue: #4186e0;
 $hcc-light-blue: #7fe6e2;
+$hcc-green: #2bd34d;
 
 @mixin hcc-red-gradient {
   background: $hcc-red; /* For browsers that do not support gradients */
@@ -24,6 +25,25 @@ $hcc-light-blue: #7fe6e2;
   background: linear-gradient(to top, $hcc-red , $hcc-orange); /* Standard syntax */
   color: white;
 }
+
+@mixin hcc-green-gradient {
+  background: $hcc-green; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $hcc-orange , $hcc-green); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $hcc-orange, $hcc-green); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $hcc-orange, $hcc-green); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $hcc-orange , $hcc-green); /* Standard syntax */
+  color: white;
+}
+
+@mixin hcc-green-gradient-vertical {
+  background: $hcc-green; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(bottom, $hcc-orange , $hcc-green); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $hcc-orange, $hcc-green); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $hcc-orange, $hcc-green); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, $hcc-orange , $hcc-green); /* Standard syntax */
+  color: white;
+}
+
 
 .legacy-upgrade{
   font-family: 'Open Sans', sans-serif;
@@ -202,7 +222,7 @@ $hcc-light-blue: #7fe6e2;
 .legacy-ethic{
   .step-wrapper{
     border-radius: 20px;
-    border: 2px solid $hcc-orange;
+    border: 2px solid $hcc-green;
     margin-top: 70px;
     margin-bottom: 20px;    
     margin-left: 0;
@@ -210,7 +230,7 @@ $hcc-light-blue: #7fe6e2;
     padding-bottom: 20px;
 
     .step-title{
-      @include hcc-red-gradient-vertical;
+      @include hcc-green-gradient-vertical;
       margin: 0;
       padding: 10px;
       border-radius: 16px;
@@ -274,7 +294,8 @@ $hcc-light-blue: #7fe6e2;
     }
   }
 
-  .hcc-btn-vertical{
+  .hcc-btn-vertical,
+  .hcc-green-btn-vertical{
     min-width: 200px;
 
     &.disagree{
