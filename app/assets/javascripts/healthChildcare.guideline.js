@@ -1,10 +1,11 @@
 healthChildcare.guideline = {
-  managerMessageSendStep1: function(){
+  managerMessageSendStep: function(stepNumber){
+    stepNumber++;
     intro = introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
-      window.location.href = 'send_step2?multipage=true';
+      window.location.href = 'send_step'+stepNumber+'?multipage=true';
     });    
   },
-
+/*
   managerMessageSendStep2: function(){
     introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
       window.location.href = 'send_step3?multipage=true';
@@ -28,7 +29,7 @@ healthChildcare.guideline = {
       window.location.href = 'dash?multipage=true';
     });    
   },
-
+*/
   managerMessageSentStep1: function(){
     intro = introJs().setOption('doneLabel', 'Done').start().oncomplete(function() {
       window.location.href = 'dash?multipage=true';

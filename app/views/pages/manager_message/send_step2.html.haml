@@ -28,8 +28,8 @@
             = submit_tag t('form_labels.next'), class: 'btn btn-yellow-red btn-wizard'
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerMessageSendStep2();
+    healthChildcare.guideline.managerMessageSendStep(2);
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerMessageSendStep2();
+      healthChildcare.guideline.managerMessageSendStep(2);
     });    
   });
