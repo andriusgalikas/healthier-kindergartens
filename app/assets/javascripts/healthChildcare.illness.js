@@ -46,7 +46,7 @@ healthChildcare.illness = {
             process(names);
           },
           matcher: function (target) {
-            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) !== -1) {
               return true;
             }
           },
@@ -107,7 +107,7 @@ healthChildcare.illness = {
                   process(names);
                 },
                 matcher: function (target) {
-                  if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+                  if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) !== -1) {
                     return true;
                   }
                 },
@@ -124,7 +124,7 @@ healthChildcare.illness = {
                 },
                 templates: {
                   suggestion: function(target) {
-                    return "<div 'data-id'='" + '' + "'>" + target + "</div>"
+                    return "<div 'data-id'='" + '' + "'>" + target + "</div>";
                   }
                 }
               })
@@ -187,7 +187,7 @@ healthChildcare.illness = {
             process(names);
           },
           matcher: function (target) {
-            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) !== -1) {
               return true;
             }
           },
@@ -274,7 +274,7 @@ healthChildcare.illness = {
             process(names);
           },
           matcher: function (target) {
-            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+            if (target.toLowerCase().indexOf(this.query.trim().toLowerCase()) !== -1) {
               return true;
             }
           },
@@ -354,7 +354,7 @@ healthChildcare.illness = {
       var deptId = $(this).val();
       var recordType = $('#record_type').val();
 
-      if (recordType == 'child') {
+      if (recordType === 'child') {
         $.ajax({
           url: '/illnesses/filter_children',
           data: {department_id: deptId},
@@ -381,8 +381,8 @@ healthChildcare.illness = {
       var endDate = $('#end_date').val();
       var valid = true;
 
-      if (deptId.length > 0 && childId != undefined && childId.length < 1) {
-        alert(window._trans['required_child_filter'])
+      if (deptId.length > 0 && childId !== undefined && childId.length < 1) {
+        alert(window._trans['required_child_filter']);
         valid = false;
       }
 
@@ -409,7 +409,7 @@ healthChildcare.illness = {
       var targetId = $(this).data('health_record_id');
       var targetEl = $("#health-record-" + targetId);
 
-      if ($(targetEl).html().length == 0) {
+      if ($(targetEl).html().length === 0) {
         $.ajax({
           url: '/health_records/' + targetId,
           type: 'GET',
@@ -443,10 +443,8 @@ healthChildcare.illness = {
   initTrendLine: function() {
     var trendData = $('#line-chart-div').data('trend_data');
 
-    if (trendData != undefined) {
-      google.charts.setOnLoadCallback(drawLineChart);
-
-      function drawLineChart() {
+    if (trendData !== undefined) {
+      google.charts.setOnLoadCallback(function(){
         var data = google.visualization.arrayToDataTable(trendData);
 
         var options = {
@@ -456,8 +454,8 @@ healthChildcare.illness = {
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('line-chart-div'));
-        chart.draw(data, options);
-      }
+        chart.draw(data, options);        
+      });
     }
   },
 
@@ -466,12 +464,11 @@ healthChildcare.illness = {
 
     if (trendData) {
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawPieChart);
+      google.charts.setOnLoadCallback(function(){
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawPieChart() {
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Illness');
@@ -488,7 +485,8 @@ healthChildcare.illness = {
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('pie-chart-div'));
         chart.draw(data, options);
-      }
+
+      });
     }
   },
 
@@ -497,11 +495,9 @@ healthChildcare.illness = {
 
     if (trendData) {
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawBarChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and draws it.
-      function drawBarChart() {
+      google.charts.setOnLoadCallback(function(){
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and draws it.
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -518,7 +514,7 @@ healthChildcare.illness = {
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('bar-chart-div'));
         chart.draw(data, options);
-      }
+      });
     }
   },
 
