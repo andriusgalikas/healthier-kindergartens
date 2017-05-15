@@ -117,7 +117,7 @@
       case 2:
         modal = eval('modalStep' + cur_step);
         modal.plainModal('close', {force: true});
-        healthChildcare.guideline.managerIllnessStep1();
+        healthChildcare.guideline.introGoToStep('graph_step2');
         break;
       }            
       e.preventDefault();
@@ -125,7 +125,7 @@
 
     $('#link_start_trend').click(function(e){
       modalStep2.plainModal('close');
-      healthChildcare.guideline.managerIllnessStep1();
+      healthChildcare.guideline.introGoToStep('graph_step2');
       e.preventDefault();
     });
     

@@ -42,8 +42,8 @@
                   = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerTodoReportStep1();
+    healthChildcare.guideline.introGoToStep('report_step2');
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerTodoReportStep1();
+      healthChildcare.guideline.introGoToStep('report_step2');
     });    
   });                                    

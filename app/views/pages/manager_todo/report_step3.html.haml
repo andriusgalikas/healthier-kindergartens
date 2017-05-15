@@ -29,8 +29,8 @@
           = render partial: 'shared/chart/pie', format: [:html], locals: { datasets:  Hash(complete: { value: 80, color: "#ffc30b" }, incomplete: { value: 20, color: '#ff5637' }), id: "piePaymentTypeChart1"}
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerTodoReportStep3();
+    healthChildcare.guideline.dashboarStep();
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerTodoReportStep3();
+      healthChildcare.guideline.dashboarStep();
     });    
   });                  

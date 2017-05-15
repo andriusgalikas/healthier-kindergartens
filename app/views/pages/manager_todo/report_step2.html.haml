@@ -24,8 +24,8 @@
             = submit_tag t('manager.todos.labels.generate_report'), :class => 'btn btn-lightred btn-block', data:{step: 4, intro: t("guideline.manager.todo_report.step4.content")}
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerTodoReportStep2();
+    healthChildcare.guideline.introGoToStep('report_step3');
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerTodoReportStep2();
+      healthChildcare.guideline.introGoToStep('report_step3');
     });    
   });                  

@@ -33,8 +33,8 @@
 :javascript
   google.charts.load('current', {'packages':['corechart']});
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerIllnessStep2();
+    healthChildcare.guideline.introGoToStep('graph_step1');
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerIllnessStep2();
+      healthChildcare.guideline.introGoToStep('graph_step1');
     });    
   });
