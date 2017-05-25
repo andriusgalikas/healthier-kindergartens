@@ -147,7 +147,7 @@ $hcc-green: #2bd34d;
     input[type=radio] + label{
       display: block;
       margin-right: 15px;          
-      background-image: url(/assets/msg-radio-off.png);
+      background-image: url(/assets/msg-radio-off-green.png);
       background-repeat: no-repeat;
       background-position-y: 15px;      
       background-position-x: 10px;      
@@ -170,7 +170,7 @@ $hcc-green: #2bd34d;
     input[type=radio]:checked + label{
       display: block;
       margin-right: 15px;
-      background-image: url(/assets/msg-radio-on.png);
+      background-image: url(/assets/msg-radio-on-green.png);
       background-position-y: 15px;      
       background-position-x: 10px;      
       background-repeat: no-repeat;
@@ -183,17 +183,25 @@ $hcc-green: #2bd34d;
       text-decoration: none;
       text-align: center;
 
-      border: 1px solid #ff9a31;      
+      border: 1px solid #2bd34d;      
       margin-bottom: 20px;
       border-radius: 10px;      
-      color: #fff !important;
-      background-color: #ff9a31 !important;      
+      color: #333 !important;
+      background-color: #fff !important;      
     }
 
-    .hcc-btn-vertical{
+    .hcc-btn-green-vertical{
       padding: 10px 20px;
       font-size: 28px;
       border-radius: 40px;
+      background: #2bd34d;
+      &:active{
+        background: #2bd34d;        
+      }
+      a{
+        color: #fff;
+        text-decoration: none;        
+      }
     }    
   }  
 

@@ -136,16 +136,43 @@ en:
     instruction: 
       main_heading: "Gain competency phase"
       description: "Gain competency required to mitigate infectious disease risk exposure."
-      sub_heading1: "Infection preventive food handling"
-      para2: "What important precautions should everyone take when preparing and storing food? What are the best ways of preventing food-borne pathogens and food contaminations? What special food precautions should you take for infants and allergic children – and why? This module will give you complete, up-to-date information on the latest strategies and techniques for infection prevention in handling food."
-      sub_heading2: "Infection preventive outbreak control strategies" 
-      para3: "What warning signs occur before and during an outbreak in a daycare center? What steps should you follow to prevent, manage and overcome an outbreak? How do you most effectively notify parents and staff that an outbreak has occurred? This module provides all the answers and much more."
-      sub_heading3: "Infection preventive diapering"
-      para4: "What are the hidden health risks associated with diapering and the diapering area? What is the difference between a sanitizer and a disinfectant? How long after symptoms have ceased can viruses be transmitted? In this module, you’ll discover the very best methods of diapering, disinfecting and disposal."
-      sub_heading4: "Infection preventive cleaning of bodily fluids"
-      para5: "How do you properly identify and clean bodily fluids? When should you isolate someone who is expelling bodily fluids? What should you do if you come into contact with an infected person or their bodily fluids? In this module, you’ll discover how to prevent unnecessary infections from bodily fluids."
-      sub_heading5: "Infection preventive hand washing"
-      para6: "Why is proper hand washing essential in a childcare environment? What steps should adults and children take to ensure proper hand washing occurs at all times? What are the best ways to teach children about proper hand washing? When should hand sanitizer be used, and why? In Module 6, you’ll learn how to introduce and maintain a healthy hand strategy."
+      sub_heading1: 
+        title: "Infection preventive food handling"
+        description: "Through online training in contraceptive maths management, day care staff and daycare parents can raise their expertise in safe math management practices by learning about:"
+        para1: "What hygienic routine routines one should implement before, during and after cooking to dramatically improve food safety in kindergarten"
+        para2: "How should a food be kept to minimize the risk of disease"
+        para3: "What are the five critical sources of food contamination"
+        para4: "What special precautions should be observed regarding food and formula for infants and those who suffer from food allergies or food intolerances"
+        para5: "Which contraceptive practices should one use as part of the opening and closing of kindergarten and why?"
+      sub_heading2: 
+        title: "Infection preventive outbreak control strategies" 
+        description: "Through online training in contraceptive management of infectious disease outbreaks, day care staff and daycare parents can raise their expertise in the effective management of infectious disease outbreak by learning about:"
+        para1: "Which warning signs occur before and during an outbreak in a nursery?"
+        para2: "What steps should you follow to prevent, handle and overcome an outbreak?"
+        para3: "How to report relatives about an infectious disease outbreak is a fact in kindergarten?"
+      sub_heading3: 
+        title: "Infection preventive diapering"
+        description: "Through online training in infectious diaper shift, nursery staff and daycare parents can raise their expertise in preventive diaper shift practice by learning about:"
+        para1: "What are the hidden health risks associated with diaper shift and the area for diaper shift?"
+        para2: "Which contraceptive procedures should follow in the implementation of diaper change, hand wash and disinfection?"
+        para3: "How should a handled diaper be handled?"
+        para4: "Which contraceptive procedures should follow when children dirt their clothes?"
+        para5: "Which equipment is necessary for changing the range of infections to reduce the risk of infection?"
+      sub_heading4: 
+        title: "Infection preventive cleaning of bodily fluids"
+        description: "Through online training in contraceptive handling and cleaning of body fluid, childcare staff and kindergarten parents can raise their skills regarding safe handling of infectious body fluids by learning about:"
+        para1: "How to identify potential contaminated body fluids?"
+        para2: "How should they clean after an episode of potentially infectious body fluids?"
+        para3: "How to prevent one from overlooking important contraceptive steps in the cleaning process?"
+        para4: "When to separate a child that exudes body fluids?"
+      sub_heading5: 
+        title: "Infection preventive hand washing"
+        description: "Through online training in Anti-Disease Hand Hygiene, day care staff and kindergarten parents can raise their skills around good hand hygiene practices by learning about:"
+        para1: "Describe the importance of hand washing for contraceptive prevention in kindergarten?"
+        para2: "How to wash hands correctly for young children who lack motor skills?"
+        para3: "What characterizes the proper use of disinfectants"
+        para4: "What are the best ways to teach children about proper hands wash?"
+        para5: "Which strategies can be used to encourage proper hand washing in the kindergarten"
       sub_heading6: "Infection preventive hand washing"
       para7: "Hand hygiene and proper hand washing constitute the first line of defense against the spread of infection. Infection-spreading germs are easily accumulated on and shared by our hands, resulting in unsanitary conditions in daycare settings."
 
@@ -1587,6 +1614,7 @@ en:
       content: Enjoy the benefits of being part of our Healthier Childcare network. Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community.
     button:
       book: BOOK NOW
+      apply: APPLY PLAN
     phase1:
       label: PHASE 1
       type: Informed Membership

@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan).each do |page|
         get page, to: "pages##{page}"
     end
 
@@ -196,6 +196,7 @@ Rails.application.routes.draw do
         resources :payment_modes, except: :show
         resources :payment_starts, except: :show
         resources :plans, except: :show
+        resources :global_settings, except: :show
         resources :todos
         resources :users, only: [:index, :destroy]
         resources :daycares

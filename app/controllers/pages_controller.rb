@@ -26,7 +26,13 @@ class PagesController < ApplicationController
     end
 
     def home
+    end
 
+    def journey
+        journey_model = GlobalSetting.find_by(key: "Journey Page Mode")
+        if journey_model.value == "userplan_mode"
+            redirect_to pre_user_plan_path
+        end
     end
 
     def guide_text
@@ -44,6 +50,14 @@ class PagesController < ApplicationController
             layout_name = 'dashboard_v2'
         end
         render action: "#{params[:page]}/#{params[:step]}", layout: layout_name
+    end
+
+    def ethic_1
+        if params[:plan]
+            session[:apply_plan] = params[:plan]
+        else
+            session[:apply_plan] = 0
+        end
     end
 
     def ethic_4

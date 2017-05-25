@@ -13,7 +13,7 @@ $hcc-green: #2bd34d;
 // linear-gradient(to top right, #fc636b, #ff6d92 35%, #ffb900 100%)
 
 @mixin hcc-green-gradient {
-  background: $hcc-red; /* For browsers that do not support gradients */
+  background: $hcc-green; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, $hcc-green , $hcc-orange); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, $hcc-green, $hcc-orange); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $hcc-green, $hcc-orange); /* For Firefox 3.6 to 15 */

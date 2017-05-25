@@ -10,63 +10,211 @@
           .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
             %a{:href => "#", "data-url": get_video_link("free", 1, I18n.locale), "data-popup-open": "video-popup"}
               = image_tag 'intro_one.png'
-            %h3.text-orange= t('pages.instruction.sub_heading1')
-            %p.text-left= t('pages.instruction.para2')
+            %h3.text-orange= t('pages.instruction.sub_heading1.title')
+            %p.text-left= t('pages.instruction.sub_heading1.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para5').html_safe
           .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
             %a{:href => "#", "data-url": get_video_link("free", 2, I18n.locale), "data-popup-open": "video-popup"}
               = image_tag 'intro_three.png'
-            %h3.text-orange= t('pages.instruction.sub_heading3')
-            %p.text-left= t('pages.instruction.para4')
+            %h3.text-orange= t('pages.instruction.sub_heading3.title')
+            %p.text-left= t('pages.instruction.sub_heading3.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para5').html_safe
         .col-md-6.right-side
           .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
             %a{:href => "#", "data-url": get_video_link("free", 3, I18n.locale), "data-popup-open": "video-popup"}
               = image_tag 'intro_two.png'
-            %h3.text-orange= t('pages.instruction.sub_heading2')
-            %p.text-left= t('pages.instruction.para3')
+            %h3.text-orange= t('pages.instruction.sub_heading2.title')
+            %p.text-left= t('pages.instruction.sub_heading2.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para3').html_safe
           .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
             %a{:href => "#", "data-url": get_video_link("free", 4, I18n.locale), "data-popup-open": "video-popup"}
               = image_tag 'intro_four.png'
-            %h3.text-orange= t('pages.instruction.sub_heading4')
-            %p.text-left= t('pages.instruction.para5')
+            %h3.text-orange= t('pages.instruction.sub_heading4.title')
+            %p.text-left= t('pages.instruction.sub_heading4.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para5').html_safe
         .col-md-offset-3.col-md-6
           .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
             %a{:href => "#", "data-url": get_video_link("free", 5, I18n.locale), "data-popup-open": "video-popup"}
               = image_tag 'intro_five.png'
-            %h3.text-orange= t('pages.instruction.sub_heading5') 
-            %p.text-left= t('pages.instruction.para6')
+            %h3.text-orange= t('pages.instruction.sub_heading5.title')
+            %p.text-left= t('pages.instruction.sub_heading5.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para5').html_safe
       - else
         .col-md-6.left-side
           .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
             %a{:href => "/trainings/1"}
               = image_tag 'intro_one.png'
-            %h3.text-orange= t('pages.instruction.sub_heading1')
-            %p.text-left= t('pages.instruction.para2')
+            %h3.text-orange= t('pages.instruction.sub_heading1.title')
+            %p.text-left= t('pages.instruction.sub_heading1.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading1.para5').html_safe
           .single{'data-step'=>"9", 'data-intro'=>"Infection preventive exclusion of sick children", 'data-position' => 'right'}
             %a{:href => "/trainings/2"}
               = image_tag 'intro_three.png'
-            %h3.text-orange= t('pages.instruction.sub_heading3')
-            %p.text-left= t('pages.instruction.para4')
+            %h3.text-orange= t('pages.instruction.sub_heading3.title')
+            %p.text-left= t('pages.instruction.sub_heading3.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading3.para5').html_safe
         .col-md-6.right-side
           .single{'data-step'=>"11", 'data-intro'=>"Infection preventive outbreak control strategies", 'data-position' => 'left'}
             %a{:href => "/trainings/3"}
               = image_tag 'intro_two.png'
-            %h3.text-orange= t('pages.instruction.sub_heading2')
-            %p.text-left= t('pages.instruction.para3')
+            %h3.text-orange= t('pages.instruction.sub_heading2.title')
+            %p.text-left= t('pages.instruction.sub_heading2.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading2.para3').html_safe
           .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
             %a{:href => "/trainings/4"}
               = image_tag 'intro_four.png'
-            %h3.text-orange= t('pages.instruction.sub_heading4')
-            %p.text-left= t('pages.instruction.para5')
+            %h3.text-orange= t('pages.instruction.sub_heading4.title')
+            %p.text-left= t('pages.instruction.sub_heading4.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading4.para5').html_safe
         .col-md-offset-3.col-md-6
           .single{'data-step'=>"13", 'data-intro'=>"Infection preventive hand washing", 'data-position' => 'left'}
             %a{:href => "/trainings/5"}
               = image_tag 'intro_five.png'
-            %h3.text-orange= t('pages.instruction.sub_heading5') 
-            %p.text-left= t('pages.instruction.para6')
+            %h3.text-orange= t('pages.instruction.sub_heading5.title')
+            %p.text-left= t('pages.instruction.sub_heading5.description')
+            %ul.scientific-facts
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para1').html_safe          
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para2').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para3').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para4').html_safe
+              %li
+                %p.text-left
+                  = t('pages.instruction.sub_heading5.para5').html_safe
   .col-md-12.step-contents
-    .cta-step-box
+    .cta-step-box.next-green-step
       %p= t('pages.standard.para8_1')
-      %button.btn.hcc-btn
+      %button.btn.hcc-green-btn
         %a{'href': '/journey'}
           = t('pages.nav_bar.get_started').html_safe
 

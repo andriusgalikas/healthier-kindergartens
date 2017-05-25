@@ -56,6 +56,15 @@ header{
     background:#ff6632;
   }
 
+  .hcc-green-btn-vertical.btn.active, 
+  .hcc-green-btn-vertical.btn:active,
+  .hcc-green-btn.btn.active, 
+  .hcc-green-btn.btn:active{
+    color: #fff;
+    background-image:none;
+    background:#2bd34d;
+  }
+
   .btn.focus, 
   .btn:focus, 
   .btn:hover{

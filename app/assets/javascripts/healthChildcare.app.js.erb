@@ -42,9 +42,11 @@ healthChildcare.app =
 
   showRegisteredChildcaresNotification: function() {
     var beforeSignUpPath = /journey/g;
+    var beforeSignUpPlanPath = /pre_user_plan/g;
     var afterSignUpPath = /welcome/g;
     var newUser = $('input#notif_new_user').val() == 'true';
     var showNotif = beforeSignUpPath.test(window.location.pathname) ||
+        beforeSignUpPlanPath.test(window.location.pathname) ||
         (afterSignUpPath.test(window.location.pathname) && newUser);
     var featuredDaycare = [];
 
@@ -61,6 +63,9 @@ healthChildcare.app =
                 featuredDaycare.push(data.name);
                 $.notify({
                   message: data.name + " " + window._trans['featured_daycare']
+                }, 
+                {
+                  delay: 5000
                 })
               }
               else if (featuredDaycare.length == data.set_size)
@@ -69,7 +74,7 @@ healthChildcare.app =
           })
       }
 
-      occasionalFetch = setInterval(fetchFeaturedDaycare, 15000);
+      occasionalFetch = setInterval(fetchFeaturedDaycare, 10000);
     }
   },
 

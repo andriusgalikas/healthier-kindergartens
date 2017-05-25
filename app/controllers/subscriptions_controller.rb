@@ -62,13 +62,15 @@ class SubscriptionsController < ApplicationController
         deposit_amount = @deposit_plan.price
         
         if current_user.plan_type >= 2
-          plan_discount_code = DiscountCode.find(current_user.daycare.discount_code_id)
-          unless plan_discount_code.nil?
-            current_user.daycare.discount_code_id = plan_discount_code.id
-            current_user.daycare.save
-            current_user.discount_code = plan_discount_code
-            current_user.save        
-            deposit_amount = deposit_amount * (100-plan_discount_code.value) * 0.01
+          unless current_user.daycare.discount_code_id
+              plan_discount_code = DiscountCode.find(current_user.daycare.discount_code_id)
+              unless plan_discount_code.nil?
+                current_user.daycare.discount_code_id = plan_discount_code.id
+                current_user.daycare.save
+                current_user.discount_code = plan_discount_code
+                current_user.save        
+                deposit_amount = deposit_amount * (100-plan_discount_code.value) * 0.01
+              end              
           end
         end
 

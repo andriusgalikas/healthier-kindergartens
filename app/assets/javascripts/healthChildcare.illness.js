@@ -124,7 +124,7 @@ healthChildcare.illness = {
                 },
                 templates: {
                   suggestion: function(target) {
-                    return "<div 'data-id'='" + '' + "'>" + target + "</div>";
+                    return "<div>" + target + "</div>";
                   }
                 }
               })
@@ -508,7 +508,7 @@ healthChildcare.illness = {
         // Set chart options
         var options = {'title' : 'Sickness Among The Daycare Children',
                        'width':  $('#bar-chart-div').width(),
-                       'height': $('#bar-chart-div').width() / 2,
+                       'height': $('#bar-chart-div').width() / 2
                       };
 
         // Instantiate and draw our chart, passing in some options.
