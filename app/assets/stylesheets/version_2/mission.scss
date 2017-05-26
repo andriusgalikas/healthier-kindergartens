@@ -11,6 +11,25 @@ p{
   }
 }
 
+.single{
+  ul.scientific-facts {
+    padding: 0;
+    list-style-type:none;
+    li{
+       position:relative;
+      background: url(check-tick-icon.png) left 7px no-repeat;
+      padding-left: 30px;              
+    }
+    // li:before{
+    //    content: '';
+    //    display: inline-block;
+    //    height: 16px;
+    //    width: 16px;
+    //    background-image: url('check-tick-icon.png');
+    // }    
+  }  
+}
+
 .children-risk-content {
   background: #f7f7f7;
 }

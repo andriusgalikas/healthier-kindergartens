@@ -78,14 +78,9 @@ en:
       slide_header_1_subcontent: Now your daycare can become a safer place for your employees to work in, through healthier and Safer Childcare Accreditation Program.
       slide_header_2_content: Children with special conditions such as congenital heart disease, chronic lung diseases, and other inborn syndromes face an even higher risk of being in danger of serious complications in an infectious disease outbreak scenario in your day care facility.
       slide_header_2_subcontent: Now your daycare can  better protect the most vulnerable under your care through healthier and Safer Childcare Accreditation Program.
-      slide_header_3_content: Parents of children exposed to illnesses with regularity are expected to take time off work to care for them. This results in a loss of earnings at best, or at worst, disciplinary proceedings against them.
-      slide_header_3_subcontent: Together, we can stop the spread of infection at source. Find out more about how you can play your part.
-      slide_header_4_content: When children face illness regularly, parents have to take time off from work to care for them. Taking time off from work means a loss of income, or at worst, facing redundancy. Together, we can fight the spread of infections at their source.
-      slide_header_4_subcontent: Find out how you can play your part below.
 
       subcontent_start_here: Start Here
       start_here_1: Discover the top hidden health risks for children and your daycare staff. Also, learn what it needs to be done to mitigate risks in you daycare facility — to better safeguard children under your care  and also your daycare staff from avoidable harm and suffering. 
-      start_here_2: Discover the top hidden health risks for the children and employees of your daycare facility, and learn how to effectively mitigate the risk of infection for the children and childcare staff under your care.
       start_here_link: Discover more...
       
       subcontent_standard: Healthier and Safer Child Care standard
@@ -98,21 +93,8 @@ en:
 
       subcontent_journey: Start your Journey towards a healtheir and safer Childcare
       journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
-      journey_2: Detect the level of infection risk in your facility.
       journey_link: You are welcome to apply here...
-      learn_more: learn more
             
-      main_heading: "Start Here"
-      para1: "Childcare environments can be a breeding ground ground for bacterial and viral infections. Discover the top hidden health risks to children and employees in your daycare facility. Also, learn how we are committed to helping you, the childcare operator, take a few simple steps to effectively mitigate risk of infections—to keep your employees, children under your care, and parents as healthy as possible."  
-      main_heading2: "The Standard"
-      para2: "If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.The Health Preserving care Standard is designed to fulfill these"
-      main_heading3: "The Path to Accreditation"
-      para3: "If you’re committed to avoiding unnecessary health maladies of the children and employees in your facility and also want to gain the edge on your facilities’ ongoing infection and absenteeism.The Health Preserving care Standard is designed to fulfill these"
-      para4: "Assess and evaluate your staffs compitency  in  infection prevention."
-      para5: "and get complimentary access here"
-      para6: "Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your"
-      main_heading4: "Start your Journey"
-
     implementation:
       main_heading: "Implementation"
       para1: "Ensure the best practices are reinforced and upheld…"
@@ -173,13 +155,9 @@ en:
         para3: "What characterizes the proper use of disinfectants"
         para4: "What are the best ways to teach children about proper hands wash?"
         para5: "Which strategies can be used to encourage proper hand washing in the kindergarten"
-      sub_heading6: "Infection preventive hand washing"
-      para7: "Hand hygiene and proper hand washing constitute the first line of defense against the spread of infection. Infection-spreading germs are easily accumulated on and shared by our hands, resulting in unsanitary conditions in daycare settings."
 
     take_action:
       main_heading: "Tools and resources for uncompromised health and safety"
-      description: "In this module you will learn:"
-      para1: "Detect the level of infection risk in your facility"  
       sub_heading1: "Food handling:"
       label_post1: Download Food Handling Poster
       para2: "The storage, preparation and distribution of food in childcare facilities create numerous opportunities for cross-contamination and foodborne illnesses. The infection controll task manager tool in the portal helps you track and measure if stringent protocols that ensure safe food handling contaminant-free meals are in place at your daycare. As an added benefit, with a few clicks, you will be able to create a report that you can submit to the authorities affirming that safe food handling procedures are implemented and are being tracked and measured on daily basis."
@@ -200,32 +178,6 @@ en:
       sub_heading6: "Hand Hygiene"
       label_post6: Download Hand Hygiene Poster
       para7: "Given the importance of hand hygiene in disease-preventing procedures, the value of reinforcing proper hand washing concepts among children and caregivers in childcare settings cannot be understated. Infection preventive resources in the portal such as downloadable A4 size mini posters which you can print out , laminate and put up in diaper changing area can repeatedly remind daycare staff about when and how to properly clean hands and also to initiate a reward program to effectively encourage hand washing among the children."
-
-    mission:
-      main_heading: "You Can Mitigate Infection <br> and Illness In Your Daycare"
-      main_heading2: "Childcare environments are a breeding ground for bacterial and viral infections. We owe it to our children to give them the safest and healthiest environment possible."
-      sub_heading: "Is your daycare a breeding ground for childhood infections—with potential long-term damage?"
-      para1: "In your childcare facility, the safety of children is of primary importance. We make facilitating that safety easier for you. We’re the Healthier and Safer Childcare Alliance: a unifying and supporting force in the world of childcare. We’re committed to assisting you, the childcare operator, in keeping children and workers out of harm’s way—so you can fulfill your ethical and professional duties—and meaningfully contribute to the health and happiness of the children and Employees under your care and supervision. Daycare settings are a breeding ground for infections and diseases. There are many scientific reasons for this, but it is due in part to the susceptibility of children to illnesses, the close proximity of children to each other, the way children share germs as they play, and the interactions of children with daycare workers and parents. But those aren’t the only reasons… There’s one more widely-overlooked cause of infection and disease spreading—a cause that heavily intensifies this breeding ground for diseases in your daycare. And that’s the lack of adequate knowledge and training for effective infection mitigation procedures on the part of the daycare worker. Studies have shown you can greatly mitigate the most dangerous risks of infection with a few simple procedures—keep reading to find out what they are."
-      sub_heading2: "Top risks to children in your daycare"
-      para2: "more vulnerable to illnesses1 </span> than children cared for at home. Although most infectious illnesses get resolved without disrupting the development of children, some infections cause "
-      para3: "lasting physical damage to children2</span>,in terms of overuse of antibiotics or future learning, cognitive disabilities or even death.For example, middle ear infections, even when treated correctly in children under 3 years old, can have adverse consequences3 including reduced performance at reading comprehension and/or compromised cognitive ability in the future.Also, respiratory infections like pneumonia are the principal cause of death4 among children under 5 years old worldwide.In addition, children who attend daycare have an increased risk of being hospitalized5, especially from the rotavirus infection, which is responsible for 20 to 60% of hospital admissions of children. Varicella6, which causes chickenpox and shingles, can develop complications that result in hospitalization and death.Children are meant to be kept in safe environments that are conducive to health and learning. In today's terminology, this defines daycare environments: places where children can be open to learning without also being open to illness. We owe it to our children — and ourselves — to give children the safest and healthiest environment possible."
-      sub_heading3: "Top risks to workers in your daycare"
-      para4: "of the surface areas7 </span> in daycare facilities may be contaminated with the flu virus. The degree of contamination in your facility may vary. But the risk of infection remains a major concern,since the majority of childcare staff are women in childbearing age. Changes to the immune system and the respiratory and circulatory systems during pregnancy mean that pregnant women are at greater risk of being severely ill if they catch flu.In addition, the newborn babies of women with severe flu are at risk of complications, in particular premature birth and low birthweight8.The sad irony for childcare workers who become ill due to a lack of infection preventive practices at work is that, while caring for the children of others, they put their own unborn children at risk if they fall pregnant. Most childcare workers are women of childbearing age.Given these risks, no preventive measures — however small — should be overlooked."
-      sub_heading4: "Top risks to parents of kids in your daycare"
-      para5: "As parents drop off or pick up children from your childcare facility and interact with their children at home, they, too, risk getting infections passed on from the daycare facility. Amplified infection rates associated with daycare centers have economic implications for both the family and the nation. A rise in disease results in an increase in the use of health care services and increased family spending on medical care and medications. Repeated illness can cause parents to earn less and even lose their jobs due to frequent absences. The primary reason parents put their children in daycare is so that they are in a safe environment while Mom or Dad are away at work. It is critical that daycares meet this basic need well. When children contract illnesses, the daycare not only puts them at risk, but also the parents, who can become infected because of the child. This defeats the entire purpose of daycare, as not only were the children not kept safe, but the parents are also not able to work if the child is at home sick."
-      sub_heading5: "What to do next: <br> to mitigate risk in your facility,<br> increase safety,<br> and show you care."
-      para6: "At HSCA, our core mission is to assist you, the childcare operator, to nurture a healthy and safe environment for children and childcare workers. We seek to carry out this mission as we:"
-      label1: "1. Outline risks"
-      label2: "2. Create community"
-      label3: "3. Set brenchmark"
-      sub_heading6: "Outline risks"
-      para7: "Enlighten you about the serious and lesser-known health risks group care presents for children and their surrounding communities, and facilitate actionable, practical, easy-to-follow methods, procedures and tools…so you can practice the highest standard of infection prevention in your childcare environments—leading to healthier, happier children, staff, and parents." 
-      sub_heading7: "Benchmark"
-      para8: "Help accredited childcare facilities become a benchmark—and establish a new standard—by which healthier and safer childcare is measured and recognized."
-      sub_heading8: "Community" 
-      para9: "Create a community of like-minded childcare operators who will help grow, promote and sustain a superior network of safe and health-preserving places for children to grow and be nurtured." 
-      para10: "With our accreditation program, you’ll be a key component in a nationwide movement to create a higher standard for our children—and avoid debilitating sickness, harm and suffering… for your staff, the children under your care, and parents."
-      para11: "If you want to learn more about the highest standard in the world for disease mitigation in childcare settings — The Health prevering care Standard"
 
     mission_step:
       promo_header: The Optimum Resource for Childcare Operators Committed to Safeguarding the Health and Well-being of Children Under Thier Care
@@ -268,46 +220,15 @@ en:
       what_to_do_2: The solution begins with understanding that infection risk mitigation in childcare facility require a multifaceted infection control program which goes beyond implementation of good hand washing policy.
 
       next_step_header: 'Next step : mitigate risk in your facility and show you care'
-      next_step_text: Just as researchers have clarified the risk of increased infection rates in childcare facilities, they have also recognized that control measures to reduce the spread of infectious diseases is imperative.
-      mission_invite: To that end, the Health Preserving Care Standard was developed to enable you to utilize the most optimal infection control standards & practices to effectively mitigate the risk of infection in your facility.
-
+  
       ref_title: Reference
-      ref_text_1: "1. Kamper-Jorgensen, M., Benn, C. S., & Wohlfahrt, J. (2011). Childcare and health: a review of using linked national registers. Scand J Public Health, 39(7 Suppl), 126-130. doi:10.1177/1403494810395826"
-      ref_text_2: "2. Wald, E. R., Dashefsky, B., Byers, C., Guerra, N., & Taylor, F. (1988). Frequency and severity of infections in day care. J Pediatr, 112(4), 540-546"
-      ref_text_3: "3. Rasmussen, F., & Sundelin, C. (1990). Use of medical care and antibiotics among preschool children in different day care settings. Acta Paediatrica, 79(8‐9), 838-846."
-      ref_text_4: "4. Kamper-Jorgensen, M., Wohlfahrt, J., Simonsen, J., Gronbaek, M., & Benn, C. S. (2006). Population-based study of the impact of childcare attendance on hospitalizations for acute respiratory infections. Pediatrics, 118(4), 1439-1446. doi:10.1542/peds.2006-0373"
-      ref_text_5: "5. Anderson, L. J., Parker, R. A., Strikas, R. A., Farrar, J. A., Gangarosa, E. J., Keyserling, H. L., & Sikes, R. K. (1988). Day-care center attendance and hospitalization for lower respiratory tract illness. Pediatrics, 82(3), 300-308."
-      ref_text_6: "6. Nafstad, P., Hagen, J. A., Botten, G., & Jaakkola, J. (1996). Lower respiratory tract infections among Norwegian infants with siblings in day care. American journal of public health, 86(10), 1456-1459."
-      ref_text_7: "7. Teele DW, Klein JO, Chase C, Menyuk P, Rosner BA. Otitis media in infancy and intellectual ability, school achievement, speech, and language at age 7 years. Greater Boston Otitis Media Study Group. J Infect Dis. 1990;162:685-94"
-      ref_text_8: "8. Uhari M, Mäntysaari K, Niemelä M. A meta–analytic review of the risk factors for acute otitis media. Clin Infect Dis. 1996;22:1079–83. "
-      ref_text_9: "9. Haskins R, Kotch J. Day care illness: evidence, cost and public policy. Pediatrics. 1986;77(6 Pt 2):951–82."
-      ref_text_10: "10. Matson DO. Viral gastroenteritis in day care settings: epidemiology and new developments. Pediatrics. 1994;94(6 Pt 2):999-1001."
-      ref_text_11: "11. Hjern, A., Haglund, B., Rasmussen, F., & Rosen, M. (2000). Socio‐economic differences in daycare arrangements and use of medical care and antibiotics in Swedish preschool children. Acta Paediatrica, 89(10), 1250-1256."
-      ref_text_12: "12. Martel MJ, Rey E, Malo JL, et al. Determinants of the incidence of childhood asthma: a two-stage case-control study. Am J Epidemiol 2009;169(2):195-205"
-      ref_text_13: "13. Calder J. Occupational health and safety issues for child-care providers. Pediatrics. 1994;94(6 Pt 2):1072-4"
-      ref_text_14: "14. August AM, Dworsky M, Reynolds DW. Cytomegalovirus infection in day–care centers. N Engl J Med. 1982;307:477–9."
-      ref_text_15: "15. Hutto C, Ricks R, Cloud GA. Increased rate of cytomegalovirus infection among parents of children attending day–care centers. N Engl J Med. 1986;314:1414–8."
-      ref_text_16: "16. Little EA, Stagno S, Britt WJ, Alford CA. Young children as a probable source of maternal and congenital cytomegalovirus infection. N Engl J Med. 1987;316:1366–70"
-      ref_text_17: "17. Jackson LA, Stewart LK, Soloman S, et al. Risk of infection with hepatitis A, B, C, cytomegalovirus, varicella or measles among child care providers. Ped Infect Dis J 1996; 15: 584-589."
-      ref_text_18: "18. Pass, R. F., Hutto, C., Lyon, M. D., & Cloud, G. (1990). Increased rate of cytomegalovirus infection among day care center workers. Pediatr Infect Dis J, 9(7), 465-470.  "
-      ref_text_19: "19. https://www.nationalcmv.org/congenital-cmv/outcomes.aspx"
-      ref_text_20: "20. Mann V, Buffett C, Campbell M, Lee K, O’Donnell R. Effectiveness of day care centre infection control interventions. Ontario:Ontario Ministry of Health; 1999. Disponível em: http://old.hamilton.ca/phcs/ephpp/Research/Full-Reviews/98-99/Day-Care-Centre-Infection-Control-review.pdf"
-      ref_text_21: "21. Aiello AE,Larson EL. What is the evidence for a causal link between hygiene and infections? Lancet Infect Dis.2002;2:103-8"
-      ref_text_22: "22. https://www.researchgate.net/publication/14397881_Impact_of_an_infection_control_program_in_a_specialized_preschool"
-      ref_text_23: "23. http://www.scielo.br/pdf/jped/v83n4/en_v83n4a04.pdf"
-      ref_text_24: "24. https://www.ncbi.nlm.nih.gov/pubmed/8806992"
-      ref_text_25: "25. http://www.heraldonline.com/news/local/article31183946.html"
+
     path:
       main_heading: "You’re just 3 steps away from being<br>part of The Health Preserving Accreditation"  
       instro: "Upon completing the requirements, you will receive Accreditation and an Accreditation Plaque for display"
       paragraph1: "Note that our health-preserving accreditation program has 3 major components. This program will acquaint you with high level of knowledge on six intertwined areas of infection risk exposure to children and staff. Plus a clear, effective infection prevention protocol to help your facility mitigate these risks."
-      li_head1: "1. The Mission"
-      li_head2: "2. The Standard"
-      li_head3: "3. The Path to Accreditation"
-      li_head4: "Your Journey!"
 
       sub_heading1: "Path to accreditation and optimum infection control in your facility"
-      instro_1: ""
       instro_2: "To thoroughly mitigate the ongoing risk of infection to children under you care and the wider child care community including daycare staff and parents of children, your childcare will go through 3 phases of the accreditation program,where each phase builds a foundation for the next."
       instro_3: "The 3 phases in the accreditation program you will go through in order are:"
       instro_4: "Upon completion of  the 3 phases, your facility will have an infection control infrastructure in place that continuously mitigates infection risk in you facility. You childcare is now eligible for accreditation. Certificate of Accreditation is therefore  issued, together with an Accreditation Plaque to put on display in your facility."
@@ -352,7 +273,6 @@ en:
       phase3_para1: "The third phase will enable you to:"
       phase3_para2: "Put infection control concepts into easy applicable practices that matters when it comes to mitigating infectious disease risk exposure in your facility "
       phase3_para3: "Measure deficiencies in applied infection control practices and thereby quickly rectify shortcomings."
-      phase3_para4: "Set a baseline for optimum infection control and risk mitigation in your facility."
       phase3_button: "Learn more"
 
       phase3_det_title: "Take Action Phase :"
@@ -363,18 +283,10 @@ en:
 
       action_text: "To learn more about what tools and resources are available in the portal to reinforce and uphold optimum  infection control and risk mitigating practices in your facility click the learn more button."
 
-      start_journey: "Start Your Journey"
-      get_access: "and get complimentary access"
-      here_link: "here"
-
-      get_start: "Get Started Now"
       phase4_title: "Congratulation"
       phase4_para1: "You’ll have built a superior infrastructure to mitigate the risk of infection throughout the community."
       phase4_para2: "Proudly display your authentic HSCA Accreditation Certificate to let parents know about your new credentials!"
       phase4_para3: "Receiving accreditation through HSCA signifies your personal and professional commitment to the highest levels of health and safety for children under your care."
-
-      read_more: "Read More"
-      read_more_text: "Assess and evaluate your staffs compitency  in  infection prevention."
 
     journey:
       instruction:
@@ -401,7 +313,6 @@ en:
         apply_para1: "I oxidation desired to get started in protecting children under my care and kindergarten staff in my kindergarten from potential damage and suffering associated with infectious diseases. Take me to the application page, so I can determine if I meet admission requirements for Healthier and safer childcare program designed to make the daily lives of children and kindergarten employees are as safe as possible .. (Please note that we can only accommodate a limited number of kindergartens *)"
         apply_para2: "Given the critical role of infection control plays in limiting the health risks for children and nursery staff are all 4455 kindergartens, which currently stands as subscribers of our free preventive newsletters, are invited to download the free biosecurity resources to help them weigh a healthier and safer childcare. Despite our desire, we can alliekvel not only provide accreditation more than a limited number of stand-alone kindergartens, per year. We therefore expect great demand and many applicants. It is therefore recommended for reserve space for your nursery if you meet admission requirements to enroll your kindergarten in at Healthier and Safer childcare program."
         register_para1: I want to get to access to the complimentary infection risk assessment of my  facility as I want to know the level of infection risk children and daycare staff are exposed to.
-        notification: Childcare has enrolled into the Healthier and Safer Childcare accreditation Program to better safeguard the children and my daycare staff from potential harm and suffering associated with preventable infectious diseases.
       label:
         apply: Apply Here
         register: Register to get access
@@ -425,8 +336,6 @@ en:
         agree_text: I believe the same to the true
         disagree_text: I don't share this belief
       label:
-        agree: I agree to the Terms of Service
-        disagree: I don't agree
         next: Next
         ready: I am ready to proceed
         schedule: Schedule My Breakthrough Session
@@ -440,7 +349,6 @@ en:
         para5: "Complete the breakthrough session with the excitement of knowing EXACTLY what to do next to create the optimum level of optimum infection control and risk mitigation in your facility"
         para6: "We'll explain exactly how the program works"
         para7: "Unsure about which package to choose or talk to us before starting Your Journey, schedule a free sessseion to talk to us"
-        para8: "That's it... simple. If, at the end of the Strategy session, we determine is a WIN-WIN, we'll handle the rest of the logistics... ... if NOT, no worries, we'll simply return your deposit to you"
       step3:
         title: Congratulations
         para1: If you have come to this page and you’re reading these words right now , it means our goals and aspirations align with each other. We therefor congratulate you as we now will be able to move forward and get you on board with our accreditation program. Your decision verifies your professional and ethical commitment to protect the health and wellbeing of children and staff under your care.
@@ -529,7 +437,6 @@ en:
       para1: Your Investment in Health and Safety of Children and the wider childcare community is calculated based on %{num_child} children in your facility multiplied by %{currency_symbol} %{amount} per child per day.
       para2: "Please Note: You will only be able to make deposit of $100,  if there are availble spots on the program. If the deposit is accepted that means you are now onboard."
       reserve: Reserve My Spot
-      button: Pay
       box_title: Make a deposit to reserve your spot on the accreditation  program
       benefit: ONGOING ACCREDITATION MEMBERSHIP BENEFITS
       ben_para1: "Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:" 
@@ -545,15 +452,8 @@ en:
       ben_para10: "<b>Get the competitive edge</b><br/>Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care."
       ben_para11: "<b>Positively affect  the next generation</b><br/>Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come."
   register:
-    manager: 
-      main_heading: "Daycare" 
-      main_heading2: "Departments"      
-
     parentee:
       main_heading: "Children"  
-
-    partner:
-      main_heading: "Affiliate"  
     
     labels:
       next: Next
@@ -624,13 +524,6 @@ en:
       email: Daycare Email
       recipient: Recipients  
     todos:
-      index:
-        main_heading: "Todos"  
-        para1: "You have no Todos currently."
-   
-      dashboard:
-        label1: "Access"
-        label2: "Reports"
 
       show: 
         label1: "Title"  
@@ -667,37 +560,6 @@ en:
         keytasks: Key Tasks
         subtasks: Sub Tasks
         btn_complete: Complete
-
-  subscriptions:
-    index:
-      main_heading: "Healthier Childcare membership"
-      main_paragraph: "Enjoy the benefits of being part of our Healthier Childcare network.<br>Though you will not be accredited, you can access our highly informative program to help you mitigate risk of infections in your childcare community."
-      sub_heading: "Professional Member:"
-      label: "Print edition of Risk assessment"
-      label1: "Printable Pdf version of our instruction component of the program"
-      label2: "Periodic newsletter"
-      sub_heading1: "Comitted Member:"
-      label3: "Online Risk assessment"
-      label4: "Online Training"
-      label5: "The book -Infected: The Urgent Necessity for DayCare Facilities to Keep Children,Staff and Communities Safe"
-      label6: "Periodic newsletter"
-      sub_heading2: "Accreditation Member:"
-      label7: "Online Risk assessment"
-      label8: "Online Training"
-      label9: "Online and offline tools for tracking and implementation"
-      label10: "Periodic newsletter"
-      right_heading: "ONGOING ACCREDITATION MEMBERSHIP BENEFITS"
-      right_paragraph: "Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:"
-      right_para1: "Periodic letter — </b>Receive the latest health and safety messages from the most cutting-edge research on infection mitigation in your facility. Rest assured you will stay up-to-date with information about mitigating risk of infections in your childcare facility."
-      right_para2: "Assess the scope of infection risk in your facility</b><br> Get  insight in your employees level of competence in the six core areas for infection control. This action will enable you to assess the scope of the risk of infections that children under your supervision are exposed for"
-      right_para3: "Get instruction in optimal infective practices</b><br>Exclusive online instruction in infection control  available nowhere else—In this instruction component, your daycare staff will be trained and qualified in the six core areas of mitigating risk of infection and diseases in your facility. This  provides them a clear course of performance. The net results will be infection preventive choices that are intrinsically linked to healthier and safer childcare environment."
-      right_para4: "Boost employee  confidence </b><br> Our online  instruction courses  are designed to increase  your employees’ knowledge and understanding of health and safety issues which impact children in childcare. This course of action  reduces guesswork, replacing it with confidence and proactive conduct on the part of your employees. Lower employee stress, help  employees to thrive and  make  your childcare facility a better place to work."
-      right_para5: "Decrease in absenteeism </b><br> Operating your childcare facility according to The Health Preserving Care Standard also helps decrease the risk of infection . You know all too well these factors can drain your childcare of productivity.The optimum  “cure” for employee turnover due to unnecessary sickness of your staff is to have infection preventive infrastructure in place through health preserving care accreditation program"
-      right_para6: "Avoid potentially costly lawsuits</b><br> Health-preserving accreditation through HSCA certifies that your facility has the procedures and skilled personnel in place to uphold the highest standards of health and safety. This greatly diminishes the potential for a lawsuit against your facility, accusing you of indifference or professional negligence toward the safety of children in your care."
-      right_para7: "Meet regulatory standards gets easier</b><br><span><a href>http://www.iconarchive.com/show/e-commerce-icons-by-ebiene/checklist-icon.html</a></span> HSCA accreditation gives you the tools to track and report key actions required to reduce risk and increase the health and safety of children and your daycare staff. Our app makes reporting faster and easier and simplifies the process of record keeping, thereby potentially avoiding costly shutdowns and problematic inspections."
-      right_para8: "Get access to tools that enables your staff to work smarter</b><br> Achieving the goal of a healthy and safe childcare facility is especially difficult without the correct tools. That is why accreditation program comes with  tools that enables daycare staff to  work smarter instead of  just harder to provide the most optimal health preserving care possible."
-      right_para9: "Get the competitive edge</b><br> Going through the HSCA Accreditation Program is the best way to shine like a trustworthy beacon in the marketplace, thereby giving your business a true competitive edge as provider of comprehensive protection of children under your care and supervision. It’s not uncommon for parents to seek out and choose your childcare facility for their children, instead of others, due to your commitment to health preserving care."
-      right_para10: "Positively affect  the next generation</b><br> Your  pursuit of excellence in health Preserving care raises the standards and behaviors of everyone around you. Children who observe the proper infection-prevention practices in use, both at home and in the childcare,will be learning life skills at a young age that they’ll be able to take with them for the rest of their lives. This way your staff and children’s parents can positively affect on the  generations to come."
     
     complete:
       line1: "You can now access some great new features which you can share with your parents and workers in your Daycare, such as :"
@@ -957,60 +819,8 @@ en:
     featured_daycare: Childcare has enrolled into the Healthier and Safer Childcare accreditation Program to better safeguard the children and my daycare staff from potential harm and suffering associated with preventable infectious diseases.
     featured_daycare_by_plan: Daycare has Reserved their spot on the accreditation program by making a deposit of 100 kr.
 
-  votes:
-    vote: Vote
-    manager:
-      question: 'How many parents and workers want this?'
-      invitation: "Want to keep the children and staff under your care from harm's way and fullfil your ethical and professional obligation? Join us to eliminate the factors that spread ongoing infections and absenteeism which can drain your childcare facility's productivity."
-      demand: "CONTRIBUTE TO THE HEALTH AND HAPPINESS OF CHILDREN AND EMPLOYEES UNDER YOUR CARE AND SUPERVISION TODAY."
-    parentee:
-      question: 'How many of your fellow colleagues want this?'
-      invitation: "Studies had proven that children cared for in a childcare facility are 300% more vulnerable to infections than children cared for at home. Though most illnesses get resolved without disrupting the child's development, some infections can cause lasting physical damage to the child such as cognitive disabilities which affect future learning."
-      demand_1: "DEMAND PROTECTION FOR YOUR CHILDREN'S HEALTH AND LEARNING CAPABILITIES TODAY. VOTE FOR HEALTH PRESERVING CARE PROGRAM."
-      demand_2: "Vote for Health Preserving Care Program."
-      thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION FOR YOUR CHILDREN'S HEALTH AND LEARNING CAPABILITIES THROUGH HEALTH PRESERVING CARE PROGRAM."
-    worker:
-      question: 'How many of your fellow colleagues want this?'
-      invitation: "The risk of infection in a childcare facility does not spare the workers. Studies had proven that a large proportion of daycare staff is women in their childbearing age. During their gestation period, their body's immune system undergoes several changes that results to a weak immune system. This increases the chances of getting infection both to the mothers and children."
-      thank_you: "THANK YOU FOR SUPPORTING THE CAUSE OF BETTER PROTECTION AGAINTS ON-GOING RISK OF INFECTION AND RISK TO YOUR HEALTH THROUGH HEALTH PRESERVING CARE PROGRAM."
-      demand_1: "DEMAND BETTER PROTECTION AGAINST THE ON-GOING RISK OF INFECTION THAT CAN PUT YOUR HEALTH AT RISK. VOTE FOR HEALTH PRESERVING CARE PROGRAM TODAY."
-      demand_2: "Vote for Health Preserving Care Program."
-
   messages:
-    message: Communication Manager
-
-    breadcrumb:
-      message: Message
-      choose_template: Choose Template
-      create_template: Create Template
-      create_subject: Create Subject
-      create_sub_subject: Create Sub-Subject
-      choose_department: Choose Department
-      choose_recipient: Choose Recipient
-      add_content: Add Content
-      edit_template: Edit Message Template
-      message_options: Message Options
-      choose_subject: Choose Subject
-      choose_sub_subject: Choose Sub-subject
-      create_message: Create Message
-      send: Send
-      edit: Edit
-
-    notifications:
-      create_template_success: Message template was successfully created.
-      create_template_error: There are errors creating the message templates.
-      update_template_success: Message template successfully updated.
-      delete_template_success: Message template successfully deleted.
-      find_template_empty: No message template match.
-      send_message_success: Message successfully sent.
-      send_message_error: There was an error creating the message.
-      delete_template_confirm: Are you sure you want to delete this template?
-      no_template_for_role: No message template found.
-      invalid_template_file: Invalid file! Please upload text file only.
-      required_filter_role: Please choose filter Role.
-      required_filter_subject: Please choose filter Subject.
-      required_filter_sub_subject: Please choose filter Sub-subject.
-
+    
     labels:
       subject: Subject
       choose_subject: Please Choose Subject

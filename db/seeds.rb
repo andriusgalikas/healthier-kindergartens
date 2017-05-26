@@ -126,3 +126,6 @@ PaymentMode.create(period: 1, unit: 'year')
 p "Creating Payment Start"
 PaymentStart.create(period: 7, unit: 'day')
 PaymentStart.create(period: 14, unit: 'day')
+
+p "Creating Global Setting"
+GlobalSetting.create(key: "Journey Page Mode", value: 'deposit_mode')
