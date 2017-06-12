@@ -87,6 +87,15 @@ class PagesController < ApplicationController
         redirect_to dashboard_path
     end
 
+    def contact_us
+        render layout: 'registration'
+    end
+
+    def send_message
+        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_now
+        redirect_to root_path 
+    end
+
     private
 
     def set_subjects

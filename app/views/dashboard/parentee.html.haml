@@ -15,6 +15,9 @@
             = link_to list_messages_path(role: current_user.role, list_type: 'received'), 'data-step': '15', 'data-intro': t('user_guide.menu.parent_message') do
               = image_tag 'dashboard-com-mng.png'
               %span=t('dashboard.menu_item.communication')
+            = link_to role_parentee_illness_guides_path, id: 'item_illness' do
+              = image_tag 'dashboard-ilness-rec.png'
+              %span=t('dashboard.menu_item.illness_guide')
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-ilness.png'
             /  %span ILLNESS ANALYTIC

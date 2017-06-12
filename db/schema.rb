@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522105157) do
+ActiveRecord::Schema.define(version: 20170605073019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,13 +202,31 @@ ActiveRecord::Schema.define(version: 20170522105157) do
     t.integer  "department_id"
   end
 
+  create_table "illness_guides", force: :cascade do |t|
+    t.integer  "illness_id"
+    t.string   "content"
+    t.string   "language"
+    t.string   "ref_id"
+    t.integer  "target_role"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "illnesses", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "language"
     t.string   "ref_id"
+    t.string   "worker_guide_file_name"
+    t.string   "worker_guide_content_type"
+    t.integer  "worker_guide_file_size"
+    t.datetime "worker_guide_updated_at"
+    t.string   "parent_guide_file_name"
+    t.string   "parent_guide_content_type"
+    t.integer  "parent_guide_file_size"
+    t.datetime "parent_guide_updated_at"
   end
 
   create_table "locale_files", force: :cascade do |t|

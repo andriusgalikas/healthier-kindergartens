@@ -34,6 +34,8 @@ class Admin::PagesController < AdminController
 
     build_illness_from_spreadsheet
 
+    build_illness_guide_from_spreadsheet
+
     redirect_to admin_lang_main_path
   end
 
@@ -54,6 +56,18 @@ class Admin::PagesController < AdminController
   end
 
   private
+
+  def check_gabige_yml
+    if params[:yml_file]
+      content = File.read(params[:yml_file].tempfile)
+      all_keys = Translation.where(:locale => 'us').select(:key)
+      all_keys.each do |item|
+        unless content.include? item.key
+          puts item.key
+        end
+      end
+    end
+  end
 
   def get_all_template_subjects
     @subjects = MessageSubject.template_subjects
@@ -101,6 +115,7 @@ class Admin::PagesController < AdminController
     end
   rescue => e
     flash[:alert] = "Upload yml is failed."
+    puts e
   end
 
   def build_template_from_spreadsheet
@@ -240,7 +255,7 @@ class Admin::PagesController < AdminController
                     end
 
                     isNewObject = false
-                    @todo = Todo.where(ref_id: xlsx.cell(line, 'A')).first unless xlsx.cell(line, 'A').nil?
+                    @todo = Todo.where(ref_id: xlsx.cell(line, 'A'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'A').nil?
                     if @todo.nil?
                       @todo = Todo.new
                       isNewObject = true
@@ -267,7 +282,7 @@ class Admin::PagesController < AdminController
                   end
 
                   unless xlsx.cell(line, 'G').nil?
-                    @todo_task = @todo.tasks.where(ref_id: xlsx.cell(line, 'G')).first unless xlsx.cell(line, 'G').nil?
+                    @todo_task = @todo.tasks.where(ref_id: xlsx.cell(line, 'G'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'G').nil?
                     if @todo_task.nil?
                       @todo_task = @todo.tasks.new
                     end
@@ -281,7 +296,7 @@ class Admin::PagesController < AdminController
                       )
                     @todo_task.save(validate: true)
                   end           
-                  sub_task = @todo_task.sub_tasks.where(ref_id: xlsx.cell(line, 'J')).first unless xlsx.cell(line, 'J').nil?
+                  sub_task = @todo_task.sub_tasks.where(ref_id: xlsx.cell(line, 'J'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'J').nil?
                   if sub_task.nil?
                     sub_task = @todo_task.sub_tasks.new
                   end
@@ -316,7 +331,7 @@ class Admin::PagesController < AdminController
           2.upto(xlsx.last_row) do |line|
             index += 1
             unless xlsx.cell(line, 'A').nil?
-              @illness = Illness.where(ref_id: xlsx.cell(line, 'A')).first unless xlsx.cell(line, 'A').nil?
+              @illness = Illness.where(ref_id: xlsx.cell(line, 'A'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'A').nil?
               if @illness.nil?
                 @illness = Illness.new
               end
@@ -343,6 +358,44 @@ class Admin::PagesController < AdminController
     flash[:notice] = "Upload illness is sucessfully."
   rescue => e
     flash[:alert] = "Upload illness is failed."
+  end
+
+  def build_illness_guide_from_spreadsheet
+    file_data = params[:illness_guide_template]
+
+    if file_data
+      xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
+      if xlsx.sheets.count > 0
+        if xlsx.last_row > 1
+          index = Time.now.to_i     
+          2.upto(xlsx.last_row) do |line|
+            index += 1
+            unless xlsx.cell(line, 'A').nil?
+              @illness = Illness.where(ref_id: xlsx.cell(line, 'A'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'A').nil?
+              unless @illness.nil?
+                illness_guide = @illness.illness_guides
+                                  .where(
+                                      ref_id: xlsx.cell(line, 'A'), 
+                                      language: params[:language_short_name].downcase, 
+                                      target_role: IllnessGuide.target_roles[xlsx.cell(line, 'C').downcase])
+                                  .first unless xlsx.cell(line, 'C').nil?
+                if illness_guide.nil?
+                  illness_guide = @illness.illness_guides.new
+                end
+                illness_guide.ref_id = xlsx.cell(line, 'A')
+                illness_guide.target_role = xlsx.cell(line, 'C').downcase
+                illness_guide.content = xlsx.cell(line, 'D')
+                illness_guide.language = params[:language_short_name].downcase
+                illness_guide.save
+              end
+            end
+          end        
+        end
+      end
+    end
+    flash[:notice] = "Upload illness description is sucessfully."
+  rescue => e
+    flash[:alert] = "Upload illness description is failed."    
   end
 
 end

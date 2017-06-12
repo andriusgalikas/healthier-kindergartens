@@ -66,6 +66,9 @@ class Admin::IllnessesController < AdminController
     params.require(:illness).permit(
       :name,
       :code,
+      :worker_guide,
+      :parent_guide,
+      :language,
       symptoms_attributes: [:_destroy, :id, :name, :code, :illness_id]
     )
   end

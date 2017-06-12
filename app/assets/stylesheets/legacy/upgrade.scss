@@ -127,7 +127,7 @@ $hcc-green: #2bd34d;
       padding: 20px;
       p {
         font-weight: 200;
-        margin-left: 66px;
+        margin-left: 80px;
       }      
     }
     .ongoing-heading h2{
@@ -136,6 +136,7 @@ $hcc-green: #2bd34d;
 
     .single-ongoing img {
       float: left;
+      max-width: 40px;
     }
   }
 

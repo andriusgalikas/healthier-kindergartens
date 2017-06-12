@@ -48,6 +48,16 @@ en:
       login: Login
       logout: Logout
 
+    login:
+      label: Login
+    contact_us:
+      label: Contact Us
+      email: Please input your email address
+      subject: Please input your subject
+      content: Please input your content
+      submit: Send
+      gohome: Go Home
+
     about:
       sub_heading1: "Protecting Children and Employees"
       sub_heading2: "from harm to their health in Childcare Settings"
@@ -62,7 +72,7 @@ en:
       president_subheading: The healthier Safer childcare alliance's president ,Tareq Ghulam, developed a passion for hygiene in childcare from his mother.
       president_para1: In 1961, Richard’s mother emigrated to Norway from Bangladesh with Tareq and his younger brother. In search for a better life, the single mother worked double shifts, but always did a superb job as she worked with pride and purpose.
       president_para2: This commitment was not lost on Tareq, who helped his mother clean daycare.
-      president_para3: Later Tareq himself went into providing hygiene services to childcares where he  became confronted by daycare owners who wanted to help fighting spread of infections. Not being able to provide a proficient answer he felt internally embarrassed to the degree that he made a decision to focus on researching the field of infection control in childcare . <img src='/assets/about-man.jpg' style='float:left; margin-right:15px;'> During this time,Tareq discovered that a lot of the research about child care infection control methods and practices ended up in journals that few people outside of the scientific community read and benefit from. He was also shocked to discover that children in childcare facilities are 2 to 3 times more vulnerable to infectious illnesses than those who cared for at home1 a fact that researchers have documented for decades in multiple settings. And while most infectious illnesses get resolved without disrupting the development of children, some infections can cause lasting physical damage or even death. He was disturbed and saddened by a real life case that made him certain infection risk mitigation was vital to the childcare community. In May 31, 2015, tragedy struck the Learning Vine Child Development Center, a childcare facility in South Carolina, USA.  The Director of the center was notified that one of its toddlers, two-year-old Myles Mayfield, died following complications from an infection of E. coli.  Myles had acquired the disease from an infected childcare worker two weeks earlier. 
+      president_para3: Later Tareq himself went into providing hygiene services to childcares where he  became confronted by daycare owners who wanted to help fighting spread of infections. Not being able to provide a proficient answer he felt internally embarrassed to the degree that he made a decision to focus on researching the field of infection control in childcare . During this time,Tareq discovered that a lot of the research about child care infection control methods and practices ended up in journals that few people outside of the scientific community read and benefit from. He was also shocked to discover that children in childcare facilities are 2 to 3 times more vulnerable to infectious illnesses than those who cared for at home1 a fact that researchers have documented for decades in multiple settings. And while most infectious illnesses get resolved without disrupting the development of children, some infections can cause lasting physical damage or even death. He was disturbed and saddened by a real life case that made him certain infection risk mitigation was vital to the childcare community. In May 31, 2015, tragedy struck the Learning Vine Child Development Center, a childcare facility in South Carolina, USA.  The Director of the center was notified that one of its toddlers, two-year-old Myles Mayfield, died following complications from an infection of E. coli.  Myles had acquired the disease from an infected childcare worker two weeks earlier. 
 
       question_heading: "Future tragedies need to be avoided"
       question_para1: "The management and operators of this institution failed to follow the best practice related to the infection at hand. In a statement on behalf of the family, Barry Mayfield said: “This lawsuit was never about money. All the money in the world can’t bring back Myles. By filing this lawsuit, we just wanted some accountability, so that no other family would ever have to lose a child the way our family did. We hope that by shining a light on what happened to Myles, future tragedies can be avoided.”"
@@ -95,22 +105,6 @@ en:
       journey_1: Join us in the fight against the spread of infections at your childcare facility, and give children the safe and healthy environment they deserve. Start your journey here.
       journey_link: You are welcome to apply here...
             
-    implementation:
-      main_heading: "Implementation"
-      para1: "Ensure the best practices are reinforced and upheld…"
-      sub_heading1: "Infection preventive food handling"
-      para2: "The storage, preparation and distribution of food in childcare facilities present some unique challenges for children and staff alike. With numerous opportunities for cross-contamination and food-borne illnesses and the potential of germs entering from other areas of the daycare, the food preparation area is the vulnerable nerve center of the facility. As a result, stringent protocols must be implemented to assure safe food handling and healthy, contaminant-free meals."
-      sub_heading2: "Infection preventive exclusion of sick children"
-      para3: "Children and staff at childcare establishments come in contact with many pathogens every day. Healthy children could be exposed to sick children at the center, and possibly get infected, too. To control the transmission of disease at your daycare, it is important to exclude sick children from your center until they become healthy again."
-      sub_heading3: "Infection preventive diapering"
-      para4: "The diapering area can easily be the most contaminated zone in a daycare center. Common communicable gastrointestinal diseases can be passed from person to person, even if no symptoms of the illness are present. In fact, norovirus and rotavirus are continually excreted through feces for at least 30-60 days after symptoms have ceased."
-      sub_heading4: "Infection preventive outbreak control strategies"
-      para5: "Several risk factors that contribute to a potentially severe outbreak of disease are inherent with childcare centers. Such an outbreak would spread rapidly due to children’s habits of handling and sucking foreign objects, the high number of occupants and the close physical proximity typically found in daycares.Childcare managers must have a comprehensive understanding of the potential for disease propagation during an outbreak to be able to take the necessary steps to contain or eradicate the disease."
-      sub_heading5: "Infection preventive cleaning of bodily fluids"
-      para6: "Childcare facilities cope with a daily battle of bodily fluids that might be regarded as dangerous biohazards in other industries. The little bundles of joy in daycares cause a set of circumstances that pose serious health risks to the facilities’ children, employees and their expanded social networks. Furthermore, one does not need to make direct contact with bodily fluids of a sick individual for pathogens to be passed on. If vomit and fecal episodes aren't disinfected properly or remain unattended for an extended time, the pathogens will become airborne and spread to other surfaces and individuals."
-      sub_heading6: "Infection preventive hand washing"
-      para7: "Hand hygiene and proper hand washing constitute the first line of defense against the spread of infection. Infection-spreading germs are easily accumulated on and shared by our hands, resulting in unsanitary conditions in daycare settings."
-
     infection:
       main_heading: "Infection risk assessment"
       para1: "Detect the level of infection risk in your facility"
@@ -417,17 +411,6 @@ en:
       main_heading: "Welcome"
       sub_heading: "Lets get started and choose who you are!"
 
-    welcome:
-      head1: "Infection"  
-      head2: "Instruction"
-      head3: "Implementation"
-      sub_head1: "risk assessment Detect the level of infection risk in your facility"
-      sub_head2: "Learn best infection prevention practices"
-      sub_head3: "Ensure the best practices are reinforced and upheld…"
-      para1: "The infection risk assessment component is the first step in the journey to your facility’s infection prevention excellence. It allows you as childcare manager to discover your staff’s level of competency in the six core areas of infection control.This assessment also enables you to detect exactly, the scope of risk of disease and infection in your facility, your staff may be exposing to children and other employees."
-      para2: "Lack of knowledge in infection preventive practice limits your employees` ability to control and prevent the spread of infections. Knowledge of infection control is a great step in rooting out the causes of the spread of diseases and their risk to children and employees.<br><br><br>Ifeveryone shares this deep and rich pool of the same knowledge base in infection control and prevention, the chance of spread of diseases in the entire community will decreases significantly. For that reason, all our courses are open to the entire child care community, including parents."
-      para3: "After one-shot training your daycare staff will hardly retain what they have learned. Typically, they can easily forget the newly –learnt skill if there is no follow-up after the initial training.<br><br><br>This is why in the implementation part of the accreditation program we give you tools that will enable your childcare community to implement, measure, and track the newly learnt best infection preventive practices. The tools accompanying each module are specifically designed to ensure that the highest standards of infection prevention are implemented and upheld.<br><br><br>Click the icon below and learn more about the tools you need for you to succeed in implementing the learnt infection preventive practices."
-
     login:
       invalid_password: Invalid email/password combination
       invalid_activate: Please activate your account by following the instructions in the account confirmation email you received to proceed
@@ -569,6 +552,8 @@ en:
       line5: "You can get started now by going to your"
    
   mailers:
+    supermanager:
+      email: hebahakinu@ipdeer.com
     daycare:
       invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
     registration:
@@ -637,6 +622,7 @@ en:
       communication: Outbreak Communication
       illness_analytic: ILLNESS Trends
       illness_record: ILLNESS Record    
+      illness_guide: ILLNESS Guide    
       guide_line: Guide Line
       health_conversations: Health Conversations
     menu_tooltip:
@@ -820,6 +806,39 @@ en:
     featured_daycare_by_plan: Daycare has Reserved their spot on the accreditation program by making a deposit of 100 kr.
 
   messages:
+    message: Communication Manager 
+ 
+    breadcrumb: 
+      message: Message 
+      choose_template: Choose Template 
+      create_template: Create Template 
+      create_subject: Create Subject 
+      create_sub_subject: Create Sub-Subject 
+      choose_department: Choose Department 
+      choose_recipient: Choose Recipient 
+      add_content: Add Content 
+      edit_template: Edit Message Template 
+      message_options: Message Options 
+      choose_subject: Choose Subject 
+      choose_sub_subject: Choose Sub-subject 
+      create_message: Create Message 
+      send: Send 
+      edit: Edit 
+ 
+    notifications: 
+      create_template_success: Message template was successfully created. 
+      create_template_error: There are errors creating the message templates. 
+      update_template_success: Message template successfully updated. 
+      delete_template_success: Message template successfully deleted. 
+      find_template_empty: No message template match. 
+      send_message_success: Message successfully sent. 
+      send_message_error: There was an error creating the message. 
+      delete_template_confirm: Are you sure you want to delete this template? 
+      no_template_for_role: No message template found. 
+      invalid_template_file: Invalid file! Please upload text file only. 
+      required_filter_role: Please choose filter Role. 
+      required_filter_subject: Please choose filter Subject. 
+      required_filter_sub_subject: Please choose filter Sub-subject. 
     
     labels:
       subject: Subject
@@ -869,6 +888,15 @@ en:
     parentee:
       registration: Parent Registration
       select_daycare: Search and select the daycare which your child is part of
+  
+  illness_guides:
+    illness: Illness Guide
+    labels:
+      choose_recipient: Please Choose Role
+      guide_content: Illness Guideline
+      choose_illness: Choose Illness
+      prev: Prev
+      next: Next
 
   illnesses:
     breadcrumb:
@@ -980,6 +1008,7 @@ en:
       additional_actions: Additional actions taken including first aid administration of medication in your facility
 
     department_illness_record:
+      illness_guide: Illness Guideline
       sick_workers_count: Number of workers sick
       sick_children_count: Number of children sick
       start_date: Date when the symptoms started showing
@@ -1083,6 +1112,14 @@ en:
       doneBtn: Done
       skipBtn: Skip
       closeTooltip: Close
+
+    illness_guide:
+      step1: "Select Daycare type"
+      step2: "Click Next"
+      step3: "Select Illness to check"
+      step4: "Click Next"
+      step5: "It's illness guideline for daycare"
+
     manager:
       dashboard:
         title: Daycare Manager Dashboard Guide

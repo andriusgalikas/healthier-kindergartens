@@ -42,3 +42,4 @@
 //= require jquery.plainmodal
 //= require jquery.easing
 //= require flipclock.min.js
+//= require pdf.js

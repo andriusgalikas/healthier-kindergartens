@@ -21,6 +21,8 @@
             %th Name
             %th Illness Code
             %th Language
+            %th Worker Guide
+            %th Parent Guide
             %th
           %form{:action => "/admin/illnesses", :method => "get"}
             %tr
@@ -31,6 +33,8 @@
               %th
                 = select_tag :language, options_for_select(pre_countries, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}
               %th
+              %th
+              %th
                 %button.btn.btn-blue.btn-large
                   Search
         %tbody
@@ -39,6 +43,8 @@
               %td= illness.name
               %td= illness.code
               %td= illness.language
+              %td= illness.worker_guide.blank? ? 'No' : 'Yes'
+              %td= illness.parent_guide.blank? ? 'No' : 'Yes'
               %td
                 = link_to edit_admin_illness_path(illness) do
                   %i.icon-pencil

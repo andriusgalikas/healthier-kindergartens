@@ -34,6 +34,9 @@
                 = link_to illnesses_path, id: 'item_illness' do
                   = image_tag 'dashboard-ilness-rec.png'
                   %span=t('dashboard.menu_item.illness_record')
+                = link_to role_worker_illness_guides_path, id: 'item_illness' do
+                  = image_tag 'dashboard-ilness-rec.png'
+                  %span=t('dashboard.menu_item.illness_guide')
 
             - else
               %a#item_survey{href: '/guide_page/worker_survey/take_step1'}

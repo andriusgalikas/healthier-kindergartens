@@ -39,6 +39,7 @@
     border-radius: 30px;
   }  
 
+  textarea.form-control,
   input.form-control,
   select.form-control{
     border: 1px solid #242c3f;
@@ -54,6 +55,10 @@
     }
   }
 
+  textarea.input-round{
+    border-radius: 10px;
+  }
+
   .has-feedback .form-control-feedback{
     font-size: 20px;
     padding: 7px;
@@ -61,6 +66,14 @@
     top: 2px;
     right: 10px;
     color: #aaa;
+  }
+
+  .item-home{
+    background: #ddd;
+    background: -webkit-linear-gradient(#ddd, #aaa);
+    background: -o-linear-gradient(#ddd, #aaa);
+    background: -moz-linear-gradient(#ddd, #aaa);
+    background: linear-gradient(#ddd, #aaa);
   }
 
   .item-manager{

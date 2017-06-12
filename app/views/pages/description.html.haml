@@ -374,10 +374,11 @@
     .container
       .col-md-12
         %h3.heading-letter.text-pink.text-center= t('pages.about.president_heading')
-        %h4.text-orange.text-center= t('pages.about.president_subheading')
-        %p= t('pages.about.president_para1').html_safe
         = image_tag "about-child.jpg", style: 'float:right;'
+        %p= t('pages.about.president_subheading')
+        %p= t('pages.about.president_para1').html_safe
         %p= t('pages.about.president_para2').html_safe
+        = image_tag "about-man.jpg", style: 'float:left; margin-right: 10px;'
         %p= t('pages.about.president_para3').html_safe
   .row.second-row
     .col-lg-4.col-md-4.col-sm-4.col-xs-2.left_line-last

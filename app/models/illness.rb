@@ -11,6 +11,13 @@
 #
 
 class Illness < ActiveRecord::Base
+    has_attached_file :worker_guide, path: "worker_guide/:id_partition/:filename"
+    has_attached_file :parent_guide, path: "parent_guide/:id_partition/:filename"
+
+    #validates attachment of files
+    validates_attachment_content_type :worker_guide, content_type: /./
+    validates_attachment_content_type :parent_guide, content_type: /./
+
 
   has_many :symptoms
 

@@ -42,4 +42,14 @@ class RegistrationMailer < ApplicationMailer
         }    
         result = m.send_email(data)
     end
+
+    def contact_us_message(user, subject, content)
+        m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
+        data = { "to" => {t('mailers.supermanager.email') => "App Manager"},
+            "from" => [user, 'User'],
+            "subject" => subject,
+            "html" => content
+        }    
+        result = m.send_email(data)
+    end
 end

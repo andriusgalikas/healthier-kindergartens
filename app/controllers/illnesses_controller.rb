@@ -20,6 +20,15 @@ class IllnessesController < ApplicationController
     render partial: 'illnesses/child/symptoms'
   end
 
+  def guides
+    set_illness
+    set_guide
+
+    respond_to do |format|
+      format.json { render :json => { content: '' } }
+    end     
+  end
+
   def department_workers
     set_department
     set_workers
@@ -87,6 +96,9 @@ class IllnessesController < ApplicationController
 
   def set_symptoms
     @symptoms ||= @illness.symptoms.inject({}){|list, symptom| list[symptom.code] = symptom.name; list}
+  end
+
+  def set_guide    
   end
 
   def set_department

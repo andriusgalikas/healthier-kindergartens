@@ -53,9 +53,11 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan contact_us).each do |page|
         get page, to: "pages##{page}"
-    end
+    end    
+
+    post 'contact_us', to: 'pages#send_message'
 
     get 'dashboard', to: 'dashboard#index'
 
@@ -122,6 +124,14 @@ Rails.application.routes.draw do
           end
         end
 
+        resources :illness_guides do
+          collection do
+            get  :role
+            get  :illness
+            get  :content
+          end
+        end
+
         resources :illnesses, only: [] do
           collection do
             get  :set_filters
@@ -129,6 +139,26 @@ Rails.application.routes.draw do
           end
         end
 
+    end
+
+    namespace :worker do
+        resources :illness_guides do
+          collection do
+            get  :role
+            get  :illness
+            get  :content
+          end
+        end
+    end
+
+    namespace :parentee do
+        resources :illness_guides do
+          collection do
+            get  :role
+            get  :illness
+            get  :content
+          end
+        end
     end
 
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
@@ -157,6 +187,7 @@ Rails.application.routes.draw do
         get  :department_children
         get  :child_profile
         get  :symptoms
+        get  :guides
         get  :department_workers
         get  :worker_profile
         get  :filter

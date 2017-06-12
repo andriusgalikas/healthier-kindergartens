@@ -13,9 +13,15 @@
         = f.label :name
         = f.text_field :name, class: 'form-control'
         = f.hidden_field :code, value: (@illness.id) ? @illness.code : "IL-#{Time.now.to_i}"
-      .form-group.form-last
+      .form-group
         = f.label :language
         = f.select :language, options_for_select(pre_countries, :selected => f.object.language), {},{:class => 'form-control'}
+      .form-group
+        = f.label "Worker Guide"
+        = f.file_field :worker_guide, class: 'form-control'
+      .form-group.form-last
+        = f.label "Parent Guide"
+        = f.file_field :parent_guide, class: 'form-control'
 
   .threecol
     %h3 Symptoms
