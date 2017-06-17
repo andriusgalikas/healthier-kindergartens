@@ -121,3 +121,5 @@ gem 'docx'
 
 # wysiwyg
 gem 'wysiwyg-rails'
+
+gem 'ckeditor'

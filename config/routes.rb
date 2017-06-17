@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   resources :locales do
     resources :translations, constraints: { :id => /[^\/]+/ }
   end

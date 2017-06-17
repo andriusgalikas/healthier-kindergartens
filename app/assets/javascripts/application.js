@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ckeditor/init
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require jquery.datetimepicker
 //= require _healthChildcare

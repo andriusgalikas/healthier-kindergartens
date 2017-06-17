@@ -15,6 +15,7 @@ module HealthChildcare
 
     config.assets.initialize_on_precompile = false
 
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.autoload_paths << Rails.root.join('lib')
 
