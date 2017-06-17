@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605073019) do
+ActiveRecord::Schema.define(version: 20170617190844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -371,6 +371,13 @@ ActiveRecord::Schema.define(version: 20170605073019) do
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
+  end
+
+  create_table "poster_email_users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "locale_poster_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "sub_task_completes", force: :cascade do |t|
