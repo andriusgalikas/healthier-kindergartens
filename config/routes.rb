@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :locales do
     resources :translations, constraints: { :id => /[^\/]+/ }
   end
+  resources :locale_posters, only: :create
+
 
   resources :message_subjects
     devise_for :users, skip: [:registrations, :sessions, :passwords]
