@@ -260,7 +260,7 @@ Rails.application.routes.draw do
         resources :videos, except: :show
         resources :email_campaigns, except: :show
         resources :locale_logos, except: :show
-        resources :locale_posters, except: :show
+        resources :locale_posters
     end
 
     namespace :partner do

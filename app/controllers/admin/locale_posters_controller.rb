@@ -4,6 +4,10 @@ class Admin::LocalePostersController < AdminController
 		set_locale_posters
 	end
 
+  def show
+    set_locale_poster
+  end
+
 	def new
 		new_locale_poster
 		@ori_locale_poster = LocalePoster.find(params[:poster_id]) unless params[:poster_id].nil?

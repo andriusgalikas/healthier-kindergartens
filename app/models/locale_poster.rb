@@ -19,7 +19,12 @@ class LocalePoster < ActiveRecord::Base
 
   #validates attachment of files
   validates_attachment_content_type :poster, content_type: /./
+  POSTER_TYPES = {
+                   1 => 'Food Handling',
+                   2 => 'Diapering',
+                   3 => 'Hand Hygiene',
+                 }
 
-  scope :by_language,     	->(search) { where("(LOWER(locale_posters.language) LIKE :search)", :search => "%#{search.downcase}%") }
+  scope :by_language,       ->(search) { where("(LOWER(locale_posters.language) LIKE :search)", :search => "%#{search.downcase}%") }
   scope :by_type_language,  ->(type, lang) { where("(LOWER(locale_posters.language) LIKE :lang) AND (locale_posters.poster_type = :type)", {:lang => "%#{lang.downcase}%", :type => type}) }
 end

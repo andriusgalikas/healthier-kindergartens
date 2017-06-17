@@ -45,6 +45,9 @@
                     <%= poster.language %>
                 </td>
               <td>
+                <%= link_to admin_locale_poster_path(id: poster.id) do %>
+                    <i class="icon-eye"></i>
+                <% end %>
                 <%= link_to new_admin_locale_poster_path(poster_id: poster.id) do %>
                     <i class="icon-plus"></i>
                 <% end %>
