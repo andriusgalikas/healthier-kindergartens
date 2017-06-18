@@ -13,7 +13,9 @@
     = csrf_meta_tag
     = tag :meta, name: "stripe-key", content: Rails.application.secrets.stripe_public_key
 
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true
+    %link{href: "/assets/lang/style_#{I18n.locale.downcase}.css", rel: 'stylesheet', type: 'text/css'}
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     :javascript
       window._trans = #{yield_js_translations.to_json.html_safe}
