@@ -18,7 +18,7 @@ class Users::PasswordsController < Devise::PasswordsController
     reset_url = Rails.application.routes.url_helpers.edit_user_password_path(reset_password_token: raw)
     reset_url = "#{request.protocol}#{request.host_with_port}#{reset_url}"
     template = t('mailers.mail_reset_password.content', name: resource.name, url: reset_url).html_safe
-    #RegistrationMailer.reset_password_confirmation(resource, template).deliver_now
+    RegistrationMailer.reset_password_confirmation(resource, template).deliver_now
    end
 
   # GET /resource/password/edit?reset_password_token=abcdef

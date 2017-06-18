@@ -48,8 +48,6 @@ en:
       login: Login
       logout: Logout
 
-    login:
-      label: Login
     contact_us:
       label: Contact Us
       email: Please input your email address
@@ -437,8 +435,15 @@ en:
       sub_heading: "Lets get started and choose who you are!"
 
     login:
-      invalid_password: Invalid email/password combination
-      invalid_activate: Please activate your account by following the instructions in the account confirmation email you received to proceed
+      invalid_password: Ugyldig epost adresse/passord kombinasjon 
+      invalid_activate: vennligst aktiver din konto ved å følge veiledningen du har fått tilsendt per epost når du registerte din bruker profil.Dersom du ikke har registret din bruker profil eller vet ikke hvodan du gjøre det, klikk på kontakt oss knappen for å ta kontakt med foreningen
+      label: LOGIN
+      forgot_password: Forgot Password
+
+    password:
+      forgot_label: Forgot your password?
+      send_guide: Send Reset Password Guide
+
     upgrade:
       title: Your path toward higher level of Healthier and Safer ChildCare starts here
       description: You have selected accreditation plan for %{num_child} children.

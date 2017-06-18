@@ -76,7 +76,7 @@ module ApplicationHelper
 
       locale_logo = LocaleLogo.find_by(language: I18n.locale.upcase)
 
-      trans['featured_daycare'] = (locale_logo.nil? || locale_logo.invitation_notifier.blank?) ? I18n.t('notifications.featured_daycare') : locale_logo.invitation_notifier
+      trans['featured_daycare'] = (locale_logo.nil? || locale_logo.upgrade_notifier.blank?) ? I18n.t('notifications.featured_daycare') : locale_logo.upgrade_notifier
       trans['featured_daycare_by_plan'] = (locale_logo.nil? || locale_logo.upgrade_notifier.blank?) ? I18n.t('notifications.featured_daycare_by_plan') : locale_logo.upgrade_notifier
       trans['no_template_for_role'] = I18n.t('messages.notifications.no_template_for_role')
       trans['invalid_template_file'] = I18n.t('messages.notifications.invalid_template_file')
