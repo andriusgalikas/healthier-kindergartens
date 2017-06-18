@@ -1,10 +1,10 @@
 - if params[:download_pdf].present?
   / Modal
-  #dash_step_1
+  #dash_step_1.download_pdf
     .modal-dialog
       / Modal content
       .modal-content
-        .modal-header
+        .modal-header#download-pdf-header
           %button.my-button.close.plainmodal-close{"data-dismiss" => "modal", :type => "button"} ×
           %h4.modal-title= t('Download Pdf').html_safe
         .modal-body
@@ -16,10 +16,10 @@
               .email-box
                 %label{:for => "email_box"}
                   = t('Email')
-                %input{:type=>"text", :name => "user_email", :id => "user_email"}
+                %input{:type=>"text", :name => "user_email", :id => "user_email", class: "form-control"}
 
             .modal-footer
-              = f.submit 'Download PDF', :class => 'btn btn-blue btn-large', id: 'download-submit'
+              = f.submit 'Download PDF', :class => 'download-pdf-submit btn', id: 'download-submit'
 
 :javascript
   jQuery(document).ready(function() {

@@ -1,0 +1,38 @@
+#download-pdf-header {
+  background: #2bd34d;
+  background: -webkit-linear-gradient(left, #2bd34d, #ffb900);
+  background: -o-linear-gradient(right, #2bd34d, #ffb900);
+  background: -moz-linear-gradient(right, #2bd34d, #ffb900);
+  background: linear-gradient(to right, #2bd34d, #ffb900);
+  color: white;
+}
+
+.download-pdf-submit {
+  border: 2px solid white;
+  background: #2bd34d;
+  background: -webkit-linear-gradient(left, #2bd34d, #ffb900);
+  background: -o-linear-gradient(right, #2bd34d, #ffb900);
+  background: -moz-linear-gradient(right, #2bd34d, #ffb900);
+  background: linear-gradient(to right, #2bd34d, #ffb900);
+  color: white;
+  color: white;
+  text-decoration: none;
+}
+
+.my-button {
+  color: white;
+}
+
+.email-box-group {
+  margin: 20px 0;
+}
+
+.email-box label {
+  float: left;
+  margin-right: 20px;
+  margin-top: 6px;
+}
+
+#user_email {
+  width:80%
+}
