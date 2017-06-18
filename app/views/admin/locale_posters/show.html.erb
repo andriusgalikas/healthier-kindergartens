@@ -31,15 +31,15 @@
         </div>
         <div class="form-group">
           <label>Title</label>
-          <div class='form-control'><%= @locale_poster.title.html_safe %></div>
+          <div class='form-control'><%= @locale_poster.title.try(:html_safe) %></div>
         </div>
         <div class="form-group">
           <label>Button</label>
-          <div class='form-control'><%= @locale_poster.button.html_safe %></div>
+          <div class='form-control'><%= @locale_poster.button.try(:html_safe) %></div>
         </div>
         <div class="form-group">
           <label>Description</label>
-          <div class='form-control' style="height:100%"><%= @locale_poster.description.html_safe %></div>
+          <div class='form-control' style="height:100%"><%= @locale_poster.description.try(:html_safe) %></div>
         </div>
         </fieldset>
 <% end %>
