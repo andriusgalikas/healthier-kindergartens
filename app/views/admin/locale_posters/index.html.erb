@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th>Description</th>
-            <th>Type</th>
+            <th style="width:130px;">Type</th>
             <th>Language</th>
             <th></th>
           </tr>
@@ -21,7 +21,7 @@
           <tr>
             <th></th>
             <th>
-              <%= select_tag :poster_type, options_for_select(LocalePoster.pluck(:poster_type).uniq, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Any', class: 'form-control'} %>
+              <%= select_tag :poster_type, options_for_select(LocalePoster.pluck(:poster_type).uniq, selected: params[:poster_type]), {:include_blank => 'Any', class: 'form-control'} %>
             </th>
             <th>
               <%= select_tag :language, options_for_select(pre_countries, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>

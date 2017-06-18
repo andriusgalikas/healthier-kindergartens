@@ -28,5 +28,6 @@ class LocalePoster < ActiveRecord::Base
                  }
 
   scope :by_language,       ->(search) { where("(LOWER(locale_posters.language) LIKE :search)", :search => "%#{search.downcase}%") }
+  scope :by_poster_type,       ->(search) { where("(LOWER(locale_posters.poster_type) LIKE :search)", :search => "%#{search.downcase}%") }
   scope :by_type_language,  ->(type, lang) { where("(LOWER(locale_posters.language) LIKE :lang) AND (locale_posters.poster_type = :type)", {:lang => "%#{lang.downcase}%", :type => type}) }
 end

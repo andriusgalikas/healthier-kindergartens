@@ -51,6 +51,8 @@ class Admin::LocalePostersController < AdminController
 	def set_locale_posters
 		@locale_posters = LocalePoster.all
 		@locale_posters = @locale_posters.by_language(params[:language]) unless params[:language].nil? || params[:language].blank?
+		@locale_posters = @locale_posters.by_poster_type(params[:poster_type]) unless params[:poster_type].nil? || params[:poster_type].blank?
+
 	end
   
 	def new_locale_poster
