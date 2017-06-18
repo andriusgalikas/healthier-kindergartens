@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618114552) do
+ActiveRecord::Schema.define(version: 20170618121611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -286,7 +286,7 @@ ActiveRecord::Schema.define(version: 20170618114552) do
   end
 
   create_table "locale_posters", force: :cascade do |t|
-    t.integer  "poster_type"
+    t.string   "poster_type"
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"

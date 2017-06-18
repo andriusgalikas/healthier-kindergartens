@@ -12,15 +12,17 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Type</th>
             <th>Description</th>
+            <th>Type</th>
             <th>Language</th>
             <th></th>
           </tr>
           <form action="/admin/locale_posters" method="get">
           <tr>
             <th></th>
-            <th></th>            
+            <th>
+              <%= select_tag :poster_type, options_for_select(LocalePoster.pluck(:poster_type).uniq, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Any', class: 'form-control'} %>
+            </th>
             <th>
               <%= select_tag :language, options_for_select(pre_countries, :selected=> (params[:language].nil?) ? '' : params[:language].upcase), {:include_blank => 'Select Language', class: 'form-control'}%>
             </th>
@@ -36,10 +38,10 @@
           <% @locale_posters.each do |poster| %>
             <tr>
                 <td>
-                    <%= poster.poster_type %>
+                    <%= poster.description %>
                 </td>
                 <td>
-                    <%= poster.description %>
+                    <%= poster.poster_type %>
                 </td>
                 <td>
                     <%= poster.language %>

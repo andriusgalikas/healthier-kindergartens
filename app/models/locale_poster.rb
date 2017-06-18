@@ -19,6 +19,8 @@ class LocalePoster < ActiveRecord::Base
 
   #validates attachment of files
   validates_attachment_content_type :poster, content_type: /./
+  validates :poster_type, uniqueness: true
+
   POSTER_TYPES = {
                    1 => 'Food Handling',
                    2 => 'Diapering',
