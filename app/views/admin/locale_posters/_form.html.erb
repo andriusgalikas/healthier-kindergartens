@@ -21,8 +21,16 @@
                 <%= f.radio_button :poster_type, '3', (!@ori_locale_poster.nil? && @ori_locale_poster.poster_type == 3) ? {:checked => true} : {:checked => false} %> Hand Hygiene
             </div>
             <div class="form-group">
+                <%= f.label :title %>
+                <%= f.cktext_area :title, (@ori_locale_poster.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_locale_poster.title}"} %>
+            </div>
+            <div class="form-group">
                 <%= f.label :description %>
                 <%= f.cktext_area :description, (@ori_locale_poster.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_locale_poster.description}"} %>
+            </div>
+            <div class="form-group">
+                <%= f.label :button %>
+                <%= f.cktext_area :button, (@ori_locale_poster.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@ori_locale_poster.button}"} %>
             </div>
             <div class="form-group">
                 <%= f.label :language %>

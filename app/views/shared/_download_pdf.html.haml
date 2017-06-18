@@ -1,4 +1,6 @@
 - if params[:download_pdf].present?
+- poster = LocalePoster.find(params[:download_pdf])
+- button = t(poster.button).html_safe
   / Modal
   #dash_step_1.download_pdf
     .modal-dialog
@@ -6,10 +8,10 @@
       .modal-content
         .modal-header#download-pdf-header
           %button.my-button.close.plainmodal-close{"data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title= t('Download Pdf').html_safe
+          %h4.modal-title= t(poster.title).html_safe
         .modal-body
           = form_for [LocalePoster.new] do |f|
-            = t('Lorem Ipsum is good thing Lorem Ipsum is good thing Lorem Ipsum is good thing Lorem Ipsum is good thing').html_safe
+            = t(poster.description).html_safe
             = f.hidden_field :download_pdf, value: params[:download_pdf]
 
             .email-box-group
@@ -19,8 +21,8 @@
                 %input{:type=>"text", :name => "user_email", :id => "user_email", class: "form-control"}
 
             .modal-footer
-              = f.submit 'Download PDF', :class => 'download-pdf-submit btn', id: 'download-submit'
-
+              = button_tag(type: 'submit', class: "download-pdf-submit btn", id: 'download-submit') do
+                = button.html_safe
 :javascript
   jQuery(document).ready(function() {
     var effect = {

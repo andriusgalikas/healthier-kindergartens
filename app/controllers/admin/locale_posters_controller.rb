@@ -58,6 +58,6 @@ class Admin::LocalePostersController < AdminController
 	end
 
 	def locale_poster_params
-		params.require(:locale_poster).permit(:poster_type, :poster, :language, :description)
+		params.require(:locale_poster).permit(:poster_type, :poster, :language, :description, :title, :button)
 	end
 end
