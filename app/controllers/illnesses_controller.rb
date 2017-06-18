@@ -54,6 +54,7 @@ class IllnessesController < ApplicationController
 
   def create_department_record
     status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
+    
 
     if status[:code] == 'ok'
       redirect_to illnesses_path, notice: status[:message]
@@ -194,7 +195,6 @@ class IllnessesController < ApplicationController
         :sick_workers_count,
         :sick_children_count,
         :start_date,
-        :end_date,
         :possible_trigger,
         :extra_details,
         :additional_actions,

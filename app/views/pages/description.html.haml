@@ -3,59 +3,56 @@
   .promo-img
     = image_tag "mission_promo.jpg"
     .promo-text
-      %h2= t('pages.mission_step.promo_header')
-      /%p= t('pages.mission_step.promo_text')
+      %h2= t('pages.mission_step.promo_header').html_safe
+      /%p= t('pages.mission_step.promo_text').html_safe
       /%br
-      /%h4.promo-subhead= t('pages.mission_step.promo_subhead')
+      /%h4.promo-subhead= t('pages.mission_step.promo_subhead').html_safe
   / End Promo Area
   .container
     = render 'steps_navigation', page_name: 'mission'
 
 .container
   .row.step-contents
-    %h4.heading-letter.heading= t('pages.mission_step.headline')
-    %h4.sub-heading= t('pages.mission_step.main_instro')
+    %h4.heading-letter.heading= t('pages.mission_step.headline').html_safe
+    %h4.sub-heading= t('pages.mission_step.main_instro').html_safe
   .row.step-contents
-    %p= t('pages.mission_step.intro_1')
+    %p= t('pages.mission_step.intro_1').html_safe
     %p
-      = t('pages.mission_step.intro_2')
+      = t('pages.mission_step.intro_2').html_safe
       %a.reference-link{href: '#', id: 'reference_1'}1
-      = t('pages.mission_step.intro_3')
+      = t('pages.mission_step.intro_3').html_safe
 
   .row.step-contents
-    %p= t('pages.mission_step.scientific_fact')
+    %p= t('pages.mission_step.scientific_fact').html_safe
     %ul.scientific-facts
       %li
         %p
-          = t('pages.mission_step.fact_1')
+          = t('pages.mission_step.fact_1').html_safe
           %a.reference-link{href: '#', id: 'reference_2'}2
       %li
         %p
-          = t('pages.mission_step.fact_2')
+          = t('pages.mission_step.fact_2').html_safe
           %a.reference-link{href: '#', id: 'reference_3'}3
-          = t('pages.mission_step.fact_2_1')
+          = t('pages.mission_step.fact_2_1').html_safe
       %li
         %p
-          = t('pages.mission_step.fact_3')
+          = t('pages.mission_step.fact_3').html_safe
           %a.reference-link{href: '#', id: 'reference_4'}4
   .row.step-contents.children-risk-content
-    %p= t('pages.mission_step.fact_5')
-    %p= t('pages.mission_step.fact_6')
+    %p= t('pages.mission_step.fact_5').html_safe
+    %p= t('pages.mission_step.fact_6').html_safe
 
   .row.step-contents
     %p
     = image_tag('start-warning.png')
-    %h3.heading= t('pages.mission_step.children_risk')
-    %p= t('pages.mission_step.children_risk_1')
+    %h3.heading= t('pages.mission_step.children_risk').html_safe
+    %p= t('pages.mission_step.children_risk_1').html_safe
 
     %p
-      = t('pages.mission_step.children_risk_sub_1')
+      = t('pages.mission_step.children_risk_sub_1').html_safe
       %a.reference-link{href: '#', id: 'reference_5'}5
-      = t('pages.mission_step.children_risk_sub_2')
-      %a.reference-link{href: '#', id: 'reference_6'}6
-
     %p
-      = t('pages.mission_step.children_risk_2')
+      = t('pages.mission_step.children_risk_2').html_safe
       %a.reference-link{href: '#', id: 'reference_7'}7
     %p
       = t('pages.mission_step.children_risk_3').html_safe
@@ -77,7 +74,7 @@
   .row.step-contents
     %p
     = image_tag('start-parent.png')
-    %h3.heading= t('pages.mission_step.staff_parents_risk')
+    %h3.heading= t('pages.mission_step.staff_parents_risk').html_safe
     %p
       = t('pages.mission_step.staff_parents_risk_1').html_safe
       %a.reference-link{href: '#', id: 'reference_13'}13
@@ -86,15 +83,6 @@
       %a.reference-link{href: '#', id: 'reference_14'}14
       %a.reference-link{href: '#', id: 'reference_15'}15
       %a.reference-link{href: '#', id: 'reference_16'}16
-    %p
-      = t('pages.mission_step.staff_parents_risk_3').html_safe
-      %a.reference-link{href: '#', id: 'reference_17'}17
-    %p
-      = t('pages.mission_step.staff_parents_risk_4').html_safe
-      %a.reference-link{href: '#', id: 'reference_18'}18
-    %p
-      = t('pages.mission_step.staff_parents_risk_5').html_safe
-      %a.reference-link{href: '#', id: 'reference_19'}19
 
     %h4.sub-heading= t('pages.mission_step.what_to_do').html_safe
     %p
@@ -129,9 +117,7 @@
     .row
       %h3.heading.heading-letter
         = t('pages.standard.head1').html_safe
-      %h4.sub-heading= t('pages.standard.sub_head1').html_safe
       %p
-        = t('pages.standard.para1').html_safe
         = t('pages.standard.instro1').html_safe
         %a.reference-link{href: '#', id: 'reference_23'}23
         = t('pages.standard.instro2').html_safe
@@ -199,11 +185,6 @@
         %a.reference-link{href: '#', id: 'reference_24'}24
         = t('pages.standard.para7_5').html_safe
         %a.reference-link{href: '#', id: 'reference_25'}25
-      %p
-        = t('pages.standard.para7_6').html_safe
-        %a.reference-link{href: '#', id: 'reference_21'}21
-      %p= t('pages.standard.para7_7').html_safe
-      %p= t('pages.standard.para7_8').html_safe
 
 .row.step-contents.next-step-content
   .next-green-step
@@ -286,7 +267,6 @@
       .phase-director
       .phase-details
         %h3.heading= t('pages.path.phase1_det_title').html_safe
-        %p= t('pages.path.phase1_det_para1').html_safe
         %h4.sub-heading= t('pages.path.phase1_det_subtitle').html_safe
         %p= t('pages.path.phase1_det_para2').html_safe
   .row.step-detail-2.detail-wapper
@@ -294,7 +274,6 @@
       .phase-director
       .phase-details
         %h3.heading= t('pages.path.phase2_det_title').html_safe
-        %p= t('pages.path.phase2_det_para1').html_safe
         %h4.sub-heading= t('pages.path.phase2_det_subtitle').html_safe
         %p= t('pages.path.phase2_det_para2').html_safe
         %p= t('pages.path.phase2_det_para3').html_safe
@@ -309,7 +288,6 @@
       .phase-director
       .phase-details
         %h3.heading= t('pages.path.phase3_det_title').html_safe
-        %p= t('pages.path.phase3_det_para1').html_safe
         %h4.sub-heading= t('pages.path.phase3_det_subtitle').html_safe
         %p= t('pages.path.phase3_det_para2').html_safe
         .col-md-offset-3.col-md-6.step-contents.text-center          
@@ -391,7 +369,6 @@
     .container
       .col-md-12
         %p= t('pages.about.question_para1').html_safe
-        %p= t('pages.about.question_para2').html_safe
         %p= t('pages.about.question_para3').html_safe
         %p= t('pages.about.question_para4').html_safe
         %p= t('pages.about.question_para5').html_safe

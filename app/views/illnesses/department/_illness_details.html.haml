@@ -42,9 +42,9 @@
       %label.step-instruction= t('protocols.department_illness_record.start_date')
       = text_field_tag 'record[start_date]', '', class: 'datepicker form-control datetime-input'
 
-    .form-group
-      %label.step-instruction= t('protocols.department_illness_record.end_date')
-      = text_field_tag 'record[end_date]', '', class: 'datepicker form-control datetime-input'
+    / .form-group
+    /   %label.step-instruction= t('protocols.department_illness_record.end_date')
+    /   = text_field_tag 'record[end_date]', '', class: 'datepicker form-control datetime-input'
 
     .form-group
       %label.step-instruction= t('protocols.department_illness_record.possible_trigger')
@@ -55,99 +55,9 @@
       = text_area 'record', 'extra_details', class: 'form-control'
 :javascript
 
-  PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
-  // Using DocumentInitParameters object to load binary data.
-  var guide_url = '';
-
-  var pdfDoc = null,
-      pageNum = 1,
-      pageRendering = false,
-      pageNumPending = null,
-      scale = 1;
-      //canvas = document.getElementById('pdf_canvas'),
-      //ctx = canvas.getContext('2d');
-
-  function renderPage(num) {
-    pageRendering = true;
-    // Using promise to fetch the page
-    pdfDoc.getPage(num).then(function(page) {
-      var container_width = document.getElementById('pdf-wrapper').offsetWidth;
-      var viewport = page.getViewport(scale);
-      if(container_width > viewport.width){
-        canvas.height = viewport.height * (container_width / viewport.width);
-        canvas.width = container_width;
-        viewport = page.getViewport((container_width / viewport.width));
-      } else {
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;      
-      }
-
-      // Render PDF page into canvas context
-      var renderContext = {
-        canvasContext: ctx,
-        viewport: viewport
-      };
-      var renderTask = page.render(renderContext);
-
-      // Wait for rendering to finish
-      renderTask.promise.then(function() {
-        pageRendering = false;
-        if (pageNumPending !== null) {
-          // New page rendering is pending
-          renderPage(pageNumPending);
-          pageNumPending = null;
-        }
-      });
-    });
-
-    // Update page counters
-    document.getElementById('page_num').textContent = pageNum;
-  }
-
-  function queueRenderPage(num) {
-    if (pageRendering) {
-      pageNumPending = num;
-    } else {
-      renderPage(num);
-    }
-  }
-
-  function onPrevPage() {
-    if (pageNum <= 1) {
-      return;
-    }
-    pageNum--;
-    queueRenderPage(pageNum);
-  }
-  //document.getElementById('prev').addEventListener('click', onPrevPage);
-
-  function onNextPage() {
-    if (pageNum >= pdfDoc.numPages) {
-      return;
-    }
-    pageNum++;
-    queueRenderPage(pageNum);
-  }
-  //document.getElementById('next').addEventListener('click', onNextPage);
-
   jQuery(document).ready(function() {   
 
     document.addEventListener('contextmenu', event => event.preventDefault());  
-
-    $('body').on('change', 'input[name="record[illness_code]"]:checked', function() {
-
-    //  guide_url = $(this).data('illness_guide');
-
-    //  if (guide_url){
-    //    PDFJS.getDocument(guide_url).then(function(pdfDoc_) {
-    //      pdfDoc = pdfDoc_;
-    //      document.getElementById('page_count').textContent = pdfDoc.numPages;
-
-    //      renderPage(pageNum);
-    //    });
-    //  }
-
-    });
 
     $('.datepicker').datetimepicker({
       format: 'd/m/Y',

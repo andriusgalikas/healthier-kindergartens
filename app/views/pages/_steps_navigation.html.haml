@@ -2,16 +2,16 @@
   .col-md-3
     = link_to '/description#mark_mission' do
       %i.fa{class: page_name == 'mission' ? 'fa-angle-down' : 'fa-angle-right'}
-      = t('pages.nav_bar.mission')
+      = t('pages.nav_bar.mission').html_safe
   .col-md-3
     = link_to '/description#mark_standard' do
       %i.fa{class: page_name == 'standard' ? 'fa-angle-down' : 'fa-angle-right'}
-      = t('pages.nav_bar.standard')
+      = t('pages.nav_bar.standard').html_safe
   .col-md-3
     = link_to '/description#mark_path' do
       %i.fa{class: page_name == 'path' ? 'fa-angle-down' : 'fa-angle-right'}
-      = t('pages.nav_bar.path')
+      = t('pages.nav_bar.path').html_safe
   .col-md-3
     = link_to journey_path do
       %i.fa{class: page_name == 'journey' ? 'fa-angle-down' : 'fa-angle-right'}
-      = t('pages.nav_bar.your_journey')
+      = t('pages.nav_bar.your_journey').html_safe

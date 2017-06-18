@@ -216,7 +216,32 @@ en:
       next_step_header: 'Next step : mitigate risk in your facility and show you care'
   
       ref_title: Reference
-
+      ref_text_1: "1. Kamper-Jorgensen, M., Benn, C. S., & Wohlfahrt, J. (2011). Childcare and health: a review of using linked national registers. Scand J Public Health, 39(7 Suppl), 126-130. doi:10.1177/1403494810395826" 
+      ref_text_2: "2. Wald, E. R., Dashefsky, B., Byers, C., Guerra, N., & Taylor, F. (1988). Frequency and severity of infections in day care. J Pediatr, 112(4), 540-546" 
+      ref_text_3: "3. Rasmussen, F., & Sundelin, C. (1990). Use of medical care and antibiotics among preschool children in different day care settings. Acta Paediatrica, 79(8‐9), 838-846." 
+      ref_text_4: "4. Kamper-Jorgensen, M., Wohlfahrt, J., Simonsen, J., Gronbaek, M., & Benn, C. S. (2006). Population-based study of the impact of childcare attendance on hospitalizations for acute respiratory infections. Pediatrics, 118(4), 1439-1446. doi:10.1542/peds.2006-0373" 
+      ref_text_5: "5. Anderson, L. J., Parker, R. A., Strikas, R. A., Farrar, J. A., Gangarosa, E. J., Keyserling, H. L., & Sikes, R. K. (1988). Day-care center attendance and hospitalization for lower respiratory tract illness. Pediatrics, 82(3), 300-308." 
+      ref_text_6: "6. Nafstad, P., Hagen, J. A., Botten, G., & Jaakkola, J. (1996). Lower respiratory tract infections among Norwegian infants with siblings in day care. American journal of public health, 86(10), 1456-1459." 
+      ref_text_7: "7. Teele DW, Klein JO, Chase C, Menyuk P, Rosner BA. Otitis media in infancy and intellectual ability, school achievement, speech, and language at age 7 years. Greater Boston Otitis Media Study Group. J Infect Dis. 1990;162:685-94" 
+      ref_text_8: "8. Uhari M, Mäntysaari K, Niemelä M. A meta–analytic review of the risk factors for acute otitis media. Clin Infect Dis. 1996;22:1079–83. " 
+      ref_text_9: "9. Haskins R, Kotch J. Day care illness: evidence, cost and public policy. Pediatrics. 1986;77(6 Pt 2):951–82." 
+      ref_text_10: "10. Matson DO. Viral gastroenteritis in day care settings: epidemiology and new developments. Pediatrics. 1994;94(6 Pt 2):999-1001." 
+      ref_text_11: "11. Hjern, A., Haglund, B., Rasmussen, F., & Rosen, M. (2000). Socio‐economic differences in daycare arrangements and use of medical care and antibiotics in Swedish preschool children. Acta Paediatrica, 89(10), 1250-1256." 
+      ref_text_12: "12. Martel MJ, Rey E, Malo JL, et al. Determinants of the incidence of childhood asthma: a two-stage case-control study. Am J Epidemiol 2009;169(2):195-205" 
+      ref_text_13: "13. Calder J. Occupational health and safety issues for child-care providers. Pediatrics. 1994;94(6 Pt 2):1072-4" 
+      ref_text_14: "14. August AM, Dworsky M, Reynolds DW. Cytomegalovirus infection in day–care centers. N Engl J Med. 1982;307:477–9." 
+      ref_text_15: "15. Hutto C, Ricks R, Cloud GA. Increased rate of cytomegalovirus infection among parents of children attending day–care centers. N Engl J Med. 1986;314:1414–8." 
+      ref_text_16: "16. Little EA, Stagno S, Britt WJ, Alford CA. Young children as a probable source of maternal and congenital cytomegalovirus infection. N Engl J Med. 1987;316:1366–70" 
+      ref_text_17: "17. Jackson LA, Stewart LK, Soloman S, et al. Risk of infection with hepatitis A, B, C, cytomegalovirus, varicella or measles among child care providers. Ped Infect Dis J 1996; 15: 584-589." 
+      ref_text_18: "18. Pass, R. F., Hutto, C., Lyon, M. D., & Cloud, G. (1990). Increased rate of cytomegalovirus infection among day care center workers. Pediatr Infect Dis J, 9(7), 465-470.  " 
+      ref_text_19: "19. https://www.nationalcmv.org/congenital-cmv/outcomes.aspx" 
+      ref_text_20: "20. Mann V, Buffett C, Campbell M, Lee K, O’Donnell R. Effectiveness of day care centre infection control interventions. Ontario:Ontario Ministry of Health; 1999. Disponível em: http://old.hamilton.ca/phcs/ephpp/Research/Full-Reviews/98-99/Day-Care-Centre-Infection-Control-review.pdf" 
+      ref_text_21: "21. Aiello AE,Larson EL. What is the evidence for a causal link between hygiene and infections? Lancet Infect Dis.2002;2:103-8" 
+      ref_text_22: "22. https://www.researchgate.net/publication/14397881_Impact_of_an_infection_control_program_in_a_specialized_preschool" 
+      ref_text_23: "23. http://www.scielo.br/pdf/jped/v83n4/en_v83n4a04.pdf" 
+      ref_text_24: "24. https://www.ncbi.nlm.nih.gov/pubmed/8806992" 
+      ref_text_25: "25. http://www.heraldonline.com/news/local/article31183946.html" 
+      
     path:
       main_heading: "You’re just 3 steps away from being<br>part of The Health Preserving Accreditation"  
       instro: "Upon completing the requirements, you will receive Accreditation and an Accreditation Plaque for display"
@@ -553,7 +578,7 @@ en:
    
   mailers:
     supermanager:
-      email: hebahakinu@ipdeer.com
+      email: kontakt@friskereogtryggerebarnehager.no
     daycare:
       invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
     registration:
