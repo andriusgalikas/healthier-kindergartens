@@ -129,8 +129,5 @@ healthChildcare.message = {
   },
 
   initMessageEditor: function() {
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
   }
 }
