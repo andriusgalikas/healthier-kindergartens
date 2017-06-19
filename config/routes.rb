@@ -283,6 +283,7 @@ Rails.application.routes.draw do
         get :filter_by, on: :collection
       end
     end
+    resources :poster_email_users, only: [:index]
 
     get 'cast_vote', to: 'votes#cast_vote'
 
