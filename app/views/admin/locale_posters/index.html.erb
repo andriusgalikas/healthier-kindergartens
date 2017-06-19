@@ -47,6 +47,9 @@
                     <%= poster.language %>
                 </td>
               <td>
+                <%= link_to poster_email_users_path(format: :csv, locale_poster_id: poster.id) do %>
+                    <i class="icon-download"></i>
+                <% end %>
                 <%= link_to admin_locale_poster_path(id: poster.id) do %>
                     <i class="icon-eye"></i>
                 <% end %>
