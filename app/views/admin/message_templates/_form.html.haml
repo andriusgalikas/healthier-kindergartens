@@ -1,27 +1,18 @@
-= form_tag admin_message_templates_path, :method => :post, :multipart => true do
-  = hidden_field_tag :subject_title, params[:subject_title]
-  = hidden_field_tag :sub_subject_title, params[:sub_subject_title]
-  = hidden_field_tag 'message_template[target_role]', params[:target_role] || @template.target_role
+= form_for [:admin, @template] do |f|
+  .threecol
+  .ninecol.last
+    = render partial: 'shared/admin/errors', locals: {object: @template}
 
-  %fieldset
-    .form-group
-      %label.step-instruction{for: 'language'}= t('messages.labels.choose_language')
-      = select_tag 'message_template[language]', options_for_select(options_for_template_localizations, @template.language || I18n.default_locale), class: 'form-control'
+  .threecol
+    %h3 Template Details
+    %p Set the title and code for your Template.
 
-    .form-group
-      %label.step-instruction{for: 'content'}= t('messages.labels.edit_and_save')
-      = text_area_tag 'message_template[content]'
-
-    - if action_name != 'edit'
+  .ninecol.last
+    %fieldset.widget.widget-content
       .form-group
-        %label.step-instruction= t('messages.labels.upload_template')
-        %input{type: 'file', name: 'upload_template', id: 'upload-template'}
-
-  .form-buttons
-    .col-md-6
-      - if @template.present?
-        %a{href: admin_message_templates_path, class: 'btn btn-raised btn-info'}= t('form_labels.cancel')
-      - else
-        %a{href: recipient_admin_message_templates_path(params), class: 'btn btn-raised btn-info'}= t('form_labels.back')
-    .col-md-6
-      = submit_tag t('form_labels.save'), class: 'btn btn-raised btn-success'
+        = f.label :content
+        = f.cktext_area :content, (@template.nil?) ? {:class => 'form-control'} : {:class => 'form-control', :value => "#{@template.content}"}
+        = f.hidden_field :target_role
+        = f.hidden_field :language
+    .form-action
+      = f.submit 'Submit', class: 'btn btn-blue btn-large'

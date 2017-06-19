@@ -1,8 +1,7 @@
-= content_for :title, t('messages.breadcrumb.edit_message_template')
-= content_for :breadcrumb, t('messages.breadcrumb.edit')
+- content_for :title, 'Edit Template'
+- content_for :breadcrumb, 'Edit'
 
-.page-header
-  %h3= t('messages.breadcrumb.edit_message_template')
-
-#main-content
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Edit Template
   = render 'form'

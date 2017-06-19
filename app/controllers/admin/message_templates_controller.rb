@@ -1,5 +1,4 @@
 class Admin::MessageTemplatesController < AdminController
-  layout 'dashboard_v2'
 
   def create
     set_subject
@@ -27,14 +26,44 @@ class Admin::MessageTemplatesController < AdminController
   end
 
   def edit
-    set_message_template
+    unless params[:type].blank?
+      @subject = MessageSubject.find(params[:subject])
+      template_key = ''
+      if params[:type] == 'verify'
+        case params[:sub_type]
+        when 'deposit'
+          template_key = 'EMAIL_VERIFICATION_SUBJECT_DEPOSIT'
+        when 'register'
+          template_key = 'EMAIL_VERIFICATION_SUBJECT_REGISTER'
+        end
+        @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+        @template = @sub_subject.message_templates.find_or_create_by(target_role: 0, :language => @subject.language.downcase)
+      else
+        case params[:sub_type]
+        when 'worker'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_WORKER'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 1, :language => @subject.language.downcase)
+        when 'parentee'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_PARENTEE'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 0, :language => @subject.language.downcase)
+        when 'manager'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_MANAGER'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 2, :language => @subject.language.downcase)
+        end
+      end
+    else
+      set_message_template
+    end
   end
 
   def update
     set_message_template
 
     if @template.update(message_template_params)
-      redirect_to admin_message_template_path(@template), notice: t('messages.notifications.update_template_success')
+      redirect_to admin_root_path, notice: t('messages.notifications.update_template_success')
     else
       render :edit
     end

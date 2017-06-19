@@ -27,5 +27,11 @@
               %td= subject.title
               %td= subject.language
               %td
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'manager') do
+                  Edit Manager
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'worker') do
+                  Edit Worker
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'parentee') do
+                  Edit Parent
                 /= link_to [:admin, subject], method: :delete, data: {confirm: 'Are you sure?'} do
                 /  %i.icon-remove

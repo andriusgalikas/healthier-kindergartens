@@ -37,6 +37,8 @@ en:
       worker: Workers
       parentee: Parents
       manager: Managers
+      signup: Sign Up
+
 
     footer:
       home: Home
