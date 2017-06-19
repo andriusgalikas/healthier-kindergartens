@@ -15,6 +15,9 @@
         = link_to instruction_path, id: 'item_instruction' do
           = image_tag 'dashboard-instruction.png'
           %span=t('dashboard.menu_item.instruction')         
+        %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
+          = image_tag 'dashboard-ilness-rec.png'
+          %span=t('dashboard.menu_item.illness_guide')
       / %a.btn.btn-round.btn-red{:href => "#"}
       /   =t('dashboard.upgrade.plan.phase2')
       .menu-items
@@ -25,14 +28,11 @@
           = image_tag 'dashboard-com-mng.png'
           %span=t('dashboard.menu_item.communication')
         %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
-          = image_tag 'dashboard-ilness.png'
+          = image_tag 'dashboard-illness-graph.png'
           %span=t('dashboard.menu_item.illness_analytic')
         %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-          = image_tag 'dashboard-ilness-rec.png'
+          = image_tag 'dashboard-ilness.png'
           %span=t('dashboard.menu_item.illness_record')
-        %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-          = image_tag 'dashboard-ilness-rec.png'
-          %span=t('dashboard.menu_item.illness_guide')
 
       / %a.btn.btn-round.btn-red{:href => "#"}
       /   =t('dashboard.upgrade.plan.phase3')
