@@ -41,7 +41,6 @@ class RegistrationMailer < ApplicationMailer
             "html" => content
         }    
         result = m.send_email(data)
-        puts result
     end
 
     def contact_us_message(user, subject, content)
@@ -52,5 +51,6 @@ class RegistrationMailer < ApplicationMailer
             "html" => content
         }    
         result = m.send_email(data)
+        puts result        
     end
 end
