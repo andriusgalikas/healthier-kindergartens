@@ -323,7 +323,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def send_confirmation_email user
     #RegistrationMailer.registration_confirmation(user).deliver_later
     host_name = LocaleUrl.find_by(language: I18n.locale.downcase)
-    host_url = (host_name.nil?) ? ENV['BASE_URL'] : host_name.url
+    host_url = (host_name.nil?) ? t("mailers.supermanager.url") : host_name.url
     confirm_url = "http://#{host_url}/confirm_email/#{user.confirm_token}"
     @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_VERIFICATION_SUBJECT'], language: I18n.locale.downcase) 
     template_key = 'EMAIL_VERIFICATION_SUBJECT_' + ((user.deposit_required) ? "DEPOSIT" : "REGISTER")

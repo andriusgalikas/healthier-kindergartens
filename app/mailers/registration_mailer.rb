@@ -4,10 +4,10 @@ class RegistrationMailer < ApplicationMailer
     
     def registration_confirmation (user, template)
         @user = user
-        confirm_url = "#{ENV['BASE_URL']}/confirm_email/#{@user.confirm_token}"
+        confirm_url = "http://#{t('mailers.supermanager.url')}/confirm_email/#{@user.confirm_token}"
 	    m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
 		data = { "to" => {@user.email => "Daycare"},
-			"from" => [ENV['SITE_MANAGER_EMAIL'], ENV['SITE_MANAGER_NAME']],
+			"from" => [t('mailers.supermanager.email'), t('mailers.supermanager.name')],
 			"subject" => t('mailers.mail_confirm.subject'),
 			"html" => template
 		}	 
@@ -25,7 +25,7 @@ class RegistrationMailer < ApplicationMailer
         @user = user
         m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
         data = { "to" => {@user.email => "Daycare"},
-            "from" => [ENV['SITE_MANAGER_EMAIL'], ENV['SITE_MANAGER_NAME']],
+            "from" => [t('mailers.supermanager.email'), t('mailers.supermanager.name')],
             "subject" => t('mailers.mail_confirm.subject'),
             "html" => template
         }    
@@ -36,7 +36,7 @@ class RegistrationMailer < ApplicationMailer
         @user = user
         m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
         data = { "to" => {@user.email => "Daycare"},
-            "from" => [ENV['SITE_MANAGER_EMAIL'], ENV['SITE_MANAGER_NAME']],
+            "from" => [t('mailers.supermanager.email'), t('mailers.supermanager.name')],
             "subject" => subject,
             "html" => content
         }    

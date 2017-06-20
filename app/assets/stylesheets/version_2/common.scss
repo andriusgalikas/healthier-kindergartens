@@ -82,14 +82,14 @@ a {
 
   &.hcc-simple {
     &:hover {
-      border-bottom: 2px solid $hcc-red;
+      border-bottom: 2px solid $hcc-green;
       text-decoration: none;      
       color: black;
     }
   }
 
   &.active {
-    border-bottom: 2px solid $hcc-red;
+    border-bottom: 2px solid $hcc-green;
     text-decoration: none;
     color: black;
   }
@@ -385,7 +385,7 @@ button, a {
 }
 
 .cta-step-box{
-    width: 30%;
+    width: 50%;
     opacity: .99;
     margin: 10px auto;
     text-align: center;

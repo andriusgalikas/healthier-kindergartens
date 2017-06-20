@@ -586,6 +586,8 @@ en:
   mailers:
     supermanager:
       email: kontakt@friskereogtryggerebarnehager.no
+      name: Norges Landsforening for Friskere Barnehager
+      url: healthierandsaferchildcare.org
     daycare:
       invite: "You have been invited to Health Childcare application. Please click on the below link to register:"
     registration:
