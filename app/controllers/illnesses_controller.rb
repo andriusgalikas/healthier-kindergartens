@@ -57,6 +57,17 @@ class IllnessesController < ApplicationController
     
 
     if status[:code] == 'ok'
+      message = Message.new
+      message.message_template_id = 0
+      message.title = t('mailers.illness.title')
+      message.content = t('mailers.illness.content')
+      message.target_roles = ["parentee"]
+      message.owner_id = current_user.id
+
+      if message.save
+        MessageNotificationJob.perform_now(message)
+      end
+
       redirect_to illnesses_path, notice: status[:message]
     else
       redirect_to new_department_record_illnesses_path, alert: status[:message]
@@ -177,8 +188,7 @@ class IllnessesController < ApplicationController
         :contact_parent_reason,
         :contact_doctor_message,
         :contact_doctor_reason,
-        :additional_actions,
-        symptom_codes: []
+        :additional_actions
       ],
       worker: [
         :id,
@@ -197,8 +207,7 @@ class IllnessesController < ApplicationController
         :start_date,
         :possible_trigger,
         :extra_details,
-        :additional_actions,
-        symptom_codes: []        
+        :additional_actions      
       ],
       worker: [
         :id,

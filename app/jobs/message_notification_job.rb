@@ -27,13 +27,16 @@ class MessageNotificationJob < ActiveJob::Base
       recipients += User.worker if message.for_worker?
       recipients += User.manager if message.for_manager?
     elsif sender.manager?
-      recipients += sender.daycare.parents if message.for_parentee?
       recipients += sender.daycare.workers if message.for_worker?
-
       if opts[:target_department]
         dept_id = opts[:target_department].to_i
         recipients = recipients.select{|rec| rec.department_id == dept_id}
       end
+
+      recipients += sender.daycare.parents if message.for_parentee?
+
+    elsif sender.worker?
+      recipients += sender.daycare.parents if message.for_parentee?
     end
 
     recipients

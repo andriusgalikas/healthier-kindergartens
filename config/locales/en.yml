@@ -610,6 +610,10 @@ en:
     plan_confirm: 
       subject: "You have upgraded Phase"
 
+    illness:
+      title: Illness Record is created
+      content: "<p>Hello</p><p>Illness Record is created</p>"
+
   dashboard:
     nav_var:
       staff_parent: "HOW MANY DAYCARE STAFF AND PARENT WANT THIS"

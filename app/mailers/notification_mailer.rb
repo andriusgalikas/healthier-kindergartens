@@ -13,7 +13,6 @@ class NotificationMailer < ApplicationMailer
 	}
  
 	result = m.send_email(data)
-#	puts result
 
   end
 
