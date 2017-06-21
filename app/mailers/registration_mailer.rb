@@ -26,7 +26,7 @@ class RegistrationMailer < ApplicationMailer
         m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
         data = { "to" => {@user.email => "Daycare"},
             "from" => [t('mailers.supermanager.email'), t('mailers.supermanager.name')],
-            "subject" => t('mailers.mail_confirm.subject'),
+            "subject" => t('mailers.mail_reset_password.subject'),
             "html" => template
         }    
         result = m.send_email(data)
