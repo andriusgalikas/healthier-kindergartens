@@ -97,25 +97,29 @@ class Admin::PagesController < AdminController
   def build_translate_from_yml
     if params[:yml_file]
       content = File.read(params[:yml_file].tempfile)
-      doc = YAML.load(content)
-
-      Translation.where(:locale => params[:language_short_name].downcase).destroy_all
-
-      doc.to_enum(:walk).each do |path, key, value|
-        strvalue = value.is_a?(String) ? value : value.inspect
-        trans_item = Translation.new
-        trans_item.locale = params[:language_short_name].downcase
-        path_str = path.join(".")
-        path_dot_index = path_str.index('.') + 1
-        trans_item.key = "#{path_str[path_dot_index..-1]}.#{key}"
-        trans_item.value = value
-        trans_item.save
-      end
-      I18n.backend.reload!
+      BuildLocaleYmlJob.perform_later(content, params[:language_short_name])
     end
-  rescue => e
-    flash[:alert] = "Upload yml is failed."
-    puts e
+  #   if params[:yml_file]
+  #     content = File.read(params[:yml_file].tempfile)
+  #     doc = YAML.load(content)
+
+  #     Translation.where(:locale => params[:language_short_name].downcase).destroy_all
+
+  #     doc.to_enum(:walk).each do |path, key, value|
+  #       strvalue = value.is_a?(String) ? value : value.inspect
+  #       trans_item = Translation.new
+  #       trans_item.locale = params[:language_short_name].downcase
+  #       path_str = path.join(".")
+  #       path_dot_index = path_str.index('.') + 1
+  #       trans_item.key = "#{path_str[path_dot_index..-1]}.#{key}"
+  #       trans_item.value = value
+  #       trans_item.save
+  #     end
+  #     I18n.backend.reload!
+  #   end
+  # rescue => e
+  #   flash[:alert] = "Upload yml is failed."
+  #   puts e
   end
 
   def build_template_from_spreadsheet
