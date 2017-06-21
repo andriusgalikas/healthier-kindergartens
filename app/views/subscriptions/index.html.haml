@@ -27,16 +27,16 @@
                 = hidden_field_tag :stripe_card_token          
               .row{:style => "margin: 10px 0;"}
                 .col-md-8.col-sm-12.col-xs-12
-                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-green', :placeholder => "Credit Card Number"
                 .col-md-4.col-sm-12.col-xs-12
-                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => "CV Code"
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
                   %span Card Expiration:
                 .col-md-6.col-sm-12.col-xs-12
-                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
+                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-green'}
                 .col-md-6.col-sm-12.col-xs-12
-                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-green'}
               .row 
                 .col-md-12.col-sm-12.col-xs-12.text-center 
                   %p.plan-price  
@@ -44,7 +44,7 @@
                     = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
                     %p=t('pages.upgrade.para2').html_safe
               .row.text-center
-                %button.btn.btn-round.item-manager{type: "submit"}
+                %button.btn.btn-round.item-green-manager{type: "submit"}
                   = t('pages.upgrade.reserve')
       - else
         .col-md-6.col-sm-6.col-xs-12.upgrade-plan
@@ -70,27 +70,27 @@
                 = hidden_field_tag :stripe_card_token          
               .row{:style => "margin: 0;"}
                 .col-md-8.col-sm-12.col-xs-12
-                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number", maxlength:16
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-green', :placeholder => "Credit Card Number", maxlength:16
                 .col-md-4.col-sm-12.col-xs-12
-                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code", maxlength: 3
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => "CV Code", maxlength: 3
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
                   %span Card Expiration:
                 .col-md-6.col-sm-12.col-xs-12
-                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-red'}
+                  = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-green'}
                 .col-md-6.col-sm-12.col-xs-12
-                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-red'}
+                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => 'form-control input-round border-green'}
               - if current_user.plan_type != 1
                 .row{:style => "margin: 10px 0;"}
                   .col-md-6.col-sm-12.col-xs-12
-                    = text_field_tag :discount_code, nil, name: :discount_code, :class => 'form-control input-round border-red', :placeholder => "Discount Code"
+                    = text_field_tag :discount_code, nil, name: :discount_code, :class => 'form-control input-round border-green', :placeholder => "Discount Code"
               .row 
                 .col-md-12.col-sm-12.col-xs-12.text-center 
                   %p.plan-price  
                     = hidden_field_tag :upgrade_type, 1
                     = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
               .row.text-center
-                %button.btn.btn-round.item-manager{type: "submit"}
+                %button.btn.btn-round.item-green-manager{type: "submit"}
                   = t('deposit.button.invest')
 
       .col-md-6.col-sm-6.col-xs-12.instruction

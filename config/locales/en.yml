@@ -720,7 +720,7 @@ en:
         label10: "Edit Logo"
         label11: "Edit Plans"
         label12: "Edit Email Campaign Template"
-        label13: "Edit Confirm Email Template"
+        label13: "Edit Package Upgrade Confirm Email Template"
     daycare:
       index:
         heading: "Daycares"  

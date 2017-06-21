@@ -80,7 +80,7 @@ $hcc-green: #2bd34d;
     }
 
     .round-box {
-      border: 1px solid #fb045b;
+      border: 1px solid $hcc-green;
       border-radius: 20px;
       margin-bottom: 20px;
       padding: 10px 20px 20px 20px;
@@ -93,7 +93,7 @@ $hcc-green: #2bd34d;
     .plan-price{
       font-size: 42px;
       font-weight: 600;
-      color: #fb045b;
+      color: #426cd5;
       margin: 0;
       line-height: 60px;
     }

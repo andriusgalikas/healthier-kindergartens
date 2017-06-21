@@ -90,8 +90,17 @@ header{
     border-color: #fb045b !important;
   }
 
+  .border-green{
+    border-color: #2bd34d !important;
+  }
+
   .item-red{
     background-color: #fb045b !important;
+    color: #fff;
+  }
+
+  .item-green-manager{
+    background: #2bd34d;
     color: #fff;
   }
 
@@ -103,6 +112,7 @@ header{
     background: linear-gradient(#ffa63e, #ff0a55);
     color: #fff;
   }
+
   .item-worker{
     background: #f1c942;
     background: -webkit-linear-gradient(#f2ff32, #f09751);
