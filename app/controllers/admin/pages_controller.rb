@@ -3,6 +3,11 @@ Yaml2csv.extend_hash
 class Admin::PagesController < AdminController
 
   def lang_dashboard
+    
+  end
+
+  def lang_main
+    I18n.backend.reload!
   end
 
   def clients

@@ -3,6 +3,7 @@ class BuildLocaleYmlJob < ActiveJob::Base
 
   def perform(content, language)
     doc = YAML.load(content)
+    puts "------------BuildLocaleYmlJob---------Start"
 
     Translation.where(:locale => language.downcase).destroy_all
 
