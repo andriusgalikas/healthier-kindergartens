@@ -70,9 +70,9 @@
                 = hidden_field_tag :stripe_card_token          
               .row{:style => "margin: 0;"}
                 .col-md-8.col-sm-12.col-xs-12
-                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number"
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-red', :placeholder => "Credit Card Number", maxlength:10
                 .col-md-4.col-sm-12.col-xs-12
-                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code"
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-red', :placeholder => "CV Code", maxlength: 3
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
                   %span Card Expiration:
@@ -95,52 +95,87 @@
 
       .col-md-6.col-sm-6.col-xs-12.instruction
         .ongoing
-          .ongoing-heading
-            %h2=t('pages.upgrade.benefit')
-            %p=t('pages.upgrade.ben_para1') 
-          - if [0, 2, 3, 4].include? current_user.plan_type
+          .register-benefit
+            .ongoing-heading
+              %h2#ongoing_heading=t('pages.journey.instruction.benefit_apply').html_safe
             .single-ongoing.pink
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 1
               = image_tag '101.png'
               %p
-                %span.periodic-pin=t('pages.upgrade.ben_para2').html_safe 
+                %span.periodic-pin=t('pages.journey.instruction.para1').html_safe
             .single-ongoing.pink
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 2
               = image_tag '102.png'
               %p
-                %span.periodic-pin=t('pages.upgrade.ben_para3').html_safe 
-          - if [0, 3, 4].include? current_user.plan_type
+                %span.periodic-pin=t('pages.journey.instruction.para2').html_safe
+          .another-benefit
             .single-ongoing.blue
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 3
               = image_tag '103.png'
               %p
-                %span.practices-blu=t('pages.upgrade.ben_para4').html_safe 
+                %span.practices-blu=t('pages.journey.instruction.para3').html_safe
             .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 4
               = image_tag '104.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para5').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para4').html_safe
             .single-ongoing.all
-              = image_tag '110.png'
-              %p
-                %span.potential-gree=t('pages.upgrade.ben_para11').html_safe 
-          - if [0, 4].include? current_user.plan_type
-            .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 5
               = image_tag '105.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para6').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para5').html_safe
             .single-ongoing.all
-              = image_tag '106.png'
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 6
+              = image_tag '113.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para7').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para6').html_safe
             .single-ongoing.all
-              = image_tag '107.png'
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 7
+              = image_tag '112.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para8').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para7').html_safe
             .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 8
+              = image_tag '111.png'
+              %p
+                %span.potential-gree=t('pages.journey.instruction.para8').html_safe
+            .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 9
               = image_tag '108.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para9').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para9').html_safe
             .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 10
               = image_tag '109.png'
               %p
-                %span.potential-gree=t('pages.upgrade.ben_para10').html_safe 
+                %span.potential-gree=t('pages.journey.instruction.para10').html_safe
+            .single-ongoing.all
+              %span.fa-stack.fa-2x{style: 'width: 1em; height: 1em; line-height: 1.2em; float:left; color: #ff0a55; font-size: 1.5em'}
+                %i.fa.fa-circle-o.fa-stack-1x
+                %strong.fa-stack-1x{style: 'font-size: 0.5em;'} 11
+              = image_tag '106.png'
+              %p
+                %span.potential-gree=t('pages.journey.instruction.para11').html_safe
     .row.money-back
 :javascript
 
