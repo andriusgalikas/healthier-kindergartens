@@ -48,7 +48,7 @@
           .row
             %h5=t('register.labels.name').upcase
             = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name'), :required =>"true"
-            = user.hidden_field :deposit_required, value: params[:deposit]
+            = user.hidden_field :deposit_required, value: session[:deposit]
             = user.hidden_field :plan_type, value: (session[:apply_plan]) ? session[:apply_plan] : 0
           .row
             %h5=t('register.labels.email').upcase

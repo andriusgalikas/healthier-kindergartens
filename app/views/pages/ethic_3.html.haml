@@ -13,6 +13,7 @@
       .col-md-12.text-center
         %button.btn.hcc-green-btn-vertical
           - if current_user.nil?
+            - session[:deposit] = true
             %a{'href': '/manager/register?deposit=true'}
               = t('pages.ethic.label.ready')
           - else

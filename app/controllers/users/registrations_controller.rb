@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params.merge(role: params[:role]))
     set_daycares unless ['manager', 'partner'].include?(params[:role])
     resource.save
+    session[:deposit] = false
     yield resource if block_given?
     if resource.persisted?
       send_confirmation_email(resource)
