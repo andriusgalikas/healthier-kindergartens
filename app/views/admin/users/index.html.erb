@@ -72,6 +72,7 @@
                 <%= link_to [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <i class="icon-remove"></i>
                 <% end %>
+                <a href='#' class="verify-link" data-userid="<%=user.id%>">Send Verify</a>
               </td>
             </tr>
           <% end %>
@@ -88,3 +89,23 @@
     </div>
   <% end %>
 </div>  
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('.verify-link').click(function(){
+      jQuery.ajax({
+          url: '/admin/send_verify',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            id: jQuery(this).data('userid')
+          },
+          success: function (data) {
+            alert('Verification Email sent successfully.');
+          },
+          error: function () {
+            alert('Sending Verification Email is failed.');
+          }
+      });      
+    });
+  });  
+</script>

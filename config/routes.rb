@@ -223,6 +223,10 @@ Rails.application.routes.draw do
         get 'clients', to: 'pages#clients'
         post 'localization', to: 'pages#upload'
 
+        post 'send_verify', to: 'users#send_verify', format: 'json'
+        get 'password', to: 'pages#password'
+        post 'change_password', to: 'pages#change_password'
+
         authenticate :user, lambda { |u| u.admin? } do
             mount Sidekiq::Web => '/sidekiq'
         end

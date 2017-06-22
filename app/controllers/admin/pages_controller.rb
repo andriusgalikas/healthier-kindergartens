@@ -60,6 +60,23 @@ class Admin::PagesController < AdminController
     get_all_confirm_subjects
   end
 
+  def password
+  end
+
+  def change_password
+    user = User.find(1)
+    if params[:new_password] == params[:confirm_password]
+      user.password = params[:new_password]
+      user.password_confirmation = params[:confirm_password]
+      user.save
+      flash[:notice] = "Password is changed sucessfully."
+      redirect_to admin_lang_main_path
+    else
+      flash[:notice] = "Password and confirmation password should be same."
+      redirect_to admin_password_path
+    end        
+  end
+
   private
 
   def check_gabige_yml
