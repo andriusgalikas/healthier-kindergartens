@@ -93,6 +93,7 @@ class Admin::TodosController < AdminController
                                     :iteration_type, 
                                     :frequency, 
                                     :user_id, 
+                                    :language,
                                     :completion_date_type, 
                                     :completion_date_value, 
                                     department_ids: [], 
