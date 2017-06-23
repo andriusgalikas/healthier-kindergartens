@@ -15,7 +15,7 @@
         = f.hidden_field :code, value: (@illness.id) ? @illness.code : "IL-#{Time.now.to_i}"
       .form-group
         = f.label :language
-        = f.select :language, options_for_select(pre_countries, :selected => f.object.language), {},{:class => 'form-control'}
+        = f.select :language, options_for_select(pre_countries_down, :selected => f.object.language), {},{:class => 'form-control'}
       .form-group
         = f.label "Worker Guide"
         = f.file_field :worker_guide, class: 'form-control'

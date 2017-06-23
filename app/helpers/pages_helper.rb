@@ -82,6 +82,11 @@ module PagesHelper
     #@@countries ||= [['Austria', 'EN'], ['Australia', 'AU']]
   end
 
+  def pre_countries_down
+    @@countries ||= [['Austria', 'at'], ['Australia', 'au'], ['Belgium', 'be'], ['Bulgaria', 'bg'], ['Canada', 'ca'], ['China', 'cn'], ['Croatia', 'hr'], ['Cyprus', 'cy'], ['Czech Republic', 'cz'], ['Denmark', 'dk'], ['Estonia', 'ee'], ['Finland', 'fi'], ['France', 'fr'], ['Germany', 'de'], ['Greece', 'gr'], ['Hungary', 'hu'], ['Iceland', 'is'], ['Ireland', 'ie'], ['Italy', 'it'], ['Japan', 'jp'], ['Latvia', 'lv'], ['Lithuania', 'lt'], ['Luxembourg', 'lu'], ['Malta', 'mt'], ['Netherlands', 'nl'], ['New Zealand', 'nz'], ['Norway', 'nk'], ['Poland', 'pl'], ['Portugal', 'pt'], ['Romania', 'ro'], ['Russia', 'ru'], ['Saudi Arabia', 'sa'], ['Slovakia', 'sk'], ['Slovenia', 'si'], ['South Korea', 'kr'], ['Spain', 'es'], ['Sweden', 'se'], ['Turkey', 'tr'], ['United Arab Emirates', 'ae'], ['United Kingdom', 'gb'], ['USA', 'us']]
+    #@@countries ||= [['Austria', 'EN'], ['Australia', 'AU']]
+  end
+
   def country_name_from_code(code)
     country_name = ''
     pre_countries.each do |item|
