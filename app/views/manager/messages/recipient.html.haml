@@ -20,7 +20,7 @@
               .radio-box
                 %input{:type=>"radio", :name => "target_role", :id => "chk_role_#{target_role}", :style => "display: none;", value: target_role, checked: params[:target_role] == target_role, required: true}
                 %label{:for => "chk_role_#{target_role}"}
-                  = target_role.humanize.pluralize
+                  = t('pages.nav_bar.'+target_role).humanize.pluralize
         .col-md-12.form-buttons.text-right.no-h-padding
           .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-6
             %a{href: select_department_manager_messages_path(target_department: params[:target_department]), class: 'btn btn-gray btn-wizard'} 

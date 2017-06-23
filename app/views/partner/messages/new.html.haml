@@ -14,12 +14,12 @@
                 .check-box.partners
                   = check_box_tag 'message[target_roles][]', target_role, false, :id => "chk_depart_#{index}", :style => "display: none;"
                   %label{:for => "chk_depart_#{index}"}
-                    = 'Daycare ' + target_role.humanize.pluralize
+                    = t('pages.nav_bar.'+target_role).humanize.pluralize
               .col-md-8.col-sm-8.col-xs-6.role-elem
                 %span.recipient-count
                   - recipient_count = 20
                   %b #{User.send(target_role).size}
-                  =t('messages.labels.receive_messages', account: target_role.humanize.pluralize)
+                  =t('messages.labels.receive_messages', account: t('pages.nav_bar.'+target_role).humanize.pluralize)
         .col-md-12
           %h4.option-title Title :
           = f.text_field :title, placeholder: t('messages.labels.write_title'), class: 'form-control', required: true

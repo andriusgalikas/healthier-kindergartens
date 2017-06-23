@@ -6,11 +6,11 @@ module MessagesHelper
   end
 
   def options_for_message_recipients_select
-    Message.allowed_recipients_for_role(current_user.role).collect{|m| [m.humanize.pluralize, m]}
+    Message.allowed_recipients_for_role(current_user.role).collect{|m| [t('pages.nav_bar.'+m).humanize.pluralize, m]}
   end
 
   def options_for_message_senders_select
-    Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}
+    Message.allowed_senders_for_role(current_user.role).map{|role| [t('pages.nav_bar.'+role).humanize.pluralize, role]}
   end
 
   def options_for_template_localizations

@@ -5,7 +5,7 @@
       = hidden_field_tag :user_role, current_user.role
       = label_tag :target_role, t('messages.labels.show_only_messages_from_filter')
       .form-dc-select
-        = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [role.humanize.pluralize, role]}, selected: params['target_role']), class: 'form-control', prompt: t('messages.labels.sender')
+        = select_tag :target_role, options_for_select(Message.allowed_senders_for_role(current_user.role).map{|role| [t('pages.nav_bar.'+role).humanize.pluralize, role]}, selected: params['target_role']), class: 'form-control', prompt: t('messages.labels.sender')
   .col-md-4
     .form-group
       = label_tag :start_date
