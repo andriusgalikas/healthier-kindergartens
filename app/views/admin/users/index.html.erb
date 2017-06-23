@@ -100,7 +100,10 @@
             id: jQuery(this).data('userid')
           },
           success: function (data) {
-            alert('Verification Email sent successfully.');
+            if(data.Result == "OK")
+              alert('Verification Email sent successfully.');
+            else
+              alert('This user is already verified.');
           },
           error: function () {
             alert('Sending Verification Email is failed.');

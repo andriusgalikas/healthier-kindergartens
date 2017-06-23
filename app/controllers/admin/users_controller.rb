@@ -19,11 +19,17 @@ class Admin::UsersController < AdminController
 
     def send_verify
         user = User.find(params[:id])
-                
-        send_confirmation_email(user)        
-        respond_to do |format|
-          result = {:Result => "OK"}
-          format.json { render json: result }
+        if user.confirm_token
+            send_confirmation_email(user)        
+            respond_to do |format|
+              result = {:Result => "OK"}
+              format.json { render json: result }
+            end
+        else
+            respond_to do |format|
+              result = {:Result => "Failed"}
+              format.json { render json: result }
+            end
         end
     end
 
