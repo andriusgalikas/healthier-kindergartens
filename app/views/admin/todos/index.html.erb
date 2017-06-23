@@ -27,6 +27,7 @@
             <th>Daycare</th>
             <th>Type</th>
             <th>User</th>
+            <th>Language</th>
             <th></th>
           </tr>
         </thead>
@@ -53,6 +54,9 @@
               </td>
               <td>
                 <%= todo.user.name %>
+              </td>
+              <td>
+                <%= todo.language %>
               </td>
               <td>
                 <%= link_to edit_admin_todo_path(todo) do %>
