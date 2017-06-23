@@ -46,7 +46,7 @@
                         = text_field_tag :title, '', placeholder: t('manager.invite.subject.placeholder'), class: 'form-control input-round', required: true
                       .form-group{data:{step: 4, intro: t("guideline.manager.survey.step4.content")}}      
                         %label{:for => 'message_content' }=t('manager.invite.message.label') 
-                        = text_area_tag :content, 'Invitation Message Template', id: 'message_content', placeholder: t('manager.invite.message.placeholder')            
+                        = cktext_area :content, '', value: 'Invitation Message Template', id: 'message_content', placeholder: t('manager.invite.message.placeholder')            
             .col-sm-12
               %ul.pager.wizard{:style => "text-align: center;"}
                 %li.previous.hide
@@ -71,9 +71,9 @@
     $('.remove_button').removeClass("btn");
     $('.remove_button').removeClass("btn-red");
 
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
+    //$('#message_content').froalaEditor({
+    //  heightMin: 250
+    //});
 
     introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
       window.location.href = 'result_step4?multipage=true';

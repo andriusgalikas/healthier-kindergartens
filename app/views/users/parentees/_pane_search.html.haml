@@ -33,11 +33,10 @@
     %ul.list-unstyled.msg_list
       - @daycares.each do |daycare|
         %li
-          %span.image
-            = image_tag (daycare.profile_image.blank?) ? 'parent-md.png' : daycare.profile_image
-
           %input{:type=>"radio", :name => "daycare_item", :id => "chk_item_#{daycare.id}", :style => "display: none;", "select-link" =>new_user_registration_path(role: 'parentee', daycare_id: daycare.id)}
           %label{:for => "chk_item_#{daycare.id}"}
+            %span.image
+              = image_tag (daycare.profile_image.blank?) ? 'parent-md.png' : daycare.profile_image
             %span
               %span 
                 %b=daycare.name

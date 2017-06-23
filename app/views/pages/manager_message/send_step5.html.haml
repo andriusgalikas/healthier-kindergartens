@@ -14,7 +14,7 @@
         .col-md-12      
           %h4.option-title= t('messages.labels.edit_and_send')
         .col-md-12{data:{step: "9", intro: t("guideline.manager.message_send_menu.step9.content")}}
-          = text_area_tag '', '', id: 'message_content'
+          = cktext_area '', '', id: 'message_content'
         .col-md-12.form-buttons.text-right.no-h-padding
           .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-6
             %a{href: '#', class: 'btn btn-gray btn-wizard'} 

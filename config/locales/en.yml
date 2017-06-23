@@ -49,6 +49,7 @@ en:
       resources: Free Resources
       login: Login
       logout: Logout
+      register: Register
 
     contact_us:
       label: Contact Us

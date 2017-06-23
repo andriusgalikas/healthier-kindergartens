@@ -44,7 +44,7 @@
                       = f.text_field :title, placeholder: t('manager.invite.subject.placeholder'), class: 'form-control input-round', required: true
                     .form-group
                       %label{:for => 'message_content' }=t('manager.invite.message.label') 
-                      = f.text_area :content, id: 'message_content', placeholder: t('manager.invite.message.placeholder')
+                      = f.cktext_area :content, id: 'message_content', placeholder: t('manager.invite.message.placeholder')
               .row.pane-invite.text-left
                 .col-md-12
                   = submit_tag t('manager.invite.send'), class: 'btn btn-round item-manager btn-invite'            
@@ -64,9 +64,9 @@
     $('.remove_button').removeClass("btn");
     $('.remove_button').removeClass("btn-red");
 
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
+    //$('#message_content').froalaEditor({
+    //  heightMin: 250
+    //});
 
     $('.btn-invite').click(function(){
       $('form').submit();

@@ -212,11 +212,12 @@
                 %p.text-left
                   = t('pages.instruction.sub_heading5.para5').html_safe
   .col-md-12.step-contents
-    .cta-step-box.next-green-step
-      %p= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe
+    - if current_user.nil?
+      .cta-step-box.next-green-step
+        %p= t('pages.standard.para8_1').html_safe
+        %button.btn.hcc-green-btn
+          %a{'href': '/journey'}
+            = t('pages.nav_bar.get_started').html_safe
 
 .popup{"data-popup" => "video-popup"}
   .popup-inner

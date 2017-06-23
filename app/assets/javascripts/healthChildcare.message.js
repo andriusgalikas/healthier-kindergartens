@@ -22,9 +22,9 @@ healthChildcare.message = {
   },
 
   initMessageTemplateEditor: function() {
-    $('#message_template_content').froalaEditor({
-      heightMin: 200
-    });
+    // $('#message_template_content').froalaEditor({
+    //   heightMin: 200
+    // });
   },
 
   setSubSubjectFilter: function() {

@@ -6,9 +6,9 @@ class Manager::DaycaresController < ApplicationController
     @daycare_role = params[:type]
 
     @subject = MessageSubject.find_or_create_by(title: ENV['SURVEY_TEMPLATE_SUBJECT'], language: I18n.locale.downcase) 
-    template_key = 'SURVEY_TEMPLATE_SUBJECT_' + current_user.role.upcase
+    template_key = 'SURVEY_TEMPLATE_SUBJECT_' + @daycare_role.upcase
     @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
-    @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[current_user.role], language: I18n.locale.downcase)
+    @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[@daycare_role.downcase], language: I18n.locale.downcase)
   end
   
   def invite

@@ -18,7 +18,7 @@
         .col-md-12      
           %h4.option-title= t('messages.labels.edit_and_send')
         .col-md-12
-          = f.text_area :content, id: 'message_content', value: @message_template.content
+          = f.cktext_area :content, id: 'message_content', value: @message_template.content
         .col-md-12.form-buttons.text-right.no-h-padding
           .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-6
             %a{href: sub_subject_manager_messages_path(target_department: params[:target_department], target_role: params[:target_role], subject_id: params[:subject_id], sub_subject_id: params[:sub_subject_id]), class: 'btn btn-gray btn-wizard'} 
@@ -27,7 +27,7 @@
             = submit_tag t('form_labels.next'), class: 'btn btn-yellow-red btn-wizard'
 :javascript
   jQuery(document).ready(function() {    
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
+    //$('#message_content').froalaEditor({
+    //  heightMin: 250
+    //});
   });

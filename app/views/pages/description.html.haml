@@ -94,11 +94,12 @@
       = t('pages.mission_step.what_to_do_2').html_safe
 
 .row.step-contents.next-step-content
-  .next-green-step
-    %h4= t('pages.standard.para8_1').html_safe
-    %button.btn.hcc-green-btn
-      %a{'href': '/journey'}
-        = t('pages.nav_bar.get_started').html_safe
+  - if current_user.nil?
+    .next-green-step
+      %h4= t('pages.standard.para8_1').html_safe
+      %button.btn.hcc-green-btn
+        %a{'href': '/journey'}
+          = t('pages.nav_bar.get_started').html_safe
 
 - (1..22).each do |num|        
   = render 'reference_popover', index: num
@@ -187,11 +188,12 @@
         %a.reference-link{href: '#', id: 'reference_25'}25
 
 .row.step-contents.next-step-content
-  .next-green-step
-    %p= t('pages.standard.para8_1').html_safe
-    %button.btn.hcc-green-btn
-      %a{'href': '/journey'}
-        = t('pages.nav_bar.get_started').html_safe
+  - if current_user.nil?
+    .next-green-step
+      %p= t('pages.standard.para8_1').html_safe
+      %button.btn.hcc-green-btn
+        %a{'href': '/journey'}
+          = t('pages.nav_bar.get_started').html_safe
 
 - (21..25).each do |num|        
   = render 'reference_popover', index: num
@@ -305,11 +307,12 @@
         %p= t('pages.path.phase4_para3')
 
 .row.step-contents.next-step-content
-  .next-green-step
-    %p= t('pages.standard.para8_1').html_safe
-    %button.btn.hcc-green-btn
-      %a{'href': '/journey'}
-        = t('pages.nav_bar.get_started').html_safe
+  - if current_user.nil?
+    .next-green-step
+      %p= t('pages.standard.para8_1').html_safe
+      %button.btn.hcc-green-btn
+        %a{'href': '/journey'}
+          = t('pages.nav_bar.get_started').html_safe
 
 / About Us Page
 
@@ -373,11 +376,12 @@
         %p= t('pages.about.question_para4').html_safe
         %p= t('pages.about.question_para5').html_safe
   .row.call-action-row
-    .next-green-step
-      %p= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe
+    - if current_user.nil?
+      .next-green-step
+        %p= t('pages.standard.para8_1').html_safe
+        %button.btn.hcc-green-btn
+          %a{'href': '/journey'}
+            = t('pages.nav_bar.get_started').html_safe
 :javascript
   jQuery(document).ready(function() {
     if(window.location.hash) {
