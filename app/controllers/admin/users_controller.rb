@@ -19,7 +19,7 @@ class Admin::UsersController < AdminController
 
     def send_verify
         user = User.find(params[:id])
-        if user.confirm_token
+        if user.confirm_token && !user.email_confirmed
             send_confirmation_email(user)        
             respond_to do |format|
               result = {:Result => "OK"}
