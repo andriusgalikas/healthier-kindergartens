@@ -85,4 +85,30 @@
         }
     });
 
+    $("#item_instruction").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.instruction.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.instruction.content')}";
+        }
+    });    
+
+    $("#item_illness_guide").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.illness_guide.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.illness_guide.content')}";
+        }
+    });    
+
   });

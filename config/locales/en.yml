@@ -1145,6 +1145,13 @@ en:
       notify_message:
         title: "<b>Health and Safety Message Board</b>"
         content: "<p>Get instant notification related to key areas of health and safety</p>"        
+      instruction:
+        title: "<b>Instruction</b>"
+        content: "<p>Instruction</p>"        
+      illness_guide:
+        title: "<b>Illness Guide</b>"
+        content: "<p>Illness Guide</p>"              
+
     tour_lable:
       nextBtn: Next
       prevBtn: Previous

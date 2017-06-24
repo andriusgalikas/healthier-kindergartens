@@ -102,6 +102,9 @@ header{
   .item-green-manager{
     background: #2bd34d;
     color: #fff;
+    &:active{
+      background: #2bd34d;
+    }
   }
 
   .item-manager{

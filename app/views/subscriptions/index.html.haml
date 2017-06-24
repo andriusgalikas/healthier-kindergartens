@@ -27,9 +27,9 @@
                 = hidden_field_tag :stripe_card_token          
               .row{:style => "margin: 10px 0;"}
                 .col-md-8.col-sm-12.col-xs-12
-                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-green', :placeholder => "Credit Card Number"
+                  = text_field_tag :card_number, nil, name: :card_number, :class => 'form-control input-round border-green', :placeholder => "Credit Card Number", maxlength:16
                 .col-md-4.col-sm-12.col-xs-12
-                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => "CV Code"
+                  = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => "CV Code", maxlength:3
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
                   %span Card Expiration:

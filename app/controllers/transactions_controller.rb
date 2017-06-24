@@ -76,7 +76,10 @@ class TransactionsController < ApplicationController
         @subscription.save        
       end
 
-      current_user.deposit_required = (current_plan_type > 0) ? false : true
+      if current_user.deposit_required
+        current_user.deposit_required = false
+        current_user.plan_type = 4
+      end
       
       current_user.stripe_customer = stripe_customer
       current_user.card_number = params[:card_number]

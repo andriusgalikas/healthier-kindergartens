@@ -5,7 +5,7 @@
         .infect-heading{'data-step'=>"7", 'data-intro'=>"In this section you are see videos", 'data-position' => 'top'}
           %h2.text-orange= t('pages.instruction.main_heading')
           %h3.text-orange= t('pages.instruction.description')
-      - if current_user.nil? || !current_user.active_subscribed? || (current_user.manager? && current_user.plan_type == 2) || (current_user.worker? && current_user.manager_plan_type == 2)
+      - if current_user.nil? || (current_user.manager? && current_user.plan_type <= 2) || (current_user.worker? && current_user.manager_plan_type <= 2)
         .col-md-6.left-side
           .single{'data-step'=>"8", 'data-intro'=>"Infection preventive food handling", 'data-position' => 'right'}
             %a{:href => "#", "data-url": get_video_link("free", 1, I18n.locale), "data-popup-open": "video-popup"}
