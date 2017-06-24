@@ -17,7 +17,7 @@ class Manager::DaycaresController < ApplicationController
 
   def send_invite_survey    
     ManagerInviteEmailJob.perform_later(params[:email], params[:title], params[:content], current_user.email, current_user.name)
-    redirect_to results_manager_subjects_path, notice: "Successfully sent your invites"
+    redirect_to dashboard_path, notice: "Successfully sent your invites"
   end
 
   def send_invites      

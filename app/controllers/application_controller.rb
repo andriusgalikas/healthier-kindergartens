@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         if current_user.nil?
             redirect_to new_user_session_url
         elsif current_user && !(roles.include?(current_user.role))
-            redirect_to welcome_url
+            redirect_to root_url
         end
     end
 
