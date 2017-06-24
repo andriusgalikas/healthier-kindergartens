@@ -49,6 +49,8 @@ class TransactionsController < ApplicationController
     @transaction.card_num = params[:card_number]
     @transaction.user_id  = current_user.id
 
+    user_upgraded = false
+
     # Create a charge: this will charge the user's card
     begin
       stripe_customer = current_user.stripe_customer
@@ -66,6 +68,12 @@ class TransactionsController < ApplicationController
         :description => ""
       )
       
+      if current_user.deposit_required && !charge.id.nil?
+        current_user.deposit_required = false
+        current_user.plan_type = 4
+        user_upgraded = true
+      end
+
       @transaction.charge_id = charge.id
       @transaction.deposit = !current_user.deposit_required  #params[:upgrade_type] ? true : false
       @transaction.plan_type = current_user.plan_type
@@ -74,11 +82,6 @@ class TransactionsController < ApplicationController
       unless @subscription.nil?
         @subscription.transaction_id = @transaction.id
         @subscription.save        
-      end
-
-      if current_user.deposit_required
-        current_user.deposit_required = false
-        current_user.plan_type = 4
       end
       
       current_user.stripe_customer = stripe_customer
@@ -89,7 +92,7 @@ class TransactionsController < ApplicationController
       # The card has been declined
     end
 
-    if current_user.plan_type > 1
+    if current_user.plan_type > 1 && !user_upgraded
       send_confirmation_email
     end
 
