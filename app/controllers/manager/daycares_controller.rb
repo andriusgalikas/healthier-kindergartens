@@ -16,7 +16,7 @@ class Manager::DaycaresController < ApplicationController
   end
 
   def send_invite_survey    
-    ManagerInviteEmailJob.perform_now(params[:email], params[:title], params[:content], current_user.email, current_user.name)
+    ManagerInviteEmailJob.perform_later(params[:email], params[:title], params[:content], current_user.email, current_user.name)
     redirect_to results_manager_subjects_path, notice: "Successfully sent your invites"
   end
 
@@ -24,8 +24,8 @@ class Manager::DaycaresController < ApplicationController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_now(@message, {:invitation => true})
-      DaycareInviteEmailJob.perform_now(@message, {:invitation => true})
+      MessageNotificationJob.perform_later(@message, {:invitation => true})
+      DaycareInviteEmailJob.perform_later(@message, {:invitation => true})
       redirect_to dashboard_url, notice: "Successfully sent your invites"
     else
       render "invite"

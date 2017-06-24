@@ -10,7 +10,7 @@ class Partner::MessagesController < ApplicationController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_now(@message)
+      MessageNotificationJob.perform_later(@message)
       redirect_to partner_messages_path, notice: 'Message successfully sent.'
     else
       redirect_to new_partner_message_path, notice: 'There was an error creating the message.'

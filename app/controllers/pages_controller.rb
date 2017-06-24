@@ -84,6 +84,12 @@ class PagesController < ApplicationController
             ]
         }
         apps = scheduler.put_appointment request
+
+        unless apps["message"].nil?
+            flash[:alert] = apps["message"]
+        else
+            flash[:notice] = "Your scheduling is assigned successfully"
+        end
         redirect_to dashboard_path
     end
 
@@ -92,7 +98,7 @@ class PagesController < ApplicationController
     end
 
     def send_message
-        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_now
+        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_later
         redirect_to root_path 
     end
 

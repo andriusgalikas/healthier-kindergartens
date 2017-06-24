@@ -1,5 +1,6 @@
 .manager-dash-container
   = render 'nav_header'
+  = render partial: 'shared/flash'
   .container
     - if current_user.deposit_required
       = render 'manager_dep'

@@ -20,7 +20,7 @@ class Admin::MessagesController < AdminController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_now(@message)
+      MessageNotificationJob.perform_later(@message)
       redirect_to admin_lang_dashboard_path, notice: t('messages.notifications.send_message_success')
     else
       redirect_to admin_lang_dashboard_path, notice: t('messages.notifications.send_message_error')

@@ -65,7 +65,7 @@ class IllnessesController < ApplicationController
       message.owner_id = current_user.id
 
       if message.save
-        MessageNotificationJob.perform_now(message)
+        MessageNotificationJob.perform_later(message)
       end
 
       redirect_to illnesses_path, notice: status[:message]
