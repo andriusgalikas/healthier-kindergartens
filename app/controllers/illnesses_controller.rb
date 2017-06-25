@@ -54,13 +54,13 @@ class IllnessesController < ApplicationController
 
   def create_department_record
     status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
-    
 
     if status[:code] == 'ok'
+      illness = Illness.where(code: params[:record][:illness_code]).first
       message = Message.new
       message.message_template_id = 0
       message.title = t('mailers.illness.title')
-      message.content = t('mailers.illness.content')
+      message.content = t('mailers.illness.content', illness: illness.name)
       message.target_roles = ["parentee"]
       message.owner_id = current_user.id
 

@@ -36,7 +36,7 @@
             %label{:for => "radio_dash_step_3"}
               = t('illnesses.labels.view_old_records')
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'}=t('form_labels.next')
 #dash_step_2
   .modal-dialog
     / Modal content
@@ -50,7 +50,7 @@
         %p= t('guideline.worker.dashboard.illness.add_record.content').html_safe
         %a#link_add_record.plainmodal-close= t('guideline.worker.dashboard.illness.add_record.link_text').html_safe          
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '2'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '2'}=t('form_labels.next')
 #dash_step_3
   .modal-dialog
     / Modal content
@@ -64,7 +64,7 @@
         %p= t('guideline.worker.dashboard.illness.view_record.content').html_safe
         %a#link_view_record.plainmodal-close= t('guideline.worker.dashboard.illness.view_record.link_text').html_safe          
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '3'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '3'}=t('form_labels.next')
 :javascript
   jQuery(document).ready(function() {
     var effect = {
@@ -138,7 +138,7 @@
             intro: "#{t('guideline.worker.dashboard.illness.add_record.content')}"
           }
         ],
-        'doneLabel': 'Next Step',
+        'doneLabel': "#{t('form_labels.next')}",
         'tooltipPosition': 'auto',
         'positionPrecedence': ['left', 'right', 'bottom', 'top']
       });
@@ -156,7 +156,7 @@
             intro: "#{t('guideline.worker.dashboard.illness.view_record.content')}"
           }
         ],
-        'doneLabel': 'Next Step',
+        'doneLabel': "#{t('form_labels.next')}",
         'tooltipPosition': 'auto',
         'positionPrecedence': ['left', 'right', 'bottom', 'top']
       });

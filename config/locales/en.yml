@@ -613,7 +613,7 @@ en:
 
     illness:
       title: Illness Record is created
-      content: "<p>Hello</p><p>Illness Record is created</p>"
+      content: "<p>Hello</p><p>Illness Record - %{illness} is created</p>"
 
   dashboard:
     nav_var:
@@ -1023,6 +1023,11 @@ en:
     post: Post
     submit: Submit
     search: Search
+    complete: Complete
+    previous: Previous
+    apply_filter: Apply Filters
+    start_date: Start Date
+    end_date: End Date
 
   person_labels:
     name: Name

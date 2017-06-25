@@ -33,7 +33,7 @@
                 = render :partial => 'form', locals: { subject: @subject, tab: (index == (@subject.surveys.size - 1) ? 'complete' : index+1), attempt: survey.attempts.new, survey: survey}
             #tab_complete.jcmc-tab
               .jcmc-buttons.form-buttons
-                = link_to 'Completed', complete_pending_option_path(current_user.id, @subject.id), :class => 'btn btn-round item-manager btn-next'
+                = link_to t('form_labels.complete'), complete_pending_option_path(current_user.id, @subject.id), :class => 'btn btn-round item-manager btn-next'
 :javascript
   jQuery(document).ready(function() {    
     var pending_survey_id = #{@pending_checker.survey_pending_id(current_user.id, @subject.id)};

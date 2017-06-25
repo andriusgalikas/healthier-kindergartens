@@ -1,4 +1,5 @@
 class BuildLocaleYmlJob < ActiveJob::Base
+  include ActiveJobStatus::Hooks
   queue_as :default
 
   def perform(content, language)
@@ -17,7 +18,6 @@ class BuildLocaleYmlJob < ActiveJob::Base
       trans_item.value = value
       trans_item.save
     end
-    I18n.backend.reload!
     puts "------------BuildLocaleYmlJob---------Done"
   rescue => e
     puts "------------BuildLocaleYmlJob---------Error"

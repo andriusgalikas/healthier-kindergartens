@@ -224,6 +224,7 @@ Rails.application.routes.draw do
         post 'localization', to: 'pages#upload'
 
         post 'send_verify', to: 'users#send_verify', format: 'json'
+        get 'getUploadYmlStatus', to: 'pages#getUploadYmlStatus', format: 'json'
         get 'password', to: 'pages#password'
         post 'change_password', to: 'pages#change_password'
 

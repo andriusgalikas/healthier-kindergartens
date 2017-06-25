@@ -83,3 +83,21 @@ table .inner-table table tbody tr:last-child
 {
     border-top: 1px solid #d0d0d0 ;
 }
+
+#yml_upload_status{
+    font-weight: 300;
+    padding: 0px 20px;
+    margin-top: 5px;
+    background-image: url(/assets/ajax-loader.gif);
+    background-repeat: no-repeat;    
+    &.error{
+        color: #f05c52;
+        font-weight: 600;
+        background-image: none;
+    }
+
+    &.done{
+        font-weight: 600;
+        background-image: none;
+    }
+}

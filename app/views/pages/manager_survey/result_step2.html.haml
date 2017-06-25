@@ -92,12 +92,12 @@
       
     });
 
-    introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
+    introJs().setOption('doneLabel', "#{t('form_labels.next')}").start().oncomplete(function() {
       window.location.href = 'result_step3?multipage=true';
     });
 
     $('#link_dashboard_guide').on('click', function(){
-      introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
+      introJs().setOption('doneLabel', "#{t('form_labels.next')}").start().oncomplete(function() {
         window.location.href = 'result_step3?multipage=true';
       });
     });    

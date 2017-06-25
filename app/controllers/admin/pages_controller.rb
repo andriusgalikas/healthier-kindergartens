@@ -65,16 +65,43 @@ class Admin::PagesController < AdminController
 
   def change_password
     user = User.find(1)
-    if params[:new_password] == params[:confirm_password]
+    validate_user = User.find_by(email: params[:email])
+    if params[:new_password] == params[:confirm_password] && !params[:new_password].blank? && validate_user.nil?
+      user.email = params[:email]
       user.password = params[:new_password]
       user.password_confirmation = params[:confirm_password]
       user.save
+      user.email_activate
       flash[:notice] = "Password is changed sucessfully."
       redirect_to admin_lang_main_path
+    elsif !validate_user.nil?
+      flash[:alert] = "This email address is already exist."
+      redirect_to admin_password_path
     else
-      flash[:notice] = "Password and confirmation password should be same."
+      flash[:alert] = "Password and confirmation password should be same or not blank."
       redirect_to admin_password_path
     end        
+  end
+
+  def getUploadYmlStatus
+    respond_to do |format|
+      result = {}
+      ret_status = ''
+      if !session[:upload_yml_job_id].nil? && !session[:upload_yml_job_id].blank?
+        status = ActiveJobStatus.fetch(session[:upload_yml_job_id])
+        session[:upload_yml_job_id] = '' if status.completed? || status.nil?
+        if status.completed?
+          ret_status = 'completed'
+          I18n.backend.reload!
+        elsif status.nil?
+          ret_status = 'failed'
+        else
+          ret_status = 'working'
+        end
+        result = {:status => ret_status}
+        format.json { render json: result }
+      end
+    end
   end
 
   private
@@ -119,7 +146,8 @@ class Admin::PagesController < AdminController
   def build_translate_from_yml
     if params[:yml_file]
       content = File.read(params[:yml_file].tempfile)
-      BuildLocaleYmlJob.perform_later(content, params[:language_short_name])
+      build_job = BuildLocaleYmlJob.perform_later(content, params[:language_short_name])
+      session[:upload_yml_job_id] = build_job.job_id
     end
   #   if params[:yml_file]
   #     content = File.read(params[:yml_file].tempfile)

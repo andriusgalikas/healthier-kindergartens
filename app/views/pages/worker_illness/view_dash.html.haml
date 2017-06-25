@@ -29,7 +29,7 @@
       .modal-body          
         %a#link_add_record.plainmodal-close= t('guideline.worker.dashboard.illness.view_record.department').html_safe          
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'}=t('form_labels.next')
 :javascript
   jQuery(document).ready(function() {
     var effect = {
@@ -86,7 +86,7 @@
             intro: "#{t('guideline.worker.dashboard.illness.add_record.department')}"
           }
         ],
-        'doneLabel': 'Next Step',
+        'doneLabel': "#{t('form_labels.next')}",
         'tooltipPosition': 'auto',
         'positionPrecedence': ['left', 'right', 'bottom', 'top']
       });

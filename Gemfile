@@ -95,6 +95,10 @@ gem 'aws-sdk', '~> 2.3'
 # background processing
 gem 'sidekiq'
 gem 'sidekiq-failures'
+gem 'sidekiq-status'
+gem 'active_job_status'
+gem 'redis-store'
+gem 'redis-activesupport'
 gem 'sinatra', :require => nil
 
 # fake data

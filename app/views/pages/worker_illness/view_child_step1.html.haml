@@ -19,14 +19,14 @@
         .row{data:{step: 2, intro: t("guideline.worker.illness_view_child.step2.content")}}
           .col-md-4
             .form-group
-              = label_tag :start_date
+              = label_tag :start_date, t('form_labels.start_date')
               = text_field_tag :start_date, params['start_date'], class: 'datepicker form-control datetime-input'
           .col-md-4
             .form-group
-              = label_tag :end_date
+              = label_tag :end_date, t('form_labels.end_date')
               = text_field_tag :end_date, params['end_date'], class: 'datepicker form-control datetime-input'
           .col-md-4.form-buttons.filter-buttons.centralize
-            = link_to 'Apply filters', '#', class: 'btn btn-lightred', data:{step: 3, intro: t("guideline.worker.illness_view_child.step3.content")}
+            = link_to t('form_labels.apply_filter'), '#', class: 'btn btn-lightred', data:{step: 3, intro: t("guideline.worker.illness_view_child.step3.content")}
       .row
         .col-md-12.filtered-contents
           .row.filtered-item

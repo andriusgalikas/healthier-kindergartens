@@ -46,11 +46,11 @@
         .actions.clearfix
           %ul{"aria-label" => "Pagination", :role => "menu"}
             %li.disabled{"aria-disabled" => "true"}
-              %a{:href => "#previous", :role => "menuitem"} Previous
+              %a{:href => "#previous", :role => "menuitem"}=t('form_labels.previous')
             %li{"aria-disabled" => "false", "aria-hidden" => "false", data:{step: 14, intro: t("guideline.worker.illness_add_child.step14.content")}}
-              %a{:href => "#next", :role => "menuitem"} Next
+              %a{:href => "#next", :role => "menuitem"}=t('form_labels.next')
             %li{"aria-hidden" => "true", :style => "display: none;"}
-              %a{:href => "#finish", :role => "menuitem"} Submit
+              %a{:href => "#finish", :role => "menuitem"}=t('form_labels.submit')
 :javascript
   jQuery(document).ready(function() {
     healthChildcare.guideline.introGoToStep('add_child_step7');

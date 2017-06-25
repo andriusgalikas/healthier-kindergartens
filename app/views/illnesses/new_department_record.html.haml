@@ -9,6 +9,10 @@
     .row.content-main.illnesses
       .col-md-12
         = form_tag create_department_record_illnesses_path, id: 'new-department-record' do
+          %input{type: 'hidden', id: 'new-department-record_submit', value: t('form_labels.submit')}
+          %input{type: 'hidden', id: 'new-department-record_next', value: t('form_labels.next')}
+          %input{type: 'hidden', id: 'new-department-record_previous', value: t('form_labels.previous')}
+
           %label= t('illnesses.labels.department_details')
           %section.choose-department
             = render 'department_options_selector'

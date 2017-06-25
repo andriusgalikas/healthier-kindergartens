@@ -56,7 +56,7 @@
             %label{:for => "radio_dash_step_2"}
               = t('guideline.worker.dashboard.todo.take_todo.title').html_safe
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '1'}=t('form_labels.next')
 #dash_step_2
   .modal-dialog
     / Modal content
@@ -70,7 +70,7 @@
         %p= t('guideline.worker.dashboard.todo.take_todo.content').html_safe
         %a#link_take_todo= t('guideline.worker.dashboard.todo.take_todo.link_text').html_safe          
       .modal-footer
-        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '2'} Next
+        %button.btn.btn-lightred.link-dash-step{"data-dismiss" => "modal", :type => "button", 'data-step' => '2'}=t('form_labels.next')
 :javascript
   jQuery(document).ready(function() {
     var effect = {

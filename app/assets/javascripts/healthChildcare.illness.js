@@ -341,7 +341,9 @@ healthChildcare.illness = {
       stepsOrientation: "vertical",
       onInit: function() {$('#new-department-record').show()},
       labels: {
-        finish: 'Submit'
+        finish: $('#new-department-record_submit').val(),
+        next: $('#new-department-record_next').val(),
+        previous: $('#new-department-record_previous').val()
       },
       onFinished: function() {
         $('form').trigger('submit');

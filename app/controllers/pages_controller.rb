@@ -61,14 +61,18 @@ class PagesController < ApplicationController
     end
 
     def ethic_4
-        scheduler = AcuityScheduling.new(ENV['ACUITY_SCHEDULE_USER'], ENV['ACUITY_SCHEDULE_PASSWORD'], ENV['ACUITY_SCHEDULE_URL'])
-        @app_types = scheduler.get_appointment_types        
+        get_schedule_params
+        scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
+        @app_types = scheduler.get_appointment_types
+
         rescue Exception
             redirect_to dashboard_path
     end
 
     def add_schedule
-        scheduler = AcuityScheduling.new(ENV['ACUITY_SCHEDULE_USER'], ENV['ACUITY_SCHEDULE_PASSWORD'], ENV['ACUITY_SCHEDULE_URL'])
+        get_schedule_params
+
+        scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
 
         request = {
             :appointmentTypeID => params[:appointment_type],
@@ -78,9 +82,9 @@ class PagesController < ApplicationController
             :email => params[:email],
             :phone => params[:phone],
             :fields => [
-                {id: "2412391", value: params[:num_children]},
-                {id: "2412394", value: params[:num_worker]},
-                {id: "2421634", value: params[:care_type]}
+                {id: @schedule_num_children.value, value: params[:num_children]},
+                {id: @schedule_num_worker.value, value: params[:num_worker]},
+                {id: @schedule_care_type.value, value: params[:care_type]}
             ]
         }
         apps = scheduler.put_appointment request
@@ -112,5 +116,15 @@ class PagesController < ApplicationController
       if request.xhr?
         render partial: action_name
       end
+    end
+
+    def get_schedule_params
+        @schedule_user = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_USER")
+        @schedule_password = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_PASSWORD")
+        @schedule_url = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_URL")
+
+        @schedule_num_children = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_NUM_OF_CHILD_ID")
+        @schedule_num_worker = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_NUM_OF_WORKER_ID")
+        @schedule_care_type = GlobalSetting.find_by(key: "ACUITY_SCHEDULE_CARD_TYPE_ID")
     end
 end

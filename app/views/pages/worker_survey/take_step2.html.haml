@@ -96,11 +96,11 @@
                       %input.survey-option{:name => "survey_attempt3", :type => "radio", :value => "363"}
                       20
               .jcmc-buttons.form-buttons
-                = button_tag "Next", :class => "btn-round item-manager btn-next", :type => 'submit'              
+                = button_tag t('form_labels.next'), :class => "btn-round item-manager btn-next", :type => 'submit'              
 :javascript
   jQuery(document).ready(function() {
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.introGoToStep('take_step3', 'Next Step');
+      healthChildcare.guideline.introGoToStep('take_step3', "#{t('form_labels.next')}");
     });       
-    healthChildcare.guideline.introGoToStep('take_step3', 'Next Step');
+    healthChildcare.guideline.introGoToStep('take_step3', "#{t('form_labels.next')}");
   });

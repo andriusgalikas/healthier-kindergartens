@@ -16,4 +16,4 @@
                 = radio_button_tag "survey_attempt[answers_attributes][#{index}][option_id][]", option.id, @pending_checker.is_pending_option?(option.id, current_user.id) , class: "survey-option", "data-question" => question.id, "data-survey" => survey.id, "data-user" => current_user.id, "data-subject" => @subject.id
                 = option.text
   .jcmc-buttons.form-buttons
-    = f.button "Next", :class => "btn-round item-manager btn-next", :type => 'submit'
+    = f.button t('form_labels.next'), :class => "btn-round item-manager btn-next", :type => 'submit'
