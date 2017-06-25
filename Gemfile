@@ -19,6 +19,7 @@ gem 'sitemap_generator'
 gem 'unicorn', platforms: :ruby
 gem 'pg'
 gem 'countries_and_languages', :require => 'countries_and_languages/rails'
+gem 'newrelic_rpm'
 
 # Web Services
 gem 'sendinblue'
