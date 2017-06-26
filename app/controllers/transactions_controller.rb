@@ -88,15 +88,18 @@ class TransactionsController < ApplicationController
       current_user.card_number = params[:card_number]
       current_user.save
 
+      if current_user.plan_type > 1 && !user_upgraded
+        send_confirmation_email
+      end
+  
+      redirect_to ethic_2_path
+
     rescue Stripe::CardError => e
       # The card has been declined
-    end
+    rescue Stripe::InvalidRequestError => e
 
-    if current_user.plan_type > 1 && !user_upgraded
-      send_confirmation_email
     end
-
-    redirect_to ethic_2_path
+      redirect_to dashboard_path
   end 
 
   private
