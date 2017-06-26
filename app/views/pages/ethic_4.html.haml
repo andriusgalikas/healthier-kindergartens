@@ -12,8 +12,12 @@
           %p=t('pages.ethic.step4.timezone')
           = render partial: 'timezone_select'
           .form-group
-            %p=t('pages.ethic.step4.schedule_time')
-            = text_field_tag :start_date, '', class: 'datetimeformatpicker form-control datetime-input'
+            %p
+              =t('pages.ethic.step4.schedule_time')
+              =image_tag '/assets/ajax-loader.gif', id: 'time_loader', style: 'display: none;'
+            = text_field_tag :start_date, '', class: 'datetimepicker-date form-control datetime-input'
+            .time_container
+
             = hidden_field_tag :firstName, current_user.name
             = hidden_field_tag :lastName, '.'
             = hidden_field_tag :email, current_user.email
@@ -27,4 +31,26 @@
 :javascript
   jQuery(document).ready(function() {
     jQuery('#verify-timezone').val('Europe/Oslo');
+    var start_date = '';
+    $('.datetimepicker-date').on('change', function(){
+      if(start_date !== $(this).val()){
+        start_date = $(this).val();
+        var url = '/get_available_schedule_time?appointment='+$('input[name=appointment_type]').val()+'&date='+$(this).val()+'&timezone='+$('#verify-timezone').val();
+        $('#time_loader').show();
+        $.ajax({
+            url: url,
+            type:'GET',
+            dataType: 'json',
+            success: function(response){
+              var template = '';
+              for(var i = 0; i < response.length; i++){
+                var available_time = response[i].time.substring(11, 16);
+                template += '<div class="radio-box"><input checked="" id="start_time'+i+'" name="start_time" style="display: none;" type="radio" value="'+available_time+'"><label for="start_time'+i+'">'+available_time+'</label></div>';
+              }
+              $('.time_container').html(template);
+              $('#time_loader').hide();
+            }
+          });              
+      }
+    });
   });

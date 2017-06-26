@@ -69,6 +69,20 @@ class PagesController < ApplicationController
             redirect_to dashboard_path
     end
 
+    def get_available_schedule_time
+        get_schedule_params
+        scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
+        
+        time_list = scheduler.get_available_schedule_time params
+
+        respond_to do |format|
+            format.json {render :json => time_list}
+        end
+
+        rescue Exception
+            format.json {render :json => []}
+    end
+
     def add_schedule
         get_schedule_params
 
@@ -76,7 +90,7 @@ class PagesController < ApplicationController
 
         request = {
             :appointmentTypeID => params[:appointment_type],
-            :datetime => params[:start_date],
+            :datetime => params[:start_date] + ' ' + params[:start_time],
             :firstName => params[:firstName],
             :lastName => params[:lastName],
             :email => params[:email],

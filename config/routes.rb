@@ -71,6 +71,9 @@ Rails.application.routes.draw do
     post 'add_pending_option', to: 'survey_pending_option#new'
     get 'complete_pending_option/:user_id/:subject_id', to: 'survey_pending_option#complete', as: 'complete_pending_option'
     post 'guide_text', to: 'pages#guide_text', :defaults => { :format => 'json' } 
+    
+    get 'get_available_schedule_time', to: 'pages#get_available_schedule_time', :defaults => { :format => 'json' } 
+
     post 'add_schedule', to: 'pages#add_schedule'
     get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
 
