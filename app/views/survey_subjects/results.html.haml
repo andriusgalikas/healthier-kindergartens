@@ -6,7 +6,7 @@
       #progress_charts_partial.wrap
         = render partial: 'progress_charts', :locals => {trend: nil}
       .row.text-center.form-buttons
-        =submit_tag 'Retake Test', :class => 'btn btn-lightred'
+        =submit_tag t('survey.labels.retake_test'), :class => 'btn btn-lightred'
 :javascript
   // Load the Visualization API and the corechart package.
   jQuery(document).ready(function() {

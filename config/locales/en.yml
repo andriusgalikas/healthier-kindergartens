@@ -1084,6 +1084,7 @@ en:
       parents: Daycare Parents
       all: All
       empty_result: User has not taken the survey yet..
+      retake_test: Retake Test
 
     notifications:
       not_enough_data: Please enough data to show result.
