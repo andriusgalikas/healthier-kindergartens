@@ -339,6 +339,7 @@ en:
         card_number: Please input credit card number
         cvcode: CV Code
         discount_code: Discount Code
+        card_expiration: Card Expiration
     ethic:
       step1:
         title: Code Of Ethics
@@ -456,6 +457,8 @@ en:
       para1: Your Investment in Health and Safety of Children and the wider childcare community is calculated based on %{num_child} children in your facility multiplied by %{currency_symbol} %{amount} per child per day.
       para2: "Please Note: You will only be able to make deposit of $100,  if there are availble spots on the program. If the deposit is accepted that means you are now onboard."
       reserve: Reserve My Spot
+      ssl_title: Secured PAYMENT
+      ssl_description: Your information is protected by 256-bit SSL encryption
       box_title: Make a deposit to reserve your spot on the accreditation  program
       benefit: ONGOING ACCREDITATION MEMBERSHIP BENEFITS
       ben_para1: "Once you’re accredited with HSCA, you will have a vast array of benefits that will enhance your childcare management. There will be a higher the level of understanding on infection and disease control in your facility, community and the industry.  Here are some of the perks you can look forward to as a result of your accreditation:" 

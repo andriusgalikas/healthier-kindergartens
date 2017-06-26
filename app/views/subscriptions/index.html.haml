@@ -32,7 +32,7 @@
                   = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => t('pages.journey.label.cvcode'), maxlength:3
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
-                  %span Card Expiration:
+                  %span=t('pages.journey.label.card_expiration')
                 .col-md-6.col-sm-12.col-xs-12
                   = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-green'}
                 .col-md-6.col-sm-12.col-xs-12
@@ -42,7 +42,13 @@
                   %p.plan-price  
                     = hidden_field_tag :upgrade_type, 1
                     = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
-                    %p=t('pages.upgrade.para2').html_safe
+                  %p
+                    %span{style: 'color: green'}
+                      %i.fa.fa-icon.fa-lock
+                      SSL
+                    %span=t('pages.upgrade.ssl_title').html_safe
+                  %p=t('pages.upgrade.ssl_description').html_safe
+                  %p=t('pages.upgrade.para2').html_safe
               .row.text-center
                 %button.btn.btn-round.item-green-manager{type: "submit"}
                   = t('pages.upgrade.reserve')
@@ -75,7 +81,7 @@
                   = text_field_tag :card_code, nil, name: nil, :class => 'form-control input-round border-green', :placeholder => t('pages.journey.label.cvcode'), maxlength: 3
               .row{:style => "margin: 0;"}
                 .col-md-12.col-sm-12.col-xs-12
-                  %span Card Expiration:
+                  %span=t('pages.journey.label.card_expiration')
                 .col-md-6.col-sm-12.col-xs-12
                   = select_month nil, {use_month_numbers: true}, {name: nil, id: "card_month", :class => 'form-control input-round border-green'}
                 .col-md-6.col-sm-12.col-xs-12
@@ -89,6 +95,12 @@
                   %p.plan-price  
                     = hidden_field_tag :upgrade_type, 1
                     = "#{@main_plan_currency.symbol unless @main_plan_currency.nil?} #{@main_plan.price unless @main_plan.nil?}"
+                  %p
+                    %span{style: 'color: green'}
+                      %i.fa.fa-icon.fa-lock
+                      SSL
+                    %span=t('pages.upgrade.ssl_title').html_safe
+                  %p=t('pages.upgrade.ssl_description').html_safe
               .row.text-center
                 %button.btn.btn-round.item-green-manager{type: "submit"}
                   = t('deposit.button.invest')
