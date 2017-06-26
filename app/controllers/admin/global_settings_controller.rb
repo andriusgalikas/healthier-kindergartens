@@ -7,12 +7,12 @@ class Admin::GlobalSettingsController < AdminController
     GlobalSetting.find_or_create_by(key: "Journey Page Mode")
 
     # Acurity Schedule Mode
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_URL",             description: 'Acurity Schedule API url')
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_USER",            description: 'user account id to access Acurity Schedule API')
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_PASSWORD",        description: 'user account password to access Acurity Schedule API')
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_NUM_OF_CHILD_ID", description: '`Number of Childs` field id in Schedule Form')
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_NUM_OF_WORKER_ID", description: '`Number of Workers` field id in Schedule Form')
-    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_CARD_TYPE_ID",    description: '`Card Type` field id in Schedule Form')
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_URL")
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_USER")
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_PASSWORD")
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_NUM_OF_CHILD_ID")
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_NUM_OF_WORKER_ID")
+    GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_CARD_TYPE_ID")
 
     @global_settings = GlobalSetting.all
   end
