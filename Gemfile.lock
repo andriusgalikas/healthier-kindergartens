@@ -293,6 +293,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.11.0)
+    newrelic_rpm (4.2.0.334)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -586,6 +587,7 @@ DEPENDENCIES
   lograge
   meta_request
   mini_magick
+  newrelic_rpm
   paperclip
   pg
   poltergeist
@@ -625,4 +627,4 @@ RUBY VERSION
    ruby 2.2.2p95
 
 BUNDLED WITH
-   1.15.0
+   1.15.1
