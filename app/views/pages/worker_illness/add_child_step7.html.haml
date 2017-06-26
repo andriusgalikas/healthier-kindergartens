@@ -87,7 +87,7 @@
 :javascript
   jQuery(document).ready(function() {
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.introGoToStep('dash', 'Done');
+      healthChildcare.guideline.introGoToStep('dash', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });       
-    healthChildcare.guideline.introGoToStep('dash', 'Done');
+    healthChildcare.guideline.introGoToStep('dash', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
   });

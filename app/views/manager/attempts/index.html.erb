@@ -7,7 +7,7 @@
             <% @survey.attempts.each do |attempt| %>
                 <li>
                     <h3><%= attempt.participant.name %></h3>
-                    <%= link_to 'Answers', manager_survey_attempt_path(@survey, attempt), :class => 'btn btn-normal btn-green' %>
+                    <%= link_to t('attempt_labels.anwers'), manager_survey_attempt_path(@survey, attempt), :class => 'btn btn-normal btn-green' %>
                 </li>
             <% end %>
         </ul>

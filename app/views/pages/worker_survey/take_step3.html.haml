@@ -74,7 +74,7 @@
 :javascript
   jQuery(document).ready(function() {
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.introGoToStep('take_step1', 'Done');
+      healthChildcare.guideline.introGoToStep('take_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });       
-    healthChildcare.guideline.introGoToStep('take_step1', 'Done');
+    healthChildcare.guideline.introGoToStep('take_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
   });

@@ -23,11 +23,8 @@
             = submit_tag t('form_labels.next'), class: 'btn btn-yellow-red btn-wizard', data:{step: "10", intro: t("guideline.manager.message_send_menu.step10.content")}
 :javascript
   jQuery(document).ready(function() {    
-    $('#message_content').froalaEditor({
-      heightMin: 250
-    });
-    healthChildcare.guideline.dashboarStep();    
+    healthChildcare.guideline.dashboarStep("#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");    
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.dashboarStep();
+      healthChildcare.guideline.dashboarStep("#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });    
   });

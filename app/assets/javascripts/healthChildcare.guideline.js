@@ -1,9 +1,15 @@
 healthChildcare.guideline = {
-  managerMessageSendStep: function(stepNumber){
+  managerMessageSendStep: function(stepNumber, nextLabel, prevLabel, doneLabel, skipLabel){
     stepNumber++;
-    intro = introJs().setOption('doneLabel', 'Next Step').start().oncomplete(function() {
-      window.location.href = 'send_step'+stepNumber+'?multipage=true';
-    });    
+    intro = introJs().setOptions({
+      doneLabel: doneLabel,
+      nextLabel: nextLabel,
+      prevLabel: prevLabel,
+      skipLabel: skipLabel
+    })
+      .start().oncomplete(function() {
+        window.location.href = 'send_step'+stepNumber+'?multipage=true';
+      });    
   },
 /*
   managerMessageSendStep2: function(){
@@ -30,8 +36,13 @@ healthChildcare.guideline = {
     });    
   },
 */
-  dashboarStep: function(){
-    intro = introJs().setOption('doneLabel', 'Done').start().oncomplete(function() {
+  dashboarStep: function(nextLabel, prevLabel, doneLabel, skipLabel){
+    intro = introJs().setOptions({
+      doneLabel: doneLabel,
+      nextLabel: nextLabel,
+      prevLabel: prevLabel,
+      skipLabel: skipLabel      
+    }).start().oncomplete(function() {
       window.location.href = 'dash?multipage=true';
     });    
   },
@@ -88,8 +99,13 @@ healthChildcare.guideline = {
   //   introJs().start();
   // },
 
-  introGoToStep: function(nextPage, done='Next Step'){
-    introJs().setOption('doneLabel', done).start().oncomplete(function() {
+  introGoToStep: function(nextPage, nextLabel, prevLabel, doneLabel, skipLabel){
+    introJs().setOptions({
+      doneLabel: doneLabel,
+      nextLabel: nextLabel,
+      prevLabel: prevLabel,
+      skipLabel: skipLabel
+    }).start().oncomplete(function() {
       window.location.href = nextPage + '?multipage=true';
     });
   },

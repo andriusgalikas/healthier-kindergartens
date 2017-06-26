@@ -336,6 +336,9 @@ en:
       label:
         apply: Apply Here
         register: Register to get access
+        card_number: Please input credit card number
+        cvcode: CV Code
+        discount_code: Discount Code
     ethic:
       step1:
         title: Code Of Ethics
@@ -519,6 +522,8 @@ en:
       invite_msg_worker: Invite Daycare Workers
       invite_msg_parentee: Invite Daycare Parents
       invite_msg_manager: Invite Daycare Managers
+      partner_register: Partner Registration
+      upload_partner_photo: Upload Company logo
 
     caretype:
       ind: Independent
@@ -1028,6 +1033,16 @@ en:
     apply_filter: Apply Filters
     start_date: Start Date
     end_date: End Date
+    intro_done: Next
+    intro_skip: Skip
+    check_result: Check Results
+
+  attempt_labels:
+    title: Attempt for %{survey_name} by %{participant_name}
+    correct_answer: Correct answers
+    incorrect_answer: Incorrect answers
+    anwers: Answers
+    question: Questions
 
   person_labels:
     name: Name
@@ -1068,6 +1083,7 @@ en:
       workers: Daycare Workers
       parents: Daycare Parents
       all: All
+      empty_result: User has not taken the survey yet..
 
     notifications:
       not_enough_data: Please enough data to show result.

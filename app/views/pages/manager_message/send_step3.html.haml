@@ -23,8 +23,8 @@
             = submit_tag t('form_labels.next'), class: 'btn btn-yellow-red btn-wizard', data:{step: "6", intro: t("guideline.manager.message_send_menu.step6.content")}
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.managerMessageSendStep(3);
+    healthChildcare.guideline.managerMessageSendStep(3, "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.managerMessageSendStep(3);
+      healthChildcare.guideline.managerMessageSendStep(3, "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });    
   });            

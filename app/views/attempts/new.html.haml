@@ -26,7 +26,7 @@
               %a#jcmc-trigger-3{:href => "javascript:void(0)", :onclick => ""}
                 %span.jcmc-tab-span
                   =count + 1
-                  \. Check Results
+                  \. #{t('form_labels.check_result')}
           #jcmc-tab-panels.jcmc-tab-wrapper
             - @subject.surveys.order(weight: :asc).each_with_index do |survey, index|
               %div{:class => "jcmc-tab #{"jcmc-active-tab" if index == 0}", :id => "tab_#{index}"}

@@ -123,14 +123,14 @@
       case 2:
         modal = eval('modalStep' + cur_step);
         modal.plainModal('close', {force: true});
-        healthChildcare.guideline.introGoToStep('todo_step2');
+        healthChildcare.guideline.introGoToStep('todo_step2', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
         break;
       }      
       e.preventDefault();
     });
 
     $('#link_take_todo').click(function(e){
-      healthChildcare.guideline.introGoToStep('todo_step2');
+      healthChildcare.guideline.introGoToStep('todo_step2'), "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}";
       e.preventDefault();
     });
 

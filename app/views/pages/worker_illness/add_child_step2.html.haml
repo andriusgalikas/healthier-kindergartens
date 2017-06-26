@@ -80,8 +80,8 @@
               %a{:href => "#finish", :role => "menuitem"}=t('form_labels.submit')
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.introGoToStep('add_child_step3');
+    healthChildcare.guideline.introGoToStep('add_child_step3', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.introGoToStep('add_child_step3');
+      healthChildcare.guideline.introGoToStep('add_child_step3', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });    
   });

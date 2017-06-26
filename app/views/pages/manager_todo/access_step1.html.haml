@@ -29,8 +29,8 @@
               = link_to t('manager.todos.labels.show'), '#', :class => 'btn btn-yellow btn-normal btn-block'
 :javascript
   jQuery(document).ready(function() {
-    healthChildcare.guideline.dashboarStep();
+    healthChildcare.guideline.dashboarStep("#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.dashboarStep();
+      healthChildcare.guideline.dashboarStep("#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });    
   });

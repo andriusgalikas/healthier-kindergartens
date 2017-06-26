@@ -7,13 +7,13 @@
           .fileUpload
             %span.upload-wrapper
               = image_tag 'partner-upload.png'
-              %span.caption Upload Company logo
+              %span.caption=t('register.labels.upload_partner_photo')
               = affiliate.fields_for :profile_image do |profile_image|
                 = profile_image.file_field :file, class: 'upload'              
         .row
           .col-sm-6.col-sm-offset-3
             .row.text-center
-              %h4 Partner Registration        
+              %h4=t('register.labels.partner_register')
             - if @affiliate.errors.any?
               #error_explanation
                 %h5= pluralize(@affiliate.errors.count, 'error') + " prohibited this affiliate from being saved."

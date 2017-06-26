@@ -141,7 +141,7 @@
     $('#link_search_message').click(function(e){
       modal = eval('modalStep' + cur_step);
       modal.plainModal('close', {force: true});
-      healthChildcare.guideline.introGoToStep('receive_step1', 'Done');
+      healthChildcare.guideline.introGoToStep('receive_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
       e.preventDefault();
     });
 
@@ -153,7 +153,7 @@
       case 1:
         modal = eval('modalStep' + cur_step);
         modal.plainModal('close', {force: true});
-        healthChildcare.guideline.introGoToStep('receive_step1', 'Done');
+        healthChildcare.guideline.introGoToStep('receive_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
         break;
       }      
       e.preventDefault();

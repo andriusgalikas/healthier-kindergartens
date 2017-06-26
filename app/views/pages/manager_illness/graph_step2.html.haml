@@ -33,8 +33,8 @@
 :javascript
   google.charts.load('current', {'packages':['corechart']});
   jQuery(document).ready(function() {
-    healthChildcare.guideline.introGoToStep('graph_step1');
+    healthChildcare.guideline.introGoToStep('graph_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     $('#link_dashboard_guide').on('click', function(){
-      healthChildcare.guideline.introGoToStep('graph_step1');
+      healthChildcare.guideline.introGoToStep('graph_step1', "#{t('form_labels.next')}", "#{t('form_labels.back')}", "#{t('form_labels.intro_done')}", "#{t('form_labels.intro_skip')}");
     });    
   });

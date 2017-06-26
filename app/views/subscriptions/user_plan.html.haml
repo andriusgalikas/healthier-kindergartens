@@ -72,7 +72,7 @@
                         - if !current_user.deposit_required && current_user.paid_plan_type < 3
                             %button.btn.hcc-btn-vertical
                                 %a{'href': '/set_userplan?plan=3'}
-                                    BOOK NOW
+                                    = t('user_plan.button.book').html_safe
                 #plan_phase3.col-md-4.col-sm-4
                     .row.plan-header.right-top-radius
                         .plan-bg
@@ -142,7 +142,7 @@
                         - if !current_user.deposit_required && current_user.paid_plan_type < 4
                             %button.btn.hcc-btn-vertical
                                 %a{'href': '/set_userplan?plan=4'}
-                                    BOOK NOW
+                                    = t('user_plan.button.book').html_safe
         .col-md-4.col-sm-12.plan-features
             .row
                 .col-md-12
