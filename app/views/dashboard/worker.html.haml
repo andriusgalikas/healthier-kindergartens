@@ -34,7 +34,7 @@
                 = link_to illnesses_path, id: 'item_illness' do
                   = image_tag 'dashboard-ilness.png'
                   %span=t('dashboard.menu_item.illness_record')
-                = link_to role_worker_illness_guides_path, id: 'item_illness' do
+                = link_to role_worker_illness_guides_path, id: 'item_illness_guide' do
                   = image_tag 'dashboard-ilness-rec.png'
                   %span=t('dashboard.menu_item.illness_guide')
 
@@ -124,5 +124,31 @@
             return "#{t('guideline.benifit.notify_message.content')}";
         }
     });
+
+    $("#item_instruction").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.instruction.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.instruction.content')}";
+        }
+    });    
+
+    $("#item_illness_guide").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.illness_guide.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.illness_guide.content')}";
+        }
+    });    
 
   });        

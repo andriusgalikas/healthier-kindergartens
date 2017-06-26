@@ -11,13 +11,15 @@
               %label{:for => "appointment_type_#{type['id']}"}= type['name']
           %p=t('pages.ethic.step4.timezone')
           = render partial: 'timezone_select'
-          .form-group
-            %p
-              =t('pages.ethic.step4.schedule_time')
-              =image_tag '/assets/ajax-loader.gif', id: 'time_loader', style: 'display: none;'
-            = text_field_tag :start_date, '', class: 'datetimepicker-date form-control datetime-input'
-            .time_container
-
+          .row
+            .col-md-6
+              .form-group
+                %p
+                  =t('pages.ethic.step4.schedule_time')
+                  =image_tag '/assets/ajax-loader.gif', id: 'time_loader', style: 'display: none;'
+                = text_field_tag :start_date, '', class: 'datetimepicker-date form-control datetime-input'
+            .col-md-6
+              .time_container{style: 'margin-top: 30px; margin-bottom: 20px;'}
             = hidden_field_tag :firstName, current_user.name
             = hidden_field_tag :lastName, '.'
             = hidden_field_tag :email, current_user.email

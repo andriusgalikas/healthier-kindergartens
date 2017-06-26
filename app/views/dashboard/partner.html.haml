@@ -20,7 +20,7 @@
             /= link_to dashboard_manager_todos_path do
             /  = image_tag 'dashboard-taskmng.png'
             /  %span Task Manager
-            = link_to partner_messages_path do
+            = link_to partner_messages_path, id: 'item_message' do
               = image_tag 'dashboard-com-mng.png'
               %span=t('dashboard.menu_item.communication')
             /= link_to dashboard_manager_todos_path do
@@ -43,4 +43,18 @@
     $('#link_dashboard_guide').on('click', function(){
       window.location.href = '/guide_page/partner_message/dash';
     });    
+
+    $("#item_message").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.message.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.message.content')}";
+        }
+    });
+    
   });

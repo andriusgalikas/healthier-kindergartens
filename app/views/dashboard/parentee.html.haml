@@ -6,16 +6,16 @@
       .col-md-5.col-sm-6.col-xs-12
         #main-menu
           .menu-items
-            = link_to results_subjects_path do
+            = link_to results_subjects_path, id: 'item_survey' do
               = image_tag 'dashboard-risk.png'
-              %span Risk Assessment
-            = link_to instruction_path do
+              %span=t('dashboard.menu_item.risk_assessment')
+            = link_to instruction_path, id: 'item_instruction' do
               = image_tag 'dashboard-instruction.png'
               %span=t('dashboard.menu_item.instruction') 
-            = link_to list_messages_path(role: current_user.role, list_type: 'received'), 'data-step': '15', 'data-intro': t('user_guide.menu.parent_message') do
+            = link_to list_messages_path(role: current_user.role, list_type: 'received'), id: 'item_message',  'data-step': '15', 'data-intro': t('user_guide.menu.parent_message') do
               = image_tag 'dashboard-com-mng.png'
               %span=t('dashboard.menu_item.communication')
-            = link_to role_parentee_illness_guides_path, id: 'item_illness' do
+            = link_to role_parentee_illness_guides_path, id: 'item_illness_guide' do
               = image_tag 'dashboard-ilness-rec.png'
               %span=t('dashboard.menu_item.illness_guide')
             /= link_to dashboard_manager_todos_path do
@@ -34,4 +34,57 @@
     $('body').css("src","background-color: #242c3f !important;");
     $('footer.normal .container').css("top", "0");
     $('footer.normal .container .central-footer').css("display", "none");
+
+    $("#item_survey").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.survey.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.survey.content')}";
+        }
+    });
+
+    $("#item_message").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.message.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.message.content')}";
+        }
+    });
+
+    $("#item_instruction").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.instruction.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.instruction.content')}";
+        }
+    });    
+
+    $("#item_illness_guide").popover({
+        container: '.content-main',
+        html: true,
+        placement: "right",
+        trigger: "hover",
+        title: function () {
+            return "#{t('guideline.benifit.illness_guide.title')}";
+        },
+        content: function () {
+            return "#{t('guideline.benifit.illness_guide.content')}";
+        }
+    });    
+
   });        
