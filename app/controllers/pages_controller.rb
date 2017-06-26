@@ -106,7 +106,7 @@ class PagesController < ApplicationController
         unless apps["message"].nil?
             flash[:alert] = apps["message"]
         else
-            flash[:notice] = t('page.ethic.step4.schedule_success')
+            flash[:notice] = t('pages.ethic.step4.schedule_success')
         end
         redirect_to dashboard_path
     end
