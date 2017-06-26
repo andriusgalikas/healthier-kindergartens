@@ -28,4 +28,19 @@ class Department < ActiveRecord::Base
 
     scope :name_like, ->(search) { where("LOWER(departments.name) LIKE :search", :search => "%#{search.downcase}%") }
     scope :by_daycare, ->(search) { where("departments.daycare_id = :search", :search => "#{search}") }
+
+    after_create :assign_department_to_global_todo
+
+    def assign_department_to_global_todo
+        update_params = {}
+        update_params.merge!(:department_ids => Department.ids)
+        all_global_todo = Todo.global
+
+        puts all_global_todo
+        puts update_params
+
+        all_global_todo.each do |item|
+            puts item.update(update_params)
+        end
+    end
 end
