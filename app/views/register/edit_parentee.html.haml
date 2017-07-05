@@ -121,8 +121,8 @@
       $('#' + new_tab_id).addClass('active');
 
       var new_tab_content = $('#tab'+tab_last).html();
-      var value_index = parseInt(tab_last) - 2;
-      var new_value_index = parseInt(tab_last) - 1;
+      var value_index = parseInt(tab_last) - 1;
+      var new_value_index = parseInt(tab_last);
 
       new_tab_content = new_tab_content.split('['+value_index+']').join('['+new_value_index+']');
       new_tab_content = new_tab_content.split('_'+value_index+'_').join('_'+new_value_index+'_');

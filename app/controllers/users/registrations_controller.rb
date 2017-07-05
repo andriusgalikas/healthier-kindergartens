@@ -122,7 +122,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user = User.find(current_user.id)
       render "register/edit_#{params[:role]}"
     when 'worker'
-      redirect_to dashboard_path
+      render "register/edit_#{params[:role]}"      
+      # redirect_to dashboard_path
     when 'medical_professional'
     end
   end
@@ -138,7 +139,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       get_affiliate
       result = @affiliate.update(affiliate_partner_params)
     when 'parentee'
-      result = current_user.update(daycare_parentee_params)
+      childrens = params[:user][:children_attributes]
+      puts childrens
+      childrens.each do |index, item|
+        if item[:id]
+          child = Child.find(item[:id])
+        else
+          child = Child.new
+        end
+
+        child.birth_date = item[:birth_date]
+        child.name = item[:name]
+        child.department_id = item[:department_id]
+        child.parent_id = current_user.id
+
+        result = child.save
+      end
     when 'medical_professional'
     end
 
@@ -154,6 +170,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find(current_user.id)
+    
     if @user.update_with_password(user_params_password)
       sign_in @user, :bypass => true
       get_resource_per_role      
@@ -221,6 +238,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       get_child
     when 'worker'
       set_daycares
+      get_daycare_department
     when 'medical_professional'
       new_user_profile
     end
@@ -373,8 +391,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def daycare_parentee_params
-    params.require(:user).permit(children_attributes: [:id, :name, :birth_date, 
-                                                       profile_image_attributes: [:id, :file]])      
+    params.require(:user).permit(children_attributes: [:id, :name, :birth_date, :department_id])      
   end
 
   # def build_resource params

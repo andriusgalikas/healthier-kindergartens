@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     scope 'worker', controller: 'users/workers' do
         get :select_daycare, as: 'worker_select_daycare'
         get :select_department, as: 'worker_select_department'
+        get :get_daycares, as: 'worker_get_daycares', :defaults => { :format => 'json' } 
+        post :update_daycare, as: 'worker_update_daycare', :defaults => { :format => 'json' } 
+        get :update_department, as: 'worker_update_department'
+        post :change_department, as: 'worker_change_department', :defaults => { :format => 'json' } 
     end
 
     # custom registration routes
