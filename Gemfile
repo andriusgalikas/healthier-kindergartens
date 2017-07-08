@@ -68,6 +68,7 @@ group :test do
   gem 'email_spec'
   gem 'fuubar'
   gem 'rspec-timecop'
+  gem 'simplecov', :require => false
 end
 
 group :development, :test do

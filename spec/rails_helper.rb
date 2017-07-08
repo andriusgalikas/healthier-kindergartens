@@ -11,6 +11,8 @@ require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'sidekiq/testing'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 Sidekiq::Testing.fake!
 # Add additional requires below this line. Rails is not loaded until this point!
