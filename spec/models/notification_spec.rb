@@ -14,7 +14,4 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-
-  describe '#create' do
-  end
 end
