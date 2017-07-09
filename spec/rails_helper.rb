@@ -12,7 +12,10 @@ require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'sidekiq/testing'
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/ckeditor/'
+  add_filter '/concerns/'
+end
 
 Sidekiq::Testing.fake!
 
