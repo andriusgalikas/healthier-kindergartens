@@ -1,0 +1,31 @@
+= content_for :title, 'Permission'
+= content_for :breadcrumb, 'Permission'
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Permissions
+
+  .widget.widget-content.row
+    %form{action: '/admin/permissions/list', method: :get}
+      .sixcol
+        %h3 Partner
+        .row
+          %input{type: "radio", value:"0", name:"option", checked: true} 
+            Certification Partnership
+        .row
+          %input{type: "radio", value:"1", name:"option"} 
+            Healthier and Safer Childcare Partnership
+      .sixcol
+        %h3 Daycare Manager
+        .row
+          %input{type: "radio", value:"2", name:"option"} 
+            Chain Daycare
+        .row
+          %input{type: "radio", value:"3", name:"option"} 
+            Independant Daycare
+        .row
+          %input{type: "radio", value:"4", name:"option"} 
+            Govermantal Daycare
+
+      %div{style: "clear:both;"}
+      %button.btn.btn-blue.btn-large Select

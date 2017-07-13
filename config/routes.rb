@@ -274,6 +274,14 @@ Rails.application.routes.draw do
         resources :email_campaigns, except: :show
         resources :locale_logos, except: :show
         resources :locale_posters
+
+        resources :permissions do
+            collection do
+                get :option
+                get :list
+                post :change
+            end
+        end
     end
 
     namespace :partner do

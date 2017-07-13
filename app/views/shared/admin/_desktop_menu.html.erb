@@ -89,6 +89,12 @@
       <i class="icon-cog" style="color:#eee;"></i>
     <% end %>
   </li>
+
+  <li class="<%= active_controller?(controller: 'admin/permissions/option') %>">
+    <%= link_to option_admin_permissions_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Access' do %>
+      <i class="icon-lock" style="color:#7bb;"></i>
+    <% end %>
+  </li>
   
 </ul>
 <ul id="secondary-menu">

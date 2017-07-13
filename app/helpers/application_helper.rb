@@ -126,6 +126,17 @@ module ApplicationHelper
     return url
   end
 
+  def assign_plan_list
+    plan_list = []
+    plan_list << ["Free membership", 0]
+    Plan.where(language: I18n.locale.upcase).each do |item|
+      unless item.plan_type == 0 || item.plan_type == 1
+        plan_list << [item.name, item.plan_type]
+      end
+    end
+    return plan_list
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}
