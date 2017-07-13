@@ -14,4 +14,16 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
+  describe '#archived' do
+    let(:notification) { create(:message_notification) }
+
+    it 'should have archived false' do
+      expect(notification.archived).to eq false
+    end
+
+    it 'should have archived true' do
+      notification.archived!
+      expect(notification.archived).to eq true
+    end
+  end 
 end
