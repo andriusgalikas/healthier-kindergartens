@@ -13,32 +13,9 @@
 require 'rails_helper'
 
 RSpec.describe Symptom, type: :model do
+  it { should belong_to(:illness) }
 
-  describe '#create' do
-    it 'should return an error when name is blank' do
-      symptom = build(:symptom, name: nil)
-
-      expect(symptom.valid?).to be_falsy
-    end
-
-    it 'should return an error when code is blank' do
-      symptom = build(:symptom, code: nil)
-
-      expect(symptom.valid?).to be_falsy
-    end
-
-    it 'should return an error when illness id is blank' do
-      symptom = build(:symptom, illness: nil)
-
-      expect(symptom.valid?).to be_falsy
-    end
-
-    it 'should return an error when a code already exists' do
-      create(:symptom, code: 'fever')
-
-      expect{ create(:symptom, code: 'fever') }.to raise_error(ActiveRecord::RecordInvalid)
-    end
-
-  end
-
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :code }
+  it { should validate_uniqueness_of :code}
 end
