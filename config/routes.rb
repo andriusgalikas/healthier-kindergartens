@@ -278,6 +278,7 @@ Rails.application.routes.draw do
         resources :permissions do
             collection do
                 get :option
+                get :group
                 get :list
                 post :change
             end

@@ -3,11 +3,13 @@
 
 .twelvecol
   .page-header
-    %h2.widget.widget-header=@type_label
+    %h2.widget.widget-header
+      = "Permissions / #{@type_label} / #{@group_label}"
 
   .widget.widget-content.row
     %form{action: '/admin/permissions/change', method: :post}
       %input{type: :hidden, name: 'option', value: params[:option]}
+      %input{type: :hidden, name: 'group', value: params[:group]}
       .table-responsive
         %table.table.table-striped.table-bordered.table-hover
           %thead

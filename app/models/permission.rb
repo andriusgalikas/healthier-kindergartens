@@ -1,5 +1,5 @@
 class Permission < ActiveRecord::Base
-    enum member_type: [:partner, :manager]
+    enum member_type: [:manager, :worker, :parentee, :partner]
     enum sub_type: [:partner_certificate, :partner_daycare, :manager_chain, :manager_independent, :manager_govermantal]
     enum feature: [:survey, :online_training, :message, :todo, :illness_analysics, :illness_record, :illness_guide]
 

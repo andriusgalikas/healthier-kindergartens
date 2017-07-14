@@ -1,0 +1,30 @@
+= content_for :title, 'Permission'
+= content_for :breadcrumb, 'Permission'
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header 
+      = "Permissions / #{@type_label}"
+
+  .widget.widget-content.row
+    %form{action: '/admin/permissions/list', method: :get}
+      %input{type: :hidden, name: 'option', value: params[:option]}
+      .sixcol
+        %h3 Group Level
+        - if params[:option].to_i > 1
+          .row
+            %input{type: "radio", value:"0", name:"group", checked: true} 
+              Daycare Manager
+          .row
+            %input{type: "radio", value:"1", name:"group"} 
+              Daycare Worker
+          .row
+            %input{type: "radio", value:"2", name:"group"} 
+              Daycare Parent
+        - else
+          .row
+            %input{type: "radio", value:"3", name:"group", checked: true} 
+              Daycare Partner
+
+      %div{style: "clear:both;"}
+      %button.btn.btn-blue.btn-large Select

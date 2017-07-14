@@ -6,7 +6,7 @@
     %h2.widget.widget-header Permissions
 
   .widget.widget-content.row
-    %form{action: '/admin/permissions/list', method: :get}
+    %form{action: '/admin/permissions/group', method: :get}
       .sixcol
         %h3 Partner
         .row
@@ -16,7 +16,7 @@
           %input{type: "radio", value:"1", name:"option"} 
             Healthier and Safer Childcare Partnership
       .sixcol
-        %h3 Daycare Manager
+        %h3 Daycare
         .row
           %input{type: "radio", value:"2", name:"option"} 
             Chain Daycare
