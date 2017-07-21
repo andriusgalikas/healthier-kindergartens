@@ -19,6 +19,7 @@ FactoryGirl.define do
     factory :todo do
         title { Faker::Lorem.word}
         frequency 'week'
+        language 'English'
 
         factory :single_todo do
             iteration_type { 'single' }

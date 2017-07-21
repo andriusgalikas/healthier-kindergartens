@@ -21,5 +21,14 @@
 require 'rails_helper'
 
 RSpec.describe Affiliate, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it { should have_one(:profile_image).class_name('Attachment') }
+	it { should have_many(:user_affiliates) }
+	it { should have_many(:users) }
+
+	it { should validate_presence_of :name }
+	it { should validate_presence_of :address }
+	it { should validate_presence_of :postcode }
+	it { should validate_presence_of :telephone }
+	it { should accept_nested_attributes_for(:user_affiliates) }
+	it { should accept_nested_attributes_for(:profile_image) }
 end

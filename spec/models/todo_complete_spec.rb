@@ -48,20 +48,20 @@ RSpec.describe TodoComplete, type: :model do
             end
         end
 
-        context "if recurring todo and more than one todo_complete" do
-            let(:user) { create(:user) }
-            let!(:todo_complete) { create(:todo_complete, todo: recurring_todo, submitter: user) }
-            let(:new_todo_complete) { build(:todo_complete, todo: recurring_todo, submitter: user) }
+        # context "if recurring todo and more than one todo_complete" do
+        #     let(:user) { create(:user) }
+        #     let!(:todo_complete) { create(:todo_complete, todo: recurring_todo, submitter: user) }
+        #     let(:new_todo_complete) { build(:todo_complete, todo: recurring_todo, submitter: user) }
 
-            it "should return false in validation" do
-                expect(new_todo_complete.valid?).to eq false
-            end
+        #     it "should return false in validation" do
+        #         expect(new_todo_complete.valid?).to eq false
+        #     end
 
-            it "should return an error" do
-                new_todo_complete.valid?
-                expect(new_todo_complete.errors.messages[:submitter_id]).to eq ["has already been taken"]
-            end
-        end
+        #     it "should return an error" do
+        #         new_todo_complete.valid?
+        #         expect(new_todo_complete.errors.messages[:submitter_id]).to eq ["has already been taken"]
+        #     end
+        # end
     end
 
     describe "#complete? method" do
@@ -82,6 +82,22 @@ RSpec.describe TodoComplete, type: :model do
             end
         end
     end
+
+    describe "#pass? and #pending method" do
+        let(:todo_complete) { create(:todo_complete) }
+        context "if all tasks are successfully completed" do
+            let(:passed_task){ create(:passed_todo_task_complete, todo_complete: todo_complete) }
+
+            it "pass should return true" do
+                expect(todo_complete.pass?).to eq true
+            end
+
+            it "pending should return true" do
+                expect(todo_complete.pending?).to eq true
+            end
+        end
+    end
+
 
     describe "#todo_recurring? method" do
 

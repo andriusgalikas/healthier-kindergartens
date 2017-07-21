@@ -68,6 +68,7 @@ group :test do
   gem 'fuubar'
   gem 'rspec-timecop'
   gem 'simplecov', :require => false
+  gem 'fake_stripe'
 end
 
 group :development, :test do

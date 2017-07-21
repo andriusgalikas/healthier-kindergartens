@@ -16,6 +16,7 @@ FactoryGirl.define do
     factory :todo_task do
         title { "Task-#{Faker::Lorem.word}" }
         description { Faker::Lorem.sentence }
+        language {'English'}
 
         association :todo
     end
