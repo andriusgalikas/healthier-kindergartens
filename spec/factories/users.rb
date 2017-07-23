@@ -47,9 +47,9 @@ FactoryGirl.define do
     factory :parentee_user do
       role 'parentee'
 
-      transient do
-        department nil
-      end
+      # transient do
+      #   department nil
+      # end
 
       before(:create) do |parent, evaluator|
         parent.children << (FactoryGirl.create :child, department: evaluator.department)
