@@ -4,6 +4,7 @@
   .container
     .row
       .col-md-3.survey-groups
+        %input{type: 'hidden', id: 'current_user_role', value: current_user.role}
         = render 'group'
       .col-md-9
         .row.survey-subjects

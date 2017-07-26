@@ -23,6 +23,8 @@
             .row
               = affiliate.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.organization')
             .row
+              = affiliate.select :affiliate_type, options_for_select([[t('register.partner_type.str'), 0], [t('register.partner_type.cer'), 1]]), {}, class: 'form-control input-round', :placeholder => t('register.labels.partner_type')
+            .row
               = affiliate.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.url')
             .row
               = affiliate.text_field :address, class: 'form-control input-round', :placeholder => t('register.labels.address')

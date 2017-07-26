@@ -6,15 +6,24 @@
     %h2.widget.widget-header Permissions
 
   .widget.widget-content.row
-    %form{action: '/admin/permissions/group', method: :get}
+    %form{action: '/admin/permissions/daycares', method: :get}
+      .twelvecol
+        %h3 Permission Type
+        .row
+          %input{type: "radio", value:"0", name:"type", checked: true} 
+            Default Permission
+        .row
+          %input{type: "radio", value:"1", name:"type"} 
+            Specific Permission
+
       .sixcol
         %h3 Partner
         .row
           %input{type: "radio", value:"0", name:"option", checked: true} 
-            Certification Partnership
+            Healthier and Safer Childcare Partnership
         .row
           %input{type: "radio", value:"1", name:"option"} 
-            Healthier and Safer Childcare Partnership
+            Certification Partnership
       .sixcol
         %h3 Daycare
         .row

@@ -29,4 +29,27 @@ class Affiliate < ActiveRecord::Base
             :country, :telephone,                   presence: true
 
   accepts_nested_attributes_for :user_affiliates, :profile_image, allow_destroy: true
+
+
+  # enum affiliate_type: [:strategic, :certific]
+
+  scope :search_by_type, ->(query, type) { where("name LIKE :search and affiliate_type = :type", search: "%#{query}%", type: type)}
+
+  def affiliate_type_text
+    case affiliate_type
+    when 0
+        I18n.t('register.partner_type.str')
+    when 1
+        I18n.t('register.partner_type.cer')
+    end
+  end
+
+  def strategic?
+    affiliate_type == 0
+  end
+
+  def certific?
+    affiliate_type == 1
+  end
+
 end

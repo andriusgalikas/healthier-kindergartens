@@ -6,9 +6,11 @@ include ActionView::Helpers::NumberHelper
     subject : SurveySubject
     population: user ids of the participants to generate data out of
 =end
-  def initialize(subject, user_population)
+  def initialize(subject, user_population, start_date = '', end_date = '')
     @subject = subject
     @user_population = user_population
+    @start_date = start_date
+    @end_date = end_date
   end
   # check for results availability
 
@@ -121,7 +123,10 @@ include ActionView::Helpers::NumberHelper
   end
 
   def attempts_per_survey(survey_id)
-    SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population).average('rate')
+    start_date = @start_date.blank? ? Date.new(1970, 1, 1) : Date.parse(@start_date)
+    end_date = @end_date.blank? ? Date.today : Date.parse(@end_date)
+
+    SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population, :created_at => start_date..end_date).average('rate')
   end
 
   def date_labels(attempt_dates)

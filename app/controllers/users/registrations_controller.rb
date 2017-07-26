@@ -219,8 +219,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       new_child
       new_user_daycare
     when 'worker'
-      set_daycares
-      new_user_daycare
+      set_daycares      
+      new_user_daycare if params[:option].to_i > 1
+      new_user_affiliate if params[:option].to_i < 2
     when 'medical_professional'
       new_user_profile
     end
@@ -282,6 +283,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :country,
       :telephone,
       :url,
+      :affiliate_type,
       user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
@@ -329,6 +331,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new_user_daycare
     resource.build_user_daycare
+  end
+
+  def new_user_affiliate
+    resource.build_user_affiliate
   end
 
   def assign_daycare_manager_role

@@ -74,7 +74,8 @@ module HasSubscription
         end
 
         def manager_plan_type
-            daycare.managers.first.plan_type
+            plan_type = daycare.managers.first.plan_type
+            return plan_type.nil? ? 0 : plan_type
         end
     end
 end

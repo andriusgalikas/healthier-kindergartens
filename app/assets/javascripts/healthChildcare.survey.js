@@ -73,7 +73,12 @@ healthChildcare.survey = {
       var subjectId = $(this).val();
       var progressDiv = $('#progress_charts_partial');
       var currentRole = $(this).data('current_role');
+      var userRole = $('#current_user_role').val();
+
       var url = '/subjects/' + subjectId + '/result';
+      var methodType = (userRole == 'partner') ? 'POST' : 'GET';
+
+      $('.group-members').hide();
 
       if (currentRole && currentRole.length > 0) {
         url = '/' + currentRole + url;
@@ -81,11 +86,45 @@ healthChildcare.survey = {
 
       $.ajax({
         url: url,
-        type: 'GET',
+        type: methodType,
         success: function(resultHtml) {
           progressDiv.html(resultHtml);
         }
       });
+    });
+
+    $('input.partner-radio').on('click', function() {
+      var subjectId = $(this).val();
+      var progressDiv = $('#progress_charts_partial');
+      var currentRole = $(this).data('current_role');
+      var url = '/subjects/' + subjectId + '/result';
+      var daycares = $('#selected_daycares').val().split(',');
+      
+      if (currentRole && currentRole.length > 0) {
+        url = '/' + currentRole + url;
+      }
+
+      $('.group-members').hide();
+
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data:{
+          target_daycare: daycares,
+          start_date: $('#start_date').val(),
+          end_date: $('#end_date').val()
+        },
+        success: function(resultHtml) {
+          progressDiv.html(resultHtml);
+        }
+      });
+    });
+
+
+    $('input.partner-todo-radio').on('click', function() {
+      var todoId = $(this).val();
+      $('#todo_id').val(todoId);
+      $('#todo_result_form').submit();
     });
   },
 
@@ -95,9 +134,18 @@ healthChildcare.survey = {
           subjectId = $('input[name="subject_id"]:checked').val(),
           _this = this;
 
+      var userRole = $('#current_user_role').val();
+      var reqUrl = '';
+
+      if(userRole == 'partner'){
+        reqUrl = '/partner/subjects/' + subjectId + '/user_result?user_id=' + userId;
+      } else {
+        reqUrl = '/manager/subjects/' + subjectId + '/user_result?user_id=' + userId;
+      }
+
       $.ajax(
         {
-          url: '/manager/subjects/' + subjectId + '/user_result?user_id=' + userId,
+          url: reqUrl,
           type: 'GET',
           success: function (html)
           {
@@ -108,6 +156,32 @@ healthChildcare.survey = {
         });
       return false;
     });
+
+    $('.get-single-daycare-result').on('click', function() {
+      var daycareId = $(this).attr('data-id'),
+          subjectId = $('input[name="subject_id"]:checked').val(),
+          _this = this;
+      var daycares = $('#selected_daycares').val().split(',');
+
+      $.ajax(
+        {
+          url: '/partner/subjects/' + subjectId + '/daycare_result',
+          type: 'POST',
+          data:{
+            daycare_id: daycareId,
+            start_date: $('#start_date').val(),
+            end_date: $('#end_date').val()
+          },
+          success: function (html)
+          {
+            $('#progress_charts_partial').html(html);
+            $('.panel-body').find('a').removeClass('active');
+            $(_this).addClass('active');
+          }
+        });
+      return false;
+    });
+    
   },
 
   showGroupSurveyResult: function() {
@@ -116,10 +190,45 @@ healthChildcare.survey = {
           subjectGroup = $(this).data('subject_group'),
           _this = this;
 
+      var userRole = $('#current_user_role').val();
+      var methodType = (userRole == 'partner') ? 'POST' : 'GET';
+      var reqUrl = '';
+
+      if(userRole == 'partner'){
+        reqUrl = '/partner/subjects/' + subjectId + '/group_result?role=' + subjectGroup;
+      } else {
+        reqUrl = '/manager/subjects/' + subjectId + '/group_result?role=' + subjectGroup;
+      }
+
       $.ajax(
         {
-          url: '/manager/subjects/' + subjectId + '/group_result?role=' + subjectGroup,
-          type: 'GET',
+          url: reqUrl,
+          type: methodType,
+          success: function (html)
+          {
+            $('#progress_charts_partial').html(html);
+            $('.panel-body').find('a').removeClass('active');
+            $(_this).addClass('active');
+          }
+        });
+      return false;
+    });
+
+    $('.get-daycare-result').on('click', function() {
+      var subjectId = $('input[name="subject_id"]:checked').val(),
+          subjectGroup = $(this).data('subject_group'),
+          _this = this;
+      var daycares = $('#selected_daycares').val().split(',');
+
+      $.ajax(
+        {
+          url: '/partner/subjects/' + subjectId + '/daycare_group_result',
+          type: 'POST',
+          data:{
+            target_daycare: daycares,
+            start_date: $('#start_date').val(),
+            end_date: $('#end_date').val()
+          },
           success: function (html)
           {
             $('#progress_charts_partial').html(html);
@@ -135,6 +244,9 @@ healthChildcare.survey = {
     $('.group-header').on('click', function() {
       $(this).siblings('.group-members').slideToggle();
     });
+  },
+
+  initSurveyFilters: function(){
   }
 
 }

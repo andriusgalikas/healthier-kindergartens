@@ -36,7 +36,7 @@
     $('.previous button').click(function(){
       var tab_id = $('.tab-pane.active').attr('id');
       if(tab_id == "tab1"){        
-        window.location.href = '#{worker_select_daycare_path()}';
+        window.location.href = '#{worker_select_daycare_path(option: params[:option])}';
       }
     });
   });

@@ -4,11 +4,16 @@
 .twelvecol
   .page-header
     %h2.widget.widget-header 
-      = "Permissions / #{@type_label}"
+      - if params[:option].to_i > 1
+        = "Permissions / #{@type_label} /  #{@daycare.name unless @daycare.nil?}"
+      - else
+        = "Permissions / #{@type_label} /  #{@affiliate.name unless @affiliate.nil?}"
 
   .widget.widget-content.row
     %form{action: '/admin/permissions/list', method: :get}
+      %input{type: :hidden, name: 'type', value: params[:type]}
       %input{type: :hidden, name: 'option', value: params[:option]}
+      %input{type: :hidden, name: 'daycare', value: params[:daycare]}
       .sixcol
         %h3 Group Level
         - if params[:option].to_i > 1
@@ -23,7 +28,10 @@
               Daycare Parent
         - else
           .row
-            %input{type: "radio", value:"3", name:"group", checked: true} 
+            %input{type: "radio", value:"1", name:"group", checked: true} 
+              Team Member
+          .row
+            %input{type: "radio", value:"3", name:"group"} 
               Daycare Partner
 
       %div{style: "clear:both;"}

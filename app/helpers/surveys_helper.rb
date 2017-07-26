@@ -45,4 +45,9 @@ module SurveysHelper
   def __link_to_function name, on_click_event, button_color, opts={}
     link_to(name, 'javascript:void(0);', opts.merge(onclick: on_click_event, class: "btn btn-#{button_color} btn-normal"))
   end
+
+  def choose_daycare_header
+    "#{t('survey.breadcrumb.survey_options')} > " +
+      "#{t('survey.breadcrumb.choose_daycare')}"    
+  end
 end

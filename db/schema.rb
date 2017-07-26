@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714090546) do
+ActiveRecord::Schema.define(version: 20170717081058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170714090546) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "url"
+    t.integer  "affiliate_type"
   end
 
   add_index "affiliates", ["name"], name: "index_affiliates_on_name", using: :btree
@@ -389,6 +390,8 @@ ActiveRecord::Schema.define(version: 20170714090546) do
     t.string   "element"
     t.string   "image"
     t.string   "label_key"
+    t.integer  "daycare_id"
+    t.integer  "partner_id"
   end
 
   create_table "plans", force: :cascade do |t|

@@ -104,6 +104,10 @@ class User < ActiveRecord::Base
       save!(:validate => false)
     end
 
+    def is_worker?
+        self.affiliate.nil?
+    end
+
 private
     def confirmation_token
       if self.confirm_token.blank?

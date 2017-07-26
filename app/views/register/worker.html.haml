@@ -51,8 +51,12 @@
                       .row
                         %em
                           (#{@minimum_password_length} characters minimum
-                    = f.fields_for :user_daycare do |user_daycare|
-                      = user_daycare.hidden_field :daycare_id, value: params[:daycare_id]
+                    - unless params[:daycare_id].blank?
+                      = f.fields_for :user_daycare do |user_daycare|
+                        = user_daycare.hidden_field :daycare_id, value: params[:daycare_id]
+                    - unless params[:affiliate_id].blank?
+                      = f.fields_for :user_affiliate do |user_affiliate|
+                        = user_affiliate.hidden_field :affiliate_id, value: params[:affiliate_id]
                     = f.hidden_field :department_id, value: params[:department_id]
           .col-sm-12
             %ul.pager.wizard.text-left

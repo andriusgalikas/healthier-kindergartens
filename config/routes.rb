@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
     # custom registration routes
     scope 'worker', controller: 'users/workers' do
+        get :select_type, as: 'worker_select_type'
         get :select_daycare, as: 'worker_select_daycare'
         get :select_department, as: 'worker_select_department'
         get :get_daycares, as: 'worker_get_daycares', :defaults => { :format => 'json' } 
@@ -115,6 +116,7 @@ Rails.application.routes.draw do
             get :user_result
             get :group_result
         end
+
         resources :daycares, only: [] do
             collection do
                 get :invite
@@ -168,6 +170,34 @@ Rails.application.routes.draw do
             get  :illness
             get  :content
           end
+        end
+    end
+
+    namespace :partner do
+        resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
+            post :results, on: :collection
+            get  :get_results, on: :collection
+            post :result, on: :member
+            post :daycare_result
+            post :daycare_group_result
+            get :group_result
+            get :user_result
+            get :select_daycare, on: :collection
+            get :select_date, on: :collection
+        end
+
+        resources :illnesses, only: [] do
+          collection do
+            get  :set_filters
+            post :trends
+          end
+        end
+
+        resources :todos do
+            collection do
+                get :select_daycare
+                post :results
+            end
         end
     end
 
@@ -280,6 +310,7 @@ Rails.application.routes.draw do
                 get :option
                 get :group
                 get :list
+                get :daycares
                 post :change
             end
         end

@@ -7,7 +7,7 @@
         #main-menu
           .menu-items
             - @permissions.each do |permission|
-              - if permission.active
+              - if permission.active && permission.sub_type.to_i > 1
                 - if current_user.manager_plan_type >= permission.plan
                   = link_to permission.path, id: permission.element do
                     = image_tag permission.image
@@ -16,7 +16,10 @@
                   %a{href: permission.path, id: permission.element}
                     = image_tag permission.image
                     %span=t(permission.label_key)
-
+              - if permission.active && permission.sub_type.to_i < 2
+                = link_to permission.path, id: permission.element do
+                  = image_tag permission.image
+                  %span=t(permission.label_key)
 
             / - if current_user.active_subscribed?
             /   - if current_user.manager_plan_type == 2 || current_user.manager_plan_type == 3

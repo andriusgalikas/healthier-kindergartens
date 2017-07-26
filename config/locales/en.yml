@@ -38,6 +38,7 @@ en:
       parentee: Parents
       manager: Managers
       signup: Sign Up
+      member: Team Members
 
 
     footer:
@@ -528,11 +529,16 @@ en:
       invite_msg_manager: Invite Daycare Managers
       partner_register: Partner Registration
       upload_partner_photo: Upload Company logo
+      partner_type: Partner Type
 
     caretype:
       ind: Independent
       fra: Franchise
       gov: Government
+
+    partner_type:
+      str: Strategic Alliance Partner
+      cer: Certification Partner
 
   manager:
     invite:
@@ -693,6 +699,17 @@ en:
     search:
       heading1: "Search: %{query}"  
       line1: "You have no Daycare todos matching the search parameters."
+
+    labels:
+      results: Results
+      choose_daycare: Choose Daycare
+      daycare_name: Daycare Name
+      daycare_type: Daycare Type
+      childrens: Childrens
+      daycares: Daycares
+      daycare_result: Todo Results of selected Daycares
+
+
   todo_completes: 
     show:
       label1: "Title"  
@@ -869,7 +886,7 @@ en:
       message_options: Message Options 
       choose_subject: Choose Subject 
       choose_sub_subject: Choose Sub-subject 
-      create_message: Create Message 
+      create_message: Create Message      
       send: Send 
       edit: Edit 
  
@@ -962,7 +979,7 @@ en:
       choose_department: Choose the Department
       department: Department
       daycare: Daycare
-      graph_type: Graph Type
+      graph_type: View Result by 
       search: Search
       child_details: Child Details
       department_details: Department Details
@@ -1081,6 +1098,10 @@ en:
       additional_actions: Additional actions taken including first aid administration of medication in your facility
 
   survey:
+    breadcrumb:
+      survey_options: Survey Options
+      choose_daycare: Choose Daycare
+
     labels:
       worker_progress_chard_title: Infection Risk Assessment
       groups: Groups
@@ -1089,6 +1110,12 @@ en:
       all: All
       empty_result: User has not taken the survey yet..
       retake_test: Retake Test
+      results: Results
+      choose_daycare: Choose Daycare
+      daycare_name: Daycare Name
+      daycare_type: Daycare Type
+      childrens: Childrens
+      daycares: Daycares
 
     notifications:
       not_enough_data: Please enough data to show result.

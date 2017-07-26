@@ -4,14 +4,18 @@ class MessageNotificationJob < ActiveJob::Base
   def perform(message, opts={})
     if opts[:invitation] == true
       target_users = get_target_all_users(message, opts)
+    elsif opts[:partner] == true
+      target_users = get_target_all_users(message, opts)
     else
       target_users = get_target_users(message, opts)
     end
 
     target_users.each do |user|
-      notif = message.notifications.build(target_id: user.id)
-      if notif.save!
-        NotificationMailer.notify(notif, message.owner, message.content).deliver_later
+      if user.id != message.owner.id
+        notif = message.notifications.build(target_id: user.id)
+        if notif.save!
+          NotificationMailer.notify(notif, message.owner, message.content).deliver_later
+        end
       end
     end
   end
@@ -46,10 +50,13 @@ class MessageNotificationJob < ActiveJob::Base
     recipients = []
     sender = message.owner
 
-    recipients += User.parentee if message.for_parentee?
-    recipients += User.worker if message.for_worker?
-    recipients += User.manager if message.for_manager?
-
+    if opts[:partner] == true && !opts[:affiliate_id].nil?
+      recipients += Affiliate.find(opts[:affiliate_id]).users
+    else
+      recipients += User.parentee if message.for_parentee?
+      recipients += User.worker if message.for_worker?
+      recipients += User.manager if message.for_manager?
+    end
     recipients
   end
 

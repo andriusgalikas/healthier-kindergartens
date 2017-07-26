@@ -5,21 +5,69 @@ class Admin::PermissionsController < AdminController
     end
 
     def group
-        get_type_label
+        if params[:daycare].nil? && params[:type].to_i == 1
+            redirect_to daycares_admin_permissions_path(type: params[:type], option: params[:option])
+        else
+            get_type_label
+            if params[:type].to_i == 1
+                if params[:option].to_i > 1
+                    get_daycare 
+                else
+                    get_affiliate
+                end                
+            end
+        end
+    end
+
+    def daycares
+        if params[:type].to_i == 0
+            redirect_to group_admin_permissions_path(type: params[:type], option: params[:option])
+        else
+            get_type_label
+            if params[:option].to_i > 1
+                get_daycares
+            else
+                get_affiliates
+            end
+        end
     end
 
     def list
         get_type_label
         get_group_label
 
-        [0, 1, 2, 3, 4, 5, 6].each do |ix|
-            permission = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix)
-            if permission.length == 0
-                permission = Permission.find_or_create_by(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix)
-            end
-        end
+        if params[:type].to_i == 1
+            if params[:option].to_i < 2
+                get_affiliate
+                [0, 1, 2, 3, 4, 5, 6].each do |ix|
+                    permission = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, partner_id: params[:daycare])
+                    if permission.length == 0
+                        permission = Permission.find_or_create_by(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, active: true, partner_id: params[:daycare])
+                    end
+                end
 
-        @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i).order(:feature);
+                @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, partner_id: params[:daycare]).order(:feature);
+            else
+                get_daycare
+                [0, 1, 2, 3, 4, 5, 6].each do |ix|
+                    permission = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, daycare_id: params[:daycare])
+                    if permission.length == 0
+                        permission = Permission.find_or_create_by(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, active: true, daycare_id: params[:daycare])
+                    end
+                end
+
+                @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, daycare_id: params[:daycare]).order(:feature);
+            end
+        else
+            [0, 1, 2, 3, 4, 5, 6].each do |ix|
+                permission = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, daycare_id: 0, partner_id: 0)
+                if permission.length == 0
+                    permission = Permission.find_or_create_by(sub_type: params[:option].to_i, member_type: params[:group].to_i, feature: ix, active: true, daycare_id: 0, partner_id: 0)
+                end
+            end
+
+            @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, daycare_id: 0, partner_id: 0).order(:feature);            
+        end
     end
 
     def change
@@ -30,7 +78,7 @@ class Admin::PermissionsController < AdminController
             permission.active       = (params["feature_#{permission.id}"].nil?) ? false : true
             permission.plan         = params[:plan][ix] if params[:option].to_i > 1
 
-            result = get_permission_info(permission.member_type, permission.feature)
+            result = get_permission_info(permission.member_type, permission.feature, permission.sub_type)
 
             permission.path         = result[:path]
             permission.guide_path   = result[:guide_path]
@@ -45,7 +93,15 @@ class Admin::PermissionsController < AdminController
 
     private
         def initial_permissions
-            @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i);
+            if params[:daycare].blank?
+                @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, daycare_id: 0, partner_id: 0);
+            else
+                if params[:option].to_i > 1
+                    @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, daycare_id: params[:daycare]);
+                else
+                    @permissions = Permission.where(sub_type: params[:option].to_i, member_type: params[:group].to_i, partner_id: params[:daycare]);
+                end
+            end
 
             @permissions.each do |item|
                 item.active = false
@@ -83,7 +139,41 @@ class Admin::PermissionsController < AdminController
             end
         end
 
-        def get_permission_info(member_type, feature)
+        def get_affiliate
+            @affiliate = Affiliate.find(params[:daycare])
+        end
+
+        def get_daycare
+            @daycare = Daycare.find(params[:daycare])
+        end
+
+        def get_affiliates
+            @affiliates = Affiliate.where(affiliate_type: params[:option])
+        end
+
+        def get_daycares
+            care_type = 0
+            case params[:option]
+            when '0'
+                care_type = 0
+            when '1'
+                care_type = 0
+            when '2'
+                care_type = 1
+            when '3'
+                care_type = 2
+            when '4'
+                care_type = 3
+            end            
+
+            if care_type == 0
+                @daycares = Daycare.all
+            else
+                @daycares = Daycare.where(care_type: care_type)
+            end
+        end
+
+        def get_permission_info(member_type, feature, sub_type = '')
             result = {
                 path: '',
                 guide_path: '',
@@ -109,7 +199,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = '#'
+                    result[:path] = (sub_type == 'partner_certificate') ? get_results_partner_subjects_path : select_daycare_partner_subjects_path
                     result[:guide_path] = '#'
                 end
                 result[:element] = 'item_survey'
@@ -164,7 +254,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = '#'
+                    result[:path] = (sub_type == 'partner_certificate') ? '#' : select_daycare_partner_todos_path
                     result[:guide_path] = '#'
                 end
 
@@ -188,7 +278,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = '#'
+                    result[:path] = set_filters_partner_illnesses_path
                     result[:guide_path] = '#'
                 end
 

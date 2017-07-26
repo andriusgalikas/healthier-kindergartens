@@ -13,14 +13,9 @@
           .menu-items
             - @permissions.each do |permission|
               - if permission.active
-                - if current_user.manager_plan_type >= permission.plan
-                  = link_to permission.path, id: permission.element do
-                    = image_tag permission.image
-                    %span=t(permission.label_key)
-                - else
-                  %a{href: permission.path, id: permission.element}
-                    = image_tag permission.image
-                    %span=t(permission.label_key)
+                %a{href: permission.path, id: permission.element}
+                  = image_tag permission.image
+                  %span=t(permission.label_key)
 
             / = link_to partner_messages_path, id: 'item_message' do
             /   = image_tag 'dashboard-com-mng.png'

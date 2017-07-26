@@ -70,7 +70,8 @@ class Daycare < ActiveRecord::Base
 
     validates :departments,                             presence: true
 
-    scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+    scope :search,                                      ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+    scope :search_by_type,                              ->(query, type, page, per_page_count, limit_count) { where("name LIKE :search and care_type = :type", search: "%#{query}%", type: type).limit(limit_count).page(page).per(per_page_count) }
 
     scope :name_like, ->(search) { where("LOWER(daycares.name) LIKE :search", :search => "%#{search.downcase}%") }
     scope :address_like, ->(search) { where("LOWER(daycares.address_line1) LIKE :search", :search => "%#{search.downcase}%") }
@@ -131,9 +132,9 @@ class Daycare < ActiveRecord::Base
         case care_type
         when 1
             I18n.t('register.caretype.ind')
-        when 1
+        when 2
             I18n.t('register.caretype.fra')
-        when 1
+        when 3
             I18n.t('register.caretype.gov')
         else
             ""

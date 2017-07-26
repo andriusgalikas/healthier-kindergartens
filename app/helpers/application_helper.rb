@@ -128,8 +128,7 @@ module ApplicationHelper
 
   def assign_plan_list
     plan_list = []
-    plan_list << ["Free membership", 0]
-    Plan.where(language: I18n.locale.upcase).each do |item|
+    Plan.where(language: I18n.locale.upcase).order(:plan_type).each do |item|
       unless item.plan_type == 0 || item.plan_type == 1
         plan_list << [item.name, item.plan_type]
       end
