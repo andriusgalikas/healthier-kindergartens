@@ -14,6 +14,7 @@
 FactoryGirl.define do
     factory :attachment do
         file { File.open(File.join(Rails.root, '/lib/dummy_assets/ruby-icon.png')) }
+        attachable_type { 'DaycareProfile' }
 
         factory :icon_attachment do
             association :attachable, factory: :todo

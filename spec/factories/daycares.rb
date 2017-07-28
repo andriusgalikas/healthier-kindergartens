@@ -30,7 +30,7 @@ FactoryGirl.define do
     care_type     { 1 }
 
     before(:create) do |daycare, evaluator|
-      daycare.departments << (FactoryGirl.create :department, daycare: daycare)
+      daycare.departments << (FactoryGirl.create :department, daycare: daycare, name: 'Health')
     end
   end
 end

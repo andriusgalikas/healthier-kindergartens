@@ -17,6 +17,7 @@
 FactoryGirl.define do
   factory :message_subject do
     title { Faker::Lorem.sentence }
+    language { 'English' }
 
     factory :sub_subject do
       parent_subject_id 1

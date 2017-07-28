@@ -20,6 +20,10 @@ FactoryGirl.define do
       child.profile_image = FactoryGirl.create :child_profile_image, attachable: child
     end
 
+    transient do
+      pending_collaborations 10
+    end
+
     association :department
     association :parentee, factory: :user
   end

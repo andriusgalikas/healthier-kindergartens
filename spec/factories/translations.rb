@@ -16,8 +16,8 @@ FactoryGirl.define do
   factory :translation do
     locale "MyString"
     key "MyString"
-    value "MyText"
-    interpolations "MyText"
+    value {['MyText','Text']}
+    interpolations {['MyText','Text']}
     is_proc false
   end
 end

@@ -20,6 +20,12 @@
 
 FactoryGirl.define do
   factory :affiliate do
-    
+    name { Faker::Name.name }
+    address { Faker::Address.street_address }
+    postcode { Faker::Address.zip_code }
+    country   { Faker::Address.country }
+    telephone { Faker::PhoneNumber.phone_number }
+
+    association :partner, factory: :user
   end
 end
