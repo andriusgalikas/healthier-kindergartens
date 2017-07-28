@@ -1,10 +1,19 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
+
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.coverage_dir(dir)
+end
+
 SimpleCov.start 'rails' do
   add_filter '/ckeditor/'
   add_filter '/concerns/'
-end
+  add_filter '/previews/'
+  add_filter '/lib/'
+end 
+
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?

@@ -67,8 +67,9 @@ group :test do
   gem 'email_spec'
   gem 'fuubar'
   gem 'rspec-timecop'
-  gem 'simplecov', :require => false
+  gem 'simplecov'
   gem 'fake_stripe'
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development, :test do
