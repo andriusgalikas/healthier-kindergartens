@@ -191,8 +191,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/manager_survey/result_step1'
                 # worker
                 when 'worker'
-                    result[:path] = results_subjects_path
-                    result[:guide_path] = '/guide_page/worker_survey/take_step1'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = select_daycare_partner_subjects_path
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = results_subjects_path
+                        result[:guide_path] = '/guide_page/worker_survey/take_step1'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = results_subjects_path
@@ -222,8 +227,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/manager_message/dash'
                 # worker
                 when 'worker'
-                    result[:path] = '#'
-                    result[:guide_path] = '#'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = partner_messages_path
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = '#'
+                        result[:guide_path] = '#'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = list_messages_path(role: current_user.role, list_type: 'received')
@@ -246,8 +256,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/manager_todo/dash'
                 # worker
                 when 'worker'
-                    result[:path] = todos_path
-                    result[:guide_path] = '/guide_page/worker_todo/todo_step1'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = select_daycare_partner_todos_path
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = todos_path
+                        result[:guide_path] = '/guide_page/worker_todo/todo_step1'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = '#'
@@ -270,8 +285,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/manager_illness/graph_step1'
                 # worker
                 when 'worker'
-                    result[:path] = '#'
-                    result[:guide_path] = '#'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = set_filters_partner_illnesses_path
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = '#'
+                        result[:guide_path] = '#'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = '#'
@@ -294,8 +314,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/worker_illness/view_dash'
                 # worker
                 when 'worker'
-                    result[:path] = illnesses_path
-                    result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = '#'
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = illnesses_path
+                        result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = '#'
@@ -318,8 +343,13 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/worker_illness/view_dash'
                 # worker
                 when 'worker'
-                    result[:path] = role_worker_illness_guides_path
-                    result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    if (sub_type == 'partner_daycare')
+                        result[:path] = '#'
+                        result[:guide_path] = '#'
+                    else
+                        result[:path] = role_worker_illness_guides_path
+                        result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    end
                 # parent
                 when 'parent'
                     result[:path] = role_parentee_illness_guides_path

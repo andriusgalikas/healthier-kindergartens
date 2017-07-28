@@ -1,6 +1,7 @@
 class Partner::TodosController < ApplicationController
     layout 'dashboard_v2'
-    before_action -> { authenticate_role!(["partner"]) }
+    before_action -> {authenticate_role!(["partner", "worker"])}
+    before_action :strategic_partnership!
     before_action :authenticate_subscribed!
 
     def select_daycare

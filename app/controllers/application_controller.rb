@@ -23,6 +23,16 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def strategic_partnership! 
+      if current_user.nil?
+        redirect_to new_user_session_url
+      elsif current_user.affiliate.nil?
+        redirect_to root_url
+      elsif current_user.affiliate.certific? && (current_user.role == 'worker')
+        redirect_to root_url
+      end
+    end
+
     def authenticate_subscribed!
         if current_user.nil?
           redirect_to new_user_session_url

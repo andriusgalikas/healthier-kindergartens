@@ -1017,7 +1017,7 @@ en:
       trend_filters: Filter options for the Illness Trend
       select_multiple_departments: Select one or more Departments
       select_multiple_illnesses: Select one or more Illnesses
-      select_graph_type: Graph Type
+      select_graph_type: Show result by
       apply_filter: Apply filters
 
   health_records:
