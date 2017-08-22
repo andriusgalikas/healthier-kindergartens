@@ -22,8 +22,6 @@
       .step-label
         = image_tag 'step-arrow.png', :class => "step-arrow left"
         = image_tag 'step-pending.png'
-  .row
-    = devise_error_messages!
   .parent-list-container
     .parent-item
       = render 'user_info_fields', user: user

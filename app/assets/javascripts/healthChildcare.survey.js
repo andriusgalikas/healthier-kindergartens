@@ -121,10 +121,99 @@ healthChildcare.survey = {
     });
 
 
+    $('input.municipal-subject-radio').on('click', function() {
+      get_municipal_survey_result('input.municipal-subject-radio:checked', 'input.survey-municipal-radio:checked');
+    });
+
+    $('input.survey-municipal-radio').on('click', function() {
+      get_municipal_survey_result('input.municipal-subject-radio:checked', 'input.survey-municipal-radio:checked');
+    });
+
+    function get_municipal_survey_result(subject_elem, municipal_elem){
+      var subjectId = $(subject_elem).val();
+      var progressDiv = $('#progress_charts_partial');
+      var currentRole = $(subject_elem).data('current_role');
+      var url = '/subjects/' + subjectId + '/result';
+      var municipal = $(municipal_elem).val();
+      
+      if (currentRole && currentRole.length > 0) {
+        url = '/' + currentRole + url;
+      }
+
+      $('.group-members').hide();
+      if ( subjectId == undefined || municipal == undefined) return;
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data:{
+          target_municipal: municipal,
+          start_date: $('#start_date').val(),
+          end_date: $('#end_date').val()
+        },
+        success: function(resultHtml) {
+          progressDiv.html(resultHtml);
+        }
+      });      
+    }
+
     $('input.partner-todo-radio').on('click', function() {
       var todoId = $(this).val();
       $('#todo_id').val(todoId);
       $('#todo_result_form').submit();
+    });
+
+    $('input.municipal-todo-radio').on('click', function() {
+      get_municipal_todo_result('input.municipal-todo-radio:checked', 'input.todo-municipal-radio:checked');
+    });
+
+    $('input.todo-municipal-radio').on('click', function() {
+      get_municipal_todo_result('input.municipal-todo-radio:checked', 'input.todo-municipal-radio:checked');
+    });
+
+    function get_municipal_todo_result(todo_elem, municipal_elem){
+      var todoId = $(todo_elem).val();
+      var progressDiv = $('.survey-charts');
+      var url = '/partner/todos/' + todoId + '/task_result';
+      var municipal = $(municipal_elem).val();
+
+      if ( todoId == undefined || municipal == undefined) return;
+      
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data:{
+          target_municipal: municipal,
+          start_date: $('#start_date').val(),
+          end_date: $('#end_date').val()
+        },
+        success: function(resultHtml) {
+          progressDiv.html(resultHtml);
+        }
+      });      
+    }
+
+    $('input.illness-municipal-radio').on('click', function() {
+      var municipal = $(this).val();
+      var illnesses = $('#illness_codes_').val();
+      if ( illnesses == undefined || municipal == undefined) return;
+
+      var progressDiv = $('#trends');
+      var url = '/partner/illnesses/municipal_trends';
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data:{
+          target_municipal: municipal,
+          illness_codes: illnesses,
+          graph_type: $('#graph_type').val(),
+          start_date: $('#start_date').val(),
+          end_date: $('#end_date').val()
+        },
+        success: function(resultHtml) {
+          progressDiv.html(resultHtml);
+        }
+      });      
+
     });
   },
 

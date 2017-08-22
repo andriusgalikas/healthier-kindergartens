@@ -19,14 +19,19 @@
 #
 
 class Affiliate < ActiveRecord::Base
+  before_destroy :destroy_others
+
+  belongs_to :municipal
   belongs_to :partner, class_name: 'User', foreign_key: 'parent_id'
 
   has_one :profile_image,  -> { where(attachable_type: 'AffiliateProfile') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
   has_many :user_affiliates
   has_many :users,                                    through: :user_affiliates
 
-  validates :name, :address, :postcode,
-            :country, :telephone,                   presence: true
+  validates :name, :address, :postcode, :telephone,                   presence: true
+
+  scope :name_like, ->(search) { where("LOWER(affiliates.name) LIKE :search", :search => "%#{search.downcase}%") }
+  scope :address_like, ->(search) { where("LOWER(affiliates.address) LIKE :search", :search => "%#{search.downcase}%") }
 
   accepts_nested_attributes_for :user_affiliates, :profile_image, allow_destroy: true
 
@@ -50,6 +55,16 @@ class Affiliate < ActiveRecord::Base
 
   def certific?
     affiliate_type == 1
+  end
+
+  def destroy_others
+    self.users.where(id: self.users.ids).delete_all
+    self.partner.delete_all
+    self.user_affiliates.delete_all
+  end
+
+  def is_over_registered?
+    self.users.length > self.num_member + 1
   end
 
 end

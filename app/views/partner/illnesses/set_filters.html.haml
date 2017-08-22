@@ -12,13 +12,13 @@
             .form-group
               = label_tag :illness, t('illnesses.labels.select_multiple_illnesses')
               %br
-              = select_tag 'illness_codes[]', options_from_collection_for_select(Illness.all.where(language: I18n.locale), 'code', 'name'), class: 'illness-select', required: true, multiple: "multiple"
+              = select_tag 'illness_codes[]', options_from_collection_for_select(Illness.all.where(language: I18n.locale), 'code', 'name', params['illness_codes']), class: 'illness-select', required: true, multiple: "multiple"
 
           .col-md-4.col-sm-4.col-xs-12
             .form-group
               = label_tag :graph_type, t('illnesses.labels.select_graph_type')
               %br
-              = select_tag 'graph_type', options_for_select([['Daily', 'day'], ['Weekly', 'week'], ['Monthly', 'month'], ['Yearly', 'year']]), class: 'form-control', required: true
+              = select_tag 'graph_type', options_for_select([['Daily', 'day'], ['Weekly', 'week'], ['Monthly', 'month'], ['Yearly', 'year']], selected: params[:graph_type]), class: 'form-control', required: true
         .row
           .col-md-4.col-sm-4.col-xs-12
             .form-group

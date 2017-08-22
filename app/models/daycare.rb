@@ -26,6 +26,7 @@ class Daycare < ActiveRecord::Base
     belongs_to :discount_code
     belongs_to :payment_mode
     belongs_to :payment_start
+    belongs_to :municipal
 
     has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments

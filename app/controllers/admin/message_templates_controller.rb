@@ -52,6 +52,18 @@ class Admin::MessageTemplatesController < AdminController
           template_key = 'SURVEY_TEMPLATE_SUBJECT_MANAGER'
           @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
           @template = @sub_subject.message_templates.find_or_create_by(target_role: 2, :language => @subject.language.downcase)
+        when 'internal'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_INTERNAL'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 3, :language => @subject.language.downcase)
+        when 'external'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_EXTERNAL'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 4, :language => @subject.language.downcase)
+        when 'contact'
+          template_key = 'SURVEY_TEMPLATE_SUBJECT_CONTACT'
+          @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], :language => @subject.language.downcase)
+          @template = @sub_subject.message_templates.find_or_create_by(target_role: 5, :language => @subject.language.downcase)
         end
       end
     else

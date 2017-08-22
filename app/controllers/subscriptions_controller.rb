@@ -1,16 +1,21 @@
 class SubscriptionsController < ApplicationController
     layout 'legacy'
-    before_action -> { authenticate_role!(["manager"]) }
+    before_action -> { authenticate_role!(["manager", "partner"]) }
     #before_action :unsubscribed_user!, except: :complete
 
     def index
         set_plan
         get_subscription
+        if current_user.manager?
+            @discount = current_user.daycare.discount_code
+        else
+            @discount = nil
+        end
     end
 
     def new
         set_plan
-        new_subscription
+        new_subscription        
     end
 
     def create
@@ -37,22 +42,38 @@ class SubscriptionsController < ApplicationController
             current_user.save
         end
 
-        if current_user.paid_plan_type > 0
-            redirect_to upgrade_path
-        else
-            redirect_to ethic_1_path
-        end
-    end
+        unless params[:discount].nil?
+            current_user.daycare.discount_code_id = params[:discount]
+            current_user.daycare.save
 
-    def user_plan
-        if current_user.paid_plan_type >= 2 || (current_user.deposit_required && current_user.plan_type >= 2 )
+            plan_discount_code = DiscountCode.find_by(id: params[:discount])
+            current_user.discount_code = plan_discount_code
+            current_user.save            
+        end
+
+        if current_user.paid_plan_type > 0
             current_user.plan_type = params[:plan]
             current_user.save
 
             upgrade_package
 
             redirect_to dashboard_path            
+        else
+            redirect_to ethic_1_path
         end
+    end
+
+    def user_plan
+        # if current_user.paid_plan_type >= 2 || (current_user.deposit_required && current_user.plan_type >= 2 )
+        # end
+        @phase_one_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, member_type: 'manager', sub_type: 2, plan: 2)
+        @phase_two_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3])
+        @phase_three_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3, 4])
+
+        @plan_one = Plan.where(language: I18n.locale.upcase, plan_type: 2).first
+        @plan_two = Plan.where(language: I18n.locale.upcase, plan_type: 3).first
+        @plan_three = Plan.where(language: I18n.locale.upcase, plan_type: 4).first
+        
     end
 
     private

@@ -25,5 +25,5 @@ class MessageTemplate < ActiveRecord::Base
   validates :sub_subject_id, presence: true
   validates :target_role, presence: true
 
-  enum target_role: [:parentee, :worker, :manager]
+  enum target_role: [:parentee, :worker, :manager, :internal, :external, :contact]
 end

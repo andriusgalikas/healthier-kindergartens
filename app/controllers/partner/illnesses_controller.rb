@@ -7,8 +7,24 @@ class Partner::IllnessesController < ApplicationController
     set_daycares
   end
 
-  def trends
-    @trend = IllnessTrendsGenerator.new(current_user, params)
+  def trends    
+    unless params[:daycare_ids].blank?      
+      @trend = IllnessTrendsGenerator.new(current_user, params)
+    end
+  end
+
+  def municipal_trends
+    unless params[:target_municipal].blank?
+      @daycares ||= Daycare.where(municipal_id: params[:target_municipal]) 
+      params[:daycare_ids] = []
+      @daycares.each do |item|
+        params[:daycare_ids] << item.id
+      end
+      unless @daycares.length == 0
+        @trend = IllnessTrendsGenerator.new(current_user, params)        
+      end
+    end
+    render partial: 'municipal_trends'
   end
 
   private

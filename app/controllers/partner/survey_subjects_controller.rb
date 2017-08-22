@@ -23,7 +23,11 @@ class Partner::SurveySubjectsController < ApplicationController
     def result
 
         if current_user.affiliate.strategic?
-            set_selected_daycares
+            unless params[:target_daycare].nil?
+                set_selected_daycares
+            else
+                set_daycares_from_municipal
+            end
             set_daycare_users
         else
             set_affiliate_users
@@ -82,8 +86,16 @@ class Partner::SurveySubjectsController < ApplicationController
         @daycares ||= Daycare.where(id: params[:target_daycare])
     end
 
+    def set_daycares_from_municipal
+       @daycares ||= Daycare.where(municipal_id: params[:target_municipal]) 
+    end
+
     def set_daycares
-        @daycares ||= Daycare.all
+        if params[:target_municipal].nil?
+            @daycares ||= Daycare.all
+        else
+            @daycares ||= Daycare.where(municipal_id: params[:target_municipal]) 
+        end
     end
 
     def set_subject

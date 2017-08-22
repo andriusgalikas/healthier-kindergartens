@@ -91,6 +91,15 @@ class Admin::PermissionsController < AdminController
         redirect_to option_admin_permissions_path
     end
 
+    def table
+        @permissions = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: [0, 1, 2]).order(:sub_type, :created_at)
+    end
+
+    def reset
+        Permission.all.delete_all
+        redirect_to table_admin_permissions_path
+    end
+
     private
         def initial_permissions
             if params[:daycare].blank?
@@ -196,7 +205,8 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     else
                         result[:path] = results_subjects_path
-                        result[:guide_path] = '/guide_page/worker_survey/take_step1'
+                        # result[:guide_path] = '/guide_page/worker_survey/take_step1'
+                        result[:guide_path] = '#'
                     end
                 # parent
                 when 'parent'
@@ -204,7 +214,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = (sub_type == 'partner_certificate') ? get_results_partner_subjects_path : select_daycare_partner_subjects_path
+                    result[:path] = (sub_type == 'partner_certificate') ? get_results_partner_subjects_path : select_municipal_partner_subjects_path
                     result[:guide_path] = '#'
                 end
                 result[:element] = 'item_survey'
@@ -213,7 +223,8 @@ class Admin::PermissionsController < AdminController
             # online_training
             when 'online_training'
                 result[:path] = instruction_path
-                result[:guide_path] = instruction_path
+                # result[:guide_path] = instruction_path
+                result[:guide_path] = '#'
 
                 result[:element] = 'item_instruction'
                 result[:image] = 'dashboard-instruction.png'
@@ -224,7 +235,8 @@ class Admin::PermissionsController < AdminController
                 # manager
                 when 'manager'
                     result[:path] = manager_messages_path
-                    result[:guide_path] = '/guide_page/manager_message/dash'
+                    # result[:guide_path] = '/guide_page/manager_message/dash'
+                    result[:guide_path] = '#'
                 # worker
                 when 'worker'
                     if (sub_type == 'partner_daycare')
@@ -253,7 +265,8 @@ class Admin::PermissionsController < AdminController
                 # manager
                 when 'manager'
                     result[:path] = dashboard_manager_todos_path
-                    result[:guide_path] = '/guide_page/manager_todo/dash'
+                    # result[:guide_path] = '/guide_page/manager_todo/dash'
+                    result[:guide_path] = '#'
                 # worker
                 when 'worker'
                     if (sub_type == 'partner_daycare')
@@ -261,7 +274,8 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     else
                         result[:path] = todos_path
-                        result[:guide_path] = '/guide_page/worker_todo/todo_step1'
+                        # result[:guide_path] = '/guide_page/worker_todo/todo_step1'
+                        result[:guide_path] = '#'
                     end
                 # parent
                 when 'parent'
@@ -269,7 +283,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = (sub_type == 'partner_certificate') ? '#' : select_daycare_partner_todos_path
+                    result[:path] = (sub_type == 'partner_certificate') ? '#' : select_municipal_partner_todos_path
                     result[:guide_path] = '#'
                 end
 
@@ -282,7 +296,8 @@ class Admin::PermissionsController < AdminController
                 # manager
                 when 'manager'
                     result[:path] = set_filters_manager_illnesses_path
-                    result[:guide_path] = '/guide_page/manager_illness/graph_step1'
+                    # result[:guide_path] = '/guide_page/manager_illness/graph_step1'
+                    result[:guide_path] = '#'
                 # worker
                 when 'worker'
                     if (sub_type == 'partner_daycare')
@@ -298,7 +313,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = set_filters_partner_illnesses_path
+                    result[:path] = select_municipal_partner_illnesses_path
                     result[:guide_path] = '#'
                 end
 
@@ -311,7 +326,8 @@ class Admin::PermissionsController < AdminController
                 # manager
                 when 'manager'
                     result[:path] = filter_illnesses_path
-                    result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    # result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    result[:guide_path] = '#'
                 # worker
                 when 'worker'
                     if (sub_type == 'partner_daycare')
@@ -319,7 +335,8 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     else
                         result[:path] = illnesses_path
-                        result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                        # result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                        result[:guide_path] = '#'
                     end
                 # parent
                 when 'parent'
@@ -340,7 +357,8 @@ class Admin::PermissionsController < AdminController
                 # manager
                 when 'manager'
                     result[:path] = role_manager_illness_guides_path
-                    result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    # result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                    result[:guide_path] = '#'
                 # worker
                 when 'worker'
                     if (sub_type == 'partner_daycare')
@@ -348,7 +366,8 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     else
                         result[:path] = role_worker_illness_guides_path
-                        result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                        # result[:guide_path] = '/guide_page/worker_illness/view_dash'
+                        result[:guide_path] = '#'
                     end
                 # parent
                 when 'parent'

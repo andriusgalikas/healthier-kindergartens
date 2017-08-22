@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     get 'get_available_schedule_time', to: 'pages#get_available_schedule_time', :defaults => { :format => 'json' } 
 
     post 'add_schedule', to: 'pages#add_schedule'
+    post 'get_discount_code', to: 'pages#get_discount_code', :defaults => { :format => 'json' } 
     get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
 
     resources :plans, only: [] do
@@ -183,6 +184,7 @@ Rails.application.routes.draw do
             get :group_result
             get :user_result
             get :select_daycare, on: :collection
+            get :select_municipal, on: :collection
             get :select_date, on: :collection
         end
 
@@ -190,14 +192,28 @@ Rails.application.routes.draw do
           collection do
             get  :set_filters
             post :trends
+            get :select_municipal
+            post :municipal_trends
           end
         end
 
         resources :todos do
             collection do
                 get :select_daycare
-                post :results
+                get :select_municipal
+                post :results                
             end
+            member do
+                post :task_result
+            end
+        end
+
+        resources :affiliates, only: [] do
+            collection do
+                get 'invite_member/:type', to: 'affiliates#invite_member', as: 'invite_member'
+                get :invite_member
+                post :send_invite_member
+            end            
         end
     end
 
@@ -276,6 +292,7 @@ Rails.application.routes.draw do
         resources :todos
         resources :users, only: [:index, :destroy]
         resources :daycares
+        resources :affiliates
         resources :departments, only: [:index, :destroy]
         resources :subjects, except: :show
         resources :message_templates do
@@ -311,7 +328,9 @@ Rails.application.routes.draw do
                 get :group
                 get :list
                 get :daycares
+                get :table
                 post :change
+                get :reset
             end
         end
     end

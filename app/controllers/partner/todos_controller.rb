@@ -15,9 +15,20 @@ class Partner::TodosController < ApplicationController
         get_todo_completes
     end
 
+    def task_result
+        @todo ||= params[:id].blank? ? nil : Todo.find(params[:id])
+        set_daycares
+        get_todo_completes
+        render partial: 'task_result'
+    end
+
     private
     def set_daycares
-        @daycares ||= Daycare.all
+        if params[:target_municipal].nil?
+            @daycares ||= Daycare.all
+        else
+            @daycares ||= Daycare.where(municipal_id: params[:target_municipal]) 
+        end
     end
 
     def set_selected_daycares

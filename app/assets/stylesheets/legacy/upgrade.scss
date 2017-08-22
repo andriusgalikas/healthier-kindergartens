@@ -96,13 +96,19 @@ $hcc-green: #2bd34d;
       color: #426cd5;
       margin: 0;
       line-height: 60px;
+      small{
+        color: #aaa;
+        text-decoration: line-through;
+        margin: 0 20px;
+        font-size: 70%;
+      }
     }
 
     .plan-per{
       font-size: 14px;
       font-weight: 600;
       color: #aaa;
-      margin: 0;
+      margin: 0;      
     }
 
     .plan-date{

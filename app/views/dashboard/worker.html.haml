@@ -17,9 +17,14 @@
                     = image_tag permission.image
                     %span=t(permission.label_key)
               - if permission.active && permission.sub_type.to_i < 2
-                = link_to permission.path, id: permission.element do
-                  = image_tag permission.image
-                  %span=t(permission.label_key)
+                - if current_user.affiliate.certific? && current_user.affiliate.is_over_registered?
+                  = link_to '#', id: permission.element do
+                    = image_tag permission.image
+                    %span=t(permission.label_key)
+                - else
+                  = link_to permission.path, id: permission.element do
+                    = image_tag permission.image
+                    %span=t(permission.label_key)
 
             / - if current_user.active_subscribed?
             /   - if current_user.manager_plan_type == 2 || current_user.manager_plan_type == 3

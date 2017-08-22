@@ -41,6 +41,8 @@ class Admin::PagesController < AdminController
 
     build_illness_guide_from_spreadsheet
 
+    build_municipal_template_from_spreadsheet    
+
     redirect_to admin_lang_main_path
   end
 
@@ -450,6 +452,37 @@ class Admin::PagesController < AdminController
     flash[:notice] = "Upload illness description is sucessfully."
   rescue => e
     flash[:alert] = "Upload illness description is failed."    
+  end
+
+  def build_municipal_template_from_spreadsheet
+    file_data = params[:municipal_template]
+
+    if file_data
+      xlsx = Roo::Spreadsheet.open(file_data.path, extension: :xlsx)
+      if xlsx.sheets.count > 0
+        if xlsx.last_row > 1
+          index = Time.now.to_i     
+          2.upto(xlsx.last_row) do |line|
+            index += 1
+            unless xlsx.cell(line, 'A').nil?
+              @municipal = Municipal.where(ref_id: xlsx.cell(line, 'A'), language: params[:language_short_name].downcase).first unless xlsx.cell(line, 'A').nil?
+              if @municipal.nil?
+                @municipal = Municipal.new
+              end
+              @municipal.ref_id = xlsx.cell(line, 'A')
+              @municipal.name = xlsx.cell(line, 'B')
+              @municipal.language = params[:language_short_name].downcase
+              @municipal.state = (xlsx.cell(line, 'C').nil?) ? ""  : xlsx.cell(line, 'C')
+              @municipal.municipal_type = (xlsx.cell(line, 'C').nil?) ? 0 : 1
+              @municipal.save(validate: true)
+            end
+          end        
+        end
+      end
+    end
+    flash[:notice] = "Upload municipal is sucessfully."
+  # rescue => e
+  #   flash[:alert] = "Upload municipal is failed."
   end
 
 end

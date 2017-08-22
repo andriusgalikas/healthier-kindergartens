@@ -263,12 +263,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :name,
       :address_line1,
       :postcode,
+      :municipal_id,
       #:country,
       :telephone,
       :care_type,
       :url,
       :num_children,
       :num_worker,
+      :discount_code_id,
       departments_attributes: [:_destroy, :name],
       user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
@@ -280,12 +282,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :name,
       :address,
       :postcode,
-      :country,
+      :municipal_id,
+      #:country,
       :telephone,
-      :url,
+      #:url,
       :affiliate_type,
-      user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
-      profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
+      :num_member,
+      user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :plan_type]]
+      #profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
 
@@ -399,7 +403,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def daycare_parentee_params
     params.require(:user).permit(children_attributes: [:id, :name, :birth_date, :department_id])      
   end
-
+  
   # def build_resource params
   #   self.resource = User.new(params)
   #   resource.build_

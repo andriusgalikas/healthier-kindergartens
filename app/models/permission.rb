@@ -5,15 +5,15 @@ class Permission < ActiveRecord::Base
 
     def sub_type_label
         case self.sub_type
-        when '1'
+        when 'partner_certificate'
             "Certification Partnership"
-        when '0'
+        when 'partner_daycare'
             "Healthier and Safer Childcare Partnership"
-        when '2'
+        when 'manager_chain'
             "Chain Daycare"
-        when '3'
+        when 'manager_independent'
             "Independant Daycare"
-        when '4'
+        when 'manager_govermantal'
             "Govermantal Daycare"
         end
     end

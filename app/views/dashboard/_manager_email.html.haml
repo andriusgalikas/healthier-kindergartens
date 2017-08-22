@@ -1,9 +1,9 @@
 .row.content-main
   .col-md-5.col-sm-6.col-xs-12
-    #main-menu.text-center.free-customer
+    #main-menu.free-customer
       .menu-items
         - @permissions.each do |permission|
-          - if permission.active && (permission.plan <= 2)          
+          - if permission.active
             - if current_user.manager_plan_type >= permission.plan
               = link_to permission.path, id: permission.element do
                 = image_tag permission.image
@@ -12,48 +12,48 @@
               %a{href: permission.path, id: permission.element}
                 = image_tag permission.image
                 %span=t(permission.label_key)
-      - if current_user.paid_plan_type == 0
-        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 2})}
-          =t('dashboard.upgrade.plan.phase1')
-      - else
-        %a.btn.btn-round.btn-green{:href => '#'}
-          =t('dashboard.upgrade.phase1_title')
+      / - if current_user.paid_plan_type == 0
+      /   %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 2})}
+      /     =t('dashboard.upgrade.plan.phase1')
+      / - else
+      /   %a.btn.btn-round.btn-green{:href => '#'}
+      /     =t('dashboard.upgrade.phase1_title')
       
-      .menu-items
-        - @permissions.each do |permission|
-          - if permission.active && (permission.plan == 3)
-            - if current_user.manager_plan_type >= permission.plan
-              = link_to permission.path, id: permission.element do
-                = image_tag permission.image
-                %span=t(permission.label_key)
-            - else
-              %a{href: permission.path, id: permission.element}
-                = image_tag permission.image
-                %span=t(permission.label_key)
-      - if current_user.paid_plan_type < 3
-        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3})}
-          =t('dashboard.upgrade.plan.phase2')
-      - else
-        %a.btn.btn-round.btn-green{:href => '#'}
-          =t('dashboard.upgrade.phase2_title')
+      / .menu-items
+      /   - @permissions.each do |permission|
+      /     - if permission.active && (permission.plan == 3)
+      /       - if current_user.manager_plan_type >= permission.plan
+      /         = link_to permission.path, id: permission.element do
+      /           = image_tag permission.image
+      /           %span=t(permission.label_key)
+      /       - else
+      /         %a{href: permission.path, id: permission.element}
+      /           = image_tag permission.image
+      /           %span=t(permission.label_key)
+      / - if current_user.paid_plan_type < 3
+      /   %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 3})}
+      /     =t('dashboard.upgrade.plan.phase2')
+      / - else
+      /   %a.btn.btn-round.btn-green{:href => '#'}
+      /     =t('dashboard.upgrade.phase2_title')
 
-      .menu-items
-        - @permissions.each do |permission|
-          - if permission.active && (permission.plan == 4)        
-            - if current_user.manager_plan_type >= permission.plan
-              = link_to permission.path, id: permission.element do
-                = image_tag permission.image
-                %span=t(permission.label_key)
-            - else
-              %a{href: permission.path, id: permission.element}
-                = image_tag permission.image
-                %span=t(permission.label_key)
-      - if current_user.paid_plan_type < 4
-        %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4})}
-          =t('dashboard.upgrade.plan.phase3')
-      - else
-        %a.btn.btn-round.btn-green{:href => '#'}
-          =t('dashboard.upgrade.phase3_title')
+      / .menu-items
+      /   - @permissions.each do |permission|
+      /     - if permission.active && (permission.plan == 4)        
+      /       - if current_user.manager_plan_type >= permission.plan
+      /         = link_to permission.path, id: permission.element do
+      /           = image_tag permission.image
+      /           %span=t(permission.label_key)
+      /       - else
+      /         %a{href: permission.path, id: permission.element}
+      /           = image_tag permission.image
+      /           %span=t(permission.label_key)
+      / - if current_user.paid_plan_type < 4
+      /   %a.btn.btn-round.btn-red{:href => user_plan_path({plan: 4})}
+      /     =t('dashboard.upgrade.plan.phase3')
+      / - else
+      /   %a.btn.btn-round.btn-green{:href => '#'}
+      /     =t('dashboard.upgrade.phase3_title')
 
       / - if current_user.paid_plan_type == 0        
       /   .menu-items.text-center

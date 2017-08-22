@@ -37,7 +37,7 @@
             %a{:href => '#'}
               = image_tag 'take-action-3.png'
             %h3.text-orange= t('pages.take_action.sub_heading3')
-            %p.text-left= t('pages.take_action.para4')
+            %p.text-left= t('pages.take_action.para4').html_safe
         .col-md-6.right-side
           .single{'data-step'=>"12", 'data-intro'=>"Infection preventive cleaning of bodily fluids", 'data-position' => 'left'}
             %a{:href => '#'}

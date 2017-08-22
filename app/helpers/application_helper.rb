@@ -136,6 +136,23 @@ module ApplicationHelper
     return plan_list
   end
 
+  def assign_discount_list
+    discount_list = []
+    discount_list << ['Select Discount', '']
+    DiscountCode.active.each do |item|
+      discount_list << [item.code, item.code]
+    end
+    return discount_list
+  end
+
+  def municipal_list(state = '')
+    municipal_list = []
+    Municipal.where(language: I18n.locale.downcase, state: state.upcase).each do |item|
+      municipal_list << [item.name, item.id]
+    end
+    return municipal_list
+  end
+
     private
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}

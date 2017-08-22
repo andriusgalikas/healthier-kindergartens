@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717081058) do
+ActiveRecord::Schema.define(version: 20170819180523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20170717081058) do
     t.string   "country"
     t.string   "telephone"
     t.datetime "deactivated_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "url"
     t.integer  "affiliate_type"
+    t.integer  "num_member",     default: 0
+    t.integer  "municipal_id"
   end
 
   add_index "affiliates", ["name"], name: "index_affiliates_on_name", using: :btree
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170717081058) do
     t.integer  "payment_month",    default: 0
     t.integer  "payment_mode_id"
     t.integer  "payment_start_id"
+    t.integer  "municipal_id"
   end
 
   create_table "department_todos", force: :cascade do |t|
@@ -354,6 +357,16 @@ ActiveRecord::Schema.define(version: 20170717081058) do
 
   add_index "messages", ["message_template_id"], name: "index_messages_on_message_template_id", using: :btree
 
+  create_table "municipals", force: :cascade do |t|
+    t.integer  "ref_id"
+    t.string   "name"
+    t.string   "state"
+    t.integer  "type"
+    t.string   "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "source_id"
     t.string   "source_type"
@@ -383,15 +396,16 @@ ActiveRecord::Schema.define(version: 20170717081058) do
     t.integer  "feature"
     t.boolean  "active"
     t.integer  "plan"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "path"
     t.string   "guide_path"
     t.string   "element"
     t.string   "image"
     t.string   "label_key"
-    t.integer  "daycare_id"
-    t.integer  "partner_id"
+    t.integer  "daycare_id",  default: 0
+    t.integer  "partner_id",  default: 0
+    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|

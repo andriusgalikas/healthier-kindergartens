@@ -26,6 +26,7 @@
       <i class="icon-home"></i>
     <% end %>
   </li>
+
   <li class="<%= active_controller?(controller: 'admin/discount_codes') %>">
     <%= link_to admin_discount_codes_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Discount Codes' do %>
       <i class="icon-ticket"></i>
@@ -90,12 +91,18 @@
     <% end %>
   </li>
 
-  <li class="<%= active_controller?(controller: 'admin/permissions/option') %>">
-    <%= link_to option_admin_permissions_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Access' do %>
+  <li class="<%= active_controller?(controller: 'admin/permissions/table') %>">
+    <%= link_to table_admin_permissions_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Access' do %>
       <i class="icon-lock" style="color:#7bb;"></i>
     <% end %>
   </li>
-  
+
+  <li class="<%= active_controller?(controller: 'admin/affiliates') %>">
+    <%= link_to admin_affiliates_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Partner' do %>
+      <i class="icon-users" style="color:#f8f;"></i>
+    <% end %>
+  </li>
+ 
 </ul>
 <ul id="secondary-menu">
   <li>

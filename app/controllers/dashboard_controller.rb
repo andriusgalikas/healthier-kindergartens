@@ -6,6 +6,12 @@ class DashboardController < ApplicationController
     def index
       get_permission
 
+      if current_user.partner? && !current_user.affiliate.nil?
+        if current_user.affiliate.certific? && current_user.affiliate.users.length > current_user.affiliate.num_member + 1
+          upgrade_partner_deposit
+        end
+      end
+
       render "dashboard/#{current_user.role}", format: [:html]
       rescue ActionView::MissingTemplate
         redirect_to current_user.admin? ? admin_root_url : root_url
@@ -60,4 +66,69 @@ class DashboardController < ApplicationController
         puts @permissions.length, group, sub_type
       end
     end
+
+    def upgrade_partner_deposit
+        @deposit_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first
+        deposit_amount = @deposit_plan.price
+
+        deposit_amount = deposit_amount * (current_user.affiliate.users.length - current_user.affiliate.num_member - 1)
+
+        @transaction = Transaction.new
+        @transaction.amount   = deposit_amount
+        @transaction.currency = @deposit_plan.currency
+        @transaction.card_num = current_user.card_number
+        @transaction.user_id  = current_user.id
+
+        # Create a charge: this will charge the user's card
+        begin
+          stripe_customer = current_user.stripe_customer
+          if stripe_customer.blank?
+            return
+          end
+
+          charge = Stripe::Charge.create(
+            :amount => (@transaction.amount * 100).to_i, # Amount in cents
+            :currency => @transaction.currency,
+            :customer => stripe_customer,
+            :description => ""
+          )
+          
+          @transaction.charge_id = charge.id
+          @transaction.deposit = true
+          @transaction.plan_type = current_user.plan_type
+          @transaction.save
+
+          current_user.affiliate.num_member = current_user.affiliate.users.length - 1
+          current_user.affiliate.save
+
+        rescue Stripe::CardError => e
+          # The card has been declined
+        end
+
+        if current_user.plan_type > 1
+          send_deposit_confirmation_email
+        end
+    end
+
+    def send_deposit_confirmation_email current_user
+        # @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_CONFIRMATION_SUBJECT'], language: I18n.locale.downcase) 
+        # template_key = 'EMAIL_CONFIRMATION_SUBJECT_PLAN'
+        # @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
+        # @message_template = @sub_subject.message_templates.find_by(target_role: 0, language: I18n.locale.downcase)
+
+        # phase_name = "Phase" + (current_user.plan_type - 1).to_s
+        # template = @message_template.content.gsub! '[$NAME$]', current_user.name
+        # template = template.gsub! '[$PHASE_NAME$]', phase_name
+
+        # user_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first    
+
+        # attachment = []
+        # unless user_plan.document.nil?
+        #   sub_index = user_plan.document.url.index('?')
+        #   unless sub_index.nil?
+        #     attachment << 'http:' + user_plan.document.url.first(sub_index)
+        #   end      
+        # end
+        # NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_later
+    end    
 end
