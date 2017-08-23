@@ -17,7 +17,7 @@
           %a{href: illness_parentee_illness_guides_path(target_role: params[:target_role], illness_id: params[:illness_id]), class: 'btn btn-gray btn-wizard'} 
             =t('form_labels.back')
 :javascript
-  PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+  PDFJS.workerSrc = '//npmcdn.com/pdfjs-dist@1.7.225/build/pdf.worker.js';
   // Using DocumentInitParameters object to load binary data.
   var guide_url = '#{@illness_guide}';
 

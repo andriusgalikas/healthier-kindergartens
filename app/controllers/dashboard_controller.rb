@@ -61,9 +61,7 @@ class DashboardController < ApplicationController
         @permissions = Permission.where(member_type: group, sub_type: sub_type, partner_id: daycare_id).order(:feature)
         if @permissions.blank?
           @permissions = Permission.where(member_type: group, sub_type: sub_type, partner_id: 0).order(:feature)
-        end
-
-        puts @permissions.length, group, sub_type
+        end        
       end
     end
 

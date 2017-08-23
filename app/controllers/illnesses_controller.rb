@@ -53,7 +53,13 @@ class IllnessesController < ApplicationController
   end
 
   def create_department_record
-    status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
+    if params[:worker][:id].blank?
+      status = {}
+      status[:code] = "failed"
+      status[:message] = "Please select worker"
+    else
+      status = IllnessRecorder.new(department_illness_record_params).save_department_illness!
+    end
 
     if status[:code] == 'ok'
       illness = Illness.where(code: params[:record][:illness_code]).first

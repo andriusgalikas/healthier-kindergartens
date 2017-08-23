@@ -200,7 +200,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '/guide_page/manager_survey/result_step1'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = select_daycare_partner_subjects_path
                         result[:guide_path] = '#'
                     else
@@ -214,7 +214,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = (sub_type == 'partner_certificate') ? get_results_partner_subjects_path : select_municipal_partner_subjects_path
+                    result[:path] = (sub_type == 1) ? get_results_partner_subjects_path : select_municipal_partner_subjects_path
                     result[:guide_path] = '#'
                 end
                 result[:element] = 'item_survey'
@@ -239,7 +239,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = partner_messages_path
                         result[:guide_path] = '#'
                     else
@@ -269,7 +269,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = select_daycare_partner_todos_path
                         result[:guide_path] = '#'
                     else
@@ -283,7 +283,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'
-                    result[:path] = (sub_type == 'partner_certificate') ? '#' : select_municipal_partner_todos_path
+                    result[:path] = (sub_type == 1) ? '#' : select_municipal_partner_todos_path
                     result[:guide_path] = '#'
                 end
 
@@ -300,7 +300,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = set_filters_partner_illnesses_path
                         result[:guide_path] = '#'
                     else
@@ -330,7 +330,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = '#'
                         result[:guide_path] = '#'
                     else
@@ -361,7 +361,7 @@ class Admin::PermissionsController < AdminController
                     result[:guide_path] = '#'
                 # worker
                 when 'worker'
-                    if (sub_type == 'partner_daycare')
+                    if (sub_type == 0)
                         result[:path] = '#'
                         result[:guide_path] = '#'
                     else
