@@ -1,4 +1,20 @@
 .row.content-main
+  .col-md-12.content.clock-box    
+    - if current_user.is_trial_member? && (!current_user.active_subscribed?)
+      .free-trial-box
+        %h1.text-center=t('dashboard.upgrade.trial')
+        .clock
+        .text-center
+          %h4=t('dashboard.upgrade.trial_description')        
+          %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
+            =t('dashboard.upgrade.button')
+    - elsif current_user.manager_plan_type == 3
+      .free-trial-box
+        .text-center
+          %h4=t('dashboard.upgrade.trial_description')        
+          %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
+            =t('dashboard.upgrade.button')    
+.row.content-main
   .col-md-5.col-sm-6.col-xs-12
     #main-menu.free-customer
       .menu-items
@@ -184,3 +200,22 @@
 
   .col-md-7.col-sm-6.col-xs-12
     = render 'notifications'
+- if current_user.is_trial_member? && (!current_user.active_subscribed?)
+  :javascript
+    var clock;
+    
+    jQuery(document).ready(function() {
+      var clock;
+
+      clock = $('.clock').FlipClock({
+            clockFace: 'DailyCounter',
+            autoStart: false,
+            callbacks: {
+              stop: function() {              
+              }
+            }
+        });          
+        clock.setTime(#{current_user.remain_trial_second});
+        clock.setCountdown(true);
+        clock.start();
+    });

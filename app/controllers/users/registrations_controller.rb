@@ -272,7 +272,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :num_worker,
       :discount_code_id,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type]],
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type, :card_number]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -387,7 +387,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params_password
-    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email)      
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email, :card_number)      
   end
 
   def daycare_manager_params

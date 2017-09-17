@@ -14,6 +14,9 @@ class Admin::GlobalSettingsController < AdminController
     GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_NUM_OF_WORKER_ID")
     GlobalSetting.find_or_create_by(key: "ACUITY_SCHEDULE_CARD_TYPE_ID")
 
+    #INITIAL_MEMBER_LIMIT_DAY
+    GlobalSetting.find_or_create_by(key: "INITIAL_MEMBER_LIMIT_DAY")
+
     @global_settings = GlobalSetting.all
   end
 

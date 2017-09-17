@@ -52,14 +52,11 @@ class SubscriptionsController < ApplicationController
         end
 
         if current_user.paid_plan_type > 0
-            current_user.plan_type = params[:plan]
-            current_user.save
-
             upgrade_package
 
             redirect_to dashboard_path            
         else
-            redirect_to ethic_1_path
+            redirect_to upgrade_path
         end
     end
 
@@ -79,6 +76,10 @@ class SubscriptionsController < ApplicationController
     private
 
     def upgrade_package
+        if current_user.plan_type == 2
+            return
+        end      
+
         @deposit_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first
         deposit_amount = @deposit_plan.price
         

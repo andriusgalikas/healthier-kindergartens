@@ -1,5 +1,12 @@
 class TransactionsController < ApplicationController
   def create
+    if current_user.plan_type == 2
+      if current_user.manager?  
+        redirect_to ethic_2_path
+      else
+        redirect_to dashboard_path
+      end
+    end      
 
     @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase).first
 

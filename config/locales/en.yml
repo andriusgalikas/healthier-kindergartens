@@ -595,6 +595,7 @@ en:
       num_member: Number of Members
       upload_address: Please upload the email address via Excel file.
       municipal: Municipal
+      card_number: Credit Card Number
 
     care type:
       ind: Freestanding 
@@ -709,6 +710,9 @@ en:
       description: "Are you a Healthier and Safer Care Conscious Nursery Manager? Are you a nursery controller that take children's health and safety seriously and see it as your ethical and professional responsibility to ensure the nursery environment is as safe as possible? If so, then this accreditation programme for Healthier and Safer Childcare is for you. Search here to get started."
       title: "Make the environment safer for children in your care today."
       button: "Upgrade"
+      trial: "You free trial ends in 14 days"
+      trial_description: "Please verify that you want this discount before discount code expires."
+      phase1_description: After they verify their their interest to keep disount
       plan:
         title: You now have to milestone %{plan_type}
         button: Continue to milestone %{new_plan_type}
@@ -1216,20 +1220,22 @@ en:
     button:
       book: BOOK NOW
       apply: Apply PLAN
+      free: Start For Free
+      trial: Apply to Get Free Trial
     phase1:
-      label: PHASE 1
+      label: FREE
       type: Informed Membership
       rate: $ <span> %{rate} </span> / mo
       desc: (USD, paid annually) 
 
     phase2:
-      label: PHASE 2
+      label: PHASE 1
       type: Certification Membership
       rate: $ <span> %{rate} </span> / mo
       desc: (USD, paid annually) 
 
     phase3:
-      label: PHASE 3
+      label: PHASE 2
       type: Accreditation Membership
       rate: $ <span> %{rate} </span> / mo
       desc: (USD, paid annually) 

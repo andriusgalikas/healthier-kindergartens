@@ -66,6 +66,9 @@ class DashboardController < ApplicationController
     end
 
     def upgrade_partner_deposit
+      if current_user.plan_type == 2
+        return
+      end      
         @deposit_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first
         deposit_amount = @deposit_plan.price
 

@@ -108,6 +108,16 @@ class User < ActiveRecord::Base
         self.affiliate.nil?
     end
 
+    def is_trial_member?
+        days = GlobalSetting.find_by(key: "INITIAL_MEMBER_LIMIT_DAY").value.to_i
+        DateTime.now.days_ago(days) <= self.created_at
+    end
+
+    def remain_trial_second
+        days = GlobalSetting.find_by(key: "INITIAL_MEMBER_LIMIT_DAY").value.to_i
+        return days * 24 * 60 * 60 - (Time.now - self.created_at).to_i
+    end
+
 private
     def confirmation_token
       if self.confirm_token.blank?

@@ -40,16 +40,16 @@
       .row
         %h5=t('register.labels.municipal').upcase
         = daycare.select :municipal_id, options_for_select(municipal_list), {}, class: 'form-control input-round', :placeholder => t('register.labels.municipal'), :required =>"true"
-      /.row
-      /  %h5=t('register.labels.country').upcase
-      /  = daycare.text_field :country, class: 'form-control input-round', :placeholder => t('register.labels.country'), :required =>"true"
       .row
         %h5=t('register.labels.telephone').upcase
         = daycare.text_field :telephone, class: 'form-control input-round', :placeholder => t('register.labels.telephone'), :required =>"true"
         = daycare.hidden_field :discount_code_id, value: (session[:apply_discount]) ? session[:apply_discount] : 0
-        
+                
       = daycare.fields_for :user_daycares do |user_daycare|
         = user_daycare.fields_for :user do |user|
+          .row
+            %h5=t('register.labels.card_number').upcase
+            = user.text_field :card_number, class: 'form-control input-round', :placeholder => t('register.labels.card_number'), :required =>"true"
           .row
             %h5=t('register.labels.name').upcase
             = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name'), :required =>"true"

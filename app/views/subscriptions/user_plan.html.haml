@@ -17,8 +17,7 @@
                             %p.plan-type= t('user_plan.phase1.type').html_safe
                             %h5
                                 %small.original-price-1
-                                %span.discount-price-1
-                                    = t('user_plan.phase1.rate', rate: @plan_one.price).html_safe unless @plan_one.nil?
+                                %span.discount-price-1 &nbsp;
                     .row.plan-body.text-center
                         %ul.user-feature-box
                             - @phase_one_items.each do |item|
@@ -30,10 +29,10 @@
                                         %p{style: 'display: none; word-break: break-word;'}= t('user_plan.benefit.' + item.feature)
                         %input.phase-price-1{type: 'hidden', value: @plan_one.price}
                         - if !current_user.deposit_required && current_user.paid_plan_type < 2
-                            %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 1}
-                            %button.btn.btn-round.btn-green
-                                %a.apply-link-1{'href': '/set_userplan?plan=2'}
-                                    = t('user_plan.button.apply').html_safe
+                            / %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 1}
+                            / %button.btn.btn-round.btn-green
+                            /     %a.apply-link-1{'href': '/set_userplan?plan=2'}
+                            /         = t('user_plan.button.apply').html_safe
                 #plan_phase2.col-md-4.col-sm-4
                     .row.plan-header
                         .plan-bg
@@ -56,7 +55,8 @@
                                         %p{style: 'display: none; word-break: break-word;'}= t('user_plan.benefit.' + item.feature)
                         %input.phase-price-2{type: 'hidden', value: @plan_two.price}
                         - if !current_user.deposit_required && current_user.paid_plan_type < 3
-                            %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 2}
+                            - if current_user.is_trial_member?
+                                %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 2}
                             %button.btn.btn-round.btn-green
                                 %a.apply-link-2{'href': '/set_userplan?plan=3'}
                                     = t('user_plan.button.apply').html_safe
@@ -82,7 +82,8 @@
                                         %p{style: 'display: none; word-break: break-word;'}= t('user_plan.benefit.' + item.feature)
                         %input.phase-price-3{type: 'hidden', value: @plan_three.price}
                         - if !current_user.deposit_required && current_user.paid_plan_type < 4
-                            %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 3}
+                            - if current_user.is_trial_member?
+                                %input.form-control.input-round.discount-code{style: 'margin-bottom: 20px;', :placeholder => t('pages.journey.label.discount_code'), 'data-plan' => 3}
                             %button.btn.btn-round.btn-green
                                 %a.apply-link-3{'href': '/set_userplan?plan=4'}
                                     = t('user_plan.button.apply').html_safe
