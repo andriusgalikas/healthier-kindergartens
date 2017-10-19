@@ -51,6 +51,5 @@ class RegistrationMailer < ApplicationMailer
             "html" => content
         }    
         result = m.send_email(data)
-        puts result        
     end
 end

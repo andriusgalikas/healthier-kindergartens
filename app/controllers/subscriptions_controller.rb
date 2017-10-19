@@ -152,7 +152,7 @@ class SubscriptionsController < ApplicationController
             attachment << 'http:' + user_plan.document.url.first(sub_index)
           end      
         end
-        NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_later
+        NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_now
     end
 
 

@@ -52,7 +52,7 @@ class Admin::UsersController < AdminController
     template = @message_template.content.gsub! '[$NAME$]', user.name
     template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
 
-    RegistrationMailer.registration_confirmation(user, template).deliver_later
+    RegistrationMailer.registration_confirmation(user, template).deliver_now
   end
 
 end

@@ -362,13 +362,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     template = @message_template.content.gsub! '[$NAME$]', user.name
     template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
 
-    RegistrationMailer.registration_confirmation(user, template).deliver_later
+    RegistrationMailer.registration_confirmation(user, template).deliver_now
   end
 
   def send_email_campaign user
     @email_campaigns = EmailCampaign.by_language(I18n.locale.downcase)
     @email_campaigns.each do |item|
-      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver_later
+      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver_now
     end
   end
 

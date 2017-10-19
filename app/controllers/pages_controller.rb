@@ -127,7 +127,7 @@ class PagesController < ApplicationController
     end
 
     def send_message
-        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_later
+        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_now
         redirect_to root_path 
     end
 
