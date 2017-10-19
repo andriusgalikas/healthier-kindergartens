@@ -12,6 +12,7 @@ class RegistrationMailer < ApplicationMailer
 			"html" => template
 		}	 
 		result = m.send_email(data)
+        puts result
     end
 
     def send_confirmation user
