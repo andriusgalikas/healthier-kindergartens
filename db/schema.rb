@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819180523) do
+ActiveRecord::Schema.define(version: 20171017141404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,8 +123,9 @@ ActiveRecord::Schema.define(version: 20170819180523) do
   create_table "department_todos", force: :cascade do |t|
     t.integer  "todo_id"
     t.integer  "department_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "todo_active",   default: true
   end
 
   create_table "departments", force: :cascade do |t|
@@ -247,6 +248,7 @@ ActiveRecord::Schema.define(version: 20170819180523) do
     t.string   "parent_guide_content_type"
     t.integer  "parent_guide_file_size"
     t.datetime "parent_guide_updated_at"
+    t.string   "description"
   end
 
   create_table "locale_files", force: :cascade do |t|
@@ -361,10 +363,10 @@ ActiveRecord::Schema.define(version: 20170819180523) do
     t.integer  "ref_id"
     t.string   "name"
     t.string   "state"
-    t.integer  "type"
+    t.integer  "municipal_type"
     t.string   "language"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -597,6 +599,7 @@ ActiveRecord::Schema.define(version: 20170819180523) do
     t.integer  "completion_date_value", default: 1
     t.string   "language"
     t.string   "ref_id"
+    t.integer  "is_active",             default: 1
   end
 
   create_table "transactions", force: :cascade do |t|

@@ -24,7 +24,7 @@ class TodoTask < ActiveRecord::Base
 
     belongs_to :todo
 
-    validates :title, :description, :language,                      presence: true
+    validates :title, :language,                      presence: true
 
     enum task_type: [:global, :local]
 

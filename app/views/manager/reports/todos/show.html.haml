@@ -2,6 +2,17 @@
 - content_for :previous_path, manager_reports_todo_set_date_range_path(@todo)
 .todo-dash-container
   .container
+    .row
+      .col-md-12.form-group
+        %label=t('manager.todos.report.start_date')
+        %input.form-control{type: 'text', value: params[:start_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')}
+      .col-md-12.form-group
+        %label=t('manager.todos.report.end_date')
+        %input.form-control{type: 'text', value: params[:end_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')}
+      .col-md-12.form-group
+        %label=t('manager.todos.report.title')
+        %input.form-control{type: 'text', value: @todo.title}
+
     #todo.row.todo-report-info
       .twelvecol
         %a#print-todo.btn.btn-normal.btn-yellow{:href => "#"} Print

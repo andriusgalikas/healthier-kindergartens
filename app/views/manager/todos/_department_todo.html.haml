@@ -1,0 +1,24 @@
+%h4=todo_title
+- if local_todos.blank?
+  %p=t('manager.todos.labels.no_todos') 
+- else
+  %ul
+    - local_todos.each do |todo|
+      %li
+        .department-todo
+          .todo-command
+            .detail-box
+              %ul#time-counter
+                %li.days
+                  %label 3
+                  %span Days
+                %li.hours
+                  %label 12
+                  %span Hours
+                %li.minutes
+                  %label 36
+                  %span Mins
+              .progress
+                .value
+          %span.todo-footer
+            = todo.department_name

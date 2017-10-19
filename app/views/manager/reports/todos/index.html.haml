@@ -27,17 +27,19 @@
         /            %span.todo-title= truncate(todo.title, length: 20)
         /          = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo), :class => 'btn btn-normal btn-yellow btn-block'
         .todo-list
-          %h3 Global Todos
-          - if current_user.global_todos.empty?
-            %p You have no Global todos currently.
-          - else
-            %ul
-              - User.all_global_todos.where(id: current_user.id).each do |todo|
-                %li
-                  .menu-item
-                    %span.todo-id= todo.id
-                    %span.department-name= todo.department_name
-                    .profile-thumb
-                      = image_tag Todo.find(todo.id).icon.file, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
-                    %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.view_report'), manager_reports_todo_set_date_range_path(todo, department: todo.department_id), :class => 'btn btn-normal btn-yellow btn-block'
+          - User.all_user_todos.where(id: current_user.id).each do |todo|
+            %h3=todo.title
+            - depart_todos = User.all_self_department_todos.where(id: current_user.id).where("todos.id = #{todo.id}")
+            - if depart_todos.length == 0
+              %p=t('manager.todos.labels.no_todos') 
+            - else
+              %ul
+                - depart_todos.each do |depart_todo|
+                  %li
+                    .department-todo
+                      = link_to manager_reports_todo_set_date_range_path(todo, department: depart_todo.department_id) do
+                        .todo-command
+                          .detail-box
+                            %span.view-report=t('manager.todos.labels.view_report')
+                        %span.todo-footer
+                          = depart_todo.department_name

@@ -61,7 +61,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan contact_us).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan contact_us illness_guide).each do |page|
         get page, to: "pages##{page}"
     end    
 
@@ -93,9 +93,17 @@ Rails.application.routes.draw do
 
     namespace :manager do
         resources :todos do
+            member do
+                get :active
+                get :inactive
+            end
+
             collection do
                 get :dashboard
                 get :search
+                get :select_department
+                get :status_list
+                post :sub_todos
             end
         end
 

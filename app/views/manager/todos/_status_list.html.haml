@@ -19,13 +19,12 @@
             %ul
               - global_todos.each do |todo|
                 %li
-                  .menu-item
+                  .menu-item{ style: 'border-bottom: 1px solid #bababa;' }
                     %span.todo-id= todo.id
                     %span.department-name= todo.department_name
                     .profile-thumb
                       = image_tag Todo.find(todo.id).icon.file, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.show'), manager_todo_path(todo), :class => 'btn btn-yellow btn-normal btn-block'
 
           %h3=t('manager.todos.labels.todos')
           - local_todos = User.all_self_daycare_todos.where(id: current_user.id)
@@ -41,4 +40,7 @@
                     .profile-thumb
                       = image_tag Todo.find(todo.id).icon.file, class: 'img-responsive center-block' unless Todo.find(todo.id).icon.nil?
                     %span.todo-title= truncate(todo.title, length: 20)
-                  = link_to t('manager.todos.labels.show'), manager_todo_path(todo), :class => 'btn btn-yellow btn-normal btn-block'
+                  - if todo.todo_active
+                    = link_to t('manager.todos.labels.pause'), inactive_manager_todo_path(todo, department_id: todo.department_id), :class => 'btn btn-yellow btn-normal btn-block'
+                  - else
+                    = link_to t('manager.todos.labels.start'), active_manager_todo_path(todo, department_id: todo.department_id), :class => 'btn btn-green btn-normal btn-block'

@@ -1,0 +1,55 @@
+= form_for [:manager, @todo], :html => { :multipart => true } do |f|
+  .container.todo-dash-container
+    .row
+      - if @errors.present? && @errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@errors.count, "error")
+            prohibited this todo from being saved:
+          %ul
+            - @errors.each do |message|
+              %li= message
+      .col-md-12.form-group
+        = f.label :title, t('manager.todos.new.title')
+        = f.text_field :title, :class => 'form-control'
+      .col-md-12.form-group
+        = f.label :department_ids, t('manager.todos.new.departments')
+        = f.select :department_ids, options_from_collection_for_select(@departments, 'id', 'name'), {},  class: 'form-control department-select', multiple: "multiple"
+      .col-md-12.form-group
+        = f.label :iteration_type, t('manager.todos.new.iteration_type')
+        = f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control iteration-selector'
+      .col-md-12.form-group.frequency-fields
+        = f.label :frequency, t('manager.todos.new.frequency')
+        = f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control'
+      .col-md-12.form-group
+        = f.label t('manager.todos.new.completion_date')
+        .form-coupling
+          = f.text_field :completion_date_value, :class => 'form-control', type: 'number'
+          = f.select :completion_date_type, Todo.completion_date_types.keys.map {|type| [type.split('_').last.titleize,type]}, {}, :class => 'form-control'
+      .col-md-12.form-group
+        - @departments.each do |item|
+          %input{type: "hidden", value: item.id, name:"todo[department_ids][]"}
+        = f.hidden_field :language, :value => I18n.locale.downcase
+        = f.hidden_field :daycare_id, :value => current_user.daycare.id
+      .col-md-12.form-group.text-center
+        = custom_link_to_add_fields t('manager.todos.new.add_key_task'), f, :tasks, class: 'add-task'
+      #tasks.fields.col-md-12
+        = f.fields_for :tasks do |ff, index |
+          = render partial: 'task_fields', locals: { f: ff }
+      .col-md-12.form-group.text-center
+        = f.submit t('manager.todos.new.save_task'), :class => 'btn btn-blue save-task'
+        .clearfix
+/ .threecol
+/     %h3 Departments
+/     %p Assign the relevant departments for your todo.
+/   .ninecol.last
+/     %fieldset.widget.widget-content.widget-last
+/       .form-group.form-last
+/         = f.collection_select :department_ids, @departments, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select departments..."}}
+/     .form-action
+/       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+
+:javascript
+  jQuery(document).ready(function() {
+    $('.department-select').SumoSelect({ okCancelInMulti: true, selectAll: false });
+  });

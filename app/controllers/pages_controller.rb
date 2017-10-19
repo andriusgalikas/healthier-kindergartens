@@ -149,6 +149,10 @@ class PagesController < ApplicationController
         end        
     end
 
+    def take_action
+        @illnesses = Illness.by_language(I18n.locale.downcase)
+    end
+
     private
 
     def set_subjects

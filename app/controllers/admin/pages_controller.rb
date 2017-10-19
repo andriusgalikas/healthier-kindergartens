@@ -394,6 +394,7 @@ class Admin::PagesController < AdminController
               @illness.ref_id = xlsx.cell(line, 'A')
               @illness.code = "IL-#{index}"
               @illness.name = xlsx.cell(line, 'B')
+              @illness.description = xlsx.cell(line, 'C')
               @illness.language = params[:language_short_name].downcase
               @illness.save(validate: true)
             end

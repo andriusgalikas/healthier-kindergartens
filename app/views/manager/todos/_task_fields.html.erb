@@ -1,19 +1,21 @@
 <div class="fields">
     <div class="form-group">
-        <%= f.label :title %>
+        <%= f.label t('manager.todos.new.key_task') %>
         <%= f.text_field :title, :class => 'form-control' %>
         <%= f.hidden_field :language, value: I18n.locale.downcase %>
+        <%= custom_link_to_remove_fields '<i class="icon-cross icon-close"></i>'.html_safe, f, class: 'remove-key-task' %>
     </div>
     <div class="form-group">
-        <%= f.label :description %>
+        <%= f.label t('manager.todos.new.description') %>
         <%= f.text_area :description, :class => 'form-control' %>
     </div>
 
-    <%= f.fields_for :sub_tasks do |sub_task| %>
-      <%= render partial: 'sub_task_fields', locals: {f: sub_task} %>
-    <% end %>
+    <div class="text-center">
+        <%= custom_link_to_add_fields "Add Sub-task", f, :sub_tasks, {class:"subtask-link add"} %>
+        <%= f.fields_for :sub_tasks do |sub_task| %>
+          <%= render partial: 'sub_task_fields', locals: {f: sub_task} %>
+        <% end %>
+    </div>
 
-    <%= custom_link_to_add_fields "Add Sub-task", f, :sub_tasks, {class:"subtask-link add"} %>
-    <%= f.hidden_field :task_type, value: 'local' %>
-    <%= custom_link_to_remove_fields "Remove", f %>
+    <%= f.hidden_field :task_type, value: 'local' %>    
 </div>

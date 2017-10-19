@@ -49,7 +49,7 @@ class Todo < ActiveRecord::Base
     validates :title, :user_id, :completion_date_type,
                 :completion_date_value, :iteration_type, :language,             presence: true
     validates :frequency,                                                       presence: true, :if => :recurring?
-    validates :icon,                                                            presence: true
+    # validates :icon,                                                            presence: true
     #validates :title,                                                           uniqueness: { scope: :user_id }
 
     enum iteration_type:            [:single, :recurring]

@@ -87,9 +87,9 @@ en:
       path: The path to accreditation 
       about_user: About the Association 
       contact_us: Contact the Association 
-      get_started: Apply here to see you qualify
+      get_started: "To enroll schedule a free one-on-one <br/> infection control strategy session"
       mission: Start page  
-      your_journey: Start your journey towards <br> healthier and safer child care                                                       
+      your_journey: Your Journey
       signup: Search membership 
 
       dashboards: Healthier and safer childcare portal
@@ -169,45 +169,44 @@ en:
       para1: "Create awareness that generate motivation to manage infection exposure."
 
     instruction: 
-      main_heading: "2. Milestone."
-      description: "Raise competence around how manage infection exposure  ."
+      main_heading: "INFECTION PREVENTIVE TRAINING"
+      description: "Addressing Five Intertwined Areas of Infection Risk to Children and Daycare Staff in Your Facility"
       sub_heading1: 
-        title: "Infection control while handing  food "
-        description: "By receiving this training nursery staff will increase their competency in:" 
-        para1: Which hygiene procedures should you implemented before, during and after cooking to improve food safety?
-        para2: What are the recommended practices to store food in order to control risk of Foodborne diseases ?
-        para3: What are the five critical sources of food contamination? 
-        para4: What procedures related to infection preventive food handling every nursery staff should know about ?     
-        para5: What special precautions should be observed when it comes to food for infants and those suffering from food allergies or food intolerances?
+        title: "Infection preventive food handling"
+        description: "In this module, you will learn:"
+        para1: What important precautions should everyone take when preparing and storing food? 
+        para2: What are the best ways of preventing food-borne pathogens and food contaminations? 
+        para3: What special food precautions should you take for infants and allergic children – and why? 
+        para4: This module will give you complete, up-to-date information on the latest strategies and techniques for infection prevention in handling food. 
       sub_heading2: 
-        title: "Infectious disease outbreak control " 
-        description: "By receiving this training how to deal with infectious disease outbreaks nursery staff will increase their competency in:" 
-        para1: What are the warning signs to look out for both before and during an outbreak in a nursery?
-        para2: What steps are recommended to follow to  manage and overcome an outbreak? 
-        para3: How to notify parents of children attending you nursery and health authorities when an outbreak of an infectious disease has occurred in the nursery. 
+        title: "Infection preventive outbreak control strategies" 
+        description: "In this module, you will learn:" 
+        para1: What warning signs occur before and during an outbreak in a daycare center? 
+        para2: What steps should you follow to prevent, manage and overcome an outbreak? 
+        para3: How do you most effectively notify parents and staff that an outbreak has occurred? 
+        para4: This module provides all the answers and much more. 
       sub_heading3: 
-        title: "Infection control while changing nappies"
-        description: "By receiving this training nursery staff will increase their competency in:"
-        para1: What are the hidden health risks associated with  nappy changing area? 
-        para2: How can you reduce the risk of contamination when changing? 
-        para3: What is the most effective way of dealing with soiled nappies?
-        para4: What infection prevention procedures should be followed when children soil themselves? 
-        para5: What equipment should always be readily available in the nappy changing area to reduce the infection risk ?                 
+        title: "Infection preventive diapering"
+        description: "In this module you will learn: "
+        para1: What are the hidden health risks associated with diapering and the diapering area? 
+        para2: What is the difference between a sanitizer and a disinfectant? 
+        para3: How long after symptoms have ceased can viruses be transmitted? 
+        para4: In this module, you’ll discover the very best methods of diapering, disinfecting and disposal. 
       sub_heading4: 
-        title: "Infection control while cleaning bodily fluids."
-        description: "By receiving this training nursery staff will increase their competency in:" 
-        para1: "How does one identify potentially infectious bodily fluids?"
-        para2: "How should one clean after an episode with potentially infectious bodily fluids?"
-        para3: "How to prevent forgetting important cleaning action in the infection preventive cleaning process."
-        para4: "How to remove soiled clothing?"
+        title: "Infection preventive cleaning of bodily fluids"
+        description: "In this module you will learn: " 
+        para1: "How do you properly identify and clean bodily fluids? "
+        para2: "When should you isolate someone who is expelling bodily fluids? "
+        para3: "What should you do if you come into contact with an infected person or their bodily fluids? "
+        para4: "In this module, you’ll discover how to prevent unnecessary infections from bodily fluids. "
       sub_heading5: 
-        title: "Infection control through hand hygiene."
-        description: "By receiving this training nursery staff will increase their competency in:" 
-        para1: "Why hand hygiene is critical to infection control?"
-        para2: "How to young nursery children about hand hygiene."
-        para3: "What characterizes the proper use of disinfectants?"
-        para4: "What are the best ways of teaching children to wash their hands properly?"
-        para5: "What are the key strategies can be used to encourage proper hand washing in the nursery?"
+        title: "Infection preventive hand washing"
+        description: "In this module you will learn:" 
+        para1: "Why is proper hand washing essential in a childcare environment? "
+        para2: "What steps should adults and children take to ensure proper hand washing occurs at all times? "
+        para3: "What are the best ways to teach children about proper hand washing? "
+        para4: "When should hand sanitizer be used, and why? "
+        para5: "In Module 6, you’ll learn how to introduce and maintain a healthy hand strategy. "
 
     take_action:
       main_heading: "Infection risk control tools included in the healthier safer childcare program "
@@ -236,6 +235,11 @@ en:
       sub_heading6: "Infectious Disease Outbreak Notification Tool"
       para7: An outbreak often creates a situation where risk infection spread is high where lack of timely notification of parent can not only lead to spread of infectious diseases but also low trust in nursery operator’s ability to manage such situations. To counteract this your nursery therefor get access to instant outbreak notification tool as part of healthier and safer childcare program. This enables you as a healthier and safer childcare conscious nursery manager to instantly notify your whole nursery community of infectious disease outbreak. And to ensure that your outbreak communication addresses issues that can become problems if not remedied at an earlier, this tool also enable you to choose between 39 different childhood disease management template which you can incorporate into your notification which enables you to rebuild trust. 
 
+    illness_guide:
+      main_heading: Childhood Illness Management Guide
+      description: 39 different childhood diseases that can confront your chilcare
+      para1: The Healthier and Safer Childcare Program’s Childhood Illness Management Guide covers 39 different childhood diseases that a typical childcare facility may experience so that you, as a daycare manager, know what to say to parents when you are communicating with them about the infection that has occurred. It also helps you devise a proactive infection control action plan for daycare staff in you facility. 
+
     mission_step:
       promo_header: "<blue-b> Association for Healthier and Safer Care Conscious nursery operators </blue-b>" 
 
@@ -258,16 +262,16 @@ en:
       children_risk_sub_1: Hospitalization for lower respiratory tract infection can lead to obstructive airway diseases and reduced lung function later in life. In a Norwegian study conducted NTNU, where one hundred and sixty-one children participated  found that forty-three per cent of children attending the nurseries they studied had at least one virus in their respiratory tract.(ref)
       children_risk_sub_2: 
 
-      children_risk_2: Otitis media - or middle ear infection - can have adverse consequences in children under 3 years old, including reduced reading comprehension and compromised cognitive ability.7 
-      children_risk_3: Nursery attendance has been cited as increasing the risk of acquiring OME by two to three times .8,9
-      children_risk_4: Children who attend nursery also have an increased risk of needing urgent medical attention as a result of rotavirus infection. Rotaviruses are thought to be responsible for between 20% and 60% of hospital admissions in children.10      
+      children_risk_2: Otitis media - or middle ear infection - can have adverse consequences in children under 3 years old, including reduced reading comprehension and compromised cognitive ability.
+      children_risk_3: Nursery attendance has been cited as increasing the risk of acquiring OME by two to three times.
+      children_risk_4: Children who attend nursery also have an increased risk of needing urgent medical attention as a result of rotavirus infection. Rotaviruses are thought to be responsible for between 20% and 60% of hospital admissions in children.
       children_risk_5:  The risk of increased use of antibiotics and potential associated health complications
-      children_risk_6: Given that children in daycare acquire infections with greater frequency and severity compared to children at home they also use antibiotics more often.11 
-      children_risk_7: Many studies report association between antibiotic use and childhood asthma, including a large prospective cohort study with more than 5,000 cases of childhood asthma that determined early antibiotic exposure to be one of the most important predictors of childhood asthma.12
+      children_risk_6: Given that children in daycare acquire infections with greater frequency and severity compared to children at home they also use antibiotics more often.
+      children_risk_7: Many studies report association between antibiotic use and childhood asthma, including a large prospective cohort study with more than 5,000 cases of childhood asthma that determined early antibiotic exposure to be one of the most important predictors of childhood asthma.
       staff_parents_risk: The relationship between infectious diseases and potentially disturbing health risks for nursery staff 
       staff_infection: 
       staff_parents_risk_1: Working in childcare centers involves significant occupational risk for predominantly female childcare workers in childbearing age.  During pregnancy, the immune system undergoes several changes which weaken the immune system. This increases the chances of the harmful effects of infection for both expecting mothers and children. Among occupational risks identified among childcare staff are risk of diseases such as cytomegalovirus, hepatitis, varicella, influenza, tuberculosis, meningitis, streptococcal infection, diarrheal disease, scabies, pediculosis and herpes infections.
-      staff_parents_risk_2: With relation to cytomegalovirus (CMV), small children excreting CMV are a common source of infections of mothers and daycare workers.14,15,16  A cross-sectional study in 1996 found that 62% of childcare workers --the majority of whom are of childbearing age- had contracted CMV, which carries a high risk of severe consequences for the fetus if contracted during pregnancy.17 Furthermore researchers in the New England Journal of Medicine reported that, compared to parents with stay-at-home children, those whose children attend daycare have a highly and statistically significantly increased risk of cytomegalovirus (CMV) infection. Health risks for employees in the nursery can also come in the form of negative stress. When a nursery staff become ill rest of the nursery staff are forced to do more with less. This increase work load and pressure lead to burnout, stress and compromised immune systems which makes them even more susceptible to infections. 
+      staff_parents_risk_2: With relation to cytomegalovirus (CMV), small children excreting CMV are a common source of infections of mothers and daycare workers. A cross-sectional study in 1996 found that 62% of childcare workers --the majority of whom are of childbearing age- had contracted CMV, which carries a high risk of severe consequences for the fetus if contracted during pregnancy. Furthermore researchers in the New England Journal of Medicine reported that, compared to parents with stay-at-home children, those whose children attend daycare have a highly and statistically significantly increased risk of cytomegalovirus (CMV) infection. Health risks for employees in the nursery can also come in the form of negative stress. When a nursery staff become ill rest of the nursery staff are forced to do more with less. This increase work load and pressure lead to burnout, stress and compromised immune systems which makes them even more susceptible to infections. 
 
 
       what_to_do: What can you as a healthier and Safer childcare conscious nursery manager do to manage infectious disease risk , increase safety, and show that you care ?
@@ -303,14 +307,160 @@ en:
       ref_text_24: "24. https://www.ncbi.nlm.nih.gov/pubmed/8806992" 
       ref_text_25: "25. http://www.heraldonline.com/news/local/article31183946.html" 
     path:
-      main_heading: "You are only three milestones away from healthier and safer childcare in your nursery ."  
+      main_heading: "Healthier & Safer Child Care Program"
       instro: "Your nursery will be accredited after completion of just three easy to follow milestones." 
-      paragraph1: Nurseries that exercise caution against spread of infection risk in their nursey , and also have a good preemptive infection control infrastructure, lower the risk of outbreaks of infectious diseases, making suffering and tragedy associated with infectious diseases less likely. Healthier and safer childcare program is created serve this purpose. 
+      paragraph1: Our accreditation program cover 5 interconnected areas of risk exposure affecting children and staff in daycare settings, and a clear protocol to help you effectively mitigate risks.
+      paragraph2: INFECTION PROTECTIVE MEASURES BEFORE INFECTION OCCURS TO MINIMIZE RISK OF INFECTION DISEASE OCCURANCE
+      paragraph3: INFECTION PROTECTIVE MEASURES AFTER INFECTION OCCURS
 
-      sub_heading1: "The path to  accreditation and a safer health preserving child care environment in your nursery."
-      instro_2: To move towards achieving a health preserving childcare and optimum infection risk mitigation in your nursery it is important that your nursery staff and parents become your avid supporters in fight against infectious diseases. This requires that nursery staff and parents need first to be aware of the risk which generates motivation for risk mitigation, which in turn require competency in infection risk mitigation practices. And once knowledge is present strategic preemptive action need taken to get the protection needed. These are the three strategic milestones you nursery goes through to control and manage infection risk exposure and their associated harm and suffering to children and nursery staff in your nursery.
-      instro_3: "Overview of 3 strategic infection risk mitigation milestones in the program and their objectives :"
-      instro_4: "Upon completion of the three milestones your nursery has now  in place an preemptive infection control infrastructure that continuously reduces the risk of children and nursery staffs exposure to infection in your facility. Your nurseries commitment to safeguard health and wellbeing of children is now recognized by the association and your childcare attaints healthier and Safer childcare accreditation. Accreditation certificate is sent to your nursey along with the  accreditation plaque verifying that your nursery is longer a common nursery anymore but rather a healthier and safer care accredited nursery. "                                                                      
+      sub_heading1: "A step-by-step approach to effectively manage and control infection risk in you Childcare"
+      instro_2: Let us now look at how you use the Healthier and Safer Childcare Programs Infection protective measures to address critical areas of infection risk exposure to children and daycare staff before infection occurs. Doing this allows you to minimize the risk of infection occurring in your facility due to infection enhancing practices, and after infection occurs, so that you can  minimize the risk associated with a specific disease that has occurred in your childcare facility.
+
+      before:
+        label: Before Infection Occurs
+        phase1:
+          title: Minimize the risk of infection occurring in your facility
+          description: Create awareness of infection risk enhancing practices
+          para1: Make daycare staff and parents aware of infection risk enhancing practices 
+          para2: Determine the competency of individual employees
+          para3: Uncover critical knowledge gaps in staff members
+
+        phase2:
+          title: Raise competency in infection preventive practices 
+          description: Create awareness of infection risk enhancing practices
+          para1: Cultivate a deep understanding of infection preventive practices among all daycare staff and daycare parents in your facility 
+          para2: Provide a clear path for infection preventive practices 
+          para3: Raise the bar for infection preventive practices in your childcare
+
+        phase3:
+          title: Ensure consistent application of infection preventive practices
+          description: Create awareness of infection risk enhancing practices
+          para1: Make daycare staff and parents aware of infection risk enhancing practices 
+          para2: Determine the competency of individual employees
+          para3: Uncover critical knowledge gaps in staff members
+
+      after:
+        label: After Infection Occurs
+        phase1:
+          title: Minimize the risk of disease spreading in your facility 
+          description: Create awareness of infection risk enhancing practices
+          para1: Ensure that infective preventive tasks are consistently applied in your Childcare
+          para2: Easily Coordinate infection prevention tasks in your facility
+          para3: Eliminate guess work and provide a solid plan of infection preventive actions
+
+        phase2:
+          title: Raise competency in how to handle infection 
+          description: Create awareness of infection occurrence 
+          para1: How vulnerable children are to the infection
+          para2: The ways the infection spreads
+          para3: The most appropriate contagion prevention measures
+          para4: Which symptoms warrant an immediate medical call
+
+        phase3:
+          title: Take four key strategic & calculated actions
+          description: Create awareness of infection occurrence 
+          para1: Keep accurate records of illness occurrence    
+          para2: Strategically devise, allocate and coordinate specific infection control tasks  
+          para3: Have good communication with parents and daycare staff helping them make sense of the situation
+          para4: Be better prepared for future potential outbreaks
+
+      center:
+        label: "Critical Infection risk area"        
+        phase1:
+          title: "lack <br/> of <br/> awareness"
+        phase2:
+          title: "lack <br/> of <br/> competency"
+        phase3:
+          title: "lack <br/> of <br/> action"
+
+      step1:
+        title: Creating awareness of infection risk enhancing  practices
+        description: "The first critical infection risk area to address, before any infection occurs, is lack of awareness of infection enhancing practices. To create awareness of infection risk enhancing practices, so that daycare staff and parents do not become vehicles for spreading  infectious disease pathogens, the Healthier and Safer Childcare Program includes a strategically designed infection risk assessment survey, making it possible for you as a childcare manager to:"
+        para1: Motivate staff and parents to learn best practices to better protect children under their care as a natural consequence of becoming more aware
+        para2: Discover individual employees’ level of competency in the key areas of infection control and risk mitigation
+        para3: Uncover critical knowledge gaps among individual day care staff, which, if not remedied, can pose the risk of infection exposure to children under their care
+
+      step2:
+        title: Raise competency in infection preventive practices 
+        description: "The second critical infection risk area to address before infection occurs is lack of competency in infection preventive practices. To raise competency in infection preventive practices among daycare staff and parents, and thereby remove obstacles that impede their ability to safeguard children under their care from infectious disease risk exposure, the Healthier and Safer Childcare Program therefore includes online training in infection preventive practices, making it possible for you as a childcare manager to:"
+        para1: Cultivate a deep understanding of infection enhancing practices that contribute to risks of acquiring infectious diseases.
+        para2: Provide clear performance measures and enable day care staff and parents to make informed preventive choices. 
+        para3: Raise the bar for infection preventive practices in your childcare so you can become a shining example for other organizations to follow.
+
+      step3:
+        title: Ensure consistent application of infection preventive practices
+        description: "The third critical infection risk area to address before infection occurs is lack of appropriate action. To Ensure that infection preventive tasks are carried out consistently and diligently throughout your whole facility, so that safety of children under you care in your childcare are not left to chance, the Healthier and Safer Childcare Program includes Infection Preventive Task Manager, making it possible for you as a childcare manager to:"
+        para1: Coordinate key infection prevention tasks effortlessly throughout your whole facility 
+        para2: Eliminate guesswork and replace it with proactive infection prevention 
+        para3: Ensure that infection preventive tasks are carried out consistently and diligently throughout your whole facility, thus setting a baseline for the standard of prevention practices in your child are facility
+
+      step4:
+        title: Create awareness of infection risk enhancing practices
+        sub_description: Now let us look at how you, after infection occurs, will use the Healthier and Safer Child Care Program to minimize the risk associated with a specific disease that has occurred in your childcare.
+        description: "The first critical infection risk area to address, before any infection occurs, is lack of awareness of infection enhancing practices. To create awareness of infection risk enhancing practices, so that daycare staff and parents do not become vehicles for spreading  infectious disease pathogens, the Healthier and Safer Childcare Program includes a strategically designed infection risk assessment survey, making it possible for you as a childcare manager to:"
+        para1: Motivate staff and parents to learn best practices to better protect children under their care as a natural consequence of becoming more aware
+        para2: Discover individual employees’ level of competency in the key areas of infection control and risk mitigation
+        para3: Uncover critical knowledge gaps among individual day care staff, which, if not remedied, can pose the risk of infection exposure to children under their care
+
+      step5:
+        title: Raise competency in infection preventive practices 
+        description: "The second critical infection risk area to address before infection occurs is lack of competency in infection preventive practices. To raise competency in infection preventive practices among daycare staff and parents, and thereby remove obstacles that impede their ability to safeguard children under their care from infectious disease risk exposure, the Healthier and Safer Childcare Program therefore includes online training in infection preventive practices, making it possible for you as a childcare manager to:"
+        para1: Cultivate a deep understanding of infection enhancing practices that contribute to risks of acquiring infectious diseases.
+        para2: Provide clear performance measures and enable day care staff and parents to make informed preventive choices. 
+        para3: Raise the bar for infection preventive practices in your childcare so you can become a shining example for other organizations to follow.
+
+      step6:
+        title: Take four key strategic & calculated action 
+        description: "The third critical infection risk area to address after infection occurs is lack of strategic calculated action to stop the threat associated with the infection that has occurred. Each minute may count, so this is a very important step. So let us, therefore, look at the four key strategic & calculated actions that need to be taken in your childcare."
+
+      step7:
+        title: Keep accurate record of illness occurrence
+        description: "The first step in an effective infection Control action plan is to document the illness incident, as this enables you to quickly pull out recent records to determine whether or not any other children have recently been sick with the same illness. That way, you know to consult with the local health authorities. For this, you can use the Healthier and Safer Childcare Program’s Illness Record Tool, as this tool makes it possible for you, as a childcare manager, to:"
+        para1: Keep accurate records of each illness occurrence in your childcare facility
+        para2: Have immediate access to key information about the infection that has occurred 
+        para3: Find out whether other children have been recently infected with the same illness. 
+
+      step8:
+        title: devise and coordinate specific infection control tasks  
+        description: "The second step in an effective infection Control action plan is to devise a proactive infection control plan which daycare staff will implement in your facility. Each disease is different and may require different action plans to stop infection from spreading. For this, you can use the Healthier and Safer Childcare Program’s Childhood Illness Management Guide in conjuction with the Infection Control Task Manager Tool, as these tools combined makes it possible for you, as a childcare manager, to:"
+        para1: Quickly create, allocate and coordinate specific tasks each department needs to carry out to control the spread of the particular illness that has occurred.
+        para2: Rapidly uncover which departments in your nursery are behind on the implementation of required infection control tasks so that appropriate measures can be taken to improve follow through.
+        para3: Generate a report that verifies to authorities that the required tasks for the particular infection is implemented, in case of questions or doubts.
+
+      step9:
+        title: Ensure good communication
+        description: "The third step in an effective infection Control action plan is to ensure good communication with parents and daycare staff. When an infection occurs, especially in the case of hospitalization, other children and their parents may want to know how the child is doing. They might even want to know what you’re doing about the problem. A lack of good communication at this stage may a create a high-emotion, low-trust situation. So to avoid this, you need to have good communication and build trust. This will enable you to quickly address issues that can become problems if not remedied on time. That’s where the Healthier and Safer Childcare Program’s Communication Manager Tool comes in, as it makes it possible for you, as a childcare manager, to:"
+        para1: Communicate with parents, and daycare staff from specific departments, where infection has occurred, helping them make sense of the situation.
+        para2: Provide easy-to-read infection control guidance, to parents and staff, that is applicable to the particular infection that has occurred.
+        para3: Become the source of support to daycare parents and workers when they need it most.        
+
+      step10:
+        title: Be better prepared for future potential outbreaks infection control tasks  
+        description: "The fourth step in an effective infection Control action plan is to be ready for future outbreaks. This calls for keeping an eye on the infection occurrence trend specific to your nursery. It will allow you to better anticipate seasonal illness outbreaks and, therefore, not be left totally vulnerable to them.  In order for us to achieve this critical proactive infection control objective, you can use the Healthier and Safer Childcare program’s Infection Trend Identifier Tool. This tool makes it possible for you, as a childcare manager, to:"
+        para1: Get a complete overview of infections occurring in your facility.
+        para2: Detect the trends of illnesses occurring in your facility so that you can more easily anticipate seasonal illness outbreaks.
+        para3: Identify how infectious illnesses occurring in your facility stack up against each other so that you may know which infectious disease is of primary concern in your facility and initiate a collective effort to root out the cause of the specific infectious disease. This will also help you create a unified bond and team spirit among childcare worker and parents in fighting infectious disease in you childcare facility, because you are coming together for a common cause.
+
+      step11:
+        title: Healthier & Safer Child Care Program 
+        para1: Infectious disease prevention and control is a multifaceted challenge. We now know that failing, as a nursery manager, to safeguard children and daycare staff against infection exposure can put the health of children at risk. Enrolling your childcare facility into the Healthier and Safer Childcare infection control and prevention program may, therefore, be the single most important thing you can do as a childcare provider to advance the health and safety of children and staff under your care and supervision.
+        para2: To enroll your childcare facility into the Healthier and Safer Childcare Program, you can set up on date in your calendar for an infection control strategy session. 
+        para3: During your session, we will answer your questions about how to apply the Healthier and Safer Childcare Program to ensure effective infection control and disease prevention in your workplace.
+
+      footer:
+        title: Healthier & Safer Child Care Program 
+        para1: Infectious disease prevention and control is a multifaceted challenge. We now know that failing, as a nursery manager, to safeguard children and daycare staff against infection exposure can put the health of children at risk. Enrolling your childcare facility into the Healthier and Safer Childcare infection control and prevention program may, therefore, be the single most important thing you can do as a childcare provider to advance the health and safety of children and staff under your care and supervision.
+        para2: To enroll your childcare facility into the Healthier and Safer Childcare Program, you can set up on date in your calendar for an infection control strategy session. 
+        para3: During your session, we will answer your questions about how to apply the Healthier and Safer Childcare Program to ensure effective infection control and disease prevention in your workplace.
+
+      preview_button: "SEE PREVIEW"
+      take_action_button: "CLICK HERE"
+      preview_text: "Click the button below see short preview of infection control training included in program"
+      action_text: "See full list of 39 childhood diseases covered by Childhood Illness Management Guide"
+
+
+      sub_heading2: "Healthier and safer childcare program "
+      sub_heading3: "Infection protective measures"
 
       step_point1: "Milestone 1"
       step_point1_desc: "Create awareness of the need for infection risk mitigation"
@@ -342,8 +492,7 @@ en:
       phase2_det_para2: Lack of expertise around infection control practices greatly inhibits nursery staff and parents ability to take proper course of action to protect themselves and children under their care against infectious diseases. 
       phase2_det_para3: The function of the second milestone of the healthier and safer Childcare program is therefore, to enable you as a healthier and safer childcare conscious nursery manager to remove this critical obstacle by facilitating infection control guidance so that nursery staff and parents are able make informed critical decisions and take proper course of action when children under their care are undergoing illness and suffering. This objective is attained through infection control online training included in the program and childhood illness management guide covering thirty-nine different childhood illnesses written by qualified pediatrician. 
  
-      phase2_button: "Learn"
-      preview_text: "Click the button below see short preview of infection control training included in program addressing five intertwined areas of contamination risk exposure."
+      phase2_button: "Learn"      
 
       phase3_title: " Infection control purposes: 3 rd milestone."
       phase3_para1: "Reinforce consistent infection risk control practices ."
@@ -354,8 +503,7 @@ en:
       phase3_det_title: "Implementing strategic measures that count ."
 
       phase3_det_subtitle: "Primary infection control  function"
-      phase3_det_para2: Managing infection risk exposure prerequisites knowledge in infection control and applying the knowledge strategically, diligently and consistently. The function of the third milestone in the healthier and safer Childcare program is therefore to enable you, the nursery manger ensure that happens in your facility. To enable you to achieve this objective your nursey is given access to infection control task verifier tool and Infection trend identifier tool as part of the program, while infection control task verifier tool to enable you as nursery manager to quickly assess and verify if infection control measures required to ensure infection control safety are being implemented in your facility diligently and consistently. Infection trend identifier tool on the other hand enables you to know when to strategically apply specific infection control measures in your facility as you identify high risk season for specific illnesses throughout the year.  With this critical insight, you are now able to use childhood illness management guide as a reference and initiate a preemptive allied effort in your nursey to minimize infection risk, which not only ensure higher infection control safety but also create a united bond and team spirit between nursery staff and parents’ due to them standing together against expected risk.
-      action_text: "Click I learn more about strategically designed tools included in the healthier and safer childcare program."
+      phase3_det_para2: Managing infection risk exposure prerequisites knowledge in infection control and applying the knowledge strategically, diligently and consistently. The function of the third milestone in the healthier and safer Childcare program is therefore to enable you, the nursery manger ensure that happens in your facility. To enable you to achieve this objective your nursey is given access to infection control task verifier tool and Infection trend identifier tool as part of the program, while infection control task verifier tool to enable you as nursery manager to quickly assess and verify if infection control measures required to ensure infection control safety are being implemented in your facility diligently and consistently. Infection trend identifier tool on the other hand enables you to know when to strategically apply specific infection control measures in your facility as you identify high risk season for specific illnesses throughout the year.  With this critical insight, you are now able to use childhood illness management guide as a reference and initiate a preemptive allied effort in your nursey to minimize infection risk, which not only ensure higher infection control safety but also create a united bond and team spirit between nursery staff and parents’ due to them standing together against expected risk.      
       phase4_title: "Congratulations"
       phase4_para1: ""
       phase4_para2: "Upon completion of the three milestones your facility now have in place an infection control infrastructure to proactively manage infection risk exposure to children, nursery staff and the wider nursery community. Hence your nurseries effort to ensure safety and wellbeing is recognized by the association and your nursery becomes an healthier and safer childcare  accredited facility. Your accreditation certificate is sent to you along with an accreditation plaque and your childcare is listed in the portal for accredited facilities for parents to view."                                                                      
@@ -452,52 +600,55 @@ en:
         schedule_success: Infection strategy session is now set up to begin your journey towards healthier and safer childcare in your nursery.
 
     standard:
-      label1: "1. Start Page" 
-      label2: "2. Standard"
-      label3: "3. Path to accreditation"
-      label4: "Get Started"
-      head1: "How to keep children, nursery staff and the wider nursery community out of harm's way." 
-      sub_head1: 
-      instro1: " For childcare providers, the ability to control and mitigate risk of infectious diseases in childcare facility and thereby better safeguard health and wellbeing of children and nursery staff, comes down to being able to affirmatively address critical areas of infection risk exposure."
-      instro2: " Importantly, the key to managing infection risk is the adopting a standardized infection control policy that  comprehensively addressees  following  critical areas of infection risk exposure research in childcare infection control deemed necessary for managing risk of infection in daycare facilities. 23:"
+      label1: "1. Start Page"  
+      label2: "2. Standard" 
+      label3: "3. Path to accreditation" 
+      label4: "Get Started" 
+      head1: "How to keep children, nursery staff and the wider nursery community out of harm's way."  
+      instro1: "After studying the two-year-old nursery child's infection-related death, it becomes clear that there are 3 core areas where you can fail, as a nursery manager, in safeguarding children and day care staff against infection exposure. This can make them sick , undergo suffering and put their health and, in the worst case scenario, lives at risk." 
+      instro2: "Let us, therefore, look at why it is so critical, before infection occurs and after infection occurs, to avoid  failing, as a nursery manager, to safeguard children and day care staff against infection exposure." 
+ 
+      elem1: "LACK OF AWARNESS" 
+      elem2: "LACK OF COMPETENCY"
+      elem3: "LACK OF ACTION" 
+ 
+      subhead1: "before infection occurs" 
+      subhead2: "AFTER INFECTION OCCURS" 
 
-      head2: " Infection risk critical exposure area: Food Handling"
-      subhead2_1: " Primary reason for concern "
-      para2_1: "Handling of food in nurseries, including storage, preparation and serving of food to children in nurseries brings with it some unique challenges. There are many opportunities for contamination of food and foodborne infections."
-      subhead2_2: "What should you need to consider? "
-      para2_2: "Are there any measures that can be taken to create awareness among nursery staff and parents about the importance of infection risk minimizing food handling practices ? <br/><br/>Are there any training that can be made available to nursery staff to help help them gain  knowledge and competency in safeguarding against foodborne illnesses ? <br/><br/> Are there any measures in place to track and measure daycare staff’s compliancy to food safety measures to ensure contaminant-free meals to children?"
+      subhead1_1: "Lack of awareness of Infectious disease enhancing practices" 
+      subhead1_2: "Lack of competency in infection preventive practices" 
+      subhead1_3: "Lack of infection preventive action" 
 
-      head3: " Infection risk critical exposure area: Nappy changing practices"
-      subhead3_1: " Primary reason for concern "
-      para3_1: "Changing nappies carries a significant risk of transmission of infectious disease-carrying bacteria and viruses between children and adults. This is particularly challenging as infectious disease carrying pathogens can spread from children to adults although there may be no visible sign of disease in children."
-      subhead3_2: "What should you need to consider? "
-      para3_2: " Are there any measures that can be taken to create awareness among nursery staff and parents around infection risk minimizing nappy changing practices ? <br/><br/> Are there any training that can be made available for nursery staff and nursery parents so that they can gain knowledge and competency in infection risk minimizing diaper changing practices ? <br/><br/> Are there any tools available in the nursery to repeatedly remind nursery staff of safe infection risk minimizing nappy changing practices ?"
+      subhead2_1: "Lack of awareness of Infectious disease occurrence" 
+      subhead2_2: "Lack of competency in infection control" 
+      subhead2_3: "Lack of appropriate action to control the risk"
+ 
+      head2: "Critical infection risk area #1"
+      head2_label: "Lack of awarness"
+      para2_1_1: "The first critical infection risk area to address, before any infection occurs, is lack of awareness of infection enhancing practices. "
+      para2_1_2: "This is because, if the daycare workers and parents are not aware which actions greatly enhance the risk of infectious disease exposure, they may be unknowingly putting children under their care and their self at risk, through their improper practices." 
+      para2_2_1: "But as soon as infection occurs in your childcare facility, the first critical infection risk area to address is lack of awareness of infectious disease occurrence."
+      para2_2_2: "This is because, if daycare staff and parents are unaware of the risk that is out there, they cannot possibly be prepared to take the necessary measures to protect themselves and children under their care against infection exposure." 
+ 
+      head3: "Critical infection risk area #2" 
+      head3_label: "Lack of knowledge"
+      para3_1_1: "The second critical infection risk area to address before infection occurs is lack of competency in infection preventive practices." 
+      para3_1_2: "This is because lack of skills and competency in optimum infection preventive practices greatly impede daycare staff and parents ability to replace infection risk enhancing practices with risk preventive ones. It impedes their ability to safeguard children under their care from infectious disease risk exposure."
+      para3_2_1: "The second critical infection risk area to address after infection occurs is lack of competency in how to control the infection risk associated with the particular infection that has occurred." 
+      para3_2_2: "This is because the infection control measures required to control the risk of one type of infectious disease may not be the same for another infectious disease. Thus, if daycare staff and parents lack competency in how to handle the specific infectious disease that has occurred, they are unable to take appropriate action to stop the disease from spreading and reoccurring." 
+ 
+      head4: "Critical infection risk area #3" 
+      head4_label: "Lack of apropriete action"
+      para4_1_1: "The third critical infection risk area to address before infection occurs is lack of appropriate action. This is because, if infection preventive practices are not carried out consistently and diligently across your childcare facility, the safety of children, as far as infection exposure is concerned, is left to chance." 
+      para4_2_1: "The third critical infection risk area to address after infection occurs is lack of appropriate action to control the risk of the particular disease that has occurred." 
+      para4_2_2: "This is because, if appropriate actions need to stop infection from spreading and reoccurring are not taken, no amount of knowledge will help minimize the risk the infection poses to children." 
+ 
+      para5_1: "There is no doubt that Infection control in childcare facilities pose a multifaceted challenge for childcare providers which meay seem cumborsome but falling short in addressing any one of critical infection risk exposure areas consistently and deligently , can expose daycare children to infections that can put their health and even life at risk , as in little 2 year old myles case." 
+      para5_2: "To that end, in line with Norges landsforening mission to assist childcare providers who are committed to  safeguard children under their care, from avoidable harm and suffering, the Healthier and safer childcare accreditation program has been developed." 
+      para5_3: "It enables you as healthier and safer counsious childcare  provider to comprehensively address critical areas of  infection risk exposure to children and  daycare staff in their facility hence substantially increase the level of protection of health, safety and wellbeing of children and childcare staff in the childcare facility. " 
+      para5_4: "While it may not be possible to prevent all infectious disease in child care , but research in the field of infection control has proven beyond doubt nurseries that exercise caution against spread of infection diseases, lower the risk of infectious diseases, making suffering and tragedy associated with infectious diseases less likely." 
 
-      head4: " Infection risk critical exposure area:: Cleaning of infectious bodily fluids such as vomit ."
-      subhead4_1: "Primary reason for concern."
-      para4_1: "Bodily fluids such as vomit of a sick child who apparently are not showing signs of sickness can carry infectious disease-carrying bacteria and viruses that can contribute to infectious disease outbreak in the childcare. This is particularly challenging since children and nursery can be infected even though they have not been on direct contact with the bodily fluid."
-      subhead4_2: "What should you need to consider? "
-      para4_2: " Are there any measures that can be taken to create awareness among nursery staff and parents around importance cleaning of bodily fluids in a safe manner? <br/><br/> Are there any training that can be made available for nursery staff and nursery parents so that they can gain knowledge and competency in infection risk minimizing cleaning of infectious bodily fluids<br/><br/> Are there any measures that can be taken to help nursey staff to apply cleaning practices that minimize  spread of infection though bodily fluids from sick children ? "
-
-      head5: " Infection risk critical exposure area: Managing disease outbreaks."
-      subhead5_1: " Primary reason for concern ."
-      para5_1: In a nursery setting disease of one child can care quickly develop into full blown infectious diseases outbreak in the nursery and put health of most vulnerable children in the nursery in risk  
-      subhead5_2: "What should you need to consider?"
-      para5_2: "Are there any quick reference guide available to nursey staff so that they are able to take informed decision on how to manage the specific illness at hand, before it turns into a full blown outbreak ? <br/><br/> Are there any method to inform nursery parents so that they also can take measures to minimize risk associated with infectious illness at hand? <br/><br/> Are there any tools that can be applied to get insight into trends of illnesses occurring in your nursery so that proactive measure can be taken based upon the insight , hence proactive measure can be taken to minimize the risk of infectious illness outbreak? <br/><br/> "
-
-      head6: " Infection risk critical exposure area: Lack of good hand hygiene."
-      subhead6_1: "Primary concern because of post-exposure."
-      para6_1:  A hand that has been contaminated with infectious disease carrying bacteria or viruses can rapidly spread them up surfaces. When children and nursery staff touch these surfaces then touch their mouth and eyes they also become ill.
-      subhead6_2: "What should you as a Healthier and Safer Care Conscious Nursery Manager consider:"
-      para6_2: " Are there any measures that can be taken to create awareness among nursery staff and parents about the importance of good hand hygiene practices? <br/><br/> Are there any training that can be made available to nursery staff to help them gain  knowledge and competency in how to establish and sustain good hand hygiene practices in the nursery ? <br/><br/> Are there any tools available in the nursery to repeatedly remind nursery staff when they should wash their hands to and hands of children under their care to minimize the risk of spread of infectious disease carrying bacteria and viruses ? "
-
-      head7: "Healthier and safer Childcare Standard."
-      para7_1: If critical exposure areas of infection risk exposure are not addressed strategically, diligently and consistently the health and safety of the children and nursery staff as it relates to infectious disease exposure , are left to chances. This is why healthier and safer childcare standard program has been developed.
-      para7_2: ""
-      para7_3: For you, as a Healthier and Safer Care Conscious Nursery Manager the reward for adopting a healthier and safer childcare standard in your facility, is more than ensuring that scope of you nursery’s infectious disease control measures is relative to the ongoing infectious disease risk exposure in  the nursery environment. 
-      para7_4: The reward also come in the form of a calm mind and confidence, when you can confidently say as nursery manager that, what is necessary to protect children and nursery staff from potential damage, suffering and potential tragedies associated with infectious diseases, is promoted , measured and upheld in your nursery . 
-      para7_5: This commitment to the safety and wellbeing for children, nursery staff and wider childcare community does not only resonate with parents of children but nursery staff but also health officials and the general public. 
-      para8_1: "We owe it to our children to give them a safe nurturing environment away from physical danger - what do think? Join us if you share this value."
+      para8_1: Applying healthier and Safer childcare infcetion control and oprevention system may  the single most important thing you can do as a childcare provider
 
     getting_started:  
       main_heading: "Welcome"
@@ -656,6 +807,27 @@ en:
         keytasks: Primary task 
         subtasks: Associated disease control 
         btn_complete: Finish
+        create: Create Todos
+        select_department: Select Department
+        state: Todo State Board
+        start: Start
+        pause: Pause
+      new:
+        title: Todo Title
+        departments: Choose Department
+        iteration_type: Iteration Type
+        frequency: Frequency
+        completion_date: Completion Date
+        add_key_task: Add Key Task
+        save_task: Save Task
+        key_task: Key Task
+        sub_task: Sub Task
+        description: Description
+      report:
+        start_date: Start Date
+        end_date: End Date
+        title: Todo Title
+        description: Description
 
     complete:
       line1: "You can now take advantage of the Healthier and Safer Nursery Portal, by adopting."
