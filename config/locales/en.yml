@@ -837,7 +837,7 @@ en:
       line5: "Get Started Now."
 
   mailers:
-    super manager:
+    supermanager:
       email: kontakt@friskereogtryggerebarneomsorg.no
       name: The Norwegian Association for Healthier Kindergartens
       url: http://healthierandsaferchildcare.org

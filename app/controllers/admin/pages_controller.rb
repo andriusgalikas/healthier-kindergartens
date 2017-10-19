@@ -20,6 +20,7 @@ class Admin::PagesController < AdminController
 
   def upload
     unless params[:web_url].blank?
+      LocaleUrl.where(language: params[:language_short_name].downcase).destroy_all
       web_url = LocaleUrl.find_or_create_by(url: params[:web_url])
       web_url.language = params[:language_short_name].downcase
       web_url.save      
