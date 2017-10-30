@@ -15,25 +15,25 @@
               = form_tag worker_select_daycare_path, method: :get
               .row
                 .col-sm-6.col-xs-12.text-left
-                  %h4 Partner
+                  %h4=t('register.labels.partner_type')
                   .row
                     %input{type: "radio", value:"0", name:"option", checked: true} 
-                      Healthier and Safer Childcare Partnership
+                      =t('register.partner_type.str')
                   .row
                     %input{type: "radio", value:"1", name:"option"} 
-                      Certification Partnership
+                      =t('register.partner_type.cer')
 
                 .col-sm-6.col-xs-12.text-left
                   %h4 Daycare
                   .row
                     %input{type: "radio", value:"2", name:"option"} 
-                      Chain Daycare
+                      =t('register.caretype.ind')
                   .row
                     %input{type: "radio", value:"3", name:"option"} 
-                      Independant Daycare
+                      =t('register.caretype.fra')
                   .row
                     %input{type: "radio", value:"4", name:"option"} 
-                      Govermantal Daycare
+                      =t('register.caretype.gov')
 
 
           .col-sm-12

@@ -92,7 +92,7 @@ en:
       your_journey: Your Journey
       signup: Search membership 
 
-      dashboards: Healthier and safer childcare portal
+      dashboard: Healthier and safer childcare portal
       logout: Logout
       invite: Invite others
       worker: Nursery Staff
@@ -743,18 +743,20 @@ en:
       partner_register: Collaborator profile registration 
       upload_partner_photo: Upload your logo in jpg format
       partner_type: Partner Type
+      daycare_type: Daycare Type
       num_member: Number of Members
       upload_address: Please upload the email address via Excel file.
       municipal: Municipal
       card_number: Credit Card Number
 
-    care type:
+    caretype:
       ind: Freestanding 
-      from: Nursery chain 
+      fra: Nursery chain 
       gov: Municipal Nursery 
     partner_type:
       str: Strategic Alliance Partner
       cer: Certification Partner
+
 
   manager:
     invite:
@@ -1376,8 +1378,68 @@ en:
       manager: "Nursery Controls"
       worker: "Nursery staff"
       partner: "Strategic Partner"
-      parent: "Nursery Parent"
+      parentee: "Nursery Parent"
       parent: "Nursery parents"
+
+  guideline:
+    title: Start Help
+    tooltip: Get step by step tutorial in each functionality
+    benifit:
+      message:
+        title: "<b>Outbreak Communication</b>"
+        content: "<p>Get an edge on communication in a stressful outbreak scenario</p>
+                  <ul>
+                    <li>Instantly notify daycare staff and parents about illness outbreak in your facility</li>
+                    <li>Provide easy-to-read infection control guidance to parents and staff helping them make sense of the situation at hand and mitigate risk of further exposure in an outbreak scenario</li>
+                    <li>Become the source of guidance when needed most</li>
+                  </ul>"
+      todo:
+        title: "<b>Infection Control Task Manager</b> "
+        content: "<p>Ensure optimum infection risk mitigation practices are in place at your childcare facility.</p>
+                  <ul>
+                    <li>Enables you to set a baseline for the standard of infection control in your facility</li>
+                    <li>Help you coordinate Key infection control task effortlessly throughout your whole facility.</li>
+                    <li>Generate report that you can submit to the authorities affirming that infection control protocols are implemented, tracked and measured on daily basis</li>
+                  </ul>"
+      todo_worker:
+        title: "<b>Infection Control Task Manager</b> "
+        content: "<p>Ensure optimum infection risk mitigation practices are in place at your childcare facility.</p>"
+      survey:
+        title: "<b>Infection Risk Assessment</b>"
+        content: "<p>Detect the magnitude of infection risk exposure in your childcare facility</p>
+                  <ul>
+                    <li>Discover individual employees level of competency in key areas of infection control and risk mitigation </li>
+                    <li>Uncover critical knowledge gaps among individual day care staff which if not remedied can pose the risk of infection exposure to children under their care.</li>
+                    <li>Create awareness of infection risk and thereby internally motivate staff and parents to learn best practices to better protect children under their care as a natural reaction of becoming aware of infectious disease risk exposure</li>
+                  </ul>"
+      survey_take:
+        title: "<b>Infection Risk Assessment</b>"
+        content: "<p>Uncover critical knowledge gaps in infection control which if not remedied can pose the risk of infection exposure to children under your care</p>"
+      illness_record:
+        title: "<b>Illness Record</b>"
+        content: "<p>Keep accurate records to enable critical insight into illness occurrences</p>
+                  <ul>
+                    <li>Keep accurate records of each illness occurrences in your childcare facility. </li>
+                    <li>Makes identifying trends and emerging patterns in infectious sickness occurring in the childcare, possible.</li>
+                    <li>Eliminate unnecessary paperwork in recording critical information related to infectious illness occurrences in your childcare facility and preserve the nature in the process.</li>
+                  </ul>"
+      illness_graph:
+        title: "<b>Illness Trends</b>"
+        content: "<p>Get insight into the infection Occurrences in your facility</p>
+                  <ul>
+                    <li>Get complete overview of infections occurring your facility </li>
+                    <li>Get insight into trends of illnesses occurring in your facility so that you can easier anticipate seasonal illness outbreaks.</li>
+                    <li>See how illnesses occurring in your facility stack up against other so that you may know which illness is of primary concern and initiate collective effort to mitigate risk that  creates unified bond and team spirit in fighting infection throughout your facility.</li>
+                  </ul>"
+      notify_message:
+        title: "<b>Health and Safety Message Board</b>"
+        content: "<p>Get instant notification related to key areas of health and safety</p>"        
+      instruction:
+        title: "<b>Instruction</b>"
+        content: "<p>Instruction</p>"        
+      illness_guide:
+        title: "<b>Illness Guide</b>"
+        content: "<p>Illness Guide</p>"              
 
   # ------------------ Additional YML Texts -----------------
   poster:
