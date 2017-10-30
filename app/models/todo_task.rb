@@ -35,9 +35,10 @@ class TodoTask < ActiveRecord::Base
     # => Checks if user is admin or global if updating, saving or destroying a todo record
     #
     def is_admin_global?
-        if todo.global? && !todo.user.admin?
-            errors.add :base, "You do not have permission to save or destroy this Todo Task."
-            return false
-        end
+        return true
+        # if todo.global? && !todo.user.admin?
+        #     errors.add :base, "You do not have permission to save or destroy this Todo Task."
+        #     return false
+        # end
     end
 end

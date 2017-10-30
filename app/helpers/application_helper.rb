@@ -153,7 +153,167 @@ module ApplicationHelper
     return municipal_list
   end
 
+  def get_remain_time todo_id
+    todo = Todo.find_by(id: todo_id)
+    cur_time = DateTime.now
+    if todo.single?
+      start_time = todo.start_date
+      if start_time.nil?
+        return [-1, -1, -1, -1]
+      else
+        return __release(start_time)
+      end
+    else
+      start_time = todo.start_date
+      if todo.day?
+        if !start_time.nil? && start_time - cur_time > 0
+          return __release(start_time)
+        else
+          return __release(Date.tomorrow.to_time)
+        end
+      elsif todo.week?
+        if start_time.nil?
+          return [-1, -1, -1, -1]
+        end
+
+        start_days = (todo.start_days.nil?) ? "[]" : todo.start_days
+        weekdays = JSON.parse(start_days)
+        cur_wday = start_time.strftime("%w").to_i
+        passed = 0
+        next_start_time  = ''
+        weekdays.each do |wday|
+          if wday.to_i > cur_wday.to_i
+            diff_day = wday.to_i - cur_wday.to_i
+            next_start_time = diff_day.days.from_now
+            passed = 1
+            break
+          end
+        end
+
+        if passed == 0
+          weekdays.each do |wday|
+            if wday.to_i + 7> cur_wday.to_i
+              diff_day = wday.to_i - cur_wday.to_i + 7
+              next_start_time = diff_day.days.from_now
+              passed = 1
+              break
+            end
+          end          
+        end
+        return __release(next_start_time.to_date.to_time)
+      else
+        if !start_time.nil? && start_time - cur_time > 0
+          return __release(start_time)
+        else
+          if start_time.nil?
+            return [-1, -1, -1, -1]
+          end
+          day = start_time.strftime("%d").to_i
+          next_start_time = DateTime.new(Time.now.year,Time.now.month,day,0,0,0)
+          if next_start_time - cur_time > 0
+            return __release(next_start_time.to_time)            
+          else
+            next_start_time = DateTime.new(Time.now.year,Time.now.month,day,0,0,0)
+            return __release((next_start_time + 1.months).to_time)            
+          end
+        end
+      end
+    end
+    [0, 0, 0, 0]
+  end
+
+  def get_current_status todo_id, department_id
+    between_date = __get_in_time(todo_id)
+    todo_completes = TodoComplete.generate_report(todo_id, between_date[0], between_date[1], department_id)    
+    report = TodoReporter.new(todo_completes: todo_completes, task_id: 0).percentages
+    return report[:complete].round
+  end
+
     private
+
+      def __get_in_time todo_id
+        todo = Todo.find_by(id: todo_id)
+        cur_time = DateTime.now
+        if todo.single?
+          return start_time = todo.start_date
+          if start_time.nil?
+            return [cur_time, cur_time]
+          else
+            return [start_time, cur_time]
+          end
+        else
+          start_time = todo.start_date
+          if todo.day?
+            if !start_time.nil? && start_time - cur_time > 0
+              return [cur_time, start_time]
+            else
+              return [Date.yesterday.to_time, cur_time]
+            end
+          elsif todo.week?
+            if start_time.nil?
+              return [cur_time, cur_time]
+            end
+
+            start_days = (todo.start_days.nil?) ? "[]" : todo.start_days
+            weekdays = JSON.parse(start_days)
+            cur_wday = start_time.strftime("%w").to_i
+            passed = 0
+            next_start_time  = ''
+            prev_start_time  = ''
+            weekdays.each_with_index do |wday, index|
+              if wday.to_i > cur_wday.to_i
+                diff_day = wday.to_i - cur_wday.to_i
+                prev_diff_day = cur_wday.to_i - weekdays[index - 1].to_i
+                next_start_time = diff_day.days.from_now
+                prev_start_time = prev_diff_day.days.ago
+                passed = 1
+                break
+              end
+            end
+
+            if passed == 0
+              weekdays.each_with_index do |wday, index|
+                if wday.to_i + 7> cur_wday.to_i
+                  diff_day = wday.to_i - cur_wday.to_i + 7
+                  prev_diff_day = cur_wday.to_i - weekdays[index - 1].to_i
+                  next_start_time = diff_day.days.from_now
+                  prev_start_time = prev_diff_day.days.ago
+                  passed = 1
+                  break
+                end
+              end          
+            end
+            return [prev_start_time.to_date.to_time, next_start_time.to_date.to_time]
+          else
+            if !start_time.nil? && start_time - cur_time > 0
+              return [cur_time, start_time]
+            else
+              if start_time.nil?
+                return [cur_time, cur_time]
+              end
+              day = start_time.strftime("%d").to_i
+              next_start_time = DateTime.new(Time.now.year,Time.now.month,day,0,0,0)
+              if next_start_time - cur_time > 0
+                return [(next_start_time - 1.months).to_time, next_start_time.to_time]
+              else
+                next_start_time = DateTime.new(Time.now.year,Time.now.month,day,0,0,0)
+                return [next_start_time.to_time, (next_start_time + 1.months).to_time]
+              end
+            end
+          end
+        end
+      end
+
+    def __release(time)      
+      delta = time - Time.now
+
+      %w[days hours minutes seconds].collect do |step|
+        seconds = 1.send(step)
+        (delta / seconds).to_i.tap do
+          delta %= seconds
+        end
+      end
+    end
 
     def __custom_link_to_function name, on_click_event, button_color, opts={}
         link_to(name, 'javascript:void(0);', {onclick: on_click_event, class: "btn btn-#{button_color} btn-normal #{opts[:class]}"})

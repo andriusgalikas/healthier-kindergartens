@@ -20,15 +20,23 @@
         = f.select :iteration_type, Todo.iteration_types.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control iteration-selector'
       .col-md-12.form-group.frequency-fields
         = f.label :frequency, t('manager.todos.new.frequency')
-        = f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control'
+        = f.select :frequency, Todo.frequencies.keys.map {|type| [type.titleize,type]}, {}, :class => 'form-control frequency-selector'
+      .col-md-12.form-group.frequency-daily-fields
+        = f.label :start_date, t('manager.todos.new.start_date')
+        = f.text_field :start_date, :class => 'form-control datetimepicker-date'
+      .col-md-12.form-group.frequency-weekly-fields
+        %ul.weekday-list
+          - [0, 1, 2, 3, 4, 5, 6].each do |day_index|
+            %li.check-box
+              %input{:type=>"checkbox", :name => "start_days[]", :id => "start_day_#{day_index}", :style => "display: none;", checked: false, value: "#{day_index}"}
+              %label{:for => "start_day_#{day_index}"}
+                =Date::DAYNAMES[day_index].first(3).capitalize
       .col-md-12.form-group
         = f.label t('manager.todos.new.completion_date')
         .form-coupling
           = f.text_field :completion_date_value, :class => 'form-control', type: 'number'
           = f.select :completion_date_type, Todo.completion_date_types.keys.map {|type| [type.split('_').last.titleize,type]}, {}, :class => 'form-control'
       .col-md-12.form-group
-        - @departments.each do |item|
-          %input{type: "hidden", value: item.id, name:"todo[department_ids][]"}
         = f.hidden_field :language, :value => I18n.locale.downcase
         = f.hidden_field :daycare_id, :value => current_user.daycare.id
       .col-md-12.form-group.text-center
@@ -52,4 +60,7 @@
 :javascript
   jQuery(document).ready(function() {
     $('.department-select').SumoSelect({ okCancelInMulti: true, selectAll: false });
+    $(document).on('click', '.remove-key-task-description', function(){
+      $(this).parent().remove();
+    });
   });

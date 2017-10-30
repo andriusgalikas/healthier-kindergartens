@@ -23,6 +23,14 @@ class Manager::TodosController < ApplicationController
 
     def create
         @todo = current_user.todos.build(todo_params)
+        if todo_params['iteration_type'] != 'single'
+            if todo_params['frequency'] == 'week'
+                @todo['start_date'] = Time.now
+                @todo['start_days'] = params[:start_days].to_json
+            else
+                @todo['start_days'] = ''
+            end
+        end
         respond_to do |format|
           if @todo.save
             format.html { redirect_to dashboard_manager_todos_path }
@@ -149,6 +157,7 @@ class Manager::TodosController < ApplicationController
         :completion_date_value,
         :daycare_id,
         :language,
+        :start_date,
         department_ids: [], 
         tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type, :language,
                            sub_tasks_attributes: [:id, :_destroy, :title, :sub_task_type, :language]],

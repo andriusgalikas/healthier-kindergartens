@@ -4,50 +4,59 @@
   .container
     .row
       .col-md-12.form-group
-        %label=t('manager.todos.report.start_date')
-        %input.form-control{type: 'text', value: params[:start_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')}
+        %label=t('manager.todos.report.selected_date')
+        %input.form-control{type: 'text', value: @todo_complete.first.created_at.strftime('%d/%m/%Y at %I:%M%p')}
       .col-md-12.form-group
-        %label=t('manager.todos.report.end_date')
-        %input.form-control{type: 'text', value: params[:end_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')}
-      .col-md-12.form-group
-        %label=t('manager.todos.report.title')
+        %label=t('manager.todos.report.todo_title')
         %input.form-control{type: 'text', value: @todo.title}
 
     #todo.row.todo-report-info
-      .twelvecol
-        %a#print-todo.btn.btn-normal.btn-yellow{:href => "#"} Print
-        .profile-thumb
-          = image_tag @todo.icon.file, class: 'img-responsive center-block' unless @todo.icon.nil?
-        .info
-          %h2=t('manager.todos.labels.add_filter') 
-          - unless @department.nil?
-            %p
-              =t('manager.todos.labels.department')             
-              = @department.name
-          %p
-            =t('manager.todos.labels.start_date')             
-            = params[:start_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')
-          %p
-            =t('manager.todos.labels.end_date')           
-            = params[:end_date].to_datetime.strftime('%d/%m/%Y at %I:%M%p')
-      - if @todo_completes.empty?
+      - if @todo_complete.empty?
         .row
           .alert.alert-warning
             %i.icon-warning
             =t('manager.todos.report.none_message') 
         .ln_solid
-      - @todo.tasks.each_with_index do |task, index|
-        - @report = TodoReporter.new(todo_completes: @todo_completes, task_id: task.id).percentages
-        .row.todo-report
-          .sixcol
-            %h3= task.title
-            %p= task.description
-            %p
-              =t('manager.todos.labels.complete')               
-              %span.yellow= @report[:complete].round
-            %p
-              =t('manager.todos.labels.incomplete')               
-              %span.red= @report[:incomplete].round
-          .sixcol.last
-            %canvas.pie-chart{:height => "150", :id => "piePaymentTypeChart#{task.id}", :width => "150"}
-            = render partial: 'shared/chart/pie', format: [:html], locals: { datasets:  Hash(complete: { value: @report[:complete].round, color: "#ffc30b" }, incomplete: { value: @report[:incomplete].round, color: '#ff5637' }), id: "piePaymentTypeChart#{task.id}"}
+      .row.result-box
+        .col-md-12
+          - @report = TodoReporter.new(todo_completes: @todo_complete, task_id: 0).percentages
+          .complete-progress
+            %label{style: 'width: 100px;'}=t('manager.todos.labels.complete') 
+            .progress{style: 'margin-right: 20px;'}
+              .value{style: "width: #{@report[:complete].round}%;"}          
+            %label="#{@report[:complete].round}%"
+          .incomplete-progress
+            %label{style: 'width: 100px;'}=t('manager.todos.labels.incomplete') 
+            .progress{style: 'margin-right: 20px;'}
+              .value{style: "width: #{@report[:incomplete].round}%;"}          
+            %label="#{@report[:incomplete].round}%"
+      .row
+        .col-md-12
+          %h4=t('manager.todos.report.task') 
+          %ul.todo-task-list
+            - @todo_complete.first.task_completes.each do |tk|
+              %li.todo-li-item
+                .row.key-task
+                  .col-sm-10
+                    %label.task-label=t('manager.todos.labels.title') 
+                    %span
+                      %b= tk.todo_task.title
+                  .col-sm-2.text-right
+                    - if tk.pass?
+                      %label.pass-mark
+                        %i.fa.fa-check
+                    - else
+                      %label.no-pass-mark                        
+                - if tk.sub_task_completes.present?
+                  - tk.sub_task_completes.each do |sub_task_complete|
+                    .row.sub-task
+                      .col-sm-10
+                        %label.task-label=t('manager.todos.labels.subtasks') 
+                        %span
+                          %b= sub_task_complete.sub_task.title
+                      .col-sm-2.text-right
+                        - if sub_task_complete.pass?
+                          %label.pass-mark
+                            %i.fa.fa-check
+                        - else
+                          %label.no-pass-mark

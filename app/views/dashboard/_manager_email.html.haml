@@ -199,7 +199,7 @@
       /     =t('dashboard.upgrade.phase3_title')
 
   .col-md-7.col-sm-6.col-xs-12
-    = render 'notifications'
+    = render 'notifications_manager'
 - if current_user.is_trial_member? && (!current_user.active_subscribed?)
   :javascript
     var clock;

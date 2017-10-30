@@ -6,9 +6,12 @@ class Manager::Reports::TodosController < ApplicationController
     end
 
     def show
+        if params[:department].nil? || params[:start_date].blank? || params[:end_date].blank? || params[:complete_id].blank?
+            redirect_to manager_reports_todos_root_path
+        end
         set_global_todo
         set_department
-        set_report_todo_completes
+        set_single_report_todo_completes
     end
 
     def search
@@ -18,7 +21,19 @@ class Manager::Reports::TodosController < ApplicationController
     end
 
     def set_date_range
+        if params[:department].nil?
+            redirect_to manager_reports_todos_root_path
+        end
         set_global_todo
+    end
+
+    def select_todo_result
+        if params[:department].nil? || params[:start_date].blank? || params[:end_date].blank?
+            redirect_to manager_reports_todos_root_path
+        end
+        set_global_todo
+        set_department
+        set_report_todo_completes        
     end
 
     private
@@ -41,6 +56,10 @@ class Manager::Reports::TodosController < ApplicationController
 
     def set_report_todo_completes
         @todo_completes = TodoComplete.generate_report(@todo.id, params[:start_date], params[:end_date], params[:department])
+    end
+
+    def set_single_report_todo_completes
+        @todo_complete = TodoComplete.single_generate_report(params[:complete_id], @todo.id, params[:start_date], params[:end_date], params[:department])
     end
 
     def search_todos

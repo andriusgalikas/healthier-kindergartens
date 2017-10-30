@@ -22,6 +22,7 @@ class TodoTaskComplete < ActiveRecord::Base
     validates :submitter_id, :todo_complete_id, :todo_task_id,                  presence: true
 
     scope :report, -> (todo_complete_ids, todo_task_id) { where(todo_complete_id: todo_complete_ids).where(todo_task_id: todo_task_id) }
+    scope :all_report, -> (todo_complete_ids) { where(todo_complete_id: todo_complete_ids) }
 
     enum result: [:pending, :pass, :failed]
 

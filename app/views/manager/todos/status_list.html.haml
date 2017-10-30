@@ -23,12 +23,18 @@
                     .todo-command
                       .detail-box
                         %span.todo-name= todo.title
-                        - if todo.is_active == 1
-                          = link_to inactive_manager_todo_path(todo), :class => '' do
-                            = image_tag "pause-button.png", class: 'img-responsive center-block'
+                        - if todo.daycare_id.nil? || todo.iteration_type == 0
+                          %span.todo-createby
+                            = t('manager.todos.labels.created_by')
+                            %br
+                            = "#{User.find(todo.user_id).name}"
                         - else
-                          = link_to active_manager_todo_path(todo), :class => '' do
-                            = image_tag "start-button.png", class: 'img-responsive center-block'
+                          - if todo.is_active == 1
+                            = link_to inactive_manager_todo_path(todo), :class => '' do
+                              = image_tag "pause-button.png", class: 'img-responsive center-block'
+                          - else
+                            = link_to active_manager_todo_path(todo), :class => '' do
+                              = image_tag "start-button.png", class: 'img-responsive center-block'
                     %span.todo-footer
 
           %h3=t('manager.todos.labels.todos')

@@ -114,6 +114,7 @@ Rails.application.routes.draw do
             end
             resources :todos, only: [] do
                 get :set_date_range
+                get :select_todo_result
                 get :show
             end
         end

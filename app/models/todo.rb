@@ -53,7 +53,7 @@ class Todo < ActiveRecord::Base
     #validates :title,                                                           uniqueness: { scope: :user_id }
 
     enum iteration_type:            [:single, :recurring]
-    enum frequency:                 [:day, :week, :month, :year]
+    enum frequency:                 [:day, :week, :month]
     enum completion_date_type:      [:completion_day, :completion_week, :completion_month, :completion_year, :completion_hour]
     enum limit_date_type:           [:limit_hour, :limit_day, :limit_week, :limit_month, :limit_year]
 
@@ -132,6 +132,9 @@ class Todo < ActiveRecord::Base
         end
 
         return is_available
+    end
+
+    def frequency_remain_time
     end
 
     # => Checks if user is admin or global if updating, saving or destroying a todo record

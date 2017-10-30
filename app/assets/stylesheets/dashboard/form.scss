@@ -406,6 +406,17 @@ form
         display: block;
     }
 }
+
+.frequency-weekly-fields
+{
+    display: none;
+
+    .open
+    {
+        display: block;
+    }
+}
+
 .form-coupling
 {
     overflow: hidden;

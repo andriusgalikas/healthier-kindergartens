@@ -7,7 +7,7 @@
         %h4
           =t('manager.todos.report.range_title', title: @todo.title.titleize).html_safe
       .row
-        = form_tag manager_reports_todo_show_path(@todo), method: :get do
+        = form_tag manager_reports_todo_select_todo_result_path(@todo), method: :get do
           .col-md-4.col-sm-4.col-xs-12.form-group
             = hidden_field_tag :department, params[:department]
             = label_tag :start_date

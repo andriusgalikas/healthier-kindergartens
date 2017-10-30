@@ -788,6 +788,12 @@ en:
         search_desc: You do not have a safety measures list. Check the search parameters you entered.
         range_title: "Select period <b> %{title} </b> Preventative measures report:"
         none_message: None of the users have completed biosecurity measures within the given deadline.
+        start_date: "Start Date:"
+        end_date: "End Date:"
+        todo_title: Todo Title
+        description: Description
+        selected_date: Date
+        task: Task
       labels:
         report: See report completed infection control measures list 
         view_report: View report 
@@ -812,6 +818,9 @@ en:
         state: Todo State Board
         start: Start
         pause: Pause
+        created_by: Created By
+        title: Title
+        subtasks: SubTask
       new:
         title: Todo Title
         departments: Choose Department
@@ -823,11 +832,7 @@ en:
         key_task: Key Task
         sub_task: Sub Task
         description: Description
-      report:
         start_date: Start Date
-        end_date: End Date
-        title: Todo Title
-        description: Description
 
     complete:
       line1: "You can now take advantage of the Healthier and Safer Nursery Portal, by adopting."
@@ -875,6 +880,7 @@ en:
       title: "Messages"
       todo_list: "Infection Control Measures To Do List"
       messages: "Messages"
+      status_of_task: "Status of Task"
     partners_carousel:
       title_1: "There are several associations sending important health and safety-related messages"
       title_2: "To nurseries in the country through the Healthier and Safer Childcare Portal."

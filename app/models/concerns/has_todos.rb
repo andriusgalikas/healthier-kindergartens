@@ -89,6 +89,7 @@ module HasTodos
                                         .joins("LEFT JOIN todos ON (todos.daycare_id = user_daycares.daycare_id OR todos.daycare_id is null)")
                                         .select("todos.*")
                                         .where("todos.title LIKE :search", search: "%#{query}%")
+                                        .order('todos.created_at')
                                     }
         scope :all_self_department_todos, ->(query='') {  
                                         joins("LEFT JOIN user_daycares ON user_daycares.user_id = users.id")

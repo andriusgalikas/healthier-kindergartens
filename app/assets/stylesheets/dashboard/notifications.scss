@@ -1,7 +1,7 @@
 .notification-box{
-  border: 5px solid #c6c6c6;
-  @include border-radius(30px);
-
+  border: 5px solid #ff0552;
+  @include border-radius(20px);
+  margin-top: 10px;
   span{
     color:#ff0552;
     &.panel-title{
@@ -11,13 +11,14 @@
       font-size: 20px;
       font-weight: 200;
       text-transform: uppercase;
-      border-bottom: 5px solid #c6c6c6;
     }
   }
 
   .panel-content{
     min-height: 100px;
     padding: 15px;
+    max-height: 400px;
+    overflow: auto;
     span{
       &.item-title{
         font-size: 20px;
@@ -47,6 +48,131 @@
         margin-bottom: 10px;        
       }
     }
+  }
+
+  #notify_todos{
+    ul
+    {
+      padding:0;
+      margin-top:20px;
+      li
+      {
+        display: inline-block;
+        text-align: center;
+        margin: 0 15px 15px 0;
+
+        .menu-item, .department-todo
+        {
+          border: 2px solid #dfe0e2;;
+          @include border-radius(5px);
+        }
+        span
+        {
+          display: block;                
+        }
+        .department-todo{
+          border-color: #f72976;
+
+          .todo-command{
+            margin: 5px;
+            width: 160px;
+            height: 130px;
+            overflow: hidden;
+            display: table;
+
+            .detail-box{
+              display: table-cell;
+              vertical-align: middle;        
+            }
+
+            img{
+              top: 50%;
+              position: relative;
+            }
+
+            img:hover{
+              opacity: 0.7;
+            }
+
+            .view-report{
+              text-transform: uppercase;
+              color: #838385;
+              font-size: 16px;
+              font-weight: 600;
+            }
+
+            .todo-name{
+              color: #79797b;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            .todo-createby{
+              color: #79797b;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            .progress{
+              background: #d7d7d7;
+              height: 8px;
+              border-radius: 8px;
+              width: 100%;
+              position: relative;
+              margin: 15px auto;
+              .value{
+                position: absolute;
+                width: 60%;
+                height: 8px;
+                border-radius: 8px;
+                background: #1b74be;
+              }
+            }
+
+            ul#time-counter{
+              margin: 10px 0;
+              li{
+                margin: 0px !important;
+                background: #eef0f2;
+                border-radius: 10px;
+                width: 45px;
+                padding: 10px 3px;
+                &.hours{
+                  margin: 0 5px !important;
+                }
+
+                label{
+                  border-bottom: 1px solid #bbb;
+                  line-height: 25px;
+                }
+
+                span{
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+
+
+          .todo-footer{
+            background: #f72976;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+          }
+
+          &> a{
+            color: #fff;
+            text-decoration: none;
+
+            &:hover{
+              color: #fff;
+            }
+          }
+        }
+      }
+    }    
   }
 }
 
