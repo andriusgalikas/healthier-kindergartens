@@ -61,7 +61,7 @@
                 <%= dc.discount_code.value unless dc.discount_code.nil?%>
               </td>
               <td>
-                <% unless dc.managers.nil? %>
+                <% unless dc.managers.first.nil? %>
                   <%= "Phase #{dc.managers.first.paid_plan_type - 1}" unless dc.managers.first.paid_plan_type == 0%>
                   <%= "Free" if dc.managers.first.paid_plan_type == 0 && !dc.managers.first.deposit_required %>
                   <%= "Depoist" if dc.managers.first.deposit_required && (dc.managers.first.plan_type == 0 || dc.managers.first.plan_type.nil?) %>
