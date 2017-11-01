@@ -19,6 +19,6 @@ class SurveyPendingOptionController < ApplicationController
 
     def complete
     	SurveyPendingOption.where(user_id: params[:user_id], subject_id: params[:subject_id]).destroy_all
-    	redirect_to results_subjects_path
+    	redirect_to results_subjects_path(subject_id: params[:subject_id])
     end
 end

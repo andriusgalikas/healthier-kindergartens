@@ -97,6 +97,7 @@ en:
       invite: Invite others
       worker: Nursery Staff
       parents: Kindergarten Parents
+      parentee: Kindergarten Parents
       manager: Centre Supervisors
       member: Team Members
       internal_member: Internal Member
@@ -883,6 +884,7 @@ en:
       todo_list: "Infection Control Measures To Do List"
       messages: "Messages"
       status_of_task: "Status of Task"
+      record_alert: "Infection Occurrences Alert"
     partners_carousel:
       title_1: "There are several associations sending important health and safety-related messages"
       title_2: "To nurseries in the country through the Healthier and Safer Childcare Portal."
@@ -1343,7 +1345,7 @@ en:
       parents: Nursery Parents 
       all: All
       empty_result: User has not completed the survey yet
-      retake_test: Create a survey
+      retake_test: Retake a survey
       results: Results
       choose_daycare: Choose Daycare
       daycare_name: Daycare Name

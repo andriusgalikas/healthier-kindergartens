@@ -4,7 +4,7 @@
       .row.survey-subjects
         = render 'subjects'
       #progress_charts_partial.wrap
-        = render partial: 'progress_charts', :locals => {trend: nil}
+        = render partial: 'progress_charts', :locals => {trend: @trend}
       .row.text-center.form-buttons
         =submit_tag t('survey.labels.retake_test'), :class => 'btn btn-lightred'
 :javascript
