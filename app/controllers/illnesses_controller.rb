@@ -62,17 +62,18 @@ class IllnessesController < ApplicationController
     end
 
     if status[:code] == 'ok'
-      illness = Illness.where(code: params[:record][:illness_code]).first
-      message = Message.new
-      message.message_template_id = 0
-      message.title = t('mailers.illness.title')
-      message.content = t('mailers.illness.content', illness: illness.name)
-      message.target_roles = ["parentee"]
-      message.owner_id = current_user.id
+      # illness = Illness.where(code: params[:record][:illness_code]).first
+      # message = Message.new
+      # message.message_template_id = 0
+      # message.title = t('mailers.illness.title')
+      # message.content = t('mailers.illness.content', illness: illness.name)
+      # message.target_roles = ["parentee"]
+      # message.owner_id = current_user.id
+      # message.save
 
-      if message.save
-        MessageNotificationJob.perform_later(message)
-      end
+      # if message.save
+      #   MessageNotificationJob.perform(message)
+      # end
 
       redirect_to illnesses_path, notice: status[:message]
     else

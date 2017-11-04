@@ -872,6 +872,9 @@ en:
         edit_info: "Edit user profile"
         invite: "Invite others"
         logout: "Logout"
+    label:
+      department: Department
+      alert_to: Send Alert To
     manager:
       heading1: "Infection Control Measures To Do list"
       heading2: "Invite"    

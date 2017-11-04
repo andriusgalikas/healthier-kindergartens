@@ -68,6 +68,9 @@ Rails.application.routes.draw do
     post 'contact_us', to: 'pages#send_message'
 
     get 'dashboard', to: 'dashboard#index'
+    get 'approve_notify_section', to: 'dashboard#approve_notify_section'
+    get 'approve_notify', to: 'dashboard#approve_notify'
+    get 'notify_list_section', to: 'dashboard#notify_list_section'
 
     get 'upgrade', to: 'subscriptions#index'
     get 'user_plan', to: 'subscriptions#user_plan'    
@@ -264,7 +267,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :health_records, only: [:show]
+    resources :health_records, only: [:show] do
+      collection do
+        get  :alert_records
+      end        
+    end
 
     namespace :admin do
         root to: 'pages#lang_dashboard'

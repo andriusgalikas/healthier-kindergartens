@@ -3,6 +3,15 @@
     %span.panel-title
       = image_tag 'status-of-task.png'
       &nbsp;&nbsp;&nbsp;
+      =t('dashboard.notifications.record_alert')
+  .row#notify_records.panel-content
+    = render 'health_record_list'
+
+.notification-box
+  .row
+    %span.panel-title
+      = image_tag 'status-of-task.png'
+      &nbsp;&nbsp;&nbsp;
       =t('dashboard.notifications.status_of_task')
   .row#notify_todos.panel-content
     %ul
@@ -80,4 +89,74 @@
 
       });
     }, 1000*60);
-  });        
+
+    jQuery(document).on('click', '#notify_records .record-item', function(){
+      jQuery.ajax({
+          url: '/approve_notify_section',
+          type: 'GET',
+          dataType: 'text',
+          data: {
+            id: jQuery(this).data('id')
+          },
+          success: function (data) {
+            jQuery('#notify_records').html(data);        
+          },
+          error: function () {
+
+          }
+      });
+    });
+
+    jQuery(document).on('click', '#notify_records .record-item', function(){
+      jQuery.ajax({
+          url: '/approve_notify_section',
+          type: 'GET',
+          dataType: 'text',
+          data: {
+            id: jQuery(this).data('id')
+          },
+          success: function (data) {
+            jQuery('#notify_records').html(data);        
+          },
+          error: function () {
+
+          }
+      });
+    });
+  });
+
+:javascript
+  jQuery(document).ready(function() {
+    jQuery(document).on('click', '#notificaion_send_approve', function(){
+      jQuery.ajax({
+          url: '/approve_notify',
+          type: 'GET',
+          dataType: 'text',
+          data: {
+            id: jQuery(this).data('id'),
+            department: jQuery('#department_id').val(),
+            role: jQuery('#category_id').val()
+          },
+          success: function (data) {
+            jQuery('#notify_records').html(data);
+          },
+          error: function () {
+          }
+      });
+    });
+
+    jQuery(document).on('click', '#notificaion_back', function(){
+      jQuery.ajax({
+          url: '/notify_list_section',
+          type: 'GET',
+          dataType: 'text',
+          data: {
+          },
+          success: function (data) {
+            jQuery('#notify_records').html(data);
+          },
+          error: function () {          
+          }
+      });
+    });
+  });

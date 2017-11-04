@@ -124,7 +124,7 @@ include ActionView::Helpers::NumberHelper
 
   def attempts_per_survey(survey_id)
     start_date = @start_date.blank? ? Date.new(1970, 1, 1) : Date.parse(@start_date)
-    end_date = @end_date.blank? ? Date.today : Date.parse(@end_date)
+    end_date = @end_date.blank? ? Date.tomorrow : Date.parse(@end_date)
 
     SurveyAttempts.where(survey_id: survey_id, participant_id: @user_population, :created_at => start_date..end_date).average('rate')
   end

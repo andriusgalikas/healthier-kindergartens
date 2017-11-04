@@ -14,7 +14,7 @@ class MessageNotificationJob < ActiveJob::Base
       if user.id != message.owner.id
         notif = message.notifications.build(target_id: user.id)
         if notif.save!
-          NotificationMailer.notify(notif, message.owner, message.content).deliver_later
+          NotificationMailer.notify(notif, message.owner, message.content).deliver
         end
       end
     end

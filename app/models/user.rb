@@ -94,6 +94,15 @@ class User < ActiveRecord::Base
     scope :department_like, ->(search) { joins(:department).where("LOWER(departments.name) LIKE :search", :search => "%#{search.downcase}%") }
     scope :by_role, ->(search) { where("(users.role = :search) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
 
+    # scope :all_daycare_alert_records, ->(query='') {  
+    #                                 joins("LEFT JOIN user_daycares ON user_daycares.user_id = users.id")
+    #                                 .joins("LEFT JOIN health_records ON health_records.daycare_id = user_daycares.daycare_id")
+    #                                 .joins("LEFT JOIN departments ON departments.id = health_records.department_id")
+    #                                 .select("health_records.*, departments.department_id, departments.name AS department_name, department_todos.todo_active")
+    #                                 .where("todos.title LIKE :search", search: "%#{query}%")
+    #                             }
+
+
     def newly_signed_up?
       sign_in_count == 1
     end

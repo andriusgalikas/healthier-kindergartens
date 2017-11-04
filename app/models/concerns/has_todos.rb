@@ -96,7 +96,7 @@ module HasTodos
                                         .joins("LEFT JOIN departments ON departments.daycare_id = user_daycares.daycare_id")
                                         .joins("LEFT JOIN department_todos ON department_todos.department_id = departments.id")
                                         .joins("LEFT JOIN todos ON todos.id = department_todos.todo_id")
-                                        .select("todos.*, department_todos.department_id, departments.name AS department_name, department_todos.todo_active ")
+                                        .select("todos.*, department_todos.department_id, departments.name AS department_name, department_todos.todo_active")
                                         .where("todos.title LIKE :search", search: "%#{query}%")
                                     }
 

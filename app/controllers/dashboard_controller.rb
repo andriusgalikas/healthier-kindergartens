@@ -17,6 +17,37 @@ class DashboardController < ApplicationController
         redirect_to current_user.admin? ? admin_root_url : root_url
     end
 
+    def approve_notify_section
+      @health_record = HealthRecord.find(params[:id])
+
+      render partial: 'dashboard/health_record_approve', locals: {record: @health_record}
+    end
+
+    def approve_notify
+      @health_record = HealthRecord.find(params[:id])
+
+      message = Message.new
+      message.message_template_id = 0
+      message.title = t('mailers.illness.title')
+      message.content = t('mailers.illness.content', illness: @health_record.illness_name)
+      message.target_roles = (params[:role] == 1) ? ["worker"] : ["parentee"]
+      message.owner_id = current_user.id
+      message.save
+
+      if message.save
+        MessageNotificationJob.perform_now(message, {target_department: params[:department]})
+      end
+
+      @health_record.alert_status =  1
+      @health_record.save
+
+      render partial: 'dashboard/health_record_list'
+    end
+
+    def notify_list_section
+      render partial: 'dashboard/health_record_list'
+    end
+
     private
 
     def set_notifications
