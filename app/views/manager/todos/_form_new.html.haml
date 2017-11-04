@@ -63,4 +63,36 @@
     $(document).on('click', '.remove-key-task-description', function(){
       $(this).parent().remove();
     });
+
+    $('#new_todo').on('submit', function(){
+      if($('#todo_title').val() == ''){
+        alert("#{t('manager.todos.validation.require_title')}");
+        return false;
+      }
+
+      if($('#todo_department_ids').val() == ''){
+        alert("#{t('manager.todos.validation.require_department')}");
+        return false;
+      }
+
+      if($('#todo_iteration_type').val() == 'single' && $('#todo_start_date').val() == ''){
+        alert("#{t('manager.todos.validation.require_start_date')}");
+        return false;
+      }
+
+      if($('#todo_iteration_type').val() == 'recurring'){
+        if(($('#todo_frequency').val() == 'day' || $('#todo_frequency').val() == 'month') && $('#todo_start_date').val() == ''){
+          alert("#{t('manager.todos.validation.require_start_date')}");
+          return false;
+        }
+      }
+
+      if($('#todo_iteration_type').val() == 'recurring'){
+        if($('#todo_frequency').val() == 'week' && $('input[name="start_days[]"]:checked').length == 0){
+          alert("#{t('manager.todos.validation.require_week_day')}");
+          return false;
+        }
+      }
+      return true;
+    });
   });
