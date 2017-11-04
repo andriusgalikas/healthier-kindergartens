@@ -209,7 +209,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = results_subjects_path
                     result[:guide_path] = '#'
                 # partner
@@ -247,7 +247,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = list_messages_path(role: current_user.role, list_type: 'received')
                     result[:guide_path] = '#'
                 # partner
@@ -278,7 +278,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = '#'
                     result[:guide_path] = '#'
                 # partner
@@ -308,7 +308,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = '#'
                     result[:guide_path] = '#'
                 # partner
@@ -339,7 +339,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = '#'
                     result[:guide_path] = '#'
                 # partner
@@ -370,7 +370,7 @@ class Admin::PermissionsController < AdminController
                         result[:guide_path] = '#'
                     end
                 # parent
-                when 'parent'
+                when 'parentee'
                     result[:path] = role_parentee_illness_guides_path
                     result[:guide_path] = '#'
                 # partner

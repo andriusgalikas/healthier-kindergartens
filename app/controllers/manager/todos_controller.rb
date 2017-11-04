@@ -50,6 +50,7 @@ class Manager::TodosController < ApplicationController
 
     def edit
         set_todo
+        set_departments
     end
 
     def update

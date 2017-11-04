@@ -774,7 +774,6 @@ en:
       email: E-mail address 
       recipient: Recipients   
     todos:
-
       show: 
         label1: "Infection control measures"  
         label2: "Infection control area"
@@ -784,6 +783,8 @@ en:
         heading: "Safety measures"
         label5: "Description"
         label6: "Accompanying measures"
+        start_date: "Start Date"
+        start_day: "Start Weekday"
       report:
         title: Infection Control Measures list 
         create_todo: You do not have a communicable disease list. Create one now a %{create_link} 
@@ -836,6 +837,12 @@ en:
         sub_task: Sub Task
         description: Description
         start_date: Start Date
+
+      validation:
+        require_title: Please input Todo Title
+        require_department: Please choose a department
+        require_start_date: Please input start date
+        require_week_day: Please select week day
 
     complete:
       line1: "You can now take advantage of the Healthier and Safer Nursery Portal, by adopting."

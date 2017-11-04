@@ -4,12 +4,12 @@
   .container
     #todos.row
       .twelvecol
-        = form_tag search_manager_todos_path, method: :get do
-          .input-group.todo-search
-            = text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control')
-            .input-group-btn
-              %button.btn.btn-default{:type => "submit"}
-                %i.glyphicon.glyphicon-search
+        / = form_tag search_manager_todos_path, method: :get do
+        /   .input-group.todo-search
+        /     = text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", :class => 'form-control')
+        /     .input-group-btn
+        /       %button.btn.btn-default{:type => "submit"}
+        /         %i.glyphicon.glyphicon-search
         .todo-list
           %h3=t('manager.todos.labels.todos')
           - all_user_todos = User.all_user_todos.where(id: current_user.id)
