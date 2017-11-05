@@ -121,10 +121,14 @@ class Todo < ActiveRecord::Base
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
             if !todo_complete.nil? 
-                if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
-                    is_available = true
-                else
+                if todo_complete.completion_date.nil?
                     is_available = false
+                else
+                    if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
+                        is_available = true
+                    else
+                        is_available = false
+                    end
                 end
             else
                 is_available = true

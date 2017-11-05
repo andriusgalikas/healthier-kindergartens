@@ -36,8 +36,7 @@ class Manager::TodosController < ApplicationController
             format.html { redirect_to dashboard_manager_todos_path }
             format.json { render :show, status: :created, location: @todo }
           else
-            new_icon_attachment
-            @departments = Department.where(id: params[:todo][:department_ids])
+            set_departments
             format.html { render :new }
             format.json { render json: @todo.errors, status: :unprocessable_entity }
           end

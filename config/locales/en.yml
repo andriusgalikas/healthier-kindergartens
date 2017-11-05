@@ -784,7 +784,7 @@ en:
         label5: "Description"
         label6: "Accompanying measures"
         start_date: "Start Date"
-        start_day: "Start Weekday"
+        start_day: "Start Weekday"        
       report:
         title: Infection Control Measures list 
         create_todo: You do not have a communicable disease list. Create one now a %{create_link} 
@@ -843,6 +843,7 @@ en:
         require_department: Please choose a department
         require_start_date: Please input start date
         require_week_day: Please select week day
+        require_complete_date: Please input complete date
 
     complete:
       line1: "You can now take advantage of the Healthier and Safer Nursery Portal, by adopting."
@@ -1304,6 +1305,7 @@ en:
     intro_done: Next
     intro_skip: Skip
     check_result: Check results 
+    decline: Decline
 
   attempt_labels:
     title: Check for %{survey_name} of %{PARTICIPANT_NAME}

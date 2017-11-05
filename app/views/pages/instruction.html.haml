@@ -111,9 +111,8 @@
             = t('pages.instruction.sub_heading5.para5').html_safe
 
       - else
-
         .col-sm-3.text-center
-          %a{:href => "/trainings/1"}
+          %a{:href => get_video_link("paid", 1, I18n.locale), target: "_blank"}
             = image_tag 'intro_one.png'
         .col-sm-9.single
           %h3.text-blue.text-upper= t('pages.instruction.sub_heading1.title')
@@ -132,7 +131,7 @@
             = t('pages.instruction.sub_heading1.para4').html_safe
 
         .col-sm-3.text-center
-          %a{:href => "/trainings/2"}
+          %a{:href => get_video_link("paid", 2, I18n.locale), target: "_blank"}
             = image_tag 'intro_three.png'
         .col-sm-9.single
           %h3.text-blue.text-upper= t('pages.instruction.sub_heading3.title')
@@ -151,7 +150,7 @@
             = t('pages.instruction.sub_heading3.para4').html_safe
 
         .col-sm-3.text-center
-          %a{:href => "/trainings/3"}
+          %a{:href => get_video_link("paid", 3, I18n.locale), target: "_blank"}
             = image_tag 'intro_two.png'
         .col-sm-9.single
           %h3.text-blue.text-upper= t('pages.instruction.sub_heading2.title')
@@ -170,7 +169,7 @@
             = t('pages.instruction.sub_heading2.para4').html_safe
 
         .col-sm-3.text-center
-          %a{:href => "/trainings/4"}
+          %a{:href => get_video_link("paid", 4, I18n.locale), target: "_blank"}
             = image_tag 'intro_four.png'
         .col-sm-9.single
           %h3.text-blue.text-upper= t('pages.instruction.sub_heading4.title')
@@ -189,7 +188,7 @@
             = t('pages.instruction.sub_heading4.para4').html_safe
 
         .col-sm-3.text-center
-          %a{:href => "/trainings/5"}
+          %a{:href => get_video_link("paid", 5, I18n.locale), target: "_blank"}
             = image_tag 'intro_five.png'
         .col-sm-9.single
           %h3.text-blue.text-upper= t('pages.instruction.sub_heading5.title')

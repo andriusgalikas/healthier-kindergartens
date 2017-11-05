@@ -93,6 +93,12 @@
           return false;
         }
       }
+
+      if($('#todo_completion_date_value').val() == ''){
+        alert("#{t('manager.todos.validation.require_complete_date')}");
+        return false;
+      }
+
       return true;
     });
   });

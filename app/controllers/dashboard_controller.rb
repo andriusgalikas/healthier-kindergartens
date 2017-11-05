@@ -17,10 +17,15 @@ class DashboardController < ApplicationController
         redirect_to current_user.admin? ? admin_root_url : root_url
     end
 
+    def approve_notify_department      
+      @health_record = HealthRecord.find(params[:id])      
+      render partial: 'dashboard/health_record_department', locals: {record: @health_record}
+    end
+
     def approve_notify_section
       @health_record = HealthRecord.find(params[:id])
 
-      render partial: 'dashboard/health_record_approve', locals: {record: @health_record}
+      render partial: 'dashboard/health_record_approve', locals: {record: @health_record, department_name: params[:department_text], department_id: params[:department]}
     end
 
     def approve_notify
@@ -41,6 +46,15 @@ class DashboardController < ApplicationController
       @health_record.alert_status =  1
       @health_record.save
 
+      render partial: 'dashboard/health_record_list'
+    end
+
+    def decline_notify
+      @health_record = HealthRecord.find_by(id: params[:id])
+      unless @health_record.nil?        
+        @health_record.health_record_components.destroy_all
+        @health_record.destroy
+      end
       render partial: 'dashboard/health_record_list'
     end
 

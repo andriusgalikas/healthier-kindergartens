@@ -68,8 +68,11 @@ Rails.application.routes.draw do
     post 'contact_us', to: 'pages#send_message'
 
     get 'dashboard', to: 'dashboard#index'
+
     get 'approve_notify_section', to: 'dashboard#approve_notify_section'
+    get 'approve_notify_department', to: 'dashboard#approve_notify_department'    
     get 'approve_notify', to: 'dashboard#approve_notify'
+    get 'decline_notify', to: 'dashboard#decline_notify'
     get 'notify_list_section', to: 'dashboard#notify_list_section'
 
     get 'upgrade', to: 'subscriptions#index'

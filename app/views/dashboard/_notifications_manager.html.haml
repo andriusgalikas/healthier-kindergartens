@@ -16,29 +16,30 @@
   .row#notify_todos.panel-content
     %ul
       - User.all_self_department_todos.where(id: current_user.id).each do |todo|
-        - diff_time = get_remain_time(todo.id)
-        - if diff_time[0] != -1
-          %li
-            %h5=todo.title
-            .department-todo
-              .todo-command
-                .detail-box
-                  %ul#time-counter.time-counter
-                    %li.days
-                      %label=diff_time[0]
-                      %span Days
-                    %li.hours
-                      %label=diff_time[1]
-                      %span Hours
-                    %li.minutes
-                      %label=diff_time[2]
-                      %span Mins
-                  - unless todo.iteration_type == 0
-                    - percent = get_current_status(todo.id, todo.department_id)
-                    .progress
-                      .value{style: "width: #{percent}%;"}
-              %span.todo-footer
-                = todo.department_name
+        - if Todo.find(todo.id).recurring_available
+          - diff_time = get_remain_time(todo.id)
+          - if diff_time[0] != -1
+            %li
+              %h5=todo.title
+              .department-todo
+                .todo-command
+                  .detail-box
+                    %ul#time-counter.time-counter
+                      %li.days
+                        %label=diff_time[0]
+                        %span Days
+                      %li.hours
+                        %label=diff_time[1]
+                        %span Hours
+                      %li.minutes
+                        %label=diff_time[2]
+                        %span Mins
+                    - unless todo.iteration_type == 0
+                      - percent = get_current_status(todo.id, todo.department_id)
+                      .progress
+                        .value{style: "width: #{percent}%;"}
+                %span.todo-footer
+                  = todo.department_name
 
 .notification-box
   .row
@@ -92,7 +93,7 @@
 
     jQuery(document).on('click', '#notify_records .record-item', function(){
       jQuery.ajax({
-          url: '/approve_notify_section',
+          url: '/approve_notify_department',
           type: 'GET',
           dataType: 'text',
           data: {
@@ -107,13 +108,15 @@
       });
     });
 
-    jQuery(document).on('click', '#notify_records .record-item', function(){
+    jQuery(document).on('click', '#notificaion_next_department', function(){
       jQuery.ajax({
           url: '/approve_notify_section',
           type: 'GET',
           dataType: 'text',
           data: {
-            id: jQuery(this).data('id')
+            id: jQuery(this).data('id'),
+            department_text: jQuery('#department_id option:selected').text(),
+            department: jQuery('#department_id').val()
           },
           success: function (data) {
             jQuery('#notify_records').html(data);        
@@ -123,6 +126,7 @@
           }
       });
     });
+
   });
 
 :javascript
@@ -141,6 +145,22 @@
             jQuery('#notify_records').html(data);
           },
           error: function () {
+          }
+      });
+    });
+
+    jQuery(document).on('click', '#notificaion_decline', function(){
+      jQuery.ajax({
+          url: '/decline_notify',
+          type: 'GET',
+          dataType: 'text',
+          data: {
+            id: jQuery(this).data('id')
+          },
+          success: function (data) {
+            jQuery('#notify_records').html(data);
+          },
+          error: function () {          
           }
       });
     });
