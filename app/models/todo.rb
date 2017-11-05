@@ -117,7 +117,11 @@ class Todo < ActiveRecord::Base
     def recurring_available
         is_available = false
         if self.single?
-            is_available = true
+            unless self.todo_completes.nil?
+                is_available = true
+            else
+                is_available = false
+            end
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
             if !todo_complete.nil? 
