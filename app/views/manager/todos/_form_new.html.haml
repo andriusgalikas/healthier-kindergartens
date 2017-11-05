@@ -99,6 +99,36 @@
         return false;
       }
 
+
+      var isValidate = true;
+      $('.key-task-title').each(function(index, value){
+        if($(this).val() == '') isValidate = false;
+      });
+
+      if(!isValidate){
+          alert("#{t('manager.todos.validation.require_key_task')}");
+          return false;      
+      }
+
+      isValidate = true;
+      $('.key-task-description').each(function(index, value){
+        if($(this).val() == '') isValidate = false;
+      });
+
+      if(!isValidate){
+          alert("#{t('manager.todos.validation.require_description')}");
+          return false;      
+      }
+      isValidate = true;
+      $('.sub-task-title').each(function(index, value){
+        if($(this).val() == '') isValidate = false;
+      });
+
+      if(!isValidate){
+          alert("#{t('manager.todos.validation.require_sub_task')}");
+          return false;      
+      }
+
       return true;
     });
   });

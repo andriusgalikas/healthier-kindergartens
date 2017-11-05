@@ -844,6 +844,9 @@ en:
         require_start_date: Please input start date
         require_week_day: Please select week day
         require_complete_date: Please input complete date
+        require_description: Please input task description
+        require_key_task: Please input Key task
+        require_sub_task: Please input Sub task
 
     complete:
       line1: "You can now take advantage of the Healthier and Safer Nursery Portal, by adopting."
