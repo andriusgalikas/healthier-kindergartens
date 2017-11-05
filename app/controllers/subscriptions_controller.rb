@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
         @subscription = @plan.subscriptions.build(subscription_params)
         set_discount_code
         if @subscription.save_with_payment(@discount_code)
-            PlanMailer.send_confirmation(current_user).deliver_later
+            PlanMailer.send_confirmation(current_user).deliver
             #redirect_to complete_plan_subscription_url(@subscription.plan, @subscription), :notice => "Thank you for subscribing!"
             redirect_to ethic_2_path
         else

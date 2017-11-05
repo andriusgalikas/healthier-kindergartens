@@ -186,8 +186,13 @@ class Admin::PagesController < AdminController
                         .where.not("message_subjects.title LIKE :search", :search => "%#{ENV['SURVEY_TEMPLATE_SUBJECT']}%").destroy_all
           2.upto(xlsx.last_row) do |line|
             @subject = MessageSubject.find_or_create_by(title: xlsx.cell(line, 'A'), :language => params[:language_short_name].downcase) if xlsx.cell(line, 'A')
-            @sub_subject = @subject.sub_subjects.create(title: xlsx.cell(line, 'B'), :language => params[:language_short_name].downcase) if xlsx.cell(line, 'B')
-            template = @sub_subject.message_templates.create(target_role: xlsx.cell(line, 'C').downcase, language: params[:language_short_name].downcase, content: xlsx.cell(line, 'D'))
+            @sub_subject = @subject.sub_subjects.find_or_create_by(title: xlsx.cell(line, 'B'), :language => params[:language_short_name].downcase) if xlsx.cell(line, 'B')
+            template = @sub_subject.message_templates.find_by(target_role: xlsx.cell(line, 'C').downcase, language: params[:language_short_name].downcase)
+            unless template.nil?
+              template.content = xlsx.cell(line, 'D')
+            else
+              template = @sub_subject.message_templates.create(target_role: xlsx.cell(line, 'C').downcase, language: params[:language_short_name].downcase, content: xlsx.cell(line, 'D'))
+            end
           end        
         end
       end

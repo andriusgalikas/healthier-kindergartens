@@ -57,7 +57,7 @@ class Manager::MessagesController < ApplicationController
   end
 
   def set_subjects
-    @subjects ||= MessageSubject.main_subjects
+    @subjects ||= MessageSubject.main_subjects.where(language: I18n.locale.downcase)
   end
 
   def set_subject

@@ -314,6 +314,7 @@ Rails.application.routes.draw do
         resources :affiliates
         resources :departments, only: [:index, :destroy]
         resources :subjects, except: :show
+        resources :message_subjects , only: [:index, :destroy]
         resources :message_templates do
           collection do
             get :subject

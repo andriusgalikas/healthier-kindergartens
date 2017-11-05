@@ -37,7 +37,7 @@ class Manager::TodosController < ApplicationController
             format.json { render :show, status: :created, location: @todo }
           else
             set_departments
-            format.html { render :new }
+            format.html { redirect_to new_manager_todo_path }
             format.json { render json: @todo.errors, status: :unprocessable_entity }
           end
         end
