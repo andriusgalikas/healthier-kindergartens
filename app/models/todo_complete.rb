@@ -36,6 +36,11 @@ class TodoComplete < ActiveRecord::Base
                                                     .where('todo_completes.created_at > ?', start_date)
                                                     .where('todo_completes.created_at < ?', end_date) }
 
+    scope :last_department_complete,            -> (todo_id, department) { 
+                                                    joins("LEFT JOIN users ON todo_completes.submitter_id = users.id")
+                                                    .where("users.department_id = ?", department)
+                                                    .where(todo_id: todo_id) }
+
     validates :submitter_id, :todo_id,          presence: true
 
     #validates :submitter_id,                    uniqueness: { scope: [:status, :todo_id] }, :if => :todo_recurring?

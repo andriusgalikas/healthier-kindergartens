@@ -142,6 +142,35 @@ class Todo < ActiveRecord::Base
         return is_available
     end
 
+    def recurring_available_by_department department_id
+        is_available = false
+        todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
+
+        if self.single?
+            unless todo_complete.nil?
+                is_available = false
+            else
+                is_available = true
+            end
+        else
+            unless todo_complete.nil?
+                if todo_complete.completion_date.nil?
+                    is_available = false
+                else
+                    if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
+                        is_available = true
+                    else
+                        is_available = false
+                    end
+                end
+            else
+                is_available = true
+            end
+        end
+
+        return is_available        
+    end
+
     def frequency_remain_time
     end
 

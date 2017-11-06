@@ -16,7 +16,7 @@
   .row#notify_todos.panel-content
     %ul
       - User.all_self_department_todos.where(id: current_user.id).each do |todo|
-        - if Todo.find(todo.id).recurring_available
+        - if Todo.find(todo.id).recurring_available_by_department(todo.department_id)
           - diff_time = get_remain_time(todo.id)
           - if diff_time[0] != -1
             %li
