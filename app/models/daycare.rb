@@ -129,6 +129,15 @@ class Daycare < ActiveRecord::Base
         self.discussion_participants.delete_all     
     end
 
+    def department_options
+        options = []
+        self.departments.each do |dept|
+            puts dept.id
+            options << [dept.name, dept.id]
+        end
+        return options
+    end
+
     def care_type_text
         case care_type
         when 1

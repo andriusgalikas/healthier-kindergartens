@@ -31,6 +31,15 @@ class DashboardController < ApplicationController
     def approve_notify
       @health_record = HealthRecord.find(params[:id])
 
+      roles = []
+      if params[:role] == 1
+        roles = ["worker"]
+      elsif params[:role] == 0
+        roles = ["parentee"]
+      else
+        roles = ["worker", "parentee"]
+      end
+
       message = Message.new
       message.message_template_id = 0
       message.title = t('mailers.illness.title')
@@ -40,7 +49,13 @@ class DashboardController < ApplicationController
       message.save
 
       if message.save
-        MessageNotificationJob.perform_now(message, {target_department: params[:department]})
+        if params[:department] == 0
+          current_user.daycare.departments.each do |dept|
+            MessageNotificationJob.perform_now(message, {target_department: dept.id})
+          end
+        else
+          MessageNotificationJob.perform_now(message, {target_department: params[:department]})
+        end
       end
 
       @health_record.alert_status =  1
@@ -50,11 +65,11 @@ class DashboardController < ApplicationController
     end
 
     def decline_notify
-      @health_record = HealthRecord.find_by(id: params[:id])
-      unless @health_record.nil?        
-        @health_record.health_record_components.destroy_all
-        @health_record.destroy
-      end
+      # @health_record = HealthRecord.find_by(id: params[:id])
+      # unless @health_record.nil?        
+      #   @health_record.health_record_components.destroy_all
+      #   @health_record.destroy
+      # end
       render partial: 'dashboard/health_record_list'
     end
 

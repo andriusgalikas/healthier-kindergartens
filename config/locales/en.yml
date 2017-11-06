@@ -1309,6 +1309,8 @@ en:
     intro_skip: Skip
     check_result: Check results 
     decline: Decline
+    all_department: All Departments
+    all_daycares: All Deycares
 
   attempt_labels:
     title: Check for %{survey_name} of %{PARTICIPANT_NAME}
