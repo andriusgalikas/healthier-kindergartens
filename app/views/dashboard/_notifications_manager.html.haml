@@ -138,7 +138,7 @@
           dataType: 'text',
           data: {
             id: jQuery(this).data('id'),
-            department: jQuery('#department_id').val(),
+            department: jQuery(this).data('department'),
             role: jQuery('#category_id').val()
           },
           success: function (data) {

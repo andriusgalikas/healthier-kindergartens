@@ -243,12 +243,12 @@ class Admin::PermissionsController < AdminController
                         result[:path] = partner_messages_path
                         result[:guide_path] = '#'
                     else
-                        result[:path] = '#'
+                        result[:path] = list_messages_path(role: 'worker', list_type: 'received')
                         result[:guide_path] = '#'
                     end
                 # parent
                 when 'parentee'
-                    result[:path] = list_messages_path(role: current_user.role, list_type: 'received')
+                    result[:path] = list_messages_path(role: 'parentee', list_type: 'received')
                     result[:guide_path] = '#'
                 # partner
                 when 'partner'

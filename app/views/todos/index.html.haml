@@ -59,7 +59,7 @@
                             .progress
                               .value{style: "width: #{percent}%;"}
                       %span.todo-footer
-                        = current_user.department.name
+                        = todo.title
               - else
                 %li
                   = link_to todo_todo_complete_path(todo.id, todo.tc_id), :class => '', style: 'color: #2f363d;text-decoration: none;' do
@@ -81,7 +81,7 @@
                             .progress
                               .value{style: "width: #{percent}%;"}
                       %span.todo-footer
-                        = current_user.department.name
+                        = todo.title
 :javascript
   jQuery(document).ready(function() {
     $('#link_dashboard_guide').on('click', function(){

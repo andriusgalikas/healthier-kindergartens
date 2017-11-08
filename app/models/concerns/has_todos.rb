@@ -72,17 +72,17 @@ module HasTodos
                                         .group("todos.id, todo_completes.id")
                                     }
 
-        scope :self_incomplete_todos, ->(query='') {  
-                                        joins("LEFT JOIN departments ON departments.id = users.department_id")
-                                        .joins("LEFT JOIN department_todos ON department_todos.department_id = departments.id")
-                                        .joins("LEFT JOIN todos ON todos.id = department_todos.todo_id")
-                                        .joins("LEFT JOIN todo_completes ON todo_completes.todo_id = todos.id AND todo_completes.completion_date IS NULL")
-                                        .select("todos.*, todo_completes.id AS tc_id")
-                                        .where("todo_completes.todo_id IS NOT NULL")
-                                        .where("department_todos.todo_active = true")
-                                        .where("todos.title LIKE :search", search: "%#{query}%")
-                                        .group("todos.id, todo_completes.id")
-                                    }
+        # scope :self_incomplete_todos, ->(query='') {  
+        #                                 joins("LEFT JOIN departments ON departments.id = users.department_id")
+        #                                 .joins("LEFT JOIN department_todos ON department_todos.department_id = departments.id")
+        #                                 .joins("LEFT JOIN todos ON todos.id = department_todos.todo_id")
+        #                                 .joins("LEFT JOIN todo_completes ON todo_completes.todo_id = todos.id AND todo_completes.completion_date IS NULL")
+        #                                 .select("todos.*, todo_completes.id AS tc_id")
+        #                                 .where("todo_completes.todo_id IS NOT NULL")
+        #                                 .where("department_todos.todo_active = true")
+        #                                 .where("todos.title LIKE :search", search: "%#{query}%")
+        #                                 .group("todos.id, todo_completes.id")
+        #                             }
 
         scope :all_user_todos, ->(query='') {  
                                         joins("LEFT JOIN user_daycares ON user_daycares.user_id = users.id")

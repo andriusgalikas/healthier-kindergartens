@@ -6,6 +6,8 @@ class MessageNotificationJob < ActiveJob::Base
       target_users = get_target_all_users(message, opts)
     elsif opts[:partner] == true
       target_users = get_target_all_users(message, opts)
+    elsif opts[:illness] == true
+      target_users = get_target_all_users_for_illness(message, opts)
     else
       target_users = get_target_users(message, opts)
     end
@@ -14,7 +16,7 @@ class MessageNotificationJob < ActiveJob::Base
       if user.id != message.owner.id
         notif = message.notifications.build(target_id: user.id)
         if notif.save!
-          NotificationMailer.notify(notif, message.owner, message.content).deliver
+          NotificationMailer.notify(notif, message.owner, message.content).deliver_now
         end
       end
     end
@@ -56,6 +58,20 @@ class MessageNotificationJob < ActiveJob::Base
       recipients += User.parentee if message.for_parentee?
       recipients += User.worker if message.for_worker?
       recipients += User.manager if message.for_manager?
+    end
+    recipients
+  end
+
+  def get_target_all_users_for_illness(message, opts)
+    recipients = []
+    sender = message.owner
+
+    recipients += sender.daycare.workers if message.for_worker?
+    recipients += sender.daycare.parents if message.for_parentee?
+
+    if opts[:target_department]
+      dept_id = opts[:target_department].to_i
+      recipients = recipients.select{|rec| rec.department_id == dept_id}
     end
     recipients
   end

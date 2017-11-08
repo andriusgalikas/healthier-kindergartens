@@ -1387,11 +1387,11 @@ en:
 
   views:
     pagination:
-      first: "& quot;"
-      last: "& raquo;"
-      previous: "& laquo;"
-      next: "& raquo;"
-      truncate: "& hellip;"
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."
   account:
     daycare:
       manager: "Nursery Controls"

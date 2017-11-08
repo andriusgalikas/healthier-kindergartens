@@ -32,9 +32,9 @@ class DashboardController < ApplicationController
       @health_record = HealthRecord.find(params[:id])
 
       roles = []
-      if params[:role] == 1
+      if params[:role].to_i == 1
         roles = ["worker"]
-      elsif params[:role] == 0
+      elsif params[:role].to_i == 0
         roles = ["parentee"]
       else
         roles = ["worker", "parentee"]
@@ -44,17 +44,15 @@ class DashboardController < ApplicationController
       message.message_template_id = 0
       message.title = t('mailers.illness.title')
       message.content = t('mailers.illness.content', illness: @health_record.illness_name)
-      message.target_roles = (params[:role] == 1) ? ["worker"] : ["parentee"]
+      message.target_roles = roles
       message.owner_id = current_user.id
       message.save
 
       if message.save
-        if params[:department] == 0
-          current_user.daycare.departments.each do |dept|
-            MessageNotificationJob.perform_now(message, {target_department: dept.id})
-          end
+        if params[:department].to_i == 0
+          MessageNotificationJob.perform_now(message, {illness: true})
         else
-          MessageNotificationJob.perform_now(message, {target_department: params[:department]})
+          MessageNotificationJob.perform_now(message, {illness: true, target_department: params[:department]})
         end
       end
 
@@ -65,6 +63,9 @@ class DashboardController < ApplicationController
     end
 
     def decline_notify
+      @health_record = HealthRecord.find(params[:id])
+      @health_record.alert_status =  1
+      @health_record.save
       # @health_record = HealthRecord.find_by(id: params[:id])
       # unless @health_record.nil?        
       #   @health_record.health_record_components.destroy_all
