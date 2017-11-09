@@ -18,9 +18,10 @@
           - else
             %ul
               - all_user_todos.each do |todo|
-                - if Todo.find(todo.id).recurring? || Todo.find(todo.id).recurring_available
+                - todo_obj = Todo.find(todo.id)
+                - if todo_obj.recurring? || (todo_obj.single? && todo_obj.recurring_available_by_total)
                   - diff_time = get_remain_time(todo.id)
-                  - if diff_time[0] != -1                                
+                  - if diff_time[0] != -1
                     %li
                       .menu-item{'data-id': todo.id}
                         .todo-command

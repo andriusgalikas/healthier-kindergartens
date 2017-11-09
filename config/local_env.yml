@@ -6,6 +6,9 @@ SURVEYGIZMO_API_TOKEN_SECRET: A954H8aviF0do
 SENDINGBLUE_URL: https://api.sendinblue.com/v2.0
 SENDINGBLUE_TOKEN: k4ptKwAELb0R6xB5
 
+#Sendgrid API
+SENDGRID_API_KEY: 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
+
 #Daycare Manager
 SITE_MANAGER_EMAIL: infectionpreventivecare@healthierandsaferchildcare.org
 SITE_MANAGER_NAME: HealthCare Manager

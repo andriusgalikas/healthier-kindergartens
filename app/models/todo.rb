@@ -117,10 +117,10 @@ class Todo < ActiveRecord::Base
     def recurring_available
         is_available = false
         if self.single?
-            unless self.todo_completes.nil?
-                is_available = true
-            else
+            unless self.todo_completes.blank?
                 is_available = false
+            else
+                is_available = true
             end
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
@@ -147,7 +147,7 @@ class Todo < ActiveRecord::Base
         todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
 
         if self.single?
-            unless todo_complete.nil?
+            unless todo_complete.blank?
                 is_available = false
             else
                 is_available = true
@@ -169,6 +169,21 @@ class Todo < ActiveRecord::Base
         end
 
         return is_available        
+    end
+
+    def recurring_available_by_total
+        is_available = false
+        unless self.daycare.nil?
+            self.daycare.departments.each do |dept|
+                if self.recurring_available_by_department(dept.id)
+                    is_available = true
+                    break
+                end
+            end
+        else
+            is_available = false
+        end        
+        return is_available
     end
 
     def frequency_remain_time
