@@ -6,7 +6,7 @@ class Mailin
     @api_key = "Your access key"
     def initialize(base_url,api_key,timeout=nil)
             @base_url = base_url
-            @api_key = api_key
+            @api_key = "Bearer " + api_key
             @timeout = timeout
     end
     def do_request(resource,method,input)
@@ -16,17 +16,23 @@ class Mailin
 		    if(@timeout != nil && (@timeout <= 0 or @timeout > 60))
 		      raise Exception.new("value not allowed for timeout")
 		    end
+		    
             case method
             when "GET"
-                response = HTTParty.get(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
+                response = HTTParty.get(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"Authorization"=>@api_key,"content-type"=>content_type})
             when "POST"
-                response = HTTParty.post(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
+                response = HTTParty.post(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"Authorization"=>@api_key,"content-type"=>content_type})
             when "PUT"
-                response = HTTParty.put(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
+                response = HTTParty.put(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"Authorization"=>@api_key,"content-type"=>content_type})
             else
-                response = HTTParty.delete(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
+                response = HTTParty.delete(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"Authorization"=>@api_key,"content-type"=>content_type})
             end
-            return JSON.parse(response.body)
+
+            if response.body.blank?
+            	return {"result": "success"}
+            else
+            	return JSON.parse(response.body)
+            end 
 	end
 	def get(resource,input)
 		return do_request(resource,"GET",input)
@@ -362,7 +368,7 @@ class Mailin
 	# @options data {Array} headers: The headers will be sent along with the mail headers in original email. Example: array("Content-Type"=>"text/html; charset=iso-8859-1"). You can use commas to separate multiple headers [Optional]
 	# @options data {Array} inline_image: Pass your inline image/s filename & its base64 encoded chunk data as an associative array. Example: array("YourFileName.Extension"=>"Base64EncodedChunkData"). You can use commas to separate multiple inline images [Optional]	
 	def send_email(data)
-		return self.post("email",data.to_json)
+		return self.post("send",data.to_json)
 	end
 
 	# To retrieve details of all webhooks.
