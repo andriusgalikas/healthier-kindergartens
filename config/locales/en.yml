@@ -777,7 +777,7 @@ en:
       show: 
         label1: "Infection control measures"  
         label2: "Infection control area"
-        label3: "Implementation date"
+        label3: "Completion Time"
         department: "Department"
         label4: "Frequency"
         heading: "Safety measures"
@@ -799,7 +799,7 @@ en:
         selected_date: Date
         task: Task
       labels:
-        report: See report completed infection control measures list 
+        report: Report Todo
         view_report: View report 
         generate_report: Generate report
         add_filter: Select filters
@@ -808,7 +808,7 @@ en:
         end_date: "End Date / Time:"
         complete: "Completed"
         incomplete: "Incomplete"
-        access: See list of disease control measures   
+        access: Delete Todo
         task_manager: Infection Control Measures list 
         todos: Infection Control Measures list 
         no_todos: You do not have an infection control measures list.
@@ -819,7 +819,7 @@ en:
         btn_complete: Finish
         create: Create Todos
         select_department: Select Department
-        state: Todo State Board
+        state: Status Todo
         start: Start
         pause: Pause
         created_by: Created By

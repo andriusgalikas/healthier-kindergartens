@@ -30,7 +30,7 @@ class SurveySubjectsController < ApplicationController
     private
 
     def set_subject
-        @subject ||= SurveySubject.where(language: I18n.locale.upcase).first
+        @subject ||= params[:subject_id].nil? ? SurveySubject.where(language: I18n.locale.upcase).first : SurveySubject.find(params[:subject_id])
     end
 
     def set_selected_result

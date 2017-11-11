@@ -1,7 +1,8 @@
 - SurveySubject.where(language: I18n.locale.upcase).each do |subject |
 	.survey-subject
 		.radio-box
-			- unless params[:subject_id].nil?
+			- puts params[:subject_id],  subject.id
+			- if !params[:subject_id].nil? && params[:subject_id].to_i == subject.id
 				%input.retake-radio{:type=>"radio", :name => "subject_id", :id => "radio#{subject.id}", :style => "display: none;", value: subject.id, :checked =>""}
 				%label{:for => "radio#{subject.id}"}
 					= image_tag subject.icon.file, class: 'img' unless subject.icon.nil?
