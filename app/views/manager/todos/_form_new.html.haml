@@ -34,7 +34,7 @@
       .col-md-12.form-group
         = f.label t('manager.todos.new.completion_date')
         .form-coupling
-          = f.text_field :completion_date_value, :class => 'form-control', type: 'number'
+          = f.text_field :completion_date_value, :class => 'form-control', type: 'number', min: 1
           = f.select :completion_date_type, Todo.completion_date_types.keys.map {|type| [type.split('_').last.titleize,type]}, {}, :class => 'form-control'
       .col-md-12.form-group
         = f.hidden_field :language, :value => I18n.locale.downcase
@@ -131,4 +131,42 @@
 
       return true;
     });
+
+    $('#todo_frequency').on('change', function(){
+      validate_completion_type();      
+    });
+
+    $('#todo_iteration_type').on('change', function(){
+      validate_completion_type();      
+    });
+
+    function validate_completion_type(){
+      switch(jQuery('#todo_iteration_type').val()){
+        case 'single':
+          jQuery('#todo_completion_date_type option').show();
+          break;
+        case 'recurring':
+          jQuery('#todo_completion_date_type option').hide();
+          switch(jQuery('#todo_frequency').val()){          
+            case 'day':
+              jQuery(jQuery('#todo_completion_date_type option')[4]).show();
+              jQuery('#todo_completion_date_type').val('completion_hour');
+              break;
+            case 'week':
+              jQuery(jQuery('#todo_completion_date_type option')[4]).show();
+              jQuery(jQuery('#todo_completion_date_type option')[0]).show();
+              jQuery('#todo_completion_date_type').val('completion_day');
+              break;
+            case 'month':
+              jQuery(jQuery('#todo_completion_date_type option')[4]).show();
+              jQuery(jQuery('#todo_completion_date_type option')[0]).show();
+              jQuery(jQuery('#todo_completion_date_type option')[1]).show();
+              jQuery('#todo_completion_date_type').val('completion_day');
+              break;
+          }
+          break;
+      }
+    }
+
+    validate_completion_type();
   });
