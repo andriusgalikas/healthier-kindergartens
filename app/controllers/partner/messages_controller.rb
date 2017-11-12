@@ -12,9 +12,9 @@ class Partner::MessagesController < ApplicationController
 
     if @message.save
       if current_user.affiliate.certific?
-        MessageNotificationJob.perform_later(@message, {partner: true, affiliate_id: current_user.affiliate.id})
+        MessageNotificationJob.perform_now(@message, {partner: true, affiliate_id: current_user.affiliate.id})
       else
-        MessageNotificationJob.perform_later(@message, {partner: true})
+        MessageNotificationJob.perform_now(@message, {partner: true})
       end      
       redirect_to partner_messages_path, notice: 'Message successfully sent.'
     else

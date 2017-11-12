@@ -177,6 +177,9 @@ module ApplicationHelper
         end
 
         start_days = (todo.start_days.nil?) ? "[]" : todo.start_days
+        puts "------get_remain_time--------"
+        puts start_days
+        puts todo.start_days
         weekdays = JSON.parse(start_days)
         cur_wday = start_time.strftime("%w").to_i
         passed = 0

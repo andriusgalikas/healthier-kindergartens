@@ -26,7 +26,7 @@ class Parentee::DiscussionsController < ApplicationController
     invite = CollaborationInvite.new(invite_params.merge(inviter_id: current_user.id))
 
     if invite.save
-      CollaboratorInviteEmailJob.perform_later(invite.invitee_email, invite.invite_code, current_user.name)
+      CollaboratorInviteEmailJob.perform_now(invite.invitee_email, invite.invite_code, current_user.name)
 
       render partial: 'pending_invite', locals: {email: params[:collaboration_invite][:invitee_email]}
     else

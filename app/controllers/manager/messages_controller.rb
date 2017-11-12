@@ -31,7 +31,7 @@ class Manager::MessagesController < ApplicationController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_later(@message, target_department: params[:target_department])
+      MessageNotificationJob.perform_now(@message, target_department: params[:target_department])
       notice = t('messages.notifications.send_message_success')
     else
       notice = t('messages.notifications.send_message_error')

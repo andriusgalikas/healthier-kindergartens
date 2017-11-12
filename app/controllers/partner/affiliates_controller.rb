@@ -33,9 +33,9 @@ class Partner::AffiliatesController < ApplicationController
     email_list << params[:email]
 
     if current_user.nil?
-      ManagerInviteEmailJob.perform_later(email_list, params[:title], params[:content], current_user.email, current_user.name)      
+      ManagerInviteEmailJob.perform_now(email_list, params[:title], params[:content], current_user.email, current_user.name)      
     else
-      ManagerInviteEmailJob.perform_later(email_list, params[:title], params[:content], current_user.email, current_user.name)      
+      ManagerInviteEmailJob.perform_now(email_list, params[:title], params[:content], current_user.email, current_user.name)      
     end
 
     redirect_to dashboard_path, notice: "Successfully sent your invites"
