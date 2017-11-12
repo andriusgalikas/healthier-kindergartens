@@ -31,7 +31,8 @@
                               %span.todo-createby
                                 = t('manager.todos.labels.created_by')
                                 %br
-                                = "#{User.find(todo.user_id).name}"
+                                - creator = User.where(id: todo.user_id)
+                                = "#{creator.first.name}" unless creator.length == 0
                             - else
                               - if todo.is_active == 1
                                 = link_to inactive_manager_todo_path(todo), :class => '' do

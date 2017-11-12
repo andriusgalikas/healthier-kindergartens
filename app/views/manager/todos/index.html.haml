@@ -31,7 +31,8 @@
                               %span.todo-createby
                                 = t('manager.todos.labels.created_by')
                                 %br
-                                = "#{User.find(todo.user_id).name}"
+                                - creator = User.where(id: todo.user_id)
+                                = "#{creator.first.name}" unless creator.length == 0
                             - else
                               = link_to manager_todo_path(todo), :class => '' do
                                 %i.fa.fa-icon.fa-pencil{style: 'color: #f72975;font-size: 20px;padding: 5px;'}

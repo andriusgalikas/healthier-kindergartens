@@ -17,7 +17,7 @@
     %ul
       - User.all_self_department_todos.where(id: current_user.id).each do |todo|
         - todo_obj = Todo.find(todo.id)
-        - if todo_obj.recurring_available_by_department(todo.department_id)
+        - if todo_obj.nil? && todo_obj.recurring_available_by_department(todo.department_id)
           - diff_time = get_remain_time(todo.id)
           - if (todo_obj.single? && diff_time[2] != -1 && diff_time[0] >= 0) || (todo_obj.recurring? && diff_time[0] != -1)
             %li
