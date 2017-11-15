@@ -66,8 +66,7 @@ class Daycare < ActiveRecord::Base
 
     has_one :profile_image,                             -> { where(attachable_type: 'DaycareProfile') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
 
-    validates :name, :address_line1, :postcode,
-                :country, :telephone,                   presence: true
+    validates :name, :country, :telephone,              presence: true
 
     validates :departments,                             presence: true
 
