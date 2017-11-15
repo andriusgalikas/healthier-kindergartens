@@ -31,12 +31,12 @@
       .row
         %h5=t('register.labels.daycare_type').upcase
         = daycare.select :care_type, options_for_select([[t('register.caretype.ind'), 1], [t('register.caretype.fra'), 2], [t('register.caretype.gov'), 3]]), {},class: 'form-control input-round', :placeholder => t('register.labels.daycare_type')
-      .row
-        %h5=t('register.labels.address').upcase
-        = daycare.text_field :address_line1, class: 'form-control input-round', :placeholder => t('register.labels.address'), :required =>"true"
-      .row
-        %h5=t('register.labels.postcode').upcase
-        = daycare.text_field :postcode, class: 'form-control input-round', :placeholder => t('register.labels.postcode'), :required =>"true"
+      / .row
+      /   %h5=t('register.labels.address').upcase
+      /   = daycare.text_field :address_line1, class: 'form-control input-round', :placeholder => t('register.labels.address'), :required =>"true"
+      / .row
+      /   %h5=t('register.labels.postcode').upcase
+      /   = daycare.text_field :postcode, class: 'form-control input-round', :placeholder => t('register.labels.postcode'), :required =>"true"
       .row
         %h5=t('register.labels.municipal').upcase
         = daycare.select :municipal_id, options_for_select(municipal_list), {}, class: 'form-control input-round', :placeholder => t('register.labels.municipal'), :required =>"true"
@@ -47,9 +47,9 @@
                 
       = daycare.fields_for :user_daycares do |user_daycare|
         = user_daycare.fields_for :user do |user|
-          .row
-            %h5=t('register.labels.card_number').upcase
-            = user.text_field :card_number, class: 'form-control input-round', :placeholder => t('register.labels.card_number'), :required =>"true"
+          / .row
+          /   %h5=t('register.labels.card_number').upcase
+          /   = user.text_field :card_number, class: 'form-control input-round', :placeholder => t('register.labels.card_number'), :required =>"true"
           .row
             %h5=t('register.labels.name').upcase
             = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name'), :required =>"true"
