@@ -7,19 +7,31 @@
         .col-md-12      
           %h4.option-title=t('messages.labels.recipient_for_message')
           - index = 0
-          - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
-            - index += 1
+          - if current_user.affiliate.strategic?
+            - Message.allowed_recipients_for_role(current_user.role).each do |target_role|
+              - index += 1
+              .row.recipients-role
+                .col-md-4.col-sm-4.col-xs-6.role-elem.right-border
+                  .check-box.partners
+                    = check_box_tag 'message[target_roles][]', target_role, false, :id => "chk_depart_#{index}", :style => "display: none;"
+                    %label{:for => "chk_depart_#{index}"}
+                      = t('pages.nav_bar.'+target_role).humanize.pluralize
+                .col-md-8.col-sm-8.col-xs-6.role-elem
+                  %span.recipient-count
+                    %b #{User.send(target_role).size}
+                    =t('messages.labels.receive_messages', account: t('pages.nav_bar.'+target_role).humanize.pluralize)
+          - else
             .row.recipients-role
               .col-md-4.col-sm-4.col-xs-6.role-elem.right-border
                 .check-box.partners
-                  = check_box_tag 'message[target_roles][]', target_role, false, :id => "chk_depart_#{index}", :style => "display: none;"
-                  %label{:for => "chk_depart_#{index}"}
-                    = t('pages.nav_bar.'+target_role).humanize.pluralize
+                  = check_box_tag 'message[target_roles][]', 'worker', false, :id => "chk_depart_1", :style => "display: none;"
+                  %label{:for => "chk_depart_1"}
+                    = t('pages.nav_bar.member').humanize.pluralize
               .col-md-8.col-sm-8.col-xs-6.role-elem
                 %span.recipient-count
-                  - recipient_count = 20
-                  %b #{User.send(target_role).size}
-                  =t('messages.labels.receive_messages', account: t('pages.nav_bar.'+target_role).humanize.pluralize)
+                  %b #{current_user.affiliate.users.length - 1}
+                  =t('messages.labels.receive_messages', account: t('pages.nav_bar.member').humanize.pluralize)
+
         .col-md-12
           %h4.option-title Title :
           = f.text_field :title, placeholder: t('messages.labels.write_title'), class: 'form-control', required: true
@@ -27,17 +39,18 @@
           %h4.option-title= t('messages.labels.write_message_content')
           = f.cktext_area :content, id: 'message_content'
         .col-md-4.col-sm-4.col-xs-12.partners-list
-          .panel
-            .panel-heading=t('messages.labels.childcare_member')
-            .panel-body
-              .list
-                %table.table.table-striped
-                  - Affiliate.all.each do |partner|
-                    %tr
-                      %td= partner.name
-              .body-bottom
-                %span
-                  =t('messages.labels.daycare_total', size: Affiliate.all.size)
+          - if current_user.affiliate.strategic?
+            .panel
+              .panel-heading=t('messages.labels.childcare_member')
+              .panel-body
+                .list
+                  %table.table.table-striped
+                    - Affiliate.all.each do |partner|
+                      %tr
+                        %td= partner.name
+                .body-bottom
+                  %span
+                    =t('messages.labels.daycare_total', size: Affiliate.all.size)
         .col-md-12.form-buttons.text-right.no-h-padding
           .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-6
             %a{href: partner_messages_path, class: 'btn btn-gray btn-wizard'} Cancel

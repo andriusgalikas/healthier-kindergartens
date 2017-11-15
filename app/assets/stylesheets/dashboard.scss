@@ -14,6 +14,7 @@
  *= require version_2
  *= require responsive
  *= require hopscotch.css
+ *= require sumoselect.min.css
 */
 /*
 @import "compass";
@@ -56,3 +57,5 @@ $lighter-grey: #eaeaea;
 @import "dashboard_v2/illnesses";
 @import "dashboard_v2/discussions";
 @import "legacy/survey";
+@import "flipclock";
+@import "responsive";

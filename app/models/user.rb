@@ -94,6 +94,15 @@ class User < ActiveRecord::Base
     scope :department_like, ->(search) { joins(:department).where("LOWER(departments.name) LIKE :search", :search => "%#{search.downcase}%") }
     scope :by_role, ->(search) { where("(users.role = :search) OR (:search = -1)", :search => "#{search.blank? ? -1 : search }") }
 
+    # scope :all_daycare_alert_records, ->(query='') {  
+    #                                 joins("LEFT JOIN user_daycares ON user_daycares.user_id = users.id")
+    #                                 .joins("LEFT JOIN health_records ON health_records.daycare_id = user_daycares.daycare_id")
+    #                                 .joins("LEFT JOIN departments ON departments.id = health_records.department_id")
+    #                                 .select("health_records.*, departments.department_id, departments.name AS department_name, department_todos.todo_active")
+    #                                 .where("todos.title LIKE :search", search: "%#{query}%")
+    #                             }
+
+
     def newly_signed_up?
       sign_in_count == 1
     end
@@ -102,6 +111,20 @@ class User < ActiveRecord::Base
       self.email_confirmed = true
       self.confirm_token = nil
       save!(:validate => false)
+    end
+
+    def is_worker?
+        self.affiliate.nil?
+    end
+
+    def is_trial_member?
+        days = GlobalSetting.find_by(key: "INITIAL_MEMBER_LIMIT_DAY").value.to_i
+        DateTime.now.days_ago(days) <= self.created_at
+    end
+
+    def remain_trial_second
+        days = GlobalSetting.find_by(key: "INITIAL_MEMBER_LIMIT_DAY").value.to_i
+        return days * 24 * 60 * 60 - (Time.now - self.created_at).to_i
     end
 
 private

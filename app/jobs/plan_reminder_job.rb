@@ -5,7 +5,7 @@ class PlanReminderJob < ActiveJob::Base
         set_valid_users
         @users.each do |user|
             next unless user.reminder_user?
-            PlanMailer.send_reminder(user).deliver_later
+            PlanMailer.send_reminder(user).deliver_now
         end
     end
 

@@ -27,7 +27,11 @@ class TodoReporter
     private
 
     def set_task_completes
-        @todo_task_completes ||= TodoTaskComplete.report(todo_completes.map(&:id), task_id)
+        if task_id == 0
+            @todo_task_completes ||= TodoTaskComplete.all_report(todo_completes.map(&:id))
+        else
+            @todo_task_completes ||= TodoTaskComplete.report(todo_completes.map(&:id), task_id)
+        end
     end
 
     def set_total_number_of_todo_task_completes

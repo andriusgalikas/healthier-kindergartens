@@ -27,5 +27,5 @@
               %td= subject.title
               %td= subject.language
               %td
-                /= link_to [:admin, subject], method: :delete, data: {confirm: 'Are you sure?'} do
-                /  %i.icon-remove
+                = link_to [:admin, subject], method: :delete, data: {confirm: 'Are you sure?'} do
+                  %i.icon-remove

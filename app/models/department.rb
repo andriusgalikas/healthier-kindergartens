@@ -36,11 +36,8 @@ class Department < ActiveRecord::Base
         update_params.merge!(:department_ids => Department.ids)
         all_global_todo = Todo.global
 
-        puts all_global_todo
-        puts update_params
-
         all_global_todo.each do |item|
-            puts item.update(update_params)
+            item.update(update_params)
         end
     end
 end

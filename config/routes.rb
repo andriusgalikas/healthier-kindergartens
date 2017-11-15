@@ -45,8 +45,13 @@ Rails.application.routes.draw do
 
     # custom registration routes
     scope 'worker', controller: 'users/workers' do
+        get :select_type, as: 'worker_select_type'
         get :select_daycare, as: 'worker_select_daycare'
         get :select_department, as: 'worker_select_department'
+        get :get_daycares, as: 'worker_get_daycares', :defaults => { :format => 'json' } 
+        post :update_daycare, as: 'worker_update_daycare', :defaults => { :format => 'json' } 
+        get :update_department, as: 'worker_update_department'
+        post :change_department, as: 'worker_change_department', :defaults => { :format => 'json' } 
     end
 
     # custom registration routes
@@ -56,13 +61,19 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
-    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan contact_us).each do |page|
+    %w( about mission path standard journey getting_started welcome infection instruction implementation take_action ethic_1 ethic_2 ethic_3 ethic_4 description email_campaign pre_user_plan contact_us illness_guide).each do |page|
         get page, to: "pages##{page}"
     end    
 
     post 'contact_us', to: 'pages#send_message'
 
     get 'dashboard', to: 'dashboard#index'
+
+    get 'approve_notify_section', to: 'dashboard#approve_notify_section'
+    get 'approve_notify_department', to: 'dashboard#approve_notify_department'    
+    get 'approve_notify', to: 'dashboard#approve_notify'
+    get 'decline_notify', to: 'dashboard#decline_notify'
+    get 'notify_list_section', to: 'dashboard#notify_list_section'
 
     get 'upgrade', to: 'subscriptions#index'
     get 'user_plan', to: 'subscriptions#user_plan'    
@@ -75,6 +86,7 @@ Rails.application.routes.draw do
     get 'get_available_schedule_time', to: 'pages#get_available_schedule_time', :defaults => { :format => 'json' } 
 
     post 'add_schedule', to: 'pages#add_schedule'
+    post 'get_discount_code', to: 'pages#get_discount_code', :defaults => { :format => 'json' } 
     get  'guide_page/:page/:step', to: 'pages#guide_page' , as: 'guide_page'
 
     resources :plans, only: [] do
@@ -87,9 +99,17 @@ Rails.application.routes.draw do
 
     namespace :manager do
         resources :todos do
+            member do
+                get :active
+                get :inactive
+            end
+
             collection do
                 get :dashboard
                 get :search
+                get :select_department
+                get :status_list
+                post :sub_todos
             end
         end
 
@@ -100,6 +120,7 @@ Rails.application.routes.draw do
             end
             resources :todos, only: [] do
                 get :set_date_range
+                get :select_todo_result
                 get :show
             end
         end
@@ -111,6 +132,7 @@ Rails.application.routes.draw do
             get :user_result
             get :group_result
         end
+
         resources :daycares, only: [] do
             collection do
                 get :invite
@@ -167,6 +189,49 @@ Rails.application.routes.draw do
         end
     end
 
+    namespace :partner do
+        resources :survey_subjects, as: 'subjects', path: 'subjects', only: [] do
+            post :results, on: :collection
+            get  :get_results, on: :collection
+            post :result, on: :member
+            post :daycare_result
+            post :daycare_group_result
+            get :group_result
+            get :user_result
+            get :select_daycare, on: :collection
+            get :select_municipal, on: :collection
+            get :select_date, on: :collection
+        end
+
+        resources :illnesses, only: [] do
+          collection do
+            get  :set_filters
+            post :trends
+            get :select_municipal
+            post :municipal_trends
+          end
+        end
+
+        resources :todos do
+            collection do
+                get :select_daycare
+                get :select_municipal
+                post :results                
+            end
+            member do
+                post :task_result
+            end
+        end
+
+        resources :affiliates, only: [] do
+            collection do
+                get 'invite_member/:type', to: 'affiliates#invite_member', as: 'invite_member'
+                get :invite_member
+                post :send_invite_member
+            end            
+        end
+    end
+
     resources :survey_subjects, as: 'subjects', path: 'subjects', only:[] do
         get :results, on: :collection
         get :result, on: :member
@@ -205,7 +270,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :health_records, only: [:show]
+    resources :health_records, only: [:show] do
+      collection do
+        get  :alert_records
+      end        
+    end
 
     namespace :admin do
         root to: 'pages#lang_dashboard'
@@ -243,8 +312,10 @@ Rails.application.routes.draw do
         resources :todos
         resources :users, only: [:index, :destroy]
         resources :daycares
+        resources :affiliates
         resources :departments, only: [:index, :destroy]
         resources :subjects, except: :show
+        resources :message_subjects , only: [:index, :destroy]
         resources :message_templates do
           collection do
             get :subject
@@ -271,6 +342,18 @@ Rails.application.routes.draw do
         resources :email_campaigns, except: :show
         resources :locale_logos, except: :show
         resources :locale_posters
+
+        resources :permissions do
+            collection do
+                get :option
+                get :group
+                get :list
+                get :daycares
+                get :table
+                post :change
+                get :reset
+            end
+        end
     end
 
     namespace :partner do

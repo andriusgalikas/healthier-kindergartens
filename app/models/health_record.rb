@@ -35,4 +35,13 @@ class HealthRecord < ActiveRecord::Base
     end
   end
 
+  def illness_name
+    self.health_record_components.each do |item|
+      if item.code == 'illness_code'
+        return item.pretty_value
+      end
+    end
+    return ""
+  end
+
 end

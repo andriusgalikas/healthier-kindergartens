@@ -41,6 +41,7 @@
 //= require healthChildcare.guideline
 //= require dashboard_v2.ready
 //= require jquery.plainmodal
+//= require jquery.sumoselect.min
 //= require jquery.easing
 //= require flipclock.min.js
 //= require pdf.js

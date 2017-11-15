@@ -4,7 +4,7 @@ class DaycareInviteEmailJob < ActiveJob::Base
     target_users = get_target_all_users(message, opts)
 
     target_users.each do |user|
-    	DaycareMailer.invite(user.email, message).deliver_later
+    	DaycareMailer.invite(user.email, message).deliver_now
     end
   end
 

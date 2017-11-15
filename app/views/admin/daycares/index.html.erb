@@ -61,10 +61,12 @@
                 <%= dc.discount_code.value unless dc.discount_code.nil?%>
               </td>
               <td>
-                <%= "Phase #{dc.managers.first.paid_plan_type - 1}" unless dc.managers.first.paid_plan_type == 0%>
-                <%= "Free" if dc.managers.first.paid_plan_type == 0 && !dc.managers.first.deposit_required %>
-                <%= "Depoist" if dc.managers.first.deposit_required && (dc.managers.first.plan_type == 0 || dc.managers.first.plan_type.nil?) %>
-                <%= "Phase #{dc.managers.first.plan_type - 1}" if dc.managers.first.deposit_required && dc.managers.first.plan_type != 0 && !dc.managers.first.plan_type.nil? %>
+                <% unless dc.managers.first.nil? %>
+                  <%= "Phase #{dc.managers.first.paid_plan_type - 1}" unless dc.managers.first.paid_plan_type == 0%>
+                  <%= "Free" if dc.managers.first.paid_plan_type == 0 && !dc.managers.first.deposit_required %>
+                  <%= "Depoist" if dc.managers.first.deposit_required && (dc.managers.first.plan_type == 0 || dc.managers.first.plan_type.nil?) %>
+                  <%= "Phase #{dc.managers.first.plan_type - 1}" if dc.managers.first.deposit_required && dc.managers.first.plan_type != 0 && !dc.managers.first.plan_type.nil? %>
+                <% end%>
               </td>
               <td class="align-left">
                 <%= "#{dc.payment_mode.period} #{dc.payment_mode.unit}" unless dc.payment_mode.nil?%>

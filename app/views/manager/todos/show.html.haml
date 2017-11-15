@@ -4,22 +4,39 @@
   .container
     #todo.row.todo-info
       .twelvecol
-        /= link_to 'Delete', manager_todo_path(@todo), method: :delete, :class => 'btn btn-normal btn-red', id: 'delete-todo'
+        = link_to 'Delete', manager_todo_path(@todo), method: :delete, :class => 'btn btn-normal btn-red', id: 'delete-todo', data: {:confirm => 'Are you sure?'}
         /= link_to 'Edit', edit_manager_todo_path(@todo), :class => 'btn btn-normal btn-green', id: 'edit-todo'
         /= link_to 'Report', manager_reports_todo_set_date_range_path(@todo), :class => 'btn btn-normal btn-yellow', id: 'report-todo'
-        .profile-thumb
-          = image_tag @todo.icon.file, class: 'img-responsive center-block' unless @todo.icon.nil?
         .row
           .form-group
             %label=t('manager.todos.show.label1')
-            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.title}"}/
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.title}"}
+          .form-group
+            %label=t('manager.todos.show.department')
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.departments.map{|t| t.name}.join(', ')}"}
           .form-group
             %label=t('manager.todos.show.label2')
-            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.iteration_type.titleize}"}/
-          - unless @todo.single?
-            .form-group
-              %label=t('manager.todos.show.label4')
-              %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.titleize}"}/
+            %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.iteration_type.titleize}"}
+          - unless @todo.frequency.nil?
+            - unless @todo.single?
+              .form-group
+                %label=t('manager.todos.show.label4')
+                %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.titleize}"}
+              - unless @todo.frequency == 'week'
+                .form-group
+                  %label=t('manager.todos.show.start_date')
+                  %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.start_date.to_date}"}
+              - else
+                .form-group
+                  %label=t('manager.todos.show.start_day')
+                  %input.form-control{:readonly => "true", :type => "text", :value => "#{JSON.parse(@todo.start_days).map{|t| Date::DAYNAMES[(t.to_i + 1) % 7]}.join(', ')}"}
+            - else          
+              .form-group
+                %label=t('manager.todos.show.label4')
+                %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.titleize}"}
+              .form-group
+                %label=t('manager.todos.show.start_date')
+                %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.frequency.titleize}"}
           .form-group
             %label=t('manager.todos.show.label3')
             %input.form-control{:readonly => "true", :type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}

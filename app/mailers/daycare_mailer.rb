@@ -4,12 +4,13 @@ class DaycareMailer < ApplicationMailer
 
     def invite (email, message)
         @email = email
-	    m = Mailin.new(ENV['SENDINGBLUE_URL'], ENV['SENDINGBLUE_TOKEN'])
+	    m = Mailin.new(ENV['SENDGRID_URL'], ENV['SENDGRID_API_KEY'])
 #	    puts email
-		data = { "to" => {email => "Daycare"},
-			"from" => [message.owner.email, message.owner.name],
+		data = { 
+			"personalizations" => [{"to" => [{"email" => email, "name" => "Daycare"}]}],
+			"from" => {"email" => message.owner.email, "name" => message.owner.name },
 			"subject" => message.title,
-			"html" => message.content
+			"content" => [{"type" => "text/html", "value" => message.content}]
 		}
 	 
 		result = m.send_email(data)

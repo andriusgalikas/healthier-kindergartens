@@ -10,19 +10,19 @@
   = image_tag @todo.icon.file unless @todo.icon.nil? 
   .form-group
     = f.label t('manager.todos.show.label1')
-    = f.text_field :title, :class => 'form-control', readonly: true
+    = f.text_field :title, :class => 'form-control'
   .form-group
     = f.label t('manager.todos.show.label2')
-    %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.iteration_type.titleize}"}/
+    %input.form-control{:type => "text", :value => "#{@todo.iteration_type.titleize}"}/
     = f.hidden_field :iteration_type, value: @todo.iteration_type
   - unless @todo.single?
     .form-group
       = f.label t('manager.todos.show.label4')
-      %input.form-control{:readonly => "true", :type => "text", :value => "#{@todo.iteration_type.titleize}"}/
+      %input.form-control{:type => "text", :value => "#{@todo.iteration_type.titleize}"}/
       = f.hidden_field :frequency, value: @todo.frequency
   .form-group
     = f.label t('manager.todos.show.label3')
-    %input.form-control{:readonly => "true", :type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}/
+    %input.form-control{:type => "text", :value => "#{pluralize(@todo.completion_date_value, @todo.completion_date)}"}/
     = f.hidden_field :completion_date_value, value: @todo.completion_date_value
     = f.hidden_field :completion_date_type, value: @todo.completion_date_type
     = f.hidden_field :language
@@ -33,16 +33,16 @@
       .fields
         .form-group
           %label=t('manager.todos.show.label1')
-          %input.form-control{:readonly => "true", :type => "text", :value => "#{task.title}"}/
+          %input.form-control{:type => "text", :value => "#{task.title}"}/
         .form-group
           %label=t('manager.todos.show.label5')
-          %input.form-control{:readonly => "true", :type => "text", :value => "#{task.description}"}/
+          %input.form-control{:type => "text", :value => "#{task.description}"}/
         - if task.global_sub_tasks.present?
           .form-group
             %label=t('manager.todos.show.label6')
           - task.global_sub_tasks.each do |sub_task|
             .form-group
-              %input.form-control{:readonly => "true", :type => "text", :value => "#{sub_task.title}"}/
+              %input.form-control{:type => "text", :value => "#{sub_task.title}"}/
     = f.fields_for :tasks, @todo.local_tasks do |ff |
       = render partial: 'task_fields', locals: { f: ff }
     = custom_link_to_add_fields "Add Task", f, :tasks

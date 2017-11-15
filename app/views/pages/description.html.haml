@@ -13,8 +13,8 @@
 
 .container
   .row.step-contents
-    %h4.heading-letter.heading= t('pages.mission_step.headline').html_safe
-    %h4.sub-heading= t('pages.mission_step.main_instro').html_safe
+    %h4.heading-letter.text-dark-pink= t('pages.mission_step.headline').html_safe
+    %h4.text-dark-pink= t('pages.mission_step.main_instro').html_safe
   .row.step-contents
     %p= t('pages.mission_step.intro_1').html_safe
     %p
@@ -45,7 +45,7 @@
   .row.step-contents
     %p
     = image_tag('start-warning.png')
-    %h3.heading= t('pages.mission_step.children_risk').html_safe
+    %h3.text-dark-pink= t('pages.mission_step.children_risk').html_safe
     %p= t('pages.mission_step.children_risk_1').html_safe
 
     %p
@@ -64,7 +64,7 @@
       = t('pages.mission_step.children_risk_4').html_safe
       %a.reference-link{href: '#', id: 'reference_10'}10
 
-    %h4.sub-heading= t('pages.mission_step.children_risk_5').html_safe
+    %h4.text-dark-pink= t('pages.mission_step.children_risk_5').html_safe
     %p
       = t('pages.mission_step.children_risk_6').html_safe
       %a.reference-link{href: '#', id: 'reference_11'}11
@@ -74,7 +74,7 @@
   .row.step-contents
     %p
     = image_tag('start-parent.png')
-    %h3.heading= t('pages.mission_step.staff_parents_risk').html_safe
+    %h3.text-dark-pink= t('pages.mission_step.staff_parents_risk').html_safe
     %p
       = t('pages.mission_step.staff_parents_risk_1').html_safe
       %a.reference-link{href: '#', id: 'reference_13'}13
@@ -84,7 +84,7 @@
       %a.reference-link{href: '#', id: 'reference_15'}15
       %a.reference-link{href: '#', id: 'reference_16'}16
 
-    %h4.sub-heading= t('pages.mission_step.what_to_do').html_safe
+    %h4.text-dark-pink= t('pages.mission_step.what_to_do').html_safe
     %p
       = t('pages.mission_step.what_to_do_1').html_safe
       %span{ style: 'font-size: 8px;'}
@@ -116,77 +116,99 @@
   / End page-menu Area
   .container
     .row
-      %h3.heading.heading-letter
+      %h3.heading-letter.text-dark-pink
         = t('pages.standard.head1').html_safe
       %p
         = t('pages.standard.instro1').html_safe
-        %a.reference-link{href: '#', id: 'reference_23'}23
-        = t('pages.standard.instro2').html_safe
-  .container.page-description-list
+  .page-description-list
+    .row.image-list-block
+      .container
+        .col-sm-4.text-center
+          = image_tag 'standard-1-1.jpg', class: 'img-circle'
+          %p.text-dark-pink= t('pages.standard.elem1').html_safe
+        .col-sm-4.text-center
+          = image_tag 'standard-1-2.jpg', class: 'img-circle'
+          %p.text-dark-pink= t('pages.standard.elem2').html_safe
+        .col-sm-4.text-center
+          = image_tag 'standard-1-3.jpg', class: 'img-circle'
+          %p.text-dark-pink= t('pages.standard.elem3').html_safe
     .row
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .listed-thumb
-          = image_tag 'standard-1.png'
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .list-description
-          %h3= t('pages.standard.head2').html_safe
-          %h4.text-pink= t('pages.standard.subhead2_1').html_safe
-          %p= t('pages.standard.para2_1').html_safe
-          %h4.text-pink= t('pages.standard.subhead2_2').html_safe
-          %p= t('pages.standard.para2_2').html_safe
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .listed-thumb
-          = image_tag 'standard-2.png'
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .list-description
-          %h3= t('pages.standard.head3').html_safe
-          %h4.text-pink= t('pages.standard.subhead3_1').html_safe
-          %p= t('pages.standard.para3_1').html_safe
-          %h4.text-pink= t('pages.standard.subhead3_2').html_safe
-          %p= t('pages.standard.para3_2').html_safe
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .listed-thumb
-          = image_tag 'standard-3.png'
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .list-description
-          %h3= t('pages.standard.head4').html_safe
-          %h4.text-pink= t('pages.standard.subhead4_1').html_safe
-          %p= t('pages.standard.para4_1').html_safe
-          %h4.text-pink= t('pages.standard.subhead4_2').html_safe
-          %p= t('pages.standard.para4_2').html_safe
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .listed-thumb
-          = image_tag 'standard-4.png'
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .list-description
-          %h3= t('pages.standard.head5').html_safe
-          %h4.text-pink= t('pages.standard.subhead5_1').html_safe
+      .container
+        .col-lg-12
+          %p
+            = t('pages.standard.instro2').html_safe
+    .row
+      .container
+        .col-md-6.text-center{style: 'padding-right: 2px;'}
+          %h2.header-before.text-upper
+            = t('pages.standard.subhead1').html_safe
+        .col-md-6.text-center.gray-vertial-border{style: 'padding-left: 2px;'}
+          %h2.header-after.text-upper
+            = t('pages.standard.subhead2').html_safe
+    .row
+      .container
+        .col-lg-12.text-center
+          %h1.text-black
+            = image_tag 'phase-mark.png', height: '90px'
+            = t('pages.standard.head2').html_safe
+            %br
+            %span.text-dark-pink{style: 'font-size: 28px;'}= t('pages.standard.head2_label').html_safe
+        .col-lg-6.col-md-6.col-sm-12.col-xs-12.text-left
+          .list-left-description
+            %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead1_1').html_safe
+            %p= t('pages.standard.para2_1_1').html_safe
+            %p= t('pages.standard.para2_1_2').html_safe
+        .col-lg-6.col-md-6.col-sm-12.col-xs-12.vertial-border.text-left
+          .list-description
+            %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead2_1').html_safe
+            %p= t('pages.standard.para2_2_1').html_safe
+            %p= t('pages.standard.para2_2_2').html_safe
+    .row.white-yellow-bgcolor
+      .container
+        .col-lg-12.text-center
+          %h1.text-black
+            = image_tag 'phase-mark.png', height: '90px'
+            = t('pages.standard.head3').html_safe
+            %br
+            %span.text-dark-pink{style: 'font-size: 28px;'}= t('pages.standard.head3_label').html_safe
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12.text-left
+            .list-left-description
+              %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead1_2').html_safe
+              %p= t('pages.standard.para3_1_1').html_safe
+              %p= t('pages.standard.para3_1_2').html_safe
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12.vertial-border.text-left
+            .list-description
+              %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead2_2').html_safe
+              %p= t('pages.standard.para3_2_1').html_safe
+              %p= t('pages.standard.para3_2_2').html_safe
+
+    .row
+      .container
+        .col-lg-12.text-center
+          %h1.text-black
+            = image_tag 'phase-mark.png', height: '90px'
+            = t('pages.standard.head4').html_safe
+            %br
+            %span.text-dark-pink{style: 'font-size: 28px;'}= t('pages.standard.head4_label').html_safe
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12.text-left
+            .list-left-description
+              %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead1_3').html_safe
+              %p= t('pages.standard.para4_1_1').html_safe
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12.vertial-border.text-left
+            .list-description
+              %h3.text-dark-pink{style: 'text-align: left;'}= t('pages.standard.subhead2_3').html_safe
+              %p= t('pages.standard.para4_2_1').html_safe
+              %p= t('pages.standard.para4_2_2').html_safe
+    .row
+      .container
+        .col-lg-12
           %p= t('pages.standard.para5_1').html_safe
-          %h4.text-pink= t('pages.standard.subhead5_2').html_safe
+        .col-lg-12.text-center{style: 'padding: 30px 0;'}
+          = image_tag 'standard-3-1.jpg', class: 'img-circle', width: '150px', height: '150px'
+        .col-lg-12
           %p= t('pages.standard.para5_2').html_safe
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .listed-thumb
-          = image_tag 'standard-5.png'
-      .col-lg-6.col-md-6.col-sm-12.col-xs-12
-        .list-description
-          %h3= t('pages.standard.head6').html_safe
-          %h4.text-pink= t('pages.standard.subhead6_1').html_safe
-          %p= t('pages.standard.para6_1').html_safe
-          %h4.text-pink= t('pages.standard.subhead6_2').html_safe
-          %p= t('pages.standard.para6_2').html_safe
-
-  .container
-    .row
-      %h4.text-orange= t('pages.standard.head7').html_safe
-      %p= t('pages.standard.para7_1').html_safe      
-      %p= t('pages.standard.para7_2').html_safe      
-      %p= t('pages.standard.para7_3').html_safe      
-      %p
-        = t('pages.standard.para7_4').html_safe      
-        %a.reference-link{href: '#', id: 'reference_24'}24
-        = t('pages.standard.para7_5').html_safe
-        %a.reference-link{href: '#', id: 'reference_25'}25
-
+          %p= t('pages.standard.para5_3').html_safe
+          %p= t('pages.standard.para5_4').html_safe
 .row.step-contents.next-step-content
   - if current_user.nil?
     .next-green-step
@@ -204,107 +226,311 @@
     .promo-img
       = image_tag 'home_slider.jpg'
       .img-text.image-text-path
-        %h2= t('pages.path.main_heading').html_safe
+        %h2.text-dark-pink.text-bold.text-upper= t('pages.path.main_heading').html_safe
         %p= t('pages.path.paragraph1').html_safe
-        %h4.text-orange
-          =image_tag('standard-new.png')
-          = t('pages.path.instro').html_safe
+        / %h4.text-orange
+        /   =image_tag('standard-new.png')
+        /   = t('pages.path.instro').html_safe
   .container
     = render 'steps_navigation', page_name: 'path'
   .container
     .row
       .col-md-12
-        %h3.heading-letter.text-pink= t('pages.path.sub_heading1').html_safe
+        %h3.heading-letter.text-blue= t('pages.path.sub_heading1').html_safe
         %p= t('pages.path.instro_2').html_safe
-        %p
-          %b= t('pages.path.instro_3').html_safe
-    .row.phase-wrapper
-      .col-md-4.col-sm-8.col-xs-12.path-step-graph.first-phase
-        =image_tag 'path-step-1.png', class: 'path-step-mark'
-        %h3.text-orange= t('pages.path.step_point1').html_safe
-        %p.text-orange.step-desc= t('pages.path.step_point1_desc').html_safe
-        .phase-frame
-          %h1.text-dark-pink 1
-          %h4.text-bold.text-center= t('pages.path.phase1_title').html_safe
-          %ul
-            %li
-              = t('pages.path.phase1_para1').html_safe
-            %li
-              = t('pages.path.phase1_para2').html_safe
-            %li
-              = t('pages.path.phase1_para3').html_safe
-
-      .col-md-4.col-sm-8.col-xs-12.path-step-graph.second-phase
-        =image_tag 'path-step-2.png', class: 'path-step-mark'
-        %h3.text-light-orange= t('pages.path.step_point2').html_safe
-        %p.text-light-orange.step-desc= t('pages.path.step_point2_desc').html_safe        
-        .phase-frame
-          %h1.text-orange 2
-          %h4.text-bold.text-center= t('pages.path.phase2_title').html_safe
-          %ul
-            %li
-              = t('pages.path.phase2_para1').html_safe
-            %li
-              = t('pages.path.phase2_para2').html_safe
-            %li
-              = t('pages.path.phase2_para3').html_safe
-      .col-md-4.col-sm-8.col-xs-12.path-step-graph.third-phase
-        =image_tag 'path-step-3.png', class: 'path-step-mark'
-        %h3.text-yellow= t('pages.path.step_point3').html_safe
-        %p.text-yellow.step-desc= t('pages.path.step_point3_desc').html_safe
-        .phase-frame
-          %h1.text-yellow 3
-          %h4.text-bold.text-center= t('pages.path.phase3_title').html_safe
-          %ul
-            %li
-              = t('pages.path.phase3_para1').html_safe
-            %li
-              = t('pages.path.phase3_para2').html_safe
-            %li
-              = t('pages.path.phase3_para3').html_safe
+    .row
       .col-md-12.text-center
-        %p.text-left= t('pages.path.instro_4').html_safe
+        %h2.text-bold.text-blue.text-upper= t('pages.path.sub_heading2').html_safe
+        %h2.text-blue.text-upper= t('pages.path.sub_heading3').html_safe
+    .row{style: 'margin-top: 50px;'}
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.before.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.before.phase1.title').html_safe
+        =image_tag 'measure.png'
+        %p.text-left= t('pages.path.before.phase1.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.before.phase1.para1').html_safe
+          %li
+            = t('pages.path.before.phase1.para2').html_safe
+          %li
+            = t('pages.path.before.phase1.para3').html_safe
+      .col-md-4.text-dark-pink.text-center{style: 'margin-top: 30px;'}
+        =image_tag('phase-mark.png')
+        %h3.text-upper
+          ="#1"
+          = t('pages.path.center.label').html_safe
+        %h2.text-upper.text-bold= t('pages.path.center.phase1.title').html_safe
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.after.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.after.phase1.title').html_safe
+        =image_tag('bell.png')
+        %p.text-left= t('pages.path.after.phase1.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.after.phase1.para1').html_safe
+          %li
+            = t('pages.path.after.phase1.para2').html_safe
+          %li
+            = t('pages.path.after.phase1.para3').html_safe
+
+    .row{style: 'margin-top: 50px;'}
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.before.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.before.phase2.title').html_safe
+        =image_tag('guide.png')
+        %p.text-left= t('pages.path.before.phase2.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.before.phase2.para1').html_safe
+          %li
+            = t('pages.path.before.phase2.para2').html_safe
+          %li
+            = t('pages.path.before.phase2.para3').html_safe
+      .col-md-4.text-dark-pink.text-center{style: 'margin-top: 30px;'}
+        =image_tag('phase-mark.png')
+        %h3.text-upper
+          ="#2"
+          = t('pages.path.center.label').html_safe
+        %h2.text-upper.text-bold= t('pages.path.center.phase2.title').html_safe
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.after.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.after.phase2.title').html_safe
+        =image_tag('compass.png')
+        %p.text-left= t('pages.path.after.phase2.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.after.phase2.para1').html_safe
+          %li
+            = t('pages.path.after.phase2.para2').html_safe
+          %li
+            = t('pages.path.after.phase2.para3').html_safe
+          %li
+            = t('pages.path.after.phase2.para4').html_safe
+
+    .row{style: 'margin-top: 50px;'}
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.before.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.before.phase3.title').html_safe
+        =image_tag('stars.png')
+        %p.text-left= t('pages.path.before.phase3.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.before.phase3.para1').html_safe
+          %li
+            = t('pages.path.before.phase3.para2').html_safe
+          %li
+            = t('pages.path.before.phase3.para3').html_safe
+      .col-md-4.text-dark-pink.text-center{style: 'margin-top: 30px;'}
+        =image_tag('phase-mark.png')
+        %h3.text-upper
+          ="#3"
+          =t('pages.path.center.label').html_safe
+        %h2.text-upper.text-bold= t('pages.path.center.phase3.title').html_safe
+      .col-md-4.text-blue.text-center
+        %h3.text-upper= t('pages.path.after.label').html_safe
+        %hr
+        %h4.text-center= t('pages.path.after.phase3.title').html_safe
+        =image_tag('stars.png')
+        %p.text-left= t('pages.path.after.phase3.description').html_safe
+        %ul.blue-tickmark.text-left
+          %li
+            = t('pages.path.after.phase3.para1').html_safe
+          %li
+            = t('pages.path.after.phase3.para2').html_safe
+          %li
+            = t('pages.path.after.phase3.para3').html_safe
+          %li
+            = t('pages.path.after.phase3.para4').html_safe
+
+  .row.promo{style: 'margin-top: 30px;'}
+    .promo-img
+      = image_tag 'Dollarphotoclub74523.png'
+      .img-text.image-text-path
+        %h2.text-dark-pink.text-bold.text-upper= t('pages.path.main_heading').html_safe
+        %p.text-blue= t('pages.path.paragraph2').html_safe
+        / %h4.text-orange
+        /   =image_tag('standard-new.png')
+        /   = t('pages.path.instro').html_safe
+
   .row.step-detail-1.detail-wapper
     .container
       .phase-director
       .phase-details
-        %h3.heading= t('pages.path.phase1_det_title').html_safe
-        %h4.sub-heading= t('pages.path.phase1_det_subtitle').html_safe
-        %p= t('pages.path.phase1_det_para2').html_safe
+        %h3= t('pages.path.step1.title').html_safe
+        %p
+          %strong= t('pages.path.step1.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step1.para1').html_safe
+          %li
+            = t('pages.path.step1.para2').html_safe
+          %li
+            = t('pages.path.step1.para3').html_safe
+
   .row.step-detail-2.detail-wapper
     .container
       .phase-director
       .phase-details
-        %h3.heading= t('pages.path.phase2_det_title').html_safe
-        %h4.sub-heading= t('pages.path.phase2_det_subtitle').html_safe
-        %p= t('pages.path.phase2_det_para2').html_safe
-        %p= t('pages.path.phase2_det_para3').html_safe
+        %h3= t('pages.path.step2.title').html_safe
+        %p
+          %strong= t('pages.path.step2.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step2.para1').html_safe
+          %li
+            = t('pages.path.step2.para2').html_safe
+          %li
+            = t('pages.path.step2.para3').html_safe
         .col-md-offset-3.col-md-6.step-contents.text-center          
-          %p= t('pages.path.preview_text')
-          %button.btn.hcc-green-btn
+          %p.text-dark-pink.text-bold.text-upper= t('pages.path.preview_text')
+          %button.btn.hcc-red-btn
             %a{'href': '/instruction'}
-              = t('pages.path.phase2_button')
+              = t('pages.path.preview_button')
 
   .row.step-detail-3.detail-wapper
     .container
       .phase-director
       .phase-details
-        %h3.heading= t('pages.path.phase3_det_title').html_safe
-        %h4.sub-heading= t('pages.path.phase3_det_subtitle').html_safe
-        %p= t('pages.path.phase3_det_para2').html_safe
-        .col-md-offset-3.col-md-6.step-contents.text-center          
-          %p= t('pages.path.action_text')
-          %button.btn.hcc-green-btn
-            %a{'href': '/take_action'}
-              = t('pages.path.phase3_button')
+        %h3= t('pages.path.step3.title').html_safe
+        %p
+          %strong= t('pages.path.step3.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step3.para1').html_safe
+          %li
+            = t('pages.path.step3.para2').html_safe
+          %li
+            = t('pages.path.step3.para3').html_safe
+
+  .row.promo{style: 'margin-top: 30px;'}
+    .promo-img
+      = image_tag 'path-slider3.jpg'
+      .img-text.image-text-path
+        %h2.text-dark-pink.text-bold.text-upper= t('pages.path.main_heading').html_safe
+        %p.text-blue= t('pages.path.paragraph3').html_safe
+        / %h4.text-orange
+        /   =image_tag('standard-new.png')
+        /   = t('pages.path.instro').html_safe
+
   .row.step-detail-4.detail-wapper
     .container
       .phase-director
       .phase-details
-        %h3.heading= t('pages.path.phase4_title')
-        %p= t('pages.path.phase4_para1')
-        %p= t('pages.path.phase4_para2')
-        %p= t('pages.path.phase4_para3')
+        %p
+          %strong= t('pages.path.step4.sub_description').html_safe
+        %h3= t('pages.path.step4.title').html_safe
+        %p
+          %strong= t('pages.path.step4.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step4.para1').html_safe
+          %li
+            = t('pages.path.step4.para2').html_safe
+          %li
+            = t('pages.path.step4.para3').html_safe
+
+  .row.step-detail-5.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step5.title').html_safe
+        %p
+          %strong= t('pages.path.step5.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step5.para1').html_safe
+          %li
+            = t('pages.path.step5.para2').html_safe
+          %li
+            = t('pages.path.step5.para3').html_safe
+        .col-md-offset-3.col-md-6.step-contents.text-center          
+          %p.text-dark-pink.text-bold.text-upper= t('pages.path.action_text')
+          %button.btn.hcc-red-btn
+            %a{'href': '/take_action'}
+              = t('pages.path.take_action_button')
+
+  .row.step-detail-6.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step6.title').html_safe
+        %p
+          %strong= t('pages.path.step6.description').html_safe
+
+  .row.step-detail-7.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step7.title').html_safe
+        %p
+          %strong= t('pages.path.step7.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step7.para1').html_safe
+          %li
+            = t('pages.path.step7.para2').html_safe
+          %li
+            = t('pages.path.step7.para3').html_safe
+
+  .row.step-detail-8.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step8.title').html_safe
+        %p
+          %strong= t('pages.path.step8.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step8.para1').html_safe
+          %li
+            = t('pages.path.step8.para2').html_safe
+          %li
+            = t('pages.path.step8.para3').html_safe
+
+  .row.step-detail-9.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step9.title').html_safe
+        %p
+          %strong= t('pages.path.step9.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step9.para1').html_safe
+          %li
+            = t('pages.path.step9.para2').html_safe
+          %li
+            = t('pages.path.step9.para3').html_safe
+
+  .row.step-detail-10.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h3= t('pages.path.step10.title').html_safe
+        %p
+          %strong= t('pages.path.step10.description').html_safe
+        %ul.blue-tickmark
+          %li
+            = t('pages.path.step10.para1').html_safe
+          %li
+            = t('pages.path.step10.para2').html_safe
+          %li
+            = t('pages.path.step10.para3').html_safe
+
+  .row.step-detail-11.detail-wapper
+    .container
+      .phase-director
+      .phase-details
+        %h2.text-dark-pink.text-bold.text-upper= t('pages.path.step11.title').html_safe
+        %p= t('pages.path.step11.para1').html_safe
+        %p= t('pages.path.step11.para2').html_safe
+        %p= t('pages.path.step11.para3').html_safe
 
 .row.step-contents.next-step-content
   - if current_user.nil?
@@ -319,16 +545,16 @@
 .legacy-path#mark_about 
   .row.promo
     .promo-img
-      = image_tag 'Dollarphotoclub74523.png'
+      = image_tag 'slide-4.png'
   .container
     = render 'steps_navigation', page_name: 'journey'
   #path-content.container
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12.about-content
-        %h3.heading-letter.text-pink= t('pages.about.main_heading')
+        %h3.heading-letter.text-dark-pink= t('pages.about.main_heading')
         %p.text-left= t('pages.about.paragraph1').html_safe
       .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left
-        %h4.text-orange= t('pages.about.sub_para1')
+        %h4.text-dark-pink= t('pages.about.sub_para1')
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12.round-step-box
         %label.step-number 1
@@ -354,7 +580,7 @@
   .row.president
     .container
       .col-md-12
-        %h3.heading-letter.text-pink.text-center= t('pages.about.president_heading')
+        %h3.heading-letter.text-dark-pink.text-center= t('pages.about.president_heading')
         = image_tag "about-child.jpg", style: 'float:right;'
         %p= t('pages.about.president_subheading')
         %p= t('pages.about.president_para1').html_safe
@@ -365,7 +591,7 @@
     .col-lg-4.col-md-4.col-sm-4.col-xs-2.left_line-last
       %hr.about-dash
     .col-lg-4.col-md-4.col-sm-4.col-xs-8.text-center.title-box
-      %h3.text-pink= t('pages.about.question_heading')
+      %h3.text-dark-pink= t('pages.about.question_heading')
     .col-lg-4.col-md-4.col-sm-4.col-xs-2.left_line-last
       %hr.about-dash
   .row

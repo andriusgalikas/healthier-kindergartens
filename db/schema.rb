@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618121611) do
+ActiveRecord::Schema.define(version: 20171031160425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,12 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.string   "country"
     t.string   "telephone"
     t.datetime "deactivated_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "url"
+    t.integer  "affiliate_type"
+    t.integer  "num_member",     default: 0
+    t.integer  "municipal_id"
   end
 
   add_index "affiliates", ["name"], name: "index_affiliates_on_name", using: :btree
@@ -114,13 +117,15 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.integer  "payment_month",    default: 0
     t.integer  "payment_mode_id"
     t.integer  "payment_start_id"
+    t.integer  "municipal_id"
   end
 
   create_table "department_todos", force: :cascade do |t|
     t.integer  "todo_id"
     t.integer  "department_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "todo_active",   default: true
   end
 
   create_table "departments", force: :cascade do |t|
@@ -212,10 +217,11 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.integer  "recorder_id"
     t.string   "recorder_type"
     t.datetime "deactivated_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "daycare_id"
     t.integer  "department_id"
+    t.integer  "alert_status",   default: 0
   end
 
   create_table "illness_guides", force: :cascade do |t|
@@ -243,6 +249,7 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.string   "parent_guide_content_type"
     t.integer  "parent_guide_file_size"
     t.datetime "parent_guide_updated_at"
+    t.string   "description"
   end
 
   create_table "locale_files", force: :cascade do |t|
@@ -353,6 +360,16 @@ ActiveRecord::Schema.define(version: 20170618121611) do
 
   add_index "messages", ["message_template_id"], name: "index_messages_on_message_template_id", using: :btree
 
+  create_table "municipals", force: :cascade do |t|
+    t.integer  "ref_id"
+    t.string   "name"
+    t.string   "state"
+    t.integer  "municipal_type"
+    t.string   "language"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "source_id"
     t.string   "source_type"
@@ -374,6 +391,24 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.string   "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "member_type"
+    t.integer  "sub_type"
+    t.integer  "feature"
+    t.boolean  "active"
+    t.integer  "plan"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "path"
+    t.string   "guide_path"
+    t.string   "element"
+    t.string   "image"
+    t.string   "label_key"
+    t.integer  "daycare_id",  default: 0
+    t.integer  "partner_id",  default: 0
+    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -565,6 +600,9 @@ ActiveRecord::Schema.define(version: 20170618121611) do
     t.integer  "completion_date_value", default: 1
     t.string   "language"
     t.string   "ref_id"
+    t.integer  "is_active",             default: 1
+    t.datetime "start_date"
+    t.string   "start_days"
   end
 
   create_table "transactions", force: :cascade do |t|

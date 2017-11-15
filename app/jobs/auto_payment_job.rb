@@ -70,9 +70,11 @@ class AutoPaymentJob < ActiveJob::Base
           bill_amount = 0 if bill_amount <= 0
         end
 
-        if [2, 3, 4].include? @job_user.plan_type
+        if [3, 4].include? @job_user.plan_type
           @job_plan = Plan.where(plan_type: @job_user.plan_type, language: I18n.locale.upcase).first
           bill_amount = @job_plan.price
+        elsif @job_user.plan_type == 2
+          return
         end
 
         @job_transaction = Transaction.new

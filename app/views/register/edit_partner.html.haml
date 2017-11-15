@@ -11,11 +11,11 @@
             #tab1.tab-pane
               .row.text-center.fileupload-container
                 .fileUpload
-                  %span.upload-wrapper
-                    = image_tag 'partner-upload.png'
-                    %span.caption=t('register.labels.upload_partner_photo')
-                    = affiliate.fields_for :profile_image do |profile_image|
-                      = profile_image.file_field :file, class: 'upload'              
+                  / %span.upload-wrapper
+                  /   = image_tag 'partner-upload.png'
+                  /   %span.caption=t('register.labels.upload_partner_photo')
+                  /   = affiliate.fields_for :profile_image do |profile_image|
+                  /     = profile_image.file_field :file, class: 'upload'              
               .row.pane-container.text-center
                 .row.step-banner
                   .col-sm-3.col-xs-3.step-item.first-step.item-partner
@@ -48,14 +48,16 @@
                   .col-sm-8.text-left
                     .row
                       = affiliate.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name'), :required =>"true"
-                    .row
-                      = affiliate.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.url')
+                    / .row
+                    /   = affiliate.text_field :url, class: 'form-control input-round', :placeholder => t('register.labels.url')
                     .row
                       = affiliate.text_field :address, class: 'form-control input-round', :placeholder => t('register.labels.address'), :required =>"true"
                     .row
                       = affiliate.text_field :postcode, class: 'form-control input-round', :placeholder => t('register.labels.postcode'), :required =>"true"
                     .row
-                      = affiliate.text_field :country, class: 'form-control input-round', :placeholder => t('register.labels.country'), :required =>"true"
+                      = affiliate.select :municipal_id, options_for_select(municipal_list), {}, class: 'form-control input-round', :placeholder => t('register.labels.municipal'), :required =>"true"
+                    / .row
+                    /   = affiliate.text_field :country, class: 'form-control input-round', :placeholder => t('register.labels.country'), :required =>"true"
                     .row
                       = affiliate.text_field :telephone, class: 'form-control input-round', :placeholder => t('register.labels.telephone'), :required =>"true"
             .col-sm-12

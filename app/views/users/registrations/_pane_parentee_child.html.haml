@@ -41,7 +41,7 @@
               .row
                 = child.text_field :birth_date, :class => 'datepicker form-control input-round', value: (child.object.birth_date.blank? ? '' : child.object.birth_date.strftime('%d/%m/%Y')), :placeholder => t('register.labels.birth_day'), :required =>"true"
             .row.parent-department  
-              %h4 Select Department
+              %h4=t('register.labels.select_department')
               - @departments.each do |department|
                 .row
                   = child.radio_button :department_id, "#{department.id}", :style => "display: none;", :required =>"true"

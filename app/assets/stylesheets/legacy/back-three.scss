@@ -1,5 +1,9 @@
 #legacy-back-three
 {
+    font-size: 18px;
+    line-height: 24px;
+    font-family: sans-serif, Arial, "Helvetica Neue", Helvetica;
+
     #back_end_header{
     background: #426cd5;
     padding: 10px
@@ -110,4 +114,11 @@
     margin-top: 3px;
     position: absolute;    
 }
+
+    .pink-banner{
+        min-height: 250px;
+        background: #fcf3f0;
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
 }

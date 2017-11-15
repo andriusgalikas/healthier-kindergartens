@@ -1,5 +1,12 @@
 class TransactionsController < ApplicationController
   def create
+    if current_user.plan_type == 2
+      if current_user.manager?  
+        redirect_to ethic_2_path
+      else
+        redirect_to dashboard_path
+      end
+    end      
 
     @plan = Plan.where(plan_type: 1, language: I18n.locale.upcase).first
 
@@ -33,14 +40,16 @@ class TransactionsController < ApplicationController
     deposit_amount = @deposit_plan.price
     
     if current_user.plan_type >= 2
-      plan_discount_code = DiscountCode.find_by(code: params[:discount_code])
+      plan_discount_code = current_user.daycare.discount_code
       unless plan_discount_code.nil?
-        current_user.daycare.discount_code_id = plan_discount_code.id
-        current_user.daycare.save
-        current_user.discount_code = plan_discount_code
-        current_user.save        
+        # current_user.daycare.discount_code_id = plan_discount_code.id
+        # current_user.daycare.save
+        # current_user.discount_code = plan_discount_code
+        # current_user.save        
         deposit_amount = deposit_amount * (100-plan_discount_code.value) * 0.01
       end
+    elsif current_user.plan_type == 1
+      deposit_amount = deposit_amount * current_user.affiliate.num_member
     end
 
     @transaction = Transaction.new
@@ -91,15 +100,19 @@ class TransactionsController < ApplicationController
       if current_user.plan_type > 1 && !user_upgraded
         send_confirmation_email
       end
-  
-      redirect_to ethic_2_path
+
+      if current_user.manager?  
+        redirect_to ethic_2_path
+      else
+        redirect_to dashboard_path
+      end
 
     rescue Stripe::CardError => e
+      redirect_to dashboard_path
       # The card has been declined
     rescue Stripe::InvalidRequestError => e
-
-    end
       redirect_to dashboard_path
+    end
   end 
 
   private
@@ -123,7 +136,7 @@ class TransactionsController < ApplicationController
         attachment << 'http:' + user_plan.document.url.first(sub_index)
       end      
     end
-    NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_later
+    NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_now
   end
 
 end

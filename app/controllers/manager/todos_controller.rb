@@ -9,11 +9,38 @@ class Manager::TodosController < ApplicationController
         search_todos
     end
 
+    def select_department
+        set_departments
+    end
+
     def new
         @todo = current_user.todos.build
         new_icon_attachment
+        # @departments = Department.where(id: params[:departments])
         set_departments
-        new_task        
+        new_task
+    end
+
+    def create
+        @todo = current_user.todos.build(todo_params)
+        if todo_params['iteration_type'] != 'single'
+            if todo_params['frequency'] == 'week'
+                @todo['start_date'] = Time.now
+                @todo['start_days'] = params[:start_days].to_json
+            else
+                @todo['start_days'] = ''
+            end
+        end
+        respond_to do |format|
+          if @todo.save
+            format.html { redirect_to dashboard_manager_todos_path }
+            format.json { render :show, status: :created, location: @todo }
+          else
+            set_departments
+            format.html { redirect_to new_manager_todo_path }
+            format.json { render json: @todo.errors, status: :unprocessable_entity }
+          end
+        end
     end
 
     def show
@@ -22,6 +49,7 @@ class Manager::TodosController < ApplicationController
 
     def edit
         set_todo
+        set_departments
     end
 
     def update
@@ -35,6 +63,30 @@ class Manager::TodosController < ApplicationController
             @todo.attributes = todo_params
             render :edit
         end
+    end
+
+    def active
+        set_todo
+        unless @todo.daycare.nil?
+            @todo.is_active = 1
+            @todo.save
+            department_todo = @todo.department_todos.update_all(todo_active: true)
+        end
+
+        redirect_to status_list_manager_todos_path
+    end
+
+    def inactive
+        set_todo
+        unless @todo.daycare.nil?
+            @todo.is_active = 0
+            @todo.save
+            department_todo = @todo.department_todos.update_all(todo_active: false)
+        end
+        # department_todo = @todo.department_todos.where(department_id: params[:department_id])
+        # department_todo.update_all(todo_active: false)
+
+        redirect_to status_list_manager_todos_path
     end
 
     def destroy
@@ -53,6 +105,12 @@ class Manager::TodosController < ApplicationController
         set_todo
         set_accessible_todos
         set_report_todo_completes
+    end
+
+    def sub_todos
+        set_todo
+        todos = User.all_self_department_todos.where(id: current_user.id).where("todos.id = #{params[:id]}")
+        render partial: '/manager/todos/department_todo', locals: {local_todos: todos, todo_title: @todo.title}
     end
 
     private
@@ -99,6 +157,8 @@ class Manager::TodosController < ApplicationController
         :completion_date_value,
         :daycare_id,
         :language,
+        :start_date,
+        department_ids: [], 
         tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type, :language,
                            sub_tasks_attributes: [:id, :_destroy, :title, :sub_task_type, :language]],
         icon_attributes: [:id, :attachable_type, :attachable_id, :file]

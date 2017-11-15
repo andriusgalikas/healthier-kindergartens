@@ -42,7 +42,7 @@
           <% @plans.each do |plan| %>
             <tr>
               <td>
-                <%= ['Deposit', 'Daily Rate', 'Phase 1', 'Phase 2', 'Phase 3'][plan.plan_type]  %>
+                <%= ['Deposit', 'Daily Rate', 'Free', 'Phase 1', 'Phase 2'][plan.plan_type]  %>
               </td>
               <td>
                 <%= plan.name %>

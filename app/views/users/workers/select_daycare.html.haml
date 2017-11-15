@@ -32,4 +32,11 @@
           window.location.href = $('input[name=daycare_item]:checked' ,'.msg_list').attr('select-link');
       }
     });
+
+    $('.previous button').click(function(){
+      var tab_id = $('.tab-pane.active').attr('id');
+      if(tab_id == "tab1"){        
+        window.location.href = '#{worker_select_type_path()}';
+      }
+    });    
   });

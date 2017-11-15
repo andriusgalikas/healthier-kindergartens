@@ -343,50 +343,93 @@
     }
   }
 
-  .step-detail-1{
-    background-color: #f3f3f3;    
-    background: url("/assets/path-phase-1-bg.png") no-repeat #f3f3f3 0px 50px;    
+  .detail-wapper{
     .container{
       min-height: 250px;
-      background-color: #f3f3f3;    
+      background-color: #fff;
       .phase-director{
-        background: url("/assets/path-phase-1.png") no-repeat;
+        background-size: contain !important;
+      }
+    }
+  }
+
+  .step-detail-1{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-measure.png") no-repeat;
       }    
     }
   }
 
   .step-detail-2{
-    background-color: #fff;    
-    background: url("/assets/path-phase-2-bg.png") no-repeat #fff 0px 50px;
     .container{
-      min-height: 250px;
-      background-color: #fff;    
       .phase-director{
-        background: url("/assets/path-phase-2.png") no-repeat;
+        background: url("/assets/phase-guide.png") no-repeat;
       }    
     }
   }
 
   .step-detail-3{
-    background-color: #f3f3f3;    
-    background: url("/assets/path-phase-3-bg.png") no-repeat #f3f3f3 0px 50px;
     .container{
-      min-height: 250px;
-      background-color: #f3f3f3;    
       .phase-director{
-        background: url("/assets/path-phase-3.png") no-repeat;
+        background: url("/assets/pink-stars.png") no-repeat;
       }    
     }
   }
 
   .step-detail-4{
-    background-color: #fff;    
-    background: url("/assets/path-phase-4-bg.png") no-repeat #fff 0px 50px;
     .container{
-      min-height: 250px;
-      background-color: #fff;    
       .phase-director{
-        background: url("/assets/path-phase-4.png") no-repeat;
+        background: url("/assets/pink-bell.png") no-repeat;
+      }    
+    }
+  }
+
+  .step-detail-5{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-compass.png") no-repeat;
+      }    
+    }
+  }
+
+  .step-detail-6{
+    .container{
+      .phase-director{
+        background: url("/assets/four-piece.png") no-repeat;
+      }    
+    }
+  }
+
+  .step-detail-7{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-folder.png") no-repeat;
+      }    
+    }
+  }
+
+  .step-detail-8{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-double.png") no-repeat;
+        height: 240px;
+      }    
+    }
+  }
+
+  .step-detail-9{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-message.png") no-repeat;
+      }    
+    }
+  }
+
+  .step-detail-10{
+    .container{
+      .phase-director{
+        background: url("/assets/pink-graph.png") no-repeat;
       }    
     }
   }
@@ -415,5 +458,18 @@
     margin-left: 150px;
   }
 
+}
 
+/******** Updated Path Style**************/
+.legacy-path{
+  .detail-wapper{
+    margin-top: 50px;
+  }
+}
+
+ul.blue-tickmark{
+  li{
+    list-style-image: url("/assets/blue-tickmark.png");
+    margin-bottom: 15px;
+  }
 }

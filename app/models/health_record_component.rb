@@ -23,7 +23,8 @@ class HealthRecordComponent < ActiveRecord::Base
 
   def pretty_value
     if code == 'illness_code'
-      Illness.find_by(code: value).name
+      illness = Illness.find_by(code: value)
+      (illness.nil?) ? "" : illness.name
     elsif code == 'symptom_codes'
       codes = JSON.parse(value)
       Symptom.where(code: codes).map(&:name).join(', ')

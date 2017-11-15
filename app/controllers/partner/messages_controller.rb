@@ -1,6 +1,7 @@
 class Partner::MessagesController < ApplicationController
   layout 'dashboard_v2'
-  before_action -> { authenticate_role!(['partner'])}
+  before_action -> {authenticate_role!(["partner", "worker"])}
+  before_action :strategic_partnership!
 
   def new
     @message = Message.new
@@ -10,7 +11,11 @@ class Partner::MessagesController < ApplicationController
     @message = Message.new(message_params.merge(owner_id: current_user.id))
 
     if @message.save
-      MessageNotificationJob.perform_later(@message)
+      if current_user.affiliate.certific?
+        MessageNotificationJob.perform_now(@message, {partner: true, affiliate_id: current_user.affiliate.id})
+      else
+        MessageNotificationJob.perform_now(@message, {partner: true})
+      end      
       redirect_to partner_messages_path, notice: 'Message successfully sent.'
     else
       redirect_to new_partner_message_path, notice: 'There was an error creating the message.'

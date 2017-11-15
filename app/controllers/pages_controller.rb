@@ -26,6 +26,11 @@ class PagesController < ApplicationController
     end
 
     def home
+        @member_type = 'contact'
+        @subject = MessageSubject.find_or_create_by(title: ENV['SURVEY_TEMPLATE_SUBJECT'], language: I18n.locale.downcase) 
+        template_key = 'SURVEY_TEMPLATE_SUBJECT_' + @member_type.upcase
+        @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
+        @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[@member_type.downcase], language: I18n.locale.downcase)    
     end
 
     def journey
@@ -57,6 +62,12 @@ class PagesController < ApplicationController
             session[:apply_plan] = params[:plan]
         else
             session[:apply_plan] = 0
+        end
+
+        if params[:discount]
+            session[:apply_discount] = params[:discount]
+        else
+            session[:apply_discount] = 0
         end
     end
 
@@ -116,8 +127,30 @@ class PagesController < ApplicationController
     end
 
     def send_message
-        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_later
+        RegistrationMailer.contact_us_message(params[:email], params[:subject], params[:content]).deliver_now
         redirect_to root_path 
+    end
+
+    def pre_user_plan
+        @phase_one_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, member_type: 'manager', sub_type: 2, plan: 2)
+        @phase_two_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3])
+        @phase_three_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3, 4])
+
+        @plan_one = Plan.where(language: I18n.locale.upcase, plan_type: 2).first
+        @plan_two = Plan.where(language: I18n.locale.upcase, plan_type: 3).first
+        @plan_three = Plan.where(language: I18n.locale.upcase, plan_type: 4).first
+    end
+
+    def get_discount_code
+        discount_code = DiscountCode.where(code: params[:code])
+
+        respond_to do |format|
+            format.json {render :json => discount_code}
+        end        
+    end
+
+    def take_action
+        @illnesses = Illness.by_language(I18n.locale.downcase)
     end
 
     private

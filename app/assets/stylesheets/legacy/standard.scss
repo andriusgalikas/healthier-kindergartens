@@ -93,7 +93,8 @@
     }
     .page-description-list{}
     .listed-thumb{margin-top: 40px; text-align: center;}
-    .list-description{
+    .list-description,
+    .list-left-description{
         position: relative;
         margin-bottom: 30px;
         margin-top: 30px; 
@@ -101,23 +102,24 @@
         h3, h4{
             text-align: center;
         }
+        h2{    
+            margin-left: 40px; 
+            font-family: open-sans; 
+            font-size: 35px; 
+        } 
+ 
+        p{margin-left: 0;}         
     }
-    .list-description :before {    
+    .vertial-border::before {    
         position: absolute;
         content: "";
-        width: 2PX;
+        width: 4px;
         height: 100%;
         color: red;
         left: 0;
         top: 0;
-        background: #365ebf;
+        background: #0465ce; 
     }
-    .list-description h2{   
-         margin-left: 40px;
-        font-family: open-sans;
-        font-size: 35px;}
-
-    .list-description p{margin-left: 0;}
 
     #get-start-free{    
         padding: 5px 50px;
@@ -147,4 +149,52 @@
     .get-start{}
     .start-free i{  margin-left: 70px;font-size:40px;  }
     .start-free a{color:#fff;}
+
+    .page-description-list{ 
+        .row{ 
+            margin-top: 40px; 
+            margin-bottom: 40px; 
+
+            .header-before,
+            .header-after{
+                background: #ec004f;
+                color: #fff;
+            } 
+
+            .header-before{
+                border-top-left-radius: 35px;
+                border-bottom-left-radius: 35px;
+            }
+
+            .header-after{
+                border-top-right-radius: 35px;
+                border-bottom-right-radius: 35px;
+            }
+
+            h2{ 
+                padding: 15px 0; 
+            } 
+        } 
+    } 
+ 
+    .image-list-block{ 
+        img{ 
+            border: 2px solid #ddd; 
+            width: 200px; 
+            height: 200px; 
+        } 
+    } 
+ 
+    .orange-text{ 
+        color: #fc5f4a; 
+    } 
+ 
+    .pink-text{ 
+        color: #f03f73; 
+    } 
+ 
+    .white-yellow-bgcolor{ 
+        background: #fdfaf6; 
+        padding-bottom: 40px; 
+    } 
 }

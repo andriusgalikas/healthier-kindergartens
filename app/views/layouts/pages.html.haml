@@ -17,6 +17,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true
     %link{href: "/assets/lang/style_#{I18n.locale.downcase}.css", rel: 'stylesheet', type: 'text/css'}
     = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = javascript_include_tag 'https://cdn.ckeditor.com/4.6.1/basic/ckeditor.js'
     :javascript
       window._trans = #{yield_js_translations.to_json.html_safe}
     - if current_user.nil? && !(params[:controller] == 'pages' && (params[:action] == 'ethic_1' || params[:action] == 'ethic_2' || params[:action] == 'ethic_3' || params[:action] == 'ethic_4'))

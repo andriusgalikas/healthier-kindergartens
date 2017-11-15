@@ -19,10 +19,10 @@
               %li= link_to t('pages.nav_bar.parentee'), invite_survey_manager_daycares_path('parentee')
               %li= link_to t('pages.nav_bar.manager'), invite_survey_manager_daycares_path('manager')
         %li= link_to t('pages.nav_bar.logout'), destroy_user_session_path, method: :delete
-    .header-guide.no-print
-      = link_to '#', id: 'link_dashboard_guide' do
-        %label.title=t('guideline.title')
-        %label.description=t('guideline.tooltip')
+    / .header-guide.no-print
+    /   = link_to '#', id: 'link_dashboard_guide' do
+    /     %label.title=t('guideline.title')
+    /     %label.description=t('guideline.tooltip')
     .partner-profile-left
       = image_tag current_user_role_avatar, class: 'img img-thumbnail img-circle'
       %span.short-user-info

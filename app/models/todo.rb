@@ -49,11 +49,11 @@ class Todo < ActiveRecord::Base
     validates :title, :user_id, :completion_date_type,
                 :completion_date_value, :iteration_type, :language,             presence: true
     validates :frequency,                                                       presence: true, :if => :recurring?
-    validates :icon,                                                            presence: true
+    # validates :icon,                                                            presence: true
     #validates :title,                                                           uniqueness: { scope: :user_id }
 
     enum iteration_type:            [:single, :recurring]
-    enum frequency:                 [:day, :week, :month, :year]
+    enum frequency:                 [:day, :week, :month]
     enum completion_date_type:      [:completion_day, :completion_week, :completion_month, :completion_year, :completion_hour]
     enum limit_date_type:           [:limit_hour, :limit_day, :limit_week, :limit_month, :limit_year]
 
@@ -117,14 +117,22 @@ class Todo < ActiveRecord::Base
     def recurring_available
         is_available = false
         if self.single?
-            is_available = true
+            unless self.todo_completes.blank?
+                is_available = false
+            else
+                is_available = true
+            end
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
             if !todo_complete.nil? 
-                if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
-                    is_available = true
-                else
+                if todo_complete.completion_date.nil?
                     is_available = false
+                else
+                    if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
+                        is_available = true
+                    else
+                        is_available = false
+                    end
                 end
             else
                 is_available = true
@@ -134,10 +142,57 @@ class Todo < ActiveRecord::Base
         return is_available
     end
 
+    def recurring_available_by_department department_id
+        is_available = false
+        todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
+
+        if self.single?
+            unless todo_complete.blank?
+                is_available = false
+            else
+                is_available = true
+            end
+        else
+            unless todo_complete.nil?
+                if todo_complete.completion_date.nil?
+                    is_available = false
+                else
+                    if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
+                        is_available = true
+                    else
+                        is_available = false
+                    end
+                end
+            else
+                is_available = true
+            end
+        end
+
+        return is_available        
+    end
+
+    def recurring_available_by_total
+        is_available = false
+        unless self.daycare.nil?
+            self.daycare.departments.each do |dept|
+                if self.recurring_available_by_department(dept.id)
+                    is_available = true
+                    break
+                end
+            end
+        else
+            is_available = false
+        end        
+        return is_available
+    end
+
+    def frequency_remain_time
+    end
+
     # => Checks if user is admin or global if updating, saving or destroying a todo record
     #
     def is_admin_global?
-        if global? && !user.admin?
+        if global? #&& !user.admin?
             errors.add :base, "You do not have permission to save or destroy this Todo."
             return false
         end

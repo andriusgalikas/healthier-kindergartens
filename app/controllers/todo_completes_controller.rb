@@ -5,6 +5,14 @@ class TodoCompletesController < ApplicationController
 
     def show
         set_todo_complete
+        set_task_complete
+
+        # result = true
+        # @task_completes.each do |task|
+        #     puts "update_todo_to_pass"
+        #     result &&= task.pass?
+        # end
+        # update_todo_to_pass if result == true        
         set_show_todo
     end
 
@@ -30,5 +38,13 @@ class TodoCompletesController < ApplicationController
 
     def create_todo_complete
         @todo_complete = current_user.todo_completes.create(todo_id: @todo.id)
+    end
+
+    def update_todo_to_pass        
+        @todo_complete.update(completion_date: Time.now, status: 1)
+    end
+
+    def set_task_complete
+        @task_completes = TodoTaskComplete.where(todo_complete_id: @todo_complete.id)
     end
 end

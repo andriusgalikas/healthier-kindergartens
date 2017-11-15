@@ -1,16 +1,21 @@
 class SubscriptionsController < ApplicationController
     layout 'legacy'
-    before_action -> { authenticate_role!(["manager"]) }
+    before_action -> { authenticate_role!(["manager", "partner"]) }
     #before_action :unsubscribed_user!, except: :complete
 
     def index
         set_plan
         get_subscription
+        if current_user.manager?
+            @discount = current_user.daycare.discount_code
+        else
+            @discount = nil
+        end
     end
 
     def new
         set_plan
-        new_subscription
+        new_subscription        
     end
 
     def create
@@ -18,7 +23,7 @@ class SubscriptionsController < ApplicationController
         @subscription = @plan.subscriptions.build(subscription_params)
         set_discount_code
         if @subscription.save_with_payment(@discount_code)
-            PlanMailer.send_confirmation(current_user).deliver_later
+            PlanMailer.send_confirmation(current_user).deliver
             #redirect_to complete_plan_subscription_url(@subscription.plan, @subscription), :notice => "Thank you for subscribing!"
             redirect_to ethic_2_path
         else
@@ -37,27 +42,44 @@ class SubscriptionsController < ApplicationController
             current_user.save
         end
 
+        unless params[:discount].nil?
+            current_user.daycare.discount_code_id = params[:discount]
+            current_user.daycare.save
+
+            plan_discount_code = DiscountCode.find_by(id: params[:discount])
+            current_user.discount_code = plan_discount_code
+            current_user.save            
+        end
+
         if current_user.paid_plan_type > 0
-            redirect_to upgrade_path
+            upgrade_package
+
+            redirect_to dashboard_path            
         else
-            redirect_to ethic_1_path
+            redirect_to upgrade_path
         end
     end
 
     def user_plan
-        if current_user.paid_plan_type >= 2 || (current_user.deposit_required && current_user.plan_type >= 2 )
-            current_user.plan_type = params[:plan]
-            current_user.save
+        # if current_user.paid_plan_type >= 2 || (current_user.deposit_required && current_user.plan_type >= 2 )
+        # end
+        @phase_one_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, member_type: 'manager', sub_type: 2, plan: 2)
+        @phase_two_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3])
+        @phase_three_items = Permission.where(daycare_id: 0, partner_id: 0, active: true, sub_type: 2, member_type: 'manager', plan: [2, 3, 4])
 
-            upgrade_package
-
-            redirect_to dashboard_path            
-        end
+        @plan_one = Plan.where(language: I18n.locale.upcase, plan_type: 2).first
+        @plan_two = Plan.where(language: I18n.locale.upcase, plan_type: 3).first
+        @plan_three = Plan.where(language: I18n.locale.upcase, plan_type: 4).first
+        
     end
 
     private
 
     def upgrade_package
+        if current_user.plan_type == 2
+            return
+        end      
+
         @deposit_plan = Plan.where(plan_type: current_user.plan_type, language: I18n.locale.upcase).first
         deposit_amount = @deposit_plan.price
         
@@ -130,7 +152,7 @@ class SubscriptionsController < ApplicationController
             attachment << 'http:' + user_plan.document.url.first(sub_index)
           end      
         end
-        NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_later
+        NotificationMailer.plan_confirmation(current_user, template, attachment).deliver_now
     end
 
 

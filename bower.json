@@ -10,7 +10,7 @@
     "vendor/assets/components"
   ],
   "dependencies": {
-    "chosen": "^1.5.1",
+    "chosen": "^1.7.7",
     "normalize-css": "normalize.css#^4.0.0",
     "icomoon-bower": "icomoon#^0.1.0",
     "modernizr": "~2.7.2",

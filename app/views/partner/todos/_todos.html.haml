@@ -1,0 +1,12 @@
+- Todo.all.each_with_index do |todo, idx|
+  .survey-subject
+    - if current_user.affiliate.strategic?
+      .radio-box
+        - if params[:todo_id].to_i == todo.id.to_i
+          %input.partner-todo-radio{:type=>"radio", :name => "todo_id", :id => "radio#{todo.id}", :style => "display: none;", value: todo.id, 'data-current_role': @current_user.role, checked: ''}
+        - else
+          %input.partner-todo-radio{:type=>"radio", :name => "todo_id", :id => "radio#{todo.id}", :style => "display: none;", value: todo.id, 'data-current_role': @current_user.role}            
+        %label{:for => "radio#{todo.id}"}
+          = image_tag todo.icon.file, class: 'img' unless todo.icon.nil?
+        .row.survey-title
+          %span= todo.title

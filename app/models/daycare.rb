@@ -26,6 +26,7 @@ class Daycare < ActiveRecord::Base
     belongs_to :discount_code
     belongs_to :payment_mode
     belongs_to :payment_start
+    belongs_to :municipal
 
     has_many :departments,                              dependent: :destroy
     has_many :children,                                 through: :departments
@@ -65,12 +66,12 @@ class Daycare < ActiveRecord::Base
 
     has_one :profile_image,                             -> { where(attachable_type: 'DaycareProfile') }, class_name: 'Attachment', foreign_key: 'attachable_id', dependent: :destroy
 
-    validates :name, :address_line1, :postcode,
-                :country, :telephone,                   presence: true
+    validates :name, :address_line1, :postcode, :country, :telephone,              presence: true
 
     validates :departments,                             presence: true
 
-    scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+    scope :search,                                      ->(query, page, per_page_count, limit_count) { where("name LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+    scope :search_by_type,                              ->(query, type, page, per_page_count, limit_count) { where("name LIKE :search and care_type = :type", search: "%#{query}%", type: type).limit(limit_count).page(page).per(per_page_count) }
 
     scope :name_like, ->(search) { where("LOWER(daycares.name) LIKE :search", :search => "%#{search.downcase}%") }
     scope :address_like, ->(search) { where("LOWER(daycares.address_line1) LIKE :search", :search => "%#{search.downcase}%") }
@@ -127,13 +128,22 @@ class Daycare < ActiveRecord::Base
         self.discussion_participants.delete_all     
     end
 
+    def department_options
+        options = []
+        self.departments.each do |dept|
+            puts dept.id
+            options << [dept.name, dept.id]
+        end
+        return options
+    end
+
     def care_type_text
         case care_type
         when 1
             I18n.t('register.caretype.ind')
-        when 1
+        when 2
             I18n.t('register.caretype.fra')
-        when 1
+        when 3
             I18n.t('register.caretype.gov')
         else
             ""

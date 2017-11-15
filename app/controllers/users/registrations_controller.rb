@@ -122,7 +122,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user = User.find(current_user.id)
       render "register/edit_#{params[:role]}"
     when 'worker'
-      redirect_to dashboard_path
+      render "register/edit_#{params[:role]}"      
+      # redirect_to dashboard_path
     when 'medical_professional'
     end
   end
@@ -138,7 +139,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       get_affiliate
       result = @affiliate.update(affiliate_partner_params)
     when 'parentee'
-      result = current_user.update(daycare_parentee_params)
+      childrens = params[:user][:children_attributes]
+      puts childrens
+      childrens.each do |index, item|
+        if item[:id]
+          child = Child.find(item[:id])
+        else
+          child = Child.new
+        end
+
+        child.birth_date = item[:birth_date]
+        child.name = item[:name]
+        child.department_id = item[:department_id]
+        child.parent_id = current_user.id
+
+        result = child.save
+      end
     when 'medical_professional'
     end
 
@@ -154,6 +170,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find(current_user.id)
+    
     if @user.update_with_password(user_params_password)
       sign_in @user, :bypass => true
       get_resource_per_role      
@@ -202,8 +219,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       new_child
       new_user_daycare
     when 'worker'
-      set_daycares
-      new_user_daycare
+      set_daycares      
+      new_user_daycare if params[:option].to_i > 1
+      new_user_affiliate if params[:option].to_i < 2
     when 'medical_professional'
       new_user_profile
     end
@@ -221,6 +239,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       get_child
     when 'worker'
       set_daycares
+      get_daycare_department
     when 'medical_professional'
       new_user_profile
     end
@@ -244,14 +263,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :name,
       :address_line1,
       :postcode,
+      :municipal_id,
       #:country,
       :telephone,
       :care_type,
       :url,
       :num_children,
       :num_worker,
+      :discount_code_id,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type]],
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type, :card_number]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -261,11 +282,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :name,
       :address,
       :postcode,
-      :country,
+      :municipal_id,
+      #:country,
       :telephone,
-      :url,
-      user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role]],
-      profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
+      #:url,
+      :affiliate_type,
+      :num_member,
+      user_affiliates_attributes: [:affiliate_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :plan_type]]
+      #profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
 
@@ -313,6 +337,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.build_user_daycare
   end
 
+  def new_user_affiliate
+    resource.build_user_affiliate
+  end
+
   def assign_daycare_manager_role
     @daycare.user_daycares.first.user.role = params[:role]
   end
@@ -334,13 +362,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     template = @message_template.content.gsub! '[$NAME$]', user.name
     template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
 
-    RegistrationMailer.registration_confirmation(user, template).deliver_later
+    RegistrationMailer.registration_confirmation(user, template).deliver_now
   end
 
   def send_email_campaign user
     @email_campaigns = EmailCampaign.by_language(I18n.locale.downcase)
     @email_campaigns.each do |item|
-      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver_later
+      RegistrationMailer.register_email_campaign(user, item.subject, item.content).deliver_now
     end
   end
 
@@ -359,7 +387,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params_password
-    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email)      
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email, :card_number)      
   end
 
   def daycare_manager_params
@@ -373,10 +401,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def daycare_parentee_params
-    params.require(:user).permit(children_attributes: [:id, :name, :birth_date, 
-                                                       profile_image_attributes: [:id, :file]])      
+    params.require(:user).permit(children_attributes: [:id, :name, :birth_date, :department_id])      
   end
-
+  
   # def build_resource params
   #   self.resource = User.new(params)
   #   resource.build_

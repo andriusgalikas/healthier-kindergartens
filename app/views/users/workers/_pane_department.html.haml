@@ -26,9 +26,12 @@
     .parent-item
       .row.parent-department  
         .col-sm-12
-          %h3 Select Department
+          %h3=t('register.labels.select_department')
           - @departments.each do |department|
             .row
-              %input{:type=>"radio", :name => "department_item", :id => "chk_depart_#{@daycare.id}_#{department.id}", :style => "display: none;", "select-link" => new_user_registration_path(role: 'worker', daycare_id: @daycare.id, department_id: department.id)}
+              - if !current_user.nil? && current_user.department_id == department.id
+                %input{:type=>"radio", :name => "department_item", :id => "chk_depart_#{@daycare.id}_#{department.id}", :style => "display: none;", "select-link" => new_user_registration_path(role: 'worker', daycare_id: @daycare.id, department_id: department.id, option: params[:option]), checked: '', "data-id" => department.id}
+              - else
+                %input{:type=>"radio", :name => "department_item", :id => "chk_depart_#{@daycare.id}_#{department.id}", :style => "display: none;", "select-link" => new_user_registration_path(role: 'worker', daycare_id: @daycare.id, department_id: department.id, option: params[:option]), "data-id" => department.id}
               %label{:for => "chk_depart_#{@daycare.id}_#{department.id}"}
                 =department.name

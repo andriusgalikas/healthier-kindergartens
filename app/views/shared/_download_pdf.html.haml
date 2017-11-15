@@ -1,6 +1,6 @@
 - if params[:download_pdf].present?
 - poster = LocalePoster.find(params[:download_pdf])
-- button = t(poster.button).html_safe
+- button = t('poster.button').html_safe
   / Modal
   #dash_step_1.download_pdf
     .modal-dialog
@@ -8,10 +8,10 @@
       .modal-content
         .modal-header#download-pdf-header
           %button.my-button.close.plainmodal-close{"data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title= t(poster.title).html_safe
+          %h4.modal-title= t('poster.title').html_safe
         .modal-body
           = form_for [LocalePoster.new] do |f|
-            = t(poster.description).html_safe
+            = t('poster.description').html_safe
             = f.hidden_field :download_pdf, value: params[:download_pdf]
 
             .email-box-group

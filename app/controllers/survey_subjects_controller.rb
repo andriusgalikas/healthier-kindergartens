@@ -5,6 +5,7 @@ class SurveySubjectsController < ApplicationController
 
     def results
         set_subject
+        set_selected_result            
         if @subject.nil?
           redirect_to dashboard_path
         end
@@ -29,6 +30,14 @@ class SurveySubjectsController < ApplicationController
     private
 
     def set_subject
-        @subject ||= SurveySubject.where(language: I18n.locale.upcase).first
+        @subject ||= params[:subject_id].nil? ? SurveySubject.where(language: I18n.locale.upcase).first : SurveySubject.find(params[:subject_id])
+    end
+
+    def set_selected_result
+        @trend = nil
+        unless params[:subject_id].nil?
+            subject ||= SurveySubject.find(params[:subject_id])
+            @trend = SurveyTrendsGenerator.new(subject, [current_user.id])
+        end
     end
 end

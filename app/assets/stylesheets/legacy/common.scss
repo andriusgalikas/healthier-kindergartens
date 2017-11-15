@@ -31,6 +31,14 @@ header{
     font-size: 16px;
   }
 
+  .btn-green, .btn-green:active{
+    background: #2bd34d !important;
+    a{
+      color: #fff;
+      text-decoration: none;
+    }    
+  }
+
   .btn-round {
     border-radius: 20px;
     border: none;

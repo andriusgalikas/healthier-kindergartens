@@ -8,7 +8,7 @@ class HealthConversationNotificationJob < ActiveJob::Base
     notification_targets.each do |target|
       notif = notif_source.notifications.build(target_id: target.id)
       if notif.save!
-        NotificationMailer.notify(notif, sender).deliver_later
+        NotificationMailer.notify(notif, sender).deliver_now
       end
     end
 

@@ -38,6 +38,20 @@ $(document).ready(function()
 
     });
 
+    $('.frequency-selector').change(function(){
+        var value = $(this).val();
+        if (value === 'week')
+        {
+            $('.frequency-weekly-fields').show();
+            $('.frequency-daily-fields').hide();
+        }
+        else
+        {
+            $('.frequency-weekly-fields').hide();
+            $('.frequency-daily-fields').show();
+        }
+    });
+
     $('#allocation-slider').on("input change", function()
     {
         var planAllocation = $(this).val();
@@ -220,7 +234,13 @@ function add_fields(link, association, content) {
     var regexp = new RegExp("new_" + association, "g")
 
     if($(link).hasClass('subtask-link')) {
-      $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
+      if($(link).parent().find('.form-group').length == 0){
+        $(link).after(content.replace(regexp, new_id));
+      } else {
+        $(link).parent().find('.form-group').last().after(content.replace(regexp, new_id));
+      }
+    } else if(association == 'tasks') {
+      $('#tasks').append(content.replace(regexp, new_id));
     } else {
       $(link).parent().append(content.replace(regexp, new_id));
     }

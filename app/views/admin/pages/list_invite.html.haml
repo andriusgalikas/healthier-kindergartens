@@ -33,5 +33,11 @@
                   Edit Worker
                 = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'parentee') do
                   Edit Parent
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'internal') do
+                  Edit Internal
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'external') do
+                  Edit External
+                = link_to edit_admin_message_template_path(id: 0, subject: subject, type: 'invite', sub_type: 'contact') do
+                  Edit Contact
                 /= link_to [:admin, subject], method: :delete, data: {confirm: 'Are you sure?'} do
                 /  %i.icon-remove

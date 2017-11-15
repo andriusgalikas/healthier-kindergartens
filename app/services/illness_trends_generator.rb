@@ -14,6 +14,7 @@ class IllnessTrendsGenerator
   end
 
   def illnesses_involved
+
     @illness ||= if @opts[:illness_codes].present?
                    Illness.where(code: @opts[:illness_codes]).order(name: :asc)
                  else
@@ -37,6 +38,7 @@ class IllnessTrendsGenerator
     trend_data = []
 
     trend_data << header_columns
+
     date_labels.each do |date|
       trend_data << generate_trend_row(date)
     end
@@ -69,8 +71,17 @@ class IllnessTrendsGenerator
   end
 
   def health_records
-    cond_str = ['daycare_id = ?', 'owner_type = ?']
-    cond_arr = [@current_user.daycare.id, 'Child']
+    # cond_str = ['daycare_id = ?', 'owner_type = ?']
+    # cond_arr = [@current_user.daycare.id, 'Child']
+
+    # set daycares filters
+    if @opts[:daycare_ids].present?
+      cond_str = ['daycare_id in (?)', 'owner_type = ?']
+      cond_arr = [@opts[:daycare_ids], 'Department']
+    else
+      cond_str = ['daycare_id = ?', 'owner_type = ?']
+      cond_arr = [@current_user.daycare.id, 'Department']
+    end
 
     # set start_date filter
     if @opts[:start_date].present?
