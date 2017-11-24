@@ -961,6 +961,8 @@ en:
       childrens: Childrens
       daycares: Daycares
       daycare_result: Todo Results of selected Daycares
+      in_progress: In Progress
+      start_todo: Start Todo
   todo_completes: 
     show:
       label1: "Title"  

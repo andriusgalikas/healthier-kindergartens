@@ -93,13 +93,37 @@ class Todo < ActiveRecord::Base
     # => Conver the completion_date_value and completion_date to a datetime format
     #
     def completion_date_to_time
-        Chronic.parse("#{completion_date_value} #{completion_date} ago")
+        if completion_date_type == "completion_day"
+            return completion_date_value.to_i.days.ago
+        elsif completion_date_type == "completion_week"
+            return completion_date_value.to_i.weeks.ago
+        elsif completion_date_type == "completion_month"
+            return completion_date_value.to_i.months.ago
+        elsif completion_date_type == "completion_year"
+            return completion_date_value.to_i.years.ago
+        elsif completion_date_type == "completion_hour"
+            return completion_date_value.to_i.hours.ago
+        end
+    end
+
+    def completion_time_value
+        if completion_date_type == "completion_day"
+            return completion_date_value.to_i.days
+        elsif completion_date_type == "completion_week"
+            return completion_date_value.to_i.weeks
+        elsif completion_date_type == "completion_month"
+            return completion_date_value.to_i.months
+        elsif completion_date_type == "completion_year"
+            return completion_date_value.to_i.years
+        elsif completion_date_type == "completion_hour"
+            return completion_date_value.to_i.hours
+        end
     end
 
     # => Check if a certain is currently in progress by the current_user_id parameter
     #
     def in_progress? current_user_id
-        todo_completes.active.map(&:submitter_id).include?(current_user_id) ? true : false
+        todo_completes.where(completion_date: nil).active.map(&:submitter_id).include?(current_user_id) ? true : false
     end
 
     # => If the iteration type of the todo is single, set the frequency to nil
@@ -112,6 +136,85 @@ class Todo < ActiveRecord::Base
     #
     def completion_date
         completion_date_type.split('_').last.titleize
+    end
+
+    def is_startable? department_id
+        cur_time = DateTime.now
+        complete_time = cur_time
+        cur_start_time = cur_time.to_date
+
+        is_startable = false
+        todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
+        if self.single?
+            unless todo_complete.nil?
+                if todo_complete.completion_date.nil?
+                    is_startable = true
+                else
+                    is_startable = false
+                end
+            else
+                is_startable = true
+            end            
+        else            
+          start_time = self.start_date
+          if self.day?
+            complete_time = DateTime.now.to_date + self.completion_time_value
+          elsif self.week?
+            unless start_time.nil?
+                start_days = (self.start_days.nil?) ? "[]" : self.start_days
+                weekdays = JSON.parse(start_days)
+                cur_wday = start_time.strftime("%w").to_i
+                passed = 0
+                weekdays.each_with_index do |wday, index|
+                  if wday.to_i > cur_wday.to_i
+                    diff_day = cur_wday.to_i - weekdays[index-1].to_i
+                    cur_start_time = diff_day.days.ago
+                    passed = 1
+                    break
+                  end
+                end
+
+                if passed == 0
+                  weekdays.each_with_index do |wday, index|
+                    if wday.to_i + 7> cur_wday.to_i
+                      diff_day = cur_wday.to_i - weekdays[index-1].to_i
+                      cur_start_time = diff_day.days.ago
+                      passed = 1
+                      break
+                    end
+                  end          
+                end
+                complete_time = cur_start_time + self.completion_time_value
+            end
+          else
+            if !start_time.nil? && start_time - cur_time > 0
+              return true
+            else
+              unless start_time.nil?
+                  day = start_time.strftime("%d").to_i
+                  cur_start_time = DateTime.new(Time.now.year,Time.now.month,day,0,0,0)
+                  if cur_start_time - cur_time < 0
+                    cur_start_time = cur_start_time + 1.month
+                  end
+                  complete_time = cur_start_time + self.completion_time_value
+              end
+            end
+          end
+            if complete_time - cur_time >= 0
+                unless todo_complete.nil?
+                    if todo_complete.created_at >= cur_start_time
+                        is_startable = false
+                    else
+                        is_startable = true
+                    end
+                else
+                    is_startable = true
+                end
+            else
+              is_startable = true
+            end
+        end
+        return is_startable
     end
 
     def recurring_available
@@ -147,15 +250,19 @@ class Todo < ActiveRecord::Base
         todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
 
         if self.single?
-            unless todo_complete.blank?
-                is_available = false
+            unless todo_complete.nil?
+                if todo_complete.completion_date.nil?
+                    is_available = true
+                else
+                    is_available = false
+                end
             else
                 is_available = true
             end
         else
             unless todo_complete.nil?
                 if todo_complete.completion_date.nil?
-                    is_available = false
+                    is_available = true
                 else
                     if (todo_complete.completion_date <= todo_complete.todo.frequency_to_time)
                         is_available = true
