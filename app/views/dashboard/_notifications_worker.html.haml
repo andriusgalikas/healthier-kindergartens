@@ -21,13 +21,13 @@
                     .detail-box
                       %ul#time-counter.time-counter
                         %li.days
-                          %label -
+                          %label=diff_time[0]
                           %span Days
                         %li.hours
-                          %label -
+                          %label=diff_time[1]
                           %span Hours
                         %li.minutes
-                          %label -
+                          %label=diff_time[2]
                           %span Mins
                   %span.todo-footer
                     = (todo_obj.in_progress? current_user.id) ? t('todos.labels.in_progress') : t('todos.labels.start_todo')
