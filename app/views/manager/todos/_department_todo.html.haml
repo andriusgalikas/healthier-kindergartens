@@ -14,13 +14,13 @@
                 .detail-box
                   %ul#time-counter.time-counter
                     %li.days
-                      %label -
+                      %label=diff_time[0]
                       %span Days
                     %li.hours
-                      %label -
+                      %label=diff_time[1]
                       %span Hours
                     %li.minutes
-                      %label -
+                      %label=diff_time[2]
                       %span Mins
                   - unless todo.iteration_type == 0
                     - percent = get_current_status(todo.id, todo.department_id)

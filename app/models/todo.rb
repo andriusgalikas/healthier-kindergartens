@@ -223,7 +223,11 @@ class Todo < ActiveRecord::Base
             unless self.todo_completes.blank?
                 is_available = false
             else
-                is_available = true
+                if self.created_at + self.completion_time_value >= Time.now
+                    is_available = true
+                else
+                    is_available = false
+                end
             end
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
@@ -257,7 +261,11 @@ class Todo < ActiveRecord::Base
                     is_available = false
                 end
             else
-                is_available = true
+                if self.created_at + self.completion_time_value >= Time.now
+                    is_available = true
+                else
+                    is_available = false
+                end
             end
         else
             unless todo_complete.nil?

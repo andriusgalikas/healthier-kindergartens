@@ -157,11 +157,11 @@ module ApplicationHelper
     todo = Todo.find_by(id: todo_id)
     cur_time = DateTime.now
     if todo.single?
-      start_time = todo.start_date
+      start_time = todo.created_at
       if start_time.nil?
         return [-1, -1, -1, -1]
       else
-        return __release(start_time)
+        return __release(start_time + todo.completion_time_value)
       end
     else
       start_time = todo.start_date
