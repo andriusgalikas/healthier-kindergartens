@@ -50,7 +50,7 @@
               %td
                 = "#{todo.completion_date_value} #{todo.completion_date}"
               %td
-                = todo.daycare.try(:name)
+                = todo.daycare.try(:name) unless todo.daycare.nil?
               %td
                 = todo.global? ? 'Global' : 'Local'
               %td
