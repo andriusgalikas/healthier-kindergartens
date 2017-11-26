@@ -157,7 +157,11 @@ module ApplicationHelper
     todo = Todo.find_by(id: todo_id)
     cur_time = DateTime.now
     if todo.single?
-      start_time = todo.created_at
+      if todo.todo_completes.where.not(completion_date: nil).last.nil?
+        start_time = todo.created_at
+      else
+        start_time = todo.todo_completes.where.not(completion_date: nil).last.completion_date
+      end
       if start_time.nil?
         return [-1, -1, -1, -1]
       else
@@ -235,11 +239,15 @@ module ApplicationHelper
         todo = Todo.find_by(id: todo_id)
         cur_time = DateTime.now
         if todo.single?
-          return start_time = todo.start_date
-          if start_time.nil?
-            return [cur_time, cur_time]
-          else
-            return [start_time, cur_time]
+          start_time = todo.start_date
+          if todo.todo_completes.where.not(completion_date: nil).last.nil?
+            if start_time.nil?
+              return [cur_time, cur_time]
+            else
+              return [start_time, cur_time]
+            end
+          else            
+            return [todo.todo_completes.where.not(completion_date: nil).last.completion_date, cur_time]
           end
         else
           start_time = todo.start_date

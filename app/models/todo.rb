@@ -122,8 +122,15 @@ class Todo < ActiveRecord::Base
 
     # => Check if a certain is currently in progress by the current_user_id parameter
     #
-    def in_progress? current_user_id
-        todo_completes.where(completion_date: nil).active.map(&:submitter_id).include?(current_user_id) ? true : false
+    def in_progress? department_id
+        # todo_completes.where(completion_date: nil).active.map(&:submitter_id).include?(current_user_id) ? true : false
+        is_progress = false
+        todo_completes.where(completion_date: nil).active.each do |item|
+            if item.submitter.department_id == department_id            
+                is_progress = true
+            end
+        end
+        return is_progress
     end
 
     # => If the iteration type of the todo is single, set the frequency to nil
@@ -148,9 +155,9 @@ class Todo < ActiveRecord::Base
         if self.single?
             unless todo_complete.nil?
                 if todo_complete.completion_date.nil?
-                    is_startable = true
-                else
                     is_startable = false
+                else
+                    is_startable = true
                 end
             else
                 is_startable = true
@@ -220,15 +227,16 @@ class Todo < ActiveRecord::Base
     def recurring_available
         is_available = false
         if self.single?
-            unless self.todo_completes.blank?
-                is_available = false
-            else
-                if self.created_at + self.completion_time_value >= Time.now
-                    is_available = true
-                else
-                    is_available = false
-                end
-            end
+            is_available = true
+            # unless self.todo_completes.blank?
+            #     is_available = false
+            # else
+            #     if self.created_at + self.completion_time_value >= Time.now
+            #         is_available = true
+            #     else
+            #         is_available = false
+            #     end
+            # end
         else
             todo_complete = TodoComplete.recurring.where(todo_id: self.id).last
             if !todo_complete.nil? 
@@ -254,19 +262,20 @@ class Todo < ActiveRecord::Base
         todo_complete = TodoComplete.last_department_complete(self.id, department_id).last
 
         if self.single?
-            unless todo_complete.nil?
-                if todo_complete.completion_date.nil?
-                    is_available = true
-                else
-                    is_available = false
-                end
-            else
-                if self.created_at + self.completion_time_value >= Time.now
-                    is_available = true
-                else
-                    is_available = false
-                end
-            end
+            is_available = true
+            # unless todo_complete.nil?
+            #     if todo_complete.completion_date.nil?
+            #         is_available = true
+            #     else
+            #         is_available = false
+            #     end
+            # else
+            #     if self.created_at + self.completion_time_value >= Time.now
+            #         is_available = true
+            #     else
+            #         is_available = false
+            #     end
+            # end
         else
             unless todo_complete.nil?
                 if todo_complete.completion_date.nil?

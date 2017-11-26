@@ -35,6 +35,9 @@
                       %li.minutes
                         %label=diff_time[2]
                         %span Mins
+                    - percent = get_current_status(todo.id, todo.department_id)
+                    .progress
+                      .value{style: "width: #{percent}%;"}
                 %span.todo-footer
                   = todo.department_name
           - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1)

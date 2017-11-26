@@ -22,10 +22,9 @@
                     %li.minutes
                       %label=diff_time[2]
                       %span Mins
-                  - unless todo.iteration_type == 0
-                    - percent = get_current_status(todo.id, todo.department_id)
-                    .progress
-                      .value{style: "width: #{percent}%;"}
+                  - percent = get_current_status(todo.id, todo.department_id)
+                  .progress
+                    .value{style: "width: #{percent}%;"}
               %span.todo-footer
                 = todo.department_name
         - else
@@ -43,10 +42,9 @@
                     %li.minutes
                       %label=diff_time[2]
                       %span Mins
-                  - unless todo.iteration_type == 0
-                    - percent = get_current_status(todo.id, todo.department_id)
-                    .progress
-                      .value{style: "width: #{percent}%;"}
+                  - percent = get_current_status(todo.id, todo.department_id)
+                  .progress
+                    .value{style: "width: #{percent}%;"}
               %span.todo-footer
                 = todo.department_name
 :javascript

@@ -12,29 +12,8 @@
           - diff_time = get_remain_time(todo.id)
           - if (todo_obj.single? && diff_time[2] != -1)
             %li
-              - todo_path = (todo_obj.in_progress? current_user.id) ? '#' : todo_todo_completes_path(todo)
-              - todo_method = (todo_obj.in_progress? current_user.id) ? 'get' : 'post'
-              = link_to todo_path, method: todo_method, style: "color: #2f363d;text-decoration: none;" do
-                %h5=todo.title
-                .department-todo
-                  .todo-command
-                    .detail-box
-                      %ul#time-counter.time-counter
-                        %li.days
-                          %label=diff_time[0]
-                          %span Days
-                        %li.hours
-                          %label=diff_time[1]
-                          %span Hours
-                        %li.minutes
-                          %label=diff_time[2]
-                          %span Mins
-                  %span.todo-footer
-                    = (todo_obj.in_progress? current_user.id) ? t('todos.labels.in_progress') : t('todos.labels.start_todo')
-          - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
-            %li
-              - todo_path = (todo_obj.in_progress? current_user.id) ? '#' : todo_todo_completes_path(todo)
-              - todo_method = (todo_obj.in_progress? current_user.id) ? 'get' : 'post'
+              - todo_path = (todo_obj.in_progress? current_user.department_id) ? '#' : todo_todo_completes_path(todo)
+              - todo_method = (todo_obj.in_progress? current_user.department_id) ? 'get' : 'post'
               = link_to todo_path, method: todo_method, style: "color: #2f363d;text-decoration: none;" do
                 %h5=todo.title
                 .department-todo
@@ -54,7 +33,31 @@
                       .progress
                         .value{style: "width: #{percent}%;"}
                   %span.todo-footer
-                    - if todo_obj.in_progress? current_user.id
+                    = (todo_obj.in_progress? current_user.department_id) ? t('todos.labels.in_progress') : t('todos.labels.start_todo')
+          - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
+            %li
+              - todo_path = (todo_obj.in_progress? current_user.department_id) ? '#' : todo_todo_completes_path(todo)
+              - todo_method = (todo_obj.in_progress? current_user.department_id) ? 'get' : 'post'
+              = link_to todo_path, method: todo_method, style: "color: #2f363d;text-decoration: none;" do
+                %h5=todo.title
+                .department-todo
+                  .todo-command
+                    .detail-box
+                      %ul#time-counter.time-counter
+                        %li.days
+                          %label=diff_time[0]
+                          %span Days
+                        %li.hours
+                          %label=diff_time[1]
+                          %span Hours
+                        %li.minutes
+                          %label=diff_time[2]
+                          %span Mins
+                      - percent = get_current_status(todo.id, current_user.department_id)
+                      .progress
+                        .value{style: "width: #{percent}%;"}
+                  %span.todo-footer
+                    - if todo_obj.in_progress? current_user.department_id
                       = t('todos.labels.in_progress')
                     - elsif todo_obj.is_startable? current_user.department_id
                       = t('todos.labels.start_todo')
