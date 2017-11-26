@@ -54,7 +54,7 @@
               %td
                 = todo.global? ? 'Global' : 'Local'
               %td
-                = todo.user.name
+                = todo.user.name unless todo.user.nil?
               %td
                 = todo.language.downcase unless todo.language.nil?
               %td
