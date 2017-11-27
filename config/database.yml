@@ -11,7 +11,7 @@ development:
   database: health_childcare_dev
   pool: 5
   username: postgres
-  password: postgres
+  password: password
 
 test:
   adapter: postgresql
@@ -20,7 +20,7 @@ test:
   database: health_childcare_test
   pool: 5
   username: postgres
-  password: postgres
+  password: password
 
 production:
   adapter: postgresql
@@ -29,4 +29,4 @@ production:
   pool: 5
   database: health_childcare
   username: postgres
-  password: postgres
+  password: password
