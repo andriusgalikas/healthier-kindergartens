@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171031160425) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "url"
-    t.integer  "affiliate_type"
+    t.integer  "affiliate_type", default: 0
     t.integer  "num_member",     default: 0
     t.integer  "municipal_id"
   end
@@ -408,7 +408,6 @@ ActiveRecord::Schema.define(version: 20171031160425) do
     t.string   "label_key"
     t.integer  "daycare_id",  default: 0
     t.integer  "partner_id",  default: 0
-    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|

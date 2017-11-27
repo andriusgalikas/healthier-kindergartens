@@ -19,7 +19,7 @@ Rails.application.configure do
 
   config.stripe.debug_js = true
 
-  config.log_level = :debug
+  config.log_level = :info
 
   # Do not eager load code on boot.
   config.eager_load = false
