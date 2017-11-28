@@ -50,11 +50,11 @@
               %td
                 = "#{todo.completion_date_value} #{todo.completion_date}"
               %td
-                = todo.daycare.try(:name)
+                = todo.daycare.try(:name) unless todo.daycare.nil?
               %td
                 = todo.global? ? 'Global' : 'Local'
               %td
-                = todo.user.name
+                = todo.user.name unless todo.user.nil?
               %td
                 = todo.language.downcase unless todo.language.nil?
               %td

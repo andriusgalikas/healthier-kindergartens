@@ -130,16 +130,23 @@ en:
       step_2: Developing training, tools and resources that enable nursery operators to take appropriate measures related health and safety of children.
       step_3: Streamline interaction between nursery community and all institutions in the society who are working to ensure safety, health and wellbeing of children.
       step_4: Aid our members compliance with the National Regulations in the context of risk of spread of infectious diseases in nursery.
-      president_heading: About the Chairman  
-      president_subheading: National Association of Healthier and safer nurseries’ Chairman, Tareq Ghulam, developed a passion for hygiene from his mother.
-      president_para1: In 1961 Tareq’s mother emigrated from Bangladesh to Norway with Tareq and his younger brother. In her quest for a better life, the widowed mother worked double shifts. However, she always did an excellent job, carrying it out with pride and purpose.
-      president_para2: This commitment was transferred to Tareq, who later started offering hygiene services to nurseries 
-      president_para3: When Tareq was repeatedly approached by nursery managers to help mitigate risk of infection in childcare., he realized that his knowledge of infection risk control in nursey setting was very limited. Not wanting be in the situation he was in, he decided to research the field of infection risk control as it relates to nursery setting. He was surprised to know that much of the research done in methods and procedures of infection risk control in nurseries ended up in medical journals , that few people outside the medical community read and could take advantage of. The real shock came when he discovered that children who attend nurseries are two to three times more susceptible to infectious diseases than children who were looked after at home.  He became quite  troubled by the fact that while most infectious diseases do not interfere with a child's development, there are a few infections that can lead to permanent physical damage and even death among children who attend nurseries. A real life incident forced him to evaluate the critical need of an association to help nursery operators manage infectious disease related risk to children . On 31 May 2015, a two-year-old child died after contracting an E. coli infection in the nursery, where the basic infection risk control practice of  informing parents in an instance of infectious disease occurrence in the nursery was not implemented.
-      question_heading: "Future tragedies should be avoided."
-      question_para1: "The bereaved family filed a lawsuit against the nursery since their child had to pay with his life due to nursey failing to apply proper infection risk control practice required for that situation . In a statement on behalf of the family, the father of the little child who now was dead  said Although we will forever feel the pain over the loss of Myles, we are dedicated to making sure that he did not die in vain and that those responsible for the operation of kindergartens follow the rules and put the safety of the children in their care first."
-      question_para3: "The incident is a tragic reminder of the catastrophic outcomes that can occur when infection risk control measures are not taken seriously." 
-      question_para4: "The incident involving the innocent to year old nursery child became the driving force behind Tareq’s mission, as he also is a father himself. Through Association for healthier and safer childcare, the aim is enable all nursery operators to put in place an infrastructure in the nursery the consistently and proactive controls infectious disease risk exposure to children. " 
-      question_para5: "No parent, nursery operator nor nursery staff should have to experience the loss of a child under their care due to failure of applying appropriate infection risk control measures." 
+      president_heading: About the President
+      president_subheading: A passion for childcare health and safety
+      president_para1: Tareq er andregenerasjons innvandrer til Norge. I 1961 emigrerte hans mor til Norge fra Bangladesh med Tareq og hans yngre bror. Og han oppdaget raskt verdien av et godt utført arbeid. I sin søken etter et bedre liv, jobbet den enslige moren doble skift. Men hun gjorde alltid en utmerket jobb, fordi hun utførte jobben med stolthet.Og dette engasjementet ble overført til Tareq, som senere begynte å tilby hygienetjenester til barnehager.
+      president_para2: “Under utbruddet av svineinfluensa ønsket klientene mine desperat å vite hvordan en kunne beskytte barnehagen mot denne smittsomme sykdommen, forteller Tareq. “Men det var da  at jeg ble virkelig klar over hvor viktig dette med smittevern er jeg innså  at min kunnskap rundt smittevern i barnehager var for lav.  Jeg bestemte seg derfor for å tilegne seg mer kunnskap på dette spesifikke feltet.
+      president_para3: 
+      question_heading: "Store konsekvenser"
+      question_para1: Og det var da han oppdaget at mye av forskningen i metoder og prosedyrer for smittevern i barnehager endte opp i medisinske tidsskrifter som få personer utenfor det medisinske samfunnet hadde tilgang til og kunne dra nytte av.
+      question_para3: Dette kan få store konsekvenser for utviklingen til barna.
+      question_para4: De fleste smittsomme sykdommer forstyrrer ikke et barns utvikling, men så er det noen infeksjoner som kan bidra til helsemessige komplikasjoner hos enkelte barn senere i utviklingen deres.
+      question_heading2: One Day, Tareq Noticed A Serious Problem
+      question2_para1: Et par år etter at Tareq hadde begynt å interessere seg spesifikt for smittevern i barnehager dukket saken om Myles opp. For i 2015 døde et to år gammelt barn etter en infeksjon i en barnehage. Det ble rettsak av dette, fordi enhver barnehageleder er ansvarlig for at foresatte uoppfordret informeres om forhold som kan ha negativ innvirkning på barnas helse. Det kom noen oppsiktsvekkende fakta fram. Lederen var, for det første, ikke bevisst på omfanget av helserisikoen den smittsomme sykdommen som hadde oppstått i barnehagen.
+      question2_para3: Noen oppsiktsvekkende fakta kom frem i rettssaken. Lederen av barnehagen hvor to-åringen omkom var ikke bevisst på omfanget av helserisikoen den oppståtte smittsomme sykdommen utgjorde for barn.
+      question2_para4: Personalet i barnehagen hadde heller ikke noe referansemateriale, eller annen lett tilgjengelig informasjon over den smittsomme sykdommen. Hadde de hatt dette kunne de tilegnet seg kunnskap, effektivt gjenkjent farlige situasjoner, og - ikke minst - satt i verk viktige tiltak for å begrense problemet. Som også burde inkludere varsling av foreldrene.
+      question_heading3: Drivkraften bak
+      question3_para1: Det to år gamle barnehagebarnets dødsfall ble drivkraften bak utarbeidelsen av «tryggere helsebevarende barnomsorg»-programmet.
+      question3_para3: Og målet er at spredningen av smittsomme sykdommer i barnehager skal bli så liten som praktisk mulig.
+      question3_para4: “Jeg opplevde veldig sterkt at ingen barnehageleder, forelder eller ansatt skal behøve å oppleve tapet av et barn under deres omsorg grunnet mangel på god smittevern i barnehagen.
 
     home:
       slide_header: <b> Norway's Association </b><small> for </small><b> Healthier Kindergartens </b>      
@@ -961,6 +968,8 @@ en:
       childrens: Childrens
       daycares: Daycares
       daycare_result: Todo Results of selected Daycares
+      in_progress: In Progress
+      start_todo: Start Todo
   todo_completes: 
     show:
       label1: "Title"  
