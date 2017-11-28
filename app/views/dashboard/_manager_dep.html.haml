@@ -2,9 +2,9 @@
   - if !current_user.active_subscribed?
     = render 'upgrade_notify'
 .row.content-main
-  - if current_user.is_trial_member? && (!current_user.active_subscribed?)
+  - if !current_user.is_trial_member? && (!current_user.active_subscribed?)
     .col-md-5.col-sm-6.col-xs-12
-      #main-menu.text-center.apply-customer
+      #main-menu.apply-customer
         .menu-items
           %a#item_survey{href: '#'}
             = image_tag 'dashboard-risk.png'
@@ -29,7 +29,7 @@
             %span=t('dashboard.menu_item.illness_record')
   - else
     .col-md-5.col-sm-6.col-xs-12
-      #main-menu.text-center.apply-customer
+      #main-menu.apply-customer
         .menu-items
           - @permissions.each do |permission|
             - if permission.active
