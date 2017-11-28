@@ -22,8 +22,10 @@
     .row.item-content
       / - @notifications_by_sender.each do |sender|
       - index = 0
+      - cou = []
       - notif_per_source_type(@notifications, 'Message').each do |notif|    
-        - unless notif.source_owner.nil? || index > 0
+        - if !notif.source_owner.nil? and !cou.include? notif.source.owner.name
+          - cou << notif.source.owner.name
           .col-md-2.col-sm-3.col-xs-3.text-center
             %span.item-number 
               / = sender.count_message
