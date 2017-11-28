@@ -26,7 +26,12 @@ class Admin::DaycaresController < AdminController
                 end
             end
 
-            if params[:plan_type]
+            @daycare.managers.each do |user|
+                user.deposit_required = @daycare.pay_mode
+                user.save
+            end
+
+            if params[:plan_type] && @daycare.pay_mode
               @daycare.managers.each do |user|
                   user.plan_type = params[:plan_type]
                   if user.deposit_required && params[:plan_type].to_i >= 2
@@ -38,7 +43,7 @@ class Admin::DaycaresController < AdminController
                     trans.plan_type = params[:plan_type]
                     trans.save
                   end
-              end              
+              end
             end
 
             format.html { redirect_to admin_daycares_path(country: @daycare.country), notice: 'Daycare was successfully updated.' }

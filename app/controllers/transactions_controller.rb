@@ -78,8 +78,8 @@ class TransactionsController < ApplicationController
       )
       
       if current_user.deposit_required && !charge.id.nil?
-        current_user.deposit_required = false
-        current_user.plan_type = 4
+        # current_user.deposit_required = false
+        # current_user.plan_type = 4
         user_upgraded = true
       end
 

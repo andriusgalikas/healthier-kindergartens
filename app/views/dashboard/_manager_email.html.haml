@@ -25,7 +25,7 @@
                 = image_tag permission.image
                 %span=t(permission.label_key)
             - else
-              %a{href: permission.path, id: permission.element}
+              %a{href: '#', id: permission.element}
                 = image_tag permission.image
                 %span=t(permission.label_key)
       / - if current_user.paid_plan_type == 0
