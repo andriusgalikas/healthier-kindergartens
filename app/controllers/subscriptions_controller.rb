@@ -121,7 +121,7 @@ class SubscriptionsController < ApplicationController
           @transaction.plan_type = current_user.plan_type
           @transaction.save
 
-          current_user.deposit_required = false
+          # current_user.deposit_required = false
           current_user.save
 
         rescue Stripe::CardError => e

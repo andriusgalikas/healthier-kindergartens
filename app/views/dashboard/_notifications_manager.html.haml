@@ -40,7 +40,7 @@
                       .value{style: "width: #{percent}%;"}
                 %span.todo-footer
                   = todo.department_name
-          - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1)
+          - if (todo_obj.recurring? && todo_obj.is_active == 1)
             %li
               %h5=todo.title
               .department-todo

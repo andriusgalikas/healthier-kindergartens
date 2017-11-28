@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031160425) do
+ActiveRecord::Schema.define(version: 20171128131025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171031160425) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "url"
-    t.integer  "affiliate_type", default: 0
+    t.integer  "affiliate_type"
     t.integer  "num_member",     default: 0
     t.integer  "municipal_id"
   end
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20171031160425) do
     t.integer  "payment_mode_id"
     t.integer  "payment_start_id"
     t.integer  "municipal_id"
+    t.integer  "pay_mode",         default: 1
   end
 
   create_table "department_todos", force: :cascade do |t|
@@ -408,6 +409,7 @@ ActiveRecord::Schema.define(version: 20171031160425) do
     t.string   "label_key"
     t.integer  "daycare_id",  default: 0
     t.integer  "partner_id",  default: 0
+    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|

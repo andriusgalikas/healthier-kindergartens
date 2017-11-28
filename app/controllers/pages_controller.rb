@@ -35,9 +35,9 @@ class PagesController < ApplicationController
 
     def journey
         journey_model = GlobalSetting.find_by(key: "Journey Page Mode")
-        if journey_model.value == "userplan_mode"
-            redirect_to pre_user_plan_path
-        end
+        # if journey_model.value == "userplan_mode"
+        #     redirect_to pre_user_plan_path
+        # end
     end
 
     def guide_text

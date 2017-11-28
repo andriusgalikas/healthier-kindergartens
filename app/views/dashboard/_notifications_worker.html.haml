@@ -34,7 +34,7 @@
                         .value{style: "width: #{percent}%;"}
                   %span.todo-footer
                     = (todo_obj.in_progress? current_user.department_id) ? t('todos.labels.in_progress') : t('todos.labels.start_todo')
-          - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
+          - if (todo_obj.recurring? && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
             %li
               - todo_path = (todo_obj.in_progress? current_user.department_id) ? '#' : todo_todo_completes_path(todo)
               - todo_method = (todo_obj.in_progress? current_user.department_id) ? 'get' : 'post'

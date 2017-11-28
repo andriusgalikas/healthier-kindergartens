@@ -1,38 +1,41 @@
 .row.content-header
-  - if !(current_user.active_subscribed? || !current_user.manager?)
+  - if !current_user.active_subscribed?
     = render 'upgrade_notify'
 .row.content-main
-  .col-md-5.col-sm-6.col-xs-12
-    #main-menu.text-center.apply-customer
-      / - if current_user.plan_type == 0       
-      .menu-items.text-center
-        %a#item_survey{href: '/guide_page/manager_survey/result_step1'}
-          = image_tag 'dashboard-risk.png'
-          %span=t('dashboard.menu_item.risk_assessment')        
-      / %a.btn.btn-round.btn-red{:href => "#" }
-      /   =t('dashboard.upgrade.plan.phase1')
-      .menu-items.text-center
-        = link_to instruction_path, id: 'item_instruction' do
-          = image_tag 'dashboard-instruction.png'
-          %span=t('dashboard.menu_item.instruction')         
-        %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-          = image_tag 'dashboard-ilness-rec.png'
-          %span=t('dashboard.menu_item.illness_guide')
-      / %a.btn.btn-round.btn-red{:href => "#"}
-      /   =t('dashboard.upgrade.plan.phase2')
-      .menu-items
-        %a#item_todo{href: '/guide_page/manager_todo/dash'}
-          = image_tag 'dashboard-taskmng.png'
-          %span=t('dashboard.menu_item.task_manager')
-        %a#item_message{href: '/guide_page/manager_message/dash'}
-          = image_tag 'dashboard-com-mng.png'
-          %span=t('dashboard.menu_item.communication')
-        %a#item_illness_graph{href: '/guide_page/manager_illness/graph_step1'}
-          = image_tag 'dashboard-illness-graph.png'
-          %span=t('dashboard.menu_item.illness_analytic')
-        %a#item_illness{href: '/guide_page/worker_illness/view_dash'}
-          = image_tag 'dashboard-ilness.png'
-          %span=t('dashboard.menu_item.illness_record')
+  - if !current_user.is_trial_member? && (!current_user.active_subscribed?)
+    .col-md-5.col-sm-6.col-xs-12
+      #main-menu.apply-customer
+        .menu-items
+          %a#item_survey{href: '#'}
+            = image_tag 'dashboard-risk.png'
+            %span=t('dashboard.menu_item.risk_assessment')        
+          = link_to instruction_path, id: 'item_instruction' do
+            = image_tag 'dashboard-instruction.png'
+            %span=t('dashboard.menu_item.instruction')         
+          %a#item_illness{href: '#'}
+            = image_tag 'dashboard-ilness-rec.png'
+            %span=t('dashboard.menu_item.illness_guide')
+          %a#item_todo{href: '#'}
+            = image_tag 'dashboard-taskmng.png'
+            %span=t('dashboard.menu_item.task_manager')
+          %a#item_message{href: '#'}
+            = image_tag 'dashboard-com-mng.png'
+            %span=t('dashboard.menu_item.communication')
+          %a#item_illness_graph{href: '#'}
+            = image_tag 'dashboard-illness-graph.png'
+            %span=t('dashboard.menu_item.illness_analytic')
+          %a#item_illness{href: '#'}
+            = image_tag 'dashboard-ilness.png'
+            %span=t('dashboard.menu_item.illness_record')
+  - else
+    .col-md-5.col-sm-6.col-xs-12
+      #main-menu.apply-customer
+        .menu-items
+          - @permissions.each do |permission|
+            - if permission.active
+              = link_to permission.path, id: permission.element do
+                = image_tag permission.image
+                %span=t(permission.label_key)
 
       / %a.btn.btn-round.btn-red{:href => "#"}
       /   =t('dashboard.upgrade.plan.phase3')

@@ -1019,7 +1019,8 @@ en:
         label8: "Make payment"
         label6: "Users"
         label7: "Departments"
-        label8: "Phase"
+        label9: "Phase"
+        label10: "Pay Mode"
         line: "No results found"
 
       edit:

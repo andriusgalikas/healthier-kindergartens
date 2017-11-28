@@ -30,6 +30,15 @@ class Admin::TodosController < AdminController
   def create
     set_departments
     params[:todo][:department_ids] = Department.ids
+    params[:todo][:user_id] = current_user.id
+    params[:todo][:tasks_attributes].each do |task|
+      task[1][:language] = params[:todo][:language]
+      unless task[1][:sub_tasks_attributes].nil?
+        task[1][:sub_tasks_attributes].each do |sub_task|
+          sub_task[1][:language] = params[:todo][:language]
+        end
+      end
+    end
     @todo = current_user.todos.build(todo_params)
     respond_to do |format|
       if @todo.save
@@ -96,8 +105,10 @@ class Admin::TodosController < AdminController
                                     :language,
                                     :completion_date_type, 
                                     :completion_date_value, 
+                                    :start_date,
                                     department_ids: [], 
-                                    tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, sub_tasks_attributes: [:id, :title, :_destroy]], 
+                                    tasks_attributes: [:_destroy, :id, :title, :description, :todo_id, :task_type, :language, 
+                                        sub_tasks_attributes: [:id, :title, :_destroy, :sub_task_type, :language]], 
                                     icon_attributes: [:id, :attachable_type, :attachable_id, :file])
     end
 end
