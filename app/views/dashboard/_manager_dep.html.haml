@@ -1,5 +1,5 @@
 .row.content-header
-  - if current_user.is_trial_member? && (!current_user.active_subscribed?)
+  - if !current_user.active_subscribed?
     = render 'upgrade_notify'
 .row.content-main
   - if current_user.is_trial_member? && (!current_user.active_subscribed?)
