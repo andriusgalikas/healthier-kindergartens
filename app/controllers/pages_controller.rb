@@ -85,8 +85,8 @@ class PagesController < ApplicationController
         scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
         @app_types = scheduler.get_appointment_types
 
-        # rescue Exception
-        #     redirect_to dashboard_path
+        rescue Exception
+            redirect_to dashboard_path
     end
 
     def get_available_schedule_time

@@ -6,27 +6,16 @@
     .col-md-5.col-sm-6.col-xs-12
       #main-menu.apply-customer
         .menu-items
-          %a#item_survey{href: '#'}
-            = image_tag 'dashboard-risk.png'
-            %span=t('dashboard.menu_item.risk_assessment')        
-          = link_to instruction_path, id: 'item_instruction' do
-            = image_tag 'dashboard-instruction.png'
-            %span=t('dashboard.menu_item.instruction')         
-          %a#item_illness{href: '#'}
-            = image_tag 'dashboard-ilness-rec.png'
-            %span=t('dashboard.menu_item.illness_guide')
-          %a#item_todo{href: '#'}
-            = image_tag 'dashboard-taskmng.png'
-            %span=t('dashboard.menu_item.task_manager')
-          %a#item_message{href: '#'}
-            = image_tag 'dashboard-com-mng.png'
-            %span=t('dashboard.menu_item.communication')
-          %a#item_illness_graph{href: '#'}
-            = image_tag 'dashboard-illness-graph.png'
-            %span=t('dashboard.menu_item.illness_analytic')
-          %a#item_illness{href: '#'}
-            = image_tag 'dashboard-ilness.png'
-            %span=t('dashboard.menu_item.illness_record')
+          - @permissions.each do |permission|
+            - if permission.active
+              - if 2 >= permission.plan
+                = link_to permission.path, id: permission.element do
+                  = image_tag permission.image
+                  %span=t(permission.label_key)
+              - else
+                %a{href: '#', id: permission.element}
+                  = image_tag permission.image
+                  %span=t(permission.label_key)
   - else
     .col-md-5.col-sm-6.col-xs-12
       #main-menu.apply-customer
