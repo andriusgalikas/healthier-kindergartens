@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128131025) do
+ActiveRecord::Schema.define(version: 20171130174711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171128131025) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "url"
-    t.integer  "affiliate_type"
+    t.integer  "affiliate_type", default: 0
     t.integer  "num_member",     default: 0
     t.integer  "municipal_id"
   end
@@ -409,7 +409,6 @@ ActiveRecord::Schema.define(version: 20171128131025) do
     t.string   "label_key"
     t.integer  "daycare_id",  default: 0
     t.integer  "partner_id",  default: 0
-    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -433,6 +432,17 @@ ActiveRecord::Schema.define(version: 20171128131025) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string   "appointment_type"
+    t.datetime "datetime"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "token"
+  end
+
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "sub_task_completes", force: :cascade do |t|
     t.integer  "submitter_id"
@@ -698,6 +708,9 @@ ActiveRecord::Schema.define(version: 20171128131025) do
     t.string   "card_number"
     t.string   "stripe_customer"
     t.integer  "plan_type"
+    t.string   "daycare_name"
+    t.string   "mobile"
+    t.string   "default_password_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -723,4 +736,5 @@ ActiveRecord::Schema.define(version: 20171128131025) do
   add_index "votes", ["vote_candidate_code"], name: "index_votes_on_vote_candidate_code", using: :btree
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", using: :btree
 
+  add_foreign_key "schedules", "users"
 end

@@ -105,8 +105,8 @@ class DashboardController < ApplicationController
         end
       when 'parentee'
         group = 2
-        sub_type = current_user.daycare.care_type + 1
-        daycare_id = current_user.daycare.id
+        sub_type = (current_user.daycare.care_type + 1) rescue 1
+        daycare_id = current_user.try(:daycare).try(:id)
       when 'partner'
         group = 3
         sub_type = current_user.affiliate.affiliate_type

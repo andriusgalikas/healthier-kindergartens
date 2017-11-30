@@ -100,7 +100,9 @@ class PagesController < ApplicationController
         end
 
         rescue Exception
-            format.json {render :json => []}
+            respond_to do |format|
+                format.json {render :json => []}
+            end
     end
 
     def add_schedule
@@ -128,7 +130,13 @@ class PagesController < ApplicationController
         else
             flash[:notice] = t('pages.ethic.step4.schedule_success')
         end
-        redirect_to dashboard_path
+
+        schedule = Schedule.new({ appointment_type: params[:appointment_type], datetime: params[:start_date] + ' ' + params[:start_time], user_id: User.find_by_email(params[:email]).id})
+        if schedule.save
+            redirect_to webinar_path(schedule.token)
+        else
+            render text: "Something went wrong"
+        end
     end
 
     def contact_us

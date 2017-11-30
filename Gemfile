@@ -57,6 +57,7 @@ group :development do
   gem 'spring'
 end
 
+gem "letter_opener", :group => :development
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -128,3 +129,8 @@ gem 'docx'
 gem 'wysiwyg-rails'
 
 gem 'ckeditor'
+
+# frontend
+gem 'simple_form'
+gem 'simple_form_extension'
+gem 'redactor-rails', github: 'glyph-fr/redactor-rails'

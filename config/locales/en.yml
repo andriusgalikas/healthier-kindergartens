@@ -696,8 +696,11 @@ en:
       ben_para11: "<b> Positively impact the next generation </b><br/> Your pursuit of excellence in health care preservation raises the standards and behaviour of everyone around you. Children who observe the proper infection prevention practices in use, both at home and while in childcare, will learn life skills at a young age that they'll take with them for the rest of their lives. As a result, your staff and the children's parents can have a positive impact on generations to come. "
   register:
     parentee:
+      title: Oppdag hvordan du som barnehageleder kan gjøre barnehagen din tryggere med tanke på smittsomme sykdommer
+      subtitle: Og samtidig enklere følge de norske reglene og forskriftene i Smittevernloven.
+      button_text: Setup Call
       main_heading: "Register your child."  
-
+      
     labels:
       next: Next
       previous: Previous page
