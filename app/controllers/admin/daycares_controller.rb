@@ -76,7 +76,8 @@ class Admin::DaycaresController < AdminController
           :payment_month,          
           :discount_code_id,
           :payment_mode_id,
-          :payment_start_id        
+          :payment_start_id,
+          :pay_mode        
         )
       end
 
