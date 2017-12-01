@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
           upgrade_partner_deposit
         end
       end
-
+      @counter = current_user.notifications.collect{|n| n.source.owner.name}.uniq
       render "dashboard/#{current_user.role}", format: [:html]
       rescue ActionView::MissingTemplate
         redirect_to current_user.admin? ? admin_root_url : root_url

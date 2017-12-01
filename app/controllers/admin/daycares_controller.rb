@@ -31,18 +31,18 @@ class Admin::DaycaresController < AdminController
                 user.save
             end
 
-            if params[:plan_type] && @daycare.pay_mode
+            if params[:plan_type]
               @daycare.managers.each do |user|
-                  user.plan_type = params[:plan_type]
-                  if user.deposit_required && params[:plan_type].to_i >= 2
-                    user.deposit_required = false
-                  end
+                  user.plan_type = @daycare.pay_mode ? 1: params[:plan_type]
+                  # if user.deposit_required && params[:plan_type].to_i >= 2
+                  #   user.deposit_required = false
+                  # end
                   user.save
-                  transactions = Transaction.where(user_id: user.id)
-                  transactions.each do |trans|
-                    trans.plan_type = params[:plan_type]
-                    trans.save
-                  end
+                  # transactions = Transaction.where(user_id: user.id)
+                  # transactions.each do |trans|
+                  #   trans.plan_type = params[:plan_type]
+                  #   trans.save
+                  # end
               end
             end
 
@@ -76,7 +76,8 @@ class Admin::DaycaresController < AdminController
           :payment_month,          
           :discount_code_id,
           :payment_mode_id,
-          :payment_start_id        
+          :payment_start_id,
+          :pay_mode        
         )
       end
 

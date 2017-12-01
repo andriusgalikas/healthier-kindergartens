@@ -60,7 +60,7 @@
                 <%= dc.country %>
               </td>
               <td>
-                <%= dc.pay_mode ? "Deposit Mode" : "User Plan Mode" %>
+                <%= dc.pay_mode == 1 ? "Price per Head" : "Fixed Price" %>
               </td>              
               <td>
                 <%= dc.discount_code.value unless dc.discount_code.nil?%>
