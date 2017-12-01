@@ -1,13 +1,13 @@
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title
-      = image_tag 'status-of-task.png'
+      = image_tag 'dashboard_icons/2'
       &nbsp;&nbsp;&nbsp;
       =t('dashboard.notifications.record_alert')
   .row#notify_records.panel-content
     = render 'health_record_list'
 
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title
       = image_tag 'status-of-task.png'
@@ -61,7 +61,7 @@
                       .value{style: "width: #{percent}%;"}
                 %span.todo-footer
                   = todo.department_name
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title{id: 'item_nofity_message'} 
       = image_tag 'message-md.png'

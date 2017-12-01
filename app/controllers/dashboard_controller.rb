@@ -92,7 +92,7 @@ class DashboardController < ApplicationController
       case current_user.role
       when 'manager'
         group = 0
-        sub_type = current_user.daycare.care_type + 1
+        sub_type = current_user.daycare.care_type + 1 rescue 1
         daycare_id = current_user.daycare.id
       when 'worker'
         group = 1

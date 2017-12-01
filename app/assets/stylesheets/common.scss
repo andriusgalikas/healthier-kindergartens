@@ -338,3 +338,11 @@ p.text-left {
 .social-auth {
   margin-bottom: 40px;
 }
+
+.border-style-1 {
+  border: 5px solid transparent !important;
+  -moz-border-image: -moz-linear-gradient(top, #ec0150 0%, #0166cf 100%) !important;
+  -webkit-border-image: -webkit-linear-gradient(top, #ec0150 0%, #0166cf 100%) !important;
+  border-image: linear-gradient(to bottom, #ec0150 0%, #0166cf 100%) !important;
+  border-image-slice: 1 !important;
+}

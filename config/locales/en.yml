@@ -79,6 +79,23 @@ en:
       not_saved:
         one: "1 error prevented  %{resource} storage"
         other: " %{count} errors prevented this %{resource} storage"
+  registration:
+    title1: LoremIpsum
+    desc1: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek   
+    title2: LoremIpsum
+    desc2: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title3: LoremIpsum
+    desc3: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title4: LoremIpsum
+    desc4: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title5: LoremIpsum
+    desc5: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title6: LoremIpsum
+    desc6: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title7: LoremIpsum
+    desc7: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+    title8: LoremIpsum
+    desc8: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
   pages:
     nav_bar:
       home: To the front  
@@ -934,15 +951,13 @@ en:
       phase3_title: Setting infection control measures 
     free_resource: "FREE infection control tool."
     menu_item:
-      risk_assessment: Infection risk behaviour assessor
-      instruction: Infection control training
-      task_manager: Infection Control Measures validator  
-      communication: Outbreak alerts 
-      illness_analytic: Disease risk season mapping  
-      illness_record: Disease registry
-      illness_guide: Children’s Disease Management Supervisor
-      guide_line: Interactive guide 
-      health_conversations: Health conversation 
+      risk_assessment_survey: Risk Assessment Survey
+      infection_occurrence_alert: Infection Occurrence Alert
+      infection_preventive_practice_training: Infection preventive practice training
+      childhood_illness_management_guide: Childhood Illness Management Guide
+      infection_preventive_task_manager: INFECTION PREVENTIVE TASK MANAGER
+      infection_trend_identifier: Infection Trend Identifier  
+      health_talk: Health Talk
     menu_tooltip:
       risk_assessment: "Infection risk awareness."
       instruction: Infection control training 

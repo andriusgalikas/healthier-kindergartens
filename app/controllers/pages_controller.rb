@@ -2,6 +2,7 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection]
     #before_action :authenticate_subscribed!, only: :instruction
     before_filter :check_xhr, only: [:mission, :standard, :path, :description]
+    layout 'register', :only => [:ethic_5]
 
     def welcome
     end
@@ -85,8 +86,6 @@ class PagesController < ApplicationController
         scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
         @app_types = scheduler.get_appointment_types
 
-        rescue Exception
-            redirect_to dashboard_path
     end
 
     def get_available_schedule_time

@@ -1,4 +1,4 @@
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title
       = image_tag 'status-of-task.png'
@@ -62,7 +62,7 @@
                     - elsif todo_obj.is_startable? current_user.department_id
                       = t('todos.labels.start_todo')
 
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title{id: 'item_nofity_message'} 
       = image_tag 'message-md.png'
