@@ -129,3 +129,11 @@ PaymentStart.create(period: 14, unit: 'day')
 
 p "Creating Global Setting"
 GlobalSetting.create(key: "Journey Page Mode", value: 'deposit_mode')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_URL", value: 'https://acuityscheduling.com/api/v1/')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_USER", value: '13092943')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_PASSWORD", value: 'b1a2264ff0dd67fb06c5fe2788c5802b')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_NUM_OF_CHILD_ID", value: '2412391')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_NUM_OF_WORKER_ID", value: '2412394')
+GlobalSetting.create(key: "ACUITY_SCHEDULE_CARD_TYPE_ID", value: '2421634')
+GlobalSetting.create(key: "INITIAL_MEMBER_LIMIT_DAY", value: '14')
+

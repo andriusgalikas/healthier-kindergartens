@@ -2,6 +2,7 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection]
     #before_action :authenticate_subscribed!, only: :instruction
     before_filter :check_xhr, only: [:mission, :standard, :path, :description]
+    layout 'register', :only => [:ethic_5]
 
     def welcome
     end
@@ -85,8 +86,6 @@ class PagesController < ApplicationController
         scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
         @app_types = scheduler.get_appointment_types
 
-        rescue Exception
-            redirect_to dashboard_path
     end
 
     def get_available_schedule_time
@@ -100,7 +99,9 @@ class PagesController < ApplicationController
         end
 
         rescue Exception
-            format.json {render :json => []}
+            respond_to do |format|
+                format.json {render :json => []}
+            end
     end
 
     def add_schedule
@@ -128,7 +129,13 @@ class PagesController < ApplicationController
         else
             flash[:notice] = t('pages.ethic.step4.schedule_success')
         end
-        redirect_to dashboard_path
+
+        schedule = Schedule.new({ appointment_type: params[:appointment_type], datetime: params[:start_date] + ' ' + params[:start_time], user_id: User.find_by_email(params[:email]).id})
+        if schedule.save
+            redirect_to webinar_path(schedule.token)
+        else
+            render text: "Something went wrong"
+        end
     end
 
     def contact_us

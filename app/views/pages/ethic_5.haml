@@ -1,7 +1,7 @@
 .legacy-ethic
   .container
-    .row.step-wrapper
-      %h2.step-title=t('pages.ethic.step4.title')
+    .row.box-2.step-wrapper-2
+      %h2.btn-style-1=t('pages.ethic.step4.title')
       .col-md-12.content 
         = form_tag add_schedule_path, method: :post do
           %h3=t('pages.ethic.step4.schedule_list')
@@ -28,8 +28,11 @@
             / = hidden_field_tag :num_worker, current_user.daycare.num_worker
             / = hidden_field_tag :care_type, current_user.daycare.care_type_text
           .col-md-12.text-center
-            %button.btn.hcc-green-btn-vertical{type: 'submit'}
-              = t('pages.ethic.label.schedule')            
+            .row
+              .col-md-3.hidden-xs
+              .col-sm-12.col-md-6.text-center
+                %button.btn.btn-style-1.btn-sm{type: 'submit', style: { "marin-bottom" => "30px"}}
+                  = t('pages.ethic.label.schedule')            
 :javascript
   jQuery(document).ready(function() {
     jQuery('#verify-timezone').val('Europe/Oslo');

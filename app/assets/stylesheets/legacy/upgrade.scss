@@ -348,6 +348,71 @@ $hcc-green: #2bd34d;
   }
 }
 
+.step-wrapper-2{
+  margin-top: 70px;
+  margin-bottom: 20px;    
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 20px;
+
+  .content{
+    padding: 20px;
+    b{
+      color: $hcc_dark_orange;
+    }
+
+    .radio-box{
+      &.agree{
+        input[type=radio]:checked + label{
+          background-image: url(/assets/msg-radio-on-green.jpg) !important;
+        }
+        input[type=radio] + label{
+          background-image: url(/assets/msg-radio-off-green.jpg) !important;
+        }
+      }
+      &.disagree{
+        input[type=radio]:checked + label{
+          background-image: url(/assets/msg-radio-on-red.jpg) !important;
+        }
+        input[type=radio] + label{
+          background-image: url(/assets/msg-radio-off-red.jpg) !important;
+        }
+      }
+      input[type=radio] + label{
+        display: block;
+        margin-right: 15px;          
+        background-image: url(/assets/msg-radio-off-green.jpg);
+        background-repeat: no-repeat;
+        background-position-y: 2px;      
+        padding-left: 30px;
+        height: auto;
+        vertical-align: middle;
+        font-weight: 400;
+        margin: 5px 10px;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: left;
+      }
+
+      input[type=radio]:checked + label{
+        display: block;
+        margin-right: 15px;
+        background-image: url(/assets/msg-radio-on-green.png);
+        background-position-y: 2px;      
+        background-repeat: no-repeat;
+        padding-left: 30px;
+        height: auto;
+        vertical-align: middle;
+        font-weight: 400;
+        margin: 5px 10px;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: left;
+      }
+    }      
+  }
+}
+
 /******* Original Version **************************/
 #legacy-upgrade
 {

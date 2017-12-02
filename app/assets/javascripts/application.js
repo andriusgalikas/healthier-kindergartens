@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_validator
+//= require simple_form_extension
 //= require ckeditor/init
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require jquery.datetimepicker

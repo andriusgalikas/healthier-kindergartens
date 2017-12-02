@@ -8,7 +8,7 @@ development:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  database: health_childcare_dev
+  database: health_childcare_dev2
   pool: 5
   username: postgres
   password: password

@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2 hidden-xs"></div>
+    <div class="col-xs-12 col-sm-8">
+      <div class="box-2">
+        <div class="btn-style-1 bx-title">
+          <h3 class="white-color text-center-imp">Childcare Breakthrough session details</h3>
+          <div>
+            <p class="paragraph text-center white-color text-center-imp">Date: <%= @schedule.datetime.strftime("%d-%m-%Y") %> | Time: <%= @schedule.datetime.strftime("%H: %M") %></p>
+          </div>
+        </div>
+        <div class="bx-container">
+          <div class="boxer text-left">
+            <h3 class="pink-color text-center gray-color" style="text-align: center;">
+              <b>This session is specially designed to:</b>
+            </h3>
+            <ul class="right-symbol">
+              <li>
+                Create a sense of clarity about the optimum infection control and risk mitigation you want to have in your facility
+              </li>
+              <li>
+                Discover the essential building blocks for having the optimum infection control in your facility
+              </li>
+              <li>
+                Determine the Nr 1 thing stopping you from having optimum infection control in and risk mitigation your facility
+              </li>
+              <li>
+                Identify the most powerful actions that will move you toward to optimum infection control and prevention in your facility.
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="form-fields">
+            <%= simple_form_for Schedule.find_by_token(params[:id]).user, url: authenticate_webinar_path, html: { class: "form-inline" } do |f| %>
+
+              <%= f.hidden_field :email %>
+              
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <p class="paragraph text-center-imp gray-color">You have just got a confirmation sent to your email address. Please use link to go through dashboard</p>
+                </div>
+              </div>
+<!--               <% if flash[:alert] %>
+                <div class="row">
+                  <div class="col-xs-3"></div>
+                  <div class="col-xs-6">
+                    <div class="alert alert-danger">
+                      <i class="icon-info"></i>
+                      <%= flash[:alert] %>
+                    </div>  
+                  </div>
+                  <div class="col-xs-3"></div>
+                </div>
+              <% end %>
+              <div class="row">
+                <div class="col-xs-3 hidden-sm hidden-xs"></div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                  <%= f.input :password, label: false, wrapper_html: { class: "form-group" }, input_html: { placeholder: "Password", class: "form-control" } %>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                  <%= f.submit "Enter", class: "btn-style-1 btn-sm" %>
+                </div>
+                <div class="col-xs-3 hidden-sm hidden-xs">
+                </div>
+              </div>
+ -->              
+            <% end %>
+          </div>
+          <br>
+          <br>
+<!--           <p class="paragraph text-center-imp gray-color"><hr></p>
+          <div class="social-auth">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <a class="btn btn-block btn-social btn-facebook">
+                  <span class="fa fa-facebook"></span> Sign in with Facebook
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <a class="btn btn-block btn-social btn-google">
+                  <span class="fa fa-google"></span> Sign in with Google
+                </a>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 hidden-xs"></div>
+  </div>
+</div>

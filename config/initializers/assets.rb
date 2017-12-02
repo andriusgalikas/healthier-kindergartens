@@ -15,5 +15,5 @@ Rails.application.config.assets.precompile +=
 		modernizr/modernizr.js 
 		dashboard_v2.js dashboard_v2.css 
 		registration.css registration.js 
-		legacy.css
-		stripe.js)
+		legacy.css common.css
+		stripe.js )

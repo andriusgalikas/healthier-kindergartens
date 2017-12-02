@@ -373,7 +373,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_daycare
-    @daycare ||= Daycare.find params[:daycare_id]
+    @daycare ||= Daycare.first
   end
 
   def set_departments
