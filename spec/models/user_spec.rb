@@ -34,6 +34,19 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) {create(:user)}
 
+  it 'should check for user first sign in' do
+    expect(user.newly_signed_up?).to eq false    
+  end
 
+  it 'should activate email'do
+    user.email_activate
+    expect(user.email_confirmed).to eq true
+    expect(user.confirm_token).to eq nil
+  end
+
+  # it 'should return confirmation token' do
+  #   expect(user.confirmation_token).to eq ''
+  # end
 end

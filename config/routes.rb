@@ -299,6 +299,7 @@ Rails.application.routes.draw do
         get 'list_invite', to: 'pages#list_invite'
         get 'list_verify', to: 'pages#list_verify'
         get 'list_confirm', to: 'pages#list_confirm'
+        get 'download_yml', to: 'pages#download_yml'        
 
         get 'clients', to: 'pages#clients'
         post 'localization', to: 'pages#upload'

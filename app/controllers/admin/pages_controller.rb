@@ -63,6 +63,50 @@ class Admin::PagesController < AdminController
     get_all_confirm_subjects
   end
 
+  def download_yml
+    @translations = Translation.where(locale: I18n.locale.downcase).order(:id)
+    yml_text = I18n.locale.downcase.to_s + ":\n"
+
+    prev_key = []
+    @translations.each do |item|          
+      key = item.key.split('.')
+      
+      duplicate_length = 0
+      for i in 0..key.length-1
+        if prev_key[i] != key[i]
+          break
+        end
+        duplicate_length += 1
+      end      
+
+      if duplicate_length < key.length - 1
+        index = duplicate_length
+        while index < key.length - 1
+          (index+1).times do 
+            yml_text += "  "
+          end
+          yml_text += key[index] + ":\n"
+          index += 1
+        end        
+      end
+
+      (key.length).times do 
+        yml_text += "  "
+      end
+
+      if item.value.nil?
+        yml_text += key[key.length - 1] + ": \"\"\n"
+      elsif item.value.include? ":"
+        yml_text += key[key.length - 1] + ": \"" + item.value + "\"\n"
+      else
+        yml_text += key[key.length - 1] + ": " + item.value + "\n"
+      end
+      prev_key = key
+    end
+
+    send_data yml_text, :filename => "language.yml", :type => "text/plain"
+  end
+
   def password
   end
 

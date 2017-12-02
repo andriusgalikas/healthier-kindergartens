@@ -1,5 +1,19 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
+require 'simplecov'
+
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.coverage_dir(dir)
+end
+
+SimpleCov.start 'rails' do
+  add_filter '/ckeditor/'
+  add_filter '/concerns/'
+  add_filter '/previews/'
+  add_filter '/lib/'
+end 
+
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -11,8 +25,16 @@ require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'sidekiq/testing'
+Rails.application.eager_load!
 
 Sidekiq::Testing.fake!
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -13,10 +13,10 @@
             .col-sm-12
               %ul.pager.wizard.text-left
                 %li.previous
-                  %button{:type => "button", :class => "btn btn-round item-#{current_user.role}"} 
+                  %button{:type => "submit", :class => "btn btn-round item-#{current_user.role}"} 
                     =t('register.labels.update')
                 %li.next{:style => "float:right;"}
-                  %button{:type => "button", :class => "btn btn-round item-#{current_user.role}"} 
+                  %button{:type => "submit", :class => "btn btn-round item-#{current_user.role}"} 
                     =t('register.labels.next')
                 %li.previous.first{:style => "display:none;"}
                   %a{:href => "#"} First
@@ -34,7 +34,7 @@
     $('.next button').click(function(){
       var tab_id = $('.tab-pane.active').attr('id');
       if(tab_id == "tab1") {
-        window.location.href = "#{edit_user_info_path(role: current_user.role, id: current_user.id)}";
+        //window.location.href = "#{edit_user_info_path(role: current_user.role, id: current_user.id)}";
       }
     });
   });

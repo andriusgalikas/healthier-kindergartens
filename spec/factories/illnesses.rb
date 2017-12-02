@@ -14,5 +14,6 @@ FactoryGirl.define do
   factory :illness do
     code { Faker::Lorem.characters(10) }
     name { Faker::Lorem.word }
+    language { I18n.locale }
   end
 end

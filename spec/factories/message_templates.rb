@@ -19,7 +19,8 @@
 FactoryGirl.define do
   factory :message_template do
     content  { Faker::Lorem.paragraph(10) }
-    language 'en'
+    language 'English'
+    target_role 'worker'
 
     association :sub_subject, factory: :message_subject
 

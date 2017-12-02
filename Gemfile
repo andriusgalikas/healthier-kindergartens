@@ -59,19 +59,22 @@ end
 
 gem "letter_opener", :group => :development
 group :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1' 
   gem 'email_spec'
   gem 'fuubar'
   gem 'rspec-timecop'
+  gem 'simplecov'
+  gem 'fake_stripe'
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'dotenv'

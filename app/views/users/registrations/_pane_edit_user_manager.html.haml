@@ -36,7 +36,7 @@
     /   = user.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-round', :placeholder => t('register.labels.pwd_confirm').upcase
     .row
       %h5=t('register.labels.current_password').upcase
-      = user.password_field :current_password, autocomplete: 'off', class: 'form-control input-round', :placeholder => t('register.labels.current_password').upcase
+      = user.password_field :current_password, autocomplete: 'off', class: 'form-control input-round', :placeholder => t('register.labels.current_password').upcase, :required => "true"
     - if @minimum_password_length
       .row
         %em{:style => "padding-left: 20px;"}
