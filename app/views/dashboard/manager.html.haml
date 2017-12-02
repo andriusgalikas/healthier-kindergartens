@@ -2,7 +2,7 @@
   = render 'nav_header'
   = render partial: 'shared/flash'
   .container
-    - if current_user.deposit_required
+    - if current_user.daycare.pay_mode == 1
       = render 'manager_dep'
     - else
       = render 'manager_email'

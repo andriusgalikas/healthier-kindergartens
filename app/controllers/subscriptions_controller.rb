@@ -37,19 +37,19 @@ class SubscriptionsController < ApplicationController
     end
 
     def set_userplan
-        unless params[:plan].nil?
-            current_user.plan_type = params[:plan]
-            current_user.save
-        end
+        # unless params[:plan].nil?
+        #     current_user.plan_type = params[:plan]
+        #     current_user.save
+        # end
 
-        unless params[:discount].nil?
-            current_user.daycare.discount_code_id = params[:discount]
-            current_user.daycare.save
+        # unless params[:discount].nil?
+        #     current_user.daycare.discount_code_id = params[:discount]
+        #     current_user.daycare.save
 
-            plan_discount_code = DiscountCode.find_by(id: params[:discount])
-            current_user.discount_code = plan_discount_code
-            current_user.save            
-        end
+        #     plan_discount_code = DiscountCode.find_by(id: params[:discount])
+        #     current_user.discount_code = plan_discount_code
+        #     current_user.save            
+        # end
 
         if current_user.paid_plan_type > 0
             upgrade_package
@@ -121,7 +121,7 @@ class SubscriptionsController < ApplicationController
           @transaction.plan_type = current_user.plan_type
           @transaction.save
 
-          current_user.deposit_required = false
+          # current_user.deposit_required = false
           current_user.save
 
         rescue Stripe::CardError => e

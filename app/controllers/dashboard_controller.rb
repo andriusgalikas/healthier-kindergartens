@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
           upgrade_partner_deposit
         end
       end
-
+      @counter = current_user.notifications.collect{|n| n.source.owner.name}.uniq
       render "dashboard/#{current_user.role}", format: [:html]
       rescue ActionView::MissingTemplate
         redirect_to current_user.admin? ? admin_root_url : root_url
@@ -92,7 +92,7 @@ class DashboardController < ApplicationController
       case current_user.role
       when 'manager'
         group = 0
-        sub_type = current_user.daycare.care_type + 1
+        sub_type = current_user.daycare.care_type + 1 rescue 1
         daycare_id = current_user.daycare.id
       when 'worker'
         group = 1
@@ -105,8 +105,8 @@ class DashboardController < ApplicationController
         end
       when 'parentee'
         group = 2
-        sub_type = current_user.daycare.care_type + 1
-        daycare_id = current_user.daycare.id
+        sub_type = (current_user.daycare.care_type + 1) rescue 1
+        daycare_id = current_user.try(:daycare).try(:id)
       when 'partner'
         group = 3
         sub_type = current_user.affiliate.affiliate_type

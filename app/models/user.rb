@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
 
     validates :name, :email, :role,                             presence: true
 
-    validates :children,                                        presence: true, :if => :parentee?
+    # validates :children,                                        presence: true, :if => :parentee?
 
 
     enum role: [:parentee, :worker, :manager, :admin, :partner, :medical_professional]

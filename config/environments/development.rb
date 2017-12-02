@@ -1,3 +1,13 @@
+ActionMailer::Base.smtp_settings = {
+    :user_name => 'healthierchildcareapp',
+    :password => 'asnf101275',
+    :domain => 'tryggerehelsebevarendebarneomsorg.no',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -43,7 +53,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.mailer_default_url }
   # config.action_mailer.asset_host = Rails.application.secrets.mailer_asset_host
 
+  # config.action_mailer.delivery_method = :smtp
+  
+
   config.action_mailer.delivery_method = :smtp
+
+
   config.action_mailer.raise_delivery_errors = false
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true

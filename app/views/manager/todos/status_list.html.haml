@@ -21,26 +21,25 @@
                 - todo_obj = Todo.find(todo.id)
                 - if todo_obj.recurring? || (todo_obj.single? && todo_obj.recurring_available_by_total)
                   - diff_time = get_remain_time(todo.id)
-                  - if diff_time[0] != -1
-                    %li
-                      .menu-item{'data-id': todo.id}
-                        .todo-command
-                          .detail-box
-                            %span.todo-name= todo.title
-                            - if todo.daycare_id.nil? || todo.iteration_type == 0
-                              %span.todo-createby
-                                = t('manager.todos.labels.created_by')
-                                %br
-                                - creator = User.where(id: todo.user_id)
-                                = "#{creator.first.name}" unless creator.length == 0
+                  %li
+                    .menu-item{'data-id': todo.id}
+                      .todo-command
+                        .detail-box
+                          %span.todo-name= todo.title
+                          - if todo.daycare_id.nil? || todo.iteration_type == 0
+                            %span.todo-createby
+                              = t('manager.todos.labels.created_by')
+                              %br
+                              - creator = User.where(id: todo.user_id)
+                              = "#{creator.first.name}" unless creator.length == 0
+                          - else
+                            - if todo.is_active == 1
+                              = link_to inactive_manager_todo_path(todo), :class => '' do
+                                = image_tag "pause-button.png", class: 'img-responsive center-block'
                             - else
-                              - if todo.is_active == 1
-                                = link_to inactive_manager_todo_path(todo), :class => '' do
-                                  = image_tag "pause-button.png", class: 'img-responsive center-block'
-                              - else
-                                = link_to active_manager_todo_path(todo), :class => '' do
-                                  = image_tag "start-button.png", class: 'img-responsive center-block'
-                        %span.todo-footer
+                              = link_to active_manager_todo_path(todo), :class => '' do
+                                = image_tag "start-button.png", class: 'img-responsive center-block'
+                      %span.todo-footer
 
           %h3=t('manager.todos.labels.todos')
           #todo_department_list

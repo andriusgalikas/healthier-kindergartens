@@ -23,6 +23,21 @@ ready = function()
         }
 
     });
+
+    $('.frequency-selector').change(function(){
+        var value = $(this).val();
+        if (value === 'week')
+        {
+            $('.frequency-weekly-fields').show();
+            $('.frequency-daily-fields').hide();
+        }
+        else
+        {
+            $('.frequency-weekly-fields').hide();
+            $('.frequency-daily-fields').show();
+        }
+    });
+    
 };
 $(document).ready(ready);
 $(document).on('page:change page:load', function()

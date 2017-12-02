@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/glyph-fr/redactor-rails.git
+  revision: 6f6655fd71199700f2e5d7bc1f7f3c19f37dde50
+  specs:
+    redactor-rails (0.6.0)
+      mime-types
+      orm_adapter
+
+GIT
   remote: git://github.com/nixme/jazz_hands.git
   revision: 5e4b48f145883ecb14b55bf04eacc28ac9662676
   branch: bring-your-own-debugger
@@ -271,6 +279,8 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     lograge (0.3.6)
       actionpack (>= 3)
       activesupport (>= 3)
@@ -456,6 +466,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selectize-rails (0.12.4.1)
     sendinblue (2.4)
       httparty
       json
@@ -471,11 +482,14 @@ GEM
       sidekiq (>= 2.16.0)
     sidekiq-status (0.6.0)
       sidekiq (>= 2.7)
-    simplecov (0.12.0)
-      docile (~> 1.1.0)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.1)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
+    simple_form_extension (1.4.8)
+      rails (>= 3.1)
+      redactor-rails
+      selectize-rails
+      simple_form
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -606,6 +620,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari
+  letter_opener
   lograge
   meta_request
   mini_magick
@@ -617,6 +632,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.6)
   rails_12factor
+  redactor-rails!
   redis-activesupport
   redis-store
   rollbar
@@ -630,7 +646,8 @@ DEPENDENCIES
   sidekiq
   sidekiq-failures
   sidekiq-status
-  simplecov
+  simple_form
+  simple_form_extension
   sinatra
   sitemap_generator
   spring
@@ -650,4 +667,4 @@ RUBY VERSION
    ruby 2.2.2p95
 
 BUNDLED WITH
-   1.15.3
+   1.16.0

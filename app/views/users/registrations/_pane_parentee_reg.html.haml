@@ -43,4 +43,4 @@
               %em
                 (#{@minimum_password_length} characters minimum)
           = f.fields_for :user_daycare do |user_daycare|
-            = user_daycare.hidden_field :daycare_id, value: (params[:daycare_id].blank?) ? params[:user][:user_daycare_attributes][:daycare_id] : params[:daycare_id]
+            = user_daycare.hidden_field :daycare_id, value: (params[:daycare_id].blank?) ? (params[:user][:user_daycare_attributes][:daycare_id] rescue 1) : params[:daycare_id]

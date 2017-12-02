@@ -1,4 +1,4 @@
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title
       = image_tag 'status-of-task.png'
@@ -34,7 +34,7 @@
                         .value{style: "width: #{percent}%;"}
                   %span.todo-footer
                     = (todo_obj.in_progress? current_user.department_id) ? t('todos.labels.in_progress') : t('todos.labels.start_todo')
-          - if (todo_obj.recurring? && diff_time[0] != -1 && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
+          - if (todo_obj.recurring? && todo_obj.is_active == 1 && (todo_obj.is_startable?(current_user.department_id) || todo_obj.in_progress?(current_user.id)) )
             %li
               - todo_path = (todo_obj.in_progress? current_user.department_id) ? '#' : todo_todo_completes_path(todo)
               - todo_method = (todo_obj.in_progress? current_user.department_id) ? 'get' : 'post'
@@ -62,7 +62,7 @@
                     - elsif todo_obj.is_startable? current_user.department_id
                       = t('todos.labels.start_todo')
 
-.notification-box
+.notification-box.border-style-1
   .row
     %span.panel-title{id: 'item_nofity_message'} 
       = image_tag 'message-md.png'
@@ -71,8 +71,10 @@
     .row.item-content
       / - @notifications_by_sender.each do |sender|
       - index = 0
-      - notif_per_source_type(@notifications, 'Message').each do |notif|    
-        - unless notif.source_owner.nil? || index > 0
+      - cou = []
+      - notif_per_source_type(@notifications, 'Message').each do |notif|   
+        - if !notif.source_owner.nil? and !cou.include? notif.source.owner.name
+          - cou << notif.source.owner.name
           .col-md-2.col-sm-3.col-xs-3.text-center
             %span.item-number 
               / = sender.count_message

@@ -305,7 +305,7 @@ class Todo < ActiveRecord::Base
                 end
             end
         else
-            is_available = false
+            is_available = true
         end        
         return is_available
     end
@@ -316,9 +316,12 @@ class Todo < ActiveRecord::Base
     # => Checks if user is admin or global if updating, saving or destroying a todo record
     #
     def is_admin_global?
-        if global? #&& !user.admin?
-            errors.add :base, "You do not have permission to save or destroy this Todo."
-            return false
+        unless user.nil?
+            if global? && !user.admin?
+                errors.add :base, "You do not have permission to save or destroy this Todo."
+                return false
+            end
         end
+        return true
     end
 end

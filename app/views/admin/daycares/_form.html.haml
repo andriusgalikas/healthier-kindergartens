@@ -26,6 +26,9 @@
         = f.label 'Nubmer of Workers'
         = f.text_field :num_worker, :class => 'form-control'
       .form-group
+        = f.label 'Pay Mode: '
+        = f.select :pay_mode, options_for_select([['Price per Head', '1'], ['Fixed Price', '0']], @daycare.pay_mode), {:include_blank => 'Select Pay Mode'}, class: 'form-control'      
+      .form-group
         = f.label 'Payment Mode'
         = f.select :payment_mode_id, options_for_select(PaymentMode.all.map{|item| ["#{item.period} #{item.unit}", item.id]}, selected_key = f.object.payment_mode_id), {}, :class => 'form-control', include_blank: true
       .form-group

@@ -75,10 +75,10 @@ module HasSubscription
 
         def manager_plan_type
             plan_type = daycare.managers.first.plan_type
-            if self.is_trial_member?
+            if self.is_trial_member? || plan_type == 1
                 return 4
             else
-                return plan_type.nil? ? 0 : plan_type
+                return (plan_type.nil? || plan_type == 0) ? 2 : plan_type
             end            
         end
     end

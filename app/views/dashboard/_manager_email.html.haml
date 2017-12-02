@@ -1,19 +1,22 @@
-.row.content-main
-  .col-md-12.content.clock-box    
-    - if current_user.is_trial_member? && (!current_user.active_subscribed?)
-      .free-trial-box
-        %h1.text-center=t('dashboard.upgrade.trial')
-        .clock
-        .text-center
-          %h4=t('dashboard.upgrade.trial_description')        
-          %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
-            =t('dashboard.upgrade.button')
-    - elsif current_user.manager_plan_type == 3
-      .free-trial-box
-        .text-center
-          %h4=t('dashboard.upgrade.trial_description')        
-          %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
-            =t('dashboard.upgrade.button')    
+/ .row.content-main
+/   .col-md-12.content.clock-box    
+/     - if current_user.is_trial_member? && (!current_user.active_subscribed?)
+/       .free-trial-box
+/         %h1.text-center=t('dashboard.upgrade.trial')
+/         .clock
+/         .text-center
+/           %h4=t('dashboard.upgrade.trial_description')        
+/           %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
+/             =t('dashboard.upgrade.button')
+/     - elsif current_user.manager_plan_type == 3
+/       .free-trial-box
+/         .text-center
+/           %h4=t('dashboard.upgrade.trial_description')        
+/           %a.btn.btn-round.btn-green.text-center{:href => user_plan_path, style: 'font-size: 14px; margin: 10px 0;'}
+/             =t('dashboard.upgrade.button')    
+.row.content-header
+  - if !current_user.active_subscribed?
+    = render 'upgrade_notify'
 .row.content-main
   .col-md-5.col-sm-6.col-xs-12
     #main-menu.free-customer
@@ -25,7 +28,7 @@
                 = image_tag permission.image
                 %span=t(permission.label_key)
             - else
-              %a{href: permission.path, id: permission.element}
+              %a{href: '#', id: permission.element}
                 = image_tag permission.image
                 %span=t(permission.label_key)
       / - if current_user.paid_plan_type == 0

@@ -54,14 +54,15 @@
               %td
                 = todo.global? ? 'Global' : 'Local'
               %td
-                = todo.user.name unless todo.user.nil?
+                = todo.user.try(:name)
               %td
                 = todo.language.downcase unless todo.language.nil?
               %td
-                = link_to edit_admin_todo_path(todo) do
-                  %i.icon-pencil
-                = link_to [:admin, todo], method: :delete, data: { confirm: 'Are you sure?' } do
-                  %i.icon-remove
+                - if todo.global?
+                  / = link_to edit_admin_todo_path(todo) do
+                  /   %i.icon-pencil
+                  = link_to [:admin, todo], method: :delete, data: { confirm: 'Are you sure?' } do
+                    %i.icon-remove
     - if @todos.empty?
       .widget.widget-content
         .helper-notification
