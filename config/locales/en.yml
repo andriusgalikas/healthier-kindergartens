@@ -864,9 +864,9 @@ en:
 
   mailers:
     supermanager:
-      email: kontakt@friskereogtryggerebarneomsorg.no
+      email: info@tryggerehelsebevarendebarneomsorg.no
       name: The Norwegian Association for Healthier Kindergartens
-      url: http://healthierandsaferchildcare.org
+      url: http://www.tryggerehelsebevarendebarneomsorg.no
     daycare:
       invite: "You have now been invited to regsiter your Healthier and Safer Nursery Portal. Please click the link to register and receive the benefits of membership."
     registration:
