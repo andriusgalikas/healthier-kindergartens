@@ -9,20 +9,20 @@
             - @permissions.each do |permission|
               - if permission.active && permission.sub_type.to_i > 1
                 - if current_user.manager_plan_type >= permission.plan
-                  = link_to permission.path, id: permission.element do
+                  = link_to permission.path, id: permission.element, class: 'border-style-1' do
                     = image_tag permission.image
                     %span=t(permission.label_key)
                 - else
-                  %a{href: permission.path, id: permission.element}
+                  %a.border-style-1{href: permission.path, id: permission.element}
                     = image_tag permission.image
                     %span=t(permission.label_key)
               - if permission.active && permission.sub_type.to_i < 2
                 - if current_user.affiliate.certific? && current_user.affiliate.is_over_registered?
-                  = link_to '#', id: permission.element do
+                  = link_to '#', id: permission.element, class: 'border-style-1' do
                     = image_tag permission.image
                     %span=t(permission.label_key)
                 - else
-                  = link_to permission.path, id: permission.element do
+                  = link_to permission.path, id: permission.element, class: 'border-style-1' do
                     = image_tag permission.image
                     %span=t(permission.label_key)
 
