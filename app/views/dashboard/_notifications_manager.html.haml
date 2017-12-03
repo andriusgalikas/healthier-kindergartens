@@ -104,10 +104,6 @@
           days--;
         }
 
-        if(days < 0){
-          days = hours = minutes = 0;
-        }
-
         jQuery(this).children('.days').children('label').text(days);
         jQuery(this).children('.hours').children('label').text(hours);
         jQuery(this).children('.minutes').children('label').text(minutes);        

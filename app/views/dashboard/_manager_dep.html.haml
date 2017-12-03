@@ -9,34 +9,13 @@
           - @permissions.each do |permission|
             - if permission.active
               - if 2 >= permission.plan
-                = link_to permission.path, id: permission.element do
+                = link_to permission.path, id: permission.element, class: 'border-style-1' do
                   = image_tag permission.image
                   %span=t(permission.label_key)
               - else
-                %a{href: '#', id: permission.element}
+                %a.border-style-1{href: '#', id: permission.element}
                   = image_tag permission.image
                   %span=t(permission.label_key)
-          %a#item_survey.border-style-1{href: '#'}
-            = image_tag 'dashboard_icons/1'
-            %span=t('dashboard.menu_item.risk_assessment_survey')        
-          %a#item_illness.border-style-1{href: '#'}
-            = image_tag 'icons/4', style: "width: 67px; height: 67px"
-            %span=t('dashboard.menu_item.infection_occurrence_alert')
-          = link_to instruction_path, id: 'item_instruction', class: 'border-style-1' do
-            = image_tag 'dashboard_icons/3'
-            %span=t('dashboard.menu_item.infection_preventive_practice_training')          
-          %a#item_illness.border-style-1{href: '#'}
-            = image_tag 'dashboard_icons/4'
-            %span=t('dashboard.menu_item.childhood_illness_management_guide')
-          %a#item_todo.border-style-1{href: '#'}
-            = image_tag 'dashboard_icons/5'
-            %span=t('dashboard.menu_item.infection_preventive_task_manager')
-          %a#item_illness_graph.border-style-1{href: '#'}
-            = image_tag 'dashboard_icons/6'
-            %span=t('dashboard.menu_item.infection_trend_identifier')
-          %a#item_message.border-style-1{href: '#'}
-            = image_tag 'dashboard_icons/7'
-            %span=t('dashboard.menu_item.health_talk')
           
   - else
     .col-md-5.col-sm-6.col-xs-12
@@ -44,7 +23,7 @@
         .menu-items
           - @permissions.each do |permission|
             - if permission.active
-              = link_to permission.path, id: permission.element do
+              = link_to permission.path, id: permission.element, class: 'border-style-1' do
                 = image_tag permission.image
                 %span=t(permission.label_key)
 

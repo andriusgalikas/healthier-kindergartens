@@ -130,6 +130,7 @@ en:
       login: Login
       logout: Logout
       register: Sign up
+      program: Program
 
     contact_us:
       label: Contact us

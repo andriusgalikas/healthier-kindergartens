@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'registration', to: 'registers#index'
+  get 'program', to: 'registers#index'
   post 'registration/create', to: 'registers#create'
 
   resources :webinar, only: :show
