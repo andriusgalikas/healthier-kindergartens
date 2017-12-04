@@ -1491,8 +1491,8 @@ en:
   # ------------------ Additional YML Texts -----------------
   poster:
     button: Download
-    description: Poster Description
-    title: Please download the poster PDF
+    description: Signup for a call below
+    title: Want to get access to the online training ?
   deposit:
     button:
       invest: Invest

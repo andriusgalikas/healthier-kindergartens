@@ -6,7 +6,7 @@
     .modal-dialog
       / Modal content
       .modal-content
-        .modal-header#download-pdf-header
+        .modal-header.btn-style-1
           %button.my-button.close.plainmodal-close{"data-dismiss" => "modal", :type => "button"} ×
           %h4.modal-title= t('poster.title').html_safe
         .modal-body
@@ -21,8 +21,13 @@
                 %input{:type=>"text", :name => "user_email", :id => "user_email", class: "form-control"}
 
             .download-modal-footer
-              = button_tag(type: 'submit', class: "download-pdf-submit btn", id: 'download-submit') do
-                = button.html_safe
+              .row
+                .col-sm-2.hidden-xs
+                .col-sm-8.col-xs-12
+                  = button_tag(type: 'submit', class: "download-pdf-submit btn btn-style-1 btn-sm", id: 'download-submit') do
+                    = button.html_safe
+                .col-sm-2.hidden-xs
+
 :javascript
   jQuery(document).ready(function() {
     var effect = {

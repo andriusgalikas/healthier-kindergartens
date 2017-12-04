@@ -196,6 +196,10 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
+    exception_handler (0.7.7.0)
+      bundler
+      rails (>= 4.2.0)
+      responders
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -589,6 +593,7 @@ DEPENDENCIES
   docx
   dotenv
   email_spec
+  exception_handler
   factory_girl_rails
   faker
   fast_blank

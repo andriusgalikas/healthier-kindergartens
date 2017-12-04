@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'registration', to: 'registers#index'
   post 'registration/create', to: 'registers#create'
 
+  get 'payment', to: "payments#index"
+
   resources :webinar, only: :show
   patch "webinar/:id/authenticate", to: "webinar#authenticate", as: :authenticate_webinar
 

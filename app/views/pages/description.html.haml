@@ -108,6 +108,107 @@
 - (1..22).each do |num|        
   = render 'reference_popover', index: num
 
+.row
+  .col-sm-4.hidden-xs
+  .col-sm-4.col-xs-12
+    %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+      = "Try this for free in your day care"
+  .col-sm-4.hidden-xs
+.gap-30
+
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-1.modal-lg{:role => "document"}
+    .modal-content
+      .modal-body.no-padding-top
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"}
+            %img{:alt => "", :src => "/assets/close-color.png"}/
+        .row.row-flex
+          .col-xs-12.col-sm-6.col-flex
+            .boxer
+              %p.paragraph.text-left
+                %b Ønsker du å prøve ut programmet,
+                %br/
+                for å se i praksis hvordan det virker - helt uforpliktende - i din barnehage?
+              %h4
+              %div{:style => "margin-top: 40px;margin-bottom: 80px"}
+                = simple_form_for(@user, url: "registration/create",  :html => {:class => 'form-horizontal' }) do |f|
+                  = f.input :daycare_name, label: false, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Enter daycare name " }, required: true
+                  = f.input :name, label: false, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Name" }, required: true
+                  = f.input :email, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Email", required: true }
+                  = f.input :mobile, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Mobile", required: true }
+                  .gap-30
+                  = f.button :submit, "JOIN FOR FREE TRAIL", class: "btn-style-1"
+          .col-sm-6.col-flex.hidden-xs{:style => "background: #fefbfa"}
+            .boxer.text-left
+              %p.paragraph.pink-color.text-left
+                %b Our seven day trial download allows you to fully use software for free before purchasing.
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/9"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title1')
+                    %br/
+                    = t('registration.desc1')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/2"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title2')
+                    %br/
+                    = t('registration.desc2')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/3"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title3')
+                    %br/
+                    = t('registration.desc3')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/14"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title4')
+                    %br/
+                    = t('registration.desc4')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/6"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title5')
+                    %br/
+                    = t('registration.desc5')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/4"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title6')
+                    %br/
+                    = t('registration.desc6')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/5"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title7')
+                    %br/
+                    = t('registration.desc7')
+              .row
+                .col-xs-2{:style => "margin-top: 10px"}
+                  = image_tag "icons/11"
+                .col-xs-10{:style => "padding-left: 22px"}
+                  %p.paragraph.text-left
+                    %b= t('registration.title8')
+                    %br/
+                    = t('registration.desc8')
+
+
 / Standard
 .legacy-standard#mark_standard
   .row.promo
@@ -234,6 +335,13 @@
 - (21..25).each do |num|        
   = render 'reference_popover', index: num
 
+.row
+  .col-sm-4.hidden-xs
+  .col-sm-4.col-xs-12
+    %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+      = "Try this for free in your day care"
+  .col-sm-4.hidden-xs
+.gap-30
 / Path Page
 .legacy-path#mark_path
   .row.promo
@@ -363,7 +471,14 @@
             = t('pages.path.after.phase3.para3').html_safe
           %li
             = t('pages.path.after.phase3.para4').html_safe
-
+  
+  .row
+    .col-sm-4.hidden-xs
+    .col-sm-4.col-xs-12
+      %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+        = "Try this for free in your day care"
+    .col-sm-4.hidden-xs
+  .gap-30
   .row.promo{style: 'margin-top: 30px;'}
     .promo-img
       = image_tag 'Dollarphotoclub74523.png'
@@ -569,6 +684,14 @@
 
 / About Us Page
 
+.row
+  .col-sm-4.hidden-xs
+  .col-sm-4.col-xs-12
+    %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+      = "Try this for free in your day care"
+  .col-sm-4.hidden-xs
+.gap-30
+
 .legacy-path#mark_about 
   .row.promo
     .promo-img
@@ -668,6 +791,15 @@
         %button.btn.hcc-green-btn
           %a{'href': '/journey'}
             = t('pages.nav_bar.get_started').html_safe
+
+  .row
+    .col-sm-4.hidden-xs
+    .col-sm-4.col-xs-12
+      %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+        = "Try this for free in your day care"
+    .col-sm-4.hidden-xs
+  .gap-30
+  
 :javascript
   jQuery(document).ready(function() {
     if(window.location.hash) {

@@ -1,10 +1,14 @@
 class PagesController < ApplicationController
     before_action :authenticate_user!, only: [:welcome, :infection]
     #before_action :authenticate_subscribed!, only: :instruction
-    before_filter :check_xhr, only: [:mission, :standard, :path, :description]
+    before_filter :check_xhr, only: [:mission, :standard, :path]
     layout 'register', :only => [:ethic_5]
 
     def welcome
+    end
+
+    def description
+        @user = User.new
     end
 
     def instruction
