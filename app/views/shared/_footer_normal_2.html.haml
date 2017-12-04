@@ -9,7 +9,7 @@
           = link_to LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.email.html_safe, "mailto:#{LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.email.html_safe}"
         %p= LocaleLogo.by_type_language(1, I18n.locale).first.nil? ? '' : LocaleLogo.by_type_language(1, I18n.locale).first.phone_number.html_safe
         .gap-30
-        %div
+        %div{style: "display: none;"}
           %a{:href => "mailto:info@launchcode.org"}
             %i.fa.fa-envelope
           %a{:href => "https://www.facebook.com/launchcode.org", :target => "_blank"}

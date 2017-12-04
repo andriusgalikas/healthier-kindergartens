@@ -123,6 +123,11 @@ en:
     desc12: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
     title13: Lorem Ipsum
     desc13: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+  register_popup:
+    title: Ønsker du å prøve ut programmet,
+    description: for å se i praksis hvordan det virker - helt uforpliktende - i din barnehage?
+    join_button: JOIN FOR FREE TRIAL
+    paragraph: Our seven day trial download allows you to fully use software for free before purchasing.
   pages:
     nav_bar:
       home: To the front  
