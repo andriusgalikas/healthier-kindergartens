@@ -42,7 +42,7 @@
               <div class="row row-flex">
                 <div class="col-xs-12 col-sm-6 col-flex">
                   <div class="boxer">
-                    <p class="paragraph text-left"><b>Ønsker du å prøve ut programmet,</b><br> for å se i praksis hvordan det virker - helt uforpliktende - i din barnehage? </p>
+                    <p class="paragraph text-left"><b><%= t('register_popup.title').html_safe %></b><br><%= t('register_popup.description').html_safe %></p>
                     <h4></h4>
                     <div style="margin-top: 40px;margin-bottom: 80px">
                       <%= simple_form_for(@user, url: "registration/create",  :html => {:class => 'form-horizontal' }) do |f| %>
@@ -51,7 +51,7 @@
                         <%= f.input :email, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Email", required: true } %>
                         <%= f.input :mobile, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Mobile", required: true } %>
                         <div class="gap-30"></div>
-                        <%= f.button :submit, "JOIN FOR FREE TRAIL", class: "btn-style-1" %>
+                        <%= f.button :submit, t('register_popup.join_button'), class: "btn-style-1" %>
                       <% end %>
                     </div>
                   </div>
@@ -59,7 +59,7 @@
                 <div class="col-sm-6 col-flex hidden-xs" style="background: #fefbfa">
                   <div class="boxer text-left">
                     <p class="paragraph pink-color text-left">
-                      <b>Our seven day trial download allows you to fully use software for free before purchasing.</b>
+                      <b><%= t('register_popup.paragraph').html_safe %></b>
                     </p>
                     <div class="row">
                       <div class="col-xs-2" style="margin-top: 10px">

@@ -36,6 +36,7 @@ class PagesController < ApplicationController
         template_key = 'SURVEY_TEMPLATE_SUBJECT_' + @member_type.upcase
         @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
         @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[@member_type.downcase], language: I18n.locale.downcase)    
+        @user = User.new
     end
 
     def journey
