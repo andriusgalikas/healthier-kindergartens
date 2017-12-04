@@ -8,10 +8,10 @@
       .modal-content
         .modal-header.btn-style-1
           %button.my-button.close.plainmodal-close{"data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title= t('poster.title').html_safe
+          %h4.modal-title= raw poster.title.html_safe
         .modal-body
           = form_for [LocalePoster.new] do |f|
-            = t('poster.description').html_safe
+            = raw poster.description.html_safe
             = f.hidden_field :download_pdf, value: params[:download_pdf]
 
             .email-box-group
