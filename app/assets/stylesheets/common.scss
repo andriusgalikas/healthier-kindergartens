@@ -276,6 +276,9 @@ p.text-left {
 .white-color {
   color: white;
 }
+.brown-background {
+  background: #fefaf8;
+}
 
 .gray-color {
   color: #676767;
@@ -345,4 +348,71 @@ p.text-left {
   -webkit-border-image: -webkit-linear-gradient(top, #ec0150 0%, #0166cf 100%) !important;
   border-image: linear-gradient(to bottom, #ec0150 0%, #0166cf 100%) !important;
   border-image-slice: 1 !important;
+}
+
+.title-1 {
+  width: 521px;
+  height: 58px;
+  font-size: 26px;
+  color: #c1cced;
+  font-family: "Open Sans";
+}
+
+.title-2 {
+  width: 581px;
+  height: 165px;
+  font-size: 32px;
+  color: rgb(66,108,213);
+  font-family: "Open Sans";
+}
+
+.input-style-1 {
+  width: 100%;
+  height: 54px;
+  border-radius: 27px;
+  border: 1px solid #ff004e;
+  padding-left: 25px;
+
+  &:focus {
+    border-color: rgba(126, 239, 104, 0.8) !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6) !important;
+    outline: 0 none !important;
+  }
+}
+
+.dollar {
+  font-size: 58px;
+  color: rgb(255,16,88);
+  font-family: "Open Sans";
+  font-weight: bold;
+  
+  .text {
+    font-size: 35px;
+    color: rgb(255,16,88);
+    font-family: "Open Sans";
+    font-weight: bold;
+    color: #d1d1d1;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+.footer-subtitle {
+  background-image: linear-gradient(81deg, #ff0a55 0%, #ff9f2f 100%);
+}
+
+.red-background {
+  background: linear-gradient(81deg, #ff0a55 0%, #ff9f2f 100%);
+}
+
+.mtop27 {
+  margin-top: 27px;
+}
+
+.money_back_absolute {
+  position: absolute;
+  right: -140px;
+  top: -71px;
 }
