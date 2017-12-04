@@ -96,6 +96,33 @@ en:
     desc7: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
     title8: LoremIpsum
     desc8: Lorem Ipsum is adre sekdi kdsies ssdkfjsdk  skek 
+  payment:
+    title1: Lorem Ipsum
+    desc1: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek 
+    title2: Lorem Ipsum
+    desc2: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title3: Lorem Ipsum
+    desc3: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title4: Lorem Ipsum
+    desc4: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title5: Lorem Ipsum
+    desc5: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title6: Lorem Ipsum
+    desc6: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title7: Lorem Ipsum
+    desc7: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title8: Lorem Ipsum
+    desc8: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title9: Lorem Ipsum
+    desc9: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek 
+    title10: Lorem Ipsum
+    desc10: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title11: Lorem Ipsum
+    desc11: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title12: Lorem Ipsum
+    desc12: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
+    title13: Lorem Ipsum
+    desc13: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type skek  
   pages:
     nav_bar:
       home: To the front  
@@ -1492,8 +1519,8 @@ en:
   # ------------------ Additional YML Texts -----------------
   poster:
     button: Download
-    description: Poster Description
-    title: Please download the poster PDF
+    description: Signup for a call below
+    title: Want to get access to the online training ?
   deposit:
     button:
       invest: Invest

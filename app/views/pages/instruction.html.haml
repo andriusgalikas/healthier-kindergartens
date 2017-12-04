@@ -222,6 +222,8 @@
     %iframe{:frameborder => "0", :onload => "resizeIframe(this)", :scrolling => "no", :src => "",  id: 'video-iframe'}
     %a.popup-close{"data-popup-close" => "video-popup", :href => "#"} x
 
+= render partial: 'shared/download_pdf'
+
 :javascript
   jQuery(document).ready(function() {
     $('[data-popup-open]').on('click', function(e)  {
