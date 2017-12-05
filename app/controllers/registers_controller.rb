@@ -8,7 +8,7 @@ class RegistersController < ApplicationController
     @user = User.new(permit_params)
     @user.password = @user.password_confirmation = @user.default_password_token = Devise.friendly_token.first(8)
     if @user.save
-      # send_confirmation_email @user
+      send_confirmation_email @user
       redirect_to webinar_calendar_path({ name: @user.name, email: @user.email })
     else
       render text: "Error: #{@user.errors.full_messages.join(", ")}"
