@@ -28,6 +28,7 @@
       .row
         %h5=t('register.labels.daycare_name').upcase
         = daycare.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.daycare_name'), :required =>"true"
+        %input{type: "hidden", name: 'token', value: params[:token]}
       .row
         %h5=t('register.labels.daycare_type').upcase
         = daycare.select :care_type, options_for_select([[t('register.caretype.ind'), 1], [t('register.caretype.fra'), 2], [t('register.caretype.gov'), 3]]), {},class: 'form-control input-round', :placeholder => t('register.labels.daycare_type')

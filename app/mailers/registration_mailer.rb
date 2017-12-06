@@ -4,7 +4,7 @@ class RegistrationMailer < ApplicationMailer
     
     def registration_confirmation (user, template)
         @user = user
-        confirm_url = "http://#{t('mailers.supermanager.url')}/confirm_email/#{@user.confirm_token}"
+        # confirm_url = "http://#{t('mailers.supermanager.url')}/confirm_email/#{@user.confirm_token}"
 	    m = Mailin.new(ENV['SENDGRID_URL'], ENV['SENDGRID_API_KEY'])
 		data = { "personalizations" => [{"to" => [{"email" => @user.email, "name" => "Daycare"}]}],
 			"from" => {"email" => t('mailers.supermanager.email'), "name" => t('mailers.supermanager.name') },

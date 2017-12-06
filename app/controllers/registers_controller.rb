@@ -1,12 +1,16 @@
 class RegistersController < ApplicationController
   layout "register"
   def index
-    @user = User.new
+    @user = MeetingUser.new
   end
 
   def create
-    @user = User.new(permit_params)
-    @user.password = @user.password_confirmation = @user.default_password_token = Devise.friendly_token.first(8)
+    @user = MeetingUser.where(email: params[:email]).first
+    if @user.nil?
+      @user = MeetingUser.new(permit_params)
+      @user.token = Devise.friendly_token      
+    end
+
     if @user.save
       send_confirmation_email @user
       redirect_to webinar_calendar_path({ name: @user.name, email: @user.email })
@@ -17,11 +21,17 @@ class RegistersController < ApplicationController
 
   private
     def permit_params
-      params.require(:user).permit(:name, :daycare_name, :mobile, :email, :password, :password_confirmation)
+      params.require(:meeting_user).permit(:name, :daycare_name, :mobile, :email)
     end
 
     def send_confirmation_email user
-      RegistrationMailer.send_confirmation(user).deliver_now
-    end
+      #RegistrationMailer.registration_confirmation(user).deliver_later
+      host_name = LocaleUrl.find_by(language: I18n.locale.downcase)
+      host_url = (host_name.nil?) ? t("mailers.supermanager.url") : host_name.url
 
+      confirm_url = "http://#{host_url}/account_register?token=#{user.token}"
+      template = t('mailers.account_registration.content', name: user.name, url: confirm_url)
+
+      RegistrationMailer.registration_confirmation(user, template).deliver_now
+    end
 end
