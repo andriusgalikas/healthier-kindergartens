@@ -139,7 +139,7 @@ class PagesController < ApplicationController
             flash[:notice] = t('pages.ethic.step4.schedule_success')
         end
 
-        schedule = Schedule.new({ appointment_type: params[:appointment_type], datetime: params[:start_date] + ' ' + params[:start_time], user_id: User.find_by_email(params[:email]).id})
+        schedule = Schedule.new({ appointment_type: params[:appointment_type], datetime: params[:start_date] + ' ' + params[:start_time]})
         if schedule.save
             redirect_to webinar_path(schedule.token)
         else

@@ -24,10 +24,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       unless params[:token].blank?
         @meeting_user = MeetingUser.where(token: params[:token]).first
-        @meeting_user.delete
+        unless @meeting_user.nil?
+          @meeting_user.delete
+        else
+          send_confirmation_email(resource)
+        end
+      else
+        send_confirmation_email(resource)
       end
 
-      send_confirmation_email(resource)
+
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
         # sign_up(resource_name, resource)
@@ -56,7 +62,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     assign_daycare_manager_role
     if @daycare.save
       user = @daycare.users.first
-      send_confirmation_email(user)
+
+      unless params[:token].blank?
+        @meeting_user = MeetingUser.where(token: params[:token]).first
+        unless @meeting_user.nil?
+          @meeting_user.delete
+          user.email_confirmed = true
+          user.save
+        else
+          send_confirmation_email(user)
+        end
+      else
+        send_confirmation_email(user)
+      end
+
       send_email_campaign(user) unless user.deposit_required
       sign_up(:user, user)  
       render "register/success_#{params[:role]}", locals: {deposit: user.deposit_required}
@@ -277,7 +296,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :num_worker,
       :discount_code_id,
       departments_attributes: [:_destroy, :name],
-      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type, :card_number]],
+      user_daycares_attributes: [:daycare_id, :user_id, user_attributes: [:name, :email, :password_confirmation, :password, :role, :deposit_required, :plan_type]],
       profile_image_attributes: [:id, :attachable_type, :attachable_id, :file]
     )
   end
@@ -330,6 +349,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @daycare.name = @meeting_user.daycare_name
       @user_daycare.user.email = @meeting_user.email
       @user_daycare.user.name = @meeting_user.name
+      @user_daycare.user.email_confirmed = true
       @daycare.telephone = @meeting_user.mobile
     end
   end
@@ -403,7 +423,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params_password
-    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email, :card_number)      
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :name, :email)      
   end
 
   def daycare_manager_params

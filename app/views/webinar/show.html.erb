@@ -31,42 +31,12 @@
 
           </div>
 
-          <div class="form-fields">
-            <%= simple_form_for Schedule.find_by_token(params[:id]).user, url: authenticate_webinar_path, html: { class: "form-inline" } do |f| %>
-
-              <%= f.hidden_field :email %>
-              
-
+          <div class="form-fields">              
               <div class="row">
                 <div class="col-xs-12">
                   <p class="paragraph text-center-imp gray-color">You have just got a confirmation sent to your email address. Please use link to go through dashboard</p>
                 </div>
               </div>
-<!--               <% if flash[:alert] %>
-                <div class="row">
-                  <div class="col-xs-3"></div>
-                  <div class="col-xs-6">
-                    <div class="alert alert-danger">
-                      <i class="icon-info"></i>
-                      <%= flash[:alert] %>
-                    </div>  
-                  </div>
-                  <div class="col-xs-3"></div>
-                </div>
-              <% end %>
-              <div class="row">
-                <div class="col-xs-3 hidden-sm hidden-xs"></div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <%= f.input :password, label: false, wrapper_html: { class: "form-group" }, input_html: { placeholder: "Password", class: "form-control" } %>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <%= f.submit "Enter", class: "btn-style-1 btn-sm" %>
-                </div>
-                <div class="col-xs-3 hidden-sm hidden-xs">
-                </div>
-              </div>
- -->              
-            <% end %>
           </div>
           <br>
           <br>

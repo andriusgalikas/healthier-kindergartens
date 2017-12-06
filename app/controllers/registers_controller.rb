@@ -28,9 +28,15 @@ class RegistersController < ApplicationController
       #RegistrationMailer.registration_confirmation(user).deliver_later
       host_name = LocaleUrl.find_by(language: I18n.locale.downcase)
       host_url = (host_name.nil?) ? t("mailers.supermanager.url") : host_name.url
-
       confirm_url = "http://#{host_url}/account_register?token=#{user.token}"
-      template = t('mailers.account_registration.content', name: user.name, url: confirm_url)
+
+      @subject = MessageSubject.find_or_create_by(title: ENV['EMAIL_VERIFICATION_SUBJECT'], language: I18n.locale.downcase) 
+      template_key = 'EMAIL_VERIFICATION_SUBJECT_DEPOSIT'
+      @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
+      @message_template = @sub_subject.message_templates.find_by(target_role: 0, language: I18n.locale.downcase)
+
+      template = @message_template.content.gsub! '[$NAME$]', user.name
+      template = template.gsub! '[$EMAIL_VERIFICATION_URL$]', confirm_url
 
       RegistrationMailer.registration_confirmation(user, template).deliver_now
     end
