@@ -8,10 +8,11 @@ class PagesController < ApplicationController
     end
 
     def description
-        @user = User.new
+        @user = MeetingUser.new
     end
 
     def instruction
+        @user = MeetingUser.new
     end
 
     def infection
@@ -36,7 +37,7 @@ class PagesController < ApplicationController
         template_key = 'SURVEY_TEMPLATE_SUBJECT_' + @member_type.upcase
         @sub_subject = @subject.sub_subjects.find_or_create_by(title: ENV[template_key], language: I18n.locale.downcase)
         @message_template = @sub_subject.message_templates.find_by(target_role: MessageTemplate.target_roles[@member_type.downcase], language: I18n.locale.downcase)    
-        @user = User.new
+        @user = MeetingUser.new
     end
 
     def journey
@@ -87,6 +88,9 @@ class PagesController < ApplicationController
     end
 
     def ethic_5
+        if params[:name].nil? || params[:email].nil?
+            redirect_to dashboard_path
+        end
         get_schedule_params
         scheduler = AcuityScheduling.new(@schedule_user.value, @schedule_password.value, @schedule_url.value)
         @app_types = scheduler.get_appointment_types
@@ -172,6 +176,10 @@ class PagesController < ApplicationController
 
     def take_action
         @illnesses = Illness.by_language(I18n.locale.downcase)
+    end
+
+    def account_register
+        redirect_to new_user_registration_path(role: 'manager', token: params[:token], deposit: true)
     end
 
     private

@@ -97,14 +97,6 @@
           %a.reference-link{href: '#', id: 'reference_22'}22
         = t('pages.mission_step.what_to_do_2').html_safe
 
-.row.step-contents.next-step-content
-  - if current_user.nil?
-    .next-green-step
-      %h4= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe
-
 - (1..22).each do |num|        
   = render 'reference_popover', index: num
 
@@ -112,7 +104,7 @@
   .col-sm-4.hidden-xs
   .col-sm-4.col-xs-12
     %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-      = "Try this for free in your day care"
+      =t('pages.home.free_register')
   .col-sm-4.hidden-xs
 .gap-30
 
@@ -127,9 +119,9 @@
           .col-xs-12.col-sm-6.col-flex
             .boxer
               %p.paragraph.text-left
-                %b Ønsker du å prøve ut programmet,
-                %br/
-                for å se i praksis hvordan det virker - helt uforpliktende - i din barnehage?
+                %b= t('register_popup.title')
+                %br
+                = t('register_popup.description')
               %h4
               %div{:style => "margin-top: 40px;margin-bottom: 80px"}
                 = simple_form_for(@user, url: "registration/create",  :html => {:class => 'form-horizontal' }) do |f|
@@ -138,11 +130,11 @@
                   = f.input :email, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Email", required: true }
                   = f.input :mobile, label: false, as: :string, wrapper_html: { class: "form-group" }, input_html: { class: "form-control input-lg", placeholder: "Mobile", required: true }
                   .gap-30
-                  = f.button :submit, "JOIN FOR FREE TRAIL", class: "btn-style-1"
+                  = f.button :submit, t('register_popup.join_button'), class: "btn-style-1"
           .col-sm-6.col-flex.hidden-xs{:style => "background: #fefbfa"}
             .boxer.text-left
               %p.paragraph.pink-color.text-left
-                %b Our seven day trial download allows you to fully use software for free before purchasing.
+                %b=t('register_popup.paragraph')
               .row
                 .col-xs-2{:style => "margin-top: 10px"}
                   = image_tag "icons/9"
@@ -207,7 +199,6 @@
                     %b= t('registration.title8')
                     %br/
                     = t('registration.desc8')
-
 
 / Standard
 .legacy-standard#mark_standard
@@ -324,13 +315,6 @@
           %p.paragraph= t('pages.standard.para5_2').html_safe
           %p.paragraph= t('pages.standard.para5_3').html_safe
           %p.paragraph= t('pages.standard.para5_4').html_safe
-.row.step-contents.next-step-content
-  - if current_user.nil?
-    .next-green-step
-      %p.paragraph= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe
 
 - (21..25).each do |num|        
   = render 'reference_popover', index: num
@@ -339,7 +323,7 @@
   .col-sm-4.hidden-xs
   .col-sm-4.col-xs-12
     %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-      = "Try this for free in your day care"
+      =t('pages.home.free_register')
   .col-sm-4.hidden-xs
 .gap-30
 / Path Page
@@ -476,7 +460,7 @@
     .col-sm-4.hidden-xs
     .col-sm-4.col-xs-12
       %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-        = "Try this for free in your day care"
+        =t('pages.home.free_register')
     .col-sm-4.hidden-xs
   .gap-30
   .row.promo{style: 'margin-top: 30px;'}
@@ -674,21 +658,13 @@
           %p.paragraph= t('pages.path.step11.para2').html_safe
           %p.paragraph= t('pages.path.step11.para3').html_safe
 
-.row.step-contents.next-step-content
-  - if current_user.nil?
-    .next-green-step
-      %p.paragraph= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe
-
 / About Us Page
 
 .row
   .col-sm-4.hidden-xs
   .col-sm-4.col-xs-12
     %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-      = "Try this for free in your day care"
+      =t('pages.home.free_register')
   .col-sm-4.hidden-xs
 .gap-30
 
@@ -784,19 +760,12 @@
         %p.paragraph= t('pages.about.question3_para1').html_safe
         %p.paragraph= t('pages.about.question3_para3').html_safe
         %p.paragraph= t('pages.about.question3_para4').html_safe
-  .row.call-action-row
-    - if current_user.nil?
-      .next-green-step
-        %p.paragraph= t('pages.standard.para8_1').html_safe
-        %button.btn.hcc-green-btn
-          %a{'href': '/journey'}
-            = t('pages.nav_bar.get_started').html_safe
 
   .row
     .col-sm-4.hidden-xs
     .col-sm-4.col-xs-12
       %button.btn.btn-primary.btn-style-1{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-        = "Try this for free in your day care"
+        = t('pages.home.free_register')
     .col-sm-4.hidden-xs
   .gap-30
   

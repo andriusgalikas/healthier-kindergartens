@@ -22,6 +22,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:deposit] = false
     yield resource if block_given?
     if resource.persisted?
+      unless params[:token].blank?
+        @meeting_user = MeetingUser.where(token: params[:token]).first
+        @meeting_user.delete
+      end
+
       send_confirmation_email(resource)
       if resource.active_for_authentication?
         # set_flash_message! :notice, :signed_up
@@ -311,11 +316,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new_daycare_department
+    @meeting_user = nil
+    unless params[:token].nil?
+      @meeting_user = MeetingUser.where(token: params[:token]).first
+    end
     @daycare = Daycare.new
     @daycare.build_profile_image
     @daycare.departments.build
     @user_daycare = @daycare.user_daycares.build
     @user_daycare.build_user
+
+    unless @meeting_user.nil?
+      @daycare.name = @meeting_user.daycare_name
+      @user_daycare.user.email = @meeting_user.email
+      @user_daycare.user.name = @meeting_user.name
+      @daycare.telephone = @meeting_user.mobile
+    end
   end
 
   def get_daycare_department

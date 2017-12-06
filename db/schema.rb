@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130174711) do
+ActiveRecord::Schema.define(version: 20171206103937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171130174711) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "url"
-    t.integer  "affiliate_type", default: 0
+    t.integer  "affiliate_type"
     t.integer  "num_member",     default: 0
     t.integer  "municipal_id"
   end
@@ -325,6 +325,16 @@ ActiveRecord::Schema.define(version: 20171130174711) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "meeting_users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "daycare_name"
+    t.string   "mobile"
+    t.string   "token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "message_subjects", force: :cascade do |t|
     t.string   "title"
     t.integer  "parent_subject_id"
@@ -409,6 +419,7 @@ ActiveRecord::Schema.define(version: 20171130174711) do
     t.string   "label_key"
     t.integer  "daycare_id",  default: 0
     t.integer  "partner_id",  default: 0
+    t.string   "discount"
   end
 
   create_table "plans", force: :cascade do |t|

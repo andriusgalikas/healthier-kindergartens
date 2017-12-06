@@ -221,6 +221,7 @@ en:
       subcontent_journey: Start your journey towards "Healthier and Safer Childcare" in your daycare
       journey_1: Are ready to charge and do what is necessary to ensure that nurturing environment in your nursery is as safe as possible for the children under your care and nursery staff ? 
       journey_link: Apply here enroll into the healthier and safer childcare program .
+      free_register: Try this for free in your day care
 
     infection:
       main_heading: "1. Milestone."
@@ -818,7 +819,6 @@ en:
       str: Strategic Alliance Partner
       cer: Certification Partner
 
-
   manager:
     invite:
       title: Healthier and safer care conscious 
@@ -922,6 +922,8 @@ en:
       url: http://www.tryggerehelsebevarendebarneomsorg.no
     daycare:
       invite: "You have now been invited to regsiter your Healthier and Safer Nursery Portal. Please click the link to register and receive the benefits of membership."
+    account_registration:
+      content: "Hello %{name}, <br/> Thank you for signing up to th Healthier and Safer Nursery Portal. <br/> Please confirm your email address and register your account by clicking on the link below <br/><a href = '%{url}'> %{url}</a>.<p>Thanks</p>"
     registration:
       send_confirmation: "Thank you for registering your Healthier and Safer Nursery Portal"  
     mail_confirm:
