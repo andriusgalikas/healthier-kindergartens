@@ -48,9 +48,9 @@
                 
       = daycare.fields_for :user_daycares do |user_daycare|
         = user_daycare.fields_for :user do |user|
-          .row
-            %h5=t('register.labels.card_number').upcase
-            = user.text_field :card_number, class: 'form-control input-round', :placeholder => t('register.labels.card_number'), :required =>"true"
+          / .row
+          /   %h5=t('register.labels.card_number').upcase
+          /   = user.text_field :card_number, class: 'form-control input-round', :placeholder => t('register.labels.card_number'), :required =>"true"
           .row
             %h5=t('register.labels.name').upcase
             = user.text_field :name, class: 'form-control input-round', :placeholder => t('register.labels.name'), :required =>"true"
