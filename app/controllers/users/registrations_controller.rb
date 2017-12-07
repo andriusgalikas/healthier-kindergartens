@@ -78,7 +78,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       send_email_campaign(user) unless user.deposit_required
       sign_up(:user, user)  
-      render "register/success_#{params[:role]}", locals: {deposit: user.deposit_required}
+      redirect_to dashboard_path
+      # render "register/success_#{params[:role]}", locals: {deposit: user.deposit_required}
       #respond_with user, location: after_sign_up_path_for(user), notice: 'You have successfully signed up!'
     else
       clean_up_passwords resource
