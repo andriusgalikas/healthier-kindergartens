@@ -42,42 +42,21 @@
                   .department-todo
                     .todo-command
                       .detail-box
-                        %ul#time-counter.time-counter
+                        %ul#time-counter
                           %li.days
-                            %label -
+                            %label=diff_time[0]
                             %span Days
                           %li.hours
-                            %label -
+                            %label=diff_time[1]
                             %span Hours
                           %li.minutes
-                            %label -
+                            %label=diff_time[2]
                             %span Mins
                         - percent = get_current_status(todo.id, current_user.department_id)
                         .progress
                           .value{style: "width: #{percent}%;"}
                     %span.todo-footer
                       = todo.title
-              - else
-                %li
-                  = link_to todo_todo_complete_path(todo.id, todo.tc_id), :class => '', style: 'color: #2f363d;text-decoration: none;' do
-                    .department-todo
-                      .todo-command
-                        .detail-box
-                          %ul#time-counter
-                            %li.days
-                              %label=diff_time[0]
-                              %span Days
-                            %li.hours
-                              %label=diff_time[1]
-                              %span Hours
-                            %li.minutes
-                              %label=diff_time[2]
-                              %span Mins
-                          - percent = get_current_status(todo.id, current_user.department_id)
-                          .progress
-                            .value{style: "width: #{percent}%;"}
-                      %span.todo-footer
-                        = todo.title
 :javascript
   jQuery(document).ready(function() {
     $('#link_dashboard_guide').on('click', function(){
