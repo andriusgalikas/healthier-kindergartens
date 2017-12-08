@@ -16,12 +16,12 @@
           %h4{style: 'background: #fcf3f0; padding: 20px;'}=item.name
           %p{style: 'padding: 10px 40px;'}=item.description.html_safe unless item.description.nil?
 
-  .col-md-12.step-contents
-    .cta-step-box.next-green-step
-      %p= t('pages.standard.para8_1').html_safe
-      %button.btn.hcc-green-btn
-        %a{'href': '/journey'}
-          = t('pages.nav_bar.get_started').html_safe      
+  .row{style: "margin-bottom: 30px;"}
+    .col-sm-4.hidden-xs
+    .col-sm-4.col-xs-12
+      %a.btn.btn-primary.btn-style-1{href: "/program", style: "padding-top: 15px;"}
+        =t('pages.home.free_register')
+    .col-sm-4.hidden-xs
 
 :javascript
   var switchTo5x=true;
