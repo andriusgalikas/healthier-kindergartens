@@ -13,6 +13,10 @@ module HealthChildcare
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # Timezone 
+    config.time_zone = 'Stockholm' 
+    config.active_record.default_timezone = :local 
+    
     config.assets.initialize_on_precompile = false
 
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
