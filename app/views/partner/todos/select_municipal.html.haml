@@ -31,7 +31,7 @@
         .col-md-9.survey-result-dash-container
           / = form_tag results_partner_todos_path, method: :post, id: 'todo_result_form' do
           .row.survey-subjects
-            - Todo.all.each_with_index do |todo, idx|
+            - Todo.global.each_with_index do |todo, idx|
               .survey-subject
                 - if current_user.affiliate.strategic?
                   .radio-box

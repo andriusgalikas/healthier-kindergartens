@@ -41,6 +41,7 @@ class Todo < ActiveRecord::Base
     scope :incomplete,                                                          -> { includes(:todo_completes).where.not(todo_completes: { id: nil } ).where(todo_completes: { completion_date: nil } )  }
     scope :available,                                                           -> { includes(:todo_completes).where(todo_completes: { id: nil } ) }
     scope :global,                                                              -> { where(daycare_id: nil) }
+    scope :daycare_todo,                                                        -> (daycare_id) { where(daycare_id: daycare_id << nil) }
 
     scope :search, ->(query, ids, page, per_page_count, limit_count) { where(id: ids).where("title LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 

@@ -1,4 +1,4 @@
-- Todo.all.each_with_index do |todo, idx|
+- Todo.daycare_todo(params[:target_daycare]).each_with_index do |todo, idx|
   .survey-subject
     - if current_user.affiliate.strategic?
       .radio-box
