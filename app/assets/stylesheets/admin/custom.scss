@@ -105,3 +105,52 @@ table .inner-table table tbody tr:last-child
 .row .sixcol{
     width: 45% !important;
 }
+
+  ul.weekday-list{
+    list-style: none;
+    padding: 0;
+    li{
+      display: inline-block;
+
+      &.check-box{
+        input[type=checkbox] + label{
+          display: block;
+          height: 40px;
+          width: 40px;
+          line-height: 36px;
+          vertical-align: middle;
+          font-weight: 400;
+          font-size: 14px;
+          text-decoration: none;
+          
+          background: #fff;
+          border-radius:50%;
+          border:2px solid #f72876;
+          color: #f72876;
+          padding: 0;
+          text-align: center;
+          margin: 0 5px;
+        }
+
+        input[type=checkbox]:checked + label{
+          display: block;
+          height: 40px;
+          width: 40px;
+          line-height: 36px;
+          vertical-align: middle;
+          font-weight: 400;
+          font-size: 14px;
+          text-decoration: none;
+          
+          background: #f72876;
+          border-radius:50%;
+          border:2px solid #f72876;
+          color: #fff;
+          padding: 0;
+          text-align: center;
+          margin: 0 5px;
+        }
+      }
+
+    }
+  }

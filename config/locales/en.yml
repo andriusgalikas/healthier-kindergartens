@@ -1023,6 +1023,7 @@ en:
       daycare_result: Todo Results of selected Daycares
       in_progress: In Progress
       start_todo: Start Todo
+      workers: Workers
   todo_completes: 
     show:
       label1: "Title"  
@@ -1432,7 +1433,7 @@ en:
       daycare_type: Daycare Type
       childrens: Childrens
       daycares: Daycares
-      municipal: Municipal
+      municipal_name: Municipal
 
     notifications:
       not_enough_data: There is not enough data available to show your results. 
