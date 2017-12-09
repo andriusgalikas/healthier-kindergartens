@@ -1,6 +1,7 @@
 ready = function()
 {
     healthChildcare.admin.multiSelect();
+    healthChildcare.admin.datepickers();
 
     soca.animation.loading();
     soca.animation.colourCaveat();

@@ -7,6 +7,5 @@
         - else
           %input.partner-todo-radio{:type=>"radio", :name => "todo_id", :id => "radio#{todo.id}", :style => "display: none;", value: todo.id, 'data-current_role': @current_user.role}            
         %label{:for => "radio#{todo.id}"}
-          = image_tag todo.icon.file, class: 'img' unless todo.icon.nil?
-        .row.survey-title
-          %span= todo.title
+          %span{style: "line-height: 20px;"}= todo.title
+          
