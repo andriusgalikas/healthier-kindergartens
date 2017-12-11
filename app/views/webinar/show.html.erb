@@ -4,28 +4,28 @@
     <div class="col-xs-12 col-sm-8">
       <div class="box-2">
         <div class="btn-style-1 bx-title">
-          <h3 class="white-color text-center-imp">Childcare Breakthrough session details</h3>
+          <h3 class="white-color text-center-imp"><%=t('pages.webinar.title')%></h3>
           <div>
-            <p class="paragraph text-center white-color text-center-imp">Date: <%= @schedule.datetime.strftime("%d-%m-%Y") %> | Time: <%= @schedule.datetime.strftime("%H: %M") %></p>
+            <p class="paragraph text-center white-color text-center-imp"><%=t('pages.webinar.date')%> <%= @schedule.datetime.strftime("%d-%m-%Y") %> | <%=t('pages.webinar.time')%> <%= @schedule.datetime.strftime("%H: %M") %></p>
           </div>
         </div>
         <div class="bx-container">
           <div class="boxer text-left">
             <h3 class="pink-color text-center gray-color" style="text-align: center;">
-              <b>This session is specially designed to:</b>
+              <b><%=t('pages.webinar.description')%></b>
             </h3>
             <ul class="right-symbol">
               <li>
-                Create a sense of clarity about the optimum infection control and risk mitigation you want to have in your facility
+                <%=t('pages.webinar.para1')%>
               </li>
               <li>
-                Discover the essential building blocks for having the optimum infection control in your facility
+                <%=t('pages.webinar.para2')%>
               </li>
               <li>
-                Determine the Nr 1 thing stopping you from having optimum infection control in and risk mitigation your facility
+                <%=t('pages.webinar.para3')%>
               </li>
               <li>
-                Identify the most powerful actions that will move you toward to optimum infection control and prevention in your facility.
+                <%=t('pages.webinar.para4')%>
               </li>
             </ul>
 
@@ -34,7 +34,7 @@
           <div class="form-fields">              
               <div class="row">
                 <div class="col-xs-12">
-                  <p class="paragraph text-center-imp gray-color">You have just got a confirmation sent to your email address. Please use link to go through dashboard</p>
+                  <p class="paragraph text-center-imp gray-color"><%=t('pages.webinar.para5')%></p>
                 </div>
               </div>
           </div>

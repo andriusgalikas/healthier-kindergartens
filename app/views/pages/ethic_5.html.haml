@@ -3,7 +3,7 @@
     .row.box-2.step-wrapper-2
       %h2.btn-style-1=t('pages.ethic.step4.title')
       .col-md-12.content 
-        = form_tag add_schedule_path, method: :post do
+        = form_tag add_schedule_path, method: :post, id: 'schedule_form' do
           %h3=t('pages.ethic.step4.schedule_list')
           - @app_types.each do |type|
             .radio-box
@@ -32,7 +32,7 @@
               .col-md-3.hidden-xs
               .col-sm-12.col-md-6.text-center
                 %button.btn.btn-style-1.btn-sm{type: 'submit', style: { "marin-bottom" => "30px"}}
-                  = t('pages.ethic.label.schedule')            
+                  = t('pages.ethic.step4.button')            
 :javascript
   jQuery(document).ready(function() {
     jQuery('#verify-timezone').val('Europe/Oslo');
@@ -56,6 +56,14 @@
               $('#time_loader').hide();
             }
           });              
+      }
+    });
+
+    $('#schedule_form').on('submit', function(e){
+      if(!$('input[name=start_time]').val()){
+        return false;
+      } else {
+        return true;
       }
     });
   });
